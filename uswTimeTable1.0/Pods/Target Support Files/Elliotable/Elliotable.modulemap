@@ -1,0 +1,6 @@
+framework module Elliotable {
+  umbrella header "Elliotable-umbrella.h"
+
+  export *
+  module * { export * }
+}
