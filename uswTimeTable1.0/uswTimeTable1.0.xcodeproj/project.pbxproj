@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3CB1CA88C6F443BD71F7CE36 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA14CFA4F65A1E78ADF71889 /* Pods_uswTimeTable1_0.framework */; };
 		AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF82277F160900408F46 /* AppDelegate.swift */; };
 		AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF84277F160900408F46 /* SceneDelegate.swift */; };
 		AFAFEF87277F160900408F46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF86277F160900408F46 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2387E74773FD511BCC61206C /* Pods-uswTimeTable1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.release.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.release.xcconfig"; sourceTree = "<group>"; };
 		AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uswTimeTable1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAFEF82277F160900408F46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFAFEF84277F160900408F46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -28,6 +30,8 @@
 		AFAFEF91277F160B00408F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFAFEF99277F16AE00408F46 /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
+		B94FDF696503C6091E2BD3F8 /* Pods-uswTimeTable1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.debug.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.debug.xcconfig"; sourceTree = "<group>"; };
+		FA14CFA4F65A1E78ADF71889 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CB1CA88C6F443BD71F7CE36 /* Pods_uswTimeTable1_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53BDB12C94EDF0005904066F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA14CFA4F65A1E78ADF71889 /* Pods_uswTimeTable1_0.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		983B077980285A29B89AAAAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B94FDF696503C6091E2BD3F8 /* Pods-uswTimeTable1.0.debug.xcconfig */,
+				2387E74773FD511BCC61206C /* Pods-uswTimeTable1.0.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AFAFEF76277F160900408F46 = {
 			isa = PBXGroup;
 			children = (
 				AFAFEF81277F160900408F46 /* uswTimeTable1.0 */,
 				AFAFEF80277F160900408F46 /* Products */,
+				983B077980285A29B89AAAAF /* Pods */,
+				53BDB12C94EDF0005904066F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFAFEF96277F160B00408F46 /* Build configuration list for PBXNativeTarget "uswTimeTable1.0" */;
 			buildPhases = (
+				3ADD796E0A12F7984BE48721 /* [CP] Check Pods Manifest.lock */,
 				AFAFEF7B277F160900408F46 /* Sources */,
 				AFAFEF7C277F160900408F46 /* Frameworks */,
 				AFAFEF7D277F160900408F46 /* Resources */,
+				AE535D83F664CA2FA079D05F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -138,6 +165,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3ADD796E0A12F7984BE48721 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-uswTimeTable1.0-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE535D83F664CA2FA079D05F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AFAFEF7B277F160900408F46 /* Sources */ = {
@@ -292,6 +361,7 @@
 		};
 		AFAFEF97277F160B00408F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B94FDF696503C6091E2BD3F8 /* Pods-uswTimeTable1.0.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,6 +390,7 @@
 		};
 		AFAFEF98277F160B00408F46 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2387E74773FD511BCC61206C /* Pods-uswTimeTable1.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

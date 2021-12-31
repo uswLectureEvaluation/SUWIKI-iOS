@@ -12,6 +12,7 @@ class uswMakeSchedule: UIViewController {
    
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var semeTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     
     let yearList = ["2022", "2023", "2024"]
     let semeList = ["1", "2"]
