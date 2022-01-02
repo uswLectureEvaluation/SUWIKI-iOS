@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3CB1CA88C6F443BD71F7CE36 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA14CFA4F65A1E78ADF71889 /* Pods_uswTimeTable1_0.framework */; };
+		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
 		AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF82277F160900408F46 /* AppDelegate.swift */; };
 		AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF84277F160900408F46 /* SceneDelegate.swift */; };
 		AFAFEF87277F160900408F46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF86277F160900408F46 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		2387E74773FD511BCC61206C /* Pods-uswTimeTable1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.release.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.release.xcconfig"; sourceTree = "<group>"; };
+		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
 		AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uswTimeTable1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAFEF82277F160900408F46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFAFEF84277F160900408F46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +62,6 @@
 				B94FDF696503C6091E2BD3F8 /* Pods-uswTimeTable1.0.debug.xcconfig */,
 				2387E74773FD511BCC61206C /* Pods-uswTimeTable1.0.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,6 +86,7 @@
 		AFAFEF81277F160900408F46 /* uswTimeTable1.0 */ = {
 			isa = PBXGroup;
 			children = (
+				AFA725442781B6D1003EE008 /* firstSceneCheck.swift */,
 				AFAFEF82277F160900408F46 /* AppDelegate.swift */,
 				AFAFEF84277F160900408F46 /* SceneDelegate.swift */,
 				AFAFEF86277F160900408F46 /* ViewController.swift */,
@@ -215,6 +217,7 @@
 			files = (
 				AFAFEF9A277F16AF00408F46 /* uswMakeSchedule.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
+				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
 				AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rOe-kG-oam">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eym-E1-aaN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="timeTable" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,12 +31,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543" y="68"/>
+            <point key="canvasLocation" x="2575" y="68"/>
         </scene>
         <!--Usw Make Schedule-->
         <scene sceneID="qmL-H5-WhJ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="db6-KX-Ct2" customClass="uswMakeSchedule" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a9Y-jk-UFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="uswMakeSchedule" modalPresentationStyle="fullScreen" id="db6-KX-Ct2" customClass="uswMakeSchedule" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SWG-IY-RoB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +66,8 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="qgj-L8-K2M"/>
+                                    <action selector="buttonClicked:" destination="db6-KX-Ct2" eventType="touchUpInside" id="9NR-wh-0Ld"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="qbF-WJ-KyU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,19 +75,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="buttonSwitch" destination="t0w-Ai-HmP" id="nhL-zF-YGz"/>
                         <outlet property="nameTextField" destination="L2g-ut-ZPj" id="8hl-Pf-uIA"/>
                         <outlet property="semeTextField" destination="gRH-Tg-of3" id="EYJ-D5-7Mx"/>
                         <outlet property="yearTextField" destination="aN2-yV-Ix0" id="gup-Hg-sVY"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a9Y-jk-UFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831.88405797101461" y="67.633928571428569"/>
+            <point key="canvasLocation" x="1821.7391304347827" y="67.633928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--First Scene Check-->
         <scene sceneID="Du7-aC-aic">
             <objects>
-                <viewController id="rOe-kG-oam" sceneMemberID="viewController">
+                <viewController id="rOe-kG-oam" customClass="firstSceneCheck" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zja-ke-7Ns">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,10 +105,29 @@
                         <viewLayoutGuide key="safeArea" id="FNQ-dM-4xB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fzR-TK-kO3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8d-lH-wxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="68"/>
+            <point key="canvasLocation" x="1015.9420289855074" y="67.633928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Icf-Pl-pEm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eym-E1-aaN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uO4-Wg-KxW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rOe-kG-oam" kind="relationship" relationship="rootViewController" id="QA3-NM-x7q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0N1-HR-MKA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="105.79710144927537" y="67.633928571428569"/>
         </scene>
     </scenes>
     <resources>

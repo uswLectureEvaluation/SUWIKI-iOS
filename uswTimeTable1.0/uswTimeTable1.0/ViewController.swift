@@ -14,13 +14,13 @@ class ViewController: UIViewController, ElliotableDelegate, ElliotableDataSource
     
     let dayString: [String] = ["월", "화", "수", "목", "금", "토"]
     
-    let courseList: [ElliottEvent] = [ElliottEvent(courseId: "c0001", courseName: "Operating System", roomName: "IT Building 21204", professor: "TEST", courseDay: .tuesday, startTime: "12:00", endTime: "13:15", textColor: UIColor.white, backgroundColor: .purple), ElliottEvent(courseId: "c0002", courseName: "Operating System", roomName: "IT Building 21204", professor: "TEST", courseDay: .thursday, startTime: "20:00", endTime: "23:15", textColor: UIColor.white, backgroundColor: .blue), ElliottEvent(courseId: "c0002", courseName: "Operating System", roomName: "IT Building 21204", professor: "TEST", courseDay: .friday, startTime: "21:30", endTime: "22:15", textColor: UIColor.white, backgroundColor: .blue), ElliottEvent(courseId: "c0002", courseName: "Operating System", roomName: "IT Building 21204", professor: "TEST", courseDay: .tuesday, startTime: "21:15", endTime: "22:15", textColor: UIColor.white, backgroundColor: .blue)] // 시간표 강의 아이템
+    let courseList: [ElliottEvent] = [ElliottEvent(courseId: "c0001", courseName: "운영체제론", roomName: "IT Building 21204", professor: "TEST", courseDay: .tuesday, startTime: "12:00", endTime: "13:15", textColor: UIColor.white, backgroundColor: .purple), ElliottEvent(courseId: "c0002", courseName: "데이터 구조", roomName: "IT Building 21204", professor: "TEST", courseDay: .thursday, startTime: "20:00", endTime: "23:15", textColor: UIColor.white, backgroundColor: .blue), ElliottEvent(courseId: "c0002", courseName: "데이터베이스", roomName: "IT Building 21204", professor: "TEST", courseDay: .friday, startTime: "21:30", endTime: "22:15", textColor: UIColor.white, backgroundColor: .blue), ElliottEvent(courseId: "c0002", courseName: "알고리즘", roomName: "IT Building 21204", professor: "TEST", courseDay: .tuesday, startTime: "21:15", endTime: "22:15", textColor: UIColor.white, backgroundColor: .blue)] // 시간표 강의 아이템
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        timetable.courseItems = courseList
-        
+   
         timetable.delegate = self
         timetable.dataSource = self
         
@@ -45,7 +45,7 @@ class ViewController: UIViewController, ElliotableDelegate, ElliotableDataSource
         timetable.isFullBorder = true // 시간표 겉 테두리
     
         timetable.reloadData()
-    }
+}
  
     func courseItems(in elliotable: Elliotable) -> [ElliottEvent] {
         return courseList
@@ -67,4 +67,3 @@ class ViewController: UIViewController, ElliotableDelegate, ElliotableDataSource
         return dayString.count
     }
 }
-

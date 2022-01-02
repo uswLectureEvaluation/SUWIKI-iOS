@@ -8,8 +8,8 @@
 import UIKit
 
 class uswMakeSchedule: UIViewController {
-
    
+    @IBOutlet weak var buttonSwitch: UIButton!
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var semeTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
@@ -22,7 +22,7 @@ class uswMakeSchedule: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         yearTextField.inputView = yearPickerView
         semeTextField.inputView = semePickerView
         yearTextField.placeholder = "20XX"
@@ -38,6 +38,16 @@ class uswMakeSchedule: UIViewController {
         
         yearPickerView.tag = 1
         semePickerView.tag = 2
+    
+        
+    }
+    
+    
+     
+    @IBAction func buttonClicked(_ sender: Any) {
+        UserDefaults.standard.setValue("true", forKey: "checkPage")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "uswMakeSchedule")
+        navigationController?.pushViewController(vc!, animated: true)
     }
 }
 
