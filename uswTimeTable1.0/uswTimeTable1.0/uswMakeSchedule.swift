@@ -42,6 +42,7 @@ class uswMakeSchedule: UIViewController {
         
     }
     
+<<<<<<< HEAD
     @IBAction func makeBtnClicked(_ sender: Any) {
         UserDefaults.standard.bool(forKey: "makeS")
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
@@ -50,6 +51,15 @@ class uswMakeSchedule: UIViewController {
     
      
     
+=======
+    
+     
+    @IBAction func buttonClicked(_ sender: Any) {
+        UserDefaults.standard.setValue("true", forKey: "checkPage")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "uswMakeSchedule")
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+>>>>>>> 08467a317439c6856127195161d1aaf046ab3fc9
 }
 
 extension uswMakeSchedule: UIPickerViewDataSource, UIPickerViewDelegate {

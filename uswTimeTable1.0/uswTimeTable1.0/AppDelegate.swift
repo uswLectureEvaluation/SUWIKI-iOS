@@ -11,7 +11,11 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+<<<<<<< HEAD
     
+=======
+    var window: UIWindow?
+>>>>>>> 08467a317439c6856127195161d1aaf046ab3fc9
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -19,7 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     // MARK: UISceneSession Lifecycle
 
+<<<<<<< HEAD
    
+=======
+    func check(){
+        if UserDefaults.standard.value(forKey: "checkPage") != nil{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ViewController")
+            let navVC = UINavigationController(rootViewController: vc)
+            let share = UIApplication.shared.delegate as? AppDelegate
+            share?.window?.rootViewController = navVC
+            share?.window?.makeKeyAndVisible()
+        }
+        
+    }
+>>>>>>> 08467a317439c6856127195161d1aaf046ab3fc9
     
     
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
