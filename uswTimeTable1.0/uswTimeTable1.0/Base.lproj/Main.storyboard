@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eym-E1-aaN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXx-uc-VIn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -8,35 +8,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Show Time Table-->
+        <scene sceneID="RXC-1A-H2Z">
             <objects>
-                <viewController storyboardIdentifier="timeTable" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController storyboardIdentifier="showTimeTable" id="7cx-HR-Byv" customClass="showTimeTable" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6ML-mt-br2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="351-EM-8wU" customClass="Elliotable" customModule="Elliotable">
-                                <rect key="frame" x="0.0" y="44" width="414" height="779"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jYi-tP-tqH" customClass="Elliotable" customModule="Elliotable">
+                                <rect key="frame" x="0.0" y="57" width="414" height="765"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="3ht-Na-yYA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="timetable" destination="351-EM-8wU" id="1dn-TY-ISi"/>
+                        <outlet property="timetable" destination="jYi-tP-tqH" id="YbJ-qO-Aq1"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5JO-lv-cDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2575" y="68"/>
+            <point key="canvasLocation" x="1751" y="-586"/>
         </scene>
         <!--Usw Make Schedule-->
         <scene sceneID="qmL-H5-WhJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a9Y-jk-UFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="uswMakeSchedule" modalPresentationStyle="fullScreen" id="db6-KX-Ct2" customClass="uswMakeSchedule" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SWG-IY-RoB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -66,8 +65,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="buttonClicked:" destination="db6-KX-Ct2" eventType="touchUpInside" id="9NR-wh-0Ld"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="qbF-WJ-KyU"/>
+                                    <action selector="btnClicked:" destination="db6-KX-Ct2" eventType="touchUpInside" id="z8E-Ai-sQW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -75,19 +73,35 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="buttonSwitch" destination="t0w-Ai-HmP" id="nhL-zF-YGz"/>
                         <outlet property="nameTextField" destination="L2g-ut-ZPj" id="8hl-Pf-uIA"/>
                         <outlet property="semeTextField" destination="gRH-Tg-of3" id="EYJ-D5-7Mx"/>
                         <outlet property="yearTextField" destination="aN2-yV-Ix0" id="gup-Hg-sVY"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a9Y-jk-UFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1821.7391304347827" y="67.633928571428569"/>
+            <point key="canvasLocation" x="1750.7246376811595" y="67.633928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KSv-kW-XKE">
+            <objects>
+                <navigationController id="vXx-uc-VIn" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4XQ-GW-XYX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rOe-kG-oam" kind="relationship" relationship="rootViewController" id="PHE-ZH-fS0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWt-7m-ddg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4" y="68"/>
         </scene>
         <!--First Scene Check-->
         <scene sceneID="Du7-aC-aic">
             <objects>
-                <viewController id="rOe-kG-oam" customClass="firstSceneCheck" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homePage" id="rOe-kG-oam" customClass="firstSceneCheck" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zja-ke-7Ns">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,7 +112,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="새 시간표 만들기"/>
                                 <connections>
-                                    <segue destination="db6-KX-Ct2" kind="presentation" id="h5O-HK-XSU"/>
+                                    <action selector="newBtnClicked:" destination="rOe-kG-oam" eventType="touchUpInside" id="T6u-7m-Shp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -110,24 +124,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8d-lH-wxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1015.9420289855074" y="67.633928571428569"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Icf-Pl-pEm">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eym-E1-aaN" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uO4-Wg-KxW">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rOe-kG-oam" kind="relationship" relationship="rootViewController" id="QA3-NM-x7q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0N1-HR-MKA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="105.79710144927537" y="67.633928571428569"/>
         </scene>
     </scenes>
     <resources>

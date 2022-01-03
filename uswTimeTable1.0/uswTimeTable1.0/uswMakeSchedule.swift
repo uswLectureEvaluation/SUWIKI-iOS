@@ -9,7 +9,7 @@ import UIKit
 
 class uswMakeSchedule: UIViewController {
    
-    @IBOutlet weak var buttonSwitch: UIButton!
+
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var semeTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
@@ -38,17 +38,18 @@ class uswMakeSchedule: UIViewController {
         
         yearPickerView.tag = 1
         semePickerView.tag = 2
-    
+        
         
     }
     
     
-     
-    @IBAction func buttonClicked(_ sender: Any) {
-        UserDefaults.standard.setValue("true", forKey: "checkPage")
-        let vc = storyboard?.instantiateViewController(withIdentifier: "uswMakeSchedule")
-        navigationController?.pushViewController(vc!, animated: true)
+    @IBAction func btnClicked(_ sender: Any) {
+        UserDefaults.standard.bool(forKey: "userLogin")
+        let showTimeTable = self.storyboard?.instantiateViewController(withIdentifier: "showTimeTable") as! showTimeTable
+        self.navigationController?.pushViewController(showTimeTable, animated: true)
     }
+    
+
 }
 
 extension uswMakeSchedule: UIPickerViewDataSource, UIPickerViewDelegate {
