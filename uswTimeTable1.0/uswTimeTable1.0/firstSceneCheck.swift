@@ -10,10 +10,6 @@ import UIKit
 class firstSceneCheck: UIViewController {
 
     override func viewDidLoad() {
-        if UserDefaults.standard.bool(forKey: "makeS") == true{
-            let showVC = storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
-            navigationController?.pushViewController(showVC, animated: true)
-        }
             super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
