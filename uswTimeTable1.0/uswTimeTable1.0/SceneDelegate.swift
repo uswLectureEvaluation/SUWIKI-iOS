@@ -11,18 +11,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         print(UserDefaults.standard.bool(forKey: "isLogin"))
         let windowScene = UIWindowScene(session: session, connectionOptions: connectionOptions)
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let rootVC = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck else{
-            return
+        
+        if UserDefaults.standard.bool(forKey: "isLogin") == false{
+            let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
+            let nc = UINavigationController(rootViewController: vc!)
+            self.window?.rootViewController = nc
+            self.window?.makeKeyAndVisible() // 화면에 보여줌
+        } else{
+            let vc = storyboard.instantiateViewController(withIdentifier: "showVC") as? showTimeTable
+            let nc = UINavigationController(rootViewController: vc!)
+            self.window?.rootViewController = nc
+            self.window?.makeKeyAndVisible()
         }
-        let rootNC = UINavigationController(rootViewController: rootVC)
-        self.window?.rootViewController = rootNC
-        self.window?.makeKeyAndVisible() // 화면에 보여줌
+        
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -58,4 +65,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
+
 

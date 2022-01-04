@@ -47,6 +47,12 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         timetable.reloadData()
 }
  
+    @IBAction func testRemove(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "isLogin")
+        let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
+        self.navigationController?.pushViewController(makeVC, animated: true)
+    }
+    
     func courseItems(in elliotable: Elliotable) -> [ElliottEvent] {
         return courseList
     }
