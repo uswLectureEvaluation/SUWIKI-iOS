@@ -5,6 +5,7 @@ target 'uswTimeTable1.0' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Elliotable'
+  pod 'RealmSwift'
   # Pods for uswTimeTable1.0
 
 end

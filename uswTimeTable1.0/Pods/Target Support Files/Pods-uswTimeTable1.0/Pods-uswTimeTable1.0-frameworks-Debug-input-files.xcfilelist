@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Elliotable/Elliotable.framework
+${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
+${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
