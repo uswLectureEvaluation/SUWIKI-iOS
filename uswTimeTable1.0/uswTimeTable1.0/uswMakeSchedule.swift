@@ -45,7 +45,6 @@ class uswMakeSchedule: UIViewController {
     @IBAction func makeBtnClicked(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "isLogin")
         UserDefaults.standard.synchronize()
-        print(UserDefaults.standard.value(forKey: "isLogin"))
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
         self.navigationController?.pushViewController(showVC, animated: true)
     }

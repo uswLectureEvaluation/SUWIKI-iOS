@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */; };
+		AF49FD262785BDB70046BD6A /* listTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD252785BDB70046BD6A /* listTimeTable.swift */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
 		AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF82277F160900408F46 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF49FD252785BDB70046BD6A /* listTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listTimeTable.swift; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
 		AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uswTimeTable1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */,
 				AFAFEF93277F160B00408F46 /* Info.plist */,
 				AFAFEF8B277F160900408F46 /* uswTimeTable1_0.xcdatamodeld */,
+				AF49FD252785BDB70046BD6A /* listTimeTable.swift */,
 			);
 			path = uswTimeTable1.0;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFAFEF9A277F16AF00408F46 /* uswMakeSchedule.swift in Sources */,
+				AF49FD262785BDB70046BD6A /* listTimeTable.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
