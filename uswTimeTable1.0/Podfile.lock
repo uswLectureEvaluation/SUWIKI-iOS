@@ -1,4 +1,5 @@
 PODS:
+  - DropDown (2.3.13)
   - Elliotable (1.2.5)
   - Realm (10.20.1):
     - Realm/Headers (= 10.20.1)
@@ -7,20 +8,23 @@ PODS:
     - Realm (= 10.20.1)
 
 DEPENDENCIES:
+  - DropDown
   - Elliotable
   - RealmSwift
 
 SPEC REPOS:
   trunk:
+    - DropDown
     - Elliotable
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Elliotable: e669fa7a974658c4e0ee4be4b335f6a561f1b2cb
   Realm: fac5ecd031fcb81171627b74944c885662d4b266
   RealmSwift: 9b02d25acb46a14756bde9893abb99e2e3675923
 
-PODFILE CHECKSUM: bda92ac1714ef1159fc6873b8e4dce2f9ce24427
+PODFILE CHECKSUM: f44a4ab8545b43c9254b69e0a2639db4521a16e1
 
 COCOAPODS: 1.11.2

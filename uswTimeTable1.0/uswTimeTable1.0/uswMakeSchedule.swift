@@ -2,97 +2,66 @@
 //  uswMakeSchedule.swift
 //  uswTimeTable1.0
 //
-//  Created by 한지석 on 2021/12/31.
+//  Created by 한지석 on 2022/01/07.
 //
 
 import UIKit
+import DropDown
+
 
 class uswMakeSchedule: UIViewController {
-   
-    @IBOutlet weak var buttonSwitch: UIButton!
-    @IBOutlet weak var yearTextField: UITextField!
-    @IBOutlet weak var semeTextField: UITextField!
-    @IBOutlet weak var nameTextField: UITextField!
+ 
+ 
+    @IBOutlet weak var yearDropdown: UIView!
+    @IBOutlet weak var yearTxtField: UILabel!
+    @IBOutlet weak var semeDropdown: UIView!
+    @IBOutlet weak var semeTxtField: UILabel!
+    let dropDown1 = DropDown()
+    let dropDown2 = DropDown()
     
-    let yearList = ["2022", "2023", "2024"]
+    let yearList = ["2022","2023","2024"]
     let semeList = ["1", "2"]
-    
-    var yearPickerView = UIPickerView()
-    var semePickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        yearTextField.inputView = yearPickerView
-        semeTextField.inputView = semePickerView
-        yearTextField.placeholder = "20XX"
-        semeTextField.placeholder = "X"
-        
-        yearTextField.textAlignment = .center
-        semeTextField.textAlignment = .center
-        
-        yearPickerView.delegate = self
-        yearPickerView.dataSource = self
-        semePickerView.delegate = self
-        semePickerView.dataSource = self
-        
-        yearPickerView.tag = 1
-        semePickerView.tag = 2
-    
-        
+        dropDown1.anchorView = yearDropdown
+        dropDown1.dataSource = yearList
+        dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
+        dropDown1.direction = .bottom
+        dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            self.yearTxtField.text = yearList[index]
+            self.yearTxtField.font = UIFont(name: "system", size: 17)
+            self.yearTxtField.textColor = .black
+            self.yearTxtField.textAlignment = .center
+                                            
+        }
+        dropDown2.anchorView = semeDropdown
+        dropDown2.dataSource = semeList
+        dropDown2.bottomOffset = CGPoint(x: 0, y:(dropDown2.anchorView?.plainView.bounds.height)!)
+        dropDown2.direction = .bottom
+        dropDown2.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            self.semeTxtField.text = semeList[index]
+            self.semeTxtField.font = UIFont(name: "system", size: 17)
+            self.semeTxtField.textColor = .black
+            self.semeTxtField.textAlignment = .center
+        }
     }
-    
-    @IBAction func makeBtnClicked(_ sender: Any) {
+
+    @IBAction func finishBtnClicked(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "isLogin")
         UserDefaults.standard.synchronize()
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
         self.navigationController?.pushViewController(showVC, animated: true)
     }
-    
-     
-    
-}
-
-extension uswMakeSchedule: UIPickerViewDataSource, UIPickerViewDelegate {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    @IBAction func yearBtnClicked(_ sender: Any) {
+        dropDown1.show()
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch pickerView.tag {
-        case 1:
-            return yearList.count
-        case 2:
-            return semeList.count
-        default:
-            return 1
-        }
+    @IBAction func semeBtnClicekd(_ sender: Any) {
+        dropDown2.show()
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView.tag{
-        case 1:
-            return yearList[row]
-        case 2:
-            return semeList[row]
-        default:
-            return "데이터를 입력하세요."
-        }
-    }
-    
-  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-      switch pickerView.tag{
-      case 1:
-          yearTextField.text = yearList[row]
-          yearTextField.resignFirstResponder()
-      case 2:
-          semeTextField.text = semeList[row]
-          semeTextField.resignFirstResponder()
-      default:
-          return
-      }
 }
 
 
-}

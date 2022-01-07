@@ -7,9 +7,10 @@
 
 import UIKit
 import Elliotable
+import RealmSwift
 
 class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
-    
+
     @IBOutlet weak var timetable: Elliotable!
     
     let dayString: [String] = ["월", "화", "수", "목", "금"]
@@ -47,6 +48,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         timetable.reloadData()
 }
  
+    
     @IBAction func testRemove(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "isLogin")
         let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule

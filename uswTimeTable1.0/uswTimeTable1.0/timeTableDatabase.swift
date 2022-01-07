@@ -10,7 +10,7 @@ import RealmSwift
 import Elliotable
 import Accessibility
 
-class databaseList: Object{
+class testCourse: Object{
     
     @objc dynamic var courseId: String = ""
     @objc dynamic var courseName: String = ""
@@ -18,6 +18,7 @@ class databaseList: Object{
     @objc dynamic var professor: String = ""
     @objc dynamic var startTime: String = ""
     @objc dynamic var endTime: String = ""
+    @objc dynamic var courseDay = ElliotDay.monday.rawValue
     
 }
 
