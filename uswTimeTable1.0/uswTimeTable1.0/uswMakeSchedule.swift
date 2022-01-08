@@ -47,6 +47,7 @@ class uswMakeSchedule: UIViewController {
             self.semeTxtField.textColor = .black
             self.semeTxtField.textAlignment = .center
         }
+        //test
     }
 
     @IBAction func finishBtnClicked(_ sender: Any) {
