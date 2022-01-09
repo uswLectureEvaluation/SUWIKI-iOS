@@ -48,6 +48,8 @@ class uswMakeSchedule: UIViewController {
             self.semeTxtField.textAlignment = .center
         }
         //test
+        
+        
     }
 
     @IBAction func finishBtnClicked(_ sender: Any) {
