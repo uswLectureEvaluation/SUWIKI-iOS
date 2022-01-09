@@ -7,15 +7,20 @@
 
 import UIKit
 import DropDown
+import RealmSwift
 
 
 class uswMakeSchedule: UIViewController {
- 
+    let realm = try! Realm()
  
     @IBOutlet weak var yearDropdown: UIView!
     @IBOutlet weak var yearTxtField: UILabel!
     @IBOutlet weak var semeDropdown: UIView!
     @IBOutlet weak var semeTxtField: UILabel!
+    @IBOutlet weak var nameTxtField: UITextField!
+    
+    @IBOutlet weak var test2: UITextField!
+    @IBOutlet weak var test: UITextField!
     let dropDown1 = DropDown()
     let dropDown2 = DropDown()
     
@@ -47,7 +52,6 @@ class uswMakeSchedule: UIViewController {
             self.semeTxtField.textColor = .black
             self.semeTxtField.textAlignment = .center
         }
-        //test
         
         
     }
@@ -57,6 +61,10 @@ class uswMakeSchedule: UIViewController {
         UserDefaults.standard.synchronize()
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
         self.navigationController?.pushViewController(showVC, animated: true)
+        save()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+
+
     }
     @IBAction func yearBtnClicked(_ sender: Any) {
         dropDown1.show()
@@ -64,6 +72,16 @@ class uswMakeSchedule: UIViewController {
     
     @IBAction func semeBtnClicekd(_ sender: Any) {
         dropDown2.show()
+    }
+  
+    func save(){
+        let userData = userDB()
+        userData.year = yearTxtField.text!
+        userData.semester = semeTxtField.text!
+        userData.timetableName = nameTxtField.text!
+        try! realm.write {
+            realm.add(userData)
+        }
     }
 }
 

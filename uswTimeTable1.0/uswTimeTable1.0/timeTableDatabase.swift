@@ -23,8 +23,7 @@ class testCourse: Object{
 }
 
 class userDB: Object{
-    @objc dynamic var year: Int = 0
-    @objc dynamic var semester: Int = 0
+    @objc dynamic var year: String = ""
+    @objc dynamic var semester: String = ""
     @objc dynamic var timetableName: String = ""
-    @objc dynamic var timetableJsonData: String = ""
 }
