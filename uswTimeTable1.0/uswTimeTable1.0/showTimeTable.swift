@@ -46,6 +46,8 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         timetable.isFullBorder = true // 시간표 겉 테두리
     
         timetable.reloadData()
+        
+        // json 시간표 데이터 입력
 }
  
     
