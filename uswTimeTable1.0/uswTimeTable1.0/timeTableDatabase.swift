@@ -19,6 +19,7 @@ class testCourse: Object{
     @objc dynamic var startTime: String = ""
     @objc dynamic var endTime: String = ""
     @objc dynamic var courseDay = ElliotDay.monday.rawValue
+
     
 }
 
@@ -26,4 +27,10 @@ class userDB: Object{
     @objc dynamic var year: String = ""
     @objc dynamic var semester: String = ""
     @objc dynamic var timetableName: String = ""
+}
+
+class timeTest: Object{
+    @objc dynamic var roomName: String = ""
+    @objc dynamic var professor: String = ""
+    @objc dynamic var courseName: String = ""
 }
