@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class listTimeTable: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
