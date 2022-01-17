@@ -10,29 +10,12 @@ import RealmSwift
 import Elliotable
 
 class firstSceneCheck: UIViewController {
-        let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
      //    save()
 }
-    func save(){
-        let timetableDB = testCourse()
-        timetableDB.courseId = "c01"
-        timetableDB.courseName = "dataFu"
-        timetableDB.roomName = "B201"
-        timetableDB.professor = "joe"
-        timetableDB.startTime = "11:00"
-        timetableDB.endTime = "12:00"
-        timetableDB.courseDay = 2
-        print(timetableDB.courseId)
-        try! realm.write {
-            realm.add(timetableDB)
-        }
-}
-    
-    
 
     @IBAction func newBtnClicked(_ sender: Any) {
         let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule

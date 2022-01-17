@@ -10,14 +10,6 @@
 		1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
 		AF3CB14727956A78002CF223 /* uswCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3CB14627956A78002CF223 /* uswCourseData.swift */; };
-		AF3CB14A27956D75002CF223 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB14927956D75002CF223 /* FirebaseAnalytics */; };
-		AF3CB14C27956D75002CF223 /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB14B27956D75002CF223 /* FirebaseAnalyticsSwift-Beta */; };
-		AF3CB14E27956D75002CF223 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB14D27956D75002CF223 /* FirebaseCrashlytics */; };
-		AF3CB15027956D75002CF223 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB14F27956D75002CF223 /* FirebaseDynamicLinks */; };
-		AF3CB15227956D75002CF223 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB15127956D75002CF223 /* FirebaseInAppMessaging-Beta */; };
-		AF3CB15427956D75002CF223 /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB15327956D75002CF223 /* FirebaseInAppMessagingSwift-Beta */; };
-		AF3CB15627956D75002CF223 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB15527956D75002CF223 /* FirebaseMessaging */; };
-		AF3CB15827956D75002CF223 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = AF3CB15727956D75002CF223 /* FirebaseRemoteConfig */; };
 		AF49FD262785BDB70046BD6A /* listTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD252785BDB70046BD6A /* listTimeTable.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
@@ -73,16 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF3CB15827956D75002CF223 /* FirebaseRemoteConfig in Frameworks */,
-				AF3CB14C27956D75002CF223 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
 				AFA5ACD427873D2E00D63B81 /* RealmSwift in Frameworks */,
-				AF3CB15627956D75002CF223 /* FirebaseMessaging in Frameworks */,
 				AFF50AAB278737350048673B /* RealmSwift.framework in Frameworks */,
-				AF3CB15227956D75002CF223 /* FirebaseInAppMessaging-Beta in Frameworks */,
-				AF3CB14E27956D75002CF223 /* FirebaseCrashlytics in Frameworks */,
-				AF3CB14A27956D75002CF223 /* FirebaseAnalytics in Frameworks */,
-				AF3CB15027956D75002CF223 /* FirebaseDynamicLinks in Frameworks */,
-				AF3CB15427956D75002CF223 /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,14 +152,6 @@
 			name = uswTimeTable1.0;
 			packageProductDependencies = (
 				AFA5ACD327873D2E00D63B81 /* RealmSwift */,
-				AF3CB14927956D75002CF223 /* FirebaseAnalytics */,
-				AF3CB14B27956D75002CF223 /* FirebaseAnalyticsSwift-Beta */,
-				AF3CB14D27956D75002CF223 /* FirebaseCrashlytics */,
-				AF3CB14F27956D75002CF223 /* FirebaseDynamicLinks */,
-				AF3CB15127956D75002CF223 /* FirebaseInAppMessaging-Beta */,
-				AF3CB15327956D75002CF223 /* FirebaseInAppMessagingSwift-Beta */,
-				AF3CB15527956D75002CF223 /* FirebaseMessaging */,
-				AF3CB15727956D75002CF223 /* FirebaseRemoteConfig */,
 			);
 			productName = uswTimeTable1.0;
 			productReference = AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */;
@@ -207,7 +183,6 @@
 			mainGroup = AFAFEF76277F160900408F46;
 			packageReferences = (
 				AFA5ACD227873D2E00D63B81 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = AFAFEF80277F160900408F46 /* Products */;
 			projectDirPath = "";
@@ -509,14 +484,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		AFA5ACD227873D2E00D63B81 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
@@ -528,46 +495,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AF3CB14927956D75002CF223 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		AF3CB14B27956D75002CF223 /* FirebaseAnalyticsSwift-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseAnalyticsSwift-Beta";
-		};
-		AF3CB14D27956D75002CF223 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		AF3CB14F27956D75002CF223 /* FirebaseDynamicLinks */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDynamicLinks;
-		};
-		AF3CB15127956D75002CF223 /* FirebaseInAppMessaging-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseInAppMessaging-Beta";
-		};
-		AF3CB15327956D75002CF223 /* FirebaseInAppMessagingSwift-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseInAppMessagingSwift-Beta";
-		};
-		AF3CB15527956D75002CF223 /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
-		AF3CB15727956D75002CF223 /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3CB14827956D75002CF223 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
-		};
 		AFA5ACD327873D2E00D63B81 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AFA5ACD227873D2E00D63B81 /* XCRemoteSwiftPackageReference "realm-swift" */;
