@@ -9,6 +9,7 @@ target 'uswTimeTable1.0' do
   pod 'DropDown'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Analytics'
   # Pods for uswTimeTable1.0
 
 end

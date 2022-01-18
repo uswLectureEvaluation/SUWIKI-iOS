@@ -10,6 +10,24 @@ import RealmSwift
 import Elliotable
 import Accessibility
 
+class testCourseData: Object{
+    
+    @objc dynamic var roomName: String = ""
+    @objc dynamic var professor: String = ""
+    @objc dynamic var classification: String = ""
+    @objc dynamic var courseId: String = ""
+    @objc dynamic var num: Int = 0
+    @objc dynamic var courseName: String = ""
+    @objc dynamic var classNum: String = ""
+    @objc dynamic var major: String = ""
+    @objc dynamic var credit: Int = 0
+    @objc dynamic var time: String = ""
+    @objc dynamic var courseDay: String = ""
+    @objc dynamic var startTime: String = ""
+    @objc dynamic var endTime: String = ""
+    
+}
+
 class testCourse: Object{
     
     @objc dynamic var courseId: String = ""

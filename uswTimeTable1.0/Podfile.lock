@@ -1,6 +1,8 @@
 PODS:
   - DropDown (2.3.13)
   - Elliotable (1.2.5)
+  - Firebase/Analytics (8.10.0):
+    - Firebase/Core
   - Firebase/Core (8.10.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 8.10.0)
@@ -103,6 +105,7 @@ PODS:
 DEPENDENCIES:
   - DropDown
   - Elliotable
+  - Firebase/Analytics
   - Firebase/Core
   - Firebase/Database
   - RealmSwift
@@ -144,6 +147,6 @@ SPEC CHECKSUMS:
   Realm: fac5ecd031fcb81171627b74944c885662d4b266
   RealmSwift: 9b02d25acb46a14756bde9893abb99e2e3675923
 
-PODFILE CHECKSUM: feb66aed1c6a81938119453de3dabb406310fdc9
+PODFILE CHECKSUM: b40b65493e633bfbabc706330a1950f38f3e3d67
 
 COCOAPODS: 1.11.2
