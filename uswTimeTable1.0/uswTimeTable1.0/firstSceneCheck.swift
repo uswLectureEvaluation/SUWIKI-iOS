@@ -68,13 +68,13 @@ class firstSceneCheck: UIViewController {
                     insideDB.time = value?["time"] as? String ?? ""
                     insideDB.courseDay = value?["time"] as? String ?? ""
                     print("check ur db\(i)")
-                    try! self.realm.write {
+                    try! self.realm.write{
                         self.realm.add(insideDB)
                     }
                 }
             }
+            
         }
-        
     }
     
 }

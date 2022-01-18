@@ -25,7 +25,7 @@ class testCourseData: Object{
     @objc dynamic var courseDay: String = ""
     @objc dynamic var startTime: String = ""
     @objc dynamic var endTime: String = ""
-    
+
 }
 
 class testCourse: Object{
