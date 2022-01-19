@@ -48,10 +48,10 @@ class firstSceneCheck: UIViewController {
  
     }
     func getExternalData(){
-        let insideDB = testCourseData()
         uswFireDB.observe(.value) { snapshot in
             let countDB = Int(snapshot.childrenCount)
             for i in 0...countDB {
+                let insideDB = testCourseData()
                 self.uswFireDB.child("\(i)").observeSingleEvent(of: .value) { [self] snapshot in
                     let value = snapshot.value as? NSDictionary
                     insideDB.startTime = value?["startTime"] as? String ?? ""
@@ -66,7 +66,7 @@ class firstSceneCheck: UIViewController {
                     insideDB.major = value?["major"] as? String ?? ""
                     insideDB.credit = value?["credit"] as? Int ?? 0
                     insideDB.time = value?["time"] as? String ?? ""
-                    insideDB.courseDay = value?["time"] as? String ?? ""
+                    insideDB.courseDay = value?["courseDay"] as? String ?? ""
                     print("check ur db\(i)")
                     try! self.realm.write{
                         self.realm.add(insideDB)
