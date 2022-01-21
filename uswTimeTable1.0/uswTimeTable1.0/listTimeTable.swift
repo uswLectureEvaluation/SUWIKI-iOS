@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import Firebase
-
+import RealmSwift
 class listTimeTable: UIViewController {
-
+    let realm = try! Realm()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,6 +16,9 @@ class listTimeTable: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func render() {
+        let CDB = realm.objects(testCourseData.self)
+    }
 
     /*
     // MARK: - Navigation
