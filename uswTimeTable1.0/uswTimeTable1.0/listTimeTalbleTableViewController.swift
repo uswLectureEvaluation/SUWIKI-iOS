@@ -1,5 +1,5 @@
 //
-//  listTimeTable.swift
+//  listTimeTalbleTableViewController.swift
 //  uswTimeTable1.0
 //
 //  Created by 한지석 on 2022/01/21.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class listTimeTable: UITableViewController {
-    
+class listTimeTalbleTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

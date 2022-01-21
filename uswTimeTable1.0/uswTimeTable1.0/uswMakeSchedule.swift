@@ -11,14 +11,7 @@ import RealmSwift
 
 
 class uswMakeSchedule: UIViewController {
-    let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
-        //Leave the block empty
-    }
-
-    lazy var realm:Realm = {
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 8, migrationBlock: migrationBlock)
-        return try! Realm()
-    }()
+    let realm = try! Realm()
     
     @IBOutlet weak var yearDropdown: UIView!
     @IBOutlet weak var yearTxtField: UILabel!

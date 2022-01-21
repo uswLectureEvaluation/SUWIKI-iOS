@@ -26,6 +26,7 @@ class testCourseData: Object{
     @objc dynamic var classNum: String = ""
     @objc dynamic var time: String = ""
 
+
 }
 
 class testCourse: Object{

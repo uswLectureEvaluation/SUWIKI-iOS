@@ -12,25 +12,34 @@ import FirebaseDatabase
 
 class firstSceneCheck: UIViewController {
    
-    let migrationBlock: MigrationBlock = { migration, oldSchemaVersion in
-        //Leave the block empty
-    }
-    lazy var realm:Realm = {
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 8, migrationBlock: migrationBlock)
-        return try! Realm()
-    }()
+    let realm = try! Realm()
+    
     
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-    // getExternalData()
+
+        //getExternalData()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        readDBData()
     //    save()
 }
 
     @IBAction func newBtnClicked(_ sender: Any) {
         let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
         self.navigationController?.pushViewController(makeVC, animated: true)
+    }
+    
+    func readDBData(){
+        weak var TxtField: UITextField!
+        realm.beginWrite()
+        let testDB = realm.objects(testCourseData.self)
+        for testValue in testDB{
+            let courseIdData = testValue.courseId
+            TxtField.text = courseIdData
+            print(TxtField.text)
+        }
+        try! realm.commitWrite()
     }
     
     func checkInsideDB(){
@@ -47,6 +56,7 @@ class firstSceneCheck: UIViewController {
         }
  
     }
+
     func getExternalData(){
         uswFireDB.observe(.value) { snapshot in
             let countDB = Int(snapshot.childrenCount)
