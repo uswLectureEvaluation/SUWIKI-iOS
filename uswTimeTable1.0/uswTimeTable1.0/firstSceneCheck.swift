@@ -18,10 +18,10 @@ class firstSceneCheck: UIViewController {
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //getExternalData()
+      
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        readDBData()
+
     //    save()
 }
 
@@ -31,14 +31,17 @@ class firstSceneCheck: UIViewController {
     }
     
     func readDBData(){
-        weak var TxtField: UITextField!
         realm.beginWrite()
         let testDB = realm.objects(testCourseData.self)
-        for testValue in testDB{
-            let courseIdData = testValue.courseId
-            TxtField.text = courseIdData
-            print(TxtField.text)
+        var courseName = [String]()
+        var testName = String()
+        for i in 0..<2004
+        {
+            testName = testDB[i].courseName
+            courseName.append(testName)
         }
+        
+        print(courseName)
         try! realm.commitWrite()
     }
     

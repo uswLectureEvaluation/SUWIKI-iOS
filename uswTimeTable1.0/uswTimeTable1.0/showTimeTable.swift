@@ -58,6 +58,10 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         self.navigationController?.pushViewController(makeVC, animated: true)
     }
     
+    @IBAction func testView(_ sender: Any) {
+        let listVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! listCourseData
+        self.navigationController?.pushViewController(listVC, animated: true)
+    }
     func courseItems(in elliotable: Elliotable) -> [ElliottEvent] {
         return courseList
     }
