@@ -9,6 +9,8 @@ import UIKit
 import RealmSwift
 
 class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var tableView: UITableView!
+    
     let realm = try! Realm()
     
     var courseName = [String]()
@@ -17,7 +19,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
     override func viewDidLoad() {
-    
         super.viewDidLoad()
         readData()
                 // Do any additional setup after loading the view.
@@ -35,19 +36,23 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             courseName.append(readCN)
             roomName.append(readRN)
             professor.append(readPR)
+            tableView?.reloadData()
         }
+ 
+        print(professor)
+        print(courseName)
+        print(roomName)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(professor.count)
         return professor.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! customCell
-        cell.courseTxtField?.text = courseName[indexPath.row]
-        cell.roomTxtField?.text = roomName[indexPath.row]
-        cell.professorTxtField?.text = professor[indexPath.row]
+        cell.courseTxtField.text = courseName[indexPath.row]
+        cell.roomTxtField.text = roomName[indexPath.row]
+        cell.professorTxtField.text = professor[indexPath.row]
         return cell
     }
     

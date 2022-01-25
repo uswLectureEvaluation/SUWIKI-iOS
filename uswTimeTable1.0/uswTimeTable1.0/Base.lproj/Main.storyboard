@@ -175,12 +175,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <connections>
-                                                <outlet property="courseTxtField" destination="lVa-bF-HgD" id="Y5l-wR-ihm"/>
-                                                <outlet property="professorTxtField" destination="rft-7H-rRe" id="5Zg-Z3-kwn"/>
-                                                <outlet property="roomTxtField" destination="zsz-B7-CTd" id="ov0-PH-zKl"/>
-                                            </connections>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="courseTxtField" destination="lVa-bF-HgD" id="UOA-SP-uE5"/>
+                                            <outlet property="professorTxtField" destination="rft-7H-rRe" id="AGL-qe-WQW"/>
+                                            <outlet property="roomTxtField" destination="zsz-B7-CTd" id="Bqa-Ia-hgh"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
