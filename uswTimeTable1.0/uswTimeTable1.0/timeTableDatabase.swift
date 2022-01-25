@@ -25,6 +25,13 @@ class testCourseData: Object{
     @objc dynamic var num: Int = 0
     @objc dynamic var classNum: String = ""
     @objc dynamic var time: String = ""
+    
+    convenience init(courseName: String, roomName: String, professor: String) {
+        self.init()
+        self.courseName = courseName
+        self.roomName = roomName
+        self.professor = professor
+    }
 
 
 }
