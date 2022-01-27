@@ -7,13 +7,15 @@
 
 import UIKit
 import RealmSwift
+import DropDown
 
 class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     let realm = try! Realm()
     
-
+    @IBOutlet weak var numDropDown: UIView!
+    @IBOutlet weak var choiceNumDropDown: UILabel!
     
     var courseName = [String]()
     var roomName = [String]()
@@ -22,12 +24,32 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var classification = [String]()
     var num = [Int]()
     
+    let dropDown1 = DropDown()
+    let numList = ["1", "2", "3", "4"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         readData()
+        dropDown1.anchorView = numDropDown
+        dropDown1.dataSource = numList
+        dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
+        dropDown1.direction = .bottom
+        dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            self.choiceNumDropDown.text = numList[index]
+            self.choiceNumDropDown.font = UIFont(name: "system", size: 17)
+            self.choiceNumDropDown.textColor = .black
+            self.choiceNumDropDown.textAlignment = .center
+        }
+
+        
 
                 // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBAction func numBtnClicked(_ sender: Any) {
+        dropDown1.show()
     }
     
     func readData(){
