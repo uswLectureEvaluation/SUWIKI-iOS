@@ -65,15 +65,13 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     func num1(){
         
     }
+    
+
+    
     func readData(){
         let courseDB = realm.objects(testCourseData.self)
-        let realmReal = try! Realm()
-        
-        let predicate = NSPredicate(format: "courseName = %@", "")
-        let realmDataCnt = realmReal.objects(testCourseData.self).filter(predicate)
-        print(realmDataCnt.count)
-        
-       
+        let cntDB = self.realm.objects(testCourseData.self).filter(NSPredicate(format: "num == %ld", 1)).count
+        print(cntDB)
         var readCN = String()
         var readRN = String()
         var readPR = String()

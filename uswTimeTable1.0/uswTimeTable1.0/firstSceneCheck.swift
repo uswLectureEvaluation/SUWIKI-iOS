@@ -18,7 +18,7 @@ class firstSceneCheck: UIViewController {
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getExternalData()
+        getExternalData()
       
         print(Realm.Configuration.defaultConfiguration.fileURL!)
 
