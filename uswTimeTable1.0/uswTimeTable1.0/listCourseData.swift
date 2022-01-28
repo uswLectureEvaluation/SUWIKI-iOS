@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Realm
 import DropDown
 
 class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -41,6 +42,15 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             self.choiceNumDropDown.textColor = .black
             self.choiceNumDropDown.textAlignment = .center
         }
+        if choiceNumDropDown.text! == "1"{
+            courseName.removeAll()
+            roomName.removeAll()
+            professor.removeAll()
+            major.removeAll()
+            classification.removeAll()
+            num.removeAll()
+            print(choiceNumDropDown.text!)
+        }
 
         
 
@@ -52,8 +62,18 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         dropDown1.show()
     }
     
+    func num1(){
+        
+    }
     func readData(){
         let courseDB = realm.objects(testCourseData.self)
+        let realmReal = try! Realm()
+        
+        let predicate = NSPredicate(format: "courseName = %@", "")
+        let realmDataCnt = realmReal.objects(testCourseData.self).filter(predicate)
+        print(realmDataCnt.count)
+        
+       
         var readCN = String()
         var readRN = String()
         var readPR = String()
@@ -74,6 +94,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             classification.append(readCF)
             num.append(readNM)
             tableView?.reloadData()
+            
         }
  
     }

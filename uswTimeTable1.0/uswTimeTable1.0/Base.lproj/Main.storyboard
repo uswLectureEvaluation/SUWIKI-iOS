@@ -16,14 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="351-EM-8wU" customClass="Elliotable" customModule="Elliotable">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="351-EM-8wU" customClass="Elliotable" customModule="Elliotable">
                                 <rect key="frame" x="0.0" y="109" width="414" height="714"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOI-Tv-ogo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOI-Tv-ogo">
                                 <rect key="frame" x="325" y="55" width="69" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="LdH-i7-O4r"/>
+                                    <constraint firstAttribute="height" constant="34" id="qJN-hi-mQA"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="folder" catalog="system">
@@ -33,7 +34,7 @@
                                     <action selector="testRemove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PKK-jX-1UH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoM-Vp-dhi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BoM-Vp-dhi">
                                 <rect key="frame" x="275" y="55" width="54" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="maT-Wo-QET"/>
@@ -49,6 +50,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="351-EM-8wU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3dA-5x-TCs"/>
+                            <constraint firstItem="BoM-Vp-dhi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="AxE-0g-iQP"/>
+                            <constraint firstItem="351-EM-8wU" firstAttribute="top" secondItem="oOI-Tv-ogo" secondAttribute="bottom" constant="20" id="ES7-IV-bAj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="351-EM-8wU" secondAttribute="bottom" constant="39" id="FAo-K9-czk"/>
                             <constraint firstItem="BoM-Vp-dhi" firstAttribute="top" secondItem="oOI-Tv-ogo" secondAttribute="top" id="SMD-QE-dh4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BoM-Vp-dhi" secondAttribute="trailing" constant="85" id="kJH-9E-b7e"/>
