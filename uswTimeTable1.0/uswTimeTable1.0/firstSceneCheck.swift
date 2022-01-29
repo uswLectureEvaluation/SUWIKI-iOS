@@ -18,7 +18,7 @@ class firstSceneCheck: UIViewController {
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getExternalData()
+//        getExternalData()
       
         print(Realm.Configuration.defaultConfiguration.fileURL!)
 
@@ -80,6 +80,7 @@ class firstSceneCheck: UIViewController {
                     insideDB.credit = value?["credit"] as? Int ?? 0
                     insideDB.time = value?["time"] as? String ?? ""
                     insideDB.courseDay = value?["courseDay"] as? String ?? ""
+                    insideDB.dbCnt = countDB
                     print("check ur db\(i)")
                     try! self.realm.write{
                         self.realm.add(insideDB)
