@@ -24,12 +24,13 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var major = [String]()
     var classification = [String]()
     var num = [Int]()
-    
+    var courseData = [String]()
     let dropDown1 = DropDown()
     let numList = ["1", "2", "3", "4"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         readData()
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
@@ -61,17 +62,12 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func numBtnClicked(_ sender: Any) {
         dropDown1.show()
     }
-    
-    func num1(){
-        
-    }
-    
 
-    
     func readData(){
+   
         let courseDB = realm.objects(testCourseData.self)
-        let cntDB = self.realm.objects(testCourseData.self).filter(NSPredicate(format: "num == %ld", 1)).count
-        print(cntDB)
+        
+
         var readCN = String()
         var readRN = String()
         var readPR = String()
