@@ -31,7 +31,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        readData()
+        readFirstData()
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
         dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
@@ -45,21 +45,21 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             self.choiceNumDropDown.textAlignment = .center
            
             if choiceNumDropDown.text! == "1"{
-                arrayRemover()
+                removeArray()
                 print(choiceNumDropDown.text!)
-                num1Data()
+                selectNumData(checkNum: 1)
             } else if choiceNumDropDown.text! == "2" {
-                arrayRemover()
+                removeArray()
                 print(choiceNumDropDown.text!)
-                num2Data()
+                selectNumData(checkNum: 2)
             } else if choiceNumDropDown.text! == "3" {
-                arrayRemover()
+                removeArray()
                 print(choiceNumDropDown.text!)
-                num3Data()
+                selectNumData(checkNum: 3)
             } else if choiceNumDropDown.text! == "4" {
-                arrayRemover()
+                removeArray()
                 print(choiceNumDropDown.text!)
-                num4Data()
+                selectNumData(checkNum: 4)
             }
         }// Do any additional setup after loading the view.
     }
@@ -70,7 +70,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
     
-    func arrayRemover() {
+    func removeArray() {
         courseName.removeAll()
         roomName.removeAll()
         professor.removeAll()
@@ -79,7 +79,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         num.removeAll()
     }
     
-    func num1Data(){
+    func selectNumData(checkNum: Int){
         let courseDB = realm.objects(testCourseData.self)
         let readCnt = courseDB[0].dbCnt
         var readCN = String()
@@ -89,7 +89,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readCF = String()
         var readNM = Int()
         for i in 0...readCnt{
-            if courseDB[i].num == 1 {
+            if courseDB[i].num == checkNum {
                 readCN = courseDB[i].courseName
                 readRN = courseDB[i].roomName
                 readPR = courseDB[i].professor
@@ -107,92 +107,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    func num2Data(){
-        let courseDB = realm.objects(testCourseData.self)
-        let readCnt = courseDB[0].dbCnt
-        var readCN = String()
-        var readRN = String()
-        var readPR = String()
-        var readMJ = String()
-        var readCF = String()
-        var readNM = Int()
-        for i in 0...readCnt{
-            if courseDB[i].num == 2 {
-                readCN = courseDB[i].courseName
-                readRN = courseDB[i].roomName
-                readPR = courseDB[i].professor
-                readMJ = courseDB[i].major
-                readCF = courseDB[i].classification
-                readNM = courseDB[i].num
-                courseName.append(readCN)
-                roomName.append(readRN)
-                professor.append(readPR)
-                major.append(readMJ)
-                classification.append(readCF)
-                num.append(readNM)
-                tableView?.reloadData()
-            }
-        }
-        
-    }
-    
-    func num3Data(){
-        let courseDB = realm.objects(testCourseData.self)
-        let readCnt = courseDB[0].dbCnt
-        var readCN = String()
-        var readRN = String()
-        var readPR = String()
-        var readMJ = String()
-        var readCF = String()
-        var readNM = Int()
-        for i in 0...readCnt{
-            if courseDB[i].num == 3 {
-                readCN = courseDB[i].courseName
-                readRN = courseDB[i].roomName
-                readPR = courseDB[i].professor
-                readMJ = courseDB[i].major
-                readCF = courseDB[i].classification
-                readNM = courseDB[i].num
-                courseName.append(readCN)
-                roomName.append(readRN)
-                professor.append(readPR)
-                major.append(readMJ)
-                classification.append(readCF)
-                num.append(readNM)
-                tableView?.reloadData()
-            }
-        }
-    }
-    
-    func num4Data(){
-        let courseDB = realm.objects(testCourseData.self)
-        let readCnt = courseDB[0].dbCnt
-        var readCN = String()
-        var readRN = String()
-        var readPR = String()
-        var readMJ = String()
-        var readCF = String()
-        var readNM = Int()
-        for i in 0...readCnt{
-            if courseDB[i].num == 4 {
-                readCN = courseDB[i].courseName
-                readRN = courseDB[i].roomName
-                readPR = courseDB[i].professor
-                readMJ = courseDB[i].major
-                readCF = courseDB[i].classification
-                readNM = courseDB[i].num
-                courseName.append(readCN)
-                roomName.append(readRN)
-                professor.append(readPR)
-                major.append(readMJ)
-                classification.append(readCF)
-                num.append(readNM)
-                tableView?.reloadData()
-            }
-        }
-    }
-    
-    func readData(){
+    func readFirstData(){
         let courseDB = realm.objects(testCourseData.self)
         let readCnt = courseDB[0].dbCnt
         var readCN = String()
