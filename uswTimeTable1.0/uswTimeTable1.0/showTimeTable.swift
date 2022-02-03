@@ -52,6 +52,9 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         // json 시간표 데이터 입력
 }
  
+    func readCourseDB(){
+        
+    }
     
     @IBAction func testRemove(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "isLogin")

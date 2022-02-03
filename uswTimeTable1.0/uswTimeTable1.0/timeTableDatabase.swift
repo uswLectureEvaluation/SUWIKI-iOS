@@ -39,15 +39,15 @@ class testCourse: Object{
     @objc dynamic var startTime: String = ""
     @objc dynamic var endTime: String = ""
     @objc dynamic var courseDay: Int = 0
-    @objc dynamic var backgroundColor: UIColor = UIColor.purple
 
-    
+
 }
 
 class userDB: Object{
     @objc dynamic var year: String = ""
     @objc dynamic var semester: String = ""
     @objc dynamic var timetableName: String = ""
+    let userCourseData = List<testCourse>()
 }
 
 class timeTest: Object{

@@ -104,6 +104,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
                 readMJ = courseDB[i].major
                 readCF = courseDB[i].classification
                 readNM = courseDB[i].num
+                courseId.append(readCI)
+                startTime.append(readST)
+                endTime.append(readET)
                 courseName.append(readCN)
                 roomName.append(readRN)
                 professor.append(readPR)
@@ -137,6 +140,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             readNM = courseDB[i].num
             readST = courseDB[i].startTime
             readET = courseDB[i].endTime
+            courseId.append(readCI)
+            startTime.append(readST)
+            endTime.append(readET)
             courseName.append(readCN)
             roomName.append(readRN)
             professor.append(readPR)

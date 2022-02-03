@@ -82,7 +82,7 @@ class firstSceneCheck: UIViewController {
                     insideDB.courseDay = value?["courseDay"] as? String ?? ""
                     insideDB.dbCnt = countDB
                     print("check ur db\(i)")
-                    try! self.realm.write{
+                    try! self.realm.write{ 
                         self.realm.add(insideDB)
                     }
                 }
