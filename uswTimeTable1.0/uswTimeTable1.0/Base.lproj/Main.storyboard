@@ -45,15 +45,27 @@
                                     <action selector="testView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZK4-ut-vZ3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grv-7H-TlS">
+                                <rect key="frame" x="36" y="55" width="101" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="101" id="SVG-tk-904"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="351-EM-8wU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3dA-5x-TCs"/>
+                            <constraint firstItem="grv-7H-TlS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="43B-PS-eu7"/>
                             <constraint firstItem="BoM-Vp-dhi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11" id="AxE-0g-iQP"/>
                             <constraint firstItem="351-EM-8wU" firstAttribute="top" secondItem="oOI-Tv-ogo" secondAttribute="bottom" constant="20" id="ES7-IV-bAj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="351-EM-8wU" secondAttribute="bottom" constant="39" id="FAo-K9-czk"/>
+                            <constraint firstItem="grv-7H-TlS" firstAttribute="top" secondItem="BoM-Vp-dhi" secondAttribute="top" id="Lyv-q4-5UL"/>
                             <constraint firstItem="BoM-Vp-dhi" firstAttribute="top" secondItem="oOI-Tv-ogo" secondAttribute="top" id="SMD-QE-dh4"/>
+                            <constraint firstItem="grv-7H-TlS" firstAttribute="bottom" secondItem="oOI-Tv-ogo" secondAttribute="bottom" id="ZGi-Fi-Ow3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BoM-Vp-dhi" secondAttribute="trailing" constant="85" id="kJH-9E-b7e"/>
                             <constraint firstItem="oOI-Tv-ogo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ot7-Zo-5I9"/>
                             <constraint firstItem="351-EM-8wU" firstAttribute="top" secondItem="BoM-Vp-dhi" secondAttribute="bottom" constant="9" id="tIF-gm-jBD"/>
@@ -61,6 +73,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="timeTableNameTxt" destination="grv-7H-TlS" id="pPc-AS-4Bb"/>
                         <outlet property="timetable" destination="351-EM-8wU" id="1dn-TY-ISi"/>
                     </connections>
                 </viewController>
@@ -368,6 +381,9 @@
                                             </backgroundConfiguration>
                                             <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addBtnClicked:" destination="aAP-WT-Tdt" eventType="touchUpInside" id="Lkq-IK-pyd"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="not yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q41-iE-LlH">
                                         <rect key="frame" x="19" y="339" width="204" height="51"/>

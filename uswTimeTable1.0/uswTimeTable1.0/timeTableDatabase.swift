@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 import Elliotable
 import Accessibility
+import UIKit
 
 class testCourseData: Object{
    
@@ -37,7 +38,8 @@ class testCourse: Object{
     @objc dynamic var professor: String = ""
     @objc dynamic var startTime: String = ""
     @objc dynamic var endTime: String = ""
-    @objc dynamic var courseDay = ElliotDay.monday.rawValue
+    @objc dynamic var courseDay: Int = 0
+    @objc dynamic var backgroundColor: UIColor = UIColor.purple
 
     
 }

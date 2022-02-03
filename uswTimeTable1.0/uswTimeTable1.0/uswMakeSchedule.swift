@@ -60,6 +60,7 @@ class uswMakeSchedule: UIViewController {
         UserDefaults.standard.set(true, forKey: "isLogin")
         UserDefaults.standard.synchronize()
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+        showVC.timeTableName = nameTxtField.text!
         self.navigationController?.pushViewController(showVC, animated: true)
         save()
         print(Realm.Configuration.defaultConfiguration.fileURL!)

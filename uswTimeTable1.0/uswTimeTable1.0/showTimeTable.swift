@@ -12,15 +12,16 @@ import RealmSwift
 class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
 
     @IBOutlet weak var timetable: Elliotable!
-    
+    @IBOutlet weak var timeTableNameTxt: UILabel!
     let dayString: [String] = ["월", "화", "수", "목", "금"]
-    let courseList: [ElliottEvent] = []// 시간표 강의 아이템
-    let course_1 = ElliottEvent(courseId: "c0001", courseName: "Operating System", roomName: "IT Building 21204", professor: "TEST", courseDay: .tuesday, startTime: "12:00", endTime: "13:15", backgroundColor: UIColor.white)
-    
+    var courseList: [ElliottEvent] = []// 시간표 강의 아이템
+    let course_1 = ElliottEvent(courseId: "c0001", courseName: "Operating System", roomName: "IT Building 21204", professor: "TEST", courseDay: ElliotDay.init(rawValue: 1)!, startTime: "09:00", endTime: "13:15", backgroundColor: UIColor.purple)
+    var timeTableName = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        timeTableNameTxt.text = timeTableName
+        courseList.append(course_1)
 //        timetable.courseItems = courseList
    
         timetable.delegate = self

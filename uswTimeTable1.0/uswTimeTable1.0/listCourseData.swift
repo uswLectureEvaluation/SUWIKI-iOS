@@ -18,9 +18,12 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var numDropDown: UIView!
     @IBOutlet weak var choiceNumDropDown: UILabel!
     
+    var courseId = [String]()
     var courseName = [String]()
     var roomName = [String]()
     var professor = [String]()
+    var startTime = [String]()
+    var endTime = [String]()
     var major = [String]()
     var classification = [String]()
     var num = [Int]()
@@ -70,6 +73,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func removeArray() {
+        courseId.removeAll()
+        startTime.removeAll()
+        endTime.removeAll()
         courseName.removeAll()
         roomName.removeAll()
         professor.removeAll()
@@ -81,12 +87,15 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     func selectNumData(checkNum: Int){
         let courseDB = realm.objects(testCourseData.self)
         let readCnt = courseDB[0].dbCnt
-        var readCN = String()
-        var readRN = String()
-        var readPR = String()
-        var readMJ = String()
-        var readCF = String()
-        var readNM = Int()
+        var readCI = String() // courseid
+        var readCN = String() // coursename
+        var readRN = String() // roomname
+        var readPR = String() // professor
+        var readMJ = String() // major
+        var readCF = String() // classfication
+        var readNM = Int() // num
+        var readST = String() // starttime
+        var readET = String() // endtime
         for i in 0...readCnt{
             if courseDB[i].num == checkNum {
                 readCN = courseDB[i].courseName
@@ -109,19 +118,25 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     func readFirstData(){
         let courseDB = realm.objects(testCourseData.self)
         let readCnt = courseDB[0].dbCnt
+        var readCI = String()
         var readCN = String()
         var readRN = String()
         var readPR = String()
         var readMJ = String()
         var readCF = String()
         var readNM = Int()
+        var readST = String() // starttime
+        var readET = String() // endtime
         for i in 0...readCnt{
+            readCI = courseDB[i].courseId
             readCN = courseDB[i].courseName
             readRN = courseDB[i].roomName
             readPR = courseDB[i].professor
             readMJ = courseDB[i].major
             readCF = courseDB[i].classification
             readNM = courseDB[i].num
+            readST = courseDB[i].startTime
+            readET = courseDB[i].endTime
             courseName.append(readCN)
             roomName.append(readRN)
             professor.append(readPR)
@@ -163,6 +178,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         infoVC.courseName = courseName[indexPath.row]
         infoVC.roomName = roomName[indexPath.row]
         infoVC.professor = professor[indexPath.row]
+        infoVC.courseId = courseId[indexPath.row]
+        infoVC.startTime = startTime[indexPath.row]
+        infoVC.endTime = endTime[indexPath.row]
         self.navigationController?.pushViewController(infoVC, animated: true)
     }
 }
