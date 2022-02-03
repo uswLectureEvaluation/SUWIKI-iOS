@@ -38,7 +38,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         dropDown1.direction = .bottom
         dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
-            
             self.choiceNumDropDown.text = numList[index]
             self.choiceNumDropDown.font = UIFont(name: "system", size: 17)
             self.choiceNumDropDown.textColor = .black
@@ -156,6 +155,15 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         return 134.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let infoVC = storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+        infoVC.courseName = courseName[indexPath.row]
+        infoVC.roomName = roomName[indexPath.row]
+        infoVC.num = num[indexPath.row]
+        infoVC.classification = classification[indexPath.row]
+        infoVC.professor = professor[indexPath.row]
+        self.navigationController?.pushViewController(infoVC, animated: true)
+    }
 }
 
 

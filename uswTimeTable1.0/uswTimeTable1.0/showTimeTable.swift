@@ -14,10 +14,10 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     @IBOutlet weak var timetable: Elliotable!
     
     let dayString: [String] = ["월", "화", "수", "목", "금"]
+    let courseList: [ElliottEvent] = []// 시간표 강의 아이템
+    let course_1 = ElliottEvent(courseId: "c0001", courseName: "Operating System", roomName: "IT Building 21204", professor: "TEST", courseDay: .tuesday, startTime: "12:00", endTime: "13:15", backgroundColor: UIColor.white)
     
-    
-    let courseList: [ElliottEvent] = [ElliottEvent(courseId: "001", courseName: "컴퓨터구조", roomName: "미래B301", professor: "양수미", courseDay: .tuesday, startTime: "09:30", endTime: "11:20", textColor: UIColor.white, backgroundColor: .purple), ElliottEvent(courseId: "c0002", courseName: "데이터 구조", roomName: "IT Building 21204", professor: "TEST", courseDay: .thursday, startTime: "10:00", endTime: "12:00", textColor: UIColor.white, backgroundColor: .blue), ElliottEvent(courseId: "c0002", courseName: "데이터베이스", roomName: "IT Building 21204", professor: "TEST", courseDay: .friday, startTime: "14:00", endTime: "15:00", textColor: UIColor.white, backgroundColor: .blue), ElliottEvent(courseId: "c0002", courseName: "알고리즘", roomName: "IT Building 21204", professor: "TEST", courseDay: .tuesday, startTime: "13:00", endTime: "15:00", textColor: UIColor.white, backgroundColor: .blue)]// 시간표 강의 아이템
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +62,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         let listVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! listCourseData
         self.navigationController?.pushViewController(listVC, animated: true)
     }
+    
     func courseItems(in elliotable: Elliotable) -> [ElliottEvent] {
         return courseList
     }
@@ -81,4 +82,8 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     func numberOfDays(in elliotable: Elliotable) -> Int {
         return dayString.count
     }
+}
+
+extension showTimeTable{
+
 }
