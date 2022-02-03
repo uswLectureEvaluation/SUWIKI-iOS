@@ -147,6 +147,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.myView.layer.borderWidth = 1.0
         cell.myView.layer.borderColor = UIColor.lightGray.cgColor
         cell.myView.layer.cornerRadius = 12.0
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.white
+        cell.selectedBackgroundView = bgColorView
         return cell
     }
     
@@ -159,8 +162,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         let infoVC = storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
         infoVC.courseName = courseName[indexPath.row]
         infoVC.roomName = roomName[indexPath.row]
-        infoVC.num = num[indexPath.row]
-        infoVC.classification = classification[indexPath.row]
         infoVC.professor = professor[indexPath.row]
         self.navigationController?.pushViewController(infoVC, animated: true)
     }

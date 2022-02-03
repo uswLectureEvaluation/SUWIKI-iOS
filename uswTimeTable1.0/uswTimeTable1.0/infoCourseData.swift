@@ -11,10 +11,9 @@ class infoCourseData: UIViewController {
 
     @IBOutlet weak var courseNameTxt: UILabel!
     @IBOutlet weak var roomNameTxt: UILabel!
-    @IBOutlet weak var numTxt: UILabel!
-    @IBOutlet weak var classTxt: UILabel!
     @IBOutlet weak var professorTxt: UILabel!
     
+    @IBOutlet weak var myView: UIView!
     var courseName = ""
     var roomName = ""
     var num = 0
@@ -22,13 +21,14 @@ class infoCourseData: UIViewController {
     var professor = ""
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad() 
         courseNameTxt.text = courseName
         roomNameTxt.text = roomName
-        numTxt.text = "\(num)"
-        classTxt.text = classification
         professorTxt.text = professor
-        
+        myView.layer.cornerRadius = 12.0
+        myView.layer.borderWidth = 1.0
+        myView.layer.borderColor = UIColor.lightGray.cgColor
+
         // Do any additional setup after loading the view.
     }
     
