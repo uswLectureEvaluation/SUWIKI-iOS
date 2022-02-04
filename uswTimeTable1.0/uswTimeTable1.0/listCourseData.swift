@@ -30,10 +30,10 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var courseData = [String]()
     let dropDown1 = DropDown()
     let numList = ["1", "2", "3", "4"]
-
+    var checkTimeTable = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(checkTimeTable)
         readFirstData()
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
@@ -98,12 +98,15 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readET = String() // endtime
         for i in 0...readCnt{
             if courseDB[i].num == checkNum {
+                readCI = courseDB[i].courseId
                 readCN = courseDB[i].courseName
                 readRN = courseDB[i].roomName
                 readPR = courseDB[i].professor
                 readMJ = courseDB[i].major
                 readCF = courseDB[i].classification
                 readNM = courseDB[i].num
+                readST = courseDB[i].startTime
+                readET = courseDB[i].endTime
                 courseId.append(readCI)
                 startTime.append(readST)
                 endTime.append(readET)
@@ -187,6 +190,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         infoVC.courseId = courseId[indexPath.row]
         infoVC.startTime = startTime[indexPath.row]
         infoVC.endTime = endTime[indexPath.row]
+        infoVC.checkTimeTable = self.checkTimeTable
         self.navigationController?.pushViewController(infoVC, animated: true)
     }
 }

@@ -9,7 +9,9 @@ import UIKit
 import RealmSwift
 
 class infoCourseData: UIViewController {
-
+    
+    let realm = try! Realm()
+    
     @IBOutlet weak var courseNameTxt: UILabel!
     @IBOutlet weak var roomNameTxt: UILabel!
     @IBOutlet weak var professorTxt: UILabel!
@@ -24,10 +26,11 @@ class infoCourseData: UIViewController {
     var endTime = ""
     var courseDay = 1 // courseDay, backgroundColor는 테스트 후 데이터 삽입 예정
     var backgroundColor = UIColor.purple
+    var checkTimeTable = ""
 
     
     override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
         courseNameTxt.text = courseName
         roomNameTxt.text = roomName
         professorTxt.text = professor
@@ -39,8 +42,12 @@ class infoCourseData: UIViewController {
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {
-        
+        let readMyDB = realm.objects(userDB.self)
+        var myDbCnt = readMyDB.count
     }
+
+
+    
     /*
     // MARK: - Navigation
 
