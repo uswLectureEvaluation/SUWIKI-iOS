@@ -10,16 +10,18 @@ import RealmSwift
 import Realm
 import DropDown
 
-class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     let realm = try! Realm()
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var numDropDown: UIView!
     @IBOutlet weak var choiceNumDropDown: UILabel!
     
     var courseId = [String]()
     var courseName = [String]()
+    var searchCourseName = [String]()
     var roomName = [String]()
     var professor = [String]()
     var startTime = [String]()
@@ -34,7 +36,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         print(checkTimeTable)
+        searchBar.delegate = self
         readFirstData()
+        searchCourseName = courseName
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
         dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
@@ -192,6 +196,21 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         infoVC.endTime = endTime[indexPath.row]
         infoVC.checkTimeTable = self.checkTimeTable
         self.navigationController?.pushViewController(infoVC, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchCourseName = []
+        if searchText == "" {
+            searchCourseName = courseName
+        }
+        
+        for searchCN in courseName {
+            
+            if searchCN.lowercased().contains(searchText.lowercased()){
+                searchCourseName.append(searchCN)
+            }
+        }
+        self.tableView.reloadData()
     }
 }
 
