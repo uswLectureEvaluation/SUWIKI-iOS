@@ -128,9 +128,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readCN = String()
         var readRN = String()
         var readPR = String()
-        var readMJ = String()
         var readCF = String()
         var readNM = Int()
+        var readMJ = String()
         var readST = String() // starttime
         var readET = String() // endtime
         for i in 0...readCnt{

@@ -31,19 +31,25 @@ class infoCourseData: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        realm.beginWrite()
         courseNameTxt.text = courseName
         roomNameTxt.text = roomName
         professorTxt.text = professor
         myView.layer.cornerRadius = 12.0
         myView.layer.borderWidth = 1.0
         myView.layer.borderColor = UIColor.lightGray.cgColor
-
+        try! realm.commitWrite()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {
         let readMyDB = realm.objects(userDB.self)
-        var myDbCnt = readMyDB.count
+        for myData in readMyDB{
+            let firstd = myData.year
+            let secondd = myData.semester
+            let thirded = myData.timetableName
+            print("\(firstd).\(secondd).\(thirded).")
+        }
     }
 
 

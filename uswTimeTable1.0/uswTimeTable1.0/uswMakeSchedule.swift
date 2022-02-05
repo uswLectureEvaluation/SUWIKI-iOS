@@ -65,7 +65,6 @@ class uswMakeSchedule: UIViewController {
         save()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
 
-
     }
     @IBAction func yearBtnClicked(_ sender: Any) {
         dropDown1.show()
@@ -76,13 +75,13 @@ class uswMakeSchedule: UIViewController {
     }
   
     func save(){
+        realm.beginWrite()
         let userData = userDB()
         userData.year = yearTxtField.text!
         userData.semester = semeTxtField.text!
         userData.timetableName = nameTxtField.text!
-        try! realm.write {
-            realm.add(userData)
-        }
+        realm.add(userData)
+        try! realm.commitWrite()
     }
 }
 

@@ -18,46 +18,16 @@ class firstSceneCheck: UIViewController {
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        getExternalData()
-      
+        getExternalData()
+        //realm.delete(realm.objects(userDB.self))
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-
+        //try! realm.commitWrite()
     //    save()
 }
 
     @IBAction func newBtnClicked(_ sender: Any) {
         let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
         self.navigationController?.pushViewController(makeVC, animated: true)
-    }
-    
-    func readDBData(){
-        realm.beginWrite()
-        let testDB = realm.objects(testCourseData.self)
-        var courseName = [String]()
-        var testName = String()
-        for i in 0..<2004
-        {
-            testName = testDB[i].courseName
-            courseName.append(testName)
-        }
-        
-        print(courseName)
-        try! realm.commitWrite()
-    }
-    
-    func checkInsideDB(){
-        let reDB = realm.objects(testCourseData.self)
-        let countRDB = reDB.count
-        uswFireDB.observe(.value) { snapshot in
-            let countFDB = Int(snapshot.childrenCount)
-            if countRDB == countFDB {
-                self.getExternalData()
-                print("success, check ur DB")
-            } else {
-                print("already have")
-            }
-        }
- 
     }
 
     func getExternalData(){
