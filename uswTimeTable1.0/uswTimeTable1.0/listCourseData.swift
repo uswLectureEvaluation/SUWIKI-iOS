@@ -33,10 +33,10 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     let dropDown1 = DropDown()
     let numList = ["1", "2", "3", "4"]
     var checkTimeTable = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(checkTimeTable)
-        searchBar.delegate = self
         readFirstData()
         searchCourseName = courseName
         dropDown1.anchorView = numDropDown
@@ -90,7 +90,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func selectNumData(checkNum: Int){
         let courseDB = realm.objects(testCourseData.self)
-        let readCnt = courseDB[0].dbCnt
         var readCI = String() // courseid
         var readCN = String() // coursename
         var readRN = String() // roomname
@@ -100,7 +99,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readNM = Int() // num
         var readST = String() // starttime
         var readET = String() // endtime
-        for i in 0...readCnt{
+        for i in 0...courseDB.count-1{
             if courseDB[i].num == checkNum {
                 readCI = courseDB[i].courseId
                 readCN = courseDB[i].courseName
@@ -127,7 +126,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func readFirstData(){
         let courseDB = realm.objects(testCourseData.self)
-        let readCnt = courseDB[0].dbCnt
         var readCI = String()
         var readCN = String()
         var readRN = String()
@@ -137,7 +135,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readMJ = String()
         var readST = String() // starttime
         var readET = String() // endtime
-        for i in 0...readCnt{
+        for i in 0...courseDB.count-1{
             readCI = courseDB[i].courseId
             readCN = courseDB[i].courseName
             readRN = courseDB[i].roomName
@@ -188,30 +186,20 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let infoVC = storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
-        infoVC.courseName = courseName[indexPath.row]
-        infoVC.roomName = roomName[indexPath.row]
-        infoVC.professor = professor[indexPath.row]
-        infoVC.courseId = courseId[indexPath.row]
-        infoVC.startTime = startTime[indexPath.row]
-        infoVC.endTime = endTime[indexPath.row]
+        infoVC.courseNameData = courseName[indexPath.row]
+        infoVC.roomNameData = roomName[indexPath.row]
+        infoVC.professorData = professor[indexPath.row]
+        infoVC.numData = num[indexPath.row]
+        infoVC.courseIdData = courseId[indexPath.row]
+        infoVC.startTimeData = startTime[indexPath.row]
+        infoVC.endTimeData = endTime[indexPath.row]
         infoVC.checkTimeTable = self.checkTimeTable
         self.navigationController?.pushViewController(infoVC, animated: true)
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchCourseName = []
-        if searchText == "" {
-            searchCourseName = courseName
-        }
-        
-        for searchCN in courseName {
-            
-            if searchCN.lowercased().contains(searchText.lowercased()){
-                searchCourseName.append(searchCN)
-            }
-        }
-        self.tableView.reloadData()
-    }
+    
+    
+
 }
 
 

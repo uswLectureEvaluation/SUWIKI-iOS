@@ -7,7 +7,6 @@
 
 import Foundation 
 import RealmSwift
-import Elliotable
 import Accessibility
 import UIKit
 
@@ -30,16 +29,10 @@ class testCourseData: Object{
 
 }
 
-class testCourse: Object{
+class testUserCourse: Object{
     
-    @objc dynamic var courseId: String = ""
-    @objc dynamic var courseName: String = ""
-    @objc dynamic var roomName: String = ""
-    @objc dynamic var professor: String = ""
-    @objc dynamic var startTime: String = ""
-    @objc dynamic var endTime: String = ""
-    @objc dynamic var courseDay: Int = 0
-
+    @objc dynamic var courseItem: String = ""
+    @objc dynamic var courseCount: Int = 0
 
 }
 
@@ -47,11 +40,7 @@ class userDB: Object{
     @objc dynamic var year: String = ""
     @objc dynamic var semester: String = ""
     @objc dynamic var timetableName: String = ""
-    let userCourseData = List<testCourse>()
+    let userCourseData = List<testUserCourse>()
 }
 
-class timeTest: Object{
-    @objc dynamic var roomName: String = ""
-    @objc dynamic var professor: String = ""
-    @objc dynamic var courseName: String = ""
-}
+
