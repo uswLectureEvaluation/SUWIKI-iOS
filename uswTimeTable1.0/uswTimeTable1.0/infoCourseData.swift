@@ -43,15 +43,14 @@ class infoCourseData: UIViewController {
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {
-        let readMyDB = realm.objects(userDB.self)
-        for myData in readMyDB{
-            let firstd = myData.year
-            let secondd = myData.semester
-            let thirded = myData.timetableName
-            print("\(firstd).\(secondd).\(thirded).")
-        }
+            let readMyDB = realm.objects(userDB.self)
+            for myData in readMyDB{
+                let firstd = myData.year
+                let secondd = myData.semester
+                let thirded = myData.timetableName
+                print("\(firstd).\(secondd).\(thirded).")
+            }
     }
-
 
     
     /*
