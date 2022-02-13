@@ -20,7 +20,7 @@ public struct ElliottEvent {
     public let textColor      : UIColor?
     public let backgroundColor: UIColor
     
-    public init(courseId: String, courseName: String, roomName: String, professor: String, courseDay: ElliotDay,startTime: String, endTime: String, textColor: UIColor?, backgroundColor: UIColor) {
+    public init(courseId: String, courseName: String, roomName: String, professor: String, courseDay: ElliotDay, startTime: String, endTime: String, textColor: UIColor?, backgroundColor: UIColor) {
         self.courseId        = courseId
         self.courseName      = courseName
         self.roomName        = roomName

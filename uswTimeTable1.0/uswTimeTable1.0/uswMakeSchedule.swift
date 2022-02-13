@@ -77,6 +77,8 @@ class uswMakeSchedule: UIViewController {
     func save(){
         realm.beginWrite()
         let userData = userDB()
+        var userCnt = realm.objects(userDB.self).count
+        userData.tableCnt = userCnt
         userData.year = yearTxtField.text!
         userData.semester = semeTxtField.text!
         userData.timetableName = nameTxtField.text!

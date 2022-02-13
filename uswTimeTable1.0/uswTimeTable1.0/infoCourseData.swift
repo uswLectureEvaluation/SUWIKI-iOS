@@ -29,14 +29,10 @@ class infoCourseData: UIViewController{
     var backgroundColor = UIColor.purple
     var checkTimeTable = ""
 
-    
-    var courseItems: String {
-        return "courseId: \(self.courseIdData), courseName: \(self.courseNameData), roomName: \(self.roomNameData), professor: \(self.professorData), courseDay: ElliotDay.init(rawValue: \(self.numData))!, startTime: \(self.startTimeData), endTime: \(self.endTimeData), backgroundColor: UIColor.systemBlue"
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(courseItems)
         courseNameTxt.text = courseNameData
         roomNameTxt.text = roomNameData
         professorTxt.text = professorData
@@ -48,19 +44,33 @@ class infoCourseData: UIViewController{
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {
+        realm.beginWrite()
         let readUserDB = realm.objects(userDB.self)
+        let courseData = testUserCourse()
+        var courseCount = realm.objects(testUserCourse.self).count
         
         for userData in readUserDB{
             if userData.timetableName == checkTimeTable{
-                print(checkTimeTable)
-                print(Realm.Configuration.defaultConfiguration.fileURL!)
+                courseData.courseId = courseIdData
+                courseData.courseName = courseNameData
+                courseData.roomName = roomNameData
+                courseData.courseDay = 2
+                courseData.professor = professorData
+                courseData.startTime = startTimeData
+                courseData.endTime = endTimeData
+                courseData.courseCount = courseCount
+                userData.userCourseData.append(courseData)
+                realm.add(courseData)
+                realm.add(userData)
             }
         }
-        // realm.add(readUserDB)
+        
+        try! realm.commitWrite()
     }
+
     
-
-
+    
+}
     
     /*
     // MARK: - Navigation
@@ -73,4 +83,4 @@ class infoCourseData: UIViewController{
     */
     
 
-}
+

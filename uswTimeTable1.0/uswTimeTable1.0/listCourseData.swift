@@ -176,6 +176,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
         cell.selectedBackgroundView = bgColorView
+    
         return cell
     }
     
