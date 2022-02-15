@@ -58,6 +58,7 @@ class uswMakeSchedule: UIViewController {
 
     @IBAction func finishBtnClicked(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "isLogin")
+        UserDefaults.standard.set(nameTxtField.text!, forKey: "name")
         UserDefaults.standard.synchronize()
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
         showVC.timeTableName = nameTxtField.text!
