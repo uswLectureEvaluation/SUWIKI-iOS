@@ -82,6 +82,8 @@ class infoCourseData: UIViewController{
             }
             
             try! realm.commitWrite()
+            let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+            self.navigationController?.pushViewController(showVC, animated: true)
         }
     }
         

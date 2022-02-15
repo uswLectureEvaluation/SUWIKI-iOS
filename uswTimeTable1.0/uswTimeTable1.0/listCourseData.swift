@@ -21,7 +21,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var courseId = [String]()
     var courseName = [String]()
-    var searchCourseName = [String]()
     var roomName = [String]()
     var professor = [String]()
     var startTime = [String]()
@@ -39,7 +38,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         print(checkTimeTable)
         readFirstData()
-        searchCourseName = courseName
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
         dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
