@@ -21,7 +21,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var courseId = [String]()
     var courseName = [String]()
-    var searchCourseName = [String]()
     var roomName = [String]()
     var professor = [String]()
     var startTime = [String]()
@@ -29,16 +28,16 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var major = [String]()
     var classification = [String]()
     var num = [Int]()
+    var courseDay = [String]()
     var courseData = [String]()
     let dropDown1 = DropDown()
     let numList = ["1", "2", "3", "4"]
-    var checkTimeTable = ""
+    var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(checkTimeTable)
         readFirstData()
-        searchCourseName = courseName
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
         dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
@@ -99,6 +98,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readNM = Int() // num
         var readST = String() // starttime
         var readET = String() // endtime
+        var readCD = String()
         for i in 0...courseDB.count-1{
             if courseDB[i].num == checkNum {
                 readCI = courseDB[i].courseId
@@ -110,6 +110,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
                 readNM = courseDB[i].num
                 readST = courseDB[i].startTime
                 readET = courseDB[i].endTime
+                readCD = courseDB[i].courseDay
                 courseId.append(readCI)
                 startTime.append(readST)
                 endTime.append(readET)
@@ -119,6 +120,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
                 major.append(readMJ)
                 classification.append(readCF)
                 num.append(readNM)
+                courseDay.append(readCD)
                 tableView?.reloadData()
             }
         }
@@ -135,6 +137,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readMJ = String()
         var readST = String() // starttime
         var readET = String() // endtime
+        var readCD = String()
         for i in 0...courseDB.count-1{
             readCI = courseDB[i].courseId
             readCN = courseDB[i].courseName
@@ -145,6 +148,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             readNM = courseDB[i].num
             readST = courseDB[i].startTime
             readET = courseDB[i].endTime
+            readCD = courseDB[i].courseDay
             courseId.append(readCI)
             startTime.append(readST)
             endTime.append(readET)
@@ -154,6 +158,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             major.append(readMJ)
             classification.append(readCF)
             num.append(readNM)
+            courseDay.append(readCD)
             tableView?.reloadData()
         }
     }
@@ -176,6 +181,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
         cell.selectedBackgroundView = bgColorView
+    
         return cell
     }
     
@@ -190,6 +196,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         infoVC.roomNameData = roomName[indexPath.row]
         infoVC.professorData = professor[indexPath.row]
         infoVC.numData = num[indexPath.row]
+        infoVC.courseDayData = courseDay[indexPath.row]
         infoVC.courseIdData = courseId[indexPath.row]
         infoVC.startTimeData = startTime[indexPath.row]
         infoVC.endTimeData = endTime[indexPath.row]

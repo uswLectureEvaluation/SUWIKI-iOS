@@ -17,8 +17,11 @@ class firstSceneCheck: UIViewController {
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-        getExternalData()
-        //realm.delete(realm.objects(userDB.self))
+        
+        if realm.objects(testCourseData.self).count == 0{
+            getExternalData()
+        }
+        
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         // try! realm.commitWrite()
     //    save()
