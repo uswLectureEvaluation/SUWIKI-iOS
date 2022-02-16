@@ -34,7 +34,7 @@ class infoCourseData: UIViewController{
 
     
     override func viewDidLoad() {
-        print("hi")
+
         print(courseDayData)
         checkDate()
         print(changeDay)
@@ -63,8 +63,8 @@ class infoCourseData: UIViewController{
         } else {
             realm.beginWrite()
             let readUserDB = realm.objects(userDB.self)
-            let courseData = testUserCourse()
-            var courseCount = realm.objects(testUserCourse.self).count
+            let courseData = UserCourse()
+            var courseCount = realm.objects(UserCourse.self).count
             print(checkTimeTable)
             for userData in readUserDB{
                 if userData.timetableName == checkTimeTable{

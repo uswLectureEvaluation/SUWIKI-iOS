@@ -20,13 +20,13 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     
     var courseList: [ElliottEvent] = []// 시간표 강의 아이템
     
-    
 
     var timeTableName = ""
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         checkTimeTable()
         readCourseDB()
         //        timetable.courseItems = courseList
@@ -89,13 +89,39 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             for getData in dataCheck{
                 if getData.userCourseData.count != 0 {
                     for i in 0...getData.userCourseData.count-1 {
-                        var appendData = ElliottEvent(courseId: getData.userCourseData[i].courseId, courseName: getData.userCourseData[i].courseName, roomName: getData.userCourseData[i].roomName, professor: getData.userCourseData[i].professor, courseDay: ElliotDay.init(rawValue: getData.userCourseData[i].courseDay)!, startTime: getData.userCourseData[i].startTime, endTime: getData.userCourseData[i].endTime, backgroundColor: UIColor.systemBlue)
+                        var appendData = ElliottEvent(courseId: getData.userCourseData[i].courseId, courseName: getData.userCourseData[i].courseName, roomName: getData.userCourseData[i].roomName, professor: getData.userCourseData[i].professor, courseDay: ElliotDay.init(rawValue: getData.userCourseData[i].courseDay)!, startTime: getData.userCourseData[i].startTime, endTime: getData.userCourseData[i].endTime, backgroundColor: randomColor(x: i))
                         courseList.append(appendData)
                     }
             }
         }
     }
         
+}
+    
+    func randomColor(x: Int) -> UIColor{
+        var rand = x
+        switch rand{
+        case 0:
+            return UIColor(red: 0.75, green: 0.83, blue: 0.95, alpha: 1.00)
+        case 1:
+            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
+        case 2:
+            return UIColor(red: 0.83, green: 0.77, blue: 0.98, alpha: 1.00)
+        case 3:
+            return UIColor(red: 0.99, green: 0.80, blue: 0.00, alpha: 1.00)
+        case 4:
+            return UIColor(red: 0.92, green: 0.59, blue: 0.58, alpha: 1.00)
+        case 5:
+            return UIColor(red: 0.69, green: 1.00, blue: 0.64, alpha: 1.00)
+        case 6:
+            return UIColor(red: 0.69, green: 1.00, blue: 1.00, alpha: 0.34)
+        case 7:
+            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
+        case 8:
+            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
+        default:
+            return UIColor.darkGray
+    }
 }
     
     @IBAction func testRemove(_ sender: Any) {
@@ -120,11 +146,11 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     }
     
     func elliotable(elliotable: Elliotable, didSelectCourse selectedCourse: ElliottEvent) {
-        // Nothing
+        print("hi")
     }
     
     func elliotable(elliotable: Elliotable, didLongSelectCourse longSelectedCourse: ElliottEvent) {
-        // Nothing
+        // nothing
     }
     
     func elliotable(elliotable: Elliotable, at dayPerIndex: Int) -> String {

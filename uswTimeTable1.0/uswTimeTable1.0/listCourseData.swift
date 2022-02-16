@@ -19,7 +19,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var numDropDown: UIView!
     @IBOutlet weak var choiceNumDropDown: UILabel!
     
-    var courseId = [String]()
     var courseName = [String]()
     var roomName = [String]()
     var professor = [String]()
@@ -76,7 +75,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func removeArray() {
-        courseId.removeAll()
         startTime.removeAll()
         endTime.removeAll()
         courseName.removeAll()
@@ -88,8 +86,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func selectNumData(checkNum: Int){
-        let courseDB = realm.objects(testCourseData.self)
-        var readCI = String() // courseid
+        let courseDB = realm.objects(CourseData.self)
         var readCN = String() // coursename
         var readRN = String() // roomname
         var readPR = String() // professor
@@ -101,7 +98,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readCD = String()
         for i in 0...courseDB.count-1{
             if courseDB[i].num == checkNum {
-                readCI = courseDB[i].courseId
                 readCN = courseDB[i].courseName
                 readRN = courseDB[i].roomName
                 readPR = courseDB[i].professor
@@ -111,7 +107,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
                 readST = courseDB[i].startTime
                 readET = courseDB[i].endTime
                 readCD = courseDB[i].courseDay
-                courseId.append(readCI)
                 startTime.append(readST)
                 endTime.append(readET)
                 courseName.append(readCN)
@@ -122,12 +117,13 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
                 num.append(readNM)
                 courseDay.append(readCD)
                 tableView?.reloadData()
+               
             }
         }
     }
     
     func readFirstData(){
-        let courseDB = realm.objects(testCourseData.self)
+        let courseDB = realm.objects(CourseData.self)
         var readCI = String()
         var readCN = String()
         var readRN = String()
@@ -139,7 +135,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         var readET = String() // endtime
         var readCD = String()
         for i in 0...courseDB.count-1{
-            readCI = courseDB[i].courseId
             readCN = courseDB[i].courseName
             readRN = courseDB[i].roomName
             readPR = courseDB[i].professor
@@ -149,7 +144,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             readST = courseDB[i].startTime
             readET = courseDB[i].endTime
             readCD = courseDB[i].courseDay
-            courseId.append(readCI)
             startTime.append(readST)
             endTime.append(readET)
             courseName.append(readCN)
@@ -181,7 +175,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
         cell.selectedBackgroundView = bgColorView
-    
         return cell
     }
     
@@ -197,7 +190,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         infoVC.professorData = professor[indexPath.row]
         infoVC.numData = num[indexPath.row]
         infoVC.courseDayData = courseDay[indexPath.row]
-        infoVC.courseIdData = courseId[indexPath.row]
         infoVC.startTimeData = startTime[indexPath.row]
         infoVC.endTimeData = endTime[indexPath.row]
         infoVC.checkTimeTable = self.checkTimeTable
