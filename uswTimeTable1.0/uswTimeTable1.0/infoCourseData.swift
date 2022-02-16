@@ -34,6 +34,7 @@ class infoCourseData: UIViewController{
 
     
     override func viewDidLoad() {
+        print("hi")
         print(courseDayData)
         checkDate()
         print(changeDay)
