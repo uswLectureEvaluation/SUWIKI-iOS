@@ -36,7 +36,7 @@ class firstSceneCheck: UIViewController {
         uswFireDB.observe(.value) { snapshot in
             let countDB = Int(snapshot.childrenCount)
             let checkRealm = self.realm.objects(CourseData.self)
-            if countDB != checkRealm.count{
+            if countDB != checkRealm.count-1{
                 try! self.realm.write{
                     self.realm.delete(checkRealm)
                 }

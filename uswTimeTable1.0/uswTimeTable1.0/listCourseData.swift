@@ -82,10 +82,12 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         professor.removeAll()
         major.removeAll()
         classification.removeAll()
+        courseDay.removeAll()
         num.removeAll()
     }
     
     func selectNumData(checkNum: Int){
+
         let courseDB = realm.objects(CourseData.self)
         var readCN = String() // coursename
         var readRN = String() // roomname
@@ -120,6 +122,8 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
                
             }
         }
+        tableView?.beginUpdates()
+        tableView.endUpdates()
     }
     
     func readFirstData(){
