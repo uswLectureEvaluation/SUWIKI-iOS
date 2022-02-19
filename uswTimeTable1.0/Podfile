@@ -12,4 +12,5 @@ target 'uswTimeTable1.0' do
   pod 'Firebase/Analytics'
   # Pods for uswTimeTable1.0
 
+
 end
