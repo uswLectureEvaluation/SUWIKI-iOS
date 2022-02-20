@@ -18,6 +18,8 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
     var userName = [String]()
     
     override func viewDidLoad() {
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         readData()
         super.viewDidLoad()
 
@@ -68,6 +70,15 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         self.navigationController?.pushViewController(showVC, animated: true)
     }
     
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+
     
     /*
     // MARK: - Navigation

@@ -36,6 +36,8 @@ class infoCourseData: UIViewController{
     override func viewDidLoad() {
 
         print(courseDayData)
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         checkDate()
         print(changeDay)
         super.viewDidLoad()
@@ -105,6 +107,15 @@ class infoCourseData: UIViewController{
             changeDay = 7
         }
     }
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+
 
 }
     

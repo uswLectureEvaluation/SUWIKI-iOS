@@ -28,15 +28,18 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         checkTimeTable()
         readCourseDB()
-        //        timetable.courseItems = courseList
         readTimeTable()
         
         // json 시간표 데이터 입력
 }
     override func viewWillAppear(_ animated: Bool) {
         print("viewwillappear")
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         checkTimeTable()
         readCourseDB()
         readTimeTable()
@@ -158,23 +161,15 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         print(deleteDB)
            
 
-            let text: String = "먹어봤던 맥주 리뷰 1개만 남기면 모든 리뷰를 보실 수 있어요!"
-            let attributeString = NSMutableAttributedString(string: text) // 텍스트 일부분 색상, 폰트 변경 - https://icksw.tistory.com/152
-            let font: UIFont = UIFont(name: "system", size: 16)!
-            attributeString.addAttribute(.font, value: font, range: (text as NSString).range(of: "\(text)")) // 폰트 적용.
-            attributeString.addAttribute(.foregroundColor, value: UIColor.black, range: (text as NSString).range(of: "먹어봤던 맥주 리뷰 1개")) // '먹어봤던 맥주 리뷰 1개' 부분 색상 옐로우 변경.
-            attributeString.addAttribute(.foregroundColor, value: UIColor.black, range: (text as NSString).range(of: "만 남기면 모든 리뷰를 보실 수 있어요!")) // 나머지 부분 색상 화이트 변경.
+            let alertController = UIAlertController(title: deleteCourse, message: deleteProfessor, preferredStyle: UIAlertController.Style.alert)
 
-            let alertController = UIAlertController(title: text, message: "", preferredStyle: UIAlertController.Style.alert)
-            alertController.setValue(attributeString, forKey: "attributedTitle") // 폰트 및 색상 적용.
-
-            let sendButton = UIAlertAction(title: "수정 할수도 안할수도", style: .default, handler: { [self] (action) -> Void in
-                print("Ok button tapped")
+            let sendButton = UIAlertAction(title: "수정", style: .default, handler: { [self] (action) -> Void in
+                print("Ok button tapped") // 수정 시 info -> if 완료 누를 시 데이터 삭제 이후 재 삽입 or 그대로
                 print(courseList)
 
             })
             
-            let deleteButton = UIAlertAction(title: "삭제하기 !", style: .destructive, handler: { [self] (action) -> Void in
+            let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
                 courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" })
                 print(courseList)
                 print("Delete button tapped")
@@ -188,7 +183,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
                 
             })
             
-            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
+            let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
                 print("Cancel button tapped")
             })
             
@@ -211,26 +206,14 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     func numberOfDays(in elliotable: Elliotable) -> Int {
         return dayString.count
     }
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+
 }
 
-extension UIAlertAction {
-    static var propertyNames: [String] {
-        var outCount: UInt32 = 0
-        guard let ivars = class_copyIvarList(self, &outCount) else {
-            return []
-        }
-        var result = [String]()
-        let count = Int(outCount)
-        for i in 0..<count {
-            let pro: Ivar = ivars[i]
-            guard let ivarName = ivar_getName(pro) else {
-                continue
-            }
-            guard let name = String(utf8String: ivarName) else {
-                continue
-            }
-            result.append(name)
-        }
-        return result
-    }
-}

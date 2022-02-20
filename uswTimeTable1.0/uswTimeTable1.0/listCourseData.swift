@@ -16,6 +16,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     let realm = try! Realm()
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var numDropDown: UIView!
     @IBOutlet weak var choiceNumDropDown: UILabel!
     
@@ -30,11 +31,30 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var courseDay = [String]()
     var courseData = [String]()
     let dropDown1 = DropDown()
-    let numList = ["1", "2", "3", "4"]
+    let numList = ["1", "2", "3", "4"] // 기존 수업 정보
+    
+    
+    var filteredCourseName = [String]() // 검색시 사용
+    var filteredRoomName = [String]()
+    var filteredProfessor = [String]()
+    var filteredStartTime = [String]()
+    var filteredEndTime = [String]()
+    var filteredClassification = [String]()
+    var filteredNum = [Int]()
+    var filteredMajor = [String]()
+    
+    
     var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        filteredData()
+        searchBar.delegate = self
+        
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         print(checkTimeTable)
         readFirstData()
         dropDown1.anchorView = numDropDown
@@ -86,6 +106,16 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         num.removeAll()
     }
     
+    func filteredData() {
+        filteredCourseName = courseName
+        filteredRoomName = roomName
+        filteredNum = num
+        filteredMajor = major
+        filteredProfessor = professor
+        filteredClassification = classification
+        filteredStartTime = startTime
+        filteredEndTime = endTime
+    }
     func selectNumData(checkNum: Int){
 
         let courseDB = realm.objects(CourseData.self)
@@ -162,17 +192,17 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return professor.count
+        return filteredCourseName.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! customCell
-        cell.courseTxtField.text = courseName[indexPath.row]
-        cell.roomTxtField.text = roomName[indexPath.row]
-        cell.professorTxtField.text = professor[indexPath.row]
-        cell.numTxtField.text = "\(num[indexPath.row])학년,"
-        cell.classTxtField.text = "\(classification[indexPath.row]),"
-        cell.majorTxtField.text = major[indexPath.row]
+        cell.courseTxtField.text = filteredCourseName[indexPath.row]
+        cell.roomTxtField.text = filteredRoomName[indexPath.row]
+        cell.professorTxtField.text = filteredProfessor[indexPath.row]
+        cell.numTxtField.text = "\(filteredNum[indexPath.row])학년,"
+        cell.classTxtField.text = "\(filteredClassification[indexPath.row]),"
+        cell.majorTxtField.text = filteredMajor[indexPath.row]
         cell.myView.layer.borderWidth = 1.0
         cell.myView.layer.borderColor = UIColor.lightGray.cgColor
         cell.myView.layer.cornerRadius = 12.0
@@ -198,6 +228,43 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         infoVC.endTimeData = endTime[indexPath.row]
         infoVC.checkTimeTable = self.checkTimeTable
         self.navigationController?.pushViewController(infoVC, animated: true)
+    }
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredEmpty()
+        
+        if searchText == "" {
+            filteredData()
+        } else {
+            for searchData in courseName{
+                
+                if searchData.lowercased().contains(searchText.lowercased()){
+                    filteredCourseName.append(searchText)
+                }
+                    
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func filteredEmpty(){
+        filteredCourseName = []
+        filteredRoomName = []
+        filteredNum = []
+        filteredMajor = []
+        filteredProfessor = []
+        filteredClassification = []
+        filteredStartTime = []
+        filteredEndTime = []
     }
     
     
