@@ -154,6 +154,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         var userData: String = UserDefaults.standard.string(forKey: "name") ?? ""
         var deleteCourse = selectedCourse.courseName
         var deleteProfessor = selectedCourse.professor
+        var deleteRoomName = selectedCourse.roomName
         var deleteIndex: Int = courseList.firstIndex(where: { $0.courseName == "\(deleteCourse)" }) ?? 0
         print(deleteIndex)
         print(deleteCourse)
@@ -170,7 +171,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             })
             
             let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
-                courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" })
+                courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.roomName == "\(deleteRoomName)" })
                 print(courseList)
                 print("Delete button tapped")
                 

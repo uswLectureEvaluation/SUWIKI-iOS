@@ -38,6 +38,9 @@ class infoCourseData: UIViewController{
     var getStartTime = ""
     var getEndTime = ""
     
+    var getStartTimeArray = [Int]()
+    var getEndTimeArray = [Int]()
+    
     var checkGetStartTime = 0
     var checkGetEndTime = 0
     
@@ -48,15 +51,22 @@ class infoCourseData: UIViewController{
     
     
     override func viewDidLoad() {
-
-        changeTimeToInt()
         
-        print(checkNowEndTime)
+        checkDate()
+        changeTimeToInt()
+        userCourseDay()
+        checkTimeCrash()
+        print(getStartTimeArray)
+        print(getEndTimeArray)
         print(checkNowStartTime)
+        print(checkNowEndTime)
+        print(setNum)
+        
+        
+        
         navigationBarHidden()
         navigationBackSwipeMotion()
-        checkDate()
-        print(changeDay)
+        
         super.viewDidLoad()
         courseNameTxt.text = courseNameData
         roomNameTxt.text = roomNameData
@@ -64,13 +74,12 @@ class infoCourseData: UIViewController{
         myView.layer.cornerRadius = 12.0
         myView.layer.borderWidth = 1.0
         myView.layer.borderColor = UIColor.lightGray.cgColor
-        userCourseDay()
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {
-        checkTimeCrash()
+        
         if changeDay == 7 || setNum == 1 {
             let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요",
                 message: "확인버튼을 눌러주시기 바랍니다",
@@ -78,17 +87,21 @@ class infoCourseData: UIViewController{
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(cancle)
             present(alert,animated: true,completion: nil)
+
         } else {
             realm.beginWrite()
             let readUserDB = realm.objects(userDB.self)
             let courseData = UserCourse()
             var courseCount = realm.objects(UserCourse.self).count
-            print(checkTimeTable)
+            
+            
             if setNum == 1 {
                 let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요", message: "확인버튼을 눌러주시기 바랍니다", preferredStyle: UIAlertController.Style.alert)
                 let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
                 alert.addAction(cancle)
                 present(alert,animated: true,completion: nil)
+                
+                
             } else {
                 for userData in readUserDB{
                     if userData.timetableName == checkTimeTable{
@@ -140,37 +153,62 @@ class infoCourseData: UIViewController{
        }
 
     func userCourseDay(){
+        getStartTimeArray.removeAll()
+        // 같은 요일에 두가지 이상의 수업이 있을 경우 추가가 됨.
         let userDB = realm.objects(userDB.self)
         for userData in userDB{
             for i in 0..<userData.userCourseData.count{
                 if userData.userCourseData[i].courseDay == changeDay {
+                    print(userData.userCourseData[i].courseName)
                     getStartTime = userData.userCourseData[i].startTime
                     getEndTime = userData.userCourseData[i].endTime
                     changeTimeToInt()
+                    getStartTimeArray.append(checkGetStartTime)
+                    getEndTimeArray.append(checkGetEndTime)
+                    print(getStartTimeArray)
                 }
             }
         }
     }
     
     func checkTimeCrash() {
-        if checkGetStartTime < checkNowStartTime && checkGetEndTime > checkNowStartTime{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
-            setNum = 1
-        } else if checkGetStartTime < checkNowEndTime && checkGetEndTime > checkNowEndTime{ // 추가할 시간표 끝 시간이 존재 시간표 사이에 있다
-            setNum = 1
-        } else if checkGetStartTime == checkNowStartTime && checkGetEndTime == checkNowEndTime {
-            setNum = 1
-        } else {
-            setNum = 0
-        }
         
+        if getStartTimeArray.count == 0{
+            setNum = 0
+            print("Case0")
+            
+        } else if getStartTimeArray.count == 1{
+            if checkGetStartTime < checkNowStartTime && checkGetEndTime > checkNowStartTime{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
+                setNum = 1
+            } else if checkGetStartTime < checkNowEndTime && checkGetEndTime > checkNowEndTime{ // 추가할 시간표 끝 시간이 존재 시간표 사이에 있다
+                setNum = 1
+            } else if checkGetStartTime == checkNowStartTime && checkGetEndTime == checkNowEndTime {
+                setNum = 1
+            } else {
+                setNum = 0
+            }
+            print("Case1")
+            
+        } else if getStartTimeArray.count > 1 {
+            for i in 0..<getStartTimeArray.count{
+                if getStartTimeArray[i] < checkNowStartTime && getEndTimeArray[i] > checkNowStartTime{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
+                    setNum = 1
+                    break
+                } else if getStartTimeArray[i] < checkNowEndTime && getEndTimeArray[i] > checkNowEndTime{ // 추가할 시간표 끝 시간이 존재 시간표 사이에 있다
+                    setNum = 1
+                    break
+                } else if getStartTimeArray[i] == checkNowStartTime && getEndTimeArray[i] == checkNowEndTime {
+                    setNum = 1
+                    break
+                } else {
+                    setNum = 0
+                }
+            }
+            print("Case2")
+
+        }
     }
-    
-    
-    
-    
-    
-    
-    
+
     func changeTimeToInt(){
         switch startTimeData{
         case "9:30": checkNowStartTime = 930
