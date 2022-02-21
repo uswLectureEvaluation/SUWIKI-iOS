@@ -26,16 +26,33 @@ class infoCourseData: UIViewController{
     var classificationData = ""
     var startTimeData = ""
     var endTimeData = ""
+    
    // courseDay, backgroundColor는 테스트 후 데이터 삽입 예정
-    var backgroundColor = UIColor.purple
     var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
     var changeDay = 0
-
+    
+    
+    var checkUserDay = [Int]()
+    
+    var getStartTime = ""
+    var getEndTime = ""
+    
+    var checkGetStartTime = 0
+    var checkGetEndTime = 0
+    
+    var checkNowStartTime = 0
+    var checkNowEndTime = 0
+    
+    var setNum = 0
+    
     
     override func viewDidLoad() {
 
-        print(courseDayData)
+        changeTimeToInt()
+        
+        print(checkNowEndTime)
+        print(checkNowStartTime)
         navigationBarHidden()
         navigationBackSwipeMotion()
         checkDate()
@@ -47,20 +64,19 @@ class infoCourseData: UIViewController{
         myView.layer.cornerRadius = 12.0
         myView.layer.borderWidth = 1.0
         myView.layer.borderColor = UIColor.lightGray.cgColor
-    
+        userCourseDay()
+
         // Do any additional setup after loading the view.
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {
-        if changeDay == 7 {
+        checkTimeCrash()
+        if changeDay == 7 || setNum == 1 {
             let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요",
                 message: "확인버튼을 눌러주시기 바랍니다",
                 preferredStyle: UIAlertController.Style.alert)
-            //2. 확인 버튼 만들기
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
-            //3. 확인 버튼을 경고창에 추가하기
             alert.addAction(cancle)
-            //4. 경고창 보이기
             present(alert,animated: true,completion: nil)
         } else {
             realm.beginWrite()
@@ -68,27 +84,34 @@ class infoCourseData: UIViewController{
             let courseData = UserCourse()
             var courseCount = realm.objects(UserCourse.self).count
             print(checkTimeTable)
-            for userData in readUserDB{
-                if userData.timetableName == checkTimeTable{
-                    courseData.courseId = courseIdData
-                    courseData.courseName = courseNameData
-                    courseData.roomName = roomNameData
-                    courseData.courseDay = changeDay
-                    courseData.professor = professorData
-                    courseData.startTime = startTimeData
-                    courseData.endTime = endTimeData
-                    courseData.courseCount = courseCount
-                    userData.userCourseData.append(courseData)
-                    realm.add(courseData)
-                    realm.add(userData)
+            if setNum == 1 {
+                let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요", message: "확인버튼을 눌러주시기 바랍니다", preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                present(alert,animated: true,completion: nil)
+            } else {
+                for userData in readUserDB{
+                    if userData.timetableName == checkTimeTable{
+                        courseData.courseId = courseIdData
+                        courseData.courseName = courseNameData
+                        courseData.roomName = roomNameData
+                        courseData.courseDay = changeDay
+                        courseData.professor = professorData
+                        courseData.startTime = startTimeData
+                        courseData.endTime = endTimeData
+                        courseData.courseCount = courseCount
+                        userData.userCourseData.append(courseData)
+                        realm.add(courseData)
+                        realm.add(userData)
+                        print("ee")
+                    }
+                }
+                try! realm.commitWrite()
+                let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+                self.navigationController?.pushViewController(showVC, animated: true)
                 }
             }
-            
-            try! realm.commitWrite()
-            let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
-            self.navigationController?.pushViewController(showVC, animated: true)
         }
-    }
         
 
     func checkDate(){
@@ -116,6 +139,116 @@ class infoCourseData: UIViewController{
            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
        }
 
+    func userCourseDay(){
+        let userDB = realm.objects(userDB.self)
+        for userData in userDB{
+            for i in 0..<userData.userCourseData.count{
+                if userData.userCourseData[i].courseDay == changeDay {
+                    getStartTime = userData.userCourseData[i].startTime
+                    getEndTime = userData.userCourseData[i].endTime
+                    changeTimeToInt()
+                }
+            }
+        }
+    }
+    
+    func checkTimeCrash() {
+        if checkGetStartTime < checkNowStartTime && checkGetEndTime > checkNowStartTime{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
+            setNum = 1
+        } else if checkGetStartTime < checkNowEndTime && checkGetEndTime > checkNowEndTime{ // 추가할 시간표 끝 시간이 존재 시간표 사이에 있다
+            setNum = 1
+        } else if checkGetStartTime == checkNowStartTime && checkGetEndTime == checkNowEndTime {
+            setNum = 1
+        } else {
+            setNum = 0
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    func changeTimeToInt(){
+        switch startTimeData{
+        case "9:30": checkNowStartTime = 930
+        case "10:30": checkNowStartTime = 1030
+        case "11:30": checkNowStartTime = 1130
+        case "12:30": checkNowStartTime = 1230
+        case "13:30": checkNowStartTime = 1330
+        case "14:30": checkNowStartTime = 1430
+        case "15:30": checkNowStartTime = 1530
+        case "16:30": checkNowStartTime = 1630
+        case "17:30": checkNowStartTime = 1730
+        case "18:30": checkNowStartTime = 1830
+        case "19:30": checkNowStartTime = 1930
+        case "20:30": checkNowStartTime = 2030
+        case "21:30": checkNowStartTime = 2130
+        default:
+            checkNowStartTime = 0
+        }
+        
+        
+        switch endTimeData{
+        case "10:20": checkNowEndTime = 1020
+        case "11:20": checkNowEndTime = 1120
+        case "12:20": checkNowEndTime = 1220
+        case "13:20": checkNowEndTime = 1320
+        case "14:20": checkNowEndTime = 1420
+        case "15:20": checkNowEndTime = 1520
+        case "16:20": checkNowEndTime = 1620
+        case "17:20": checkNowEndTime = 1720
+        case "18:20": checkNowEndTime = 1820
+        case "19:20": checkNowEndTime = 1920
+        case "20:20": checkNowEndTime = 2020
+        case "21:20": checkNowEndTime = 2120
+        case "22:20": checkNowEndTime = 2220
+            
+        default:
+            checkNowEndTime = 0
+        }
+        
+        switch getStartTime{
+        case "9:30": checkGetStartTime = 930
+        case "10:30": checkGetStartTime = 1030
+        case "11:30": checkGetStartTime = 1130
+        case "12:30": checkGetStartTime = 1230
+        case "13:30": checkGetStartTime = 1330
+        case "14:30": checkGetStartTime = 1430
+        case "15:30": checkGetStartTime = 1530
+        case "16:30": checkGetStartTime = 1630
+        case "17:30": checkGetStartTime = 1730
+        case "18:30": checkGetStartTime = 1830
+        case "19:30": checkGetStartTime = 1930
+        case "20:30": checkGetStartTime = 2030
+        case "21:30": checkGetStartTime = 2130
+        default:
+            checkGetStartTime = 0
+        }
+        
+        
+        switch getEndTime{
+        case "10:20": checkGetEndTime = 1020
+        case "11:20": checkGetEndTime = 1120
+        case "12:20": checkGetEndTime = 1220
+        case "13:20": checkGetEndTime = 1320
+        case "14:20": checkGetEndTime = 1420
+        case "15:20": checkGetEndTime = 1520
+        case "16:20": checkGetEndTime = 1620
+        case "17:20": checkGetEndTime = 1720
+        case "18:20": checkGetEndTime = 1820
+        case "19:20": checkGetEndTime = 1920
+        case "20:20": checkGetEndTime = 2020
+        case "21:20": checkGetEndTime = 2120
+        case "22:20": checkGetEndTime = 2220
+            
+        default:
+            checkGetEndTime = 0
+        }
+    }
+    
 
 }
     

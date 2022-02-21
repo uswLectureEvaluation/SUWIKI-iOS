@@ -13,6 +13,9 @@ import RealmSwift
 class uswMakeSchedule: UIViewController {
     let realm = try! Realm()
     
+    var nameCheck = [String]()
+    
+    
     @IBOutlet weak var yearDropdown: UIView!
     @IBOutlet weak var yearTxtField: UILabel!
     @IBOutlet weak var semeDropdown: UIView!
@@ -28,14 +31,17 @@ class uswMakeSchedule: UIViewController {
     let semeList = ["1", "2"]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        readName()
+        
         dropDown1.anchorView = yearDropdown
         dropDown1.dataSource = yearList
         dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
         dropDown1.direction = .bottom
         dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
-            self.yearTxtField.text = yearList[index]
+            self.yearTxtField.text = yearList[index] ?? ""
             self.yearTxtField.font = UIFont(name: "system", size: 17)
             self.yearTxtField.textColor = .black
             self.yearTxtField.textAlignment = .center
@@ -47,7 +53,7 @@ class uswMakeSchedule: UIViewController {
         dropDown2.direction = .bottom
         dropDown2.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
-            self.semeTxtField.text = semeList[index]
+            self.semeTxtField.text = semeList[index] ?? ""
             self.semeTxtField.font = UIFont(name: "system", size: 17)
             self.semeTxtField.textColor = .black
             self.semeTxtField.textAlignment = .center
@@ -57,14 +63,36 @@ class uswMakeSchedule: UIViewController {
     }
 
     @IBAction func finishBtnClicked(_ sender: Any) {
-        UserDefaults.standard.set(nameTxtField.text!, forKey: "name")
-        UserDefaults.standard.synchronize()
-        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
-        showVC.timeTableName = nameTxtField.text!
-        self.navigationController?.pushViewController(showVC, animated: true)
-        save()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-
+        if yearTxtField.text == "" || nameTxtField.text == "" || semeTxtField.text == ""{
+            let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
+                message: "데이터를 다 알려주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            //2. 확인 버튼 만들기
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //3. 확인 버튼을 경고창에 추가하기
+            alert.addAction(cancle)
+            //4. 경고창 보이기
+            present(alert,animated: true,completion: nil)
+        } else if nameCheck.contains(nameTxtField.text!) {
+            let alert = UIAlertController(title:"이미 같은 이름이!",
+                message: "시간표 이름을 바꿔주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            //2. 확인 버튼 만들기
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //3. 확인 버튼을 경고창에 추가하기
+            alert.addAction(cancle)
+            //4. 경고창 보이기
+            present(alert,animated: true,completion: nil)
+        }
+        else {
+            UserDefaults.standard.set(nameTxtField.text!, forKey: "name")
+            UserDefaults.standard.synchronize()
+            let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+            showVC.timeTableName = nameTxtField.text!
+            self.navigationController?.pushViewController(showVC, animated: true)
+            save()
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
+        }
     }
     @IBAction func yearBtnClicked(_ sender: Any) {
         dropDown1.show()
@@ -84,6 +112,15 @@ class uswMakeSchedule: UIViewController {
         userData.timetableName = nameTxtField.text!
         realm.add(userData)
         try! realm.commitWrite()
+    }
+    
+    func readName(){
+        let name = realm.objects(userDB.self)
+        for i in 0..<name.count{
+            var appName = name[i].timetableName
+            nameCheck.append(appName)
+        }
+        
     }
 }
 

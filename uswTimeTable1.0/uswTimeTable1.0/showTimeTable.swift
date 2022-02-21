@@ -170,7 +170,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             })
             
             let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
-                courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" })
+                courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" })
                 print(courseList)
                 print("Delete button tapped")
                 
@@ -178,8 +178,10 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
                 try! realm.write{
                     realm.delete(mydata.userCourseData[deleteIndex])
                     }
+
                 }
                 readTimeTable()
+
                 
             })
             
