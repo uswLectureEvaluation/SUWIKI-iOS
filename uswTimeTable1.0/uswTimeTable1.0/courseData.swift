@@ -29,7 +29,18 @@ class Course: Codable{
         self.endTime = endTime
         self.num = num
     }
+}
+
+class userTable: Codable{
+    let year: String
+    let semester: String
+    let timetableName: String
     
+    init(year: String, semester: String, timetableName: String){
+        self.year = year
+        self.semester = semester
+        self.timetableName = timetableName
+    }
 }
 /*
  startTime.append(readST)

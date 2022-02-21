@@ -14,12 +14,16 @@ class firstSceneCheck: UIViewController {
    
     let realm = try! Realm()
     
+    @IBOutlet weak var myView: UIView!
+    
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getExternalData()
-        
+        myView.layer.borderWidth = 1.0
+        myView.layer.borderColor = UIColor.lightGray.cgColor
+        myView.layer.cornerRadius = 8.0
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         // try! realm.commitWrite()
     //    save()
