@@ -44,6 +44,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         readFirstData()
         filteredUswCourse = uswCourse
         
+        
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
         dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
@@ -130,9 +131,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.numTxtField.text = "\(filteredUswCourse[indexPath.row].num)학년,"
         cell.classTxtField.text = "\(filteredUswCourse[indexPath.row].classification),"
         cell.majorTxtField.text = filteredUswCourse[indexPath.row].major
-        cell.myView.layer.borderWidth = 1.0
-        cell.myView.layer.borderColor = UIColor.lightGray.cgColor
-        cell.myView.layer.cornerRadius = 12.0
+
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
         cell.selectedBackgroundView = bgColorView
@@ -140,8 +139,9 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 134.0
+        return 145.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -185,7 +185,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 class customCell: UITableViewCell {
-    @IBOutlet weak var myView: UIView!
     @IBOutlet weak var courseTxtField: UILabel!
     @IBOutlet weak var roomTxtField: UILabel!
     @IBOutlet weak var professorTxtField: UILabel!
@@ -193,4 +192,13 @@ class customCell: UITableViewCell {
     @IBOutlet weak var numTxtField: UILabel!
     @IBOutlet weak var classTxtField: UILabel!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 12.0
 }
+}
+

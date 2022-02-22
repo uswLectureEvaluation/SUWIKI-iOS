@@ -45,9 +45,7 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         myCell.semeTxtField.text = "\(uswUser[indexPath.row].semester)학기"
         myCell.delBtn.tag = indexPath.row
         myCell.delBtn.addTarget(self, action: #selector(btnaction), for: .touchUpInside)
-        myCell.listView.layer.borderWidth = 1.0
-        myCell.listView.layer.borderColor = UIColor.lightGray.cgColor
-        myCell.listView.layer.cornerRadius = 12.0
+     
         
         
         return myCell
@@ -141,7 +139,14 @@ class timetableCell: UITableViewCell {
     @IBOutlet weak var semeTxtField: UILabel!
     @IBOutlet weak var nameTxtField: UILabel!
     
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 12.0
+}
     
     
 }
