@@ -32,6 +32,10 @@ class infoCourseData: UIViewController{
     
     var changeDay = 0
     
+    var varietyDay = [Int]()
+    var varietyStartTime = [String]()
+    var varietyEndTime = [String]()
+    
     
     var checkUserDay = [Int]()
     
@@ -50,17 +54,17 @@ class infoCourseData: UIViewController{
     var setNum = 0
     
     
+
+    
+    
     override func viewDidLoad() {
         
         checkDate()
         changeTimeToInt()
         userCourseDay()
         checkTimeCrash()
-        print(getStartTimeArray)
-        print(getEndTimeArray)
-        print(checkNowStartTime)
-        print(checkNowEndTime)
-        print(setNum)
+        
+        checkRoomName()
         
         
         
@@ -127,22 +131,7 @@ class infoCourseData: UIViewController{
         }
         
 
-    func checkDate(){
-        switch courseDayData{
-        case "월":
-            changeDay = 1
-        case "화":
-            changeDay = 2
-        case "수":
-            changeDay = 3
-        case "목":
-            changeDay = 4
-        case "금":
-            changeDay = 5
-        default:
-            changeDay = 7
-        }
-    }
+
     
     func navigationBarHidden() {
             self.navigationController?.navigationBar.isHidden = true
@@ -209,6 +198,119 @@ class infoCourseData: UIViewController{
         }
     }
 
+    func checkRoomName() {
+        let checkRoomName: String = roomNameData
+        if checkRoomName.components(separatedBy: "),").count > 1 {
+            let splitRoomName = checkRoomName.components(separatedBy: "),")
+            // if splitcount > 2 쪼갠 후에 앞의 (뒤 단어 and 뒤의 (뒤 단어
+            print(splitRoomName[0])
+            print(splitRoomName[1])
+            print(splitRoomName.count)
+            let splitFirstRoomName = splitRoomName[0].components(separatedBy: "(")
+            let firstRoomCourseDay = splitFirstRoomName[1].first ?? "토"
+            let firstTime = splitFirstRoomName[1].components(separatedBy: ",")
+            let firstStartTime = firstTime[0].last ?? "0"
+            let firstEndTime = firstTime[1].first ?? "0"
+            
+          //  changePeriodToStartTime(changePeriod: firstStartTime)
+           // changePeriodToEndTime(changePeriod: firstEndTime
+            //changeDayToInt(checkDay: firstRoomCourseDay)
+            
+            let splitSecondRoomName = splitRoomName[1].components(separatedBy: "(")
+            let secondRoomCourseDay = splitSecondRoomName[1].first ?? "토"
+            changeDayToInt(checkDay: secondRoomCourseDay)
+            
+            print(firstRoomCourseDay) // 화
+            print(splitFirstRoomName) // firstRoom[0] == roomName [1] == 화 3,4
+            print(firstTime)
+            print(firstStartTime)
+            print(firstEndTime)
+            print(secondRoomCourseDay) // 화
+            print(splitSecondRoomName) // secondRoom[0] == roomName [1] == 화 1,2
+            print(varietyDay)
+                              }
+    }
+    
+    
+    
+    func changeDayToInt(checkDay: Character){
+        switch checkDay{
+        case "월":
+            varietyDay.append(1)
+        case "화":
+            varietyDay.append(2)
+        case "수":
+            varietyDay.append(3)
+        case "목":
+            varietyDay.append(4)
+        case "금":
+            varietyDay.append(5)
+        default:
+            varietyDay.append(7)
+        }
+    }
+    /*
+    func changePeriodToStartTime(changePeriod: Character){
+        switch changePeriod{
+        case "1":
+            varietyStartTime.append("9:30")
+        case "2":
+            varietyStartTime.append("9:30")
+        case "3":
+            varietyStartTime.append("9:30")
+        case "4":
+            varietyStartTime.append("9:30")
+        case "5":
+            varietyStartTime.append("9:30")
+        case "6":
+            varietyStartTime.append("9:30")
+        case "7":
+            varietyStartTime.append("9:30")
+        case "8":
+            varietyStartTime.append("9:30")
+        case "9":
+            varietyStartTime.append("9:30")
+        case "":
+            varietyStartTime.append("9:30")
+        case "금":
+            varietyDay.append(5)
+        case "금":
+            varietyDay.append(5)
+        case "금":
+            varietyDay.append(5)
+        case "금":
+            varietyDay.append(5)
+            
+        default:
+            varietyDay.append(7)
+        }
+    }
+    
+    func changePeriodToEndTime(changePeriod: Character){
+        
+    }
+   */
+    
+    
+    func checkDate(){
+        
+        switch courseDayData{
+        case "월":
+            changeDay = 1
+        case "화":
+            changeDay = 2
+        case "수":
+            changeDay = 3
+        case "목":
+            changeDay = 4
+        case "금":
+            changeDay = 5
+        default:
+            changeDay = 7
+        }
+        
+    }
+    
     func changeTimeToInt(){
         switch startTimeData{
         case "9:30": checkNowStartTime = 930
