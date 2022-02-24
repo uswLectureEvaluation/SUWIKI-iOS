@@ -17,6 +17,8 @@ class infoCourseData: UIViewController{
     @IBOutlet weak var roomNameTxt: UILabel!
     @IBOutlet weak var professorTxt: UILabel!
     @IBOutlet weak var myView: UIView!
+    
+    // listCourseData에서 넘어오는 데이터들
     var courseIdData = ""
     var courseNameData = ""
     var roomNameData = ""
@@ -27,19 +29,20 @@ class infoCourseData: UIViewController{
     var startTimeData = ""
     var endTimeData = ""
     
-   // courseDay, backgroundColor는 테스트 후 데이터 삽입 예정
+   // 현재 시간표 확인하기위한 장치
     var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
+    // courseDay String -> Int
     var changeDay = 0
     
+    // 다양한 시간표를 넣어야하는ㄱ ㅕㅇ우
     var varietyDay = [Int]()
     var varietyStartTime = [String]()
     var varietyEndTime = [String]()
     var varietyRoomName = [String]()
     
     
-    var checkUserDay = [Int]()
-    
+    // 시간표 중복 확인 위한 변수들
     var getStartTime = ""
     var getEndTime = ""
     
@@ -52,33 +55,26 @@ class infoCourseData: UIViewController{
     var checkNowStartTime = 0
     var checkNowEndTime = 0
     
-    var setNum = 0
-    
-    
-
-    
+    var setNum = 0 // 시간표 중복을 확인시켜주는 장치
     
     override func viewDidLoad() {
         
-        checkDate()
+        checkDate() // courseDay String -> Int
+        
+        // 시간표 충돌 확인
         changeTimeToInt()
         userCourseDay()
         checkTimeCrash()
         
+        // 두가지 수업 들어올 시
         checkCoursePlaceTwo()
-        
         
         
         navigationBarHidden()
         navigationBackSwipeMotion()
         
         super.viewDidLoad()
-        courseNameTxt.text = courseNameData
-        roomNameTxt.text = roomNameData
-        professorTxt.text = professorData
-        myView.layer.cornerRadius = 12.0
-        myView.layer.borderWidth = 1.0
-        myView.layer.borderColor = UIColor.lightGray.cgColor
+        showCourseData()
 
         // Do any additional setup after loading the view.
     }
@@ -86,53 +82,19 @@ class infoCourseData: UIViewController{
     @IBAction func addBtnClicked(_ sender: Any) {
         
         if changeDay == 7 || setNum == 1 {
-            let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요",
-                message: "확인버튼을 눌러주시기 바랍니다",
-                preferredStyle: UIAlertController.Style.alert)
-            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
-            alert.addAction(cancle)
-            present(alert,animated: true,completion: nil)
-
+            showAlert()
         } else {
-            if varietyDay.count > 1{
+            if varietyDay.count > 1{ // checkCoursePlaceTwo()의 조건을 만족하면 삽입
                 addVarietyCourse()
                 print("variety")
-            }
-            
-            else if setNum == 1 {
-                let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요", message: "확인버튼을 눌러주시기 바랍니다", preferredStyle: UIAlertController.Style.alert)
-                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
-                alert.addAction(cancle)
-                present(alert,animated: true,completion: nil)
                 
-                // 여기서 다른 함수로 조건을 달아줘야 할듯
+            } else if setNum == 1 { // 중복되는 시간표가 있다. --> 나중에 여러가지의 수업을 동시에 넣어야 하는 수업일 때 판단하는 로직 필요
+                showAlert()
             } else {
-                realm.beginWrite()
-                let readUserDB = realm.objects(userDB.self)
-                let courseData = UserCourse()
-                var courseCount = realm.objects(UserCourse.self).count
-                for userData in readUserDB{
-                    if userData.timetableName == checkTimeTable{
-                        courseData.courseId = courseIdData
-                        courseData.courseName = courseNameData
-                        courseData.roomName = roomNameData
-                        courseData.courseDay = changeDay
-                        courseData.professor = professorData
-                        courseData.startTime = startTimeData
-                        courseData.endTime = endTimeData
-                        courseData.courseCount = courseCount
-                        userData.userCourseData.append(courseData)
-                        realm.add(courseData)
-                        realm.add(userData)
-                        print("ee")
-                    }
-                }
-                try! realm.commitWrite()
-                let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
-                self.navigationController?.pushViewController(showVC, animated: true)
-                }
+                writeCourseMyRealm()
             }
         }
+    }
         
 
 
@@ -145,7 +107,7 @@ class infoCourseData: UIViewController{
            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
        }
 
-    func userCourseDay(){ // 월1,2,3 같은 시간표의 경우
+    func userCourseDay(){ // 시간표 중복 확인을 위해 읽어오는 함수
         getStartTimeArray.removeAll()
         // 같은 요일에 두가지 이상의 수업이 있을 경우 추가가 됨.
         let userDB = realm.objects(userDB.self)
@@ -164,7 +126,8 @@ class infoCourseData: UIViewController{
         }
     }
     
-    func checkTimeCrash() { // 그냥 시간표를 추가해주는 경우 ex 월 1,2,3
+    func checkTimeCrash() { // 일반적인 시간표인 경우에 중복을 확인해주는 함수
+        
         if getStartTimeArray.count == 0{
             setNum = 0
             print("Case0")
@@ -203,6 +166,7 @@ class infoCourseData: UIViewController{
 
     func checkCoursePlaceTwo() {
         let checkRoomName: String = roomNameData
+        resetVarietyArray()
         if checkRoomName.components(separatedBy: "),").count > 1 { // 장소가 두개인 경우 varietyDay는 1개이다.
             // 삭제해주는 과정 필요
             
@@ -239,36 +203,36 @@ class infoCourseData: UIViewController{
     }
     
     func addVarietyCourse() {
-        realm.beginWrite()
-
         let readUserDB = realm.objects(userDB.self)
-        let courseData = UserCourse()
+        
         print(varietyDay.count)
-        for i in 0..<varietyDay.count{
-            for userData in readUserDB{
+        for userData in readUserDB{
                 if userData.timetableName == checkTimeTable{
-                    courseData.courseId = "-"
-                    courseData.courseName = courseNameData
-                    courseData.roomName = varietyRoomName[i]
-                    courseData.courseDay = varietyDay[i]
-                    courseData.professor = professorData
-                    courseData.startTime = varietyStartTime[i]
-                    courseData.endTime = varietyEndTime[i]
-                    courseData.courseCount = i
-                    userData.userCourseData.append(courseData)
-                    realm.add(courseData)
-                    realm.add(userData)
-                    print("\(i) 번째 삽입")
-                    print("ee")
+                    for i in 0..<varietyDay.count{
+                        let courseDB = UserCourse() // 이라ㅜㅁㄴ룸 무메ㅜ
+                        realm.beginWrite()
+                        courseDB.courseId = "-"
+                        courseDB.courseName = courseNameData
+                        courseDB.roomName = varietyRoomName[i]
+                        courseDB.courseDay = varietyDay[i]
+                        courseDB.professor = professorData
+                        courseDB.startTime = varietyStartTime[i]
+                        courseDB.endTime = varietyEndTime[i]
+                        courseDB.courseCount = i
+                        userData.userCourseData.append(courseDB)
+                        realm.add(courseDB)
+                        realm.add(userData)
+                        print("\(i) 번째 삽입")
+                        print("ee")
+                        try! realm.commitWrite()
+
                 }
             }
-
-    }
-        try! realm.commitWrite()
-
+        }
+        
+        
        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
        self.navigationController?.pushViewController(showVC, animated: true)
-        
     }
     
     
@@ -363,6 +327,57 @@ class infoCourseData: UIViewController{
         
     }
     
+
+    
+    func showAlert() {
+        let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요", message: "확인버튼을 눌러주시기 바랍니다", preferredStyle: UIAlertController.Style.alert)
+        let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(cancle)
+        present(alert,animated: true,completion: nil)
+    }
+    
+    func showCourseData(){ // 시간표 정보 보여주기
+        courseNameTxt.text = courseNameData
+        roomNameTxt.text = roomNameData
+        professorTxt.text = professorData
+        myView.layer.cornerRadius = 12.0
+        myView.layer.borderWidth = 1.0
+        myView.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func writeCourseMyRealm(){ // 시간표 삽입
+        realm.beginWrite()
+        let readUserDB = realm.objects(userDB.self)
+        let courseData = UserCourse()
+        var courseCount = realm.objects(UserCourse.self).count
+        for userData in readUserDB{
+            if userData.timetableName == checkTimeTable{
+                courseData.courseId = courseIdData
+                courseData.courseName = courseNameData
+                courseData.roomName = roomNameData
+                courseData.courseDay = changeDay
+                courseData.professor = professorData
+                courseData.startTime = startTimeData
+                courseData.endTime = endTimeData
+                courseData.courseCount = courseCount
+                userData.userCourseData.append(courseData)
+                realm.add(courseData)
+                realm.add(userData)
+                print("ee")
+            }
+        }
+        try! realm.commitWrite()
+        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+        self.navigationController?.pushViewController(showVC, animated: true)
+    }
+    
+    func resetVarietyArray(){ // 다른 강의 누를 때 데이터 초기화 위함
+        varietyDay.removeAll()
+        varietyStartTime.removeAll()
+        varietyEndTime.removeAll()
+        varietyRoomName.removeAll()
+    }
+    
     func changeTimeToInt(){
         switch startTimeData{
         case "9:30": checkNowStartTime = 930
@@ -441,7 +456,6 @@ class infoCourseData: UIViewController{
         }
     }
     
-
 }
     
     /*
