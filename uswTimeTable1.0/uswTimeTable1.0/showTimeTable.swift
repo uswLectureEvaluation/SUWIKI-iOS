@@ -93,7 +93,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             for getData in dataCheck{
                 if getData.userCourseData.count != 0 {
                     for i in 0...getData.userCourseData.count-1 {
-                        var appendData = ElliottEvent(courseId: getData.userCourseData[i].courseId, courseName: getData.userCourseData[i].courseName, roomName: getData.userCourseData[i].roomName, professor: getData.userCourseData[i].professor, courseDay: ElliotDay.init(rawValue: getData.userCourseData[i].courseDay)!, startTime: getData.userCourseData[i].startTime, endTime: getData.userCourseData[i].endTime, backgroundColor: randomColor(x: i))
+                        let appendData = ElliottEvent(courseId: getData.userCourseData[i].courseId, courseName: getData.userCourseData[i].courseName, roomName: getData.userCourseData[i].roomName, professor: getData.userCourseData[i].professor, courseDay: ElliotDay.init(rawValue: getData.userCourseData[i].courseDay)!, startTime: getData.userCourseData[i].startTime, endTime: getData.userCourseData[i].endTime, backgroundColor: randomColor(x: i))
                         courseList.append(appendData)
                     }
             }
@@ -106,7 +106,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         var rand = x
         switch rand{
         case 0:
-            return UIColor(red: 0.75, green: 0.83, blue: 0.95, alpha: 1.00)
+            return UIColor(red: 0.69, green: 1.00, blue: 0.64, alpha: 1.00)
         case 1:
             return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
         case 2:
@@ -116,13 +116,13 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         case 4:
             return UIColor(red: 0.92, green: 0.59, blue: 0.58, alpha: 1.00)
         case 5:
-            return UIColor(red: 0.69, green: 1.00, blue: 0.64, alpha: 1.00)
+            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
         case 6:
             return UIColor(red: 0.69, green: 1.00, blue: 1.00, alpha: 0.34)
         case 7:
             return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
         case 8:
-            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
+            return UIColor(red: 0.75, green: 0.83, blue: 0.95, alpha: 1.00)
         default:
             return UIColor.darkGray
     }
@@ -151,11 +151,15 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     
     
     func elliotable(elliotable: Elliotable, didSelectCourse selectedCourse: ElliottEvent) {
+        
         var userData: String = UserDefaults.standard.string(forKey: "name") ?? ""
-        var deleteCourse = selectedCourse.courseName
-        var deleteProfessor = selectedCourse.professor
-        var deleteRoomName = selectedCourse.roomName
-        var deleteIndex: Int = courseList.firstIndex(where: { $0.courseName == "\(deleteCourse)" }) ?? 0
+        
+        let deleteCourse = selectedCourse.courseName
+        let deleteProfessor = selectedCourse.professor
+        let deleteCourseId = selectedCourse.courseId
+        
+        let deleteIndex: Int = courseList.firstIndex(where: { $0.courseName == "\(deleteCourse)" && $0.courseId == "\(deleteCourseId)"}) ?? 0
+        
         print(deleteIndex)
         print(deleteCourse)
         let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", userData)
@@ -171,7 +175,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             })
             
             let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
-                courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.roomName == "\(deleteRoomName)" })
+                courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.courseId == "\(deleteCourseId)" })
                 print(courseList)
                 print("Delete button tapped")
                 
