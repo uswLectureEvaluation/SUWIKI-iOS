@@ -35,6 +35,7 @@ class infoCourseData: UIViewController{
     var varietyDay = [Int]()
     var varietyStartTime = [String]()
     var varietyEndTime = [String]()
+    var varietyRoomName = [String]()
     
     
     var checkUserDay = [Int]()
@@ -64,7 +65,7 @@ class infoCourseData: UIViewController{
         userCourseDay()
         checkTimeCrash()
         
-        checkRoomName()
+        checkCoursePlaceTwo()
         
         
         
@@ -93,20 +94,23 @@ class infoCourseData: UIViewController{
             present(alert,animated: true,completion: nil)
 
         } else {
-            realm.beginWrite()
-            let readUserDB = realm.objects(userDB.self)
-            let courseData = UserCourse()
-            var courseCount = realm.objects(UserCourse.self).count
+            if varietyDay.count > 1{
+                addVarietyCourse()
+                print("variety")
+            }
             
-            
-            if setNum == 1 {
+            else if setNum == 1 {
                 let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요", message: "확인버튼을 눌러주시기 바랍니다", preferredStyle: UIAlertController.Style.alert)
                 let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
                 alert.addAction(cancle)
                 present(alert,animated: true,completion: nil)
                 
-                
+                // 여기서 다른 함수로 조건을 달아줘야 할듯
             } else {
+                realm.beginWrite()
+                let readUserDB = realm.objects(userDB.self)
+                let courseData = UserCourse()
+                var courseCount = realm.objects(UserCourse.self).count
                 for userData in readUserDB{
                     if userData.timetableName == checkTimeTable{
                         courseData.courseId = courseIdData
@@ -141,7 +145,7 @@ class infoCourseData: UIViewController{
            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
        }
 
-    func userCourseDay(){
+    func userCourseDay(){ // 월1,2,3 같은 시간표의 경우
         getStartTimeArray.removeAll()
         // 같은 요일에 두가지 이상의 수업이 있을 경우 추가가 됨.
         let userDB = realm.objects(userDB.self)
@@ -160,8 +164,7 @@ class infoCourseData: UIViewController{
         }
     }
     
-    func checkTimeCrash() {
-        
+    func checkTimeCrash() { // 그냥 시간표를 추가해주는 경우 ex 월 1,2,3
         if getStartTimeArray.count == 0{
             setNum = 0
             print("Case0")
@@ -198,37 +201,74 @@ class infoCourseData: UIViewController{
         }
     }
 
-    func checkRoomName() {
+    func checkCoursePlaceTwo() {
         let checkRoomName: String = roomNameData
-        if checkRoomName.components(separatedBy: "),").count > 1 {
+        if checkRoomName.components(separatedBy: "),").count > 1 { // 장소가 두개인 경우 varietyDay는 1개이다.
+            // 삭제해주는 과정 필요
+            
             let splitRoomName = checkRoomName.components(separatedBy: "),")
-            // if splitcount > 2 쪼갠 후에 앞의 (뒤 단어 and 뒤의 (뒤 단어
-            print(splitRoomName[0])
-            print(splitRoomName[1])
-            print(splitRoomName.count)
-            let splitFirstRoomName = splitRoomName[0].components(separatedBy: "(")
-            let firstRoomCourseDay = splitFirstRoomName[1].first ?? "토"
-            let firstTime = splitFirstRoomName[1].components(separatedBy: ",")
-            let firstStartTime = firstTime[0].last ?? "0"
-            let firstEndTime = firstTime[1].first ?? "0"
             
-          //  changePeriodToStartTime(changePeriod: firstStartTime)
-           // changePeriodToEndTime(changePeriod: firstEndTime
-            //changeDayToInt(checkDay: firstRoomCourseDay)
             
-            let splitSecondRoomName = splitRoomName[1].components(separatedBy: "(")
+            let splitFirstRoomName = splitRoomName[0].components(separatedBy: "(") // firstRoom[0] == roomName, [1] == 화 3,4
+            let firstRoomCourseDay = splitFirstRoomName[1].first ?? "토" // 요일
+            let firstTime = splitFirstRoomName[1].components(separatedBy: ",") // 시간
+            let firstStartTime = firstTime[0].last ?? "0" // 마지막 글자 화1 -> 1
+            let firstEndTime = firstTime[1].first ?? "0" // ,4로 쪼개졌기에 4가 출ㄹ력
+            varietyRoomName.append(splitFirstRoomName[0])
+            changeDayToInt(checkDay: firstRoomCourseDay)
+            changePeriodToStartTime(changePeriod: firstStartTime)
+            changePeriodToEndTime(changePeriod: firstEndTime)
+            
+            let splitSecondRoomName = splitRoomName[1].components(separatedBy: "(")  // secondRoom[0] == roomName, [1] == 화 1,2
+            
             let secondRoomCourseDay = splitSecondRoomName[1].first ?? "토"
+            let secondTime = splitSecondRoomName[1].components(separatedBy: ",")
+            let secondStartTime = secondTime[0].last ?? "0"
+            let secondEndTime = secondTime[1].first ?? "0"
             changeDayToInt(checkDay: secondRoomCourseDay)
-            
-            print(firstRoomCourseDay) // 화
-            print(splitFirstRoomName) // firstRoom[0] == roomName [1] == 화 3,4
-            print(firstTime)
-            print(firstStartTime)
-            print(firstEndTime)
-            print(secondRoomCourseDay) // 화
-            print(splitSecondRoomName) // secondRoom[0] == roomName [1] == 화 1,2
+            changePeriodToStartTime(changePeriod: secondStartTime)
+            changePeriodToEndTime(changePeriod: secondEndTime)
+            varietyRoomName.append(splitSecondRoomName[0])
+
+            print(varietyRoomName)
             print(varietyDay)
-                              }
+            print(varietyStartTime)
+            print(varietyEndTime)
+            print(courseDayData)
+        }
+    }
+    
+    func addVarietyCourse() {
+        realm.beginWrite()
+
+        let readUserDB = realm.objects(userDB.self)
+        let courseData = UserCourse()
+        print(varietyDay.count)
+        for i in 0..<varietyDay.count{
+            for userData in readUserDB{
+                if userData.timetableName == checkTimeTable{
+                    courseData.courseId = "-"
+                    courseData.courseName = courseNameData
+                    courseData.roomName = varietyRoomName[i]
+                    courseData.courseDay = varietyDay[i]
+                    courseData.professor = professorData
+                    courseData.startTime = varietyStartTime[i]
+                    courseData.endTime = varietyEndTime[i]
+                    courseData.courseCount = i
+                    userData.userCourseData.append(courseData)
+                    realm.add(courseData)
+                    realm.add(userData)
+                    print("\(i) 번째 삽입")
+                    print("ee")
+                }
+            }
+
+    }
+        try! realm.commitWrite()
+
+       let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+       self.navigationController?.pushViewController(showVC, animated: true)
+        
     }
     
     
@@ -249,48 +289,58 @@ class infoCourseData: UIViewController{
             varietyDay.append(7)
         }
     }
-    /*
+    
+    
     func changePeriodToStartTime(changePeriod: Character){
         switch changePeriod{
         case "1":
             varietyStartTime.append("9:30")
         case "2":
-            varietyStartTime.append("9:30")
+            varietyStartTime.append("10:30")
         case "3":
-            varietyStartTime.append("9:30")
+            varietyStartTime.append("11:30")
         case "4":
-            varietyStartTime.append("9:30")
+            varietyStartTime.append("12:30")
         case "5":
-            varietyStartTime.append("9:30")
+            varietyStartTime.append("13:30")
         case "6":
-            varietyStartTime.append("9:30")
+            varietyStartTime.append("14:30")
         case "7":
-            varietyStartTime.append("9:30")
+            varietyStartTime.append("15:30")
         case "8":
-            varietyStartTime.append("9:30")
+            varietyStartTime.append("16:30")
         case "9":
-            varietyStartTime.append("9:30")
-        case "":
-            varietyStartTime.append("9:30")
-        case "금":
-            varietyDay.append(5)
-        case "금":
-            varietyDay.append(5)
-        case "금":
-            varietyDay.append(5)
-        case "금":
-            varietyDay.append(5)
-            
+            varietyStartTime.append("17:30")
         default:
-            varietyDay.append(7)
+            varietyStartTime.append("0")
         }
     }
     
     func changePeriodToEndTime(changePeriod: Character){
-        
+        switch changePeriod{
+        case "1":
+            varietyEndTime.append("10:20")
+        case "2":
+            varietyEndTime.append("11:20")
+        case "3":
+            varietyEndTime.append("12:20")
+        case "4":
+            varietyEndTime.append("13:20")
+        case "5":
+            varietyEndTime.append("14:20")
+        case "6":
+            varietyEndTime.append("15:20")
+        case "7":
+            varietyEndTime.append("16:20")
+        case "8":
+            varietyEndTime.append("17:20")
+        case "9":
+            varietyEndTime.append("18:20")
+        default:
+            varietyEndTime.append("0")
+        }
     }
-   */
-    
+       
     
     func checkDate(){
         
@@ -305,6 +355,8 @@ class infoCourseData: UIViewController{
             changeDay = 4
         case "금":
             changeDay = 5
+        case "temp":
+            changeDay = 0
         default:
             changeDay = 7
         }
