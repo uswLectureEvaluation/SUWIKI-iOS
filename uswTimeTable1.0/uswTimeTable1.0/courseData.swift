@@ -12,7 +12,7 @@ class Course: Codable{
     let roomName: String
     let professor: String
     let major: String
-    let classification: String
+    let classification: String 
     let courseDay: String
     let startTime: String
     let endTime: String

@@ -535,7 +535,7 @@
                                 <rect key="frame" x="20" y="152" width="374" height="630"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="courseName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxm-2T-ZXQ">
-                                        <rect key="frame" x="19" y="47" width="314" height="50"/>
+                                        <rect key="frame" x="19" y="47" width="340" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -644,7 +644,7 @@
                                     <constraint firstItem="gJ1-tg-PkB" firstAttribute="trailing" secondItem="eS7-wi-VM7" secondAttribute="trailing" id="omd-aF-kq3"/>
                                     <constraint firstItem="sKR-Fi-Sgs" firstAttribute="trailing" secondItem="Q41-iE-LlH" secondAttribute="trailing" id="tSq-to-GLe"/>
                                     <constraint firstAttribute="bottom" secondItem="HWE-FC-lOI" secondAttribute="bottom" constant="70" id="uqs-Ec-3Rp"/>
-                                    <constraint firstAttribute="trailing" secondItem="Kxm-2T-ZXQ" secondAttribute="trailing" constant="41" id="xE8-fr-nVZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kxm-2T-ZXQ" secondAttribute="trailing" constant="15" id="xE8-fr-nVZ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수업 정보" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ela-Ku-tqe">

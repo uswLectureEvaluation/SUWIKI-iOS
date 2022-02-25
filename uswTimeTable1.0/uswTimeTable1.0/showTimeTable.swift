@@ -106,23 +106,27 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         var rand = x
         switch rand{
         case 0:
-            return UIColor(red: 0.69, green: 1.00, blue: 0.64, alpha: 1.00)
+            return UIColor(red: 0.1059, green: 0.6118, blue: 0.9882, alpha: 1.0) /* #1b9cfc */
         case 1:
-            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
+            return UIColor(red: 0.2314, green: 0.2314, blue: 0.5961, alpha: 1.0) /* #3b3b98 */
         case 2:
-            return UIColor(red: 0.83, green: 0.77, blue: 0.98, alpha: 1.00)
+            return UIColor(red: 0.8392, green: 0.6353, blue: 0.9098, alpha: 1.0) /* #d6a2e8 */
         case 3:
-            return UIColor(red: 0.99, green: 0.80, blue: 0.00, alpha: 1.00)
+            return UIColor(red: 0.9922, green: 0.4471, blue: 0.4471, alpha: 1.0) /* #fd7272 */
         case 4:
-            return UIColor(red: 0.92, green: 0.59, blue: 0.58, alpha: 1.00)
+            return UIColor(red: 0.3333, green: 0.902, blue: 0.7569, alpha: 1.0) /* #55e6c1 */
         case 5:
-            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
+            return UIColor(red: 0.3451, green: 0.6941, blue: 0.6235, alpha: 1.0) /* #58b19f */
         case 6:
-            return UIColor(red: 0.69, green: 1.00, blue: 1.00, alpha: 0.34)
+            return UIColor(red: 0.6039, green: 0.9255, blue: 0.8588, alpha: 1.0) /* #9aecdb */
         case 7:
-            return UIColor(red: 0.07, green: 0.45, blue: 0.87, alpha: 1.00)
+            return UIColor(red: 0.7922, green: 0.8275, blue: 0.7843, alpha: 1.0) /* #cad3c8 */
         case 8:
-            return UIColor(red: 0.75, green: 0.83, blue: 0.95, alpha: 1.00)
+            return UIColor(red: 0.9765, green: 0.498, blue: 0.3176, alpha: 1.0) /* #f97f51 */
+        case 9:
+            return UIColor(red: 0.9961, green: 0.6431, blue: 0.498, alpha: 1.0) /* #fea47f */
+        case 10:
+            return UIColor(red: 0.9176, green: 0.7098, blue: 0.2627, alpha: 1.0) /* #eab543 */
         default:
             return UIColor.darkGray
     }
