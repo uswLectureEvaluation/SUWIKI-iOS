@@ -242,11 +242,10 @@ class infoCourseData: UIViewController{
             }
         } else if nowStartTimeArray.count > 0{
             if varietyDay[0] == varietyDay[1]{ // 물리학 및 실험
+                print("물리학")
                 for i in 0..<getStartTimeArray.count{
                     for j in 0..<nowStartTimeArray.count{
-                        if getCourseDayArray.count == 0{
-                            setNum = 0
-                        } else if getStartTimeArray[i] < nowStartTimeArray[j] && getEndTimeArray[i] > nowStartTimeArray[j]{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
+                        if getStartTimeArray[i] < nowStartTimeArray[j] && getEndTimeArray[i] > nowStartTimeArray[j]{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
                             setNum = 1
                             break
                         } else if getStartTimeArray[i] < nowEndTimeArray[j] && getEndTimeArray[i] > nowEndTimeArray[j]{ // 추가할 시간표 끝 시간이 존재 시간표 사이에 있다
@@ -254,10 +253,15 @@ class infoCourseData: UIViewController{
                             break
                         } else if getStartTimeArray[i] == nowStartTimeArray[j] || getEndTimeArray[i] == nowEndTimeArray[j] {
                             setNum = 1
+                            print("들어가야하는곳")
                             break
                         } else {
+                            print("setnum0")
                             setNum = 0
                         }
+                    }
+                    if setNum == 1 {
+                        break
                     }
                 }
                 
@@ -265,6 +269,7 @@ class infoCourseData: UIViewController{
             }
             else if varietyDay[0] != varietyDay[1] { // 관현악
                 for i in 0..<getStartTimeArray.count{
+                    print("관현악")
                     if getCourseDayArray.count == 0{
                         setNum = 0
                     } else if varietyDay[0] == getCourseDayArray[i]{
