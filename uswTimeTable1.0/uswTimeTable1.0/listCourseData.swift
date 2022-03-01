@@ -26,7 +26,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var courseData = [String]()
     let dropDown1 = DropDown()
     let numList = ["전체", "1", "2", "3", "4"] // 기존 수업 정보
-    let majorList = ["전체"]
+    let majorList = ["전체","정보보호"]
     
     
     var filteredUswCourse: Array<Course> = []
