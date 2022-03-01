@@ -13,6 +13,7 @@ class infoCourseData: UIViewController{
 
     let realm = try! Realm()
     
+    @IBOutlet weak var classificationTxt: UILabel!
     @IBOutlet weak var courseNameTxt: UILabel!
     @IBOutlet weak var roomNameTxt: UILabel!
     @IBOutlet weak var professorTxt: UILabel!
@@ -160,7 +161,7 @@ class infoCourseData: UIViewController{
                 print("read2")
             }
         } else if nowStartTimeArray.count == 3{
-            
+            readCoruse3()
         }
         // 변경된 string -> Int 후에 nowStartTimeArray에 삽입
     }
@@ -203,6 +204,25 @@ class infoCourseData: UIViewController{
         }
     }
     
+    func readCoruse3() {
+        let userDB = realm.objects(userDB.self).filter("timetableName == %s", checkTimeTable)
+        for userData in userDB{
+            for i in 0..<userData.userCourseData.count{
+                for j in 0...2{
+                    if userData.userCourseData[i].courseDay == varietyDay[j] {
+                        getStartTime = userData.userCourseData[i].startTime
+                        getEndTime = userData.userCourseData[i].endTime
+                        getCourseDay = userData.userCourseData[i].courseDay
+                        changeTimeToInt()
+                        print(getCourseDay)
+                        getCourseDayArray.append(getCourseDay)
+                        getStartTimeArray.append(checkGetStartTime)
+                        getEndTimeArray.append(checkGetEndTime)                    }
+                }
+            }
+        }
+    }
+    
     func checkTimeCrash() { // 일반적인 시간표인 경우에 중복을 확인해주는 함수
         
         if nowStartTimeArray.count == 0{
@@ -217,8 +237,6 @@ class infoCourseData: UIViewController{
                     setNum = 1
                 } else if checkGetStartTime == checkNowStartTime || checkGetEndTime == checkNowEndTime {
                     setNum = 1
-                } else {
-                    setNum = 0
                 }
                 print("Case1")
                 
@@ -233,14 +251,12 @@ class infoCourseData: UIViewController{
                     } else if getStartTimeArray[i] == checkNowStartTime || getEndTimeArray[i] == checkNowEndTime { // a or b 로 해줘야 함.
                         setNum = 1
                         break
-                    } else {
-                        setNum = 0
                     }
                 }
                 print("Case2")
 
             }
-        } else if nowStartTimeArray.count > 0{
+        } else if nowStartTimeArray.count == 2{
             if varietyDay[0] == varietyDay[1]{ // 물리학 및 실험
                 print("물리학")
                 for i in 0..<getStartTimeArray.count{
@@ -255,9 +271,6 @@ class infoCourseData: UIViewController{
                             setNum = 1
                             print("들어가야하는곳")
                             break
-                        } else {
-                            print("setnum0")
-                            setNum = 0
                         }
                     }
                     if setNum == 1 {
@@ -267,6 +280,7 @@ class infoCourseData: UIViewController{
                 
                 
             }
+            
             else if varietyDay[0] != varietyDay[1] { // 관현악
                 for i in 0..<getStartTimeArray.count{
                     print("관현악")
@@ -282,10 +296,8 @@ class infoCourseData: UIViewController{
                         } else if getStartTimeArray[i] == nowStartTimeArray[0] || getEndTimeArray[i] == nowEndTimeArray[0] {
                             setNum = 1
                             break
-                        } else {
-                            setNum = 0
                         }
-                        
+                
                     } else if varietyDay[1] == getCourseDayArray[i]{
                         if getStartTimeArray[i] < nowStartTimeArray[1] && getEndTimeArray[i] > nowStartTimeArray[1] {
                             setNum = 1
@@ -296,17 +308,58 @@ class infoCourseData: UIViewController{
                         } else if getStartTimeArray[i] == nowStartTimeArray[1] || getEndTimeArray[i] == nowEndTimeArray[1] {
                             setNum = 1
                             break
-                        } else {
-                            setNum = 0
                         }
                     }
-                
+                }
             }
+                
         } else if nowStartTimeArray.count == 3{
-            
+            print("nowstarttime3")      // 월 5,6 화 5,6 수 5,6 같은 경우
+            for i in 0..<getCourseDayArray.count{
+                if getCourseDayArray.count == 0{
+                    setNum = 0
+                    
+                } else if varietyDay[0] == getCourseDayArray[i]{
+                    if getStartTimeArray[i] < nowStartTimeArray[0] && getEndTimeArray[i] > nowStartTimeArray[0] {
+                        setNum = 1
+                        break
+                    } else if getStartTimeArray[i] < nowEndTimeArray[0] && getEndTimeArray[i] > nowEndTimeArray[0]{
+                        setNum = 1
+                        break
+                    } else if getStartTimeArray[i] == nowStartTimeArray[0] || getEndTimeArray[i] == nowEndTimeArray[0] {
+                        setNum = 1
+                        break
+                    }
+                    
+                } else if varietyDay[1] == getCourseDayArray[i]{
+                    if getStartTimeArray[i] < nowStartTimeArray[1] && getEndTimeArray[i] > nowStartTimeArray[1] {
+                        setNum = 1
+                        break
+                    } else if getStartTimeArray[i] < nowEndTimeArray[1] && getEndTimeArray[i] > nowEndTimeArray[1]{
+                        setNum = 1
+                        break
+                    } else if getStartTimeArray[i] == nowStartTimeArray[1] || getEndTimeArray[i] == nowEndTimeArray[1] {
+                        setNum = 1
+                        break
+                    }
+                    
+                } else if varietyDay[2] == getCourseDayArray[i]{
+                    if getStartTimeArray[i] < nowStartTimeArray[2] && getEndTimeArray[i] > nowStartTimeArray[2] {
+                        setNum = 1
+                        break
+                    } else if getStartTimeArray[i] < nowEndTimeArray[2] && getEndTimeArray[i] > nowEndTimeArray[2]{
+                        setNum = 1
+                        break
+                    } else if getStartTimeArray[i] == nowStartTimeArray[2] || getEndTimeArray[i] == nowEndTimeArray[2] {
+                        setNum = 1
+                        break
+                        
+                    }
+                }
+            }
         }
     }
-}
+
 
     func checkCourseHaveSpace(){ // 괄호 안에 공백있는지 판별
 
@@ -675,7 +728,7 @@ class infoCourseData: UIViewController{
         
     }
     func showAlert() {
-        let alert = UIAlertController(title:"죄송해요..ㅠㅠ 추가할 수 없어요", message: "확인버튼을 눌러주시기 바랍니다", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title:"이미 겹치는 시간표가 있네요!", message: "중복해서 추가할 수 없어요!", preferredStyle: UIAlertController.Style.alert)
         let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(cancle)
         present(alert,animated: true,completion: nil)
@@ -685,6 +738,7 @@ class infoCourseData: UIViewController{
         courseNameTxt.text = courseNameData
         roomNameTxt.text = roomNameData
         professorTxt.text = professorData
+        classificationTxt.text = classificationData
         myView.layer.cornerRadius = 12.0
         myView.layer.borderWidth = 1.0
         myView.layer.borderColor = UIColor.lightGray.cgColor

@@ -26,6 +26,8 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var courseData = [String]()
     let dropDown1 = DropDown()
     let numList = ["전체", "1", "2", "3", "4"] // 기존 수업 정보
+    let majorList = ["전체"]
+    
     
     var filteredUswCourse: Array<Course> = []
     
@@ -154,6 +156,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         infoVC.courseDayData = filteredUswCourse[indexPath.row].courseDay
         infoVC.startTimeData = filteredUswCourse[indexPath.row].startTime
         infoVC.endTimeData = filteredUswCourse[indexPath.row].endTime
+        infoVC.classificationData = filteredUswCourse[indexPath.row].classification
         infoVC.checkTimeTable = self.checkTimeTable
         self.navigationController?.pushViewController(infoVC, animated: true)
     }
