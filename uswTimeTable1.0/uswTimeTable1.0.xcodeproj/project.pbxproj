@@ -10,6 +10,7 @@
 		1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
+		AF50233F27C378FB0030CF5D /* courseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50233E27C378FB0030CF5D /* courseData.swift */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
 		AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF82277F160900408F46 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
+		AF50233E27C378FB0030CF5D /* courseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = courseData.swift; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
 		AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uswTimeTable1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 				AFA725442781B6D1003EE008 /* firstSceneCheck.swift */,
 				AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */,
 				AF7AA1C527831F8500996874 /* showTimeTable.swift */,
+				AF50233E27C378FB0030CF5D /* courseData.swift */,
 				AFE696CC27BBCD0500262BEF /* listTimeTable.swift */,
 				AFE69751279F16BD00FB2BC7 /* listCourseData.swift */,
 				AFED499927ABD0B500CE242D /* infoCourseData.swift */,
@@ -266,6 +269,7 @@
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
 				AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */,
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
+				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

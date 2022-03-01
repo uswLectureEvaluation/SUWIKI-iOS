@@ -11,9 +11,8 @@ import Accessibility
 import UIKit
 import Elliotable
 
-class testCourseData: Object{
+class CourseData: Object{
    
-    @objc dynamic var courseId: String = ""
     @objc dynamic var courseName: String = ""
     @objc dynamic var roomName: String = ""
     @objc dynamic var professor: String = ""
@@ -25,12 +24,11 @@ class testCourseData: Object{
     @objc dynamic var credit: Int = 0
     @objc dynamic var num: Int = 0
     @objc dynamic var classNum: String = ""
-    @objc dynamic var time: String = ""
-    @objc dynamic var dbCnt: Int = 0
+
 
 }
 
-class testUserCourse: Object{
+class UserCourse: Object{
     
     @objc dynamic var courseId: String = ""
     @objc dynamic var courseName: String = ""
@@ -49,7 +47,7 @@ class userDB: Object{
     @objc dynamic var year: String = ""
     @objc dynamic var semester: String = ""
     @objc dynamic var timetableName: String = ""
-    let userCourseData = List<testUserCourse>()
+    let userCourseData = List<UserCourse>()
 }
 
 

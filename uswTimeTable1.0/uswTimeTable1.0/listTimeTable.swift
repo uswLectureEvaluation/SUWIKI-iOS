@@ -13,11 +13,11 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
     @IBOutlet weak var tableView: UITableView!
     let realm = try! Realm()
     
-    var userYear = [String]()
-    var userSeme = [String]()
-    var userName = [String]()
+    var uswUser: Array<userTable> = []
     
     override func viewDidLoad() {
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         readData()
         super.viewDidLoad()
 
@@ -26,35 +26,75 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
     
     func readData(){
         let userDB = realm.objects(userDB.self)
-        var readYear = String()
-        var readSeme = String()
-        var readName = String()
         for i in 0...userDB.count-1{
-            readYear = userDB[i].year
-            readSeme = userDB[i].semester
-            readName = userDB[i].timetableName
-            userYear.append(readYear)
-            userSeme.append(readSeme)
-            userName.append(readName)
+            var readData = userTable(year: userDB[i].year , semester: userDB[i].semester, timetableName: userDB[i].timetableName)
+            uswUser.append(readData)
             tableView?.reloadData()
         }
         
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userYear.count
+        return uswUser.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! timetableCell
-        myCell.nameTxtField.text = userName[indexPath.row]
-        myCell.yearTxtField.text = "\(userYear[indexPath.row])년"
-        myCell.semeTxtField.text = "\(userSeme[indexPath.row])학기"
-        myCell.listView.layer.borderWidth = 1.0
-        myCell.listView.layer.borderColor = UIColor.lightGray.cgColor
-        myCell.listView.layer.cornerRadius = 12.0
+        myCell.nameTxtField.text = uswUser[indexPath.row].timetableName
+        myCell.yearTxtField.text = "\(uswUser[indexPath.row].year)년"
+        myCell.semeTxtField.text = "\(uswUser[indexPath.row].semester)학기"
+        myCell.delBtn.tag = indexPath.row
+        myCell.delBtn.addTarget(self, action: #selector(btnaction), for: .touchUpInside)
+     
+        
+        
         return myCell
     }
+    
+    @objc func btnaction(sender: UIButton)
+    {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let myCell = uswUser[indexPath.row].timetableName
+        
+        let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", myCell)
+        
+        let removeAlert = UIAlertController(title: myCell, message: "삭제 하시겠어요?", preferredStyle: UIAlertController.Style.alert)
+        
+        let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
+            uswUser.removeAll(where: { $0.timetableName == "\(myCell)"})
+            print("Delete button tapped")
+            
+            for mydata in deleteDB{
+            try! realm.write{
+                realm.delete(mydata)
+                }
+            }
+            
+            tableView.reloadData()
+            tableView?.beginUpdates()
+            tableView.endUpdates()
+            
+            UserDefaults.standard.removeObject(forKey: "name")
+            
+            if realm.objects(userDB.self).count > 0{
+                UserDefaults.standard.set(uswUser[0].timetableName, forKey: "name")
+            } else {
+                let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
+                self.navigationController?.pushViewController(firstVC, animated: true)
+            }
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        removeAlert.addAction(deleteButton)
+        removeAlert.addAction(cancelButton)
+        self.navigationController!.present(removeAlert, animated: true, completion: nil)
+        
+    }
+
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
@@ -63,11 +103,21 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
         UserDefaults.standard.removeObject(forKey: "name")
-        UserDefaults.standard.set(userName[indexPath.row], forKey: "name")
+        UserDefaults.standard.set(uswUser[indexPath.row].timetableName, forKey: "name")
         print(UserDefaults.standard.string(forKey: "name"))
         self.navigationController?.pushViewController(showVC, animated: true)
     }
     
+   
+ 
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+
     
     /*
     // MARK: - Navigation
@@ -82,10 +132,21 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
 }
 
 class timetableCell: UITableViewCell {
-    
+
+    @IBOutlet weak var delBtn: UIButton!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var yearTxtField: UILabel!
     @IBOutlet weak var semeTxtField: UILabel!
     @IBOutlet weak var nameTxtField: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 12.0
+}
+    
     
 }

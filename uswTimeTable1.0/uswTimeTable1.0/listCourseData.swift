@@ -16,28 +16,37 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     let realm = try! Realm()
     
     @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var numDropDown: UIView!
     @IBOutlet weak var choiceNumDropDown: UILabel!
     
-    var courseId = [String]()
-    var courseName = [String]()
-    var roomName = [String]()
-    var professor = [String]()
-    var startTime = [String]()
-    var endTime = [String]()
-    var major = [String]()
-    var classification = [String]()
-    var num = [Int]()
-    var courseDay = [String]()
+    
+    var uswCourse: Array<Course> = []
+    
     var courseData = [String]()
     let dropDown1 = DropDown()
-    let numList = ["1", "2", "3", "4"]
+    let numList = ["전체", "1", "2", "3", "4"] // 기존 수업 정보
+    let majorList = ["전체"]
+    
+    
+    var filteredUswCourse: Array<Course> = []
+    
+    
+    
     var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        print(checkTimeTable)
+
+        
+        searchBar.delegate = self
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         readFirstData()
+        filteredUswCourse = uswCourse
+        
+        
         dropDown1.anchorView = numDropDown
         dropDown1.dataSource = numList
         dropDown1.bottomOffset = CGPoint(x: 0, y:(dropDown1.anchorView?.plainView.bounds.height)!)
@@ -65,7 +74,11 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
                 removeArray()
                 print(choiceNumDropDown.text!)
                 selectNumData(checkNum: 4)
+            } else if choiceNumDropDown.text! == "전체"{
+                removeArray()
+                readFirstData()
             }
+                        
         }// Do any additional setup after loading the view.
     }
     
@@ -76,133 +89,97 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func removeArray() {
-        courseId.removeAll()
-        startTime.removeAll()
-        endTime.removeAll()
-        courseName.removeAll()
-        roomName.removeAll()
-        professor.removeAll()
-        major.removeAll()
-        classification.removeAll()
-        num.removeAll()
+        uswCourse.removeAll()
+        filteredUswCourse.removeAll()
     }
     
+
+    
     func selectNumData(checkNum: Int){
-        let courseDB = realm.objects(testCourseData.self)
-        var readCI = String() // courseid
-        var readCN = String() // coursename
-        var readRN = String() // roomname
-        var readPR = String() // professor
-        var readMJ = String() // major
-        var readCF = String() // classfication
-        var readNM = Int() // num
-        var readST = String() // starttime
-        var readET = String() // endtime
-        var readCD = String()
+        let courseDB = realm.objects(CourseData.self)
         for i in 0...courseDB.count-1{
             if courseDB[i].num == checkNum {
-                readCI = courseDB[i].courseId
-                readCN = courseDB[i].courseName
-                readRN = courseDB[i].roomName
-                readPR = courseDB[i].professor
-                readMJ = courseDB[i].major
-                readCF = courseDB[i].classification
-                readNM = courseDB[i].num
-                readST = courseDB[i].startTime
-                readET = courseDB[i].endTime
-                readCD = courseDB[i].courseDay
-                courseId.append(readCI)
-                startTime.append(readST)
-                endTime.append(readET)
-                courseName.append(readCN)
-                roomName.append(readRN)
-                professor.append(readPR)
-                major.append(readMJ)
-                classification.append(readCF)
-                num.append(readNM)
-                courseDay.append(readCD)
-                tableView?.reloadData()
+                var readCourse = Course(courseName: courseDB[i].courseName, roomName: courseDB[i].roomName, professor: courseDB[i].professor, major: courseDB[i].major, classification: courseDB[i].classification, courseDay: courseDB[i].courseDay, startTime: courseDB[i].startTime, endTime: courseDB[i].endTime, num: courseDB[i].num)
+                uswCourse.append(readCourse)
             }
         }
+        filteredUswCourse = uswCourse
+        tableView?.reloadData()
+        tableView?.beginUpdates()
+        tableView.endUpdates()
     }
     
     func readFirstData(){
-        let courseDB = realm.objects(testCourseData.self)
-        var readCI = String()
-        var readCN = String()
-        var readRN = String()
-        var readPR = String()
-        var readCF = String()
-        var readNM = Int()
-        var readMJ = String()
-        var readST = String() // starttime
-        var readET = String() // endtime
-        var readCD = String()
+        let courseDB = realm.objects(CourseData.self)
         for i in 0...courseDB.count-1{
-            readCI = courseDB[i].courseId
-            readCN = courseDB[i].courseName
-            readRN = courseDB[i].roomName
-            readPR = courseDB[i].professor
-            readMJ = courseDB[i].major
-            readCF = courseDB[i].classification
-            readNM = courseDB[i].num
-            readST = courseDB[i].startTime
-            readET = courseDB[i].endTime
-            readCD = courseDB[i].courseDay
-            courseId.append(readCI)
-            startTime.append(readST)
-            endTime.append(readET)
-            courseName.append(readCN)
-            roomName.append(readRN)
-            professor.append(readPR)
-            major.append(readMJ)
-            classification.append(readCF)
-            num.append(readNM)
-            courseDay.append(readCD)
-            tableView?.reloadData()
+            var readCourse = Course(courseName: courseDB[i].courseName, roomName: courseDB[i].roomName, professor: courseDB[i].professor, major: courseDB[i].major, classification: courseDB[i].classification, courseDay: courseDB[i].courseDay, startTime: courseDB[i].startTime, endTime: courseDB[i].endTime, num: courseDB[i].num)
+            uswCourse.append(readCourse)
         }
+        filteredUswCourse = uswCourse
+        tableView?.reloadData()
+        tableView?.beginUpdates()
+        tableView.endUpdates()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return professor.count
+        return filteredUswCourse.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! customCell
-        cell.courseTxtField.text = courseName[indexPath.row]
-        cell.roomTxtField.text = roomName[indexPath.row]
-        cell.professorTxtField.text = professor[indexPath.row]
-        cell.numTxtField.text = "\(num[indexPath.row])학년,"
-        cell.classTxtField.text = "\(classification[indexPath.row]),"
-        cell.majorTxtField.text = major[indexPath.row]
-        cell.myView.layer.borderWidth = 1.0
-        cell.myView.layer.borderColor = UIColor.lightGray.cgColor
-        cell.myView.layer.cornerRadius = 12.0
+        cell.courseTxtField.text = filteredUswCourse[indexPath.row].courseName
+        cell.roomTxtField.text = filteredUswCourse[indexPath.row].roomName
+        cell.professorTxtField.text = filteredUswCourse[indexPath.row].professor
+        cell.numTxtField.text = "\(filteredUswCourse[indexPath.row].num)학년,"
+        cell.classTxtField.text = "\(filteredUswCourse[indexPath.row].classification),"
+        cell.majorTxtField.text = filteredUswCourse[indexPath.row].major
+
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
         cell.selectedBackgroundView = bgColorView
-    
         return cell
     }
     
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 134.0
+        return 145.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let infoVC = storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
-        infoVC.courseNameData = courseName[indexPath.row]
-        infoVC.roomNameData = roomName[indexPath.row]
-        infoVC.professorData = professor[indexPath.row]
-        infoVC.numData = num[indexPath.row]
-        infoVC.courseDayData = courseDay[indexPath.row]
-        infoVC.courseIdData = courseId[indexPath.row]
-        infoVC.startTimeData = startTime[indexPath.row]
-        infoVC.endTimeData = endTime[indexPath.row]
+        
+        infoVC.courseNameData = filteredUswCourse[indexPath.row].courseName
+        infoVC.roomNameData = filteredUswCourse[indexPath.row].roomName
+        infoVC.professorData = filteredUswCourse[indexPath.row].professor
+        infoVC.numData = filteredUswCourse[indexPath.row].num
+        infoVC.courseDayData = filteredUswCourse[indexPath.row].courseDay
+        infoVC.startTimeData = filteredUswCourse[indexPath.row].startTime
+        infoVC.endTimeData = filteredUswCourse[indexPath.row].endTime
+        infoVC.classificationData = filteredUswCourse[indexPath.row].classification
         infoVC.checkTimeTable = self.checkTimeTable
         self.navigationController?.pushViewController(infoVC, animated: true)
     }
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredUswCourse = uswCourse.filter({ course -> Bool in
+            guard let text = searchBar.text else {return false}
+            return course.courseName.contains(text)
+        })
+        
+        self.tableView.reloadData()
+        tableView?.beginUpdates()
+        tableView.endUpdates()
+    }
+  
     
     
     
@@ -211,7 +188,6 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
 
 
 class customCell: UITableViewCell {
-    @IBOutlet weak var myView: UIView!
     @IBOutlet weak var courseTxtField: UILabel!
     @IBOutlet weak var roomTxtField: UILabel!
     @IBOutlet weak var professorTxtField: UILabel!
@@ -219,4 +195,13 @@ class customCell: UITableViewCell {
     @IBOutlet weak var numTxtField: UILabel!
     @IBOutlet weak var classTxtField: UILabel!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 12.0
 }
+}
+
