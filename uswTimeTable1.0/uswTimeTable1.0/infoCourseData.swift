@@ -31,6 +31,8 @@ class infoCourseData: UIViewController{
     var startTimeData = ""
     var endTimeData = ""
     
+    var deleteIndex = 0
+    
    // 현재 시간표 확인하기위한 장치
     var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
@@ -84,7 +86,6 @@ class infoCourseData: UIViewController{
         userCourseDay()
 
         
-        
         // 시간표 충돌 확인
 
         checkTimeCrash()
@@ -106,15 +107,54 @@ class infoCourseData: UIViewController{
         // Do any additional setup after loading the view.
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        print("view Will Appear")
+        print("\(startTimeData)")
+        print("\(endTimeData)")
+        print("\(roomNameData)")
+        showCourseData()
+
+        removeAllArray()
+        checkDate() // courseDay String -> Int
+        
+        // 시간표 충돌 확인
+        
+        changeTimeToInt()
+        
+        // 두가지 수업 들어올 시
+        
+        checkCoursePlaceTwo()
+        checkCourseHaveSpace()
+        userCourseDay()
+
+        
+        // 시간표 충돌 확인
+
+        checkTimeCrash()
+       
+        
+        navigationBarHidden()
+        navigationBackSwipeMotion()
+
+        super.viewDidLoad()
+
+    }
+    
 
     @IBAction func adjustBtn(_ sender: Any) {
         if varietyDay.count == 0{
 
             let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as! adjustCourseData
             // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
-            
-            adVC.modalPresentationStyle = .overCurrentContext    //  투명도가 있으면 투명도에 맞춰서 나오게 해주는 코드(뒤에있는 배경이 보일 수 있게)
-            self.present(adVC, animated: false, completion: nil)  //  투명도가 있으면 투명도에 맞춰서 나오게 해주는 코드(뒤에있는 배경이 보일 수 있게)
+            adVC.roomNameData = roomNameData
+            adVC.classificationData = classificationData
+            adVC.numData = numData
+            adVC.professorData = professorData
+            adVC.courseDayData = courseDayData
+            adVC.courseNameData = courseNameData
+            self.navigationController?.pushViewController(adVC, animated: true)
 
         } else {
             showAlert(title: "여러수업은 수정할 수 없어요!")
@@ -143,14 +183,45 @@ class infoCourseData: UIViewController{
             if varietyDay.count > 1{ // checkCoursePlaceTwo()의 조건을 만족하면 삽입
                 addVarietyCourse()
                 
+                
             } else if setNum == 1 { // 중복되는 시간표가 있다. --> 나중에 여러가지의 수업을 동시에 넣어야 하는 수업일 때 판단하는 로직 필요
                 showAlert(title: "시간표가 중복되었어요!")
                 
             } else if varietyDay.count == 0 {
-                writeCourseMyRealm()
+                if checkAdjust == 1{
+                    
+                    let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", checkTimeTable)
+                    
+
+                    for mydata in deleteDB{
+                        print(mydata.userCourseData[deleteIndex])
+                        try! realm.write{
+                        realm.delete(mydata.userCourseData[deleteIndex])
+                        }
+                    }
+                        
+                    // 2022 03 04 --> 수정하기 전에 중복이라고 되버리는 현상
+                    
+                    checkDate() // courseDay String -> Int
+                    userCourseDay()
+                    checkTimeCrash()
+                    print("\(setNum)")
+                    if setNum == 1 {
+                        showAlert(title: "시간표가 중복되었어요!")
+                    } else {
+                        writeCourseMyRealm()
+                    }
+                            
+
+                    }
+                    
+                } else {
+                    writeCourseMyRealm()
+
+                }
             }
         }
-    }
+    
         
 
 
@@ -160,7 +231,8 @@ class infoCourseData: UIViewController{
         }
     
     func navigationBackSwipeMotion() {
-           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+
        }
 
     func userCourseDay(){ // 시간표 중복 확인을 위해 읽어오는 함수
@@ -394,143 +466,143 @@ class infoCourseData: UIViewController{
 
         let checkRoomName: String = roomNameData
         let splitRoomName = checkRoomName.components(separatedBy: "(") // roomName & time 쪼갬 [0] = roomName, [1] = time
-        let splitTime = splitRoomName[1].components(separatedBy: " ") // 월1,2 화3,4 --> "월1,2","화1,2"로 쪼개짐
-        
-        if splitTime.count > 1{
+        if splitRoomName.count != 1{
+            let splitTime = splitRoomName[1].components(separatedBy: " ") // 월1,2 화3,4 --> "월1,2","화1,2"로 쪼개짐
+            if splitTime.count > 1{
 
-            if splitTime.count == 2{ // 수업이 두개다! 월1,2 화1,2 의 형태
-                
-                let firstTime = splitTime[0].components(separatedBy: ",") // 여러가지 시간 중 0번째에 있는 시간을 뜻함 --> 월1,2 화3,4 라면 월 1,2
-                let firstCourseDay = firstTime[0].first  ?? "토" // 요일이 저장!
-
-                print(splitTime[1].components(separatedBy: ","))
-                let secondTime = splitTime[1].components(separatedBy: ",")
-                let secondCourseDay = secondTime[0].first ?? "토"
-                 
-                // 인덱스로 해보자..
-                changeDayToInt(checkDay: firstCourseDay)
-                changeDayToInt(checkDay: secondCourseDay)
-                
-                let firstStartTime = firstTime[0].dropFirst() // startTime
-                
-                changePeriodToStartTime(changePeriod: String(firstStartTime))
-
-                
-                if firstTime.count == 1{ // 1교시의 수업 시작 종료시간 동일
-                    let firstEndTime = firstTime[0].dropFirst() // 시작교시, 종료교시 동일^^
-                    changePeriodToEndTime(changePeriod: String(firstEndTime))
-
-
-                } else if firstTime.count == 2{ // 2교시의 수업, 시작 종료시간 상이
-                    let firstEndTime = firstTime[1]
-                    changePeriodToEndTime(changePeriod: String(firstEndTime))
+                if splitTime.count == 2{ // 수업이 두개다! 월1,2 화1,2 의 형태
                     
-                } else if firstTime.count == 3{ // 3교시의 수업
-                    let firstEndTime = firstTime[2]
-                    changePeriodToEndTime(changePeriod: String(firstEndTime))
+                    let firstTime = splitTime[0].components(separatedBy: ",") // 여러가지 시간 중 0번째에 있는 시간을 뜻함 --> 월1,2 화3,4 라면 월 1,2
+                    let firstCourseDay = firstTime[0].first  ?? "토" // 요일이 저장!
 
+                    print(splitTime[1].components(separatedBy: ","))
+                    let secondTime = splitTime[1].components(separatedBy: ",")
+                    let secondCourseDay = secondTime[0].first ?? "토"
+                     
+                    // 인덱스로 해보자..
+                    changeDayToInt(checkDay: firstCourseDay)
+                    changeDayToInt(checkDay: secondCourseDay)
+                    
+                    let firstStartTime = firstTime[0].dropFirst() // startTime
+                    
+                    changePeriodToStartTime(changePeriod: String(firstStartTime))
+
+                    
+                    if firstTime.count == 1{ // 1교시의 수업 시작 종료시간 동일
+                        let firstEndTime = firstTime[0].dropFirst() // 시작교시, 종료교시 동일^^
+                        changePeriodToEndTime(changePeriod: String(firstEndTime))
+
+
+                    } else if firstTime.count == 2{ // 2교시의 수업, 시작 종료시간 상이
+                        let firstEndTime = firstTime[1]
+                        changePeriodToEndTime(changePeriod: String(firstEndTime))
+                        
+                    } else if firstTime.count == 3{ // 3교시의 수업
+                        let firstEndTime = firstTime[2]
+                        changePeriodToEndTime(changePeriod: String(firstEndTime))
+
+                    }
+                    
+                    varietyRoomName.append(splitRoomName[0])
+                    
+                    let secondStartTime = secondTime[0].dropFirst()
+                    if secondTime.count == 1{
+                        let startTime = secondStartTime.dropLast()
+                        changePeriodToStartTime(changePeriod: String(startTime))
+                    }// secondStartTime
+                    
+                    changePeriodToStartTime(changePeriod: String(secondStartTime))
+                    
+                    if secondTime.count == 1{
+                        let Endtime = secondTime[0].dropFirst()
+                        let secondEndTime = Endtime.dropLast()
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+
+
+                    } else if secondTime.count == 2{
+                        let secondEndTime = secondTime[1].dropLast()
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+
+
+                    } else if secondTime.count == 3{
+                        let secondEndTime = secondTime[2].dropLast()
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+                    } else if secondTime.count == 4{
+                        let secondEndTime = secondTime[3].dropLast()
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+                    } else if secondTime.count == 5{
+                        let secondEndTime = secondTime[4].dropLast()
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+                    } else if secondTime.count == 6{
+                        let secondEndTime = secondTime[5].dropLast()
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+                    }
+                    varietyRoomName.append(splitRoomName[0])
+
+                    
+                } else if splitTime.count == 3 { // count 2개가 끝.
+                    
+                    let firstTime = splitTime[0].components(separatedBy: ",") // 여러가지 시간 중 0번째에 있는 시간을 뜻함 --> 월1,2 화3,4 라면 월 1,2
+                    let firstCourseDay = firstTime[0].first ?? "토" // 요일이 저장!
+                    let secondTime = splitTime[1].components(separatedBy: ",")
+                    let secondCourseDay = secondTime[0].first ?? "토"
+                    let thirdTime = splitTime[2].components(separatedBy: ",")
+                    let thirdCourseDay = thirdTime[0].first ?? "토"
+                    
+                    let firstStartTime = firstTime[0].dropFirst()
+                    changePeriodToStartTime(changePeriod: String(firstStartTime))
+
+                    if firstTime.count == 1 {
+                        let firstEndTime = firstTime[0].dropFirst()
+                        changePeriodToEndTime(changePeriod: String(firstEndTime))
+                    } else if firstTime.count == 2 {
+                        let firstEndTime = firstTime[1]
+                        changePeriodToEndTime(changePeriod: String(firstEndTime))
+                    }
+                    
+                    varietyRoomName.append(splitRoomName[0])
+                    
+
+                    
+                    let secondStartTime = secondTime[0].dropFirst()
+                    changePeriodToStartTime(changePeriod: String(secondStartTime))
+
+                    if secondTime.count == 1 {
+                        let secondEndTime = secondTime[0].dropFirst()
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+                    } else if secondTime.count == 2{
+                        let secondEndTime = secondTime[1]
+                        changePeriodToEndTime(changePeriod: String(secondEndTime))
+                    }
+                    
+                    varietyRoomName.append(splitRoomName[0])
+
+                    
+                    let thirdStartTime = thirdTime[0].dropFirst()
+                    changePeriodToStartTime(changePeriod: String(thirdStartTime))
+
+                    if thirdTime.count == 1 {
+                        let thirdEndTime = thirdTime[0].dropLast()
+                        changePeriodToEndTime(changePeriod: String(thirdEndTime))
+                    } else if thirdTime.count == 2 {
+                        let thirdEndTime = thirdTime[1].dropLast()
+                        changePeriodToEndTime(changePeriod: String(thirdEndTime))
+                    }
+                    
+                    varietyRoomName.append(splitRoomName[0])
+
+                    
+                    changeDayToInt(checkDay: firstCourseDay)
+                    changeDayToInt(checkDay: secondCourseDay)
+                    changeDayToInt(checkDay: thirdCourseDay)
+                    
+                    
+                    
+                    
                 }
-                
-                varietyRoomName.append(splitRoomName[0])
-                
-                let secondStartTime = secondTime[0].dropFirst()
-                if secondTime.count == 1{
-                    let startTime = secondStartTime.dropLast()
-                    changePeriodToStartTime(changePeriod: String(startTime))
-                }// secondStartTime
-                
-                changePeriodToStartTime(changePeriod: String(secondStartTime))
-                
-                if secondTime.count == 1{
-                    let Endtime = secondTime[0].dropFirst()
-                    let secondEndTime = Endtime.dropLast()
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-
-
-                } else if secondTime.count == 2{
-                    let secondEndTime = secondTime[1].dropLast()
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-
-
-                } else if secondTime.count == 3{
-                    let secondEndTime = secondTime[2].dropLast()
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-                } else if secondTime.count == 4{
-                    let secondEndTime = secondTime[3].dropLast()
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-                } else if secondTime.count == 5{
-                    let secondEndTime = secondTime[4].dropLast()
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-                } else if secondTime.count == 6{
-                    let secondEndTime = secondTime[5].dropLast()
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-                }
-                varietyRoomName.append(splitRoomName[0])
-
-                
-            } else if splitTime.count == 3 { // count 2개가 끝.
-                
-                let firstTime = splitTime[0].components(separatedBy: ",") // 여러가지 시간 중 0번째에 있는 시간을 뜻함 --> 월1,2 화3,4 라면 월 1,2
-                let firstCourseDay = firstTime[0].first ?? "토" // 요일이 저장!
-                let secondTime = splitTime[1].components(separatedBy: ",")
-                let secondCourseDay = secondTime[0].first ?? "토"
-                let thirdTime = splitTime[2].components(separatedBy: ",")
-                let thirdCourseDay = thirdTime[0].first ?? "토"
-                
-                let firstStartTime = firstTime[0].dropFirst()
-                changePeriodToStartTime(changePeriod: String(firstStartTime))
-
-                if firstTime.count == 1 {
-                    let firstEndTime = firstTime[0].dropFirst()
-                    changePeriodToEndTime(changePeriod: String(firstEndTime))
-                } else if firstTime.count == 2 {
-                    let firstEndTime = firstTime[1]
-                    changePeriodToEndTime(changePeriod: String(firstEndTime))
-                }
-                
-                varietyRoomName.append(splitRoomName[0])
-                
-
-                
-                let secondStartTime = secondTime[0].dropFirst()
-                changePeriodToStartTime(changePeriod: String(secondStartTime))
-
-                if secondTime.count == 1 {
-                    let secondEndTime = secondTime[0].dropFirst()
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-                } else if secondTime.count == 2{
-                    let secondEndTime = secondTime[1]
-                    changePeriodToEndTime(changePeriod: String(secondEndTime))
-                }
-                
-                varietyRoomName.append(splitRoomName[0])
-
-                
-                let thirdStartTime = thirdTime[0].dropFirst()
-                changePeriodToStartTime(changePeriod: String(thirdStartTime))
-
-                if thirdTime.count == 1 {
-                    let thirdEndTime = thirdTime[0].dropLast()
-                    changePeriodToEndTime(changePeriod: String(thirdEndTime))
-                } else if thirdTime.count == 2 {
-                    let thirdEndTime = thirdTime[1].dropLast()
-                    changePeriodToEndTime(changePeriod: String(thirdEndTime))
-                }
-                
-                varietyRoomName.append(splitRoomName[0])
-
-                
-                changeDayToInt(checkDay: firstCourseDay)
-                changeDayToInt(checkDay: secondCourseDay)
-                changeDayToInt(checkDay: thirdCourseDay)
-                
-                
-                
-                
+               
             }
-           
         }
-
     }
     
     
@@ -592,6 +664,32 @@ class infoCourseData: UIViewController{
         }
        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
        self.navigationController?.pushViewController(showVC, animated: true)
+    }
+    
+    func writeCourseMyRealm(){ // 시간표 삽입
+        realm.beginWrite()
+        let readUserDB = realm.objects(userDB.self)
+        let courseData = UserCourse()
+        var courseCount = realm.objects(UserCourse.self).count
+        for userData in readUserDB{
+            if userData.timetableName == checkTimeTable{
+                courseData.courseId = "A\(courseCount)"
+                courseData.courseName = courseNameData
+                courseData.roomName = roomNameData
+                courseData.courseDay = changeDay
+                courseData.professor = professorData
+                courseData.startTime = startTimeData
+                courseData.endTime = endTimeData
+                courseData.courseCount = courseCount
+                userData.userCourseData.append(courseData)
+                realm.add(courseData)
+                realm.add(userData)
+                print("ee")
+            }
+        }
+        try! realm.commitWrite()
+        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+        self.navigationController?.pushViewController(showVC, animated: true)
     }
     
     
@@ -774,31 +872,6 @@ class infoCourseData: UIViewController{
         myView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    func writeCourseMyRealm(){ // 시간표 삽입
-        realm.beginWrite()
-        let readUserDB = realm.objects(userDB.self)
-        let courseData = UserCourse()
-        var courseCount = realm.objects(UserCourse.self).count
-        for userData in readUserDB{
-            if userData.timetableName == checkTimeTable{
-                courseData.courseId = "A\(courseCount)"
-                courseData.courseName = courseNameData
-                courseData.roomName = roomNameData
-                courseData.courseDay = changeDay
-                courseData.professor = professorData
-                courseData.startTime = startTimeData
-                courseData.endTime = endTimeData
-                courseData.courseCount = courseCount
-                userData.userCourseData.append(courseData)
-                realm.add(courseData)
-                realm.add(userData)
-                print("ee")
-            }
-        }
-        try! realm.commitWrite()
-        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
-        self.navigationController?.pushViewController(showVC, animated: true)
-    }
     
 
     

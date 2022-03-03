@@ -816,7 +816,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vN9-wp-Uvx">
                                                 <rect key="frame" x="15" y="160" width="75" height="35"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="전체" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uU5-yZ-qdK">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="시작" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uU5-yZ-qdK">
                                                         <rect key="frame" x="0.0" y="0.0" width="74" height="38"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -885,7 +885,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3De-pY-ELC">
                                                 <rect key="frame" x="15" y="235" width="75" height="35"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="전체" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEK-s2-rIl">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="종료" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEK-s2-rIl">
                                                         <rect key="frame" x="0.0" y="0.0" width="74" height="38"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1030,6 +1030,7 @@
                     <connections>
                         <outlet property="endTextField" destination="bEK-s2-rIl" id="IB2-iD-t2e"/>
                         <outlet property="endView" destination="3De-pY-ELC" id="FTc-Ac-q7o"/>
+                        <outlet property="roomTextField" destination="kFf-bq-Bxj" id="7jS-oE-ykL"/>
                         <outlet property="startTextField" destination="uU5-yZ-qdK" id="jdc-UE-fLE"/>
                         <outlet property="startView" destination="vN9-wp-Uvx" id="Rll-TK-kkH"/>
                     </connections>
@@ -1049,7 +1050,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beA-Qp-Stw">
                                 <rect key="frame" x="90" y="244" width="108" height="37"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2022" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2p-vY-EXa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2p-vY-EXa">
                                         <rect key="frame" x="0.0" y="-5" width="108" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1079,9 +1080,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWD-Ya-7Kk">
                                 <rect key="frame" x="254" y="244" width="65" height="37"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlU-ec-2e3">
-                                        <rect key="frame" x="12" y="8" width="45" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 or 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlU-ec-2e3">
+                                        <rect key="frame" x="12" y="10.5" width="45" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1114,7 +1115,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="년" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Jt-ji-OT7">
-                                <rect key="frame" x="214" y="250" width="15" height="21"/>
+                                <rect key="frame" x="214" y="252" width="15" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="N2d-oE-BRM"/>
                                     <constraint firstAttribute="width" constant="15" id="QCF-bG-Nfq"/>
@@ -1124,7 +1125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIA-ht-Kee">
-                                <rect key="frame" x="334" y="250" width="30" height="21"/>
+                                <rect key="frame" x="334" y="252" width="30" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Nml-2a-Jr6"/>
                                     <constraint firstAttribute="width" constant="30" id="fkj-57-Wth"/>
@@ -1179,7 +1180,7 @@
                         <viewLayoutGuide key="safeArea" id="SFS-kX-ZBj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7Jt-ji-OT7" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="206" id="0Ek-sC-fx7"/>
+                            <constraint firstItem="7Jt-ji-OT7" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="208" id="0Ek-sC-fx7"/>
                             <constraint firstItem="SFS-kX-ZBj" firstAttribute="trailing" secondItem="SWD-Ya-7Kk" secondAttribute="trailing" constant="95" id="A1N-U7-fn8"/>
                             <constraint firstItem="SFS-kX-ZBj" firstAttribute="trailing" secondItem="apj-Tj-7mK" secondAttribute="trailing" constant="43" id="F0G-5V-oBu"/>
                             <constraint firstItem="SFS-kX-ZBj" firstAttribute="trailing" secondItem="TGy-Pz-hvD" secondAttribute="trailing" constant="50" id="FcD-3W-Mjz"/>
@@ -1191,7 +1192,7 @@
                             <constraint firstItem="TGy-Pz-hvD" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="280" id="dPu-8h-J89"/>
                             <constraint firstItem="beA-Qp-Stw" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="200" id="kTf-iT-mL7"/>
                             <constraint firstItem="WMa-Sj-1kC" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="110" id="pGv-WA-qlw"/>
-                            <constraint firstItem="qIA-ht-Kee" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="206" id="shb-9k-2lA"/>
+                            <constraint firstItem="qIA-ht-Kee" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="208" id="shb-9k-2lA"/>
                             <constraint firstItem="apj-Tj-7mK" firstAttribute="top" secondItem="SFS-kX-ZBj" secondAttribute="top" constant="345" id="z6J-2A-38h"/>
                         </constraints>
                     </view>

@@ -41,7 +41,7 @@ class uswMakeSchedule: UIViewController {
         dropDown1.direction = .bottom
         dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
-            self.yearTxtField.text = yearList[index] ?? ""
+            self.yearTxtField.text = yearList[index]
             self.yearTxtField.font = UIFont(name: "system", size: 17)
             self.yearTxtField.textColor = .black
             self.yearTxtField.textAlignment = .center
@@ -53,7 +53,7 @@ class uswMakeSchedule: UIViewController {
         dropDown2.direction = .bottom
         dropDown2.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
-            self.semeTxtField.text = semeList[index] ?? ""
+            self.semeTxtField.text = semeList[index]
             self.semeTxtField.font = UIFont(name: "system", size: 17)
             self.semeTxtField.textColor = .black
             self.semeTxtField.textAlignment = .center
@@ -63,7 +63,7 @@ class uswMakeSchedule: UIViewController {
     }
 
     @IBAction func finishBtnClicked(_ sender: Any) {
-        if yearTxtField.text == "" || nameTxtField.text == "" || semeTxtField.text == ""{
+        if yearTxtField.text == "Year" || nameTxtField.text == "" || semeTxtField.text == "1 or 2"{
             let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
                 message: "데이터를 다 알려주세요!",
                 preferredStyle: UIAlertController.Style.alert)

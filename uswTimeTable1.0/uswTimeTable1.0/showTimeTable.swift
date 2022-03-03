@@ -21,7 +21,8 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     
     var courseList: [ElliottEvent] = []// 시간표 강의 아이템
     
-
+   
+    
     var timeTableName = ""
  
     
@@ -161,6 +162,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         let deleteCourse = selectedCourse.courseName
         let deleteProfessor = selectedCourse.professor
         let deleteCourseId = selectedCourse.courseId
+        var courseDay = ""
         
         let deleteIndex: Int = courseList.firstIndex(where: { $0.courseName == "\(deleteCourse)" && $0.courseId == "\(deleteCourseId)"}) ?? 0
         
@@ -175,8 +177,19 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             let sendButton = UIAlertAction(title: "수정", style: .default, handler: { [self] (action) -> Void in
                 courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.courseId == "\(deleteCourseId)" })
                 
-                print("Ok button tapped") // 수정 시 info -> if 완료 누를 시 데이터 삭제 이후 재 삽입 or 그대로
-                print(courseList)
+                let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+                infoVC.deleteIndex = deleteIndex
+                infoVC.checkAdjust = 1
+                infoVC.courseNameData = selectedCourse.courseName
+                infoVC.roomNameData = selectedCourse.roomName
+                infoVC.professorData = selectedCourse.professor
+                infoVC.courseDayData = courseDay
+                infoVC.numData = 3
+                infoVC.classificationData = "-"
+                infoVC.startTimeData = selectedCourse.startTime
+                infoVC.endTimeData = selectedCourse.endTime
+                self.navigationController?.pushViewController(infoVC, animated: true)
+
 
             })
             
@@ -205,6 +218,21 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             alertController.addAction(cancelButton)
             self.navigationController!.present(alertController, animated: true, completion: nil)
           
+        switch selectedCourse.courseDay{
+        case .monday:
+            courseDay = "월"
+        case .tuesday:
+            courseDay = "화"
+        case .wednesday:
+            courseDay = "수"
+        case .thursday:
+            courseDay = "목"
+        case .friday:
+            courseDay = "금"
+        default:
+            courseDay = "토"
+            
+        }
 
     }
     
