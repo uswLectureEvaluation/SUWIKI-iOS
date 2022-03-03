@@ -26,7 +26,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var courseData = [String]()
     let dropDown1 = DropDown()
     let numList = ["전체", "1", "2", "3", "4"] // 기존 수업 정보
-    let majorList = ["전체","정보보호"]
+    let majorList = ["전체", "인문학부", "국어국문학", "외국어학부", "영어영문학", "프랑스어문학", "러시아어문학", "일어일문학", "중어중문학", "법·행정학부", "법학", "행정학", "미디어커뮤니케이션학과", "행정학과(야)", "소방행정학과(야)", "경영학부", "경영", "글로벌비즈니스", "회계", "경제학부", "경제금융", "국제개발협력", "호텔관광학부",  "호텔경영", "외식경영", "관광경영", "바이오화학산업학부", "바이오싸이언스", "바이오공학 및 마케팅", "융합화학산업", "건설환경에너지공학부", "건설환경공학", "환경에너지공학", "건축도시부동산학부", "건축학", "정보보호", "화학공학·신소재공학부"]
     
     
     var filteredUswCourse: Array<Course> = []
@@ -58,11 +58,10 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             self.choiceNumDropDown.textColor = .black
             self.choiceNumDropDown.textAlignment = .center
            
-            if choiceNumDropDown.text! == "1"{
+            if choiceNumDropDown.text == "1" {
                 removeArray()
-                print(choiceNumDropDown.text!)
                 selectNumData(checkNum: 1)
-            } else if choiceNumDropDown.text! == "2" {
+            } else if choiceNumDropDown.text == "2" {
                 removeArray()
                 print(choiceNumDropDown.text!)
                 selectNumData(checkNum: 2)
@@ -94,6 +93,8 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
 
+    // 함수 내부에 인자로 text를 받아와서 비교
+    
     
     func selectNumData(checkNum: Int){
         let courseDB = realm.objects(CourseData.self)

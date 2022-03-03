@@ -173,6 +173,8 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             let alertController = UIAlertController(title: deleteCourse, message: deleteProfessor, preferredStyle: UIAlertController.Style.alert)
 
             let sendButton = UIAlertAction(title: "수정", style: .default, handler: { [self] (action) -> Void in
+                courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.courseId == "\(deleteCourseId)" })
+                
                 print("Ok button tapped") // 수정 시 info -> if 완료 누를 시 데이터 삭제 이후 재 삽입 or 그대로
                 print(courseList)
 

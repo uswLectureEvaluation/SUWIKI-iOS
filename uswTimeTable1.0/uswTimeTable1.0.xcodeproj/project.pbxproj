@@ -10,6 +10,7 @@
 		1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
+		AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */; };
 		AF50233F27C378FB0030CF5D /* courseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50233E27C378FB0030CF5D /* courseData.swift */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
@@ -44,6 +45,7 @@
 		1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
+		AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adjustCourseData.swift; sourceTree = "<group>"; };
 		AF50233E27C378FB0030CF5D /* courseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = courseData.swift; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				AFE696CC27BBCD0500262BEF /* listTimeTable.swift */,
 				AFE69751279F16BD00FB2BC7 /* listCourseData.swift */,
 				AFED499927ABD0B500CE242D /* infoCourseData.swift */,
+				AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */,
 				AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */,
 				AFAFEF86277F160900408F46 /* ViewController.swift */,
 				AFD2C5532797149B0096FBE1 /* GoogleService-Info.plist */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,

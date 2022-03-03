@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import Elliotable
+import DropDown
 
 class infoCourseData: UIViewController{
 
@@ -65,6 +66,7 @@ class infoCourseData: UIViewController{
     
     
     var setNum = 0 // 시간표 중복을 확인시켜주는 장치
+    var checkAdjust = 0 // 시간표 수정을 확인하는 장치
     
     override func viewDidLoad() {
         removeAllArray()
@@ -105,19 +107,44 @@ class infoCourseData: UIViewController{
     }
     
 
+    @IBAction func adjustBtn(_ sender: Any) {
+        if varietyDay.count == 0{
 
+            let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as! adjustCourseData
+            // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
+            
+            adVC.modalPresentationStyle = .overCurrentContext    //  투명도가 있으면 투명도에 맞춰서 나오게 해주는 코드(뒤에있는 배경이 보일 수 있게)
+            self.present(adVC, animated: false, completion: nil)  //  투명도가 있으면 투명도에 맞춰서 나오게 해주는 코드(뒤에있는 배경이 보일 수 있게)
+
+        } else {
+            showAlert(title: "여러수업은 수정할 수 없어요!")
+        }
+        // 수업이 하나인 경우에만, 수정이 가능하도록
+        // showTimeTable에서 넘어온 데이터의 경우 checkAdjust == 1 이 되기 때문에, DB 삭제해주는 로직을 addBtn에서 생성 else 평소대로 진행
+        // 팝업으로 띄우게
+        // 만약 수정버튼을 showtimetable에서 누른다면 리스트 먼저 삭제시킴 --> DB에는 데이터 존재하기 때문에.
+        // 만약 수정 완료시킨다 --> 기존 데이터 != 수정 데이터 해서 수정 된거 확인하고, 기존 데이터 DB에 있을시 확인하는 로직으로 showTimeTable -> 뭐 이런식으로 하면 될듯
+        // courseDay를 변경할 경우가 있나..? --> x로 하자.
+        // changeTimeToInt로 해주어야 할듯.
+        // "\(x.text):30" "\(y.text):20"
+        
+    }
+    
     
     @IBAction func addBtnClicked(_ sender: Any) {
-        
-        if changeDay == 7 || setNum == 1 {
-            showAlert()
+        // 수정 데이터 확인하는 로직 필요합니다.
+        if changeDay == 7 {
+            showAlert(title: "이러닝은 추가할 수 없어요!")
+            
+        } else if setNum == 1 {
+            showAlert(title: "시간표가 중복되었어요!")
+            
         } else {
             if varietyDay.count > 1{ // checkCoursePlaceTwo()의 조건을 만족하면 삽입
                 addVarietyCourse()
                 
-                
             } else if setNum == 1 { // 중복되는 시간표가 있다. --> 나중에 여러가지의 수업을 동시에 넣어야 하는 수업일 때 판단하는 로직 필요
-                showAlert()
+                showAlert(title: "시간표가 중복되었어요!")
                 
             } else if varietyDay.count == 0 {
                 writeCourseMyRealm()
@@ -204,7 +231,7 @@ class infoCourseData: UIViewController{
         }
     }
     
-    func readCoruse3() {
+    func readCoruse3() { // 관현악합주 3
         let userDB = realm.objects(userDB.self).filter("timetableName == %s", checkTimeTable)
         for userData in userDB{
             for i in 0..<userData.userCourseData.count{
@@ -217,7 +244,9 @@ class infoCourseData: UIViewController{
                         print(getCourseDay)
                         getCourseDayArray.append(getCourseDay)
                         getStartTimeArray.append(checkGetStartTime)
-                        getEndTimeArray.append(checkGetEndTime)                    }
+                        getEndTimeArray.append(checkGetEndTime)
+                        
+                    }
                 }
             }
         }
@@ -727,8 +756,9 @@ class infoCourseData: UIViewController{
         nowEndTimeArray.removeAll()
         
     }
-    func showAlert() {
-        let alert = UIAlertController(title:"이미 겹치는 시간표가 있네요!", message: "중복해서 추가할 수 없어요!", preferredStyle: UIAlertController.Style.alert)
+    
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: "확인 버튼을 눌러주세요!", preferredStyle: UIAlertController.Style.alert)
         let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(cancle)
         present(alert,animated: true,completion: nil)
