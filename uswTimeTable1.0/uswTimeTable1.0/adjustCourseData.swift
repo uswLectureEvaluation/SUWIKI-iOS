@@ -51,6 +51,7 @@ class adjustCourseData: UIViewController {
             self.startTextField.font = UIFont(name: "system", size: 13)
             self.startTextField.textColor = .black
             self.startTextField.textAlignment = .center
+            print("\(String(describing: startTextField.text!)):30")
                                             
         }
         

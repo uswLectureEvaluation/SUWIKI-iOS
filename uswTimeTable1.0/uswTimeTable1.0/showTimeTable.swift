@@ -27,6 +27,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
  
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         navigationBarHidden()
@@ -34,6 +35,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         checkTimeTable()
         readCourseDB()
         readTimeTable()
+        print(courseList.count)
         
         // json 시간표 데이터 입력
 }
@@ -163,8 +165,9 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         let deleteProfessor = selectedCourse.professor
         let deleteCourseId = selectedCourse.courseId
         var courseDay = ""
+        var deleteIndex: Int = courseList.firstIndex(where: { $0.courseName == "\(deleteCourse)" && $0.courseId == "\(deleteCourseId)"}) ?? 0
+
         
-        let deleteIndex: Int = courseList.firstIndex(where: { $0.courseName == "\(deleteCourse)" && $0.courseId == "\(deleteCourseId)"}) ?? 0
         
         print(deleteIndex)
         print(deleteCourse)
@@ -189,6 +192,9 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
                 infoVC.classificationData = "-"
                 infoVC.startTimeData = selectedCourse.startTime
                 infoVC.endTimeData = selectedCourse.endTime
+                
+                infoVC.beforeTimeString = selectedCourse.startTime
+               
             
                 
                 self.navigationController?.pushViewController(infoVC, animated: true)
@@ -198,7 +204,6 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             
             let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
                 courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.courseId == "\(deleteCourseId)" })
-                print(courseList)
                 print("Delete button tapped")
                 
                 for mydata in deleteDB{

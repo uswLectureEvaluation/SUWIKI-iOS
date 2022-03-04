@@ -31,6 +31,11 @@ class infoCourseData: UIViewController{
     var startTimeData = ""
     var endTimeData = ""
     
+    
+    var beforeTimeString = ""
+    var beforeTimeInt = 0
+    
+    
     var deleteIndex = 0
     
    // 현재 시간표 확인하기위한 장치
@@ -75,6 +80,8 @@ class infoCourseData: UIViewController{
         print(checkTimeTable)
         print("deleteIndex\(deleteIndex)")
         print("checkAdjust\(checkAdjust)")
+        print(getCourseDayArray)
+        
         
         navigationBarHidden()
         navigationBackSwipeMotion()
@@ -133,29 +140,57 @@ class infoCourseData: UIViewController{
     
     @IBAction func addBtnClicked(_ sender: Any) {
         //
-        removeAllArray()
-        checkDate() // 1차적인 시간표 들어올 시
-        changeTimeToInt() // 형변환(기존 시간표와의 비교 위함)
-        checkCoursePlaceTwo() // 두가지 수업 들어올 시
-        checkCourseHaveSpace() // 두가지 수업에 공백 있을 시
-        userCourseDay() // 가지고 있는 수업 데이터 불러오기(중복확인 위함)
-        checkTimeCrash()  // 시간표 충돌 확인
+        // 시간표 충돌 확인
         
         let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", checkTimeTable)
         print(deleteDB)
         
         if checkAdjust == 1{ // 해당 부분 로직 필요
-            if setNum == 1{
-                showAlert(title: "시간표가 중복되었어요!")
-            } else {
+            
+            removeAllArray()
+            checkDate() // 1차적인 시간표 들어올 시
+            changeTimeToInt() // 형변환(기존 시간표와의 비교 위함)
+            checkCoursePlaceTwo() // 두가지 수업 들어올 시
+            checkCourseHaveSpace() // 두가지 수업에 공백 있을 시
+            userCourseDay() // 가지고 있는 수업 데이터 불러오기(중복확인 위함)
+            print(getStartTimeArray)
+            print(getEndTimeArray)
+            if getStartTimeArray.count == 1{
                 for userData in deleteDB{
                     try! realm.write{
                         realm.delete(userData.userCourseData[deleteIndex])
                     }
                 }
+            } else if getStartTimeArray.count > 1{
+                
+                var deleteGetIndex = getStartTimeArray.firstIndex(of: beforeTimeInt) ?? 0
+                print(deleteGetIndex)
+                getStartTimeArray.remove(at: deleteGetIndex)
+                getEndTimeArray.remove(at: deleteGetIndex)
+                checkTimeCrash()
+                
+                if setNum == 1{
+                    showAlert(title: "시간표가 중복되었어요!")
+                } else {
+                    for userData in deleteDB{
+                        try! realm.write{
+                            realm.delete(userData.userCourseData[deleteIndex])
+                        }
+                    }
+                }
             }
+            
+            
+        } else {
+            removeAllArray()
+            checkDate() // 1차적인 시간표 들어올 시
+            changeTimeToInt() // 형변환(기존 시간표와의 비교 위함)
+            checkCoursePlaceTwo() // 두가지 수업 들어올 시
+            checkCourseHaveSpace() // 두가지 수업에 공백 있을 시
+            userCourseDay() // 가지고 있는 수업 데이터 불러오기(중복확인 위함)
+            checkTimeCrash()
         }
-        
+        /*
         print("\(varietyDay)varietyDay")
         print("\(varietyRoomName)varietyRoomName")
         print("\(nowStartTimeArray)nowStartTimeArray")
@@ -163,7 +198,8 @@ class infoCourseData: UIViewController{
         print("\(getStartTimeArray)getStartTimeArray")
         print("\(getEndTimeArray)getEndTimeArray")
         print("\(getCourseDayArray)getCourseDayArray")
-        
+        */
+         
         if changeDay == 7 { // 시간표 토요일 (이러닝 같은 수업)
             showAlert(title: "이러닝은 추가할 수 없어요!")
             
@@ -294,11 +330,11 @@ class infoCourseData: UIViewController{
                 print("Case0")
                 
             } else if getStartTimeArray.count == 1{
-                if checkGetStartTime < checkNowStartTime && checkGetEndTime > checkNowStartTime{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
+                if getStartTimeArray[0] < checkNowStartTime && getEndTimeArray[0] > checkNowStartTime{ // 추가할 시간표의 시작시간이 존재하는 시간표의 사이에 있다.
                     setNum = 1
-                } else if checkGetStartTime < checkNowEndTime && checkGetEndTime > checkNowEndTime{ // 추가할 시간표 끝 시간이 존재 시간표 사이에 있다
+                } else if getStartTimeArray[0] < checkNowEndTime && getEndTimeArray[0] > checkNowEndTime{ // 추가할 시간표 끝 시간이 존재 시간표 사이에 있다
                     setNum = 1
-                } else if checkGetStartTime == checkNowStartTime || checkGetEndTime == checkNowEndTime {
+                } else if getStartTimeArray[0] == checkNowStartTime || getEndTimeArray[0] == checkNowEndTime {
                     setNum = 1
                 }
                 print("Case1")
@@ -839,6 +875,7 @@ class infoCourseData: UIViewController{
     
     func changeTimeToInt(){
         switch startTimeData{
+        case "09:30": checkNowStartTime = 930
         case "9:30": checkNowStartTime = 930
         case "10:30": checkNowStartTime = 1030
         case "11:30": checkNowStartTime = 1130
@@ -913,6 +950,24 @@ class infoCourseData: UIViewController{
             
         default:
             checkGetEndTime = 0
+        }
+        
+        switch beforeTimeString{
+        case "9:30": beforeTimeInt = 930
+        case "10:30": beforeTimeInt = 1030
+        case "11:30": beforeTimeInt = 1130
+        case "12:30": beforeTimeInt = 1230
+        case "13:30": beforeTimeInt = 1330
+        case "14:30": beforeTimeInt = 1430
+        case "15:30": beforeTimeInt = 1530
+        case "16:30": beforeTimeInt = 1630
+        case "17:30": beforeTimeInt = 1730
+        case "18:30": beforeTimeInt = 1830
+        case "19:30": beforeTimeInt = 1930
+        case "20:30": beforeTimeInt = 2030
+        case "21:30": beforeTimeInt = 2130
+        default:
+            beforeTimeInt = 0
         }
     }
     
