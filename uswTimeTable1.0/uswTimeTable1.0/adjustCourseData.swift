@@ -30,7 +30,9 @@ class adjustCourseData: UIViewController {
     var classificationData = ""
     var startTimeData = ""
     var endTimeData = ""
-
+    
+    var checkAdjust = 0
+    var deleteIndex = 0
     
     //     var startTimeData = "" var endTimeData = ""     var roomNameData = ""
 
@@ -83,9 +85,9 @@ class adjustCourseData: UIViewController {
         if roomTextField.text == "" || startTextField.text == "시작" || endTextField.text == "종료" {
             showAlert(title: "비어있는 데이터가 있어요")
             //4. 경고창 보이기
-        } else {
-            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+        } else if checkAdjust == 0{
             
+            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
             infoVC.roomNameData = roomTextField.text ?? ""
             infoVC.startTimeData = "\(String(describing: startTextField.text!)):30"
             infoVC.endTimeData = "\(String(describing: endTextField.text!)):20"
@@ -94,8 +96,23 @@ class adjustCourseData: UIViewController {
             infoVC.courseDayData = courseDayData
             infoVC.classificationData = classificationData
             infoVC.numData = numData
-            
             self.navigationController?.pushViewController(infoVC, animated: true)
+            
+        } else if checkAdjust == 1{
+            
+            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+            infoVC.roomNameData = roomTextField.text ?? ""
+            infoVC.startTimeData = "\(String(describing: startTextField.text!)):30"
+            infoVC.endTimeData = "\(String(describing: endTextField.text!)):20"
+            infoVC.professorData = professorData
+            infoVC.courseNameData = courseNameData
+            infoVC.courseDayData = courseDayData
+            infoVC.classificationData = classificationData
+            infoVC.numData = numData
+            infoVC.checkAdjust = checkAdjust
+            infoVC.deleteIndex = deleteIndex
+            self.navigationController?.pushViewController(infoVC, animated: true)
+            
         }
         
         // 취소버튼 누를땐 원본 그대로 다시 보내주기

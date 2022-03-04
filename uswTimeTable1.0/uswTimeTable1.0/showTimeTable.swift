@@ -178,6 +178,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
                 courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.courseId == "\(deleteCourseId)" })
                 
                 let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+                
                 infoVC.deleteIndex = deleteIndex
                 infoVC.checkAdjust = 1
                 infoVC.courseNameData = selectedCourse.courseName
@@ -188,6 +189,8 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
                 infoVC.classificationData = "-"
                 infoVC.startTimeData = selectedCourse.startTime
                 infoVC.endTimeData = selectedCourse.endTime
+            
+                
                 self.navigationController?.pushViewController(infoVC, animated: true)
 
 

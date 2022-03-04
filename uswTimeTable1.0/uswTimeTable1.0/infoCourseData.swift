@@ -71,32 +71,10 @@ class infoCourseData: UIViewController{
     var checkAdjust = 0 // 시간표 수정을 확인하는 장치
     
     override func viewDidLoad() {
-        removeAllArray()
-        
-        checkDate() // courseDay String -> Int
-        
-        // 시간표 충돌 확인
-        
-        changeTimeToInt()
-        
-        // 두가지 수업 들어올 시
-        
-        checkCoursePlaceTwo()
-        checkCourseHaveSpace()
-        userCourseDay()
-
-        
-        // 시간표 충돌 확인
-
-        checkTimeCrash()
-        print("\(varietyDay)varietyDay")
-        print("\(varietyRoomName)varietyRoomName")
-        print("\(nowStartTimeArray)nowStartTimeArray")
-        print("\(nowEndTimeArray)nowEndTimeArray")
-        
-        print("\(getStartTimeArray)getStartTimeArray")
-        print("\(getEndTimeArray)getEndTimeArray")
-        print("\(getCourseDayArray)getCourseDayArray")
+       
+        print(checkTimeTable)
+        print("deleteIndex\(deleteIndex)")
+        print("checkAdjust\(checkAdjust)")
         
         navigationBarHidden()
         navigationBackSwipeMotion()
@@ -108,44 +86,26 @@ class infoCourseData: UIViewController{
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        print("view Will Appear")
-        print("\(startTimeData)")
-        print("\(endTimeData)")
-        print("\(roomNameData)")
-        showCourseData()
-
-        removeAllArray()
-        checkDate() // courseDay String -> Int
-        
-        // 시간표 충돌 확인
-        
-        changeTimeToInt()
-        
-        // 두가지 수업 들어올 시
-        
-        checkCoursePlaceTwo()
-        checkCourseHaveSpace()
-        userCourseDay()
-
-        
-        // 시간표 충돌 확인
-
-        checkTimeCrash()
-       
-        
-        navigationBarHidden()
-        navigationBackSwipeMotion()
-
-        super.viewDidLoad()
-
-    }
+    
     
 
     @IBAction func adjustBtn(_ sender: Any) {
         if varietyDay.count == 0{
-
+            if checkAdjust == 1{
+                let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as! adjustCourseData
+                // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
+                adVC.roomNameData = roomNameData
+                adVC.classificationData = classificationData
+                adVC.numData = numData
+                adVC.professorData = professorData
+                adVC.courseDayData = courseDayData
+                adVC.courseNameData = courseNameData
+                adVC.checkAdjust = checkAdjust
+                adVC.deleteIndex = deleteIndex
+                self.navigationController?.pushViewController(adVC, animated: true)
+            
+            } else {
+            
             let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as! adjustCourseData
             // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
             adVC.roomNameData = roomNameData
@@ -155,7 +115,7 @@ class infoCourseData: UIViewController{
             adVC.courseDayData = courseDayData
             adVC.courseNameData = courseNameData
             self.navigationController?.pushViewController(adVC, animated: true)
-
+            }
         } else {
             showAlert(title: "여러수업은 수정할 수 없어요!")
         }
@@ -172,55 +132,57 @@ class infoCourseData: UIViewController{
     
     
     @IBAction func addBtnClicked(_ sender: Any) {
-        // 수정 데이터 확인하는 로직 필요합니다.
-        if changeDay == 7 {
+        //
+        removeAllArray()
+        checkDate() // 1차적인 시간표 들어올 시
+        changeTimeToInt() // 형변환(기존 시간표와의 비교 위함)
+        checkCoursePlaceTwo() // 두가지 수업 들어올 시
+        checkCourseHaveSpace() // 두가지 수업에 공백 있을 시
+        userCourseDay() // 가지고 있는 수업 데이터 불러오기(중복확인 위함)
+        checkTimeCrash()  // 시간표 충돌 확인
+        
+        let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", checkTimeTable)
+        print(deleteDB)
+        
+        if checkAdjust == 1{ // 해당 부분 로직 필요
+            if setNum == 1{
+                showAlert(title: "시간표가 중복되었어요!")
+            } else {
+                for userData in deleteDB{
+                    try! realm.write{
+                        realm.delete(userData.userCourseData[deleteIndex])
+                    }
+                }
+            }
+        }
+        
+        print("\(varietyDay)varietyDay")
+        print("\(varietyRoomName)varietyRoomName")
+        print("\(nowStartTimeArray)nowStartTimeArray")
+        print("\(nowEndTimeArray)nowEndTimeArray")
+        print("\(getStartTimeArray)getStartTimeArray")
+        print("\(getEndTimeArray)getEndTimeArray")
+        print("\(getCourseDayArray)getCourseDayArray")
+        
+        if changeDay == 7 { // 시간표 토요일 (이러닝 같은 수업)
             showAlert(title: "이러닝은 추가할 수 없어요!")
             
-        } else if setNum == 1 {
+        } else if setNum == 1 { // 시간표 중복
             showAlert(title: "시간표가 중복되었어요!")
             
-        } else {
+        } else { // 시간표 중복 로직에 안걸렸을 때
             if varietyDay.count > 1{ // checkCoursePlaceTwo()의 조건을 만족하면 삽입
                 addVarietyCourse()
-                
                 
             } else if setNum == 1 { // 중복되는 시간표가 있다. --> 나중에 여러가지의 수업을 동시에 넣어야 하는 수업일 때 판단하는 로직 필요
                 showAlert(title: "시간표가 중복되었어요!")
                 
             } else if varietyDay.count == 0 {
-                if checkAdjust == 1{
-                    
-                    let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", checkTimeTable)
-                    
-
-                    for mydata in deleteDB{
-                        print(mydata.userCourseData[deleteIndex])
-                        try! realm.write{
-                        realm.delete(mydata.userCourseData[deleteIndex])
-                        }
-                    }
-                        
-                    // 2022 03 04 --> 수정하기 전에 중복이라고 되버리는 현상
-                    
-                    checkDate() // courseDay String -> Int
-                    userCourseDay()
-                    checkTimeCrash()
-                    print("\(setNum)")
-                    if setNum == 1 {
-                        showAlert(title: "시간표가 중복되었어요!")
-                    } else {
-                        writeCourseMyRealm()
-                    }
-                            
-
-                    }
-                    
-                } else {
                     writeCourseMyRealm()
-
-                }
             }
         }
+    }
+    
     
         
 
