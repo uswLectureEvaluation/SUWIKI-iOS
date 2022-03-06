@@ -31,7 +31,6 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         navigationBarHidden()
-        navigationBackSwipeMotion()
         checkTimeTable()
         readCourseDB()
         readTimeTable()
@@ -42,7 +41,6 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     override func viewWillAppear(_ animated: Bool) {
         print("viewwillappear")
         navigationBarHidden()
-        navigationBackSwipeMotion()
         checkTimeTable()
         readCourseDB()
         readTimeTable()
@@ -89,6 +87,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     }
     // ElliottEvent(courseId: myData.userCourseData[i].courseId, courseName: myData.userCourseData[i].courseName, roomName: myData.userCourseData[i].roomName, professor: myData.userCourseData[i].professor, courseDay: ElliotDay.init(rawValue: myData.userCourseData[i].courseDay)!, startTime: myData.userCourseData[i].startTime, endTime: myData.userCourseData[i].endTime, backgroundColor: UIColor.systemBlue)
     func readCourseDB(){
+        courseList.removeAll()
         var userData: String = UserDefaults.standard.string(forKey: "name") ?? ""
         let dataCount = realm.objects(userDB.self).count
         if dataCount != 0{
@@ -169,11 +168,11 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
 
         
         
+      
+        let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", userData)
         print(deleteIndex)
         print(deleteCourse)
-        let deleteDB = realm.objects(userDB.self).filter("timetableName == %s", userData)
-        print(deleteDB)
-           
+        print(courseList.count)
 
             let alertController = UIAlertController(title: deleteCourse, message: deleteProfessor, preferredStyle: UIAlertController.Style.alert)
 
