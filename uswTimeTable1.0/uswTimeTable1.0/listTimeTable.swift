@@ -104,7 +104,6 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
         UserDefaults.standard.removeObject(forKey: "name")
         UserDefaults.standard.set(uswUser[indexPath.row].timetableName, forKey: "name")
-        print(UserDefaults.standard.string(forKey: "name"))
         self.navigationController?.pushViewController(showVC, animated: true)
     }
     

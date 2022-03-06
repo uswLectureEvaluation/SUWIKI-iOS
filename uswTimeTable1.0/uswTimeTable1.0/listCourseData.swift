@@ -36,7 +36,8 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var filteredUswCourse: Array<Course> = []
     
-    
+    var numData = 0
+    var majorData = ""
     
     var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
@@ -59,33 +60,31 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         dropDown1.textFont = UIFont.systemFont(ofSize: 15)
 
         dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
+            //print("Selected item: \(item) at index: \(index)")
             self.choiceNumDropDown.text = numList[index]
             self.choiceNumDropDown.font = UIFont.systemFont(ofSize: 15)
             self.choiceNumDropDown.textColor = .black
             self.choiceNumDropDown.textAlignment = .center
-           
-            if choiceNumDropDown.text == "1" {
-                removeArray()
-                selectNumData(checkNum: 1)
-            } else if choiceNumDropDown.text == "2" {
-                removeArray()
-                print(choiceNumDropDown.text!)
-                selectNumData(checkNum: 2)
-            } else if choiceNumDropDown.text! == "3" {
-                removeArray()
-                print(choiceNumDropDown.text!)
-                selectNumData(checkNum: 3)
-            } else if choiceNumDropDown.text! == "4" {
-                removeArray()
-                print(choiceNumDropDown.text!)
-                selectNumData(checkNum: 4)
+            
+            if choiceNumDropDown.text != "전체" {
+                numData = Int(choiceNumDropDown.text ?? "1") ?? 1
             } else if choiceNumDropDown.text! == "전체"{
-                removeArray()
-                readFirstData()
+                numData = 6
             }
-                        
+            print(numData)
+
+            print(majorData)
+            
+            if numData == 6 && majorData == "전체" {
+               removeArray()
+               readFirstData()
+            } else if numData != 0 && majorData != "" {
+                selectedData(numData: numData, majorData: majorData)
+            } else if numData != 0 || majorData == "전체" || majorData == "" {
+                numCheck()
+            }
         }
+
         
         dropDown2.anchorView = majorDropDown
         dropDown2.dataSource = majorList
@@ -93,19 +92,32 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         dropDown2.direction = .bottom
         dropDown2.textFont = UIFont.systemFont(ofSize: 15)
         dropDown2.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
+            // print("Selected item: \(item) at index: \(index)")
             self.choiceMajorDropDown.text = majorList[index]
             self.choiceMajorDropDown.font = UIFont.systemFont(ofSize: 12)
             self.choiceMajorDropDown.textColor = .black
             self.choiceMajorDropDown.textAlignment = .center
             
             if choiceMajorDropDown.text != "전체"{
-                selectMajorData(checkMajor: choiceMajorDropDown.text ?? "")
+                majorData = choiceMajorDropDown.text ?? "전체"
             } else if choiceMajorDropDown.text == "전체"{
+                majorData = "전체"
+            }
+            print(numData)
+
+            print(majorData)
+            
+            if numData == 6 && majorData == "전체" {
                 removeArray()
                 readFirstData()
+            } else if numData != 0 && majorData != "" {
+                selectedData(numData: numData, majorData: majorData)
+            } else if majorData != "" || numData == 6 || numData == 0{
+                majorCheck()
             }
+            
         }
+        
         
 
         // Do any addit// Do any additional setup after loading the view.
@@ -115,7 +127,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func numBtnClicked(_ sender: Any) {
         dropDown1.show()
-
+        
     }
     
     @IBAction func majorBtnClicked(_ sender: Any) {
@@ -126,13 +138,33 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         filteredUswCourse.removeAll()
     }
     
+    
+    func numCheck(){
+        if numData != 6{
+            selectNumData(numData: numData)
+        } else if numData == 6{
+            removeArray()
+            readFirstData()
+        }
+    }
+    
+    func majorCheck(){
+        if majorData != "전체" {
+            selectMajorData(majorData: majorData)
+        } else if majorData == "전체" {
+            removeArray()
+            readFirstData()
+        }
+        
+            //
 
+    }
     // 함수 내부에 인자로 text를 받아와서 비교
-    func selectMajorData(checkMajor: String){
+    func selectMajorData(majorData: String){
         removeArray()
         let courseDB = realm.objects(CourseData.self)
         for i in 0..<courseDB.count-1{
-            if courseDB[i].major == checkMajor{
+            if courseDB[i].major == majorData{
                 var readCourse = Course(courseName: courseDB[i].courseName, roomName: courseDB[i].roomName, professor: courseDB[i].professor, major: courseDB[i].major, classification: courseDB[i].classification, courseDay: courseDB[i].courseDay, startTime: courseDB[i].startTime, endTime: courseDB[i].endTime, num: courseDB[i].num)
                 uswCourse.append(readCourse)
             }
@@ -144,14 +176,47 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    func selectNumData(checkNum: Int){
+    func selectNumData(numData: Int){
+        removeArray()
         let courseDB = realm.objects(CourseData.self)
         for i in 0...courseDB.count-1{
-            if courseDB[i].num == checkNum {
+            if courseDB[i].num == numData {
                 var readCourse = Course(courseName: courseDB[i].courseName, roomName: courseDB[i].roomName, professor: courseDB[i].professor, major: courseDB[i].major, classification: courseDB[i].classification, courseDay: courseDB[i].courseDay, startTime: courseDB[i].startTime, endTime: courseDB[i].endTime, num: courseDB[i].num)
                 uswCourse.append(readCourse)
             }
         }
+        filteredUswCourse = uswCourse
+        tableView?.reloadData()
+        tableView?.beginUpdates()
+        tableView.endUpdates()
+    }
+    
+    func selectedData(numData: Int, majorData: String) {
+        removeArray()
+        let courseDB = realm.objects(CourseData.self)
+        if numData == 6{
+            for i in 0..<courseDB.count-1{
+                if courseDB[i].major == majorData{
+                    var readCourse = Course(courseName: courseDB[i].courseName, roomName: courseDB[i].roomName, professor: courseDB[i].professor, major: courseDB[i].major, classification: courseDB[i].classification, courseDay: courseDB[i].courseDay, startTime: courseDB[i].startTime, endTime: courseDB[i].endTime, num: courseDB[i].num)
+                    uswCourse.append(readCourse)
+                }
+            }
+        } else if majorData == "전체" { // 애는 됨
+            for i in 0...courseDB.count-1{
+                if courseDB[i].num == numData {
+                    var readCourse = Course(courseName: courseDB[i].courseName, roomName: courseDB[i].roomName, professor: courseDB[i].professor, major: courseDB[i].major, classification: courseDB[i].classification, courseDay: courseDB[i].courseDay, startTime: courseDB[i].startTime, endTime: courseDB[i].endTime, num: courseDB[i].num)
+                    uswCourse.append(readCourse)
+                }
+            }
+        } else {
+            for i in 0...courseDB.count-1{
+                if courseDB[i].num == numData && courseDB[i].major == majorData {
+                    var readCourse = Course(courseName: courseDB[i].courseName, roomName: courseDB[i].roomName, professor: courseDB[i].professor, major: courseDB[i].major, classification: courseDB[i].classification, courseDay: courseDB[i].courseDay, startTime: courseDB[i].startTime, endTime: courseDB[i].endTime, num: courseDB[i].num)
+                    uswCourse.append(readCourse)
+                }
+            }
+        }
+        
         filteredUswCourse = uswCourse
         tableView?.reloadData()
         tableView?.beginUpdates()

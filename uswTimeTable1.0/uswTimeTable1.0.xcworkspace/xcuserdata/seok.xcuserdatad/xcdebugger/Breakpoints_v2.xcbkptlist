@@ -14,9 +14,9 @@
             filePath = "uswTimeTable1.0/listCourseData.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
-            landmarkName = "listCourseData"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
+            landmarkName = "customCell"
             landmarkType = "3">
             <Locations>
                <Location
