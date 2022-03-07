@@ -51,6 +51,10 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         return myCell
     }
     
+    @objc func adjustBtnAction(sender: UIButton){
+        
+    }
+    
     @objc func btnaction(sender: UIButton)
     {
         let indexPath = IndexPath(row: sender.tag, section: 0)
