@@ -19,12 +19,20 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         navigationBarHidden()
         navigationBackSwipeMotion()
         readData()
+        print("viewdidload")
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationBarHidden()
+        navigationBackSwipeMotion()
+        readData()
+    }
+    
     func readData(){
+        uswUser.removeAll()
         let userDB = realm.objects(userDB.self)
         for i in 0...userDB.count-1{
             var readData = userTable(year: userDB[i].year , semester: userDB[i].semester, timetableName: userDB[i].timetableName)
@@ -45,14 +53,40 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         myCell.semeTxtField.text = "\(uswUser[indexPath.row].semester)학기"
         myCell.delBtn.tag = indexPath.row
         myCell.delBtn.addTarget(self, action: #selector(btnaction), for: .touchUpInside)
-     
+        myCell.adBtn.tag = indexPath.row
+        myCell.adBtn.addTarget(self, action: #selector(adjustBtnAction), for: .touchUpInside)
         
+        myCell.selectionStyle = .none
+
         
         return myCell
     }
     
     @objc func adjustBtnAction(sender: UIButton){
         
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let myCell = uswUser[indexPath.row].timetableName
+        // alert 쓸 필요 없을듯
+        let adjustDB = realm.objects(userDB.self)
+        
+        let adjustIndex: Int = uswUser.firstIndex(where: { $0.timetableName == myCell}) ?? 0
+        print(adjustIndex)
+        
+        
+        let popVC = storyboard?.instantiateViewController(withIdentifier: "popVC") as! popUpViewController
+        popVC.arrayIndex = adjustIndex
+        popVC.timetableName = adjustDB[adjustIndex].timetableName
+        popVC.semester = adjustDB[adjustIndex].semester
+        popVC.year = adjustDB[adjustIndex].year
+        self.navigationController?.pushViewController(popVC, animated: true)
+
+        
+
+        
+        
+        // 인덱스 뽑아오면 ? 그 인덱스 값대로 수정해주는 로직
+        // 내일 할 일 --> 수정 버튼 누를 시 배열 수정 and 데이터베이스값 수정해주는 작업하면 끝 - > 메인화면 생성
+        // uswUser[1].semester
     }
     
     @objc func btnaction(sender: UIButton)
@@ -136,6 +170,7 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
 
 class timetableCell: UITableViewCell {
 
+    @IBOutlet weak var adBtn: UIButton!
     @IBOutlet weak var delBtn: UIButton!
     @IBOutlet weak var listView: UIView!
     @IBOutlet weak var yearTxtField: UILabel!

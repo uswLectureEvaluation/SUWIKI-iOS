@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
+		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
 		AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */; };
 		AF50233F27C378FB0030CF5D /* courseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50233E27C378FB0030CF5D /* courseData.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
+		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
 		AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adjustCourseData.swift; sourceTree = "<group>"; };
 		AF50233E27C378FB0030CF5D /* courseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = courseData.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				AF7AA1C527831F8500996874 /* showTimeTable.swift */,
 				AF50233E27C378FB0030CF5D /* courseData.swift */,
 				AFE696CC27BBCD0500262BEF /* listTimeTable.swift */,
+				AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */,
 				AFE69751279F16BD00FB2BC7 /* listCourseData.swift */,
 				AFED499927ABD0B500CE242D /* infoCourseData.swift */,
 				AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */,
@@ -271,6 +274,7 @@
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
+				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
 				AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */,
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,

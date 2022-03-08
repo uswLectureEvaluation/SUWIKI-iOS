@@ -107,6 +107,8 @@ class infoCourseData: UIViewController{
                 adVC.professorData = professorData
                 adVC.courseDayData = courseDayData
                 adVC.courseNameData = courseNameData
+                adVC.startTimeData = startTimeData
+                adVC.endTimeData = endTimeData
                 adVC.checkAdjust = checkAdjust
                 adVC.deleteIndex = deleteIndex
                 self.navigationController?.pushViewController(adVC, animated: true)
@@ -121,6 +123,8 @@ class infoCourseData: UIViewController{
             adVC.professorData = professorData
             adVC.courseDayData = courseDayData
             adVC.courseNameData = courseNameData
+            adVC.startTimeData = startTimeData
+            adVC.endTimeData = endTimeData
             self.navigationController?.pushViewController(adVC, animated: true)
             }
         } else {

@@ -116,6 +116,7 @@ class adjustCourseData: UIViewController {
             
         }
         
+        
         // 취소버튼 누를땐 원본 그대로 다시 보내주기
     /*
         infoVC.courseNameData = filteredUswCourse[indexPath.row].courseName
@@ -133,12 +134,30 @@ class adjustCourseData: UIViewController {
     // 변경 허용한 정보 1. 장소 2. startTime & endTime
     // if 완료 안누를 시 데이터 삭제 x, 완료 누르면 데이터 삭제하는 로직 필요. readCourse하는 로직이 infoCourseData랑 비슷.(--> 그냥 infoCourseData로 넘겨도 될듯)
     
+    @IBAction func cancelBtnClicked(_ sender: Any) {
+        let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+        infoVC.roomNameData = roomTextField.text ?? ""
+        infoVC.startTimeData = startTimeData
+        infoVC.endTimeData = endTimeData
+        infoVC.professorData = professorData
+        infoVC.courseNameData = courseNameData
+        infoVC.courseDayData = courseDayData
+        infoVC.classificationData = classificationData
+        infoVC.numData = numData
+        print("\(startTimeData)")
+        print("\(endTimeData)")
+        self.navigationController?.pushViewController(infoVC, animated: true)
+    }
+    
+    
     func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: "확인 버튼을 눌러주세요!", preferredStyle: UIAlertController.Style.alert)
         let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(cancle)
         present(alert,animated: true,completion: nil)
     }
+    
+    
     
     func navigationBarHidden() {
             self.navigationController?.navigationBar.isHidden = true
