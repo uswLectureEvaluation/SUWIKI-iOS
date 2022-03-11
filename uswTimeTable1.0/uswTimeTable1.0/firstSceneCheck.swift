@@ -63,11 +63,9 @@ class firstSceneCheck: UIViewController {
                         try! realm.write{
                             realm.add(insideDB)
                         }
-            
                     }
                 }
             }
         }
     }
-
 }

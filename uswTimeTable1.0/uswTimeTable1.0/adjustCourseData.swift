@@ -16,6 +16,11 @@ class adjustCourseData: UIViewController {
     @IBOutlet weak var endTextField: UILabel!
     @IBOutlet weak var roomTextField: UITextField!
     
+    @IBOutlet weak var courseNameField: UILabel!
+    @IBOutlet weak var professorField: UILabel!
+    @IBOutlet weak var roomNameField: UILabel!
+    @IBOutlet weak var majorField: UILabel!
+    
     let startDropDown = DropDown()
     let endDropDown = DropDown()
     
@@ -38,6 +43,13 @@ class adjustCourseData: UIViewController {
 
     
     override func viewDidLoad() {
+        courseNameField.text = courseNameData
+        roomNameField.text = roomNameData
+        professorField.text = professorData
+        majorField.text = classificationData
+        print(courseNameData)
+        print(roomNameData)
+        print(professorData)
         super.viewDidLoad()
         
         roomTextField.text = roomNameData 
@@ -67,7 +79,7 @@ class adjustCourseData: UIViewController {
             self.endTextField.textAlignment = .center
                                             
         }
-        
+
         navigationBarHidden()
         navigationBackSwipeMotion()
         // Do any additional setup after loading the view.
@@ -87,18 +99,20 @@ class adjustCourseData: UIViewController {
             showAlert(title: "비어있는 데이터가 있어요")
             //4. 경고창 보이기
         } else if checkAdjust == 0{
+            let preVC = self.presentingViewController
+            guard let vc = preVC as? infoCourseData else {return}
             
-            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
-            infoVC.roomNameData = roomTextField.text ?? ""
-            infoVC.startTimeData = "\(String(describing: startTextField.text!)):30"
-            infoVC.endTimeData = "\(String(describing: endTextField.text!)):20"
-            infoVC.professorData = professorData
-            infoVC.courseNameData = courseNameData
-            infoVC.courseDayData = courseDayData
-            infoVC.classificationData = classificationData
-            infoVC.numData = numData
-            self.navigationController?.pushViewController(infoVC, animated: true)
-            
+          //  let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+            vc.roomNameData = self.roomTextField.text ?? ""
+            vc.startTimeData = "\(String(describing: self.startTextField.text!)):30"
+            vc.endTimeData = "\(String(describing: self.endTextField.text!)):20"
+            vc.professorData = self.professorData
+            vc.courseNameData = self.courseNameData
+            vc.courseDayData = self.courseDayData
+            vc.classificationData = self.classificationData
+            vc.numData = self.numData
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+
         } else if checkAdjust == 1{
             
             let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
@@ -112,8 +126,8 @@ class adjustCourseData: UIViewController {
             infoVC.numData = numData
             infoVC.checkAdjust = checkAdjust
             infoVC.deleteIndex = deleteIndex
-            self.navigationController?.pushViewController(infoVC, animated: true)
-            
+            self.present(infoVC, animated: true, completion: nil)
+
         }
         
         
@@ -135,6 +149,8 @@ class adjustCourseData: UIViewController {
     // if 완료 안누를 시 데이터 삭제 x, 완료 누르면 데이터 삭제하는 로직 필요. readCourse하는 로직이 infoCourseData랑 비슷.(--> 그냥 infoCourseData로 넘겨도 될듯)
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        /*
         let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
         infoVC.roomNameData = roomTextField.text ?? ""
         infoVC.startTimeData = startTimeData
@@ -147,6 +163,7 @@ class adjustCourseData: UIViewController {
         print("\(startTimeData)")
         print("\(endTimeData)")
         self.navigationController?.pushViewController(infoVC, animated: true)
+         */
     }
     
     

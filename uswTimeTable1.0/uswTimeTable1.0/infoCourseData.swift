@@ -99,7 +99,7 @@ class infoCourseData: UIViewController{
     @IBAction func adjustBtn(_ sender: Any) {
         if varietyDay.count == 0{
             if checkAdjust == 1{
-                let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as! adjustCourseData
+                guard let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as? adjustCourseData else {return}
                 // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
                 adVC.roomNameData = roomNameData
                 adVC.classificationData = classificationData
@@ -111,11 +111,11 @@ class infoCourseData: UIViewController{
                 adVC.endTimeData = endTimeData
                 adVC.checkAdjust = checkAdjust
                 adVC.deleteIndex = deleteIndex
-                self.navigationController?.pushViewController(adVC, animated: true)
-            
+                adVC.modalPresentationStyle = .fullScreen
+                self.present(adVC, animated: true, completion: nil)
             } else {
             
-            let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as! adjustCourseData
+            guard let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as? adjustCourseData else {return}
             // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
             adVC.roomNameData = roomNameData
             adVC.classificationData = classificationData
@@ -125,7 +125,10 @@ class infoCourseData: UIViewController{
             adVC.courseNameData = courseNameData
             adVC.startTimeData = startTimeData
             adVC.endTimeData = endTimeData
-            self.navigationController?.pushViewController(adVC, animated: true)
+            adVC.modalPresentationStyle = .fullScreen
+            self.present(adVC, animated: true, completion: nil)
+
+            
             }
         } else {
             showAlert(title: "여러수업은 수정할 수 없어요!")
