@@ -133,6 +133,10 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
 
     
+    @IBAction func addTimeTable(_ sender: Any) {
+        let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
+        self.navigationController?.pushViewController(makeVC, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140

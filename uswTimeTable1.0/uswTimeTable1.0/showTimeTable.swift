@@ -135,8 +135,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
 }
     
     @IBAction func testRemove(_ sender: Any) {
-        let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
-        self.navigationController?.pushViewController(makeVC, animated: true)
+        
     }
     
     @IBAction func testView(_ sender: Any) {
@@ -180,10 +179,11 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
                 courseList.removeAll(where: { $0.courseName == "\(deleteCourse)" && $0.professor == "\(deleteProfessor)" && $0.courseId == "\(deleteCourseId)" })
                 
                 let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
-                
+                let AD = UIApplication.shared.delegate as? AppDelegate
                 infoVC.deleteIndex = deleteIndex
                 infoVC.checkAdjust = 1
                 infoVC.courseNameData = selectedCourse.courseName
+                AD?.roomName = selectedCourse.roomName
                 infoVC.roomNameData = selectedCourse.roomName
                 infoVC.professorData = selectedCourse.professor
                 infoVC.courseDayData = courseDay
