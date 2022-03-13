@@ -92,28 +92,25 @@ class infoCourseData: UIViewController{
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        readADData()
+        print("viewwill")
+        print(roomNameData)
+        showCourseData()
+
+        
+        navigationBarHidden()
+        navigationBackSwipeMotion()
+
+        super.viewDidLoad()
+    }
+    
     
     
     
 
     @IBAction func adjustBtn(_ sender: Any) {
         if varietyDay.count == 0{
-            if checkAdjust == 1{
-                guard let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as? adjustCourseData else {return}
-                // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
-                adVC.roomNameData = roomNameData
-                adVC.classificationData = classificationData
-                adVC.numData = numData
-                adVC.professorData = professorData
-                adVC.courseDayData = courseDayData
-                adVC.courseNameData = courseNameData
-                adVC.startTimeData = startTimeData
-                adVC.endTimeData = endTimeData
-                adVC.checkAdjust = checkAdjust
-                adVC.deleteIndex = deleteIndex
-                adVC.modalPresentationStyle = .fullScreen
-                self.present(adVC, animated: true, completion: nil)
-            } else {
             
             guard let adVC =  self.storyboard?.instantiateViewController(withIdentifier: "adVC") as? adjustCourseData else {return}
             // 불러오는 함수. identifier는 뷰컨트롤러의 storyboard ID.
@@ -129,7 +126,10 @@ class infoCourseData: UIViewController{
             self.present(adVC, animated: true, completion: nil)
 
             
-            }
+            
+           
+            
+            
         } else {
             showAlert(title: "여러수업은 수정할 수 없어요!")
         }
@@ -144,6 +144,19 @@ class infoCourseData: UIViewController{
         
     }
     
+    func readADData(){
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        
+        if let roomName = AD?.roomName{
+            roomNameData = roomName
+        }
+        if let startTime = AD?.startTime{
+            startTimeData = startTime
+        }
+        if let endTime = AD?.endTime{
+            endTimeData = endTime
+        }
+    }
     
     @IBAction func addBtnClicked(_ sender: Any) {
         //
@@ -160,22 +173,25 @@ class infoCourseData: UIViewController{
             checkCoursePlaceTwo() // 두가지 수업 들어올 시
             checkCourseHaveSpace() // 두가지 수업에 공백 있을 시
             userCourseDay() // 가지고 있는 수업 데이터 불러오기(중복확인 위함)
-            print(getStartTimeArray)
-            print(getEndTimeArray)
+ 
             if getStartTimeArray.count == 1{
+                print(getStartTimeArray)
+                print(getEndTimeArray)
                 for userData in deleteDB{
                     try! realm.write{
                         realm.delete(userData.userCourseData[deleteIndex])
                     }
                 }
             } else if getStartTimeArray.count > 1{
-                
+                print(getStartTimeArray)
+                print(getEndTimeArray)
                 var deleteGetIndex = getStartTimeArray.firstIndex(of: beforeTimeInt) ?? 0
-                print(deleteGetIndex)
                 getStartTimeArray.remove(at: deleteGetIndex)
                 getEndTimeArray.remove(at: deleteGetIndex)
                 checkTimeCrash()
                 
+                print(getStartTimeArray)
+                print(getEndTimeArray)
                 if setNum == 1{
                     showAlert(title: "시간표가 중복되었어요!")
                 } else {
@@ -197,16 +213,7 @@ class infoCourseData: UIViewController{
             userCourseDay() // 가지고 있는 수업 데이터 불러오기(중복확인 위함)
             checkTimeCrash()
         }
-        /*
-        print("\(varietyDay)varietyDay")
-        print("\(varietyRoomName)varietyRoomName")
-        print("\(nowStartTimeArray)nowStartTimeArray")
-        print("\(nowEndTimeArray)nowEndTimeArray")
-        print("\(getStartTimeArray)getStartTimeArray")
-        print("\(getEndTimeArray)getEndTimeArray")
-        print("\(getCourseDayArray)getCourseDayArray")
-        */
-         
+        
         if changeDay == 7 { // 시간표 토요일 (이러닝 같은 수업)
             showAlert(title: "이러닝은 추가할 수 없어요!")
             
@@ -330,7 +337,7 @@ class infoCourseData: UIViewController{
     }
     
     func checkTimeCrash() { // 일반적인 시간표인 경우에 중복을 확인해주는 함수
-        
+        setNum = 0 
         if nowStartTimeArray.count == 0{
             if getStartTimeArray.count == 0{
                 setNum = 0
@@ -652,7 +659,7 @@ class infoCourseData: UIViewController{
                         let courseDB = UserCourse() // 이라ㅜㅁㄴ룸 무메ㅜ
                         let courseCount = realm.objects(UserCourse.self).count
                         realm.beginWrite()
-                        courseDB.courseId = "A\(courseCount)"
+                        courseDB.courseId = "\(Int.random(in: 0...50000))"
                         courseDB.courseName = courseNameData
                         courseDB.roomName = varietyRoomName[i]
                         courseDB.courseDay = nowCourseDay[i]
@@ -675,10 +682,10 @@ class infoCourseData: UIViewController{
         realm.beginWrite()
         let readUserDB = realm.objects(userDB.self)
         let courseData = UserCourse()
-        var courseCount = realm.objects(UserCourse.self).count
+        let courseCount = realm.objects(UserCourse.self).count
         for userData in readUserDB{
             if userData.timetableName == checkTimeTable{
-                courseData.courseId = "A\(courseCount)"
+                courseData.courseId = "\(Int.random(in: 0...50000))"
                 courseData.courseName = courseNameData
                 courseData.roomName = roomNameData
                 courseData.courseDay = changeDay

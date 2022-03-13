@@ -159,6 +159,10 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
             //
 
     }
+    // userData(name: ?[0] , age: ?[0] , phoneNumber: ?[0])
+    //i=0  userData[i],userData[i+1],userData[i+2]
+    // [0][0] [0][1] [0][2]
+    // key - value
     // 함수 내부에 인자로 text를 받아와서 비교
     func selectMajorData(majorData: String){
         removeArray()
@@ -262,7 +266,10 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let infoVC = storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
-        
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        AD?.roomName = filteredUswCourse[indexPath.row].roomName
+        AD?.startTime = filteredUswCourse[indexPath.row].startTime
+        AD?.endTime = filteredUswCourse[indexPath.row].endTime
         infoVC.courseNameData = filteredUswCourse[indexPath.row].courseName
         infoVC.roomNameData = filteredUswCourse[indexPath.row].roomName
         infoVC.professorData = filteredUswCourse[indexPath.row].professor

@@ -99,35 +99,28 @@ class adjustCourseData: UIViewController {
             showAlert(title: "비어있는 데이터가 있어요")
             //4. 경고창 보이기
         } else if checkAdjust == 0{
-            let preVC = self.presentingViewController
-            guard let vc = preVC as? infoCourseData else {return}
             
-          //  let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
-            vc.roomNameData = self.roomTextField.text ?? ""
-            vc.startTimeData = "\(String(describing: self.startTextField.text!)):30"
-            vc.endTimeData = "\(String(describing: self.endTextField.text!)):20"
-            vc.professorData = self.professorData
-            vc.courseNameData = self.courseNameData
-            vc.courseDayData = self.courseDayData
-            vc.classificationData = self.classificationData
-            vc.numData = self.numData
-            self.presentingViewController?.dismiss(animated: true, completion: nil)
+            
+            let AD = UIApplication.shared.delegate as? AppDelegate
 
+            //  let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+            AD?.roomName = roomTextField.text ?? ""
+            AD?.startTime = "\(String(describing: startTextField.text!)):30"
+            AD?.endTime = "\(String(describing: endTextField.text!)):20"
+          //  let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+            
+            self.dismiss(animated: true, completion: nil)
         } else if checkAdjust == 1{
             
-            let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
-            infoVC.roomNameData = roomTextField.text ?? ""
-            infoVC.startTimeData = "\(String(describing: startTextField.text!)):30"
-            infoVC.endTimeData = "\(String(describing: endTextField.text!)):20"
-            infoVC.professorData = professorData
-            infoVC.courseNameData = courseNameData
-            infoVC.courseDayData = courseDayData
-            infoVC.classificationData = classificationData
-            infoVC.numData = numData
-            infoVC.checkAdjust = checkAdjust
-            infoVC.deleteIndex = deleteIndex
-            self.present(infoVC, animated: true, completion: nil)
+            let AD = UIApplication.shared.delegate as? AppDelegate
 
+            //  let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+            AD?.roomName = roomTextField.text ?? ""
+            AD?.startTime = "\(String(describing: startTextField.text!)):30"
+            AD?.endTime = "\(String(describing: endTextField.text!)):20"
+          //  let infoVC = self.storyboard?.instantiateViewController(withIdentifier: "infoVC") as! infoCourseData
+            
+            self.dismiss(animated: true, completion: nil)
         }
         
         
