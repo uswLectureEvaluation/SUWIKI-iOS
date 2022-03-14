@@ -10,7 +10,7 @@ import DropDown
 import RealmSwift
 
 
-class uswMakeSchedule: UIViewController {
+class uswMakeSchedule: UIViewController, UITextFieldDelegate {
     let realm = try! Realm()
     
     var nameCheck = [String]()
@@ -31,7 +31,7 @@ class uswMakeSchedule: UIViewController {
     let semeList = ["1", "2"]
     
     override func viewDidLoad() {
-        
+        nameTxtField.delegate = self
         super.viewDidLoad()
         readName()
         
@@ -63,7 +63,7 @@ class uswMakeSchedule: UIViewController {
     }
 
     @IBAction func finishBtnClicked(_ sender: Any) {
-        if yearTxtField.text == "Year" || nameTxtField.text == "" || semeTxtField.text == "1 or 2"{
+        if yearTxtField.text == "-" || nameTxtField.text == "" || semeTxtField.text == "-"{
             let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
                 message: "데이터를 다 알려주세요!",
                 preferredStyle: UIAlertController.Style.alert)
@@ -122,6 +122,49 @@ class uswMakeSchedule: UIViewController {
         }
         
     }
+    
+
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let utf8Char = string.cString(using: .utf8)
+        let isBackSpace = strcmp(utf8Char, "\\b")
+
+        if string.hasCharacters() || isBackSpace == -92 {
+            guard let textFieldText = textField.text, let rangeOfTextToReplace = Range(range, in: textFieldText) else { return false }
+            var tcount : Int = 0
+            if string.count == 0{
+                tcount = textField.text!.count - 1
+                
+            } else {
+                tcount = textField.text!.count + string.count
+            }
+            setCommentWriteButtonState(textlanght: tcount)
+            let substringToReplace = textFieldText[rangeOfTextToReplace]
+            let count = textFieldText.count - substringToReplace.count + string.count return count <= 300
+            
+        } return false
+
+        /*
+        let maxLength = 12
+        let currentString: NSString = (nameTxtField.text ?? "") as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+         */
+    }
+}
+
+extension String{
+    func hasCharacters() -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9_]$", options: .caseInsensitive)
+            if let _ = regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, self.count)) { return true }
+            
+        } catch {
+            return false
+        }
+        return false
+    }
+
 }
 
 
