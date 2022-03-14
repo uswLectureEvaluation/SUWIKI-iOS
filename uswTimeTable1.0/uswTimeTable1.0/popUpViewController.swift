@@ -84,29 +84,32 @@ class popUpViewController: UIViewController {
             //4. 경고창 보이기
             present(alert,animated: true,completion: nil)
         } else if nameCheck.contains(nameTxtField.text!) {
-            let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
-                message: "데이터를 다 알려주세요!",
+            let alert = UIAlertController(title:"이름이 중복되었어요!",
+                message: "이름을 바꿔주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             //2. 확인 버튼 만들기
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
             //3. 확인 버튼을 경고창에 추가하기
             alert.addAction(cancle)
             //4. 경고창 보이기
-            present(alert,animated: true,completion: nil)
+            present(alert, animated: true,completion: nil)
         } else {
             realm.beginWrite()
             let userData = realm.objects(userDB.self)
             userData[arrayIndex].year = yearTxtField.text ?? "2022"
             userData[arrayIndex].semester = semeTxtField.text ?? "1"
             userData[arrayIndex].timetableName = nameTxtField.text ?? "-"
+            UserDefaults.standard.removeObject(forKey: "name")
+            UserDefaults.standard.set(nameTxtField.text, forKey: "name")
+
             try! realm.commitWrite()
             let timeVC = self.storyboard?.instantiateViewController(withIdentifier: "timeVC") as! listTimeTable
-            self.navigationController?.pushViewController(timeVC, animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
         
         
     }
-    
+
     func readName(){
         let name = realm.objects(userDB.self)
         for i in 0..<name.count{
@@ -118,6 +121,11 @@ class popUpViewController: UIViewController {
             
         }
         
+    }
+    
+    
+    @IBAction func dismissBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

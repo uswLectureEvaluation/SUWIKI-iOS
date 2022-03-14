@@ -78,8 +78,10 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
         popVC.timetableName = adjustDB[adjustIndex].timetableName
         popVC.semester = adjustDB[adjustIndex].semester
         popVC.year = adjustDB[adjustIndex].year
-        self.navigationController?.pushViewController(popVC, animated: true)
-
+        popVC.modalPresentationStyle = .fullScreen
+        
+        self.present(popVC, animated: true, completion: nil)
+        
         
 
         
