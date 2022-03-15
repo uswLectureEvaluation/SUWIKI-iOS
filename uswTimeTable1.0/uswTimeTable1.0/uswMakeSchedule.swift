@@ -64,8 +64,8 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
 
     @IBAction func finishBtnClicked(_ sender: Any) {
         if nameTxtField.text == "" {
-            let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
-                message: "데이터를 다 알려주세요!",
+            let alert = UIAlertController(title:"시간표 이름을 알려주세요!",
+                message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             //2. 확인 버튼 만들기
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)

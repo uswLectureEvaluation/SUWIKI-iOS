@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 import DropDown
 
-class popUpViewController: UIViewController {
+class popUpViewController: UIViewController, UITextFieldDelegate {
 
     let realm = try! Realm()
     
@@ -32,7 +32,7 @@ class popUpViewController: UIViewController {
     let semeList = ["1", "2"]
     
     override func viewDidLoad() {
-        
+        nameTxtField.delegate = self
         super.viewDidLoad()
         readName()
         yearDropDown.anchorView = yearView
@@ -73,9 +73,9 @@ class popUpViewController: UIViewController {
     
     
     @IBAction func finishBtnClicked(_ sender: Any) {
-        if yearTxtField.text == "Year" || nameTxtField.text == "" || semeTxtField.text == "1 or 2"{
-            let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
-                message: "데이터를 다 알려주세요!",
+        if nameTxtField.text == ""{
+            let alert = UIAlertController(title:"시간표 이름을 적어주세요!",
+                message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             //2. 확인 버튼 만들기
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -128,7 +128,16 @@ class popUpViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+ 
+
     
+        let maxLength = 12
+        let currentString: NSString = (nameTxtField.text ?? "") as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+         
+    }
     /*    // MARK: - Navigatio
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

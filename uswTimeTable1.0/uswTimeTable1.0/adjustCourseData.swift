@@ -8,7 +8,7 @@
 import UIKit
 import DropDown
 
-class adjustCourseData: UIViewController {
+class adjustCourseData: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var startView: UIView!
     @IBOutlet weak var endView: UIView!
@@ -43,6 +43,7 @@ class adjustCourseData: UIViewController {
 
     
     override func viewDidLoad() {
+        roomTextField.delegate = self
         courseNameField.text = courseNameData
         roomNameField.text = roomNameData
         professorField.text = professorData
@@ -176,4 +177,13 @@ class adjustCourseData: UIViewController {
     func navigationBackSwipeMotion() {
            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
        }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    
+        let maxLength = 12
+        let currentString: NSString = (roomTextField.text ?? "") as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+         
+    }
 }

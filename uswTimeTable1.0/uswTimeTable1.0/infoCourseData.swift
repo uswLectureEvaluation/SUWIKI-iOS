@@ -641,11 +641,20 @@ class infoCourseData: UIViewController{
             
             let secondRoomCourseDay = splitSecondRoomName[1].first ?? "토"
             let secondTime = splitSecondRoomName[1].components(separatedBy: ",")
-            let secondStartTime = secondTime[0].dropFirst()
-            let secondEndTime = secondTime[1].dropLast()
+            if secondTime.count != 3{
+                let secondStartTime = secondTime[0].dropFirst()
+                let secondEndTime = secondTime[1].dropLast()
+                changePeriodToStartTime(changePeriod: String(secondStartTime))
+                changePeriodToEndTime(changePeriod: String(secondEndTime))
+            } else if secondTime.count == 3 {
+                let secondStartTime = secondTime[0].dropFirst()
+                let secondEndTime = secondTime[2].dropLast()
+                changePeriodToStartTime(changePeriod: String(secondStartTime))
+                changePeriodToEndTime(changePeriod: String(secondEndTime))
+            }
+            print(secondTime)
             changeDayToInt(checkDay: secondRoomCourseDay)
-            changePeriodToStartTime(changePeriod: String(secondStartTime))
-            changePeriodToEndTime(changePeriod: String(secondEndTime))
+            
             varietyRoomName.append(splitSecondRoomName[0])
 
         }

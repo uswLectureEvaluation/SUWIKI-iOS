@@ -108,29 +108,30 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         var rand = x
         switch rand{
         case 0:
-            return UIColor(red: 0.1059, green: 0.6118, blue: 0.9882, alpha: 1.0) /* #1b9cfc */
+            return UIColor(red: 0.3451, green: 0.6941, blue: 0.6235, alpha: 1.0) // 교체
         case 1:
             return UIColor(red: 0.2314, green: 0.2314, blue: 0.5961, alpha: 1.0) /* #3b3b98 */
         case 2:
-            return UIColor(red: 0.8392, green: 0.6353, blue: 0.9098, alpha: 1.0) /* #d6a2e8 */
+            return UIColor(red: 0.8392, green: 0.2588, blue: 0.4824, alpha: 1.0) /* #d6427b */
+             /* #d6a2e8 */
         case 3:
             return UIColor(red: 0.9922, green: 0.4471, blue: 0.4471, alpha: 1.0) /* #fd7272 */
         case 4:
             return UIColor(red: 0.3333, green: 0.902, blue: 0.7569, alpha: 1.0) /* #55e6c1 */
         case 5:
-            return UIColor(red: 0.3451, green: 0.6941, blue: 0.6235, alpha: 1.0) /* #58b19f */
+            return UIColor.darkGray/* #3b3b98 */
         case 6:
-            return UIColor(red: 0.6039, green: 0.9255, blue: 0.8588, alpha: 1.0) /* #9aecdb */
+            return UIColor(red: 0.1059, green: 0.6118, blue: 0.9882, alpha: 1.0)
         case 7:
-            return UIColor(red: 0.7922, green: 0.8275, blue: 0.7843, alpha: 1.0) /* #cad3c8 */
+            return UIColor(hue: 0.95, saturation: 0.73, brightness: 0.98, alpha: 1.0) /* #fc427b */
         case 8:
             return UIColor(red: 0.9765, green: 0.498, blue: 0.3176, alpha: 1.0) /* #f97f51 */
         case 9:
             return UIColor(red: 0.9961, green: 0.6431, blue: 0.498, alpha: 1.0) /* #fea47f */
         case 10:
-            return UIColor(red: 0.9176, green: 0.7098, blue: 0.2627, alpha: 1.0) /* #eab543 */
+            return UIColor(red: 0.1451, green: 0.8, blue: 0.9686, alpha: 1.0) /* #25ccf7 */
         default:
-            return UIColor.darkGray
+            return UIColor(red: 0.8392, green: 0.6353, blue: 0.9098, alpha: 1.0)
     }
 }
     
