@@ -30,6 +30,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         navigationBarHidden()
         checkTimeTable()
         readCourseDB()
@@ -39,6 +40,8 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         // json 시간표 데이터 입력
 }
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         print("viewwillappear")
         navigationBarHidden()
         checkTimeTable()
