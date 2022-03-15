@@ -126,30 +126,14 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
 
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let utf8Char = string.cString(using: .utf8)
-        let isBackSpace = strcmp(utf8Char, "\\b")
+ 
 
-        if string.hasCharacters() || isBackSpace == -92 {
-            guard let textFieldText = textField.text, let rangeOfTextToReplace = Range(range, in: textFieldText) else { return false }
-            var tcount : Int = 0
-            if string.count == 0{
-                tcount = textField.text!.count - 1
-                
-            } else {
-                tcount = textField.text!.count + string.count
-            }
-            setCommentWriteButtonState(textlanght: tcount)
-            let substringToReplace = textFieldText[rangeOfTextToReplace]
-            let count = textFieldText.count - substringToReplace.count + string.count return count <= 300
-            
-        } return false
-
-        /*
+    
         let maxLength = 12
         let currentString: NSString = (nameTxtField.text ?? "") as NSString
         let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
         return newString.length <= maxLength
-         */
+         
     }
 }
 
