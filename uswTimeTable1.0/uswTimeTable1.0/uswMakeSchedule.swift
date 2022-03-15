@@ -63,7 +63,7 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func finishBtnClicked(_ sender: Any) {
-        if yearTxtField.text == "-" || nameTxtField.text == "" || semeTxtField.text == "-"{
+        if nameTxtField.text == "" {
             let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
                 message: "데이터를 다 알려주세요!",
                 preferredStyle: UIAlertController.Style.alert)
