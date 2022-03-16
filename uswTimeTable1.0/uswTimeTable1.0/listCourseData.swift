@@ -311,7 +311,13 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     }
   
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
+
+
     
 
 }
@@ -333,5 +339,6 @@ class customCell: UITableViewCell {
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.cornerRadius = 12.0
 }
+    
 }
 

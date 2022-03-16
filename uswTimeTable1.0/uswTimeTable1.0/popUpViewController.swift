@@ -72,6 +72,7 @@ class popUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
     @IBAction func finishBtnClicked(_ sender: Any) {
         if nameTxtField.text == ""{
             let alert = UIAlertController(title:"시간표 이름을 적어주세요!",
@@ -138,12 +139,12 @@ class popUpViewController: UIViewController, UITextFieldDelegate {
         return newString.length <= maxLength
          
     }
-    /*    // MARK: - Navigatio
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
     }
-    */
+
 
 }
