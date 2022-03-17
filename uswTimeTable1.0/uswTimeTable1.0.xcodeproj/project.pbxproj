@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */; };
+		AF07990527E3565300B39617 /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF07990427E3565300B39617 /* loadingView.swift */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
 		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
@@ -27,6 +27,7 @@
 		AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE69751279F16BD00FB2BC7 /* listCourseData.swift */; };
 		AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED499927ABD0B500CE242D /* infoCourseData.swift */; };
 		AFF50AAB278737350048673B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFF50AAA278737350048673B /* RealmSwift.framework */; };
+		C5D393D72B1FB53B5FF507E6 /* Pods_uswTimeTable1_0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE53F4D4CDA927F8AA6A629 /* Pods_uswTimeTable1_0.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,7 +44,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A5D50B0EB79C9047C3E5935 /* Pods-uswTimeTable1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.release.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.release.xcconfig"; sourceTree = "<group>"; };
+		7DE53F4D4CDA927F8AA6A629 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF07990427E3565300B39617 /* loadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
 		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
@@ -65,8 +68,7 @@
 		AFE69751279F16BD00FB2BC7 /* listCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listCourseData.swift; sourceTree = "<group>"; };
 		AFED499927ABD0B500CE242D /* infoCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoCourseData.swift; sourceTree = "<group>"; };
 		AFF50AAA278737350048673B /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B308A7E7C18413C836AA9BDA /* Pods-uswTimeTable1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.debug.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.debug.xcconfig"; sourceTree = "<group>"; };
-		D5E50ACC9E24CAF43B97EFA6 /* Pods-uswTimeTable1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.release.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.release.xcconfig"; sourceTree = "<group>"; };
+		DF0D3E045AB89598BD874867 /* Pods-uswTimeTable1.0.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.debug.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFF50AAB278737350048673B /* RealmSwift.framework in Frameworks */,
-				1C04464AA0F7E71F905C0B33 /* Pods_uswTimeTable1_0.framework in Frameworks */,
+				C5D393D72B1FB53B5FF507E6 /* Pods_uswTimeTable1_0.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				AFF50AAA278737350048673B /* RealmSwift.framework */,
-				1CF9BD13474F307EA6838235 /* Pods_uswTimeTable1_0.framework */,
+				7DE53F4D4CDA927F8AA6A629 /* Pods_uswTimeTable1_0.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -94,8 +96,8 @@
 		983B077980285A29B89AAAAF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B308A7E7C18413C836AA9BDA /* Pods-uswTimeTable1.0.debug.xcconfig */,
-				D5E50ACC9E24CAF43B97EFA6 /* Pods-uswTimeTable1.0.release.xcconfig */,
+				DF0D3E045AB89598BD874867 /* Pods-uswTimeTable1.0.debug.xcconfig */,
+				4A5D50B0EB79C9047C3E5935 /* Pods-uswTimeTable1.0.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -123,6 +125,7 @@
 			children = (
 				AFAFEF82277F160900408F46 /* AppDelegate.swift */,
 				AFAFEF84277F160900408F46 /* SceneDelegate.swift */,
+				AF07990427E3565300B39617 /* loadingView.swift */,
 				AFA725442781B6D1003EE008 /* firstSceneCheck.swift */,
 				AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */,
 				AF7AA1C527831F8500996874 /* showTimeTable.swift */,
@@ -151,20 +154,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFAFEF96277F160B00408F46 /* Build configuration list for PBXNativeTarget "uswTimeTable1.0" */;
 			buildPhases = (
-				14E44826FB41E0C14DE1CF75 /* [CP] Check Pods Manifest.lock */,
+				CCD85248A8AC3D14A2D38C6D /* [CP] Check Pods Manifest.lock */,
 				AFAFEF7B277F160900408F46 /* Sources */,
 				AFAFEF7C277F160900408F46 /* Frameworks */,
 				AFAFEF7D277F160900408F46 /* Resources */,
-				DBC19CDC06761CFE442988AA /* [CP] Embed Pods Frameworks */,
 				AFF50AAD278737350048673B /* Embed Frameworks */,
+				912335CC9C972EDA08463558 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = uswTimeTable1.0;
-			packageProductDependencies = (
-			);
 			productName = uswTimeTable1.0;
 			productReference = AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */;
 			productType = "com.apple.product-type.application";
@@ -193,8 +194,6 @@
 				Base,
 			);
 			mainGroup = AFAFEF76277F160900408F46;
-			packageReferences = (
-			);
 			productRefGroup = AFAFEF80277F160900408F46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,7 +218,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		14E44826FB41E0C14DE1CF75 /* [CP] Check Pods Manifest.lock */ = {
+		912335CC9C972EDA08463558 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCD85248A8AC3D14A2D38C6D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -241,23 +257,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DBC19CDC06761CFE442988AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -268,6 +267,7 @@
 				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
+				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
@@ -422,10 +422,11 @@
 		};
 		AFAFEF97277F160B00408F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B308A7E7C18413C836AA9BDA /* Pods-uswTimeTable1.0.debug.xcconfig */;
+			baseConfigurationReference = DF0D3E045AB89598BD874867 /* Pods-uswTimeTable1.0.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R3N359429;
@@ -450,10 +451,11 @@
 		};
 		AFAFEF98277F160B00408F46 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5E50ACC9E24CAF43B97EFA6 /* Pods-uswTimeTable1.0.release.xcconfig */;
+			baseConfigurationReference = 4A5D50B0EB79C9047C3E5935 /* Pods-uswTimeTable1.0.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R3N359429;

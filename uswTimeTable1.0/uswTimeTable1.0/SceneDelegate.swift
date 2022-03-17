@@ -15,21 +15,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let userDB = realm.objects(userDB.self).count
-
+        let courseDB = realm.objects(CourseData.self).count
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        if userDB == 0{
-            let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
+        if courseDB == 0{
+            let vc = storyboard.instantiateViewController(withIdentifier: "lodVC") as? loadingView
             let nc = UINavigationController(rootViewController: vc!)
             self.window?.rootViewController = nc
             self.window?.makeKeyAndVisible() // 화면에 보여줌
-        } else{
-            let vc = storyboard.instantiateViewController(withIdentifier: "showVC") as? showTimeTable
-            let nc = UINavigationController(rootViewController: vc!)
-            self.window?.rootViewController = nc
-            self.window?.makeKeyAndVisible()
+        } else {
+            if userDB == 0{
+                let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
+                let nc = UINavigationController(rootViewController: vc!)
+                self.window?.rootViewController = nc
+                self.window?.makeKeyAndVisible() // 화면에 보여줌
+            } else{
+                let vc = storyboard.instantiateViewController(withIdentifier: "showVC") as? showTimeTable
+                let nc = UINavigationController(rootViewController: vc!)
+                self.window?.rootViewController = nc
+                self.window?.makeKeyAndVisible()
+            }
         }
+       
         
     }
 

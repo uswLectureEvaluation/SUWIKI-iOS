@@ -1,70 +1,70 @@
 PODS:
   - DropDown (2.3.13)
   - Elliotable (1.2.5)
-  - Firebase/Analytics (8.10.0):
+  - Firebase/Analytics (8.13.0):
     - Firebase/Core
-  - Firebase/Core (8.10.0):
+  - Firebase/Core (8.13.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (~> 8.10.0)
-  - Firebase/CoreOnly (8.10.0):
-    - FirebaseCore (= 8.10.0)
-  - Firebase/Database (8.10.0):
+    - FirebaseAnalytics (~> 8.13.0)
+  - Firebase/CoreOnly (8.13.0):
+    - FirebaseCore (= 8.13.0)
+  - Firebase/Database (8.13.0):
     - Firebase/CoreOnly
-    - FirebaseDatabase (~> 8.10.0)
-  - FirebaseAnalytics (8.10.0):
-    - FirebaseAnalytics/AdIdSupport (= 8.10.0)
+    - FirebaseDatabase (~> 8.13.0)
+  - FirebaseAnalytics (8.13.0):
+    - FirebaseAnalytics/AdIdSupport (= 8.13.0)
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - FirebaseAnalytics/AdIdSupport (8.10.0):
+  - FirebaseAnalytics/AdIdSupport (8.13.0):
     - FirebaseCore (~> 8.0)
     - FirebaseInstallations (~> 8.0)
-    - GoogleAppMeasurement (= 8.10.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
+    - GoogleAppMeasurement (= 8.13.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - FirebaseCore (8.10.0):
+  - FirebaseCore (8.13.0):
     - FirebaseCoreDiagnostics (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.6)
-    - GoogleUtilities/Logger (~> 7.6)
-  - FirebaseCoreDiagnostics (8.10.0):
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/Logger (~> 7.7)
+  - FirebaseCoreDiagnostics (8.13.0):
     - GoogleDataTransport (~> 9.1)
-    - GoogleUtilities/Environment (~> 7.6)
-    - GoogleUtilities/Logger (~> 7.6)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/Logger (~> 7.7)
     - nanopb (~> 2.30908.0)
-  - FirebaseDatabase (8.10.0):
+  - FirebaseDatabase (8.13.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
-  - FirebaseInstallations (8.10.0):
+  - FirebaseInstallations (8.13.0):
     - FirebaseCore (~> 8.0)
-    - GoogleUtilities/Environment (~> 7.6)
-    - GoogleUtilities/UserDefaults (~> 7.6)
+    - GoogleUtilities/Environment (~> 7.7)
+    - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleAppMeasurement (8.10.0):
-    - GoogleAppMeasurement/AdIdSupport (= 8.10.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
+  - GoogleAppMeasurement (8.13.0):
+    - GoogleAppMeasurement/AdIdSupport (= 8.13.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/AdIdSupport (8.10.0):
-    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.10.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
+  - GoogleAppMeasurement/AdIdSupport (8.13.0):
+    - GoogleAppMeasurement/WithoutAdIdSupport (= 8.13.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
-  - GoogleAppMeasurement/WithoutAdIdSupport (8.10.0):
-    - GoogleUtilities/AppDelegateSwizzler (~> 7.6)
-    - GoogleUtilities/MethodSwizzler (~> 7.6)
-    - GoogleUtilities/Network (~> 7.6)
-    - "GoogleUtilities/NSData+zlib (~> 7.6)"
+  - GoogleAppMeasurement/WithoutAdIdSupport (8.13.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
     - nanopb (~> 2.30908.0)
   - GoogleDataTransport (9.1.2):
     - GoogleUtilities/Environment (~> 7.2)
@@ -96,11 +96,11 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
-  - Realm (10.22.0):
-    - Realm/Headers (= 10.22.0)
-  - Realm/Headers (10.22.0)
-  - RealmSwift (10.22.0):
-    - Realm (= 10.22.0)
+  - Realm (10.24.1):
+    - Realm/Headers (= 10.24.1)
+  - Realm/Headers (10.24.1)
+  - RealmSwift (10.24.1):
+    - Realm (= 10.24.1)
 
 DEPENDENCIES:
   - DropDown
@@ -132,20 +132,20 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Elliotable: e669fa7a974658c4e0ee4be4b335f6a561f1b2cb
-  Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
-  FirebaseAnalytics: 319c9b3b1bdd400d60e2f415dff0c5f6959e6760
-  FirebaseCore: 04186597c095da37d90ff9fd3e53bc61a1ff2440
-  FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
-  FirebaseDatabase: 5f3e83b0a0d8759378fbd5d05661244d14dfbbb0
-  FirebaseInstallations: 830327b45345ffc859eaa9c17bcd5ae893fd5425
-  GoogleAppMeasurement: a3311dbcf3ea651e5a070fe8559b57c174ada081
+  Firebase: ee9b1d9b1801371e29f5591eda89eb5a314ab599
+  FirebaseAnalytics: 2be3cc52ac310759f28861aec9d459c851370cdb
+  FirebaseCore: c7e3fa30492e50ccdeef280bf0d5584af38da3e1
+  FirebaseCoreDiagnostics: c2836d254a8f0bbb4121ff18f2c2ea39d118fd08
+  FirebaseDatabase: c610ab55bcb033d5eb3d17acba57301068a28497
+  FirebaseInstallations: 60edbf7e11d91ae4c751d26c200dfd037099abe0
+  GoogleAppMeasurement: 135c2fbcf5038e0f37dbce04fa641a702fc275d1
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Realm: d9e4e5877095a6722145811f56fe89a531c9659d
-  RealmSwift: e4191b4b957fcfcbed23751ec65eec98f8173ab5
+  Realm: f9bc5a212a9ab084b4ed90cda1c28d835a38a06b
+  RealmSwift: 0b03bb38001bee4280dcc27709e6b33f438cfad1
 
 PODFILE CHECKSUM: 21837e83540b4c5dec07d68cb45203bbbabd2347
 

@@ -34,6 +34,10 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
         nameTxtField.delegate = self
         super.viewDidLoad()
         readName()
+        navigationBarHidden()
+        navigationBackSwipeMotion()
+        
+        
         
         dropDown1.anchorView = yearDropdown
         dropDown1.dataSource = yearList
@@ -123,6 +127,14 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
         
     }
     
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 

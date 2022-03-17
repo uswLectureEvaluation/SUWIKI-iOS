@@ -76,7 +76,8 @@ class infoCourseData: UIViewController{
     var checkAdjust = 0 // 시간표 수정을 확인하는 장치
     
     override func viewDidLoad() {
-       
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         print(checkTimeTable)
         print("deleteIndex\(deleteIndex)")
         print("checkAdjust\(checkAdjust)")
@@ -93,6 +94,8 @@ class infoCourseData: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
         readADData()
         print("viewwill")
         print(roomNameData)
