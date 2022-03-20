@@ -8,6 +8,7 @@ target 'uswTimeTable1.0' do
   pod 'RealmSwift'
   pod 'Realm'
   pod 'DropDown'
+  pod 'Gifu'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Analytics'
