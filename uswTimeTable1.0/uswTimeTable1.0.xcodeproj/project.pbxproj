@@ -139,8 +139,8 @@
 				AFAFEF86277F160900408F46 /* ViewController.swift */,
 				AFD2706927D4A487001EE098 /* GoogleService-Info.plist */,
 				AFAFEF88277F160900408F46 /* Main.storyboard */,
-				AFAFEF8E277F160B00408F46 /* Assets.xcassets */,
 				AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */,
+				AFAFEF8E277F160B00408F46 /* Assets.xcassets */,
 				AFAFEF93277F160B00408F46 /* Info.plist */,
 				AFAFEF8B277F160900408F46 /* uswTimeTable1_0.xcdatamodeld */,
 			);
