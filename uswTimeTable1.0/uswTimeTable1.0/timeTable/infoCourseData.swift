@@ -161,6 +161,10 @@ class infoCourseData: UIViewController{
         }
     }
     
+    @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func addBtnClicked(_ sender: Any) {
         //
         // 시간표 충돌 확인

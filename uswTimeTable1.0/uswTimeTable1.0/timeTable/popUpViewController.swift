@@ -134,7 +134,7 @@ class popUpViewController: UIViewController, UITextFieldDelegate {
  
 
     
-        let maxLength = 12
+        let maxLength = 10
         let currentString: NSString = (nameTxtField.text ?? "") as NSString
         let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
         return newString.length <= maxLength
