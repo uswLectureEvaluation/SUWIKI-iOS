@@ -26,16 +26,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let courseDB = realm.objects(CourseData.self).count
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let vc = storyboard.instantiateViewController(withIdentifier: "lodVC") as? loadingView
+        let nc = UINavigationController(rootViewController: vc!)
+        self.window?.rootViewController = nc
+        self.window?.makeKeyAndVisible()
         /*
-        var firebaseCount = 0
-        
-        uswFireDB.observe(.value) { snapshot in
-            firebaseCount = Int(snapshot.childrenCount)
-        }
-        */
-        
         uswFireDB.observe(.value) { snapshot in
             let fireBaseCnt = Int(snapshot.childrenCount) + 1
+            
             if courseDB == 0 || fireBaseCnt != courseDB{ // 나중에 수정되는 경우 발생 시 로직 수정 필요
                 let vc = storyboard.instantiateViewController(withIdentifier: "lodVC") as? loadingView
                 let nc = UINavigationController(rootViewController: vc!)
@@ -55,6 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         }
+         */
 
        
         

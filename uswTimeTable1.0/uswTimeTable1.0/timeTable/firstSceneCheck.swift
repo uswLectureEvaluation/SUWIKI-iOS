@@ -19,7 +19,8 @@ class firstSceneCheck: UIViewController {
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationBarHidden()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         myView.layer.borderWidth = 1.0
         myView.layer.borderColor = UIColor.lightGray.cgColor
         myView.layer.cornerRadius = 8.0
@@ -49,6 +50,10 @@ class firstSceneCheck: UIViewController {
         }
         
     }
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
     
     
 
