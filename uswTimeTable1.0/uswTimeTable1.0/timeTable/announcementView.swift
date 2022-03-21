@@ -8,17 +8,23 @@
 import UIKit
 
 class announcementView: UIViewController {
+    
 
     @IBOutlet weak var number1Text: UILabel!
     @IBOutlet weak var number2Text: UILabel!
     @IBOutlet weak var number3Text: UILabel!
+    let pasteBoard = UIPasteboard.general
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func btnClicked(_ sender: Any) {
+        pasteBoard.string = "100009448355 토스뱅크"
+    }
+    
     /*
     // MARK: - Navigation
 
