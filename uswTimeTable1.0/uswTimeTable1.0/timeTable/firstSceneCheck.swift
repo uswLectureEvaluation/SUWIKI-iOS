@@ -20,7 +20,6 @@ class firstSceneCheck: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarHidden()
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         myView.layer.borderWidth = 1.0
         myView.layer.borderColor = UIColor.lightGray.cgColor
         myView.layer.cornerRadius = 8.0

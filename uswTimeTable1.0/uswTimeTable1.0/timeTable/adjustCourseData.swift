@@ -82,7 +82,6 @@ class adjustCourseData: UIViewController, UITextFieldDelegate {
         }
 
         navigationBarHidden()
-        navigationBackSwipeMotion()
         // Do any additional setup after loading the view.
     }
     

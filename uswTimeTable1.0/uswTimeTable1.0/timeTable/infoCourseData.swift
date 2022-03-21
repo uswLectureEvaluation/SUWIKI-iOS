@@ -76,7 +76,6 @@ class infoCourseData: UIViewController{
     var checkAdjust = 0 // 시간표 수정을 확인하는 장치
     
     override func viewDidLoad() {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
         print(checkTimeTable)
         print("deleteIndex\(deleteIndex)")
@@ -85,7 +84,6 @@ class infoCourseData: UIViewController{
         
         
         navigationBarHidden()
-        navigationBackSwipeMotion()
 
         super.viewDidLoad()
         showCourseData()
@@ -162,7 +160,9 @@ class infoCourseData: UIViewController{
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        let listVC = self.storyboard?.instantiateViewController(withIdentifier: "listVC") as! listCourseData
+        self.navigationController?.pushViewController(listVC, animated: true)
+        
     }
     
     @IBAction func addBtnClicked(_ sender: Any) {

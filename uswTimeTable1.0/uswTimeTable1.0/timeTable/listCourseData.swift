@@ -45,7 +45,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         
         super.viewDidLoad()
 
-        
+
         searchBar.delegate = self
         navigationBarHidden()
         navigationBackSwipeMotion()
@@ -138,6 +138,10 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
         filteredUswCourse.removeAll()
     }
     
+    @IBAction func homeBtnClicked(_ sender: Any) {
+        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+        self.navigationController?.pushViewController(showVC, animated: true)
+    }
     
     func numCheck(){
         if numData != 6{

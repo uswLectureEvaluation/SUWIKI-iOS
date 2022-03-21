@@ -32,7 +32,6 @@ class popUpViewController: UIViewController, UITextFieldDelegate {
     let semeList = ["1", "2"]
     
     override func viewDidLoad() {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         nameTxtField.delegate = self
         super.viewDidLoad()
         readName()

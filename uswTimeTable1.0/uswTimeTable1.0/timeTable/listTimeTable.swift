@@ -16,6 +16,7 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
     var uswUser: Array<userTable> = []
     
     override func viewDidLoad() {
+
         navigationBarHidden()
         navigationBackSwipeMotion()
         readData()
