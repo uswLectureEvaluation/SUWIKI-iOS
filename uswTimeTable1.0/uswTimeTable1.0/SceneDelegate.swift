@@ -7,29 +7,53 @@
 
 import UIKit
 import RealmSwift
+import FirebaseDatabase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
+    private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
 
+    
+    
+    
+    
     var window: UIWindow?
     let realm = try! Realm()
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         let userDB = realm.objects(userDB.self).count
-
+        let courseDB = realm.objects(CourseData.self).count
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        if userDB == 0{
-            let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
-            let nc = UINavigationController(rootViewController: vc!)
-            self.window?.rootViewController = nc
-            self.window?.makeKeyAndVisible() // 화면에 보여줌
-        } else{
-            let vc = storyboard.instantiateViewController(withIdentifier: "showVC") as? showTimeTable
-            let nc = UINavigationController(rootViewController: vc!)
-            self.window?.rootViewController = nc
-            self.window?.makeKeyAndVisible()
+       
+        
+        uswFireDB.observe(.value) { snapshot in
+            let fireBaseCnt = Int(snapshot.childrenCount) + 1
+            
+            if courseDB == 0 || fireBaseCnt != courseDB{ // 나중에 수정되는 경우 발생 시 로직 수정 필요
+                let vc = storyboard.instantiateViewController(withIdentifier: "lodVC") as? loadingView
+                let nc = UINavigationController(rootViewController: vc!)
+                self.window?.rootViewController = nc
+                self.window?.makeKeyAndVisible() // 화면에 보여줌
+            } else {
+                if userDB == 0{
+                    let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
+                    let nc = UINavigationController(rootViewController: vc!)
+                    self.window?.rootViewController = nc
+                    self.window?.makeKeyAndVisible() // 화면에 보여줌
+                } else{
+                    let vc = storyboard.instantiateViewController(withIdentifier: "showVC") as? showTimeTable
+                    let nc = UINavigationController(rootViewController: vc!)
+                    self.window?.rootViewController = nc
+                    self.window?.makeKeyAndVisible()
+                }
+            }
         }
+
+        
+       
         
     }
 

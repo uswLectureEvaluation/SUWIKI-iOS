@@ -10,7 +10,7 @@ import DropDown
 import RealmSwift
 
 
-class uswMakeSchedule: UIViewController {
+class uswMakeSchedule: UIViewController, UITextFieldDelegate {
     let realm = try! Realm()
     
     var nameCheck = [String]()
@@ -31,9 +31,13 @@ class uswMakeSchedule: UIViewController {
     let semeList = ["1", "2"]
     
     override func viewDidLoad() {
-        
+        nameTxtField.delegate = self
         super.viewDidLoad()
         readName()
+        navigationBarHidden()
+        navigationBackSwipeMotion()
+        
+        
         
         dropDown1.anchorView = yearDropdown
         dropDown1.dataSource = yearList
@@ -41,7 +45,7 @@ class uswMakeSchedule: UIViewController {
         dropDown1.direction = .bottom
         dropDown1.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
-            self.yearTxtField.text = yearList[index] ?? ""
+            self.yearTxtField.text = yearList[index]
             self.yearTxtField.font = UIFont(name: "system", size: 17)
             self.yearTxtField.textColor = .black
             self.yearTxtField.textAlignment = .center
@@ -53,7 +57,7 @@ class uswMakeSchedule: UIViewController {
         dropDown2.direction = .bottom
         dropDown2.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
-            self.semeTxtField.text = semeList[index] ?? ""
+            self.semeTxtField.text = semeList[index]
             self.semeTxtField.font = UIFont(name: "system", size: 17)
             self.semeTxtField.textColor = .black
             self.semeTxtField.textAlignment = .center
@@ -63,9 +67,19 @@ class uswMakeSchedule: UIViewController {
     }
 
     @IBAction func finishBtnClicked(_ sender: Any) {
-        if yearTxtField.text == "" || nameTxtField.text == "" || semeTxtField.text == ""{
-            let alert = UIAlertController(title:"비어 있는 데이터가 있어요!",
-                message: "데이터를 다 알려주세요!",
+        if nameTxtField.text == "" {
+            let alert = UIAlertController(title:"시간표 이름을 알려주세요!",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            //2. 확인 버튼 만들기
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //3. 확인 버튼을 경고창에 추가하기
+            alert.addAction(cancle)
+            //4. 경고창 보이기
+            present(alert,animated: true,completion: nil)
+        } else if nameTxtField.text?.contains(" ") == true{
+            let alert = UIAlertController(title:"시간표 이름에 띄어쓰기가 있네요!",
+                message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             //2. 확인 버튼 만들기
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -74,7 +88,7 @@ class uswMakeSchedule: UIViewController {
             //4. 경고창 보이기
             present(alert,animated: true,completion: nil)
         } else if nameCheck.contains(nameTxtField.text!) {
-            let alert = UIAlertController(title:"이미 같은 이름이!",
+            let alert = UIAlertController(title:"이미 같은 이름이 있어요!",
                 message: "시간표 이름을 바꿔주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             //2. 확인 버튼 만들기
@@ -83,6 +97,7 @@ class uswMakeSchedule: UIViewController {
             alert.addAction(cancle)
             //4. 경고창 보이기
             present(alert,animated: true,completion: nil)
+            
         }
         else {
             UserDefaults.standard.set(nameTxtField.text!, forKey: "name")
@@ -122,6 +137,46 @@ class uswMakeSchedule: UIViewController {
         }
         
     }
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+ 
+
+    
+        let maxLength = 10
+        let currentString: NSString = (nameTxtField.text ?? "") as NSString
+        let newString: NSString = currentString.replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= maxLength
+         
+    }
+}
+
+extension String{
+    func hasCharacters() -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: "^[가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9_]$", options: .caseInsensitive)
+            if let _ = regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, self.count)) { return true }
+            
+        } catch {
+            return false
+        }
+        return false
+    }
+
 }
 
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>816960734099-m1irks4iu2go4upejo5h778t82mhr25k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.816960734099-m1irks4iu2go4upejo5h778t82mhr25k</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDEPtgUD5EL7gXaXbH9TNS8zW6HkndqlNE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>816960734099</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sozohoy.uswTimeTable1-0</string>
+	<key>PROJECT_ID</key>
+	<string>schedulecheck-4ece8</string>
+	<key>STORAGE_BUCKET</key>
+	<string>schedulecheck-4ece8.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:816960734099:ios:bff5f3ef2523b86c771e66</string>
+	<key>DATABASE_URL</key>
+	<string>https://schedulecheck-4ece8-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

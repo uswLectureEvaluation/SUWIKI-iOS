@@ -6,7 +6,9 @@ target 'uswTimeTable1.0' do
   use_frameworks!
   pod 'Elliotable'
   pod 'RealmSwift'
+  pod 'Realm'
   pod 'DropDown'
+  pod 'Gifu'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Analytics'

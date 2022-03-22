@@ -6,10 +6,9 @@
 //
 
 import Foundation 
-import RealmSwift
 import Accessibility
 import UIKit
-import Elliotable
+import RealmSwift
 
 class CourseData: Object{
    
