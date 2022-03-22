@@ -315,6 +315,20 @@
                                     <action selector="addTimeTable:" destination="PPy-Ym-4iq" eventType="touchUpInside" id="YsL-Gx-Yir"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3k-rF-nuC">
+                                <rect key="frame" x="310" y="77" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="gPc-Bs-ZAK"/>
+                                    <constraint firstAttribute="height" constant="35" id="sUa-mq-X0Q"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="house" catalog="system">
+                                    <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="homeBtnClicked:" destination="PPy-Ym-4iq" eventType="touchUpInside" id="7LW-IH-nRR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yzJ-bw-oI5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -325,6 +339,8 @@
                             <constraint firstItem="yzJ-bw-oI5" firstAttribute="trailing" secondItem="LM5-k0-Ws5" secondAttribute="trailing" constant="20" id="KR0-4L-1UN"/>
                             <constraint firstItem="2mf-NY-axO" firstAttribute="top" secondItem="yzJ-bw-oI5" secondAttribute="top" constant="35" id="Nba-tK-ZaE"/>
                             <constraint firstItem="LM5-k0-Ws5" firstAttribute="leading" secondItem="yzJ-bw-oI5" secondAttribute="leading" constant="20" id="TLj-Yu-HrT"/>
+                            <constraint firstItem="yzJ-bw-oI5" firstAttribute="trailing" secondItem="S3k-rF-nuC" secondAttribute="trailing" constant="69" id="XT3-vH-MWs"/>
+                            <constraint firstItem="S3k-rF-nuC" firstAttribute="baseline" secondItem="2mf-NY-axO" secondAttribute="baseline" id="c7b-Uz-81c"/>
                             <constraint firstItem="49x-DF-15W" firstAttribute="top" secondItem="yzJ-bw-oI5" secondAttribute="top" constant="31" id="jLi-js-Xx4"/>
                             <constraint firstItem="LM5-k0-Ws5" firstAttribute="top" secondItem="yzJ-bw-oI5" secondAttribute="top" constant="100" id="jyr-jq-X05"/>
                             <constraint firstItem="49x-DF-15W" firstAttribute="leading" secondItem="yzJ-bw-oI5" secondAttribute="leading" constant="30" id="vl8-Vb-0qD"/>
@@ -1225,7 +1241,7 @@
                                     <action selector="finishBtnClicked:" destination="r0a-Yc-YRL" eventType="touchUpInside" id="Qms-gT-WAz"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-Pz-hvD">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시간표 이름에 띄어쓰기는 사용할 수 없습니다." textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TGy-Pz-hvD">
                                 <rect key="frame" x="35" y="324" width="344" height="34"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" keyboardKey="YES"/>
@@ -1407,7 +1423,7 @@
                                             <constraint firstAttribute="height" constant="35" id="siP-is-WS4"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbp-fP-Lyr">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시간표 이름에 띄어쓰기는 사용할 수 없습니다." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbp-fP-Lyr">
                                         <rect key="frame" x="35" y="190" width="344" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1678,38 +1694,18 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="스크린샷 2022-03-21 오후 8.16.01" translatesAutoresizingMaskIntoConstraints="NO" id="Axz-8U-Y54">
-                                <rect key="frame" x="20" y="142" width="334" height="280"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="스샷 최종본" translatesAutoresizingMaskIntoConstraints="NO" id="Axz-8U-Y54">
+                                <rect key="frame" x="20" y="142" width="334" height="364"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="4Hi-pK-VN7"/>
+                                    <constraint firstAttribute="height" constant="364" id="4Hi-pK-VN7"/>
                                     <constraint firstAttribute="width" constant="334" id="QI3-j0-qxa"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFK-j8-eLm">
-                                <rect key="frame" x="20" y="737" width="374" height="31"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="374" id="Qab-hb-ay9"/>
-                                    <constraint firstAttribute="height" constant="31" id="Rfg-kr-ui7"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="개발자 커피 사주기 !">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="btnClicked:" destination="CA2-YS-HUY" eventType="touchUpInside" id="Neg-zb-Oik"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PEF-pM-jHl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PEF-pM-jHl" firstAttribute="bottom" secondItem="UFK-j8-eLm" secondAttribute="bottom" constant="74" id="IDF-VU-Lcf"/>
                             <constraint firstItem="Axz-8U-Y54" firstAttribute="top" secondItem="BPq-72-HJg" secondAttribute="bottom" constant="23" id="NZl-JG-Zi9"/>
-                            <constraint firstItem="PEF-pM-jHl" firstAttribute="trailing" secondItem="UFK-j8-eLm" secondAttribute="trailing" constant="20" id="VGg-7b-203"/>
-                            <constraint firstItem="UFK-j8-eLm" firstAttribute="leading" secondItem="PEF-pM-jHl" secondAttribute="leading" constant="20" id="Z53-bA-ejU"/>
                             <constraint firstItem="BPq-72-HJg" firstAttribute="top" secondItem="PEF-pM-jHl" secondAttribute="top" constant="35" id="n07-aM-L3R"/>
                             <constraint firstItem="Axz-8U-Y54" firstAttribute="leading" secondItem="BPq-72-HJg" secondAttribute="leading" constant="-5" id="o00-cd-6bk"/>
                             <constraint firstItem="BPq-72-HJg" firstAttribute="leading" secondItem="PEF-pM-jHl" secondAttribute="leading" constant="25" id="s57-tt-4V4"/>
@@ -1727,7 +1723,7 @@
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
-        <image name="스크린샷 2022-03-21 오후 8.16.01" width="704" height="594"/>
+        <image name="스샷 최종본" width="708" height="800"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

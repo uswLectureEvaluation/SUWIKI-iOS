@@ -99,7 +99,7 @@ class adjustCourseData: UIViewController, UITextFieldDelegate {
             showAlert(title: "비어있는 데이터가 있어요")
             //4. 경고창 보이기
         } else if checkAdjust == 0{
-            
+
             
             let AD = UIApplication.shared.delegate as? AppDelegate
 

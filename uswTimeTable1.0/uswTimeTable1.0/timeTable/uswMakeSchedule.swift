@@ -77,8 +77,18 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
             alert.addAction(cancle)
             //4. 경고창 보이기
             present(alert,animated: true,completion: nil)
+        } else if nameTxtField.text?.contains(" ") == true{
+            let alert = UIAlertController(title:"시간표 이름에 띄어쓰기가 있네요!",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            //2. 확인 버튼 만들기
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //3. 확인 버튼을 경고창에 추가하기
+            alert.addAction(cancle)
+            //4. 경고창 보이기
+            present(alert,animated: true,completion: nil)
         } else if nameCheck.contains(nameTxtField.text!) {
-            let alert = UIAlertController(title:"이미 같은 이름이!",
+            let alert = UIAlertController(title:"이미 같은 이름이 있어요!",
                 message: "시간표 이름을 바꿔주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             //2. 확인 버튼 만들기
@@ -87,6 +97,7 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
             alert.addAction(cancle)
             //4. 경고창 보이기
             present(alert,animated: true,completion: nil)
+            
         }
         else {
             UserDefaults.standard.set(nameTxtField.text!, forKey: "name")

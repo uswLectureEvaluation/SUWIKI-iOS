@@ -84,6 +84,16 @@ class popUpViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(cancle)
             //4. 경고창 보이기
             present(alert,animated: true,completion: nil)
+        } else if nameTxtField.text?.contains(" ") == true {
+            let alert = UIAlertController(title:"시간표 이름에 띄어쓰기가 있네요!",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            //2. 확인 버튼 만들기
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //3. 확인 버튼을 경고창에 추가하기
+            alert.addAction(cancle)
+            //4. 경고창 보이기
+            present(alert, animated: true,completion: nil)
         } else if nameCheck.contains(nameTxtField.text!) {
             let alert = UIAlertController(title:"이름이 중복되었어요!",
                 message: "이름을 바꿔주세요!",
@@ -104,7 +114,7 @@ class popUpViewController: UIViewController, UITextFieldDelegate {
             UserDefaults.standard.set(nameTxtField.text, forKey: "name")
 
             try! realm.commitWrite()
-            let timeVC = self.storyboard?.instantiateViewController(withIdentifier: "timeVC") as! listTimeTable
+
             self.dismiss(animated: true, completion: nil)
         }
         

@@ -136,6 +136,10 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
     }
 
     
+    @IBAction func homeBtnClicked(_ sender: Any) {
+        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+        self.navigationController?.pushViewController(showVC, animated: true)
+    }
     @IBAction func addTimeTable(_ sender: Any) {
         let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
         self.navigationController?.pushViewController(makeVC, animated: true)
