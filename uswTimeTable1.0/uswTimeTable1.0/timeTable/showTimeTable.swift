@@ -109,30 +109,42 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         var rand = x
         switch rand{
         case 0:
-            return UIColor(red: 0.3451, green: 0.6941, blue: 0.6235, alpha: 1.0) // 교체
+            return UIColor(red: 0.6353, green: 0.6078, blue: 0.9961, alpha: 1.0) /* #a29bfe */
+
         case 1:
-            return UIColor(red: 0.2314, green: 0.2314, blue: 0.5961, alpha: 1.0) /* #3b3b98 */
+            return UIColor(red: 0.9922, green: 0.4745, blue: 0.6588, alpha: 1.0) /* #fd79a8 */
+
         case 2:
-            return UIColor(red: 0.8392, green: 0.2588, blue: 0.4824, alpha: 1.0) /* #d6427b */
+            return UIColor(red: 0.8824, green: 0.4392, blue: 0.3333, alpha: 1.0) /* #e17055 */
+
              /* #d6a2e8 */
         case 3:
-            return UIColor(red: 0.9922, green: 0.4471, blue: 0.4471, alpha: 1.0) /* #fd7272 */
+            return UIColor(red: 0.4549, green: 0.7255, blue: 1, alpha: 1.0) /* #74b9ff */
+
         case 4:
-            return UIColor(red: 0.3333, green: 0.902, blue: 0.7569, alpha: 1.0) /* #55e6c1 */
+            return UIColor(red: 0.9922, green: 0.7961, blue: 0.4314, alpha: 1.0) /* #fdcb6e */
+
         case 5:
-            return UIColor.darkGray/* #3b3b98 */
+            return UIColor(red: 0, green: 0.8078, blue: 0.7882, alpha: 1.0) /* #00cec9 */
+
         case 6:
-            return UIColor(red: 0.1059, green: 0.6118, blue: 0.9882, alpha: 1.0)
+            return UIColor(red: 0.3333, green: 0.9373, blue: 0.7686, alpha: 1.0) /* #55efc4 */
+
         case 7:
-            return UIColor(hue: 0.95, saturation: 0.73, brightness: 0.98, alpha: 1.0) /* #fc427b */
+            return UIColor(red: 0.0353, green: 0.5176, blue: 0.8902, alpha: 1.0) /* #0984e3 */
+
         case 8:
-            return UIColor(red: 0.9765, green: 0.498, blue: 0.3176, alpha: 1.0) /* #f97f51 */
+            return UIColor(red: 0.9098, green: 0.2627, blue: 0.5765, alpha: 1.0) /* #e84393 */
+
         case 9:
-            return UIColor(red: 0.9961, green: 0.6431, blue: 0.498, alpha: 1.0) /* #fea47f */
+            return UIColor(red: 0.4235, green: 0.3608, blue: 0.9059, alpha: 1.0) /* #6c5ce7 */
+
         case 10:
-            return UIColor(red: 0.1451, green: 0.8, blue: 0.9686, alpha: 1.0) /* #25ccf7 */
+            return UIColor(red: 0.9804, green: 0.6941, blue: 0.6275, alpha: 1.0) /* #fab1a0 */
+
         default:
-            return UIColor(red: 0.8392, green: 0.6353, blue: 0.9098, alpha: 1.0)
+            return UIColor(red: 0.698, green: 0.7451, blue: 0.7647, alpha: 1.0) /* #b2bec3 */
+
     }
 }
     
