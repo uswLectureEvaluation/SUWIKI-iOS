@@ -131,13 +131,11 @@
 		AFAFEF81277F160900408F46 /* uswTimeTable1.0 */ = {
 			isa = PBXGroup;
 			children = (
-				AFD7766C27E7178B00E83EC8 /* timeTable */,
-				AFAFEF82277F160900408F46 /* AppDelegate.swift */,
-				AFAFEF84277F160900408F46 /* SceneDelegate.swift */,
-				AFAFEF86277F160900408F46 /* ViewController.swift */,
+				AFB9A42727EDA9EA00B68CCD /* controller */,
+				AFB9A42527EDA9E000B68CCD /* view */,
+				AFB9A42427EDA9D800B68CCD /* modal */,
 				AFD7767327E7486C00E83EC8 /* loading.gif */,
 				AFD2706927D4A487001EE098 /* GoogleService-Info.plist */,
-				AFAFEF88277F160900408F46 /* Main.storyboard */,
 				AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */,
 				AFAFEF8E277F160B00408F46 /* Assets.xcassets */,
 				AFAFEF93277F160B00408F46 /* Info.plist */,
@@ -145,6 +143,32 @@
 				AF75EAEB27E8AC5700DD8645 /* Settings.bundle */,
 			);
 			path = uswTimeTable1.0;
+			sourceTree = "<group>";
+		};
+		AFB9A42427EDA9D800B68CCD /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				AFAFEF82277F160900408F46 /* AppDelegate.swift */,
+				AFAFEF84277F160900408F46 /* SceneDelegate.swift */,
+			);
+			path = modal;
+			sourceTree = "<group>";
+		};
+		AFB9A42527EDA9E000B68CCD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				AFAFEF88277F160900408F46 /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		AFB9A42727EDA9EA00B68CCD /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				AFAFEF86277F160900408F46 /* ViewController.swift */,
+				AFD7766C27E7178B00E83EC8 /* timeTable */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		AFD7766C27E7178B00E83EC8 /* timeTable */ = {
@@ -460,16 +484,17 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sozohoy.uswTimeTable1-0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -489,16 +514,17 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sozohoy.uswTimeTable1-0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
