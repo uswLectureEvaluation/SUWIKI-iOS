@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF07990527E3565300B39617 /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF07990427E3565300B39617 /* loadingView.swift */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
+		AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F69BA27EDB6BF0023243F /* loginModel.swift */; };
 		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
 		AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */; };
@@ -52,6 +53,7 @@
 		7DE53F4D4CDA927F8AA6A629 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF07990427E3565300B39617 /* loadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
+		AF2F69BA27EDB6BF0023243F /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
 		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
 		AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adjustCourseData.swift; sourceTree = "<group>"; };
@@ -131,9 +133,11 @@
 		AFAFEF81277F160900408F46 /* uswTimeTable1.0 */ = {
 			isa = PBXGroup;
 			children = (
+				AFAFEF82277F160900408F46 /* AppDelegate.swift */,
+				AFAFEF84277F160900408F46 /* SceneDelegate.swift */,
 				AFB9A42727EDA9EA00B68CCD /* controller */,
 				AFB9A42527EDA9E000B68CCD /* view */,
-				AFB9A42427EDA9D800B68CCD /* modal */,
+				AFB9A42427EDA9D800B68CCD /* model */,
 				AFD7767327E7486C00E83EC8 /* loading.gif */,
 				AFD2706927D4A487001EE098 /* GoogleService-Info.plist */,
 				AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */,
@@ -145,13 +149,12 @@
 			path = uswTimeTable1.0;
 			sourceTree = "<group>";
 		};
-		AFB9A42427EDA9D800B68CCD /* modal */ = {
+		AFB9A42427EDA9D800B68CCD /* model */ = {
 			isa = PBXGroup;
 			children = (
-				AFAFEF82277F160900408F46 /* AppDelegate.swift */,
-				AFAFEF84277F160900408F46 /* SceneDelegate.swift */,
+				AF2F69BA27EDB6BF0023243F /* loginModel.swift */,
 			);
-			path = modal;
+			path = model;
 			sourceTree = "<group>";
 		};
 		AFB9A42527EDA9E000B68CCD /* view */ = {
@@ -327,6 +330,7 @@
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
+				AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

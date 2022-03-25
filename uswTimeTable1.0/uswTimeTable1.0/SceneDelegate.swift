@@ -12,9 +12,6 @@ import FirebaseDatabase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
-
-    
-    
     
     
     var window: UIWindow?
