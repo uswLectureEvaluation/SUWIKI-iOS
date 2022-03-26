@@ -25,6 +25,8 @@
 		AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF8B277F160900408F46 /* uswTimeTable1_0.xcdatamodeld */; };
 		AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF8E277F160B00408F46 /* Assets.xcassets */; };
 		AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */; };
+		AFCAABB327EEE651005D9421 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCAABB227EEE651005D9421 /* loginController.swift */; };
+		AFCAABB527EEF15D005D9421 /* loginKC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCAABB427EEF15D005D9421 /* loginKC.swift */; };
 		AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD2706927D4A487001EE098 /* GoogleService-Info.plist */; };
 		AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7766F27E731A300E83EC8 /* printGIF.swift */; };
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
@@ -71,6 +73,8 @@
 		AFAFEF8E277F160B00408F46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFAFEF91277F160B00408F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFCAABB227EEE651005D9421 /* loginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginController.swift; sourceTree = "<group>"; };
+		AFCAABB427EEF15D005D9421 /* loginKC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginKC.swift; sourceTree = "<group>"; };
 		AFD2706927D4A487001EE098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFD7766F27E731A300E83EC8 /* printGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = printGIF.swift; sourceTree = "<group>"; };
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
@@ -153,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				AF2F69BA27EDB6BF0023243F /* loginModel.swift */,
+				AFCAABB427EEF15D005D9421 /* loginKC.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -169,9 +174,18 @@
 			isa = PBXGroup;
 			children = (
 				AFAFEF86277F160900408F46 /* ViewController.swift */,
+				AFCAABB127EEE637005D9421 /* suwiki */,
 				AFD7766C27E7178B00E83EC8 /* timeTable */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		AFCAABB127EEE637005D9421 /* suwiki */ = {
+			isa = PBXGroup;
+			children = (
+				AFCAABB227EEE651005D9421 /* loginController.swift */,
+			);
+			path = suwiki;
 			sourceTree = "<group>";
 		};
 		AFD7766C27E7178B00E83EC8 /* timeTable */ = {
@@ -323,6 +337,8 @@
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
+				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
+				AFCAABB527EEF15D005D9421 /* loginKC.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
 				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
 				AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */,
