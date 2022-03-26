@@ -8,7 +8,11 @@
 import Foundation
 
 struct userModel{
-    // API get한 이후에
+    
+    // 1. 아이디 / 비밀번호 형식 검사 후 형식에 맞지 않으면 로그인 실패
+    // 2. 형식에 알맞을 시 해당 str post -> token check 하여 로그인
+    
+        
     
     func isValidId(id: String) -> Bool {
             let IdRegEx = "[A-Za-z0-9]{5,13}"

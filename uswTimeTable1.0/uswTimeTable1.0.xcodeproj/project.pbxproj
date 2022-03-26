@@ -484,6 +484,7 @@
 				DEVELOPMENT_TEAM = 8R3N359429;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = /Users/seok/desktop/ios/uswTimeTable1.0/uswTimeTable1.0/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "수타 - 시간표 앱";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -514,6 +515,7 @@
 				DEVELOPMENT_TEAM = 8R3N359429;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = /Users/seok/desktop/ios/uswTimeTable1.0/uswTimeTable1.0/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "수타 - 시간표 앱";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

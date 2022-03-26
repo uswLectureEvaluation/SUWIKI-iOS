@@ -12,6 +12,8 @@ target 'uswTimeTable1.0' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Analytics'
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
   # Pods for uswTimeTable1.0
 
 

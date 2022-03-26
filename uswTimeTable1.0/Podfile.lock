@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.5.0)
   - DropDown (2.3.13)
   - Elliotable (1.2.5)
   - Firebase/Analytics (8.13.0):
@@ -102,8 +103,10 @@ PODS:
   - Realm/Headers (10.24.2)
   - RealmSwift (10.24.2):
     - Realm (= 10.24.2)
+  - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire
   - DropDown
   - Elliotable
   - Firebase/Analytics
@@ -112,9 +115,11 @@ DEPENDENCIES:
   - Gifu
   - Realm
   - RealmSwift
+  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - DropDown
     - Elliotable
     - Firebase
@@ -132,8 +137,10 @@ SPEC REPOS:
     - PromisesObjC
     - Realm
     - RealmSwift
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Elliotable: e669fa7a974658c4e0ee4be4b335f6a561f1b2cb
   Firebase: ee9b1d9b1801371e29f5591eda89eb5a314ab599
@@ -151,7 +158,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Realm: c8421eee9ff92b16b4f91a313b5cc695c37c1921
   RealmSwift: 10ed6fa09c36aaaff55e12afdc71802ec3ddb1c0
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: ad9ba72a2f4ced73ef277643ed5a787a37abc3e7
+PODFILE CHECKSUM: c1837a3c34549824ae6a214a21265329deb67cf4
 
 COCOAPODS: 1.11.3
