@@ -12,9 +12,6 @@ import FirebaseDatabase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
-
-    
-    
     
     
     var window: UIWindow?
@@ -27,8 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-       
+        let vc = storyboard.instantiateViewController(withIdentifier: "loginVC") as? loginController
+        let nc = UINavigationController(rootViewController: vc!)
+        self.window?.rootViewController = nc
+        self.window?.makeKeyAndVisible()
         
+        /*
         uswFireDB.observe(.value) { snapshot in
             let fireBaseCnt = Int(snapshot.childrenCount) + 1
             
@@ -51,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         }
-
+        */
         
        
         

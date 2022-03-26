@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.5.0)
   - DropDown (2.3.13)
   - Elliotable (1.2.5)
   - Firebase/Analytics (8.13.0):
@@ -46,6 +47,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
+  - Gifu (3.3.1)
   - GoogleAppMeasurement (8.13.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.13.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
@@ -101,18 +103,23 @@ PODS:
   - Realm/Headers (10.24.2)
   - RealmSwift (10.24.2):
     - Realm (= 10.24.2)
+  - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire
   - DropDown
   - Elliotable
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Database
+  - Gifu
   - Realm
   - RealmSwift
+  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - DropDown
     - Elliotable
     - Firebase
@@ -121,6 +128,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
     - FirebaseInstallations
+    - Gifu
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -129,8 +137,10 @@ SPEC REPOS:
     - PromisesObjC
     - Realm
     - RealmSwift
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Elliotable: e669fa7a974658c4e0ee4be4b335f6a561f1b2cb
   Firebase: ee9b1d9b1801371e29f5591eda89eb5a314ab599
@@ -139,6 +149,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: c2836d254a8f0bbb4121ff18f2c2ea39d118fd08
   FirebaseDatabase: c610ab55bcb033d5eb3d17acba57301068a28497
   FirebaseInstallations: 60edbf7e11d91ae4c751d26c200dfd037099abe0
+  Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
   GoogleAppMeasurement: 135c2fbcf5038e0f37dbce04fa641a702fc275d1
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
@@ -147,7 +158,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   Realm: c8421eee9ff92b16b4f91a313b5cc695c37c1921
   RealmSwift: 10ed6fa09c36aaaff55e12afdc71802ec3ddb1c0
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 4e8ceb724e89d5523d12505d7c3098b13492830a
+PODFILE CHECKSUM: c1837a3c34549824ae6a214a21265329deb67cf4
 
 COCOAPODS: 1.11.3

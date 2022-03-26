@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF07990527E3565300B39617 /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF07990427E3565300B39617 /* loadingView.swift */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
+		AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F69BA27EDB6BF0023243F /* loginModel.swift */; };
 		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
 		AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */; };
@@ -24,6 +25,8 @@
 		AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF8B277F160900408F46 /* uswTimeTable1_0.xcdatamodeld */; };
 		AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF8E277F160B00408F46 /* Assets.xcassets */; };
 		AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */; };
+		AFCAABB327EEE651005D9421 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCAABB227EEE651005D9421 /* loginController.swift */; };
+		AFCAABB527EEF15D005D9421 /* loginKC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCAABB427EEF15D005D9421 /* loginKC.swift */; };
 		AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD2706927D4A487001EE098 /* GoogleService-Info.plist */; };
 		AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7766F27E731A300E83EC8 /* printGIF.swift */; };
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
@@ -52,6 +55,7 @@
 		7DE53F4D4CDA927F8AA6A629 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF07990427E3565300B39617 /* loadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
+		AF2F69BA27EDB6BF0023243F /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
 		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
 		AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adjustCourseData.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 		AFAFEF8E277F160B00408F46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFAFEF91277F160B00408F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFCAABB227EEE651005D9421 /* loginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginController.swift; sourceTree = "<group>"; };
+		AFCAABB427EEF15D005D9421 /* loginKC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginKC.swift; sourceTree = "<group>"; };
 		AFD2706927D4A487001EE098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFD7766F27E731A300E83EC8 /* printGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = printGIF.swift; sourceTree = "<group>"; };
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
@@ -131,13 +137,13 @@
 		AFAFEF81277F160900408F46 /* uswTimeTable1.0 */ = {
 			isa = PBXGroup;
 			children = (
-				AFD7766C27E7178B00E83EC8 /* timeTable */,
 				AFAFEF82277F160900408F46 /* AppDelegate.swift */,
 				AFAFEF84277F160900408F46 /* SceneDelegate.swift */,
-				AFAFEF86277F160900408F46 /* ViewController.swift */,
+				AFB9A42727EDA9EA00B68CCD /* controller */,
+				AFB9A42527EDA9E000B68CCD /* view */,
+				AFB9A42427EDA9D800B68CCD /* model */,
 				AFD7767327E7486C00E83EC8 /* loading.gif */,
 				AFD2706927D4A487001EE098 /* GoogleService-Info.plist */,
-				AFAFEF88277F160900408F46 /* Main.storyboard */,
 				AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */,
 				AFAFEF8E277F160B00408F46 /* Assets.xcassets */,
 				AFAFEF93277F160B00408F46 /* Info.plist */,
@@ -145,6 +151,41 @@
 				AF75EAEB27E8AC5700DD8645 /* Settings.bundle */,
 			);
 			path = uswTimeTable1.0;
+			sourceTree = "<group>";
+		};
+		AFB9A42427EDA9D800B68CCD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				AF2F69BA27EDB6BF0023243F /* loginModel.swift */,
+				AFCAABB427EEF15D005D9421 /* loginKC.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		AFB9A42527EDA9E000B68CCD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				AFAFEF88277F160900408F46 /* Main.storyboard */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		AFB9A42727EDA9EA00B68CCD /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				AFAFEF86277F160900408F46 /* ViewController.swift */,
+				AFCAABB127EEE637005D9421 /* suwiki */,
+				AFD7766C27E7178B00E83EC8 /* timeTable */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		AFCAABB127EEE637005D9421 /* suwiki */ = {
+			isa = PBXGroup;
+			children = (
+				AFCAABB227EEE651005D9421 /* loginController.swift */,
+			);
+			path = suwiki;
 			sourceTree = "<group>";
 		};
 		AFD7766C27E7178B00E83EC8 /* timeTable */ = {
@@ -296,6 +337,8 @@
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
+				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
+				AFCAABB527EEF15D005D9421 /* loginKC.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
 				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
 				AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */,
@@ -303,6 +346,7 @@
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
+				AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,20 +500,22 @@
 				DEVELOPMENT_TEAM = 8R3N359429;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = /Users/seok/desktop/ios/uswTimeTable1.0/uswTimeTable1.0/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "수타 - 시간표 앱";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sozohoy.uswTimeTable1-0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -485,20 +531,22 @@
 				DEVELOPMENT_TEAM = 8R3N359429;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = /Users/seok/desktop/ios/uswTimeTable1.0/uswTimeTable1.0/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "수타 - 시간표 앱";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sozohoy.uswTimeTable1-0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
