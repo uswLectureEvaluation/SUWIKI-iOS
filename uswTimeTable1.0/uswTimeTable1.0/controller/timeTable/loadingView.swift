@@ -13,8 +13,12 @@ import FirebaseDatabase
 class loadingView: UIViewController {
 
     let realm = try! Realm()
-    var fireBaseArray: Array<externalData> = []
+    
+    var fireBaseArray1: Array<externalData> = []
+    
+    var fireBaseArray2: Array<externalData> = []
     var startArray: Array<String> = []
+    var boolCheck: Bool = false
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var percentageView: UILabel!
     
@@ -40,10 +44,57 @@ class loadingView: UIViewController {
     
 
     func getExternalData(){
-        uswFireDB.queryOrderedByKey().observeSingleEvent(of: .value) { snapshot in
-            let countDB = Int(snapshot.childrenCount)
-            let checkRealm = self.realm.objects(CourseData.self)
-            
+        
+        let insideDB = CourseData()
+            uswFireDB.getData { (error, snapshot) in
+                for data in snapshot.children{
+                    var dataSnapshot = data as? DataSnapshot
+                    var value = dataSnapshot?.value as? NSDictionary
+                    var startTime = value?["startTime"] as? String ?? " "
+                    var endTime = value?["endTime"] as? String ?? " "
+                    var classNum = value?["classNum"] as? String ?? " "
+                    var classfication = value?["classification"] as? String ?? " "
+                    var courseDay = value?["courseDay"] as? String ?? " "
+                    var credit = value?["credit"] as? Int ?? 0
+                    var courseName = value?["courseName"] as? String ?? " "
+                    var major = value?["major"] as? String ?? " "
+                    var num = value?["num"] as? Int ?? 0
+                    var professor = value?["professor"] as? String ?? " "
+                    var roomName = value?["roomName"] as? String ?? " "
+                    
+                    var readData = externalData(classNum: classNum, classification: classfication, courseDay: courseDay, courseName: courseName, credit: credit, endTime: endTime, major: major, num: num, professor: professor, roomName: roomName, startTime: startTime)
+                    self.fireBaseArray1.append(readData)
+                    print(value)
+            }
+                print(self.fireBaseArray1[3].courseName)
+                self.boolCheck = true
+                try! self.realm.write{
+                for i in 0..<Int(snapshot.childrenCount){
+                    insideDB.startTime = self.fireBaseArray1[i].startTime
+                    insideDB.endTime = self.fireBaseArray1[i].endTime
+                    insideDB.roomName = self.fireBaseArray1[i].roomName
+                    insideDB.courseName = self.fireBaseArray1[i].courseName
+                    insideDB.courseDay = self.fireBaseArray1[i].courseDay
+                    insideDB.professor = self.fireBaseArray1[i].professor
+                    insideDB.classNum = self.fireBaseArray1[i].classNum
+                    insideDB.major = self.fireBaseArray1[i].major
+                    insideDB.credit = self.fireBaseArray1[i].credit
+                    insideDB.classification = self.fireBaseArray1[i].classfication
+                    insideDB.num = self.fireBaseArray1[i].num
+                    self.realm.add(insideDB, update: .all)
+                    print("\(i)")
+                }
+                }
+                
+
+                print(Realm.Configuration.defaultConfiguration.fileURL!)
+                
+                // insideDB.startTime = self.fireBaseArray1.startTime
+        }
+        
+        
+        
+            /*
             for i in 0...countDB {
                 self.uswFireDB.child("\(i)").observeSingleEvent(of: .value) { [self] snapshot in
                     let value = snapshot.value as? NSDictionary
@@ -67,10 +118,10 @@ class loadingView: UIViewController {
                     
                     fireBaseArray.append(readData)
                 }
-                print(self.startArray)
 
             }
-        }
+             */
+        
         /*
         uswFireDB.observe(.value) { snapshot in
             self.countDB = Int(snapshot.childrenCount)
@@ -114,14 +165,11 @@ class loadingView: UIViewController {
                             insideDB.major = value?["major"] as? String ?? " "
                             insideDB.credit = value?["credit"] as? Int ?? 0
                             insideDB.courseDay = value?["courseDay"] as? String ?? " "
-                            
+                            if i > countDB-3{
                         }
 
                     }
-                try! realm.write{
-                    self.realm.add(insideDB)
-
-                }
+                
                 let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
                 self.navigationController?.pushViewController(firstVC, animated: true)
                 }
@@ -159,11 +207,11 @@ class loadingView: UIViewController {
                 self.navigationController?.pushViewController(firstVC, animated: true)
                 }
          }
-                */
-                   
+                
+                   */
               
 
-            
         }
+    
 }
 
