@@ -24,13 +24,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
+        let vc = storyboard.instantiateViewController(withIdentifier: "lodVC") as? loadingView
+        let nc = UINavigationController(rootViewController: vc!)
+        self.window?.rootViewController = nc
+        self.window?.makeKeyAndVisible()
+        
         /*
+        
+        
+      
         let vc = storyboard.instantiateViewController(withIdentifier: "loginVC") as? loginController
         let nc = UINavigationController(rootViewController: vc!)
         self.window?.rootViewController = nc
         self.window?.makeKeyAndVisible()
         */
-        
+        /*
         uswFireDB.observe(.value) { snapshot in
             let fireBaseCnt = Int(snapshot.childrenCount) + 1
             
@@ -53,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
             }
         }
-        
+         */
         
        
         
