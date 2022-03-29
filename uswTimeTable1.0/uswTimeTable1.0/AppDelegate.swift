@@ -10,7 +10,7 @@ import CoreData
 import Firebase
 import RealmSwift
 
-@main
+ @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var roomName: String = ""

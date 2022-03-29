@@ -183,7 +183,6 @@
 		AFCAABB127EEE637005D9421 /* suwiki */ = {
 			isa = PBXGroup;
 			children = (
-				AFCAABB227EEE651005D9421 /* loginController.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -192,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				AFD7766F27E731A300E83EC8 /* printGIF.swift */,
+				AFCAABB227EEE651005D9421 /* loginController.swift */,
 				AF07990427E3565300B39617 /* loadingView.swift */,
 				AFA725442781B6D1003EE008 /* firstSceneCheck.swift */,
 				AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */,

@@ -1637,6 +1637,17 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPn-8v-qPV">
+                                        <rect key="frame" x="176" y="424" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.90387403349999995" green="0.90387403349999995" blue="0.90387403349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IMv-1M-RLg">
+                                        <rect key="frame" x="0.0" y="411" width="406" height="4"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </progressView>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="qus-my-bwk"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1670,6 +1681,8 @@
                     </view>
                     <connections>
                         <outlet property="loadingGif" destination="qDe-T6-Do4" id="OKt-mZ-SEi"/>
+                        <outlet property="percentageView" destination="WPn-8v-qPV" id="exB-Ts-AAQ"/>
+                        <outlet property="progressView" destination="IMv-1M-RLg" id="C7x-Hs-UuW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTK-M9-pX3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1731,7 +1744,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="testBtn:" destination="vIs-8r-M03" eventType="touchUpInside" id="WVR-i6-62N"/>
+                                    <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="chI-SG-ZeD"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-mj-NkV">

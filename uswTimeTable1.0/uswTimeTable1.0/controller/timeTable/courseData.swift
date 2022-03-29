@@ -30,6 +30,35 @@ class Course: Codable{
         self.num = num
     }
 }
+class externalData: Codable{
+    let classNum: String
+    let classfication: String
+    let courseDay: String
+    let courseName: String
+    let credit: Int
+    let endTime: String
+    let major: String
+    let num: Int
+    let professor: String
+    let roomName: String
+    let startTime: String
+    
+    init(classNum: String, classification: String, courseDay: String, courseName: String, credit: Int, endTime: String, major: String, num: Int, professor: String, roomName: String, startTime: String) {
+        
+        self.classNum = classNum
+        self.classfication = classification
+        self.courseDay = courseDay
+        self.courseName = courseName
+        self.credit = credit
+        self.endTime = endTime
+        self.major = major
+        self.num = num
+        self.professor = professor
+        self.roomName = roomName
+        self.startTime = startTime
+        
+    }
+}
 
 class userTable: Codable{
     let year: String
