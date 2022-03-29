@@ -11,12 +11,11 @@ import FirebaseDatabase
 
 
 class loadingView: UIViewController {
-
     let realm = try! Realm()
+
     
-    var fireBaseArray1: Array<externalData> = []
+    var fireBaseArray: Array<externalData> = []
     
-    var fireBaseArray2: Array<externalData> = []
     var startArray: Array<String> = []
     var boolCheck: Bool = false
     @IBOutlet weak var progressView: UIProgressView!
@@ -45,8 +44,8 @@ class loadingView: UIViewController {
 
     func getExternalData(){
         
-        let insideDB = CourseData()
-            uswFireDB.getData { (error, snapshot) in
+        uswFireDB.getData { [self] (error, snapshot) in
+
                 for data in snapshot.children{
                     var dataSnapshot = data as? DataSnapshot
                     var value = dataSnapshot?.value as? NSDictionary
@@ -63,29 +62,39 @@ class loadingView: UIViewController {
                     var roomName = value?["roomName"] as? String ?? " "
                     
                     var readData = externalData(classNum: classNum, classification: classfication, courseDay: courseDay, courseName: courseName, credit: credit, endTime: endTime, major: major, num: num, professor: professor, roomName: roomName, startTime: startTime)
-                    self.fireBaseArray1.append(readData)
-                    print(value)
-            }
-                print(self.fireBaseArray1[3].courseName)
-                self.boolCheck = true
-                try! self.realm.write{
-                for i in 0..<Int(snapshot.childrenCount){
-                    insideDB.startTime = self.fireBaseArray1[i].startTime
-                    insideDB.endTime = self.fireBaseArray1[i].endTime
-                    insideDB.roomName = self.fireBaseArray1[i].roomName
-                    insideDB.courseName = self.fireBaseArray1[i].courseName
-                    insideDB.courseDay = self.fireBaseArray1[i].courseDay
-                    insideDB.professor = self.fireBaseArray1[i].professor
-                    insideDB.classNum = self.fireBaseArray1[i].classNum
-                    insideDB.major = self.fireBaseArray1[i].major
-                    insideDB.credit = self.fireBaseArray1[i].credit
-                    insideDB.classification = self.fireBaseArray1[i].classfication
-                    insideDB.num = self.fireBaseArray1[i].num
-                    self.realm.add(insideDB, update: .all)
-                    print("\(i)")
+                    self.fireBaseArray.append(readData)
+                    
+                    let checkCount = Int(snapshot.childrenCount) - 3
+                    
+                    if self.fireBaseArray.count == checkCount{
+                        self.boolCheck = true
+                    }
                 }
+                print(self.fireBaseArray[3].courseName)
+               
+                if self.boolCheck == true {
+                   
+                    try! realm.write{
+                    for i in 0..<Int(snapshot.childrenCount){
+                        let realm = try! Realm()
+                        let insideDB = CourseData()
+                        insideDB.startTime = self.fireBaseArray[i].startTime
+                        insideDB.endTime = self.fireBaseArray[i].endTime
+                        insideDB.roomName = self.fireBaseArray[i].roomName
+                        insideDB.courseName = self.fireBaseArray[i].courseName
+                        insideDB.courseDay = self.fireBaseArray[i].courseDay
+                        insideDB.professor = self.fireBaseArray[i].professor
+                        insideDB.classNum = self.fireBaseArray[i].classNum
+                        insideDB.major = self.fireBaseArray[i].major
+                        insideDB.credit = self.fireBaseArray[i].credit
+                        insideDB.classification = self.fireBaseArray[i].classfication
+                        insideDB.num = self.fireBaseArray[i].num
+
+                        realm.add(insideDB)
+                        print(insideDB)
+                        }
+                    }
                 }
-                
 
                 print(Realm.Configuration.defaultConfiguration.fileURL!)
                 
