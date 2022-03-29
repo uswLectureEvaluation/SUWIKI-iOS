@@ -45,7 +45,16 @@ class loadingView: UIViewController {
     func getExternalData(){
         
         uswFireDB.getData { [self] (error, snapshot) in
-
+            
+            let semesterCount = Int(snapshot.childrenCount)
+            let userDataCount = self.realm.objects(CourseData.self).count
+            let userDatabase = self.realm.objects(CourseData.self)
+            
+            print(semesterCount)
+            if semesterCount != userDataCount{
+                try! realm.write{
+                    realm.delete(userDatabase)
+                }
                 for data in snapshot.children{
                     var dataSnapshot = data as? DataSnapshot
                     var value = dataSnapshot?.value as? NSDictionary
@@ -94,12 +103,70 @@ class loadingView: UIViewController {
                         print(insideDB)
                         }
                     }
+                    let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
+                    self.navigationController?.pushViewController(firstVC, animated: true)
                 }
 
                 print(Realm.Configuration.defaultConfiguration.fileURL!)
-                
-                // insideDB.startTime = self.fireBaseArray1.startTime
-        }
+                    
+
+                    // insideDB.startTime = self.fireBaseArray1.startTime
+            } else {
+                for data in snapshot.children{
+                    var dataSnapshot = data as? DataSnapshot
+                    var value = dataSnapshot?.value as? NSDictionary
+                    var startTime = value?["startTime"] as? String ?? " "
+                    var endTime = value?["endTime"] as? String ?? " "
+                    var classNum = value?["classNum"] as? String ?? " "
+                    var classfication = value?["classification"] as? String ?? " "
+                    var courseDay = value?["courseDay"] as? String ?? " "
+                    var credit = value?["credit"] as? Int ?? 0
+                    var courseName = value?["courseName"] as? String ?? " "
+                    var major = value?["major"] as? String ?? " "
+                    var num = value?["num"] as? Int ?? 0
+                    var professor = value?["professor"] as? String ?? " "
+                    var roomName = value?["roomName"] as? String ?? " "
+                    
+                    var readData = externalData(classNum: classNum, classification: classfication, courseDay: courseDay, courseName: courseName, credit: credit, endTime: endTime, major: major, num: num, professor: professor, roomName: roomName, startTime: startTime)
+                    self.fireBaseArray.append(readData)
+                    
+                    let checkCount = Int(snapshot.childrenCount) - 3
+                    
+                    if self.fireBaseArray.count == checkCount{
+                        self.boolCheck = true
+                    }
+                }
+                print(self.fireBaseArray[3].courseName)
+               
+                if self.boolCheck == true {
+                   
+                    try! realm.write{
+                    for i in 0..<Int(snapshot.childrenCount){
+                        let realm = try! Realm()
+                        let insideDB = CourseData()
+                        insideDB.startTime = self.fireBaseArray[i].startTime
+                        insideDB.endTime = self.fireBaseArray[i].endTime
+                        insideDB.roomName = self.fireBaseArray[i].roomName
+                        insideDB.courseName = self.fireBaseArray[i].courseName
+                        insideDB.courseDay = self.fireBaseArray[i].courseDay
+                        insideDB.professor = self.fireBaseArray[i].professor
+                        insideDB.classNum = self.fireBaseArray[i].classNum
+                        insideDB.major = self.fireBaseArray[i].major
+                        insideDB.credit = self.fireBaseArray[i].credit
+                        insideDB.classification = self.fireBaseArray[i].classfication
+                        insideDB.num = self.fireBaseArray[i].num
+
+                        realm.add(insideDB)
+                        print(insideDB)
+                        }
+                    }
+                    let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
+                    self.navigationController?.pushViewController(firstVC, animated: true)
+                }
+            }
+            
+            }
+            
         
         
         
