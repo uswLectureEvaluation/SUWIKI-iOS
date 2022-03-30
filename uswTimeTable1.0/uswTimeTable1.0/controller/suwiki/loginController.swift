@@ -8,16 +8,19 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import KeychainSwift
 
 class loginController: UIViewController {
 
     
-    var loginModel = userModel()
+    let keychain = KeychainSwift()
+    let loginModel = userModel()
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
+        keychain.clear()
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -68,16 +71,21 @@ class loginController: UIViewController {
             let data = response.data
             let json = JSON(data!)
             let accessToken = json["AccessToken"].stringValue
-            
+            let refreshToken = json["RefreshToken"].stringValue
         
             if accessToken != "" {
-                print(accessToken)
+                
                 print("로그인 성공")
+                self.keychain.set(accessToken, forKey: "AccessToken")
+                self.keychain.set(refreshToken, forKey: "RefreshToken")
                 if let removable = self.view.viewWithTag(102) {
                     removable.removeFromSuperview()
                 }
                 
-            } else {
+                print(self.keychain.get("AccessToken") ?? "")
+                print(self.keychain.get("RefreshToken") ?? "")
+                
+            } else { // 이후에 alert로 수정 예정
                 print("로그인 실패")
                 let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
                 loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
