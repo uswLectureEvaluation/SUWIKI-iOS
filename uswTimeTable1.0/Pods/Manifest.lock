@@ -91,6 +91,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
+  - KeychainSwift (20.0.0)
   - leveldb-library (1.22.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
@@ -113,6 +114,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Gifu
+  - KeychainSwift
   - Realm
   - RealmSwift
   - SwiftyJSON
@@ -132,6 +134,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
+    - KeychainSwift
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -153,6 +156,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 135c2fbcf5038e0f37dbce04fa641a702fc275d1
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
+  KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
@@ -160,6 +164,6 @@ SPEC CHECKSUMS:
   RealmSwift: 10ed6fa09c36aaaff55e12afdc71802ec3ddb1c0
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: c1837a3c34549824ae6a214a21265329deb67cf4
+PODFILE CHECKSUM: 790fb103ab20ea59fecddfa01281d1b83fbdf901
 
 COCOAPODS: 1.11.3
