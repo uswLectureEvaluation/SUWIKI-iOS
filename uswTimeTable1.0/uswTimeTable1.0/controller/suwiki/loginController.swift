@@ -78,9 +78,7 @@ class loginController: UIViewController {
                 print("로그인 성공")
                 self.keychain.set(accessToken, forKey: "AccessToken")
                 self.keychain.set(refreshToken, forKey: "RefreshToken")
-                if let removable = self.view.viewWithTag(102) {
-                    removable.removeFromSuperview()
-                }
+
                 
                 print(self.keychain.get("AccessToken") ?? "")
                 print(self.keychain.get("RefreshToken") ?? "")
