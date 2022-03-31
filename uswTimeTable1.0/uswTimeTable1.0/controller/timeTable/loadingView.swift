@@ -101,8 +101,8 @@ class loadingView: UIViewController {
                         print(insideDB)
                         }
                     }
-                    let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
-                    self.navigationController?.pushViewController(firstVC, animated: true)
+                    let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+                    self.navigationController?.pushViewController(loginVC, animated: true)
                 }
 
                 print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -158,8 +158,8 @@ class loadingView: UIViewController {
                         print(insideDB)
                         }
                     }
-                    let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
-                    self.navigationController?.pushViewController(firstVC, animated: true)
+                    let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+                    self.navigationController?.pushViewController(loginVC, animated: true)
                 }
             }
             

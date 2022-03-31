@@ -1,4 +1,4 @@
-//
+    //
 //  suwikiHomePage.swift
 //  uswTimeTable1.0
 //
@@ -14,11 +14,29 @@ class suwikiHomePage: UIViewController {
     override func viewDidLoad() {
         navigationBarHidden()
         super.viewDidLoad()
-
+        getMainPage()
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func testApiBtn(_ sender: Any) {
+        getMainPage()
+    }
     
+    func getMainPage(){
+        let url = "https://api.suwiki.kr/lecture/findAllList"
+        
+        
+        
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
+            var data = response.data
+            var json = JSON(data!)
+            var jsonData = json["data"]
+            var lectureName = jsonData["lectureName"].stringValue
+            print(jsonData)
+        }
+        
+    }
     
     
     func navigationBarHidden() {

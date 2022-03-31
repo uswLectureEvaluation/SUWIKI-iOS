@@ -84,7 +84,7 @@ class loginController: UIViewController {
                 print(self.keychain.get("AccessToken") ?? "")
                 print(self.keychain.get("RefreshToken") ?? "")
                 
-                let tapbarVC = self.storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! UIViewController
+                let tapbarVC = self.storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! tabBarController
                 self.navigationController?.pushViewController(tapbarVC, animated: true)
                 
             } else { // 이후에 alert로 수정 예정

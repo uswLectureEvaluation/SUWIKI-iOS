@@ -18,6 +18,7 @@
 		AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF75EAEB27E8AC5700DD8645 /* Settings.bundle */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
+		AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA7797127F5D375005816E5 /* homePageModel.swift */; };
 		AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF82277F160900408F46 /* AppDelegate.swift */; };
 		AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF84277F160900408F46 /* SceneDelegate.swift */; };
 		AFAFEF87277F160900408F46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF86277F160900408F46 /* ViewController.swift */; };
@@ -29,8 +30,8 @@
 		AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD2706927D4A487001EE098 /* GoogleService-Info.plist */; };
 		AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7766F27E731A300E83EC8 /* printGIF.swift */; };
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
-		AFE076AF27F5BB9C009E32B0 /* tapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076AE27F5BB9C009E32B0 /* tapBarController.swift */; };
 		AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */; };
+		AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B227F5C6AB009E32B0 /* tabBarController.swift */; };
 		AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE696CC27BBCD0500262BEF /* listTimeTable.swift */; };
 		AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE69751279F16BD00FB2BC7 /* listCourseData.swift */; };
 		AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED499927ABD0B500CE242D /* infoCourseData.swift */; };
@@ -65,6 +66,7 @@
 		AF75EAEB27E8AC5700DD8645 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
+		AFA7797127F5D375005816E5 /* homePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageModel.swift; sourceTree = "<group>"; };
 		AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uswTimeTable1.0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFAFEF82277F160900408F46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFAFEF84277F160900408F46 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +80,8 @@
 		AFD2706927D4A487001EE098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFD7766F27E731A300E83EC8 /* printGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = printGIF.swift; sourceTree = "<group>"; };
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
-		AFE076AE27F5BB9C009E32B0 /* tapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tapBarController.swift; sourceTree = "<group>"; };
 		AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = suwikiHomePage.swift; sourceTree = "<group>"; };
+		AFE076B227F5C6AB009E32B0 /* tabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
 		AFE696CC27BBCD0500262BEF /* listTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listTimeTable.swift; sourceTree = "<group>"; };
 		AFE69751279F16BD00FB2BC7 /* listCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listCourseData.swift; sourceTree = "<group>"; };
 		AFED499927ABD0B500CE242D /* infoCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoCourseData.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				AF2F69BA27EDB6BF0023243F /* loginModel.swift */,
+				AFA7797127F5D375005816E5 /* homePageModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -184,8 +187,8 @@
 		AFCAABB127EEE637005D9421 /* suwiki */ = {
 			isa = PBXGroup;
 			children = (
+				AFE076B227F5C6AB009E32B0 /* tabBarController.swift */,
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
-				AFE076AE27F5BB9C009E32B0 /* tapBarController.swift */,
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
 			);
 			path = suwiki;
@@ -333,11 +336,13 @@
 				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
+				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
 				AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
+				AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
 				AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */,
@@ -350,7 +355,6 @@
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
 				AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */,
-				AFE076AF27F5BB9C009E32B0 /* tapBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
