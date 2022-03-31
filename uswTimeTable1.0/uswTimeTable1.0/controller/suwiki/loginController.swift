@@ -16,6 +16,7 @@ class loginController: UIViewController {
     let keychain = KeychainSwift()
     let loginModel = userModel()
     
+    
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     

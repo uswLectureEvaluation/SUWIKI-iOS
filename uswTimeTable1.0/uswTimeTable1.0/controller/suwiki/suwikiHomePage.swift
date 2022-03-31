@@ -9,8 +9,10 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class suwikiHomePage: UIViewController {
+class suwikiHomePage: UIViewController { // main Page == tableView 구현 스크롤 최대 10개 제한
 
+    var viewData: Array<homePageData> = []
+    
     override func viewDidLoad() {
         navigationBarHidden()
         super.viewDidLoad()
@@ -29,11 +31,18 @@ class suwikiHomePage: UIViewController {
         
         
         AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
-            var data = response.data
-            var json = JSON(data!)
-            var jsonData = json["data"]
-            var lectureName = jsonData["lectureName"].stringValue
-            print(jsonData)
+            let data = response.data
+            let json = JSON(data!)
+           
+            for index in 0..<10{
+                let jsonData = json["data"][index]
+                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: jsonData["lectureTotalAvg"].floatValue, lectureStatisfactionAvg: jsonData["lectureStatisfactionAvg"].floatValue, lectureHoneyAvg: jsonData["lectureHoneyAvg"].floatValue, lectureLearningAvg: jsonData["lectureLearningAvg"].floatValue)
+                
+                self.viewData.append(readData)
+                            
+            }
+            print(self.viewData)
+           
         }
         
     }
