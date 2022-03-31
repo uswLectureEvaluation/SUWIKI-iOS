@@ -83,6 +83,9 @@ class loginController: UIViewController {
                 print(self.keychain.get("AccessToken") ?? "")
                 print(self.keychain.get("RefreshToken") ?? "")
                 
+                let tapbarVC = self.storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! UIViewController
+                self.navigationController?.pushViewController(tapbarVC, animated: true)
+                
             } else { // 이후에 alert로 수정 예정
                 print("로그인 실패")
                 let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
