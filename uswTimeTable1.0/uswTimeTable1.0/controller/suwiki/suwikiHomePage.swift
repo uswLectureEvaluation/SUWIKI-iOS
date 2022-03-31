@@ -1,20 +1,29 @@
 //
-//  tapBarController.swift
+//  suwikiHomePage.swift
 //  uswTimeTable1.0
 //
 //  Created by 한지석 on 2022/03/31.
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class tapBarController: UIViewController {
+class suwikiHomePage: UIViewController {
 
     override func viewDidLoad() {
+        navigationBarHidden()
         super.viewDidLoad()
-        self.tabBarController!.navigationItem.hidesBackButton = true
+
         // Do any additional setup after loading the view.
     }
     
+    
+    
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+    }
 
     /*
     // MARK: - Navigation

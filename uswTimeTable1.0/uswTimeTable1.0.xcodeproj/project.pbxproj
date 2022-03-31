@@ -30,6 +30,7 @@
 		AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7766F27E731A300E83EC8 /* printGIF.swift */; };
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
 		AFE076AF27F5BB9C009E32B0 /* tapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076AE27F5BB9C009E32B0 /* tapBarController.swift */; };
+		AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */; };
 		AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE696CC27BBCD0500262BEF /* listTimeTable.swift */; };
 		AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE69751279F16BD00FB2BC7 /* listCourseData.swift */; };
 		AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED499927ABD0B500CE242D /* infoCourseData.swift */; };
@@ -78,6 +79,7 @@
 		AFD7766F27E731A300E83EC8 /* printGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = printGIF.swift; sourceTree = "<group>"; };
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		AFE076AE27F5BB9C009E32B0 /* tapBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tapBarController.swift; sourceTree = "<group>"; };
+		AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = suwikiHomePage.swift; sourceTree = "<group>"; };
 		AFE696CC27BBCD0500262BEF /* listTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listTimeTable.swift; sourceTree = "<group>"; };
 		AFE69751279F16BD00FB2BC7 /* listCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listCourseData.swift; sourceTree = "<group>"; };
 		AFED499927ABD0B500CE242D /* infoCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoCourseData.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
 				AFE076AE27F5BB9C009E32B0 /* tapBarController.swift */,
+				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
+				AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
 				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
