@@ -63,3 +63,14 @@ class suwikiHomePage: UIViewController { // main Page == tableView 구현 스크
     */
 
 }
+
+class mainPageCell: UITableViewCell {
+
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+    }
+    
+    
+}
