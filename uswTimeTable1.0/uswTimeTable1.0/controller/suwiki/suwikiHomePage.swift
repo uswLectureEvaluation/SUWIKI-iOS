@@ -23,11 +23,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func testApiBtn(_ sender: Any) {
-        getMainPage()
-        viewData2 = viewData
-        print(viewData)
-    }
+  
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewData2.count
@@ -38,27 +34,18 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainPageCell
         mainCell.lectureName.text = viewData[indexPath.row].lectureName
         mainCell.lectureType.text = viewData[indexPath.row].lectureType
-        mainCell.lectureTotalAvg.text = "\(viewData[indexPath.row].lectureTotalAvg)"
+        mainCell.lectureTotalAvg.text = viewData[indexPath.row].lectureTotalAvg
         mainCell.professor.text = viewData[indexPath.row].professor
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! customCell
-        cell.courseTxtField.text = filteredUswCourse[indexPath.row].courseName
-        cell.roomTxtField.text = filteredUswCourse[indexPath.row].roomName
-        cell.professorTxtField.text = filteredUswCourse[indexPath.row].professor
-        cell.numTxtField.text = "\(filteredUswCourse[indexPath.row].num)학년,"
-        cell.classTxtField.text = "\(filteredUswCourse[indexPath.row].classification),"
-        cell.majorTxtField.text = filteredUswCourse[indexPath.row].major
-
+        mainCell.lectureName.sizeToFit()
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
-        cell.selectedBackgroundView = bgColorView
-        return cell
-         */
+        mainCell.selectedBackgroundView = bgColorView
+ 
         return mainCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 115.0
+        return 100.0
     }
     
     func getMainPage(){
@@ -71,7 +58,12 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
            
             for index in 0..<10{
                 let jsonData = json["data"][index]
-                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: jsonData["lectureTotalAvg"].floatValue, lectureStatisfactionAvg: jsonData["lectureStatisfactionAvg"].floatValue, lectureHoneyAvg: jsonData["lectureHoneyAvg"].floatValue, lectureLearningAvg: jsonData["lectureLearningAvg"].floatValue)
+                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+                let totalSatatisfactionAvg = String(format: "%.1f", round(jsonData["lectureStatisfactionAvg"].floatValue * 1000) / 1000)
+                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+                
+                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureStatisfactionAvg: totalSatatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
                 self.viewData.append(readData)
                             
@@ -103,6 +95,9 @@ class mainPageCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 0))
+
+        
     }
     
     
