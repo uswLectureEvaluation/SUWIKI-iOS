@@ -1990,6 +1990,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="KB5-tz-eUu"/>
                     <connections>
+                        <outlet property="categoryDropDown" destination="Ojc-a1-eCv" id="QuP-xk-rVP"/>
+                        <outlet property="categoryTextField" destination="s2q-ed-b7M" id="5mr-Q5-3gC"/>
                         <outlet property="tableView" destination="tpu-My-7p7" id="n9V-0h-hHg"/>
                     </connections>
                 </viewController>

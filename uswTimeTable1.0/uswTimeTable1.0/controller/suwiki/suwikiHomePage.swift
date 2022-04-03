@@ -13,6 +13,9 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     // main Page == tableView 구현 스크롤 최대 10개 제한
 
+    @IBOutlet weak var categoryDropDown: UIView!
+    @IBOutlet weak var categoryTextField: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     var viewData: Array<homePageData> = []
     var viewData2: Array<homePageData> = []
