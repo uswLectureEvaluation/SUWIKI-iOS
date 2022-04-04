@@ -33,9 +33,10 @@ class lectureDetailedInformationPage: UIViewController {
         print(parameters)
        
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
+        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
             
-            let data = response.data
+            let data = response.value
+            
             let json = JSON(data)
             print(data)
             print(json)
