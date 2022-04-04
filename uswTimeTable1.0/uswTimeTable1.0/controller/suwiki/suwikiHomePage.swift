@@ -84,6 +84,12 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 100.0
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+        detailVC.lectureId = viewData[indexPath.row].id
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     func getMainPage(){
 
         let url = "https://api.suwiki.kr/lecture/findAllList"

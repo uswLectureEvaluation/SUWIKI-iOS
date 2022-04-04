@@ -26,6 +26,7 @@
 		AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFAFEF8B277F160900408F46 /* uswTimeTable1_0.xcdatamodeld */; };
 		AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF8E277F160B00408F46 /* Assets.xcassets */; };
 		AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */; };
+		AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */; };
 		AFCAABB327EEE651005D9421 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCAABB227EEE651005D9421 /* loginController.swift */; };
 		AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD2706927D4A487001EE098 /* GoogleService-Info.plist */; };
 		AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7766F27E731A300E83EC8 /* printGIF.swift */; };
@@ -76,6 +77,7 @@
 		AFAFEF8E277F160B00408F46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFAFEF91277F160B00408F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureDetailedInformationPage.swift; sourceTree = "<group>"; };
 		AFCAABB227EEE651005D9421 /* loginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginController.swift; sourceTree = "<group>"; };
 		AFD2706927D4A487001EE098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFD7766F27E731A300E83EC8 /* printGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = printGIF.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				AFE076B227F5C6AB009E32B0 /* tabBarController.swift */,
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
+				AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
+				AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */,
 				AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
