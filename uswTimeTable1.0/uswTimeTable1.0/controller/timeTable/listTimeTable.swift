@@ -183,7 +183,6 @@ class timetableCell: UITableViewCell {
 
     @IBOutlet weak var adBtn: UIButton!
     @IBOutlet weak var delBtn: UIButton!
-    @IBOutlet weak var listView: UIView!
     @IBOutlet weak var yearTxtField: UILabel!
     @IBOutlet weak var semeTxtField: UILabel!
     @IBOutlet weak var nameTxtField: UILabel!

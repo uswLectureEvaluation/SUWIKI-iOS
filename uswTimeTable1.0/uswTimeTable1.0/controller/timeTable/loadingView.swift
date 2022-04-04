@@ -18,8 +18,7 @@ class loadingView: UIViewController {
     
     var startArray: Array<String> = []
     var boolCheck: Bool = false
-    @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var percentageView: UILabel!
+
     
     @IBOutlet weak var loadingGif: UIImageView!
     private let uswFireDB = Database.database(url: "https://schedulecheck-4ece8-default-rtdb.firebaseio.com/").reference()
@@ -37,7 +36,6 @@ class loadingView: UIViewController {
         loadingGif.image = loadGif
         getExternalData()
         super.viewDidLoad()
-        progressView.setProgress(0, animated: false)
         // Do any additional setup after loading the view.
     }
     
@@ -103,8 +101,8 @@ class loadingView: UIViewController {
                         print(insideDB)
                         }
                     }
-                    let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
-                    self.navigationController?.pushViewController(firstVC, animated: true)
+                    let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+                    self.navigationController?.pushViewController(loginVC, animated: true)
                 }
 
                 print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -160,8 +158,8 @@ class loadingView: UIViewController {
                         print(insideDB)
                         }
                     }
-                    let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
-                    self.navigationController?.pushViewController(firstVC, animated: true)
+                    let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+                    self.navigationController?.pushViewController(loginVC, animated: true)
                 }
             }
             

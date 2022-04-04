@@ -8,16 +8,21 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import KeychainSwift
 
 class loginController: UIViewController {
 
     
-    var loginModel = userModel()
+    let keychain = KeychainSwift()
+    let loginModel = userModel()
+    
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
+        keychain.clear()
+        self.navigationItem.hidesBackButton = true
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -43,32 +48,19 @@ class loginController: UIViewController {
         } // 비밀번호 형식 오류
             
         if loginModel.isValidId(id: id) && loginModel.isValidPassword(pwd: pwd) { // 형식이 맞을 경우 로그인 확인
-            let loginSuccess: Bool = loginCheck(id: id, pwd: pwd)
-            
-            if loginSuccess {
-                print("로그인 성공")
-                if let removable = self.view.viewWithTag(102) {
-                    removable.removeFromSuperview()
-                }
-            }
-            
-            else {
-                print("로그인 실패")
-                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
-                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
-                loginFailLabel.textColor = UIColor.red
-                    
-                self.view.addSubview(loginFailLabel)
-            }
+            loginCheck(id: id, pwd: pwd)
         }
+        
     }
     
+    /*
     func loginCheck(id: String, pwd: String) -> Bool {
         postAccount(id: id, pwd: pwd)
     }
+     */
     
-    func postAccount(id: String, pwd: String) -> Bool{
-        var checkValue = 0
+    func loginCheck(id: String, pwd: String){
+
         let url = "https://api.suwiki.kr/user/login"
         let parameters = [
             "loginId" : id,
@@ -77,24 +69,37 @@ class loginController: UIViewController {
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             
-            if var value = response.value{
-                if JSON(value)["AccessToken"][0] != nil{
-                    print("로그인 성공")
-                    print(value)
-                    checkValue = 1
-                    //로그인 성공
-                } else {
-                    print("로그인 실패")
-                    print(value)
-                    checkValue = 0
-                }
+            
+            let data = response.data
+            let json = JSON(data!)
+            let accessToken = json["AccessToken"].stringValue
+            let refreshToken = json["RefreshToken"].stringValue
+        
+            if accessToken != "" {
+                
+                print("로그인 성공")
+                self.keychain.set(accessToken, forKey: "AccessToken")
+                self.keychain.set(refreshToken, forKey: "RefreshToken")
+
+                
+                print(self.keychain.get("AccessToken") ?? "")
+                print(self.keychain.get("RefreshToken") ?? "")
+                
+                let tapbarVC = self.storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! tabBarController
+                self.navigationController?.pushViewController(tapbarVC, animated: true)
+                
+            } else { // 이후에 alert로 수정 예정
+                print("로그인 실패")
+                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
+                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
+                loginFailLabel.textColor = UIColor.red
+                self.view.addSubview(loginFailLabel)
             }
+
         }
         
-        if checkValue == 1{
-            return true
-        }
-        return false
+             
+
 }
     
 
