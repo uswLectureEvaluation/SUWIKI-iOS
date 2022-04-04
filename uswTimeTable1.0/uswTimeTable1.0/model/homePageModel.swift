@@ -15,7 +15,7 @@ struct homePageData{
     let lectureType: String //이수구분
     let lectureName: String //강의이름
     let lectureTotalAvg: String //강의 평가 평균 지수 (평균값)
-    let lectureStatisfactionAvg: String //강의 평가 만족도 지수 (평균값)
+    let lectureSatisfactionAvg: String //강의 평가 만족도 지수 (평균값)
     let lectureHoneyAvg: String //강의 평가 꿀강 지수 (평균값)
     let lectureLearningAvg: String //강의 평가 배움 지수 (평균값)
     
