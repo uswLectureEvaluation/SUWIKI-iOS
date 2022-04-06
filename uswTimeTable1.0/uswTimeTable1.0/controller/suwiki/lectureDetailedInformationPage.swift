@@ -22,23 +22,25 @@ class lectureDetailedInformationPage: UIViewController {
     }
     
     func getDetailPage(){
-        let url = "https://api.suwiki.kr/lecture/?lectureId={\(lectureId)}"
+        let url = "https://api.suwiki.kr/lecture/?lectureId=\(lectureId)"
         
-        let parameters = [
+ 
+        let headers: HTTPHeaders = [
             "AccessToken" : String(keychain.get("AccessToken") ?? "")
         ]
-       
+  
         
         print(url)
-        print(parameters)
-       
-        
-        AF.request(url, method: .post, encoding: JSONEncoding.default).responseJSON { (response) in
+        print(keychain.get("AccessToken"))
+              //
+
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             
             let data = response.value
             
             let json = JSON(data)
-            print(data)
+            
+            print(json.count)
             print(json)
         }
         
