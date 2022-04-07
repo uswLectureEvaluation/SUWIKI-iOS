@@ -12,13 +12,25 @@ import SwiftyJSON
 
 class lectureDetailedInformationPage: UIViewController {
 
+    @IBOutlet weak var lectureView: UIView!
+    
+    @IBOutlet weak var lectureName: UILabel!
+    @IBOutlet weak var professor: UILabel!
+    
+    
     let keychain = KeychainSwift()
     var lectureId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        lectureView.layer.borderWidth = 1.0
+        lectureView.layer.borderColor = UIColor.lightGray.cgColor
+        lectureView.layer.cornerRadius = 12.0
+        
         getDetailPage()
-        // Do any additional setup after loading the view.
+
+        lectureName.sizeToFit()
     }
     
     func getDetailPage(){
@@ -38,10 +50,10 @@ class lectureDetailedInformationPage: UIViewController {
             
             let data = response.value
             
-            let json = JSON(data)
+            let json = JSON(data)["data"]
             
-            print(json.count)
-            print(json)
+            
+            
         }
         
         
