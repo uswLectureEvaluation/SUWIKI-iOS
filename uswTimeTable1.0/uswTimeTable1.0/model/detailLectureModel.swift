@@ -18,6 +18,8 @@ struct detailLecture{
     let lectureSatisfactionAvg: String //강의 평가 만족도 지수 (평균값)
     let lectureHoneyAvg: String //강의 평가 꿀강 지수 (평균값)
     let lectureLearningAvg: String //강의 평가 배움 지수 (평균값)
-    let lectureTeamAvg: String
+    let lectureTeamAvg: Float
+    let lectureDifficultyAvg: Float
+    let lectureHomeworkAvg: Float
     
 }
