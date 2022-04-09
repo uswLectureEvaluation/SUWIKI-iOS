@@ -10,6 +10,10 @@ import KeychainSwift
 import Alamofire
 import SwiftyJSON
 
+// 1. 화면이 켜질 때 eval / exam 데이터 리스트에 저장
+// 2. 데이터는 10개씩만 테이블 뷰에 보여주고, 이후 스크롤 시 이후 데이터 마저 불러오기
+// 3. 강의평가 -> 시험평가 버튼 클릭 시 메인 리스트 비우고, reloadData 진행
+
 class lectureDetailedInformationPage: UIViewController {
 
     @IBOutlet weak var lectureView: UIView!
@@ -20,7 +24,10 @@ class lectureDetailedInformationPage: UIViewController {
     @IBOutlet weak var lectureLearningAvg: UILabel!
     @IBOutlet weak var lectureSatisAvg: UILabel!
   
+    var detailViewArray: Array<Any> = []
     var detailLectureArray: Array<detailLecture> = []
+    var detailEvaluationArray: Array<detailEvaluation> = []
+    
     var lectureId = 0
     let keychain = KeychainSwift()
     
@@ -76,7 +83,7 @@ class lectureDetailedInformationPage: UIViewController {
     }
 
     func getDetailEvaluation(){
-        let url = "https://api.suwiki.kr/evaluate-posts/findByLectureId/?lectureId=\(lectureId)&page={}"
+        let url = "https://api.suwiki.kr/evaluate-posts/findByLectureId/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
@@ -84,8 +91,56 @@ class lectureDetailedInformationPage: UIViewController {
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.value
-            print(data)
+            let json = JSON(data!)
+    
+            print(json["data"].count) // 해당 데이터 갯수 나옴
+            for index in 0..<json["data"].count{
+                let jsonData = json["data"][index]
+                var team = ""
+                var difficulty = ""
+                var homework = ""
+                let totalAvg = String(format: "%.1f", round(jsonData["totalAvg"].floatValue * 1000) / 1000)
+                let satisfaction = String(format: "%.1f", round(jsonData["satisfaction"].floatValue * 1000) / 1000)
+                let learning = String(format: "%.1f", round(jsonData["learning"].floatValue * 1000) / 1000)
+                let honey = String(format: "%.1f", round(jsonData["honey"].floatValue * 1000) / 1000)
+                
+                if jsonData["team"] == 0 {
+                    team = "없음"
+                } else if jsonData["team"] == 1 {
+                    team = "있음"
+                }
+                
+                if jsonData["difficulty"] == 0{
+                    difficulty = "까다로움"
+                } else if jsonData["difficulty"] == 1 {
+                    difficulty = "보통"
+                } else if jsonData["difficulty"] == 2 {
+                    difficulty = "개꿀"
+                }
+                
+                if jsonData["homework"] == 0 {
+                    homework = "없음"
+                } else if jsonData["homework"] == 1{
+                    homework = "보통"
+                } else if jsonData["homework"] == 2 {
+                    homework = "많음"
+                }
+                
+                let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
+                
+                self.detailEvaluationArray.append(readData)
+                
+            }
+            print(self.detailEvaluationArray)
         }
+    }
+    
+    func getDetailExam(){
+        
+        
     }
 }
 
+class detailEvalAndExamCell: UITableViewCell{
+    
+}

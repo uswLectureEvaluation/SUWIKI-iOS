@@ -23,3 +23,18 @@ struct detailLecture{
     let lectureHomeworkAvg: Float
     
 }
+
+struct detailEvaluation{
+
+    let id: Int
+    let semester: String
+    let totalAvg: String
+    let satisfaction: String
+    let learning: String
+    let honey: String
+    let team: String // 조별모임 유무(없음 == 0, 있음 == 1)
+    let difficulty: String //학점 잘주는가? (까다로움 == 0, 보통 == 1, 학점느님 ==2)
+    let homework: String //과제양 (없음 ==0, 보통 == 1, 많음 == 2)
+    let content: String
+    
+}
