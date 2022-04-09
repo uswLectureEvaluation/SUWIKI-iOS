@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct detailLecture{
+struct detailLecture {
     
     let id: Int
     let semester: String //강의년도 + 학기 (ex) "2021-1,2022-1" )
@@ -24,7 +24,7 @@ struct detailLecture{
     
 }
 
-struct detailEvaluation{
+struct detailEvaluation {
 
     let id: Int
     let semester: String
@@ -37,4 +37,12 @@ struct detailEvaluation{
     let homework: String //과제양 (없음 ==0, 보통 == 1, 많음 == 2)
     let content: String
     
+}
+
+struct detailExam {
+    let id: Int
+    let semester: String
+    let examInfo: String
+    let examDifficulty: String
+    let content: String
 }

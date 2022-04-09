@@ -24,9 +24,13 @@ class lectureDetailedInformationPage: UIViewController {
     @IBOutlet weak var lectureLearningAvg: UILabel!
     @IBOutlet weak var lectureSatisAvg: UILabel!
   
+    @IBOutlet weak var evaluationBtn: UIButton!
+    @IBOutlet weak var examBtn: UIButton!
+    
     var detailViewArray: Array<Any> = []
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
+    var detailExamArray: Array<detailExam> = []
     
     var lectureId = 0
     let keychain = KeychainSwift()
@@ -38,8 +42,16 @@ class lectureDetailedInformationPage: UIViewController {
         super.viewDidLoad()
         getDetailPage()
         getDetailEvaluation()
+        getDetailExam()
+        evaluationBtn.tintColor = .lightGray
+    }
+    
+    @IBAction func evaluationBtnClicked(_ sender: Any) {
         
-
+    }
+    
+    @IBAction func examBtnClicked(_ sender: Any) {
+        
     }
     
     func lectureViewUpdate(){
@@ -136,8 +148,26 @@ class lectureDetailedInformationPage: UIViewController {
     }
     
     func getDetailExam(){
+        let url = "https://api.suwiki.kr/exam-posts/findByLectureId/?lectureId=\(lectureId)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
         
         
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            let data = response.value
+            let json = JSON(data!)
+            
+            for index in 0..<json["data"].count{
+                let jsonData = json["data"][index]
+                
+                let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                self.detailExamArray.append(readData)
+            }
+            print(self.detailExamArray)
+            
+        }
     }
 }
 

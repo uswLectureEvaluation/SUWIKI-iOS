@@ -2180,6 +2180,27 @@
                                     <constraint firstItem="CtO-9a-Xc1" firstAttribute="leading" secondItem="Ogb-wF-9qg" secondAttribute="leading" constant="8" id="yaK-q8-XPK"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3L-em-4ez">
+                                <rect key="frame" x="20" y="433" width="101" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="강의 평가"/>
+                                <connections>
+                                    <action selector="evaluationBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="ZW7-QT-JLS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-tN-SXS">
+                                <rect key="frame" x="129" y="433" width="101" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="시험 정보"/>
+                                <connections>
+                                    <action selector="evaluationBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="iR1-DN-Tql"/>
+                                    <action selector="examBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="A5U-Bh-kzR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZSu-n8-wQ8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2190,6 +2211,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="evaluationBtn" destination="i3L-em-4ez" id="Ony-lf-4cm"/>
+                        <outlet property="examBtn" destination="OTy-tN-SXS" id="Ncd-QR-ywt"/>
                         <outlet property="lectureHoneyAvg" destination="QuZ-Nt-BzQ" id="7x4-fF-LqB"/>
                         <outlet property="lectureLearningAvg" destination="kcB-MH-jv1" id="u56-jc-OtH"/>
                         <outlet property="lectureName" destination="FDa-Rb-dnH" id="jjA-F2-cmW"/>
