@@ -30,6 +30,7 @@ class lectureDetailedInformationPage: UIViewController {
         lectureView.layer.cornerRadius = 12.0
         super.viewDidLoad()
         getDetailPage()
+        getDetailEvaluation()
         
 
     }
@@ -42,8 +43,7 @@ class lectureDetailedInformationPage: UIViewController {
         lectureHoneyAvg.text = detailLectureArray[0].lectureHoneyAvg
         lectureLearningAvg.text = detailLectureArray[0].lectureLearningAvg
         lectureSatisAvg.text = detailLectureArray[0].lectureSatisfactionAvg
-        print("lectureName")
-        print(lectureName.text)
+
     }
     
     func getDetailPage(){
@@ -66,7 +66,7 @@ class lectureDetailedInformationPage: UIViewController {
             let totalLearningAvg = String(format: "%.1f", round(json["lectureLearningAvg"].floatValue * 1000) / 1000)
             
             let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["semester"].stringValue, professor: json["professor"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
-            print(detailLectureData)
+
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
             
@@ -75,4 +75,17 @@ class lectureDetailedInformationPage: UIViewController {
         
     }
 
+    func getDetailEvaluation(){
+        let url = "https://api.suwiki.kr/evaluate-posts/findByLectureId/?lectureId=\(lectureId)&page={}"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            let data = response.value
+            print(data)
+        }
+    }
 }
+
