@@ -2201,6 +2201,15 @@
                                     <action selector="examBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="A5U-Bh-kzR"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fHt-cx-HGP">
+                                <rect key="frame" x="0.0" y="472" width="414" height="390"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="NsY-Ra-dGx" id="spl-qv-tHm"/>
+                                    <outlet property="delegate" destination="NsY-Ra-dGx" id="Kc4-nf-x5W"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZSu-n8-wQ8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2219,6 +2228,7 @@
                         <outlet property="lectureSatisAvg" destination="5i3-hH-Xju" id="Gn7-06-dNa"/>
                         <outlet property="lectureView" destination="Ogb-wF-9qg" id="MdQ-es-Xcn"/>
                         <outlet property="professor" destination="CtO-9a-Xc1" id="a5V-cN-0lU"/>
+                        <outlet property="tableView" destination="fHt-cx-HGP" id="qZf-a0-JS5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7j-o3-pCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

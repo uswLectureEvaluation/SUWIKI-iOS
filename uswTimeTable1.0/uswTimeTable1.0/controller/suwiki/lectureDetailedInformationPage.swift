@@ -14,8 +14,11 @@ import SwiftyJSON
 // 2. 데이터는 10개씩만 테이블 뷰에 보여주고, 이후 스크롤 시 이후 데이터 마저 불러오기
 // 3. 강의평가 -> 시험평가 버튼 클릭 시 메인 리스트 비우고, reloadData 진행
 
-class lectureDetailedInformationPage: UIViewController {
+class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    
+
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lectureView: UIView!
     @IBOutlet weak var lectureName: UILabel!
     @IBOutlet weak var professor: UILabel!
@@ -32,6 +35,9 @@ class lectureDetailedInformationPage: UIViewController {
     var detailEvaluationArray: Array<detailEvaluation> = []
     var detailExamArray: Array<detailExam> = []
     
+    var testArray = ["1", "2", "3", "4", "5"]
+    var testArray1 = ["1", "2", "3"]
+    
     var lectureId = 0
     let keychain = KeychainSwift()
     
@@ -46,12 +52,18 @@ class lectureDetailedInformationPage: UIViewController {
         getDetailEvaluation()
         getDetailExam()
         evaluationBtn.tintColor = .darkGray
+        
+        let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
+        tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
+        let examCellName = UINib(nibName: "detailExamCell", bundle: nil)
+        tableView.register(examCellName, forCellReuseIdentifier: "examCell")
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
         tableViewNumber = 0
         evaluationBtn.tintColor = .darkGray
         examBtn.tintColor = .lightGray
+        tableView.reloadData()
         
     }
     
@@ -59,7 +71,32 @@ class lectureDetailedInformationPage: UIViewController {
         tableViewNumber = 1
         examBtn.tintColor = .darkGray
         evaluationBtn.tintColor = .lightGray
+        tableView.reloadData()
         
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableViewNumber == 0 {
+            return 5
+        } else if tableViewNumber == 1 {
+            return 3
+        } else {
+            return 5
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableViewNumber == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
+            cell.test.text = testArray[indexPath.row]
+            return cell
+        } else if tableViewNumber == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "examCell", for: indexPath) as! detailExamCell
+            cell.test.text = testArray1[indexPath.row]
+            return cell
+        }
+        return UITableViewCell()
+           
     }
     
     func lectureViewUpdate(){
@@ -179,6 +216,3 @@ class lectureDetailedInformationPage: UIViewController {
     }
 }
 
-class detailEvalAndExamCell: UITableViewCell{
-    
-}
