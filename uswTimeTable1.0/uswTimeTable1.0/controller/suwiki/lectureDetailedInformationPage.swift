@@ -35,6 +35,8 @@ class lectureDetailedInformationPage: UIViewController {
     var lectureId = 0
     let keychain = KeychainSwift()
     
+    var tableViewNumber = 0
+    
     override func viewDidLoad() {
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
@@ -43,14 +45,20 @@ class lectureDetailedInformationPage: UIViewController {
         getDetailPage()
         getDetailEvaluation()
         getDetailExam()
-        evaluationBtn.tintColor = .lightGray
+        evaluationBtn.tintColor = .darkGray
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
+        tableViewNumber = 0
+        evaluationBtn.tintColor = .darkGray
+        examBtn.tintColor = .lightGray
         
     }
     
     @IBAction func examBtnClicked(_ sender: Any) {
+        tableViewNumber = 1
+        examBtn.tintColor = .darkGray
+        evaluationBtn.tintColor = .lightGray
         
     }
     
