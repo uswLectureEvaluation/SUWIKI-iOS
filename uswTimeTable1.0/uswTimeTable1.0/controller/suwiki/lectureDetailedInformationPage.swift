@@ -44,6 +44,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var tableViewNumber = 0
     
     override func viewDidLoad() {
+        loadDetailData()
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
         lectureView.layer.cornerRadius = 12.0
@@ -76,27 +77,28 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableViewNumber == 0 {
-            return 5
-        } else if tableViewNumber == 1 {
-            return 3
-        } else {
-            return 5
-        }
+        return self.detailEvaluationArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var expandableItem = self.detailEvaluationArray[indexPath.row]
+        expandableItem.expanded = !(expandableItem.expanded)
+        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableViewNumber == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
-            cell.test.text = testArray[indexPath.row]
-            return cell
-        } else if tableViewNumber == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "examCell", for: indexPath) as! detailExamCell
-            cell.test.text = testArray1[indexPath.row]
+            let expandableItem = self.detailEvaluationArray[indexPath.row]
+            cell.totalAvg.text = "1"
+            cell.totalAvg.isHidden = expandableItem.expanded
             return cell
         }
         return UITableViewCell()
            
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130.0
     }
     
     func lectureViewUpdate(){
@@ -123,6 +125,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let data = response.value
             
             let json = JSON(data!)["data"]
+            print(data)
             print(json)
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
@@ -139,6 +142,14 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
     }
 
+    func loadDetailData(){
+        DispatchQueue.global().async {
+            self.getDetailEvaluation()
+            self.getDetailExam()
+        }
+        
+    }
+    
     func getDetailEvaluation(){
         let url = "https://api.suwiki.kr/evaluate-posts/findByLectureId/?lectureId=\(lectureId)"
         
@@ -183,12 +194,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                     homework = "많음"
                 }
                 
-                let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
+                let readData = detailEvaluation(expanded: true, id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
                 self.detailEvaluationArray.append(readData)
                 
             }
-            print(self.detailEvaluationArray)
+            self.tableView.reloadData()
         }
     }
     
@@ -210,7 +221,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
                 self.detailExamArray.append(readData)
             }
-            print(self.detailExamArray)
             
         }
     }

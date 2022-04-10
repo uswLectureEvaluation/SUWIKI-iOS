@@ -9,7 +9,12 @@ import UIKit
 
 class detailEvaluationCell: UITableViewCell {
 
-    @IBOutlet weak var test: UILabel!
+    
+    
+    @IBOutlet weak var totalAvg: UILabel!
+
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

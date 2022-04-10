@@ -26,6 +26,7 @@ struct detailLecture {
 
 struct detailEvaluation {
 
+    var expanded: Bool
     let id: Int
     let semester: String
     let totalAvg: String
@@ -45,4 +46,8 @@ struct detailExam {
     let examInfo: String
     let examDifficulty: String
     let content: String
+}
+
+struct cellData {
+    
 }
