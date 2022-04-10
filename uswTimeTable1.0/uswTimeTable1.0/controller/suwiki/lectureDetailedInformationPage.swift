@@ -105,14 +105,14 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableViewNumber == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
-
+            cell.content.numberOfLines = 0 
             return cell
         }
         return UITableViewCell()
            
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130.0
+        return 170.0
     }
     
     func lectureViewUpdate(){

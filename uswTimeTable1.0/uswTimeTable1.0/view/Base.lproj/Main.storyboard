@@ -2181,7 +2181,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3L-em-4ez">
-                                <rect key="frame" x="20" y="433" width="101" height="31"/>
+                                <rect key="frame" x="20" y="401" width="101" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -2190,8 +2190,17 @@
                                     <action selector="evaluationBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="ZW7-QT-JLS"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fHt-cx-HGP">
+                                <rect key="frame" x="0.0" y="447" width="414" height="415"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="NsY-Ra-dGx" id="spl-qv-tHm"/>
+                                    <outlet property="delegate" destination="NsY-Ra-dGx" id="Kc4-nf-x5W"/>
+                                </connections>
+                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-tN-SXS">
-                                <rect key="frame" x="129" y="433" width="101" height="31"/>
+                                <rect key="frame" x="129" y="401" width="101" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -2201,15 +2210,6 @@
                                     <action selector="examBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="A5U-Bh-kzR"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fHt-cx-HGP">
-                                <rect key="frame" x="0.0" y="472" width="414" height="390"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="NsY-Ra-dGx" id="spl-qv-tHm"/>
-                                    <outlet property="delegate" destination="NsY-Ra-dGx" id="Kc4-nf-x5W"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZSu-n8-wQ8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

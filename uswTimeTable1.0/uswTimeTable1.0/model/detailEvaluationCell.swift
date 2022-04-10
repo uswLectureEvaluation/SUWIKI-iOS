@@ -12,15 +12,19 @@ class detailEvaluationCell: UITableViewCell {
     
     
     @IBOutlet weak var totalAvg: UILabel!
-
+    @IBOutlet weak var content: UILabel!
     
-    @IBOutlet weak var hiddenView: UIView!
+    @IBOutlet weak var hiddenView: UIView!{
+        didSet{
+            hiddenView.isHidden = true
+        }
+    }
     
     @IBOutlet weak var stackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        ()
+        self.content.numberOfLines = 0
         // Initialization code
     }
 
