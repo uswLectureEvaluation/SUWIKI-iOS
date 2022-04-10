@@ -41,6 +41,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var lectureId = 0
     let keychain = KeychainSwift()
     
+    var selectedIndex = -1
+    var isSelected = false
+    
     var tableViewNumber = 0
     
     override func viewDidLoad() {
@@ -58,6 +61,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
         let examCellName = UINib(nibName: "detailExamCell", bundle: nil)
         tableView.register(examCellName, forCellReuseIdentifier: "examCell")
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
@@ -81,17 +85,27 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var expandableItem = self.detailEvaluationArray[indexPath.row]
-        expandableItem.expanded = !(expandableItem.expanded)
-        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
+        
+        if selectedIndex == indexPath.row {
+            if self.isSelected == true{
+                cell.hiddenView.isHidden = true
+                isSelected = false
+            } else {
+                cell.hiddenView.isHidden = false
+                isSelected = true
+            }
+        }
+        
+        selectedIndex = indexPath.row
+        
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableViewNumber == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
-            let expandableItem = self.detailEvaluationArray[indexPath.row]
-            cell.totalAvg.text = "1"
-            cell.totalAvg.isHidden = expandableItem.expanded
+
             return cell
         }
         return UITableViewCell()
@@ -194,7 +208,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                     homework = "많음"
                 }
                 
-                let readData = detailEvaluation(expanded: true, id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
+                let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
                 self.detailEvaluationArray.append(readData)
                 

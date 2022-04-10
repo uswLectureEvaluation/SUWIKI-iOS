@@ -26,7 +26,6 @@ struct detailLecture {
 
 struct detailEvaluation {
 
-    var expanded: Bool
     let id: Int
     let semester: String
     let totalAvg: String
