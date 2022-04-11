@@ -13,12 +13,16 @@ class detailEvaluationCell: UITableViewCell {
     
     @IBOutlet weak var totalAvg: UILabel!
     
-    @IBOutlet weak var hiddenConstraint: NSLayoutConstraint!
-  
+    @IBOutlet weak var semester: UILabel!
+    @IBOutlet weak var satisfactionPoint: UILabel!
+    @IBOutlet weak var honeyPoint: UILabel!
+    @IBOutlet weak var learningPoint: UILabel!
+    
     @IBOutlet weak var content: UILabel!
     
-
-    
+    @IBOutlet weak var team: UILabel!
+    @IBOutlet weak var homework: UILabel!
+    @IBOutlet weak var difficulty: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

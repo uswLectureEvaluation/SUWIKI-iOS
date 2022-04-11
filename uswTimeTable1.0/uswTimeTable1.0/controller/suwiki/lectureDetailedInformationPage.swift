@@ -41,7 +41,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var lectureId = 0
     let keychain = KeychainSwift()
     
-    var dynamicLabel = 0
 
     var tableViewNumber = 0
     
@@ -52,14 +51,21 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureView.layer.cornerRadius = 12.0
         super.viewDidLoad()
         getDetailPage()
-        getDetailEvaluation()
-        getDetailExam()
+
         evaluationBtn.tintColor = .darkGray
         
         let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
         tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
         let examCellName = UINib(nibName: "detailExamCell", bundle: nil)
         tableView.register(examCellName, forCellReuseIdentifier: "examCell")
+        
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 120
+        self.tableView.reloadData()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
@@ -77,14 +83,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.reloadData()
         
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if dynamicLabel > 0{
-            return 100.0 + CGFloat(dynamicLabel)
-        } else {
-            return 189
-        }
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.detailEvaluationArray.count
     }
@@ -94,8 +93,20 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         if tableViewNumber == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
+            
             cell.content.numberOfLines = 0
-            dynamicLabel = Int(cell.content.frame.height)
+            
+            cell.semester.text = detailEvaluationArray[indexPath.row].semester
+            cell.totalAvg.text = detailEvaluationArray[indexPath.row].totalAvg
+            cell.satisfactionPoint.text = detailEvaluationArray[indexPath.row].satisfaction
+            cell.honeyPoint.text = detailEvaluationArray[indexPath.row].honey
+            cell.learningPoint.text = detailEvaluationArray[indexPath.row].learning
+            cell.content.text = detailEvaluationArray[indexPath.row].content
+            cell.team.text = detailEvaluationArray[indexPath.row].team
+            cell.homework.text = detailEvaluationArray[indexPath.row].homework
+            cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
+            
+            
             return cell
         }
         return UITableViewCell()
@@ -126,8 +137,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let data = response.value
             
             let json = JSON(data!)["data"]
-            print(data)
-            print(json)
+      
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
@@ -162,7 +172,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let data = response.value
             let json = JSON(data!)
     
-            print(json["data"].count) // 해당 데이터 갯수 나옴
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
                 var team = ""
@@ -201,6 +210,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 
             }
             self.tableView.reloadData()
+            print(self.detailEvaluationArray)
         }
     }
     

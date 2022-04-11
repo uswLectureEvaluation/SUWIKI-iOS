@@ -2194,10 +2194,6 @@
                                 <rect key="frame" x="0.0" y="447" width="414" height="415"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="NsY-Ra-dGx" id="spl-qv-tHm"/>
-                                    <outlet property="delegate" destination="NsY-Ra-dGx" id="Kc4-nf-x5W"/>
-                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-tN-SXS">
                                 <rect key="frame" x="129" y="401" width="101" height="31"/>
