@@ -2180,9 +2180,11 @@
                                     <constraint firstItem="CtO-9a-Xc1" firstAttribute="leading" secondItem="Ogb-wF-9qg" secondAttribute="leading" constant="8" id="yaK-q8-XPK"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3L-em-4ez">
-                                <rect key="frame" x="20" y="401" width="101" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3L-em-4ez">
+                                <rect key="frame" x="20" y="401" width="76.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="HLB-3S-6hI"/>
+                                </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="강의 평가"/>
@@ -2190,14 +2192,18 @@
                                     <action selector="evaluationBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="ZW7-QT-JLS"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fHt-cx-HGP">
-                                <rect key="frame" x="0.0" y="447" width="414" height="415"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fHt-cx-HGP">
+                                <rect key="frame" x="15" y="447" width="384" height="415"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="415" id="yiG-39-tvx"/>
+                                </constraints>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-tN-SXS">
-                                <rect key="frame" x="129" y="401" width="101" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-tN-SXS">
+                                <rect key="frame" x="96.5" y="401" width="76.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="waj-DX-Jcw"/>
+                                </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="시험 정보"/>
@@ -2210,9 +2216,17 @@
                         <viewLayoutGuide key="safeArea" id="ZSu-n8-wQ8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="fHt-cx-HGP" firstAttribute="top" secondItem="i3L-em-4ez" secondAttribute="bottom" constant="15" id="8OX-Cl-GBf"/>
                             <constraint firstItem="Ogb-wF-9qg" firstAttribute="leading" secondItem="ZSu-n8-wQ8" secondAttribute="leading" constant="20" id="Bfx-v5-msA"/>
                             <constraint firstItem="ZSu-n8-wQ8" firstAttribute="trailing" secondItem="Ogb-wF-9qg" secondAttribute="trailing" constant="20" id="NvA-n3-74p"/>
+                            <constraint firstItem="i3L-em-4ez" firstAttribute="leading" secondItem="ZSu-n8-wQ8" secondAttribute="leading" constant="20" id="SbB-eJ-qd0"/>
+                            <constraint firstAttribute="trailing" secondItem="fHt-cx-HGP" secondAttribute="trailing" constant="15" id="XYD-gU-YGw"/>
+                            <constraint firstItem="fHt-cx-HGP" firstAttribute="bottom" secondItem="ZSu-n8-wQ8" secondAttribute="bottom" id="Xuf-PZ-3l9"/>
+                            <constraint firstItem="fHt-cx-HGP" firstAttribute="leading" secondItem="ZSu-n8-wQ8" secondAttribute="leading" constant="15" id="csf-YE-rpX"/>
+                            <constraint firstItem="OTy-tN-SXS" firstAttribute="top" secondItem="Ogb-wF-9qg" secondAttribute="bottom" constant="77" id="jwQ-Oc-HcM"/>
+                            <constraint firstItem="i3L-em-4ez" firstAttribute="top" secondItem="Ogb-wF-9qg" secondAttribute="bottom" constant="77" id="kCJ-l9-Ge8"/>
                             <constraint firstItem="Ogb-wF-9qg" firstAttribute="top" secondItem="ZSu-n8-wQ8" secondAttribute="top" constant="40" id="pGX-wB-D2s"/>
+                            <constraint firstItem="OTy-tN-SXS" firstAttribute="leading" secondItem="i3L-em-4ez" secondAttribute="trailing" id="x2o-Q3-pyC"/>
                         </constraints>
                     </view>
                     <connections>

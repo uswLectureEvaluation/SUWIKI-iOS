@@ -43,6 +43,7 @@ struct detailExam {
     let id: Int
     let semester: String
     let examInfo: String
+    let examType: String
     let examDifficulty: String
     let content: String
 }

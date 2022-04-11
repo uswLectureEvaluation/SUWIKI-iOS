@@ -77,7 +77,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func examBtnClicked(_ sender: Any) {
-        tableViewNumber = 1
+        tableViewNumber = 2
         examBtn.tintColor = .darkGray
         evaluationBtn.tintColor = .lightGray
         tableView.reloadData()
@@ -85,7 +85,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.detailEvaluationArray.count
+        if tableViewNumber == 0 {
+            return self.detailEvaluationArray.count
+        } else {
+            return self.detailExamArray.count
+        }
+        
     }
     
     
@@ -106,6 +111,15 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.homework.text = detailEvaluationArray[indexPath.row].homework
             cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
             
+            
+            return cell
+            
+        } else if tableViewNumber == 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "examCell", for: indexPath) as! detailExamCell
+            
+            cell.examType.text = detailExamArray[indexPath.row].examType
+            cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
+            cell.content.text = detailExamArray[indexPath.row].content
             
             return cell
         }
@@ -225,14 +239,15 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.value
             let json = JSON(data!)
-            
+            print(json)
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
                 
-                let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                
                 self.detailExamArray.append(readData)
             }
-            
+            print(self.detailExamArray)
         }
     }
 }
