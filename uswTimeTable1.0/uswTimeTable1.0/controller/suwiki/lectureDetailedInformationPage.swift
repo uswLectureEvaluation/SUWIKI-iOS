@@ -13,6 +13,7 @@ import SwiftyJSON
 // 1. 화면이 켜질 때 eval / exam 데이터 리스트에 저장
 // 2. 데이터는 10개씩만 테이블 뷰에 보여주고, 이후 스크롤 시 이후 데이터 마저 불러오기
 // 3. 강의평가 -> 시험평가 버튼 클릭 시 메인 리스트 비우고, reloadData 진행
+// 테이블뷰넘버로 시험정보 구매 여부 확인 후 넘버 변경 -> 시험 정보 출력
 
 class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -22,6 +23,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var lectureView: UIView!
     @IBOutlet weak var lectureName: UILabel!
     @IBOutlet weak var professor: UILabel!
+    
+    @IBOutlet weak var teamView: UILabel!
+    @IBOutlet weak var homeworkView: UILabel!
+    @IBOutlet weak var pointView: UILabel!
     
     @IBOutlet weak var lectureHoneyAvg: UILabel!
     @IBOutlet weak var lectureLearningAvg: UILabel!
@@ -51,7 +56,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureView.layer.cornerRadius = 12.0
         super.viewDidLoad()
         getDetailPage()
-
+        print(lectureId)
         evaluationBtn.tintColor = .darkGray
         
         let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
@@ -106,11 +111,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.satisfactionPoint.text = detailEvaluationArray[indexPath.row].satisfaction
             cell.honeyPoint.text = detailEvaluationArray[indexPath.row].honey
             cell.learningPoint.text = detailEvaluationArray[indexPath.row].learning
-            cell.content.text = detailEvaluationArray[indexPath.row].content
             cell.team.text = detailEvaluationArray[indexPath.row].team
             cell.homework.text = detailEvaluationArray[indexPath.row].homework
             cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
-            
+            cell.content.text = detailEvaluationArray[indexPath.row].content
             
             return cell
             
@@ -135,6 +139,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureHoneyAvg.text = detailLectureArray[0].lectureHoneyAvg
         lectureLearningAvg.text = detailLectureArray[0].lectureLearningAvg
         lectureSatisAvg.text = detailLectureArray[0].lectureSatisfactionAvg
+    
 
     }
     

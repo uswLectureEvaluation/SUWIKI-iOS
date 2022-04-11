@@ -1862,10 +1862,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tpu-My-7p7">
-                                <rect key="frame" x="20" y="288" width="374" height="424"/>
+                                <rect key="frame" x="20" y="288" width="374" height="565"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="424" id="dwn-oC-oli"/>
+                                    <constraint firstAttribute="height" constant="565" id="dwn-oC-oli"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainCell" rowHeight="100" id="Jtt-RJ-yvv" customClass="mainPageCell" customModule="uswTimeTable1_0" customModuleProvider="target">
@@ -2232,13 +2232,16 @@
                     <connections>
                         <outlet property="evaluationBtn" destination="i3L-em-4ez" id="Ony-lf-4cm"/>
                         <outlet property="examBtn" destination="OTy-tN-SXS" id="Ncd-QR-ywt"/>
+                        <outlet property="homeworkView" destination="0Ih-Tv-vzU" id="27n-GE-81f"/>
                         <outlet property="lectureHoneyAvg" destination="QuZ-Nt-BzQ" id="7x4-fF-LqB"/>
                         <outlet property="lectureLearningAvg" destination="kcB-MH-jv1" id="u56-jc-OtH"/>
                         <outlet property="lectureName" destination="FDa-Rb-dnH" id="jjA-F2-cmW"/>
                         <outlet property="lectureSatisAvg" destination="5i3-hH-Xju" id="Gn7-06-dNa"/>
                         <outlet property="lectureView" destination="Ogb-wF-9qg" id="MdQ-es-Xcn"/>
+                        <outlet property="pointView" destination="k3E-Hu-cib" id="AeI-Ef-u3n"/>
                         <outlet property="professor" destination="CtO-9a-Xc1" id="a5V-cN-0lU"/>
                         <outlet property="tableView" destination="fHt-cx-HGP" id="qZf-a0-JS5"/>
+                        <outlet property="teamView" destination="wbc-Tv-GlZ" id="UT6-aH-CCo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7j-o3-pCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
