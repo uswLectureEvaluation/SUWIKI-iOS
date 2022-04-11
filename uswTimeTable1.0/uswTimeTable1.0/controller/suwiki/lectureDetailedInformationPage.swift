@@ -41,9 +41,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var lectureId = 0
     let keychain = KeychainSwift()
     
-    var selectedIndex = -1
-    var isSelected = false
-    
+    var dynamicLabel = 0
+
     var tableViewNumber = 0
     
     override func viewDidLoad() {
@@ -61,7 +60,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
         let examCellName = UINib(nibName: "detailExamCell", bundle: nil)
         tableView.register(examCellName, forCellReuseIdentifier: "examCell")
-        tableView.rowHeight = UITableView.automaticDimension
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
@@ -80,41 +78,27 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80.0 + CGFloat(dynamicLabel)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.detailEvaluationArray.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
-        
-        if selectedIndex == indexPath.row {
-            if self.isSelected == true{
-                cell.hiddenView.isHidden = true
-                isSelected = false
-            } else {
-                cell.hiddenView.isHidden = false
-                isSelected = true
-            }
-        }
-        
-        selectedIndex = indexPath.row
-        
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if tableViewNumber == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "evaluationCell", for: indexPath) as! detailEvaluationCell
-            cell.content.numberOfLines = 0 
+            cell.content.numberOfLines = 0
+            dynamicLabel = Int(cell.content.frame.height)
             return cell
         }
         return UITableViewCell()
            
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170.0
-    }
-    
+
     func lectureViewUpdate(){
         lectureName.text = detailLectureArray[0].lectureName
         lectureName.sizeToFit()

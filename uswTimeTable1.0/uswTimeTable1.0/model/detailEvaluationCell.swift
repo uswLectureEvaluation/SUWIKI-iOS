@@ -12,19 +12,16 @@ class detailEvaluationCell: UITableViewCell {
     
     
     @IBOutlet weak var totalAvg: UILabel!
+    
+    @IBOutlet weak var hiddenConstraint: NSLayoutConstraint!
+  
     @IBOutlet weak var content: UILabel!
     
-    @IBOutlet weak var hiddenView: UIView!{
-        didSet{
-            hiddenView.isHidden = true
-        }
-    }
+
     
-    @IBOutlet weak var stackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.content.numberOfLines = 0
         // Initialization code
     }
 
@@ -33,13 +30,5 @@ class detailEvaluationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    /*
-    func hiddenStackView1(){
-        if hiddenView.isHidden == true {
-            hiddenConstraint.constant = 0
-        } else {
-            hiddenConstraint.constant = 65
-        }
-    }
-     */
+    
 }
