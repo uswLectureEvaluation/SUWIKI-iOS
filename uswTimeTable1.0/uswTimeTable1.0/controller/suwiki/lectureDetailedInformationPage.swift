@@ -79,9 +79,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80.0 + CGFloat(dynamicLabel)
+        if dynamicLabel > 0{
+            return 100.0 + CGFloat(dynamicLabel)
+        } else {
+            return 189
+        }
     }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.detailEvaluationArray.count
     }
