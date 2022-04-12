@@ -29,9 +29,22 @@ class lectureEvaluationWritePage: UIViewController {
     @IBOutlet weak var professorLabel: UILabel!
     
     
-    var teamWorkType = btnClickedType.teamWorkBtnType(noTeamWork: false, haveTeamWork: false)
-    var homeworkType = btnClickedType.homeworkType(noHomework: false, usuallyHomework: false, manyHomework: false)
-    var difficultyType = btnClickedType.difficultyType(easyDifficulty: false, usuallDifficulty: false, hardDifficulty: false)
+    @IBOutlet weak var teamNoBtn: UIButton!
+    @IBOutlet weak var teamHaveBtn: UIButton!
+    
+    
+    @IBOutlet weak var homeworkNoBtn: UIButton!
+    @IBOutlet weak var homeworkUsuallyBtn: UIButton!
+    @IBOutlet weak var homeworkManyBtn: UIButton!
+    
+    
+    @IBOutlet weak var easyDifficultyBtn: UIButton!
+    @IBOutlet weak var normalDifficultyBtn: UIButton!
+    @IBOutlet weak var hardDiffcultyBtn: UIButton!
+    
+    var teamWorkType = btnClickedType.teamWorkType()
+    var homeworkType = btnClickedType.homeworkType()
+    var difficultyType = btnClickedType.difficultyType()
     
     var lectureName: String = ""
     var professor: String = ""
@@ -60,37 +73,135 @@ class lectureEvaluationWritePage: UIViewController {
     }
      
     @IBAction func noTeamBtnClicked(_ sender: Any) {
-        teamWorkType.haveTeamWork = false
-        teamWorkType.noTeamWork = true
+        teamWorkTypeCheck(teamWork: "no")
+        teamWorkType.checkPoint(no: teamWorkType.noTeamWork, have: teamWorkType.haveTeamWork)
     }
     @IBAction func haveTeamBtnClicked(_ sender: Any) {
-        teamWorkType.haveTeamWork = true
-        teamWorkType.noTeamWork = false
+        teamWorkTypeCheck(teamWork: "have")
+        teamWorkType.checkPoint(no: teamWorkType.noTeamWork, have: teamWorkType.haveTeamWork)
     }
     
     @IBAction func noHomeworkBtnClicked(_ sender: Any) {
-        homeworkType.manyHomework = false
-        homeworkType.noHomework = true
-        homeworkType.usuallyHomework = false
+        homeworkTypeCheck(homework: "no")
+        homeworkType.checkPoint(no: homeworkType.noHomework, usually: homeworkType.usuallyHomework, many: homeworkType.manyHomework)
     }
     @IBAction func usuallyHomeworkBtnClicked(_ sender: Any) {
-        homeworkType.manyHomework = false
-        homeworkType.noHomework = false
-        homeworkType.usuallyHomework = true
+        homeworkTypeCheck(homework: "usually")
+        homeworkType.checkPoint(no: homeworkType.noHomework, usually: homeworkType.usuallyHomework, many: homeworkType.manyHomework)
     }
     @IBAction func manyHomeworkBtnClicked(_ sender: Any) {
-        homeworkType.manyHomework = true
-        homeworkType.noHomework = false
-        homeworkType.usuallyHomework = false
+        homeworkTypeCheck(homework: "many")
+        homeworkType.checkPoint(no: homeworkType.noHomework, usually: homeworkType.usuallyHomework, many: homeworkType.manyHomework)
     }
     
     
     @IBAction func easyDifficultyBtnClicked(_ sender: Any) {
+        difficultyTypeCheck(difficulty: "easy")
+        difficultyType.checkPoint(easy: difficultyType.easyDifficulty, normal: difficultyType.normalDifficulty, hard: difficultyType.hardDifficulty)
     }
     @IBAction func normalDifficultyBtnClicked(_ sender: Any) {
+        difficultyTypeCheck(difficulty: "normal")
+        difficultyType.checkPoint(easy: difficultyType.easyDifficulty, normal: difficultyType.normalDifficulty, hard: difficultyType.hardDifficulty)
     }
     @IBAction func hardDifficultyBtnClicked(_ sender: Any) {
+        difficultyTypeCheck(difficulty: "hard")
+        difficultyType.checkPoint(easy: difficultyType.easyDifficulty, normal: difficultyType.normalDifficulty, hard: difficultyType.hardDifficulty)
     }
     
     
+    func teamWorkTypeCheck(teamWork: String){
+        if teamWork == "have"{
+            if teamWorkType.haveTeamWork == true{
+                teamWorkType.haveTeamWork = false
+                teamWorkType.noTeamWork = false
+            } else {
+                teamWorkType.haveTeamWork = true
+                teamWorkType.noTeamWork = false
+            }
+            
+        } else if teamWork == "no"{
+            if teamWorkType.noTeamWork == true{
+                teamWorkType.haveTeamWork = false
+                teamWorkType.noTeamWork = false
+            } else {
+                teamWorkType.haveTeamWork = false
+                teamWorkType.noTeamWork = true
+            }
+        }
+    }
+    
+    func homeworkTypeCheck(homework: String){
+        if homework == "no"{
+            if homeworkType.noHomework == true {
+                homeworkType.manyHomework = false
+                homeworkType.noHomework = false
+                homeworkType.usuallyHomework = false
+            } else {
+                homeworkType.manyHomework = false
+                homeworkType.noHomework = true
+                homeworkType.usuallyHomework = false
+            }
+           
+        } else if homework == "usually" {
+            if homeworkType.usuallyHomework == true {
+                homeworkType.manyHomework = false
+                homeworkType.noHomework = false
+                homeworkType.usuallyHomework = false
+            } else {
+                homeworkType.manyHomework = false
+                homeworkType.noHomework = false
+                homeworkType.usuallyHomework = true
+            }
+            
+        } else if homework == "many"{
+            if homeworkType.manyHomework == true {
+                homeworkType.manyHomework = true
+                homeworkType.noHomework = false
+                homeworkType.usuallyHomework = false
+            } else {
+                homeworkType.manyHomework = false
+                homeworkType.noHomework = false
+                homeworkType.usuallyHomework = false
+            }
+        }
+    }
+    
+    func difficultyTypeCheck(difficulty: String){
+        if difficulty == "easy" {
+            if difficultyType.easyDifficulty == true {
+                difficultyType.easyDifficulty = false
+                difficultyType.normalDifficulty = false
+                difficultyType.hardDifficulty = false
+            } else {
+                difficultyType.easyDifficulty = true
+                difficultyType.normalDifficulty = false
+                difficultyType.hardDifficulty = false
+            }
+            
+        } else if difficulty == "normal" {
+            if difficultyType.normalDifficulty == true {
+                difficultyType.easyDifficulty = false
+                difficultyType.normalDifficulty = false
+                difficultyType.hardDifficulty = false
+            } else {
+                difficultyType.easyDifficulty = false
+                difficultyType.normalDifficulty = true
+                difficultyType.hardDifficulty = false
+            }
+            
+        } else if difficulty == "hard" {
+            if difficultyType.hardDifficulty == true {
+                difficultyType.easyDifficulty = false
+                difficultyType.normalDifficulty = false
+                difficultyType.hardDifficulty = false
+            } else {
+                difficultyType.easyDifficulty = false
+                difficultyType.normalDifficulty = false
+                difficultyType.hardDifficulty = true
+            }
+            
+        }
+    }
+    
+        
 }

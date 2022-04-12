@@ -2418,7 +2418,6 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="hardDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="bnO-vc-OSa"/>
-                                    <action selector="manyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="aoo-tl-NLU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2426,14 +2425,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="easyDifficultyBtn" destination="dcQ-fw-19x" id="JKb-lP-REv"/>
+                        <outlet property="hardDiffcultyBtn" destination="Uwy-xd-DCn" id="1MY-Pz-PL4"/>
+                        <outlet property="homeworkManyBtn" destination="7Lu-Ri-Jtz" id="if1-2i-XJE"/>
+                        <outlet property="homeworkNoBtn" destination="Tsx-m0-Xdz" id="Uay-28-vkh"/>
+                        <outlet property="homeworkUsuallyBtn" destination="NLA-m5-yja" id="Vvv-Ra-mMS"/>
                         <outlet property="honeyPoint" destination="Cyv-8c-yfb" id="T9c-0F-IAW"/>
                         <outlet property="honeySlider" destination="doz-1z-2TI" id="vCv-LW-Rbk"/>
                         <outlet property="learningPoint" destination="sya-5C-Nfu" id="rYM-jK-1gt"/>
                         <outlet property="learningSlider" destination="Dq3-HV-eLg" id="tUB-3D-BZB"/>
                         <outlet property="lectureNameLabel" destination="sdy-yj-cb5" id="Ae9-MP-fEv"/>
+                        <outlet property="normalDifficultyBtn" destination="3mr-no-Xap" id="48G-WG-bmo"/>
                         <outlet property="professorLabel" destination="XxS-tV-tHm" id="4E5-Yc-0zb"/>
                         <outlet property="satisfactionPoint" destination="gLB-2L-6ey" id="8AO-Bj-bFg"/>
                         <outlet property="satisfactionSlider" destination="89l-bv-u1M" id="qtD-kt-Ioy"/>
+                        <outlet property="teamHaveBtn" destination="Y5o-jd-Zek" id="oDG-Rw-Oxf"/>
+                        <outlet property="teamNoBtn" destination="Kp1-hc-OUN" id="spd-iQ-fkx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ArQ-p1-jV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
