@@ -2212,6 +2212,18 @@
                                     <action selector="examBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="A5U-Bh-kzR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D79-x6-mtN">
+                                <rect key="frame" x="291" y="401" width="103" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="강의 정보 쓰기"/>
+                                <connections>
+                                    <action selector="examInfoWriteBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="PE2-D6-EFj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZSu-n8-wQ8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2242,11 +2254,42 @@
                         <outlet property="professor" destination="CtO-9a-Xc1" id="a5V-cN-0lU"/>
                         <outlet property="tableView" destination="fHt-cx-HGP" id="qZf-a0-JS5"/>
                         <outlet property="teamView" destination="wbc-Tv-GlZ" id="UT6-aH-CCo"/>
+                        <outlet property="writeBtn" destination="D79-x6-mtN" id="4Ex-7d-v9p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7j-o3-pCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="592.75362318840587" y="1494.6428571428571"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zpp-Tj-F68">
+            <objects>
+                <viewController id="fnZ-eA-fWl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5gg-ZT-SSO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UCg-OP-Cyz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ArQ-p1-jV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1359" y="1495"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XyU-R1-rl1">
+            <objects>
+                <viewController id="hPY-dP-FKV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U2u-B2-bui">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="GvR-88-1pz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64x-cQ-6fe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1359" y="2174"/>
         </scene>
         <!--Item-->
         <scene sceneID="uuq-Qy-cCZ">

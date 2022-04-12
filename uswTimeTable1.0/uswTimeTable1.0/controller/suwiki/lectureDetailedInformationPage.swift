@@ -35,6 +35,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var evaluationBtn: UIButton!
     @IBOutlet weak var examBtn: UIButton!
     
+    @IBOutlet weak var writeBtn: UIButton!
+    
     var detailViewArray: Array<Any> = []
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
@@ -74,14 +76,21 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
+        writeBtn.setTitle("강의 정보 쓰기", for: .normal)
+        writeBtn.titleLabel!.font = UIFont.systemFont(ofSize: 13)
+
         tableViewNumber = 0
         evaluationBtn.tintColor = .darkGray
         examBtn.tintColor = .lightGray
         tableView.reloadData()
+       
         
     }
     
     @IBAction func examBtnClicked(_ sender: Any) {
+        writeBtn.setTitle("시험 정보 쓰기", for: .normal)
+        writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+
         tableViewNumber = 2
         examBtn.tintColor = .darkGray
         evaluationBtn.tintColor = .lightGray
@@ -89,6 +98,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
     }
 
+    @IBAction func examInfoWriteBtnClicked(_ sender: Any) {
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0 {
             return self.detailEvaluationArray.count
