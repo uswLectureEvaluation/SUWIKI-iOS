@@ -28,6 +28,11 @@ class lectureEvaluationWritePage: UIViewController {
     @IBOutlet weak var lectureNameLabel: UILabel!
     @IBOutlet weak var professorLabel: UILabel!
     
+    
+    var teamWorkType = btnClickedType.teamWorkBtnType(noTeamWork: false, haveTeamWork: false)
+    var homeworkType = btnClickedType.homeworkType(noHomework: false, usuallyHomework: false, manyHomework: false)
+    var difficultyType = btnClickedType.difficultyType(easyDifficulty: false, usuallDifficulty: false, hardDifficulty: false)
+    
     var lectureName: String = ""
     var professor: String = ""
     
@@ -54,4 +59,38 @@ class lectureEvaluationWritePage: UIViewController {
         satisfactionPoint.text = point
     }
      
+    @IBAction func noTeamBtnClicked(_ sender: Any) {
+        teamWorkType.haveTeamWork = false
+        teamWorkType.noTeamWork = true
+    }
+    @IBAction func haveTeamBtnClicked(_ sender: Any) {
+        teamWorkType.haveTeamWork = true
+        teamWorkType.noTeamWork = false
+    }
+    
+    @IBAction func noHomeworkBtnClicked(_ sender: Any) {
+        homeworkType.manyHomework = false
+        homeworkType.noHomework = true
+        homeworkType.usuallyHomework = false
+    }
+    @IBAction func usuallyHomeworkBtnClicked(_ sender: Any) {
+        homeworkType.manyHomework = false
+        homeworkType.noHomework = false
+        homeworkType.usuallyHomework = true
+    }
+    @IBAction func manyHomeworkBtnClicked(_ sender: Any) {
+        homeworkType.manyHomework = true
+        homeworkType.noHomework = false
+        homeworkType.usuallyHomework = false
+    }
+    
+    
+    @IBAction func easyDifficultyBtnClicked(_ sender: Any) {
+    }
+    @IBAction func normalDifficultyBtnClicked(_ sender: Any) {
+    }
+    @IBAction func hardDifficultyBtnClicked(_ sender: Any) {
+    }
+    
+    
 }

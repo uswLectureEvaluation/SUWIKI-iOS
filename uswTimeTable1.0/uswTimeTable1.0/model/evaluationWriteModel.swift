@@ -21,3 +21,24 @@ struct evaluationWrite {
     let content: String
     
 }
+
+struct btnClickedType{
+    
+    struct teamWorkBtnType{
+        var noTeamWork: Bool
+        var haveTeamWork: Bool
+    }
+    
+    struct homeworkType{
+        var noHomework: Bool
+        var usuallyHomework: Bool
+        var manyHomework: Bool
+    }
+    
+    struct difficultyType{
+        var easyDifficulty: Bool
+        var usuallDifficulty: Bool
+        var hardDifficulty: Bool
+    }
+    
+}
