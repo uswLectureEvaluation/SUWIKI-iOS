@@ -98,9 +98,16 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
     }
 
-    @IBAction func examInfoWriteBtnClicked(_ sender: Any) {
-        
+    @IBAction func InfoWriteBtnClicked(_ sender: Any) {
+        // 조건문 추가하여 어느
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+        nextVC.lectureName = String(lectureName.text)
+        nextVC.professor = String(professor.text)
+
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0 {
             return self.detailEvaluationArray.count
