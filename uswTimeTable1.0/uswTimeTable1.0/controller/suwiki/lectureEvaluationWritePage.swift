@@ -13,7 +13,7 @@ import UIKit
 // 텍스트필드는 글자 제한 1000자
 // 유저가 선택하는 부분은 bool type으로 해도 될듯.
 // 한번에 set으로 넣어주는 방법이 제일 좋아보이긴 하나, 순서가 중요하다면 array로 넣는 방법으로 진행
-
+// point 셋다 3 아니여야 넘어가는 방법 적용
 
 class lectureEvaluationWritePage: UIViewController {
     

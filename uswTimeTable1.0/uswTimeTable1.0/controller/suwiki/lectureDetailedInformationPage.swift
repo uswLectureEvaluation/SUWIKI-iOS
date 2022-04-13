@@ -90,8 +90,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     @IBAction func examBtnClicked(_ sender: Any) {
         writeBtn.setTitle("시험 정보 쓰기", for: .normal)
         writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-
-        tableViewNumber = 2
+        // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
+        tableViewNumber = 3 // 3이면 시험정보 구매한 상
         examBtn.tintColor = .darkGray
         evaluationBtn.tintColor = .lightGray
         tableView.reloadData()
@@ -249,7 +249,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 
             }
             self.tableView.reloadData()
-            print(self.detailEvaluationArray)
         }
     }
     
@@ -265,13 +264,27 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let data = response.value
             let json = JSON(data!)
             print(json)
+            if json["examDataExist"] == true {
+                print(json)
+                if json["data"] == "[]" {
+                    print("응없엉")
+                }
+            }
+            // examDataExist를 트루로 확인하고 내부 데이터 받아오는 것 없을 경우
+            // 시험 정보 구매 뷰 보여줘야 하고,
+            // 만약 배열 받아오는 정보가 있을 경우는 바로 시험정보를 보여주면 된다.
+            // false로 받아올 경우는 시험정보가 없다는 정보를 표시해주면 됨.
+            
+            /*
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
                 
                 let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
                 
                 self.detailExamArray.append(readData)
-            }
+               }
+               */
+           
             print(self.detailExamArray)
         }
     }

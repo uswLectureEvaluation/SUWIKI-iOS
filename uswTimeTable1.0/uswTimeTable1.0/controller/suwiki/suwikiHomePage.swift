@@ -264,7 +264,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
 
-
 }
 
 class mainPageCell: UITableViewCell {
