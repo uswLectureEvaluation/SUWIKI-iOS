@@ -60,9 +60,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureView.layer.cornerRadius = 12.0
         super.viewDidLoad()
         getDetailPage()
-        print(lectureId)
         evaluationBtn.tintColor = .darkGray
         
+        // Xib 등록
         let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
         tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
         let examCellName = UINib(nibName: "detailExamCell", bundle: nil)
@@ -168,7 +168,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             return cell
             
         } else if tableViewNumber == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "takeInfoCell", for: indexPath) as! examInfoTakeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "takeInfoCell", for: indexPath) as! examInfoCell
+            cell.takeBtn.tag = indexPath.row
+            cell.takeBtn.addTarget(self, action: #selector(takeBtnClicked), for: .touchUpInside)
             
             return cell
             
@@ -311,6 +313,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                         
                         self.detailExamArray.append(readData)
                        }
+                    self.tableViewNumber = 3
+                    self.tableView.reloadData()
                 }
                 print(json["data"].count)
             }
@@ -326,5 +330,37 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             print(self.detailExamArray)
         }
     }
+    
+    @objc func takeBtnClicked(sender: UIButton){
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        
+        let lectureId = Int(AD?.lectureId ?? 0)
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+
+        let url = "https://api.suwiki.kr/exam-posts/buyExamInfo/?lectureId=\(lectureId)"
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            let data = response.response?.statusCode
+            if Int(data!) == 200{
+                print("success")
+                self.getDetailExam()
+            } else if Int(data!) == 403{
+                print("fail")
+                
+            }
+            
+        }
+    }
+    
 }
 
+class examInfoCell: UITableViewCell{
+    
+    @IBOutlet weak var takeBtn: UIButton!
+    
+}
