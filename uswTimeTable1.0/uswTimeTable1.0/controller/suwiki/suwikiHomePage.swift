@@ -86,7 +86,11 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        AD?.lectureId = viewData[indexPath.row].id ?? 0
         detailVC.lectureId = viewData[indexPath.row].id
+    
+        
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     

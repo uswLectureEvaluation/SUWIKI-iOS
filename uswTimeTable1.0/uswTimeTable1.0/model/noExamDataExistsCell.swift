@@ -12,7 +12,10 @@ class noExamDataExistsCell:
     
     @IBOutlet weak var noExamData: UILabel!
     
+
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.black.cgColor

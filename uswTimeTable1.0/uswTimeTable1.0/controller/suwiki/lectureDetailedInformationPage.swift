@@ -69,7 +69,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.register(examCellName, forCellReuseIdentifier: "examCell")
         let noExamDataExistsCellName = UINib(nibName: "noExamDataExistsCell", bundle: nil)
         tableView.register(noExamDataExistsCellName, forCellReuseIdentifier: "noDataCell")
-        
+        let examInfoTakeCellName = UINib(nibName: "examInfoTakeCell", bundle: nil)
+        tableView.register(examInfoTakeCellName, forCellReuseIdentifier: "takeInfoCell")
         
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 120
@@ -102,10 +103,18 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             evaluationBtn.tintColor = .lightGray
             tableView.reloadData()
         } else {
-            tableViewNumber = 3 // 3이면 시험정보 구매한 상
-            examBtn.tintColor = .darkGray
-            evaluationBtn.tintColor = .lightGray
-            tableView.reloadData()
+            if examDataExist == 1 {
+                tableViewNumber = 2
+                examBtn.tintColor = .darkGray
+                evaluationBtn.tintColor = .lightGray
+                tableView.reloadData()
+            } else {
+                tableViewNumber = 3 // 3이면 시험정보 구매한 상
+                examBtn.tintColor = .darkGray
+                evaluationBtn.tintColor = .lightGray
+                tableView.reloadData()
+            }
+            
         }
     
         
@@ -125,7 +134,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0 {
             return self.detailEvaluationArray.count
-        } else if tableViewNumber == 1 {
+        } else if tableViewNumber == 1 || tableViewNumber == 2{
             return 1
         } else {
             return self.detailExamArray.count
@@ -156,6 +165,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         } else if tableViewNumber == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
             cell.noExamData.text = "시험 정보가 없어요 !"
+            return cell
+            
+        } else if tableViewNumber == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "takeInfoCell", for: indexPath) as! examInfoTakeCell
+            
             return cell
             
         } else if tableViewNumber == 3 {
@@ -211,13 +225,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         
     }
-
+    
     func loadDetailData(){
         DispatchQueue.global().async {
             self.getDetailEvaluation()
             self.getDetailExam()
         }
-        
+        tableView.reloadData()
     }
     
     func getDetailEvaluation(){
@@ -286,7 +300,18 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 self.examDataExist = 0
                 print("false")
             } else if json["examDataExist"].boolValue == true {
-                self.examDataExist = 1
+                
+                if json["data"].count == 0{
+                    self.examDataExist = 1 // 시험 정보는 존재하나 구매하지 않은 상태
+                } else {
+                    self.examDataExist = 2 // 시험 정보 구매한 상태
+                    for index in 0..<json["data"].count{
+                        let jsonData = json["data"][index]
+                        let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                        
+                        self.detailExamArray.append(readData)
+                       }
+                }
                 print(json["data"].count)
             }
             // examDataExist를 트루로 확인하고 내부 데이터 받아오는 것 없을 경우
@@ -295,13 +320,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             // false로 받아올 경우는 시험정보가 없다는 정보를 표시해주면 됨.
             
             /*
-            for index in 0..<json["data"].count{
-                let jsonData = json["data"][index]
-                
-                let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
-                
-                self.detailExamArray.append(readData)
-               }
+            
                */
            
             print(self.detailExamArray)
