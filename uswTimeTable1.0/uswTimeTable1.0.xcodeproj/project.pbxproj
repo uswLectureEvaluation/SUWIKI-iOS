@@ -21,6 +21,8 @@
 		AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75EAE927E8851B00DD8645 /* announcementView.swift */; };
 		AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF75EAEB27E8AC5700DD8645 /* Settings.bundle */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
+		AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */; };
+		AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
 		AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA7797127F5D375005816E5 /* homePageModel.swift */; };
 		AFAF2E8228056090005709C9 /* examInfoTakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */; };
@@ -79,6 +81,8 @@
 		AF75EAE927E8851B00DD8645 /* announcementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announcementView.swift; sourceTree = "<group>"; };
 		AF75EAEB27E8AC5700DD8645 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
+		AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noExamDataExistsCell.swift; sourceTree = "<group>"; };
+		AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = noExamDataExistsCell.xib; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
 		AFA7797127F5D375005816E5 /* homePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageModel.swift; sourceTree = "<group>"; };
 		AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examInfoTakeCell.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */,
 				AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */,
 				AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */,
+				AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */,
 				AFAF2E86280573F3005709C9 /* evaluationWriteModel.swift */,
 			);
 			path = model;
@@ -198,6 +203,7 @@
 				AF6C1CC028019DF5000BAC48 /* detailEvaluationCell.xib */,
 				AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */,
 				AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */,
+				AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				AFD7767427E7486C00E83EC8 /* loading.gif in Resources */,
 				AF6C1CC228019DF5000BAC48 /* detailEvaluationCell.xib in Resources */,
 				AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */,
+				AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */,
 				AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */,
 				AFAFEF8A277F160900408F46 /* Main.storyboard in Resources */,
 			);
@@ -373,6 +380,7 @@
 				AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
+				AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */,
 				AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */,
 				AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,

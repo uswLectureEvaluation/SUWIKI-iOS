@@ -50,9 +50,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
 
     var tableViewNumber = 0
+    var examDataExist = 0
     
     override func viewDidLoad() {
         loadDetailData()
+        print(lectureId)
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
         lectureView.layer.cornerRadius = 12.0
@@ -65,6 +67,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
         let examCellName = UINib(nibName: "detailExamCell", bundle: nil)
         tableView.register(examCellName, forCellReuseIdentifier: "examCell")
+        let noExamDataExistsCellName = UINib(nibName: "noExamDataExistsCell", bundle: nil)
+        tableView.register(noExamDataExistsCellName, forCellReuseIdentifier: "noDataCell")
+        
         
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 120
@@ -91,10 +96,18 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         writeBtn.setTitle("시험 정보 쓰기", for: .normal)
         writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
-        tableViewNumber = 3 // 3이면 시험정보 구매한 상
-        examBtn.tintColor = .darkGray
-        evaluationBtn.tintColor = .lightGray
-        tableView.reloadData()
+        if examDataExist == 0 {
+            tableViewNumber = 1
+            examBtn.tintColor = .darkGray
+            evaluationBtn.tintColor = .lightGray
+            tableView.reloadData()
+        } else {
+            tableViewNumber = 3 // 3이면 시험정보 구매한 상
+            examBtn.tintColor = .darkGray
+            evaluationBtn.tintColor = .lightGray
+            tableView.reloadData()
+        }
+    
         
     }
 
@@ -112,6 +125,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0 {
             return self.detailEvaluationArray.count
+        } else if tableViewNumber == 1 {
+            return 1
         } else {
             return self.detailExamArray.count
         }
@@ -138,7 +153,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             return cell
             
-        } else if tableViewNumber == 2 {
+        } else if tableViewNumber == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            cell.noExamData.text = "시험 정보가 없어요 !"
+            return cell
+            
+        } else if tableViewNumber == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "examCell", for: indexPath) as! detailExamCell
             
             cell.examType.text = detailExamArray[indexPath.row].examType
@@ -242,11 +262,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 } else if jsonData["homework"] == 2 {
                     homework = "많음"
                 }
-                
+                print(jsonData)
                 let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
                 self.detailEvaluationArray.append(readData)
-                
             }
             self.tableView.reloadData()
         }
@@ -263,12 +282,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.value
             let json = JSON(data!)
-            print(json)
-            if json["examDataExist"] == true {
-                print(json)
-                if json["data"] == "[]" {
-                    print("응없엉")
-                }
+            if json["examDataExist"].boolValue == false {
+                self.examDataExist = 0
+                print("false")
+            } else if json["examDataExist"].boolValue == true {
+                self.examDataExist = 1
+                print(json["data"].count)
             }
             // examDataExist를 트루로 확인하고 내부 데이터 받아오는 것 없을 경우
             // 시험 정보 구매 뷰 보여줘야 하고,
