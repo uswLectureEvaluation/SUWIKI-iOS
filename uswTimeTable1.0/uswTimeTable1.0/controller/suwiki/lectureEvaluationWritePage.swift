@@ -42,6 +42,8 @@ class lectureEvaluationWritePage: UIViewController {
     @IBOutlet weak var normalDifficultyBtn: UIButton!
     @IBOutlet weak var hardDiffcultyBtn: UIButton!
     
+    @IBOutlet weak var contentField: UITextView!
+    
     var teamWorkType = btnClickedType.teamWorkType()
     var homeworkType = btnClickedType.homeworkType()
     var difficultyType = btnClickedType.difficultyType()
@@ -51,7 +53,8 @@ class lectureEvaluationWritePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.contentField.layer.borderWidth = 1.0
+        self.contentField.layer.borderColor = UIColor.black.cgColor
         lectureNameLabel.text = lectureName
         professorLabel.text = professor
         // Do any additional setup after loading the view.
