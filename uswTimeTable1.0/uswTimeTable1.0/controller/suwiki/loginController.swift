@@ -15,7 +15,7 @@ class loginController: UIViewController {
     
     let keychain = KeychainSwift()
     let loginModel = userModel()
-    
+    var useAutoLogin = 0
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,11 +23,23 @@ class loginController: UIViewController {
     override func viewDidLoad() {
         keychain.clear()
         self.navigationItem.hidesBackButton = true
+        
+        print(UserDefaults.standard.string(forKey: "id"))
+        print(UserDefaults.standard.string(forKey: "pwd"))
+        if (UserDefaults.standard.value(forKey: "id") != nil) == true{
+            useAutoLogin = 1
+            loginCheck(id: UserDefaults.standard.string(forKey: "id")!, pwd: UserDefaults.standard.string(forKey: "pwd")!)
+        }
+             
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func testAutoLoginBtnClicked(_ sender: Any) {
+        useAutoLogin = 1
+    }
     @IBAction func loginButton (_ sender: Any) {
         guard let id = idTextField.text, !id.isEmpty else { return }
         guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
@@ -76,7 +88,10 @@ class loginController: UIViewController {
             let refreshToken = json["RefreshToken"].stringValue
         
             if accessToken != "" {
-                
+                if self.useAutoLogin == 1 || (UserDefaults.standard.value(forKey: "id") == nil) == true{
+                    UserDefaults.standard.set(id, forKey: "id")
+                    UserDefaults.standard.set(pwd, forKey: "pwd")
+                }
                 print("로그인 성공")
                 self.keychain.set(accessToken, forKey: "AccessToken")
                 self.keychain.set(refreshToken, forKey: "RefreshToken")

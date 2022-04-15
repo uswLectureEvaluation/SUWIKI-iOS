@@ -90,7 +90,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         AD?.lectureId = viewData[indexPath.row].id ?? 0
         detailVC.lectureId = viewData[indexPath.row].id
     
-        
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -205,6 +204,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    @IBAction func testLogOut(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "id")
+        UserDefaults.standard.removeObject(forKey: "pwd")
+    }
     func getLearningLecture(){
         self.viewData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureLearningAvg&page=1"

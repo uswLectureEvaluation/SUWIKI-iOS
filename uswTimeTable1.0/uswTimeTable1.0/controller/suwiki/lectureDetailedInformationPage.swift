@@ -188,6 +188,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
 
     func lectureViewUpdate(){
+        
         lectureName.text = detailLectureArray[0].lectureName
         lectureName.sizeToFit()
         professor.text = detailLectureArray[0].professor
@@ -196,7 +197,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureLearningAvg.text = detailLectureArray[0].lectureLearningAvg
         lectureSatisAvg.text = detailLectureArray[0].lectureSatisfactionAvg
     
-
     }
     
     func getDetailPage(){
@@ -305,6 +305,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 
                 if json["data"].count == 0{
                     self.examDataExist = 1 // 시험 정보는 존재하나 구매하지 않은 상태
+                    
                 } else {
                     self.examDataExist = 2 // 시험 정보 구매한 상태
                     for index in 0..<json["data"].count{
@@ -313,6 +314,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                         
                         self.detailExamArray.append(readData)
                        }
+                    
                     self.tableViewNumber = 3
                     self.tableView.reloadData()
                 }
