@@ -209,7 +209,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
 
-            
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             
             let data = response.value
