@@ -53,6 +53,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var examDataExist = 0
     
     override func viewDidLoad() {
+        
+        tableViewNumber = 0
         loadDetailData()
         print(lectureId)
         lectureView.layer.borderWidth = 1.0
@@ -108,7 +110,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 examBtn.tintColor = .darkGray
                 evaluationBtn.tintColor = .lightGray
                 tableView.reloadData()
-            } else {
+            } else if examDataExist == 2 {
                 tableViewNumber = 3 // 3이면 시험정보 구매한 상
                 examBtn.tintColor = .darkGray
                 evaluationBtn.tintColor = .lightGray
@@ -200,6 +202,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     func getDetailPage(){
+        
         let url = "https://api.suwiki.kr/lecture/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
@@ -237,6 +240,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     func getDetailEvaluation(){
+
         let url = "https://api.suwiki.kr/evaluate-posts/findByLectureId/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
@@ -288,6 +292,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     func getDetailExam(){
+        
         let url = "https://api.suwiki.kr/exam-posts/findByLectureId/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
@@ -315,7 +320,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                         self.detailExamArray.append(readData)
                        }
                     
-                    self.tableViewNumber = 3
                     self.tableView.reloadData()
                 }
                 print(json["data"].count)
@@ -351,6 +355,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             if Int(data!) == 200{
                 print("success")
                 self.getDetailExam()
+                self.tableViewNumber = 3
             } else if Int(data!) == 403{
                 print("fail")
                 
