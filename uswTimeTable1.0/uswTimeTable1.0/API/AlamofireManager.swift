@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-final class MyAlamofireManager {
+ class MyAlamofireManager {
     
     static let shared = MyAlamofireManager()
     
