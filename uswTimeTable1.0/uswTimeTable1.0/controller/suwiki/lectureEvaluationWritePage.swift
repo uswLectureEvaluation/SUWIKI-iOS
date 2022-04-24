@@ -60,6 +60,7 @@ class lectureEvaluationWritePage: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
     @IBAction func honeyPointChanged(_ sender: UISlider) {
         let point = String(format: "%.1f", round(sender.value * 1000) / 1000)
         honeyPoint.text = point
