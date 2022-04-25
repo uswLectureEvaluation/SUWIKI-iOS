@@ -91,8 +91,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let AD = UIApplication.shared.delegate as? AppDelegate
         AD?.lectureId = viewData[indexPath.row].id 
-        tokenReissuance(id: viewData[indexPath.row].id)
-        print(viewData[indexPath.row].id)
+        // tokenReissuance(id: viewData[indexPath.row].id)
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+        detailVC.lectureId = viewData[indexPath.row].id 
+        self.navigationController?.pushViewController(detailVC, animated: true)
 
                
         
@@ -276,7 +278,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.navigationController?.navigationBar.isHidden = true
     }
 
-
+    /*
     func tokenReissuance(id: Int){
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("RefreshToken") ?? "")
@@ -311,7 +313,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
     }
-    
+    */
     
 }
 

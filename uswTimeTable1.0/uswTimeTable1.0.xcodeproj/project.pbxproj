@@ -18,7 +18,6 @@
 		AF2E108A28095ADB00051844 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E108128095ADA00051844 /* Pretendard-Medium.otf */; };
 		AF2E108B28095ADB00051844 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E108228095ADB00051844 /* Pretendard-Black.otf */; };
 		AF2E108C28095ADB00051844 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */; };
-		AF2E1091280AF22400051844 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E1090280AF22400051844 /* AlamofireManager.swift */; };
 		AF2E1093280AF2AB00051844 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */; };
 		AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F69BA27EDB6BF0023243F /* loginModel.swift */; };
 		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
@@ -89,7 +88,6 @@
 		AF2E108128095ADA00051844 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		AF2E108228095ADB00051844 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		AF2E1090280AF22400051844 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		AF2F69BA27EDB6BF0023243F /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
 		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 		AF2E108F280AF21400051844 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				AF2E1090280AF22400051844 /* AlamofireManager.swift */,
 				AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */,
 			);
 			path = API;
@@ -444,7 +441,6 @@
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
 				AFAF2E8228056090005709C9 /* examInfoTakeCell.swift in Sources */,
-				AF2E1091280AF22400051844 /* AlamofireManager.swift in Sources */,
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
 				AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,

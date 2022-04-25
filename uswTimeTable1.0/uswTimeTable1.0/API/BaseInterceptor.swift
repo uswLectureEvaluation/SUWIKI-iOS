@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import KeychainSwift
+import SwiftyJSON
 
 class BaseInterceptor: RequestInterceptor{
     
@@ -33,6 +34,30 @@ class BaseInterceptor: RequestInterceptor{
                 completion(.doNotRetryWithError(error))
                 return
             }
+        
+        let url = "https://api.suwiki.kr/user/refresh"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("RefreshToken") ?? "")
+        ]
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            let data = response.data
+            let json = JSON(data!)
+            
+            switch response.result{
+            case .success(_):
+                print("tokenRefresh")
+                self.keychain.clear()
+                self.keychain.set(json["RefreshToken"].stringValue, forKey: "RefreshToken")
+                self.keychain.set(json["AccessToken"].stringValue, forKey: "AccessToken")
+                completion(.retry)
+            case .failure(let error):
+                completion(.doNotRetryWithError(error))
+            }
+            
+            
+        }
         
         /*
             RefreshTokenAPI.refreshToken { result in
