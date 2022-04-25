@@ -128,7 +128,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         nextVC.lectureName = lectureName.text!
         nextVC.professor = professor.text!
-
+        nextVC.lectureId = lectureId
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
