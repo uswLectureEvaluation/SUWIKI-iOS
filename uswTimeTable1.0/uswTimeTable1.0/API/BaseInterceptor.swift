@@ -15,28 +15,31 @@ class BaseInterceptor: RequestInterceptor{
     let keychain = KeychainSwift()
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-            guard urlRequest.url?.absoluteString.hasPrefix("https://api.suwiki.kr   ") == true,
+            guard urlRequest.url?.absoluteString.hasPrefix("https://api.suwiki.kr/") == true,
                   let accessToken = keychain.get("AccessToken") else {
                       completion(.success(urlRequest))
+                      print("guard1success")
                       return
                   }
 
             var urlRequest = urlRequest
-            urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+            urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
+      
+            print(urlRequest.url?.absoluteString ?? "print")
             completion(.success(urlRequest))
            
         }
     
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-            guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
-                // 위의 response 상수에 들어간 값이 어떤한 것을 의미하는지 모르겠습니다.
-                completion(.doNotRetryWithError(error))
-                return
-            }
+        print("InRetry")
+
+        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
+            completion(.doNotRetryWithError(error))
+            return
+        }
         
         let url = "https://api.suwiki.kr/user/refresh"
-        
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("RefreshToken") ?? "")
         ]
@@ -44,7 +47,7 @@ class BaseInterceptor: RequestInterceptor{
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             let data = response.data
             let json = JSON(data!)
-            
+            print("jsonSuccess")
             switch response.result{
             case .success(_):
                 print("tokenRefresh")
