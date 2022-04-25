@@ -7,6 +7,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-Light.otf">
+            <string>Pretendard-Light</string>
+        </array>
+        <array key="Pretendard-Regular.otf">
+            <string>Pretendard-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Show Time Table-->
         <scene sceneID="tne-QT-ifu">
@@ -1774,6 +1782,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJh-0j-g0P">
+                                        <rect key="frame" x="10" y="181" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up.on.square.fill" catalog="system">
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="testAutoLoginBtnClicked:" destination="vIs-8r-M03" eventType="touchUpInside" id="Jw4-DX-s8B"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
@@ -1857,15 +1876,15 @@
                                     <constraint firstAttribute="height" constant="40" id="SOW-HQ-hSN"/>
                                     <constraint firstAttribute="width" constant="100" id="saF-oq-Fje"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="27"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tpu-My-7p7">
-                                <rect key="frame" x="20" y="288" width="374" height="424"/>
+                                <rect key="frame" x="20" y="288" width="374" height="565"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="424" id="dwn-oC-oli"/>
+                                    <constraint firstAttribute="height" constant="565" id="dwn-oC-oli"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainCell" rowHeight="100" id="Jtt-RJ-yvv" customClass="mainPageCell" customModule="uswTimeTable1_0" customModuleProvider="target">
@@ -1877,16 +1896,16 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kQ-RH-2td">
                                                     <rect key="frame" x="23" y="15.5" width="41.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="평균 지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qrj-qc-SFm">
-                                                    <rect key="frame" x="23" y="59" width="64" height="20"/>
+                                                    <rect key="frame" x="23" y="59" width="48.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="sbx-0G-A8O"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1913,16 +1932,16 @@
                                                         <constraint firstAttribute="width" constant="53" id="Yon-oh-cEI"/>
                                                         <constraint firstAttribute="height" constant="21" id="lrB-d9-Y8s"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJG-Fv-S76">
-                                                    <rect key="frame" x="207" y="54" width="33" height="31"/>
+                                                    <rect key="frame" x="191.5" y="54" width="34" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="31" id="ZVT-kH-yNR"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Light" family="Pretendard" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1992,6 +2011,17 @@
                                     <constraint firstAttribute="width" constant="140" id="KZ1-hE-KSg"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dr-o1-GGF">
+                                <rect key="frame" x="309" y="93" width="73" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.63137257099999999" blue="0.24313727020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="로그아웃"/>
+                                <connections>
+                                    <action selector="testLogOut:" destination="nWD-BY-JaL" eventType="touchUpInside" id="z8L-6Z-zkJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hkq-nz-xuM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2180,9 +2210,11 @@
                                     <constraint firstItem="CtO-9a-Xc1" firstAttribute="leading" secondItem="Ogb-wF-9qg" secondAttribute="leading" constant="8" id="yaK-q8-XPK"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3L-em-4ez">
-                                <rect key="frame" x="20" y="401" width="101" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3L-em-4ez">
+                                <rect key="frame" x="20" y="401" width="76.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="HLB-3S-6hI"/>
+                                </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="강의 평가"/>
@@ -2190,14 +2222,18 @@
                                     <action selector="evaluationBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="ZW7-QT-JLS"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fHt-cx-HGP">
-                                <rect key="frame" x="0.0" y="447" width="414" height="415"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fHt-cx-HGP">
+                                <rect key="frame" x="15" y="447" width="384" height="415"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="415" id="yiG-39-tvx"/>
+                                </constraints>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-tN-SXS">
-                                <rect key="frame" x="129" y="401" width="101" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-tN-SXS">
+                                <rect key="frame" x="96.5" y="401" width="76.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="waj-DX-Jcw"/>
+                                </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="시험 정보"/>
@@ -2206,30 +2242,314 @@
                                     <action selector="examBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="A5U-Bh-kzR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D79-x6-mtN">
+                                <rect key="frame" x="291" y="401" width="103" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="강의 정보 쓰기"/>
+                                <connections>
+                                    <action selector="InfoWriteBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="SLe-G3-uwi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZSu-n8-wQ8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="fHt-cx-HGP" firstAttribute="top" secondItem="i3L-em-4ez" secondAttribute="bottom" constant="15" id="8OX-Cl-GBf"/>
                             <constraint firstItem="Ogb-wF-9qg" firstAttribute="leading" secondItem="ZSu-n8-wQ8" secondAttribute="leading" constant="20" id="Bfx-v5-msA"/>
                             <constraint firstItem="ZSu-n8-wQ8" firstAttribute="trailing" secondItem="Ogb-wF-9qg" secondAttribute="trailing" constant="20" id="NvA-n3-74p"/>
+                            <constraint firstItem="i3L-em-4ez" firstAttribute="leading" secondItem="ZSu-n8-wQ8" secondAttribute="leading" constant="20" id="SbB-eJ-qd0"/>
+                            <constraint firstAttribute="trailing" secondItem="fHt-cx-HGP" secondAttribute="trailing" constant="15" id="XYD-gU-YGw"/>
+                            <constraint firstItem="fHt-cx-HGP" firstAttribute="bottom" secondItem="ZSu-n8-wQ8" secondAttribute="bottom" id="Xuf-PZ-3l9"/>
+                            <constraint firstItem="fHt-cx-HGP" firstAttribute="leading" secondItem="ZSu-n8-wQ8" secondAttribute="leading" constant="15" id="csf-YE-rpX"/>
+                            <constraint firstItem="OTy-tN-SXS" firstAttribute="top" secondItem="Ogb-wF-9qg" secondAttribute="bottom" constant="77" id="jwQ-Oc-HcM"/>
+                            <constraint firstItem="i3L-em-4ez" firstAttribute="top" secondItem="Ogb-wF-9qg" secondAttribute="bottom" constant="77" id="kCJ-l9-Ge8"/>
                             <constraint firstItem="Ogb-wF-9qg" firstAttribute="top" secondItem="ZSu-n8-wQ8" secondAttribute="top" constant="40" id="pGX-wB-D2s"/>
+                            <constraint firstItem="OTy-tN-SXS" firstAttribute="leading" secondItem="i3L-em-4ez" secondAttribute="trailing" id="x2o-Q3-pyC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="evaluationBtn" destination="i3L-em-4ez" id="Ony-lf-4cm"/>
                         <outlet property="examBtn" destination="OTy-tN-SXS" id="Ncd-QR-ywt"/>
+                        <outlet property="homeworkView" destination="0Ih-Tv-vzU" id="27n-GE-81f"/>
                         <outlet property="lectureHoneyAvg" destination="QuZ-Nt-BzQ" id="7x4-fF-LqB"/>
                         <outlet property="lectureLearningAvg" destination="kcB-MH-jv1" id="u56-jc-OtH"/>
                         <outlet property="lectureName" destination="FDa-Rb-dnH" id="jjA-F2-cmW"/>
                         <outlet property="lectureSatisAvg" destination="5i3-hH-Xju" id="Gn7-06-dNa"/>
                         <outlet property="lectureView" destination="Ogb-wF-9qg" id="MdQ-es-Xcn"/>
+                        <outlet property="pointView" destination="k3E-Hu-cib" id="AeI-Ef-u3n"/>
                         <outlet property="professor" destination="CtO-9a-Xc1" id="a5V-cN-0lU"/>
                         <outlet property="tableView" destination="fHt-cx-HGP" id="qZf-a0-JS5"/>
+                        <outlet property="teamView" destination="wbc-Tv-GlZ" id="UT6-aH-CCo"/>
+                        <outlet property="writeBtn" destination="D79-x6-mtN" id="4Ex-7d-v9p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7j-o3-pCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="592.75362318840587" y="1494.6428571428571"/>
+        </scene>
+        <!--Lecture Evaluation Write Page-->
+        <scene sceneID="zpp-Tj-F68">
+            <objects>
+                <viewController storyboardIdentifier="evalWriteVC" id="fnZ-eA-fWl" customClass="lectureEvaluationWritePage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5gg-ZT-SSO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
+                                <rect key="frame" x="84" y="169" width="243" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" systemColor="systemYellowColor"/>
+                                <color key="maximumTrackTintColor" systemColor="systemYellowColor"/>
+                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="honeyPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="qlz-MI-dhk"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dq3-HV-eLg">
+                                <rect key="frame" x="84" y="221" width="243" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" red="0.92156863209999995" green="0.40392160420000001" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="maximumTrackTintColor" red="0.92156863209999995" green="0.40392160420000001" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="learningPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="wCI-R5-Uv1"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="89l-bv-u1M">
+                                <rect key="frame" x="84" y="272" width="243" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" systemColor="tintColor"/>
+                                <color key="maximumTrackTintColor" systemColor="tintColor"/>
+                                <connections>
+                                    <action selector="satisfactionValueChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="z4d-XU-CXn"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-8c-yfb">
+                                <rect key="frame" x="340" y="173" width="36" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="교수명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxS-tV-tHm">
+                                <rect key="frame" x="20" y="116" width="54" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="꿀강지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eJ-M3-F74">
+                                <rect key="frame" x="13" y="168" width="61" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="배움지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dy-sq-pMo">
+                                <rect key="frame" x="13" y="220" width="54" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="만족도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8d-kZ-XdW">
+                                <rect key="frame" x="13" y="271" width="39" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sya-5C-Nfu">
+                                <rect key="frame" x="340" y="225" width="36" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLB-2L-6ey">
+                                <rect key="frame" x="340" y="276" width="36" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="강의명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdy-yj-cb5">
+                                <rect key="frame" x="20" y="67" width="356" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kp1-hc-OUN">
+                                <rect key="frame" x="86" y="343" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="없음"/>
+                                <connections>
+                                    <action selector="noTeamBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="ExT-7D-nca"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsx-m0-Xdz">
+                                <rect key="frame" x="86" y="400" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="없음"/>
+                                <connections>
+                                    <action selector="noHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="Pge-bz-Zza"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-fw-19x">
+                                <rect key="frame" x="86" y="455" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="까다로움"/>
+                                <connections>
+                                    <action selector="easyDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="aDe-DI-RrL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLA-m5-yja">
+                                <rect key="frame" x="174" y="400" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="보통"/>
+                                <connections>
+                                    <action selector="usuallyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="AD1-Dn-6Un"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-no-Xap">
+                                <rect key="frame" x="174" y="455" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="보통"/>
+                                <connections>
+                                    <action selector="normalDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="RN0-DV-L5c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lu-Ri-Jtz">
+                                <rect key="frame" x="258" y="400" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="많음"/>
+                                <connections>
+                                    <action selector="manyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="Kcc-G8-f9a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5o-jd-Zek">
+                                <rect key="frame" x="174" y="343" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="있음"/>
+                                <connections>
+                                    <action selector="haveTeamBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="o37-yA-pb2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-xd-DCn">
+                                <rect key="frame" x="258" y="455" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="너그러움"/>
+                                <connections>
+                                    <action selector="hardDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="bnO-vc-OSa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="조모임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-zz-Bji">
+                                <rect key="frame" x="13" y="343" width="39" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="과제" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpl-k5-lVL">
+                                <rect key="frame" x="13" y="400" width="39" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="학점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POh-pE-0uY">
+                                <rect key="frame" x="13" y="455" width="28" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="loc-ZG-fRz">
+                                <rect key="frame" x="20" y="494" width="374" height="368"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UCg-OP-Cyz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentField" destination="loc-ZG-fRz" id="nma-KR-Itl"/>
+                        <outlet property="easyDifficultyBtn" destination="dcQ-fw-19x" id="JKb-lP-REv"/>
+                        <outlet property="hardDiffcultyBtn" destination="Uwy-xd-DCn" id="1MY-Pz-PL4"/>
+                        <outlet property="homeworkManyBtn" destination="7Lu-Ri-Jtz" id="if1-2i-XJE"/>
+                        <outlet property="homeworkNoBtn" destination="Tsx-m0-Xdz" id="Uay-28-vkh"/>
+                        <outlet property="homeworkUsuallyBtn" destination="NLA-m5-yja" id="Vvv-Ra-mMS"/>
+                        <outlet property="honeyPoint" destination="Cyv-8c-yfb" id="T9c-0F-IAW"/>
+                        <outlet property="honeySlider" destination="doz-1z-2TI" id="vCv-LW-Rbk"/>
+                        <outlet property="learningPoint" destination="sya-5C-Nfu" id="rYM-jK-1gt"/>
+                        <outlet property="learningSlider" destination="Dq3-HV-eLg" id="tUB-3D-BZB"/>
+                        <outlet property="lectureNameLabel" destination="sdy-yj-cb5" id="Ae9-MP-fEv"/>
+                        <outlet property="normalDifficultyBtn" destination="3mr-no-Xap" id="48G-WG-bmo"/>
+                        <outlet property="professorLabel" destination="XxS-tV-tHm" id="4E5-Yc-0zb"/>
+                        <outlet property="satisfactionPoint" destination="gLB-2L-6ey" id="8AO-Bj-bFg"/>
+                        <outlet property="satisfactionSlider" destination="89l-bv-u1M" id="qtD-kt-Ioy"/>
+                        <outlet property="teamHaveBtn" destination="Y5o-jd-Zek" id="oDG-Rw-Oxf"/>
+                        <outlet property="teamNoBtn" destination="Kp1-hc-OUN" id="spd-iQ-fkx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ArQ-p1-jV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1357.9710144927537" y="1494.6428571428571"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XyU-R1-rl1">
+            <objects>
+                <viewController id="hPY-dP-FKV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U2u-B2-bui">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="GvR-88-1pz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="64x-cQ-6fe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1359" y="2174"/>
         </scene>
         <!--Item-->
         <scene sceneID="uuq-Qy-cCZ">
@@ -2257,6 +2577,7 @@
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="square.and.arrow.up.on.square.fill" catalog="system" width="117" height="128"/>
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
         <image name="스샷 최종본" width="708" height="800"/>
         <systemColor name="labelColor">
@@ -2285,6 +2606,12 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

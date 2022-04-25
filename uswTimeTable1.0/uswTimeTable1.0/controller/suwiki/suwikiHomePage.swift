@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import DropDown
+import KeychainSwift
 
 class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,6 +21,9 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     var viewData: Array<homePageData> = []
     let dropDown = DropDown()
+    let keychain = KeychainSwift()
+    var count = 0
+    
     
     let categoryList = ["최근 올라온 강의", "꿀 강의", "만족도가 높은 강의", "배울게 많은 강의", "Best 강의"]
     
@@ -85,9 +89,16 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        AD?.lectureId = viewData[indexPath.row].id 
+        // tokenReissuance(id: viewData[indexPath.row].id)
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-        detailVC.lectureId = viewData[indexPath.row].id
+        detailVC.lectureId = viewData[indexPath.row].id 
         self.navigationController?.pushViewController(detailVC, animated: true)
+
+               
+        
+ 
     }
     
     func getMainPage(){
@@ -201,6 +212,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    @IBAction func testLogOut(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "id")
+        UserDefaults.standard.removeObject(forKey: "pwd")
+    }
     func getLearningLecture(){
         self.viewData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureLearningAvg&page=1"
@@ -263,8 +278,43 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.navigationController?.navigationBar.isHidden = true
     }
 
+    /*
+    func tokenReissuance(id: Int){
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("RefreshToken") ?? "")
+        ]
 
+        let url = "https://api.suwiki.kr/user/refresh"
 
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            let data = response.response?.statusCode
+            let json = JSON(response.value!)
+            if Int(data!) == 200{
+                print("success")
+                self.keychain.clear()
+                self.keychain.set(json["RefreshToken"].stringValue, forKey: "RefreshToken")
+                self.keychain.set(json["AccessToken"].stringValue, forKey: "AccessToken")
+                print(self.keychain.get("AccessToken") ?? "")
+                
+                let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+                detailVC.lectureId = id
+                self.navigationController?.pushViewController(detailVC, animated: true)
+                
+                
+            } else if Int(data!) == 401{ // 토큰 재발급 실패
+                print("fail")
+                self.keychain.clear()
+                UserDefaults.standard.removeObject(forKey: "id")
+                UserDefaults.standard.removeObject(forKey: "pwd")
+                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+                self.navigationController?.pushViewController(loginVC, animated: true)
+    
+            }
+            
+        }
+    }
+    */
+    
 }
 
 class mainPageCell: UITableViewCell {
