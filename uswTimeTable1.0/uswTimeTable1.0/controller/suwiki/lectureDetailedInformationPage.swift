@@ -90,6 +90,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableViewNumber = 0
         evaluationBtn.tintColor = .darkGray
         examBtn.tintColor = .lightGray
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
        
         
@@ -99,25 +100,28 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         writeBtn.setTitle("시험 정보 쓰기", for: .normal)
         writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 180
-        self.tableView.reloadData()
         
         if examDataExist == 0 {
             tableViewNumber = 1
             examBtn.tintColor = .darkGray
             evaluationBtn.tintColor = .lightGray
+            tableView.estimatedRowHeight = 130
+            tableView.rowHeight = UITableView.automaticDimension
             tableView.reloadData()
         } else {
             if examDataExist == 1 {
                 tableViewNumber = 2
                 examBtn.tintColor = .darkGray
                 evaluationBtn.tintColor = .lightGray
+                tableView.estimatedRowHeight = 130
+                tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()
             } else if examDataExist == 2 {
                 tableViewNumber = 3 // 3이면 시험정보 구매한 상
                 examBtn.tintColor = .darkGray
                 evaluationBtn.tintColor = .lightGray
+                tableView.estimatedRowHeight = 130
+                tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()
             }
             
