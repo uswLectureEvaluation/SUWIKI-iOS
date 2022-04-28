@@ -132,12 +132,16 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     @IBAction func InfoWriteBtnClicked(_ sender: Any) {
         // 조건문 추가하여 어느
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
-        
-        nextVC.lectureName = lectureName.text!
-        nextVC.professor = professor.text!
-        nextVC.lectureId = lectureId
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if tableViewNumber == 0 {
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+            nextVC.lectureName = lectureName.text!
+            nextVC.professor = professor.text!
+            nextVC.lectureId = lectureId
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        } else {
+            
+        }
+       
     }
     
     

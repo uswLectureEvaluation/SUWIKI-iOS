@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import SwiftUI
 
 class loginController: UIViewController {
 
@@ -37,6 +38,24 @@ class loginController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidLayoutSubviews() {
+        
+        let bottomLine1 = CALayer()
+        bottomLine1.frame = CGRect(x: 0, y: idTextField.frame.size.height-1, width: idTextField.frame.width, height: 1)
+        bottomLine1.borderColor = UIColor.systemGray2.cgColor
+        bottomLine1.borderWidth = 1.0
+        idTextField.borderStyle = .none
+        idTextField.layer.addSublayer(bottomLine1)
+        
+        let bottomLine2 = CALayer()
+        bottomLine2.frame = CGRect(x: 0, y: passwordTextField.frame.size.height-1, width: passwordTextField.frame.width, height: 1)
+        bottomLine2.borderColor = UIColor.systemGray2.cgColor
+        bottomLine2.borderWidth = 1.0
+        passwordTextField.borderStyle = .none
+        passwordTextField.layer.addSublayer(bottomLine2)
+        
+    }
+    
     @IBAction func testAutoLoginBtnClicked(_ sender: Any) {
         useAutoLogin = 1
     }
@@ -45,14 +64,14 @@ class loginController: UIViewController {
         guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
                 
         if loginModel.isValidId(id: id) == false{
-            let emailLabel = UILabel(frame: CGRect(x: 68, y: 350, width: 279, height: 45))
+            let emailLabel = UILabel(frame: CGRect(x: 30, y: 269, width: 279, height: 25))
             emailLabel.text = "아이디 형식을 확인해 주세요"
             emailLabel.textColor = UIColor.red
             self.view.addSubview(emailLabel)
         } // 아이디 형식 오류
             
         if loginModel.isValidPassword(pwd: pwd) == false{
-            let passwordLabel = UILabel(frame: CGRect(x: 68, y: 435, width: 279, height: 45))
+            let passwordLabel = UILabel(frame: CGRect(x: 30, y: 366, width: 279, height: 25))
             passwordLabel.text = "비밀번호 형식을 확인해 주세요"
             passwordLabel.textColor = UIColor.red
             self.view.addSubview(passwordLabel)

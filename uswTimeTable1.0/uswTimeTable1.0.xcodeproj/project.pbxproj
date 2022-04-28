@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AF07990527E3565300B39617 /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF07990427E3565300B39617 /* loadingView.swift */; };
+		AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */; };
+		AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76B1281AB34E005977C6 /* examWriteModel.swift */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
 		AF2E108428095ADB00051844 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E107B28095AD900051844 /* Pretendard-ExtraBold.otf */; };
 		AF2E108528095ADB00051844 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E107C28095AD900051844 /* Pretendard-Light.otf */; };
@@ -78,6 +80,8 @@
 		4A5D50B0EB79C9047C3E5935 /* Pods-uswTimeTable1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.release.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.release.xcconfig"; sourceTree = "<group>"; };
 		7DE53F4D4CDA927F8AA6A629 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF07990427E3565300B39617 /* loadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
+		AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureExamWritePage.swift; sourceTree = "<group>"; };
+		AF0A76B1281AB34E005977C6 /* examWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examWriteModel.swift; sourceTree = "<group>"; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
 		AF2E107B28095AD900051844 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		AF2E107C28095AD900051844 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */,
 				AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */,
 				AFAF2E86280573F3005709C9 /* evaluationWriteModel.swift */,
+				AF0A76B1281AB34E005977C6 /* examWriteModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
 				AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */,
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
+				AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -447,6 +453,7 @@
 				AF6C1CC528019E4A000BAC48 /* detailExamCell.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
 				AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */,
+				AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
@@ -456,6 +463,7 @@
 				AF2E1093280AF2AB00051844 /* BaseInterceptor.swift in Sources */,
 				AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */,
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
+				AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */,
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
 				AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */,
