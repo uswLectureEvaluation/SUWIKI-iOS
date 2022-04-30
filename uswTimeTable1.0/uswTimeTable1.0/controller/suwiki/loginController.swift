@@ -62,16 +62,19 @@ class loginController: UIViewController {
     @IBAction func loginButton (_ sender: Any) {
         guard let id = idTextField.text, !id.isEmpty else { return }
         guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
-                
+        let emailLabel = UILabel(frame: CGRect(x: 30, y: idTextField.frame.maxY+5, width: 279, height: 25))
+        let passwordLabel = UILabel(frame: CGRect(x: 30, y: passwordTextField.frame.maxY+5, width: 279, height: 25))
+
+        
         if loginModel.isValidId(id: id) == false{
-            let emailLabel = UILabel(frame: CGRect(x: 30, y: 269, width: 279, height: 25))
+            emailLabel.isHidden = false
             emailLabel.text = "아이디 형식을 확인해 주세요"
             emailLabel.textColor = UIColor.red
             self.view.addSubview(emailLabel)
         } // 아이디 형식 오류
             
         if loginModel.isValidPassword(pwd: pwd) == false{
-            let passwordLabel = UILabel(frame: CGRect(x: 30, y: 366, width: 279, height: 25))
+            passwordLabel.isHidden = false
             passwordLabel.text = "비밀번호 형식을 확인해 주세요"
             passwordLabel.textColor = UIColor.red
             self.view.addSubview(passwordLabel)
@@ -79,6 +82,8 @@ class loginController: UIViewController {
         } // 비밀번호 형식 오류
             
         if loginModel.isValidId(id: id) && loginModel.isValidPassword(pwd: pwd) { // 형식이 맞을 경우 로그인 확인
+            emailLabel.isHidden = true
+            passwordLabel.isHidden = true
             loginCheck(id: id, pwd: pwd)
         }
         
