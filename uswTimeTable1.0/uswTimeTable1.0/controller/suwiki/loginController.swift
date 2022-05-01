@@ -17,6 +17,8 @@ class loginController: UIViewController {
     let keychain = KeychainSwift()
     let loginModel = userModel()
     var useAutoLogin = 0
+    var hideEmail = false
+    var hidePwd = false
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -59,17 +61,26 @@ class loginController: UIViewController {
     @IBAction func testAutoLoginBtnClicked(_ sender: Any) {
         useAutoLogin = 1
     }
+    
     @IBAction func loginButton (_ sender: Any) {
         guard let id = idTextField.text, !id.isEmpty else { return }
         guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
+
         let emailLabel = UILabel(frame: CGRect(x: 30, y: idTextField.frame.maxY+5, width: 279, height: 25))
         let passwordLabel = UILabel(frame: CGRect(x: 30, y: passwordTextField.frame.maxY+5, width: 279, height: 25))
-
         
+        if hideEmail == true{
+            emailLabel.isHidden = true
+        }
+        
+        if hidePwd == true {
+            passwordLabel.isHidden = true
+        }
         if loginModel.isValidId(id: id) == false{
             emailLabel.isHidden = false
             emailLabel.text = "아이디 형식을 확인해 주세요"
             emailLabel.textColor = UIColor.red
+            hideEmail = true
             self.view.addSubview(emailLabel)
         } // 아이디 형식 오류
             
@@ -77,11 +88,14 @@ class loginController: UIViewController {
             passwordLabel.isHidden = false
             passwordLabel.text = "비밀번호 형식을 확인해 주세요"
             passwordLabel.textColor = UIColor.red
+            hidePwd = true
             self.view.addSubview(passwordLabel)
             
         } // 비밀번호 형식 오류
             
         if loginModel.isValidId(id: id) && loginModel.isValidPassword(pwd: pwd) { // 형식이 맞을 경우 로그인 확인
+            hidePwd = false
+            hideEmail = false
             emailLabel.isHidden = true
             passwordLabel.isHidden = true
             loginCheck(id: id, pwd: pwd)
