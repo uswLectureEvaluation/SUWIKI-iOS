@@ -137,14 +137,17 @@ class loginController: UIViewController {
                 loginFailLabel.textColor = UIColor.red
                 self.view.addSubview(loginFailLabel)
             }
-
         }
-        
-             
-
-}
+    }
     
-
+    @IBAction func findIdBtnClicked(_ sender: Any) {
+        let findIdVC = self.storyboard?.instantiateViewController(withIdentifier: "findIdVC") as! findIdPage
+        self.navigationController?.pushViewController(findIdVC, animated: true)
+    }
+    
+    @IBAction func findPwdBtnClicked(_ sender: Any) {
+    }
+    
     @objc func didEndOnExit(_ sender: UITextField) {
         if idTextField.isFirstResponder {
             passwordTextField.becomeFirstResponder()
