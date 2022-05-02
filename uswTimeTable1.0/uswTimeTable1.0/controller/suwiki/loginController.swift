@@ -17,8 +17,7 @@ class loginController: UIViewController {
     let keychain = KeychainSwift()
     let loginModel = userModel()
     var useAutoLogin = 0
-    var hideEmail = false
-    var hidePwd = false
+
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -69,45 +68,37 @@ class loginController: UIViewController {
         let emailLabel = UILabel(frame: CGRect(x: 30, y: idTextField.frame.maxY+5, width: 279, height: 25))
         let passwordLabel = UILabel(frame: CGRect(x: 30, y: passwordTextField.frame.maxY+5, width: 279, height: 25))
         
-        if hideEmail == true{
-            emailLabel.isHidden = true
-        }
-        
-        if hidePwd == true {
-            passwordLabel.isHidden = true
-        }
-        if loginModel.isValidId(id: id) == false{
+    
+        if loginModel.isValidId(id: id){
+            if let removeable = self.view.viewWithTag(100){
+                removeable.removeFromSuperview()
+            }
+        } else {
             emailLabel.isHidden = false
             emailLabel.text = "아이디 형식을 확인해 주세요"
             emailLabel.textColor = UIColor.red
-            hideEmail = true
+            emailLabel.tag = 100
             self.view.addSubview(emailLabel)
         } // 아이디 형식 오류
             
-        if loginModel.isValidPassword(pwd: pwd) == false{
+        if loginModel.isValidPassword(pwd: pwd){
+            if let removeable = self.view.viewWithTag(101){
+                removeable.removeFromSuperview()
+            }
+        } else {
             passwordLabel.isHidden = false
             passwordLabel.text = "비밀번호 형식을 확인해 주세요"
             passwordLabel.textColor = UIColor.red
-            hidePwd = true
+            passwordLabel.tag = 101
             self.view.addSubview(passwordLabel)
-            
         } // 비밀번호 형식 오류
             
         if loginModel.isValidId(id: id) && loginModel.isValidPassword(pwd: pwd) { // 형식이 맞을 경우 로그인 확인
-            hidePwd = false
-            hideEmail = false
-            emailLabel.isHidden = true
-            passwordLabel.isHidden = true
             loginCheck(id: id, pwd: pwd)
         }
         
     }
-    
-    /*
-    func loginCheck(id: String, pwd: String) -> Bool {
-        postAccount(id: id, pwd: pwd)
-    }
-     */
+
     
     func loginCheck(id: String, pwd: String){
 
