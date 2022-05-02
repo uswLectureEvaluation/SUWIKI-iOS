@@ -15,6 +15,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     // main Page == tableView 구현 스크롤 최대 10개 제한
 
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
     
@@ -28,7 +29,9 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     let categoryList = ["최근 올라온 강의", "꿀 강의", "만족도가 높은 강의", "배울게 많은 강의", "Best 강의"]
     
     override func viewDidLoad() {
-        tableView.separatorInset.left = 0
+        tableView.separatorInset.left = 0 // 테이블뷰 왼쪽 여백
+        searchTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 6.0, height: 0.0))
+        searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
         navigationBarHidden()
         super.viewDidLoad()
         getMainPage()
@@ -61,6 +64,14 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidLayoutSubviews() {
+        let bottomLine1 = CALayer()
+        bottomLine1.frame = CGRect(x: 0, y: searchTextField.frame.size.height + 16, width: searchTextField.frame.width, height: 1)
+        bottomLine1.borderColor = UIColor.black.cgColor
+        bottomLine1.borderWidth = 1.0
+        searchTextField.borderStyle = .none
+        searchTextField.layer.addSublayer(bottomLine1)
+    }
   
     @IBAction func categoryButtonClicked(_ sender: Any) {
         dropDown.show()
@@ -279,6 +290,9 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.navigationController?.navigationBar.isHidden = true
     }
 
+    @IBAction func searchBtnClicked(_ sender: Any) {
+        print("hihi")
+    }
     /*
     func tokenReissuance(id: Int){
         let headers: HTTPHeaders = [
