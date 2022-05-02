@@ -1918,7 +1918,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVY-er-ibG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317.39130434782612" y="2152.9017857142858"/>
+            <point key="canvasLocation" x="-1929" y="2174"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="RSH-va-92c">
@@ -2840,6 +2840,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9xg-kf-0bd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-315.94202898550725" y="761.38392857142856"/>
+        </scene>
+        <!--Find Pwd Page-->
+        <scene sceneID="vLe-Pe-oiT">
+            <objects>
+                <viewController storyboardIdentifier="findPwdVC" id="rqT-WO-sZF" customClass="findPwdPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yba-ER-luS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-gM-UMd">
+                                <rect key="frame" x="24" y="148" width="131" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="3Pc-wm-grL"/>
+                                    <constraint firstAttribute="height" constant="29" id="p1K-Fw-cce"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디에 해당하는 학교 이메일로 임시 비밀번호를 전송합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK8-nP-Ftc">
+                                <rect key="frame" x="24" y="185" width="291" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Fpy-zt-L52"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="RB3-BA-7kA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="아이디" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YgW-yA-emT">
+                                <rect key="frame" x="24" y="245" width="366" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="9BB-pw-HtJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학교 이메일" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tCC-XK-pbQ">
+                                <rect key="frame" x="24" y="307" width="366" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="HeK-7h-XdL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ze7-fE-9o3">
+                                <rect key="frame" x="24" y="424" width="366" height="48"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="R4V-os-VNy"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="n6J-Gg-Gfk"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="전송"/>
+                                <connections>
+                                    <action selector="sendBtnClicked:" destination="rqT-WO-sZF" eventType="touchUpInside" id="64u-gM-YOm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kIU-Wc-TYB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ze7-fE-9o3" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="77H-t8-xGS"/>
+                            <constraint firstItem="YgW-yA-emT" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="201" id="8od-nw-H8P"/>
+                            <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="tCC-XK-pbQ" secondAttribute="trailing" constant="24" id="Fnz-Yh-hNm"/>
+                            <constraint firstItem="HZa-gM-UMd" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="GsP-xY-XUD"/>
+                            <constraint firstItem="HZa-gM-UMd" firstAttribute="top" secondItem="kIU-Wc-TYB" secondAttribute="top" constant="104" id="H03-lj-haf"/>
+                            <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="Ze7-fE-9o3" secondAttribute="trailing" constant="24" id="Ila-dk-MbY"/>
+                            <constraint firstItem="rK8-nP-Ftc" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="141" id="TxR-Q9-1k7"/>
+                            <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="YgW-yA-emT" secondAttribute="trailing" constant="24" id="db8-As-MHA"/>
+                            <constraint firstItem="YgW-yA-emT" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="gtd-VR-2YA"/>
+                            <constraint firstItem="Ze7-fE-9o3" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="380" id="uPr-Lz-Izg"/>
+                            <constraint firstItem="tCC-XK-pbQ" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="vHO-8t-6QB"/>
+                            <constraint firstItem="rK8-nP-Ftc" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="vWe-hg-mWh"/>
+                            <constraint firstItem="tCC-XK-pbQ" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="263" id="xDj-3J-CNM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="tCC-XK-pbQ" id="bjV-6d-ndZ"/>
+                        <outlet property="idTextField" destination="YgW-yA-emT" id="eDl-bi-EnV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xyt-lI-hFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1099" y="2174"/>
         </scene>
     </scenes>
     <resources>
