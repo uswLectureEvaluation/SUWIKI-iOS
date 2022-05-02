@@ -21,6 +21,7 @@ class loginController: UIViewController {
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         keychain.clear()
@@ -42,14 +43,14 @@ class loginController: UIViewController {
     override func viewDidLayoutSubviews() {
         
         let bottomLine1 = CALayer()
-        bottomLine1.frame = CGRect(x: 0, y: idTextField.frame.size.height-1, width: idTextField.frame.width, height: 1)
+        bottomLine1.frame = CGRect(x: 0, y: idTextField.frame.size.height + 16, width: idTextField.frame.width, height: 1)
         bottomLine1.borderColor = UIColor.systemGray2.cgColor
         bottomLine1.borderWidth = 1.0
         idTextField.borderStyle = .none
         idTextField.layer.addSublayer(bottomLine1)
         
         let bottomLine2 = CALayer()
-        bottomLine2.frame = CGRect(x: 0, y: passwordTextField.frame.size.height-1, width: passwordTextField.frame.width, height: 1)
+        bottomLine2.frame = CGRect(x: 0, y: passwordTextField.frame.size.height + 16, width: passwordTextField.frame.width, height: 1)
         bottomLine2.borderColor = UIColor.systemGray2.cgColor
         bottomLine2.borderWidth = 1.0
         passwordTextField.borderStyle = .none
@@ -57,9 +58,6 @@ class loginController: UIViewController {
         
     }
     
-    @IBAction func testAutoLoginBtnClicked(_ sender: Any) {
-        useAutoLogin = 1
-    }
     
     @IBAction func loginButton (_ sender: Any) {
         guard let id = idTextField.text, !id.isEmpty else { return }
@@ -134,7 +132,7 @@ class loginController: UIViewController {
                 
             } else { // 이후에 alert로 수정 예정
                 print("로그인 실패")
-                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
+                let loginFailLabel = UILabel(frame: CGRect(x: 30, y: self.loginBtn.frame.minY - 5, width: 279, height: 45))
                 loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
                 loginFailLabel.textColor = UIColor.red
                 self.view.addSubview(loginFailLabel)

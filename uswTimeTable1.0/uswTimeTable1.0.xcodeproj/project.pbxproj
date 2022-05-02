@@ -56,6 +56,8 @@
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
 		AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */; };
 		AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B227F5C6AB009E32B0 /* tabBarController.swift */; };
+		AFE5C101281FD6E500D3E4DF /* findIdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5C100281FD6E500D3E4DF /* findIdPage.swift */; };
+		AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */; };
 		AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE696CC27BBCD0500262BEF /* listTimeTable.swift */; };
 		AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE69751279F16BD00FB2BC7 /* listCourseData.swift */; };
 		AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED499927ABD0B500CE242D /* infoCourseData.swift */; };
@@ -130,6 +132,8 @@
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = suwikiHomePage.swift; sourceTree = "<group>"; };
 		AFE076B227F5C6AB009E32B0 /* tabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
+		AFE5C100281FD6E500D3E4DF /* findIdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = findIdPage.swift; sourceTree = "<group>"; };
+		AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = findPwdPage.swift; sourceTree = "<group>"; };
 		AFE696CC27BBCD0500262BEF /* listTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listTimeTable.swift; sourceTree = "<group>"; };
 		AFE69751279F16BD00FB2BC7 /* listCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listCourseData.swift; sourceTree = "<group>"; };
 		AFED499927ABD0B500CE242D /* infoCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoCourseData.swift; sourceTree = "<group>"; };
@@ -274,6 +278,8 @@
 			children = (
 				AFE076B227F5C6AB009E32B0 /* tabBarController.swift */,
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
+				AFE5C100281FD6E500D3E4DF /* findIdPage.swift */,
+				AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */,
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
 				AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */,
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
@@ -437,6 +443,7 @@
 				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
 				AFAF2E852805665B005709C9 /* lectureEvaluationWritePage.swift in Sources */,
+				AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */,
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
 				AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
@@ -454,6 +461,7 @@
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
 				AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */,
 				AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */,
+				AFE5C101281FD6E500D3E4DF /* findIdPage.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,

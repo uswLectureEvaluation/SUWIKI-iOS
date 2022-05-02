@@ -23,12 +23,20 @@ class firstSceneCheck: UIViewController {
         myView.layer.borderWidth = 1.0
         myView.layer.borderColor = UIColor.lightGray.cgColor
         myView.layer.cornerRadius = 8.0
-        checkLoadData()
+        checkUserData()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         // try! realm.commitWrite()
     //    save()
 }
-
+    func checkUserData(){
+        let userData = realm.objects(userDB.self).count
+        if userData > 0 {
+            let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
+            self.navigationController?.pushViewController(showVC, animated: true)
+        }
+    }
+    
+    
     @IBAction func newBtnClicked(_ sender: Any) {
         let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
         self.navigationController?.pushViewController(makeVC, animated: true)
