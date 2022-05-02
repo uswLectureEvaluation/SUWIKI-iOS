@@ -36,7 +36,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="20 POINT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgF-zE-lcA">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 POINT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgF-zE-lcA">
                         <rect key="frame" x="120" y="44.5" width="77" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="iUN-aV-KNm"/>
@@ -45,7 +45,7 @@
                         <color key="textColor" systemColor="systemBlueColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="가 필요해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2T-65-l1M">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가 필요해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2T-65-l1M">
                         <rect key="frame" x="197" y="44.5" width="78" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ytE-gS-Nlv"/>
@@ -56,6 +56,8 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="h2T-65-l1M" secondAttribute="trailing" constant="89" id="CpG-jZ-nXO"/>
+                    <constraint firstItem="h2T-65-l1M" firstAttribute="leading" secondItem="rgF-zE-lcA" secondAttribute="trailing" id="Gud-wo-hJ4"/>
                     <constraint firstItem="HBW-UW-YEj" firstAttribute="top" secondItem="h2T-65-l1M" secondAttribute="bottom" constant="6" id="Gv9-AJ-Vk0"/>
                     <constraint firstItem="HBW-UW-YEj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="22" id="UIY-iL-Mk8"/>
                     <constraint firstItem="h2T-65-l1M" firstAttribute="top" secondItem="Qbi-vE-SF4" secondAttribute="bottom" constant="1" id="XxD-Lg-pVi"/>

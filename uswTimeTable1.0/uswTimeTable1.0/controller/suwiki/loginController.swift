@@ -146,6 +146,8 @@ class loginController: UIViewController {
     }
     
     @IBAction func findPwdBtnClicked(_ sender: Any) {
+        let findPwdVC = self.storyboard?.instantiateViewController(withIdentifier: "findPwdVC") as! findPwdPage
+        self.navigationController?.pushViewController(findPwdVC, animated: true)
     }
     
     @objc func didEndOnExit(_ sender: UITextField) {
