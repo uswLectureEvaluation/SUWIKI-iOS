@@ -28,6 +28,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     let categoryList = ["최근 올라온 강의", "꿀 강의", "만족도가 높은 강의", "배울게 많은 강의", "Best 강의"]
     
     override func viewDidLoad() {
+        tableView.separatorInset.left = 0
         navigationBarHidden()
         super.viewDidLoad()
         getMainPage()
@@ -85,7 +86,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 134.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,7 +124,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                             
             }
             self.tableView?.reloadData()
-
+            print(self.viewData)
         }
         
     }
@@ -327,7 +328,7 @@ class mainPageCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0))
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.cornerRadius = 12.0
