@@ -19,4 +19,6 @@ struct searchedResult {
     let lectureHoneyAvg: String
     let lectureLearningAvg: String
     
+    
+    
 }
