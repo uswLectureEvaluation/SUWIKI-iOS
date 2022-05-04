@@ -2167,6 +2167,9 @@
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="YgK-OR-c7c" secondAttribute="trailing" constant="24" id="yg6-F7-7cx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="YgK-OR-c7c" id="IUb-Bm-uI6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="clE-FV-uoT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

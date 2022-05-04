@@ -15,7 +15,10 @@ import SwiftyJSON
 // xib로 셀 두개 만든 후 진행하는게 좋겠음
 // 5개의 배열 필요. 기본 값은 수정된 날짜로
 
-class searchedResultPage: UIViewController {
+class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
+ 
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var searchData: String = ""
     var page = 1
@@ -30,8 +33,20 @@ class searchedResultPage: UIViewController {
         super.viewDidLoad()
         print(searchData)
         getModifiedDateData(searchValue: searchData, page: 1)
-        // Do any additional setup after loading the view.
+        
+        let searchedResultCellName = UINib(nibName: "searchedResultCell", bundle: nil)
+        tableView.register(searchedResultCellName, forCellReuseIdentifier: "resultCell")
+
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return modifiedDateArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
     
     
     func getModifiedDateData(searchValue: String, page: Int){
