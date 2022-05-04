@@ -17,6 +17,9 @@
         <array key="Pretendard-Regular.otf">
             <string>Pretendard-Regular</string>
         </array>
+        <array key="Pretendard-SemiBold.otf">
+            <string>Pretendard-SemiBold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Show Time Table-->
@@ -1945,7 +1948,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강의평가 검색" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-dd-2au">
-                                <rect key="frame" x="24" y="190" width="109" height="24"/>
+                                <rect key="frame" x="24" y="146" width="109" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="al0-ww-akt"/>
                                 </constraints>
@@ -1954,7 +1957,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tpu-My-7p7">
-                                <rect key="frame" x="24" y="358" width="366" height="508"/>
+                                <rect key="frame" x="24" y="314" width="366" height="552"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -2042,7 +2045,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ojc-a1-eCv">
-                                <rect key="frame" x="24" y="308" width="366" height="34"/>
+                                <rect key="frame" x="24" y="264" width="366" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="최근 올라온 강의" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2q-ed-b7M">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="38"/>
@@ -2076,7 +2079,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VJ9-KH-iIx">
-                                <rect key="frame" x="24" y="238" width="366" height="19"/>
+                                <rect key="frame" x="24" y="194" width="366" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="NGs-vX-v9L"/>
                                 </constraints>
@@ -2084,7 +2087,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxP-iq-etY">
-                                <rect key="frame" x="350" y="235" width="40" height="24"/>
+                                <rect key="frame" x="350" y="191" width="40" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="TQl-Qw-siS"/>
                                     <constraint firstAttribute="height" constant="24" id="TdU-Qi-GSV"/>
@@ -2130,6 +2133,7 @@
                     <navigationItem key="navigationItem" id="KB5-tz-eUu">
                         <nil key="title"/>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="categoryDropDown" destination="Ojc-a1-eCv" id="QuP-xk-rVP"/>
                         <outlet property="categoryTextField" destination="s2q-ed-b7M" id="5mr-Q5-3gC"/>
@@ -2157,6 +2161,17 @@
                                     <outlet property="delegate" destination="H1B-xj-VQl" id="SIB-om-3bV"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1m-iB-bLm">
+                                <rect key="frame" x="174" y="256" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="pR2-gN-fFq" kind="popoverPresentation" popoverAnchorView="Z1m-iB-bLm" id="Ry6-gJ-ah6">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WLn-ER-suD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2174,6 +2189,81 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="clE-FV-uoT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1386" y="761"/>
+        </scene>
+        <!--Searched Result Page Option Pop Up Page-->
+        <scene sceneID="ivw-tB-6Iw">
+            <objects>
+                <viewController id="pR2-gN-fFq" customClass="searchedResultPageOptionPopUpPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="26t-x2-lWf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-Tj-33Q">
+                                <rect key="frame" x="24" y="168" width="366" height="291"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정렬" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lg-i7-OiZ">
+                                        <rect key="frame" x="26" y="33" width="31.5" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="dGG-S2-GPp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnF-SE-kiY">
+                                        <rect key="frame" x="313" y="26" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="Eg4-9N-zo6"/>
+                                            <constraint firstAttribute="width" constant="32" id="fuF-fd-C2i"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
+                                            <color key="baseForegroundColor" red="0.31764706970000001" green="0.31764706970000001" blue="0.31764706970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="xmarkBtnClicked:" destination="pR2-gN-fFq" eventType="touchUpInside" id="VHI-vD-RhJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoL-mE-Ymi">
+                                        <rect key="frame" x="26" y="211" width="314" height="48"/>
+                                        <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="eud-1u-rtF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="확인">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="confirmBtnClicked:" destination="pR2-gN-fFq" eventType="touchUpInside" id="vba-4w-Zxl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstItem="0Lg-i7-OiZ" firstAttribute="top" secondItem="sVg-Tj-33Q" secondAttribute="top" constant="33" id="0OG-7o-LJ7"/>
+                                    <constraint firstAttribute="height" constant="291" id="Icq-pT-DBd"/>
+                                    <constraint firstItem="0Lg-i7-OiZ" firstAttribute="leading" secondItem="sVg-Tj-33Q" secondAttribute="leading" constant="26" id="Rhn-Tc-gTb"/>
+                                    <constraint firstAttribute="trailing" secondItem="IoL-mE-Ymi" secondAttribute="trailing" constant="26" id="Vnf-7Y-4PQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bnF-SE-kiY" secondAttribute="trailing" constant="21" id="mpT-xk-tRZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="IoL-mE-Ymi" secondAttribute="bottom" constant="32" id="qeO-gS-EqL"/>
+                                    <constraint firstItem="bnF-SE-kiY" firstAttribute="top" secondItem="sVg-Tj-33Q" secondAttribute="top" constant="26" id="xq9-ux-aD6"/>
+                                    <constraint firstItem="IoL-mE-Ymi" firstAttribute="leading" secondItem="sVg-Tj-33Q" secondAttribute="leading" constant="26" id="zZ1-T7-sfh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AIu-XC-w3g"/>
+                        <constraints>
+                            <constraint firstItem="sVg-Tj-33Q" firstAttribute="leading" secondItem="AIu-XC-w3g" secondAttribute="leading" constant="24" id="5mZ-Fp-pAG"/>
+                            <constraint firstItem="sVg-Tj-33Q" firstAttribute="top" secondItem="AIu-XC-w3g" secondAttribute="top" constant="124" id="eVp-vO-Idd"/>
+                            <constraint firstItem="AIu-XC-w3g" firstAttribute="trailing" secondItem="sVg-Tj-33Q" secondAttribute="trailing" constant="24" id="oj3-RX-Xh6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBH-Rc-7xC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2143" y="761"/>
         </scene>
         <!--Lecture Detailed Information Page-->
         <scene sceneID="PWz-zi-DAq">
@@ -2886,7 +2976,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="nWD-BY-JaL" kind="relationship" relationship="rootViewController" id="nCH-6h-v7G"/>
+                        <segue destination="nWD-BY-JaL" kind="relationship" relationship="rootViewController" id="6KL-Nb-1TY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9xg-kf-0bd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2988,6 +3078,7 @@
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="스샷 최종본" width="708" height="800"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
