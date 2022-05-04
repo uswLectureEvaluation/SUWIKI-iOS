@@ -75,7 +75,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.register(examInfoTakeCellName, forCellReuseIdentifier: "takeInfoCell")
         
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 120
+        self.tableView.estimatedRowHeight = 180
         self.tableView.reloadData()
         
         self.tableView.delegate = self
@@ -90,6 +90,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableViewNumber = 0
         evaluationBtn.tintColor = .darkGray
         examBtn.tintColor = .lightGray
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
        
         
@@ -99,21 +100,28 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         writeBtn.setTitle("시험 정보 쓰기", for: .normal)
         writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
+        
         if examDataExist == 0 {
             tableViewNumber = 1
             examBtn.tintColor = .darkGray
             evaluationBtn.tintColor = .lightGray
+            tableView.estimatedRowHeight = 130
+            tableView.rowHeight = UITableView.automaticDimension
             tableView.reloadData()
         } else {
             if examDataExist == 1 {
                 tableViewNumber = 2
                 examBtn.tintColor = .darkGray
                 evaluationBtn.tintColor = .lightGray
+                tableView.estimatedRowHeight = 130
+                tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()
             } else if examDataExist == 2 {
                 tableViewNumber = 3 // 3이면 시험정보 구매한 상
                 examBtn.tintColor = .darkGray
                 evaluationBtn.tintColor = .lightGray
+                tableView.estimatedRowHeight = 130
+                tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()
             }
             
@@ -124,12 +132,16 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     @IBAction func InfoWriteBtnClicked(_ sender: Any) {
         // 조건문 추가하여 어느
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
-        
-        nextVC.lectureName = lectureName.text!
-        nextVC.professor = professor.text!
-
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        if tableViewNumber == 0 {
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+            nextVC.lectureName = lectureName.text!
+            nextVC.professor = professor.text!
+            nextVC.lectureId = lectureId
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        } else {
+            
+        }
+       
     }
     
     
@@ -179,7 +191,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         } else if tableViewNumber == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "examCell", for: indexPath) as! detailExamCell
             
-            cell.examType.text = detailExamArray[indexPath.row].examType
+            cell.content.numberOfLines = 0
+            
+            cell.examType.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
             cell.content.text = detailExamArray[indexPath.row].content
             
@@ -236,6 +250,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             self.getDetailExam()
         }
         tableView.reloadData()
+        
     }
     
     func getDetailEvaluation(){
@@ -321,7 +336,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                     
                     self.tableView.reloadData()
                 }
-                print(json["data"].count)
+                print(self.detailExamArray)
             }
             // examDataExist를 트루로 확인하고 내부 데이터 받아오는 것 없을 경우
             // 시험 정보 구매 뷰 보여줘야 하고,

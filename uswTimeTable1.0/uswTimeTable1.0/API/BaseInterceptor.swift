@@ -17,8 +17,7 @@ class BaseInterceptor: RequestInterceptor{
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
             guard urlRequest.url?.absoluteString.hasPrefix("https://api.suwiki.kr/") == true,
                   let accessToken = keychain.get("AccessToken") else {
-                      completion(.success(urlRequest))
-                      print("guard1success")
+                      completion(.failure(Error.self as! Error))
                       return
                   }
 
@@ -47,10 +46,8 @@ class BaseInterceptor: RequestInterceptor{
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             let data = response.data
             let json = JSON(data!)
-            print("jsonSuccess")
             switch response.result{
             case .success(_):
-                print("tokenRefresh")
                 self.keychain.clear()
                 self.keychain.set(json["RefreshToken"].stringValue, forKey: "RefreshToken")
                 self.keychain.set(json["AccessToken"].stringValue, forKey: "AccessToken")

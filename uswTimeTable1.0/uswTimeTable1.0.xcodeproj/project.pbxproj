@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AF07990527E3565300B39617 /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF07990427E3565300B39617 /* loadingView.swift */; };
+		AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */; };
+		AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76B1281AB34E005977C6 /* examWriteModel.swift */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
 		AF2E108428095ADB00051844 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E107B28095AD900051844 /* Pretendard-ExtraBold.otf */; };
 		AF2E108528095ADB00051844 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E107C28095AD900051844 /* Pretendard-Light.otf */; };
@@ -47,6 +49,8 @@
 		AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF8E277F160B00408F46 /* Assets.xcassets */; };
 		AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */; };
 		AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */; };
+		AFBD08D52822776D00A923CB /* searchedResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBD08D32822776D00A923CB /* searchedResultCell.swift */; };
+		AFBD08D62822776D00A923CB /* searchedResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBD08D42822776D00A923CB /* searchedResultCell.xib */; };
 		AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */; };
 		AFCAABB327EEE651005D9421 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCAABB227EEE651005D9421 /* loginController.swift */; };
 		AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD2706927D4A487001EE098 /* GoogleService-Info.plist */; };
@@ -54,6 +58,10 @@
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
 		AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */; };
 		AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B227F5C6AB009E32B0 /* tabBarController.swift */; };
+		AFE5C101281FD6E500D3E4DF /* findIdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5C100281FD6E500D3E4DF /* findIdPage.swift */; };
+		AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */; };
+		AFE5C105281FF2B000D3E4DF /* searchedResultPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5C104281FF2B000D3E4DF /* searchedResultPage.swift */; };
+		AFE5C107281FFADC00D3E4DF /* searchedResultPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE5C106281FFADC00D3E4DF /* searchedResultPageModel.swift */; };
 		AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE696CC27BBCD0500262BEF /* listTimeTable.swift */; };
 		AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE69751279F16BD00FB2BC7 /* listCourseData.swift */; };
 		AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFED499927ABD0B500CE242D /* infoCourseData.swift */; };
@@ -78,6 +86,8 @@
 		4A5D50B0EB79C9047C3E5935 /* Pods-uswTimeTable1.0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-uswTimeTable1.0.release.xcconfig"; path = "Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0.release.xcconfig"; sourceTree = "<group>"; };
 		7DE53F4D4CDA927F8AA6A629 /* Pods_uswTimeTable1_0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_uswTimeTable1_0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF07990427E3565300B39617 /* loadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
+		AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureExamWritePage.swift; sourceTree = "<group>"; };
+		AF0A76B1281AB34E005977C6 /* examWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examWriteModel.swift; sourceTree = "<group>"; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
 		AF2E107B28095AD900051844 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		AF2E107C28095AD900051844 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
@@ -119,6 +129,8 @@
 		AFAFEF91277F160B00408F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureDetailedInformationPage.swift; sourceTree = "<group>"; };
+		AFBD08D32822776D00A923CB /* searchedResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchedResultCell.swift; sourceTree = "<group>"; };
+		AFBD08D42822776D00A923CB /* searchedResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = searchedResultCell.xib; sourceTree = "<group>"; };
 		AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailLectureModel.swift; sourceTree = "<group>"; };
 		AFCAABB227EEE651005D9421 /* loginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginController.swift; sourceTree = "<group>"; };
 		AFD2706927D4A487001EE098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -126,6 +138,10 @@
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = suwikiHomePage.swift; sourceTree = "<group>"; };
 		AFE076B227F5C6AB009E32B0 /* tabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarController.swift; sourceTree = "<group>"; };
+		AFE5C100281FD6E500D3E4DF /* findIdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = findIdPage.swift; sourceTree = "<group>"; };
+		AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = findPwdPage.swift; sourceTree = "<group>"; };
+		AFE5C104281FF2B000D3E4DF /* searchedResultPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchedResultPage.swift; sourceTree = "<group>"; };
+		AFE5C106281FFADC00D3E4DF /* searchedResultPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchedResultPageModel.swift; sourceTree = "<group>"; };
 		AFE696CC27BBCD0500262BEF /* listTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listTimeTable.swift; sourceTree = "<group>"; };
 		AFE69751279F16BD00FB2BC7 /* listCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listCourseData.swift; sourceTree = "<group>"; };
 		AFED499927ABD0B500CE242D /* infoCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoCourseData.swift; sourceTree = "<group>"; };
@@ -232,12 +248,15 @@
 			children = (
 				AF2F69BA27EDB6BF0023243F /* loginModel.swift */,
 				AFA7797127F5D375005816E5 /* homePageModel.swift */,
+				AFE5C106281FFADC00D3E4DF /* searchedResultPageModel.swift */,
+				AFBD08D32822776D00A923CB /* searchedResultCell.swift */,
 				AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */,
 				AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */,
 				AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */,
 				AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */,
 				AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */,
 				AFAF2E86280573F3005709C9 /* evaluationWriteModel.swift */,
+				AF0A76B1281AB34E005977C6 /* examWriteModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -246,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				AFAFEF88277F160900408F46 /* Main.storyboard */,
+				AFBD08D42822776D00A923CB /* searchedResultCell.xib */,
 				AF6C1CC028019DF5000BAC48 /* detailEvaluationCell.xib */,
 				AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */,
 				AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */,
@@ -269,9 +289,13 @@
 			children = (
 				AFE076B227F5C6AB009E32B0 /* tabBarController.swift */,
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
+				AFE5C100281FD6E500D3E4DF /* findIdPage.swift */,
+				AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */,
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
+				AFE5C104281FF2B000D3E4DF /* searchedResultPage.swift */,
 				AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */,
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
+				AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -362,6 +386,7 @@
 				AF2E108928095ADB00051844 /* Pretendard-ExtraLight.otf in Resources */,
 				AF2E108A28095ADB00051844 /* Pretendard-Medium.otf in Resources */,
 				AF2E108B28095ADB00051844 /* Pretendard-Black.otf in Resources */,
+				AFBD08D62822776D00A923CB /* searchedResultCell.xib in Resources */,
 				AF2E108C28095ADB00051844 /* Pretendard-SemiBold.otf in Resources */,
 				AF6C1CC628019E4A000BAC48 /* detailExamCell.xib in Resources */,
 				AFAF2E8328056090005709C9 /* examInfoTakeCell.xib in Resources */,
@@ -431,6 +456,7 @@
 				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
 				AFAF2E852805665B005709C9 /* lectureEvaluationWritePage.swift in Sources */,
+				AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */,
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
 				AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
@@ -444,18 +470,24 @@
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
 				AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
+				AFE5C107281FFADC00D3E4DF /* searchedResultPageModel.swift in Sources */,
 				AF6C1CC528019E4A000BAC48 /* detailExamCell.swift in Sources */,
+				AFBD08D52822776D00A923CB /* searchedResultCell.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
 				AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */,
+				AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */,
+				AFE5C101281FD6E500D3E4DF /* findIdPage.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
 				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
+				AFE5C105281FF2B000D3E4DF /* searchedResultPage.swift in Sources */,
 				AFAF2E87280573F3005709C9 /* evaluationWriteModel.swift in Sources */,
 				AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */,
 				AF2E1093280AF2AB00051844 /* BaseInterceptor.swift in Sources */,
 				AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */,
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
+				AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */,
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
 				AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */,

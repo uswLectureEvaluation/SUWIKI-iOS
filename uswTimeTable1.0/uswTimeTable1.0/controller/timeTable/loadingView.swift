@@ -47,6 +47,7 @@ class loadingView: UIViewController {
             let semesterCount = Int(snapshot.childrenCount)
             let userDataCount = self.realm.objects(CourseData.self).count
             let userDatabase = self.realm.objects(CourseData.self)
+            let userTable = self.realm.objects(userDB.self).count
             
             print(semesterCount)
             if semesterCount != userDataCount{
