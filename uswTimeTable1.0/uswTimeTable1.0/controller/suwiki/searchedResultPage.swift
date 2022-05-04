@@ -36,6 +36,9 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         
         let searchedResultCellName = UINib(nibName: "searchedResultCell", bundle: nil)
         tableView.register(searchedResultCellName, forCellReuseIdentifier: "resultCell")
+        
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 116
 
     }
     
@@ -44,7 +47,12 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! searchedResultCell
+        cell.lectureName.text = modifiedDateArray[indexPath.row].lectureName
+        cell.professor.text = modifiedDateArray[indexPath.row].professor
+        cell.lectureType.text = modifiedDateArray[indexPath.row].lectureType
+        cell.lectureTotalAvg.text = modifiedDateArray[indexPath.row].lectureTotalAvg
+        return cell
     }
     
     
@@ -76,7 +84,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
                     self.modifiedDateArray.append(readData)
                 }
             }
-            
+            self.tableView.reloadData()
             print(self.modifiedDateArray)
             
             
