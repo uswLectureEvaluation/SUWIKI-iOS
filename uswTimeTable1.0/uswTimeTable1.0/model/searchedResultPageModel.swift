@@ -8,6 +8,7 @@
 import Foundation
 
 struct searchedResult {
+
     let id: Int
     let semester: String
     let professor: String
@@ -15,10 +16,8 @@ struct searchedResult {
     let lectureType: String
     let lectureName: String
     let lectureTotalAvg: String
-    let lectureStatisfactionAvg: String
+    let lectureSatisfactionAvg: String
     let lectureHoneyAvg: String
     let lectureLearningAvg: String
-    
-    
     
 }

@@ -291,7 +291,9 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     @IBAction func searchBtnClicked(_ sender: Any) {
-        print("hihi")
+        let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "resultVC") as! searchedResultPage
+        resultVC.searchData = searchTextField.text!
+        self.navigationController?.pushViewController(resultVC, animated: true)
     }
     /*
     func tokenReissuance(id: Int){
