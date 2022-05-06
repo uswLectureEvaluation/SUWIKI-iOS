@@ -32,7 +32,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     var page = 1
     var option: String = "lectureTotalAvg"
     var tableViewUpdateData: Array<searchedResult> = []
-    var searchResultCount = 0
+    var pageCount = 0
 
     
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
@@ -47,7 +47,6 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.estimatedRowHeight = 116
         
         getLectureData(searchValue: searchData, option: option, page: page)
-        searchResultCountLabel.text = "\(searchResultCount)"
         
         dropDown.anchorView = categoryDropDown
         dropDown.dataSource = categoryList
@@ -58,22 +57,27 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             
             if categoryTextField.text == "종합" { // 토탈 에버리지
+                tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureTotalAvg"
                 getLectureData(searchValue: searchData, option: option, page: page)
             } else if categoryTextField.text == "만족도" { // 만족 에버리지
+                tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureSatisfactionAvg"
                 getLectureData(searchValue: searchData, option: option, page: page)
             } else if categoryTextField.text == "꿀강"{ // 꿀 에버리지
+                tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureHoneyAvg"
                 getLectureData(searchValue: searchData, option: option, page: page)
             } else if categoryTextField.text == "배움" { // 러닝 에버리지
+                tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureLearningAvg"
                 getLectureData(searchValue: searchData, option: option, page: page)
             } else if categoryTextField.text == "날짜"{ // 최근
+                tableViewUpdateData.removeAll()
                 page = 1
                 option = "modifiedDate"
                 getLectureData(searchValue: searchData, option: option, page: page)
@@ -96,8 +100,18 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastIndex = tableViewUpdateData.count - 1
+        if indexPath.row == lastIndex{
+            page += 1
+            if page <= pageCount {
+                getLectureData(searchValue: searchData, option: option, page: page)
+                print("API 호출")
+            }
+        }
+    }
+    
     func getLectureData(searchValue: String, option: String, page: Int){ // 최근
-        self.tableViewUpdateData.removeAll()
 
         let url = "https://api.suwiki.kr/lecture/findBySearchValue/"
         
@@ -111,8 +125,9 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
             let data = response.data
             let json = JSON(data ?? "")
-            print(json)
-            self.searchResultCount = json["count"].intValue
+            print(json["count"])
+            self.searchResultCountLabel.text = "\(json["count"].intValue)"
+            self.pageCount = (json["count"].intValue / 10) + 1
             if json != "" {
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
