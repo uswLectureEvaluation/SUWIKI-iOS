@@ -20,7 +20,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var categoryTextField: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
-    var viewData: Array<homePageData> = []
+    var tableViewUpdateData: Array<homePageData> = []
     let dropDown = DropDown()
     let keychain = KeychainSwift()
     var count = 0
@@ -78,16 +78,16 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewData.count
+        return tableViewUpdateData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainPageCell
-        mainCell.lectureName.text = viewData[indexPath.row].lectureName
-        mainCell.lectureType.text = viewData[indexPath.row].lectureType
-        mainCell.lectureTotalAvg.text = viewData[indexPath.row].lectureTotalAvg
-        mainCell.professor.text = viewData[indexPath.row].professor
+        mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName
+        mainCell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
+        mainCell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
+        mainCell.professor.text = tableViewUpdateData[indexPath.row].professor
         mainCell.lectureName.sizeToFit()
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
@@ -102,10 +102,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let AD = UIApplication.shared.delegate as? AppDelegate
-        AD?.lectureId = viewData[indexPath.row].id 
+        AD?.lectureId = tableViewUpdateData[indexPath.row].id 
         // tokenReissuance(id: viewData[indexPath.row].id)
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-        detailVC.lectureId = viewData[indexPath.row].id 
+        detailVC.lectureId = tableViewUpdateData[indexPath.row].id 
         self.navigationController?.pushViewController(detailVC, animated: true)
 
                
@@ -131,17 +131,17 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
-                self.viewData.append(readData)
+                self.tableViewUpdateData.append(readData)
                             
             }
             self.tableView?.reloadData()
-            print(self.viewData)
+            print(self.tableViewUpdateData)
         }
         
     }
     
     func getModifiedDate(){
-        self.viewData.removeAll()
+        self.tableViewUpdateData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList"
         // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
         
@@ -158,7 +158,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
-                self.viewData.append(readData)
+                self.tableViewUpdateData.append(readData)
                             
             }
             self.tableView?.reloadData()
@@ -167,7 +167,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getHoneyLecture(){
-        self.viewData.removeAll()
+        self.tableViewUpdateData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureHoneyAvg&page=1"
         
         // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
@@ -185,7 +185,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalStatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
-                self.viewData.append(readData)
+                self.tableViewUpdateData.append(readData)
                             
             }
             self.tableView?.reloadData()
@@ -196,7 +196,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getSatisfactionLecture(){
-        self.viewData.removeAll()
+        self.tableViewUpdateData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureSatisfactionAvg&page=1"
         
         // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
@@ -214,7 +214,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
-                self.viewData.append(readData)
+                self.tableViewUpdateData.append(readData)
                             
             }
             self.tableView?.reloadData()
@@ -229,7 +229,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         UserDefaults.standard.removeObject(forKey: "pwd")
     }
     func getLearningLecture(){
-        self.viewData.removeAll()
+        self.tableViewUpdateData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureLearningAvg&page=1"
         
         // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
@@ -247,7 +247,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
-                self.viewData.append(readData)
+                self.tableViewUpdateData.append(readData)
                             
             }
             self.tableView?.reloadData()
@@ -258,7 +258,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getTotalLecture(){
-        self.viewData.removeAll()
+        self.tableViewUpdateData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
         
         // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
@@ -276,7 +276,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
-                self.viewData.append(readData)
+                self.tableViewUpdateData.append(readData)
                             
             }
             self.tableView?.reloadData()
