@@ -23,6 +23,8 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
     
+    @IBOutlet weak var majorCategoryDropDown: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchResultCountLabel: UILabel!
@@ -43,8 +45,12 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         let searchedResultCellName = UINib(nibName: "searchedResultCell", bundle: nil)
         tableView.register(searchedResultCellName, forCellReuseIdentifier: "resultCell")
         
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 116
+        categoryDropDown.layer.borderWidth = 1.0
+        categoryDropDown.layer.borderColor = UIColor.lightGray.cgColor
+        categoryDropDown.layer.cornerRadius = 8.0
+        majorCategoryDropDown.layer.borderWidth = 1.0
+        majorCategoryDropDown.layer.borderColor = UIColor.lightGray.cgColor
+        majorCategoryDropDown.layer.cornerRadius = 8.0
         
         getLectureData(searchValue: searchData, option: option, page: page)
         
@@ -55,6 +61,10 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         dropDown.textFont = UIFont.systemFont(ofSize: 13)
 
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.categoryTextField.text = categoryList[index]
+            self.categoryTextField.font = UIFont.systemFont(ofSize: 13)
+            self.categoryTextField.textColor = UIColor.systemBlue
+            self.categoryTextField.textAlignment = .center
             
             if categoryTextField.text == "종합" { // 토탈 에버리지
                 tableViewUpdateData.removeAll()
@@ -86,17 +96,31 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         
 
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 132.0
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewUpdateData.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+        detailVC.lectureId = tableViewUpdateData[indexPath.row].id
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! searchedResultCell
         cell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName
         cell.professor.text = tableViewUpdateData[indexPath.row].professor
         cell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         cell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.white
+        cell.selectedBackgroundView = bgColorView
+        
         return cell
     }
     

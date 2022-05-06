@@ -227,7 +227,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             let data = response.value
             
-            let json = JSON(data!)["data"]
+            let json = JSON(data ?? "")["data"]
       
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
