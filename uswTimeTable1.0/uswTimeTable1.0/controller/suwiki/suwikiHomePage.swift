@@ -15,6 +15,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     // main Page == tableView 구현 스크롤 최대 10개 제한
 
+    @IBOutlet weak var suwikiImageView: UIImageView!
+    
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
@@ -71,6 +73,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         bottomLine1.borderWidth = 1.0
         searchTextField.borderStyle = .none
         searchTextField.layer.addSublayer(bottomLine1)
+
     }
   
     @IBAction func categoryButtonClicked(_ sender: Any) {
