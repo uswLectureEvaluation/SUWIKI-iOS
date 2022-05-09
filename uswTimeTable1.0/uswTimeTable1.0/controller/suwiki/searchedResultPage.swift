@@ -20,6 +20,7 @@ import DropDown
 class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
  
     
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
     
@@ -96,6 +97,15 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         
 
     }
+    
+    @IBAction func searchBtnClicked(_ sender: Any) {
+        tableViewUpdateData.removeAll()
+        searchData = searchTextField.text!
+        page = 1
+        option = "lectureTotalAvg"
+        getLectureData(searchValue: searchData, option: option, page: page)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 132.0
     }

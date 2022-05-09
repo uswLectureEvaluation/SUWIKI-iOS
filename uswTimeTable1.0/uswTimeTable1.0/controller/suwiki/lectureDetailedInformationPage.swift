@@ -316,7 +316,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
-            let json = JSON(data!)
+            let json = JSON(data ?? "")
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
                 print("false")

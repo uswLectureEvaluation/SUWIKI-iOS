@@ -2179,7 +2179,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6i0-Tl-Sh3">
-                                <rect key="frame" x="24" y="250" width="366" height="35"/>
+                                <rect key="frame" x="24" y="266" width="366" height="35"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noz-9F-NsJ">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="34"/>
@@ -2331,23 +2331,59 @@
                                     <constraint firstAttribute="height" constant="1" id="meW-qu-jeV"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="강의명, 교수명으로 원하는 강의평가를 찾아보세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kKZ-1T-auO">
+                                <rect key="frame" x="24" y="194" width="366" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="lQT-d4-vSv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강의평가 검색" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZx-py-evw">
+                                <rect key="frame" x="24" y="146" width="109" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="bID-ol-gpf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4i-jk-lPx">
+                                <rect key="frame" x="350" y="191" width="40" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="K42-1J-Yv6"/>
+                                    <constraint firstAttribute="width" constant="40" id="OLL-BE-Gxe"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                                <connections>
+                                    <action selector="searchBtnClicked:" destination="H1B-xj-VQl" eventType="touchUpInside" id="PaA-zg-F29"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WLn-ER-suD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="6i0-Tl-Sh3" secondAttribute="trailing" constant="24" id="11k-fJ-2V5"/>
-                            <constraint firstItem="6i0-Tl-Sh3" firstAttribute="top" secondItem="I9h-iH-U1B" secondAttribute="topMargin" constant="206" id="CFs-pB-oVZ"/>
+                            <constraint firstItem="6i0-Tl-Sh3" firstAttribute="top" secondItem="I9h-iH-U1B" secondAttribute="topMargin" constant="222" id="CFs-pB-oVZ"/>
                             <constraint firstItem="gcz-By-Vws" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="63" id="Ck7-hr-TGg"/>
                             <constraint firstItem="YgK-OR-c7c" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="24" id="Gk8-yO-iq4"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="bottom" secondItem="YgK-OR-c7c" secondAttribute="bottom" constant="30" id="ITl-Ys-TDD"/>
                             <constraint firstItem="gcz-By-Vws" firstAttribute="leading" secondItem="I9h-iH-U1B" secondAttribute="leading" id="Q3y-eu-dA1"/>
                             <constraint firstItem="YgK-OR-c7c" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="304" id="QUW-kL-jAG"/>
+                            <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="kKZ-1T-auO" secondAttribute="trailing" constant="24" id="T7c-UQ-Ybg"/>
                             <constraint firstItem="6i0-Tl-Sh3" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="24" id="TaL-Uj-Tfg"/>
                             <constraint firstItem="0ia-Ip-pxO" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="24" id="WSv-0p-Kcy"/>
+                            <constraint firstItem="bZx-py-evw" firstAttribute="top" secondItem="I9h-iH-U1B" secondAttribute="topMargin" constant="102" id="bi0-S5-A5I"/>
+                            <constraint firstItem="bZx-py-evw" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="24" id="cmc-4x-pMv"/>
                             <constraint firstItem="0ia-Ip-pxO" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="20" id="fIK-9e-OIt"/>
+                            <constraint firstItem="M4i-jk-lPx" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="147" id="hwz-T7-xgb"/>
                             <constraint firstItem="hUK-4i-UD1" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="272" id="k3F-Z7-F8d"/>
                             <constraint firstAttribute="trailing" secondItem="gcz-By-Vws" secondAttribute="trailing" id="mfD-8g-Lwm"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="hUK-4i-UD1" secondAttribute="trailing" constant="24" id="oES-0U-ka7"/>
+                            <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="M4i-jk-lPx" secondAttribute="trailing" constant="24" id="slu-X1-WYn"/>
+                            <constraint firstItem="kKZ-1T-auO" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="150" id="urh-DT-Ljk"/>
+                            <constraint firstItem="kKZ-1T-auO" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="24" id="yEV-SH-jxb"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="YgK-OR-c7c" secondAttribute="trailing" constant="24" id="yg6-F7-7cx"/>
                         </constraints>
                     </view>
@@ -2356,6 +2392,7 @@
                         <outlet property="categoryTextField" destination="Cfd-HX-QhH" id="VQx-FC-YDY"/>
                         <outlet property="majorCategoryDropDown" destination="noz-9F-NsJ" id="ZrC-Ta-7fQ"/>
                         <outlet property="searchResultCountLabel" destination="so8-lm-seU" id="Zhf-ek-EVA"/>
+                        <outlet property="searchTextField" destination="kKZ-1T-auO" id="1VB-ff-t7W"/>
                         <outlet property="tableView" destination="YgK-OR-c7c" id="IUb-Bm-uI6"/>
                     </connections>
                 </viewController>
