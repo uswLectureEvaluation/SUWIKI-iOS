@@ -79,7 +79,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.register(examInfoTakeCellName, forCellReuseIdentifier: "takeInfoCell")
         
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 180
+        self.tableView.estimatedRowHeight = 210
         self.tableView.reloadData()
         
         self.tableView.delegate = self
@@ -104,26 +104,22 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         writeBtn.setTitle("시험 정보 쓰기", for: .normal)
         writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
+        examBtn.tintColor = .darkGray
+        evaluationBtn.tintColor = .lightGray
         
         if examDataExist == 0 {
             tableViewNumber = 1
-            examBtn.tintColor = .darkGray
-            evaluationBtn.tintColor = .lightGray
             tableView.estimatedRowHeight = 130
             tableView.rowHeight = UITableView.automaticDimension
             tableView.reloadData()
         } else {
             if examDataExist == 1 {
                 tableViewNumber = 2
-                examBtn.tintColor = .darkGray
-                evaluationBtn.tintColor = .lightGray
                 tableView.estimatedRowHeight = 130
                 tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()
             } else if examDataExist == 2 {
-                tableViewNumber = 3 // 3이면 시험정보 구매한 상
-                examBtn.tintColor = .darkGray
-                evaluationBtn.tintColor = .lightGray
+                tableViewNumber = 3 // 3이면 시험정보 구매한 상   
                 tableView.estimatedRowHeight = 130
                 tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()

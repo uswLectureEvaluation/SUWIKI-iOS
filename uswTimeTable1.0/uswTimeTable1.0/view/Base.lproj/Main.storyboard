@@ -2653,11 +2653,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUz-mI-ivD">
                                                 <rect key="frame" x="24" y="407" width="56" height="32"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
-                                                <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="강의평가">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
+                                                <state key="normal" title="강의평가"/>
                                                 <connections>
                                                     <action selector="evaluationBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="Rpe-Pb-hDZ"/>
                                                 </connections>
@@ -2667,11 +2665,8 @@
                                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="시험정보">
-                                                    <color key="titleColor" red="0.63921570780000003" green="0.63921570780000003" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </state>
+                                                <state key="normal" title="시험정보"/>
                                                 <connections>
-                                                    <action selector="evaluationBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="h2O-FP-3fA"/>
                                                     <action selector="examBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="jbk-9d-uWO"/>
                                                 </connections>
                                             </button>
