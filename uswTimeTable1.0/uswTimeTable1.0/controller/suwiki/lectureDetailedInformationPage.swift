@@ -19,6 +19,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     
 
+    @IBOutlet weak var contentsView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lectureView: UIView!
     @IBOutlet weak var lectureName: UILabel!
@@ -63,6 +65,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         getDetailPage()
         evaluationBtn.tintColor = .darkGray
+        
+        scrollView.isDirectionalLockEnabled = true
         
         // Xib 등록
         let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
@@ -263,7 +267,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
-            let json = JSON(data!)
+            let json = JSON(data ?? "")
     
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
@@ -375,6 +379,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 
             }
             
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > 0{
+            scrollView.contentOffset.x = 0
         }
     }
     

@@ -124,7 +124,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
             let data = response.data
             let json = JSON(data!)
-           
+            
             for index in 0..<10{
                 let jsonData = json["data"][index]
                 let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
@@ -138,7 +138,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                             
             }
             self.tableView?.reloadData()
-            print(self.tableViewUpdateData)
         }
         
     }
@@ -159,7 +158,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
                 let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
                 
-                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
                 self.tableViewUpdateData.append(readData)
                             
@@ -179,6 +178,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             let data = response.data
             let json = JSON(data!)
            
+        
             for index in 0..<10{
                 let jsonData = json["data"][index]
                 let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
@@ -186,7 +186,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
                 let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
                 
-                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalStatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalStatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
                 self.tableViewUpdateData.append(readData)
                             
@@ -208,6 +208,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             let data = response.data
             let json = JSON(data!)
            
+        
             for index in 0..<10{
                 let jsonData = json["data"][index]
                 let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
@@ -215,7 +216,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
                 let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
                 
-                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
                 self.tableViewUpdateData.append(readData)
                             
@@ -248,7 +249,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
                 let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
                 
-                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
                 self.tableViewUpdateData.append(readData)
                             
@@ -277,7 +278,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
                 let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
                 
-                let readData = homePageData(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
                 self.tableViewUpdateData.append(readData)
                             
