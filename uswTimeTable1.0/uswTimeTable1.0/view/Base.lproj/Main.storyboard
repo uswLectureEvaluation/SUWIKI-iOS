@@ -2427,7 +2427,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zrj-ef-f5g">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1763"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsd-qZ-FlW">
                                                 <rect key="frame" x="24" y="112" width="366" height="256"/>
@@ -2643,7 +2643,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pNt-l8-qrT">
-                                                <rect key="frame" x="24" y="454" width="366" height="1265"/>
+                                                <rect key="frame" x="24" y="454" width="366" height="502"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="NsY-Ra-dGx" id="GHY-PF-3TG"/>
@@ -2723,7 +2723,7 @@
                                             <constraint firstItem="Yws-jR-pal" firstAttribute="top" secondItem="Zrj-ef-f5g" secondAttribute="top" constant="407" id="c0F-j7-YhZ"/>
                                             <constraint firstItem="HUz-mI-ivD" firstAttribute="top" secondItem="Zrj-ef-f5g" secondAttribute="top" constant="407" id="eRI-WD-QZB"/>
                                             <constraint firstAttribute="trailing" secondItem="pNt-l8-qrT" secondAttribute="trailing" constant="24" id="gkz-tH-GGb"/>
-                                            <constraint firstAttribute="height" constant="1763" id="hLk-P5-QH5"/>
+                                            <constraint firstAttribute="height" constant="1000" id="hLk-P5-QH5"/>
                                             <constraint firstItem="HUz-mI-ivD" firstAttribute="leading" secondItem="Zrj-ef-f5g" secondAttribute="leading" constant="24" id="lxJ-Ob-eRi"/>
                                             <constraint firstItem="pNt-l8-qrT" firstAttribute="leading" secondItem="Zrj-ef-f5g" secondAttribute="leading" constant="24" id="mgA-OF-IXX"/>
                                             <constraint firstAttribute="trailing" secondItem="haU-LW-FPg" secondAttribute="trailing" constant="24" id="q2U-Jj-FpJ"/>
@@ -2732,17 +2732,11 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Zrj-ef-f5g" firstAttribute="bottom" secondItem="94V-VM-d1U" secondAttribute="bottom" constant="867" id="5Qi-Nm-Tiz"/>
+                                    <constraint firstItem="Zrj-ef-f5g" firstAttribute="trailing" secondItem="94V-VM-d1U" secondAttribute="trailing" id="1wb-ej-TsX"/>
+                                    <constraint firstItem="Zrj-ef-f5g" firstAttribute="bottom" secondItem="94V-VM-d1U" secondAttribute="bottom" id="5Qi-Nm-Tiz"/>
                                     <constraint firstItem="Zrj-ef-f5g" firstAttribute="width" secondItem="S8j-cJ-JOA" secondAttribute="width" id="6pc-Wo-Ao7"/>
-                                    <constraint firstAttribute="bottom" secondItem="Zrj-ef-f5g" secondAttribute="bottom" constant="-867" id="7UZ-16-wD5"/>
-                                    <constraint firstItem="Zrj-ef-f5g" firstAttribute="width" secondItem="lOV-Gc-lbB" secondAttribute="width" multiplier="0.57971" constant="174.00006000000002" id="BOC-eH-Vnf"/>
-                                    <constraint firstItem="Zrj-ef-f5g" firstAttribute="leading" secondItem="lOV-Gc-lbB" secondAttribute="leading" id="V8K-3x-OsB"/>
                                     <constraint firstItem="Zrj-ef-f5g" firstAttribute="top" secondItem="94V-VM-d1U" secondAttribute="top" id="lY9-K0-y0I"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zrj-ef-f5g" secondAttribute="trailing" id="mNk-rn-w1u"/>
                                     <constraint firstItem="Zrj-ef-f5g" firstAttribute="leading" secondItem="94V-VM-d1U" secondAttribute="leading" id="mfM-Cf-h7e"/>
-                                    <constraint firstItem="Zrj-ef-f5g" firstAttribute="top" secondItem="lOV-Gc-lbB" secondAttribute="top" id="mqE-Um-qEY"/>
-                                    <constraint firstItem="94V-VM-d1U" firstAttribute="trailing" secondItem="Zrj-ef-f5g" secondAttribute="trailing" id="yR0-hU-U5B"/>
-                                    <constraint firstItem="Zrj-ef-f5g" firstAttribute="width" secondItem="lOV-Gc-lbB" secondAttribute="width" id="ye2-rc-iYK"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="94V-VM-d1U"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="S8j-cJ-JOA"/>
