@@ -2400,21 +2400,6 @@
             </objects>
             <point key="canvasLocation" x="1236" y="753"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Xmk-VD-8hH">
-            <objects>
-                <viewController id="6xu-JK-Fhs" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="f3r-k7-7tE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="VsF-Xq-mDm"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YlG-fO-N2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-196" y="3072"/>
-        </scene>
         <!--Lecture Detailed Information Page-->
         <scene sceneID="PWz-zi-DAq">
             <objects>
