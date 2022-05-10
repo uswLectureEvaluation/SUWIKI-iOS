@@ -3285,6 +3285,9 @@
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="족보"/>
+                                                        <connections>
+                                                            <action selector="jokboBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="5jn-M6-NFr"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPf-iX-kx6">
                                                         <rect key="frame" x="249" y="219" width="67" height="34"/>
@@ -3312,6 +3315,9 @@
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="응용"/>
+                                                        <connections>
+                                                            <action selector="applicationBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="Etk-2z-U5s"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpQ-5t-G5E">
                                                         <rect key="frame" x="174" y="311" width="67" height="34"/>
@@ -3324,6 +3330,9 @@
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="실습"/>
+                                                        <connections>
+                                                            <action selector="trainingBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="wuT-Td-EZv"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zF5-fW-USx">
                                                         <rect key="frame" x="174" y="265" width="67" height="34"/>
@@ -3336,6 +3345,9 @@
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="교재"/>
+                                                        <connections>
+                                                            <action selector="textBookBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="k5N-Hh-f4V"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACn-jm-lHf">
                                                         <rect key="frame" x="249" y="265" width="67" height="34"/>
@@ -3348,6 +3360,9 @@
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="PPT"/>
+                                                        <connections>
+                                                            <action selector="pptBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="4y3-kf-e15"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzb-GF-PDh">
                                                         <rect key="frame" x="249" y="311" width="67" height="34"/>
@@ -3360,6 +3375,9 @@
                                                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="과제"/>
+                                                        <connections>
+                                                            <action selector="homeworkBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="XPp-gn-7rm"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37b-6I-nvF">
                                                         <rect key="frame" x="99" y="219" width="67" height="34"/>
@@ -3496,10 +3514,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="applicationBtn" destination="3BQ-kP-3in" id="8BW-r7-4Fn"/>
                         <outlet property="easyLevelBtn" destination="37b-6I-nvF" id="2sQ-cV-tIc"/>
                         <outlet property="hardLevelBtn" destination="MPf-iX-kx6" id="VjF-Hv-Bxf"/>
+                        <outlet property="homeworkBtn" destination="hzb-GF-PDh" id="DAN-lt-AV4"/>
+                        <outlet property="jokboBtn" destination="AHe-fd-Frs" id="BWx-9B-g9H"/>
                         <outlet property="lectureNameLabel" destination="TP2-oi-2Dj" id="1fK-94-hdc"/>
                         <outlet property="normalLevelBtn" destination="rBg-Xf-JNi" id="Ojo-bc-9fr"/>
+                        <outlet property="pptBtn" destination="ACn-jm-lHf" id="GCs-FR-d6I"/>
+                        <outlet property="textbookBtn" destination="zF5-fW-USx" id="imZ-Ce-y8Q"/>
+                        <outlet property="trainingBtn" destination="LpQ-5t-G5E" id="bON-vs-HTH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64x-cQ-6fe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

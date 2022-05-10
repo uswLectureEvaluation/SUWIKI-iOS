@@ -29,6 +29,11 @@ struct examBtnClickedType{
     }
         
     struct examType{
-        
+        var jokboCheck: Bool = false
+        var textbookCheck: Bool = false
+        var pptCheck: Bool = false
+        var applicationCheck: Bool = false
+        var trainingCheck: Bool = false
+        var homeworkCheck: Bool = false
     }
 }
