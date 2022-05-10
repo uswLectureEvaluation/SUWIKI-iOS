@@ -84,7 +84,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        print("viewdidload")
+
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
@@ -137,7 +143,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            nextVC.modalPresentationStyle = .fullScreen
+            self.present(nextVC, animated: true, completion: nil)
         } else {
             
         }
