@@ -149,6 +149,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             self.present(nextVC, animated: true, completion: nil)
         } else {
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "examWriteVC") as! lectureExamWritePage
+            nextVC.lectureName = lectureName.text!
+            nextVC.professor = professor.text!
+            nextVC.lectureId = lectureId
+            nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
             
         }

@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import KeychainSwift
 
 class lectureExamWritePage: UIViewController {
 
@@ -22,8 +25,11 @@ class lectureExamWritePage: UIViewController {
     @IBOutlet weak var trainingBtn: UIButton!
     @IBOutlet weak var homeworkBtn: UIButton!
     
-    var levelType = examBtnClickedType.levelType()
+    @IBOutlet weak var contentField: UITextView!
     
+    let keychain = KeychainSwift()
+    
+    var levelType = examBtnClickedType.levelType()
     var examType = examBtnClickedType.examType()
     
     var lectureName = ""
@@ -35,11 +41,70 @@ class lectureExamWritePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(keychain.get("AccessToken"))
+        print(lectureId)
     }
     
 
     // examType bool값 확인 후 true false 일 경우 append or remove - n번째 요소. or 그 단어 제거 해주기
     // list.joined(separator: ", ")로 완료 버튼 누를 시 update 해줌
+    
+    
+    @IBAction func finishBtnClicked(_ sender: Any) {
+        if examTypeArray.count == 0 || contentField.text == "" || levelType.levelPoint == 3 {
+            let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let examInfo: String = examTypeArray.joined(separator: ", ")
+            let url = "https://api.suwiki.kr/evaluate-posts/write/?lectureId=\(lectureId)"
+            
+            let parameters: Parameters = [
+                "lectureName" : lectureName, //과목 이름
+                "professor" : professor, //교수이름
+                "selectedSemester" : "2022-1", //학기 (ex) 2022-1)
+                "examInfo" : examInfo, //시험 방식
+                "examType" : "-",
+                "examDifficulty" : "쉬움", //시험 난이도
+                "content" : contentField.text!
+            ]
+            let headers: HTTPHeaders = [
+                "Authorization" : String(keychain.get("AccessToken") ?? "")
+            ]
+            
+            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+                
+                
+                print(response.response?.statusCode)
+                
+                if response.response?.statusCode == 400{
+                    let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
+                        message: "확인을 눌러주세요!",
+                        preferredStyle: UIAlertController.Style.alert)
+                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alert.addAction(cancle)
+                    self.present(alert, animated: true, completion: nil)
+                } else if response.response?.statusCode == 403 {
+                    let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                        message: "확인을 눌러주세요!",
+                        preferredStyle: UIAlertController.Style.alert)
+                    //2. 확인 버튼 만들기
+                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    //3. 확인 버튼을 경고창에 추가하기
+                    alert.addAction(cancle)
+                    //4. 경고창 보이기
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+            }
+        }
+        
+    }
     
     @IBAction func jokboBtnClicked(_ sender: Any) {
         if examType.jokboCheck {
