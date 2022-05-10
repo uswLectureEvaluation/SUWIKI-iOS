@@ -19,6 +19,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     
 
+    @IBOutlet weak var contentsView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lectureView: UIView!
     @IBOutlet weak var lectureName: UILabel!
@@ -37,7 +39,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var writeBtn: UIButton!
     
-    var detailViewArray: Array<Any> = []
+    
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
     var detailExamArray: Array<detailExam> = []
@@ -55,14 +57,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         
         tableViewNumber = 0
-        loadDetailData()
-        print(lectureId)
+
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
         lectureView.layer.cornerRadius = 12.0
         super.viewDidLoad()
-        getDetailPage()
         evaluationBtn.tintColor = .darkGray
+        scrollView.isDirectionalLockEnabled = true
         
         // Xib 등록
         let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
@@ -75,12 +76,23 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         tableView.register(examInfoTakeCellName, forCellReuseIdentifier: "takeInfoCell")
         
         self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 180
+        self.tableView.estimatedRowHeight = 210
         self.tableView.reloadData()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        detailExamArray.removeAll()
+        detailLectureArray.removeAll()
+        detailEvaluationArray.removeAll()
+        
+        loadDetailData()
+        getDetailPage()
+
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
@@ -100,26 +112,22 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         writeBtn.setTitle("시험 정보 쓰기", for: .normal)
         writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
+        examBtn.tintColor = .darkGray
+        evaluationBtn.tintColor = .lightGray
         
         if examDataExist == 0 {
             tableViewNumber = 1
-            examBtn.tintColor = .darkGray
-            evaluationBtn.tintColor = .lightGray
             tableView.estimatedRowHeight = 130
             tableView.rowHeight = UITableView.automaticDimension
             tableView.reloadData()
         } else {
             if examDataExist == 1 {
                 tableViewNumber = 2
-                examBtn.tintColor = .darkGray
-                evaluationBtn.tintColor = .lightGray
                 tableView.estimatedRowHeight = 130
                 tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()
             } else if examDataExist == 2 {
-                tableViewNumber = 3 // 3이면 시험정보 구매한 상
-                examBtn.tintColor = .darkGray
-                evaluationBtn.tintColor = .lightGray
+                tableViewNumber = 3 // 3이면 시험정보 구매한 상   
                 tableView.estimatedRowHeight = 130
                 tableView.rowHeight = UITableView.automaticDimension
                 tableView.reloadData()
@@ -137,7 +145,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            nextVC.modalPresentationStyle = .fullScreen
+            self.present(nextVC, animated: true, completion: nil)
         } else {
             
         }
@@ -227,14 +236,14 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             let data = response.value
             
-            let json = JSON(data!)["data"]
+            let json = JSON(data ?? "")["data"]
       
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
             let totalLearningAvg = String(format: "%.1f", round(json["lectureLearningAvg"].floatValue * 1000) / 1000)
             
-            let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["semester"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
+            let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["selectedSemester"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
 
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
@@ -263,7 +272,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
-            let json = JSON(data!)
+            let json = JSON(data ?? "")
     
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
@@ -296,9 +305,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 } else if jsonData["homework"] == 2 {
                     homework = "많음"
                 }
-                print(jsonData)
-                let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
+                let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
+                print(jsonData["semester"].stringValue)
                 self.detailEvaluationArray.append(readData)
             }
             self.tableView.reloadData()
@@ -316,7 +325,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
-            let json = JSON(data!)
+            let json = JSON(data ?? "")
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
                 print("false")
@@ -329,14 +338,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                     self.examDataExist = 2 // 시험 정보 구매한 상태
                     for index in 0..<json["data"].count{
                         let jsonData = json["data"][index]
-                        let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                        let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["selectedSemester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
                         
                         self.detailExamArray.append(readData)
                        }
                     
                     self.tableView.reloadData()
                 }
-                print(self.detailExamArray)
             }
             // examDataExist를 트루로 확인하고 내부 데이터 받아오는 것 없을 경우
             // 시험 정보 구매 뷰 보여줘야 하고,
@@ -367,14 +375,18 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
             if Int(data!) == 200{
-                print("success")
                 self.getDetailExam()
                 self.tableViewNumber = 3
             } else if Int(data!) == 403{
-                print("fail")
                 
             }
             
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > 0{
+            scrollView.contentOffset.x = 0
         }
     }
     

@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import DropDown
 
 // 슬라이더로 배움/꿀강/만족도 조절 기본값 3.0
 // 수강학기 Dropdown
@@ -20,6 +21,10 @@ import KeychainSwift
 
 class lectureEvaluationWritePage: UIViewController {
     
+    
+    @IBOutlet weak var semesterDropDown: UIView!
+    @IBOutlet weak var semesterTextField: UILabel!
+    
     @IBOutlet weak var honeySlider: UISlider!
     @IBOutlet weak var learningSlider: UISlider!
     @IBOutlet weak var satisfactionSlider: UISlider!
@@ -29,7 +34,6 @@ class lectureEvaluationWritePage: UIViewController {
     @IBOutlet weak var satisfactionPoint: UILabel!
     
     @IBOutlet weak var lectureNameLabel: UILabel!
-    @IBOutlet weak var professorLabel: UILabel!
     
     
     @IBOutlet weak var teamNoBtn: UIButton!
@@ -47,27 +51,49 @@ class lectureEvaluationWritePage: UIViewController {
     
     @IBOutlet weak var contentField: UITextView!
     
-    var teamWorkType = btnClickedType.teamWorkType()
-    var homeworkType = btnClickedType.homeworkType()
-    var difficultyType = btnClickedType.difficultyType()
+    var teamWorkType = evalBtnClickedType.teamWorkType()
+    var homeworkType = evalBtnClickedType.homeworkType()
+    var difficultyType = evalBtnClickedType.difficultyType()
     
     var lectureName: String = ""
     var professor: String = ""
     var lectureId: Int = 0
     
     let keychain = KeychainSwift()
+    let dropDown = DropDown()
     
+    let semesterList = ["2022-1", "2021-1", "2020-1"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.contentField.layer.borderWidth = 1.0
         self.contentField.layer.borderColor = UIColor.black.cgColor
         lectureNameLabel.text = lectureName
-        professorLabel.text = professor
+        
+        semesterDropDown.layer.borderWidth = 1.0
+        semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
+        semesterDropDown.layer.cornerRadius = 8.0
+        
+        dropDown.anchorView = semesterDropDown
+        dropDown.dataSource = semesterList
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.direction = .bottom
+        dropDown.textFont = UIFont.systemFont(ofSize: 16)
+
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.semesterTextField.text = semesterList[index]
+            self.semesterTextField.font = UIFont.systemFont(ofSize: 16)
+            self.semesterTextField.textColor = UIColor.black
+            self.semesterTextField.textAlignment = .center
+        }
         // Do any additional setup after loading the view.
     }
     
     
+    @IBAction func semesterDropDownClicked(_ sender: Any) {
+        dropDown.show()
+    }
+        
     @IBAction func finishedBtnClicked(_ sender: Any) {
         
         if teamWorkType.teamWorkPoint == 3 || difficultyType.difficultyPoint == 3 || homeworkType.homeworkPoint == 3 || contentField.text == "" {
@@ -87,7 +113,7 @@ class lectureEvaluationWritePage: UIViewController {
             let parameters = [
                 "lectureName" : lectureName, //과목이름
                 "professor" : professor, //교수이름
-                "semester" : "2022-1",//학기
+                "semester" : semesterTextField.text,//학기
                 "satisfaction" : Float(satisfactionPoint.text!) ?? 0, //만족도
                 "learning" : Float(learningPoint.text!) ?? 0, //배움지수
                 "honey" : Float(honeyPoint.text!) ?? 0, //꿀강지수
@@ -117,15 +143,17 @@ class lectureEvaluationWritePage: UIViewController {
                     //4. 경고창 보이기
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-                    detailVC.lectureId = self.lectureId
-                    self.navigationController?.pushViewController(detailVC, animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }
         
        
         
+    }
+    
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func honeyPointChanged(_ sender: UISlider) {
         let point = String(format: "%.1f", round(sender.value * 1000) / 1000)

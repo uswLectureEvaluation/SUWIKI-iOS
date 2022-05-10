@@ -14,20 +14,7 @@ class lectureExamWritePage: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func jokboBtnClicked(_ sender: Any) {
-    }
-    @IBAction func bookBtnClicked(_ sender: Any) {
-    }
-    @IBAction func pptBtnClicked(_ sender: Any) {
-    }
-    @IBAction func writeBtnClicked(_ sender: Any) {
-    }
-    @IBAction func applicationBtnClicked(_ sender: Any) {
-    }
-    @IBAction func trainingBtnClicked(_ sender: Any) {
-    }
-    @IBAction func homeworkBtnClicked(_ sender: Any) {
-    }
+
     
     
 }

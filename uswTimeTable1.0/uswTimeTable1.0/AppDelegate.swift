@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
                 if (oldSchemaVersion < 8) {
                     // Nothing to do!
-                    // Realm will automatically detect new properties and removed properties
+                    #imageLiteral(resourceName: "simulator_screenshot_E27DBBA2-327F-4B2B-BD83-6B7C913C286B.png")                // Realm will automatically detect new properties and removed properties
                     // And will update the schema on disk automatically
                 }
             })

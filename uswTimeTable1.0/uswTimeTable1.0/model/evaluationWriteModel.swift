@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct btnClickedType{
+struct evalBtnClickedType{
     
     struct teamWorkType{
         var noTeamWork: Bool = false

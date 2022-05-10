@@ -10,6 +10,7 @@ import Foundation
 struct homePageData{
     
     let id: Int
+    let selectedSemester: String
     let semester: String //강의년도 + 학기 (ex) "2021-1,2022-1" )
     let professor: String //교수이름
     let lectureType: String //이수구분
