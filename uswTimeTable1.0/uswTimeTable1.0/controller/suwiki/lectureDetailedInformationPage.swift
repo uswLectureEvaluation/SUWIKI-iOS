@@ -39,7 +39,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var writeBtn: UIButton!
     
-    var detailViewArray: Array<Any> = []
+    
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
     var detailExamArray: Array<detailExam> = []
@@ -57,15 +57,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         
         tableViewNumber = 0
-        loadDetailData()
-        print(lectureId)
+
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
         lectureView.layer.cornerRadius = 12.0
         super.viewDidLoad()
-        getDetailPage()
         evaluationBtn.tintColor = .darkGray
-        
         scrollView.isDirectionalLockEnabled = true
         
         // Xib 등록
@@ -84,13 +81,18 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        print("viewdidload")
 
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewDidLoad()
+        detailExamArray.removeAll()
+        detailLectureArray.removeAll()
+        detailEvaluationArray.removeAll()
+        
+        loadDetailData()
+        getDetailPage()
+
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
@@ -241,7 +243,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
             let totalLearningAvg = String(format: "%.1f", round(json["lectureLearningAvg"].floatValue * 1000) / 1000)
             
-            let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["semester"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
+            let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["selectedSemester"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
 
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
@@ -303,9 +305,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 } else if jsonData["homework"] == 2 {
                     homework = "많음"
                 }
-                print(jsonData)
-                let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
+                let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
+                print(jsonData["semester"].stringValue)
                 self.detailEvaluationArray.append(readData)
             }
             self.tableView.reloadData()
@@ -336,14 +338,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                     self.examDataExist = 2 // 시험 정보 구매한 상태
                     for index in 0..<json["data"].count{
                         let jsonData = json["data"][index]
-                        let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                        let readData = detailExam(id: jsonData["id"].intValue, semester: jsonData["selectedSemester"].stringValue, examInfo: jsonData["examInfo"].stringValue, examType: jsonData["examType"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
                         
                         self.detailExamArray.append(readData)
                        }
                     
                     self.tableView.reloadData()
                 }
-                print(self.detailExamArray)
             }
             // examDataExist를 트루로 확인하고 내부 데이터 받아오는 것 없을 경우
             // 시험 정보 구매 뷰 보여줘야 하고,
@@ -374,11 +375,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
             if Int(data!) == 200{
-                print("success")
                 self.getDetailExam()
                 self.tableViewNumber = 3
             } else if Int(data!) == 403{
-                print("fail")
                 
             }
             

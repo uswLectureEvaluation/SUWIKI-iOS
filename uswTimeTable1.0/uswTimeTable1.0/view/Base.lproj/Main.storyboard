@@ -2764,12 +2764,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBF-9s-bAu">
                                 <rect key="frame" x="24" y="134" width="366" height="818"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaQ-n0-yf9">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="805"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaQ-n0-yf9">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="818"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OM6-cX-16i">
-                                                <rect key="frame" x="0.0" y="0.0" width="366" height="1020"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="1300"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
                                                         <rect key="frame" x="26" y="198" width="314" height="31"/>
@@ -2974,14 +2973,17 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="loc-ZG-fRz">
-                                                        <rect key="frame" x="28" y="585" width="310" height="293"/>
+                                                        <rect key="frame" x="28" y="585" width="310" height="292"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="292" id="SjO-XF-3b8"/>
+                                                        </constraints>
                                                         <color key="textColor" systemColor="labelColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhh-Pg-H3y">
-                                                        <rect key="frame" x="26" y="911" width="314" height="47"/>
+                                                        <rect key="frame" x="26" y="909" width="314" height="47"/>
                                                         <color key="backgroundColor" red="0.15686275059999999" green="0.27843138579999999" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="47" id="rHx-l4-ioa"/>
@@ -3045,9 +3047,9 @@
                                                         <rect key="frame" x="95" y="103" width="134" height="34"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2022-1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHU-3K-ZsK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="132" height="38"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="81" height="38"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -3092,7 +3094,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="Cyv-8c-yfb" secondAttribute="trailing" constant="32" id="EXB-8P-aDs"/>
                                                     <constraint firstAttribute="trailing" secondItem="doz-1z-2TI" secondAttribute="trailing" constant="28" id="G4e-5t-jel"/>
                                                     <constraint firstItem="Y5o-jd-Zek" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="165" id="GW4-Zz-MOd"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Mhh-Pg-H3y" secondAttribute="bottom" constant="62" id="H7G-Bg-3EX"/>
                                                     <constraint firstItem="POh-pE-0uY" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="JuN-C4-ktF"/>
                                                     <constraint firstItem="NLA-m5-yja" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="165" id="JyE-3f-zh6"/>
                                                     <constraint firstItem="sbn-LZ-5xQ" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="95" id="NUY-Cx-FAC"/>
@@ -3106,6 +3107,7 @@
                                                     <constraint firstItem="9Dy-sq-pMo" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="238" id="Vg8-Wj-Knv"/>
                                                     <constraint firstItem="H8d-kZ-XdW" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="305" id="W3L-Fq-M4t"/>
                                                     <constraint firstItem="vpl-k5-lVL" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="Wqk-id-OTa"/>
+                                                    <constraint firstItem="Mhh-Pg-H3y" firstAttribute="top" secondItem="loc-ZG-fRz" secondAttribute="bottom" constant="32" id="YfF-t8-Yjv"/>
                                                     <constraint firstItem="8eJ-M3-F74" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="171" id="awB-H1-Z6k"/>
                                                     <constraint firstItem="9Dy-sq-pMo" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="azA-wH-tQ7"/>
                                                     <constraint firstItem="Mhh-Pg-H3y" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="26" id="bdT-fh-Awf"/>
@@ -3115,7 +3117,7 @@
                                                     <constraint firstItem="E1s-8O-218" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="26" id="et8-a7-KH7"/>
                                                     <constraint firstItem="sdy-yj-cb5" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="gax-cc-1b7"/>
                                                     <constraint firstAttribute="trailing" secondItem="0D7-wv-roJ" secondAttribute="trailing" id="gxp-Wj-gz6"/>
-                                                    <constraint firstAttribute="height" constant="1020" id="hV5-Ti-8kI"/>
+                                                    <constraint firstAttribute="height" constant="1300" id="hV5-Ti-8kI"/>
                                                     <constraint firstAttribute="trailing" secondItem="Dq3-HV-eLg" secondAttribute="trailing" constant="28" id="iY0-L0-iUS"/>
                                                     <constraint firstAttribute="trailing" secondItem="gLB-2L-6ey" secondAttribute="trailing" constant="32" id="il1-Zi-GAc"/>
                                                     <constraint firstItem="Uwy-xd-DCn" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="233" id="jVs-i4-r3x"/>
@@ -3129,7 +3131,6 @@
                                                     <constraint firstItem="H8d-kZ-XdW" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="qBe-ZI-C5o"/>
                                                     <constraint firstItem="dcQ-fw-19x" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="486" id="r54-N7-a0l"/>
                                                     <constraint firstItem="vpl-k5-lVL" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="449" id="r88-Px-Emx"/>
-                                                    <constraint firstAttribute="bottom" secondItem="loc-ZG-fRz" secondAttribute="bottom" constant="142" id="rxi-Dc-ZuG"/>
                                                     <constraint firstItem="7Lu-Ri-Jtz" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="233" id="ueZ-pe-uoC"/>
                                                     <constraint firstItem="8eJ-M3-F74" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="ulH-iW-UBm"/>
                                                     <constraint firstItem="EjW-u2-2ml" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="112" id="vnY-Xk-EhJ"/>
@@ -3144,12 +3145,10 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="OM6-cX-16i" firstAttribute="trailing" secondItem="XwO-Ze-GdE" secondAttribute="trailing" constant="126" id="0xS-IC-dmF"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="trailing" secondItem="XwO-Ze-GdE" secondAttribute="trailing" id="0xS-IC-dmF"/>
                                             <constraint firstItem="OM6-cX-16i" firstAttribute="leading" secondItem="XwO-Ze-GdE" secondAttribute="leading" id="7v8-UM-PKh"/>
                                             <constraint firstItem="OM6-cX-16i" firstAttribute="top" secondItem="XwO-Ze-GdE" secondAttribute="top" id="Pro-PH-419"/>
-                                            <constraint firstItem="OM6-cX-16i" firstAttribute="leading" secondItem="q52-vb-CQs" secondAttribute="leading" id="QVS-MZ-bYe"/>
-                                            <constraint firstItem="OM6-cX-16i" firstAttribute="trailing" secondItem="XwO-Ze-GdE" secondAttribute="trailing" constant="126" id="X2y-88-RvA"/>
-                                            <constraint firstItem="OM6-cX-16i" firstAttribute="width" secondItem="q52-vb-CQs" secondAttribute="width" multiplier="0.655738" constant="126.00000000000003" id="nXX-oG-8lV"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="width" secondItem="q52-vb-CQs" secondAttribute="width" id="nXX-oG-8lV"/>
                                             <constraint firstItem="OM6-cX-16i" firstAttribute="bottom" secondItem="XwO-Ze-GdE" secondAttribute="bottom" id="xZF-2E-fEM"/>
                                         </constraints>
                                         <viewLayoutGuide key="contentLayoutGuide" id="XwO-Ze-GdE"/>
@@ -3157,6 +3156,12 @@
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="LaQ-n0-yf9" firstAttribute="top" secondItem="UBF-9s-bAu" secondAttribute="top" id="22x-CW-shg"/>
+                                    <constraint firstAttribute="trailing" secondItem="LaQ-n0-yf9" secondAttribute="trailing" id="Hhs-cN-Lmf"/>
+                                    <constraint firstItem="LaQ-n0-yf9" firstAttribute="leading" secondItem="UBF-9s-bAu" secondAttribute="leading" id="VY5-c6-q9Y"/>
+                                    <constraint firstAttribute="bottom" secondItem="LaQ-n0-yf9" secondAttribute="bottom" id="q8u-BE-Kul"/>
+                                </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-a4-pXe">
                                 <rect key="frame" x="24" y="64" width="96" height="26"/>
@@ -3212,164 +3217,121 @@
             </objects>
             <point key="canvasLocation" x="1637.68115942029" y="1423.6607142857142"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="sfv-Qd-2S7">
-            <objects>
-                <viewController id="Zfl-Dh-0rd" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hKp-7k-hob">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKT-Su-3iF">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="vZ2-Ti-RLa"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="usW-i0-hro" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2450.7246376811595" y="1428.3482142857142"/>
-        </scene>
         <!--Lecture Exam Write Page-->
         <scene sceneID="XyU-R1-rl1">
             <objects>
-                <viewController id="hPY-dP-FKV" customClass="lectureExamWritePage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="examWriteVC" id="hPY-dP-FKV" customClass="lectureExamWritePage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U2u-B2-bui">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="시험평가 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HV1-gd-efy">
-                                <rect key="frame" x="20" y="44" width="98" height="21"/>
+                                <rect key="frame" x="39" y="153" width="98" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="교수명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s11-hv-Kcu">
-                                <rect key="frame" x="27" y="144" width="193" height="31"/>
+                                <rect key="frame" x="46" y="253" width="193" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="난이도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-Md-bf3">
-                                <rect key="frame" x="20" y="375" width="39" height="19"/>
+                                <rect key="frame" x="39" y="484" width="39" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="시험 내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-MP-EgO">
-                                <rect key="frame" x="19" y="213" width="56" height="23"/>
+                                <rect key="frame" x="38" y="322" width="56" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(복수 선택)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4J7-c1-ZYB">
-                                <rect key="frame" x="18" y="234" width="58" height="18"/>
+                                <rect key="frame" x="37" y="343" width="58" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="강의명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TP2-oi-2Dj">
-                                <rect key="frame" x="27" y="95" width="356" height="38"/>
+                                <rect key="frame" x="46" y="204" width="356" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHe-fd-Frs">
-                                <rect key="frame" x="118" y="213" width="52" height="33"/>
+                                <rect key="frame" x="137" y="322" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="족보"/>
-                                <connections>
-                                    <action selector="jokboBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="TCn-cJ-6OJ"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgI-ca-7zO">
-                                <rect key="frame" x="118" y="261" width="52" height="33"/>
+                                <rect key="frame" x="137" y="370" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="필기"/>
-                                <connections>
-                                    <action selector="writeBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="7Xy-Ot-Src"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BQ-kP-3in">
-                                <rect key="frame" x="193" y="261" width="52" height="33"/>
+                                <rect key="frame" x="212" y="370" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="응용"/>
-                                <connections>
-                                    <action selector="applicationBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="RD5-Fm-SQA"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LpQ-5t-G5E">
-                                <rect key="frame" x="265" y="261" width="52" height="33"/>
+                                <rect key="frame" x="284" y="370" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="실습"/>
-                                <connections>
-                                    <action selector="trainingBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="eoa-B1-Q7Q"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zF5-fW-USx">
-                                <rect key="frame" x="193" y="213" width="52" height="33"/>
+                                <rect key="frame" x="212" y="322" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="교재"/>
-                                <connections>
-                                    <action selector="bookBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="6FI-9b-U2A"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACn-jm-lHf">
-                                <rect key="frame" x="265" y="213" width="52" height="33"/>
+                                <rect key="frame" x="284" y="322" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="PPT"/>
-                                <connections>
-                                    <action selector="pptBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="RQn-68-QwT"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzb-GF-PDh">
-                                <rect key="frame" x="118" y="310" width="52" height="33"/>
+                                <rect key="frame" x="137" y="419" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="과제"/>
-                                <connections>
-                                    <action selector="homeworkBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="xey-fX-DFa"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNa-c8-q2a">
-                                <rect key="frame" x="118" y="373" width="67" height="33"/>
+                                <rect key="frame" x="137" y="482" width="67" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
@@ -3378,7 +3340,7 @@
                                 <state key="normal" title="매우 쉬움"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBB-DQ-pOv">
-                                <rect key="frame" x="118" y="421" width="59" height="33"/>
+                                <rect key="frame" x="137" y="530" width="59" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
@@ -3387,7 +3349,7 @@
                                 <state key="normal" title="어려움"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="37b-6I-nvF">
-                                <rect key="frame" x="201" y="373" width="52" height="33"/>
+                                <rect key="frame" x="220" y="482" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
@@ -3396,7 +3358,7 @@
                                 <state key="normal" title="쉬움"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBg-Xf-JNi">
-                                <rect key="frame" x="269" y="372" width="52" height="33"/>
+                                <rect key="frame" x="288" y="481" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
@@ -3405,7 +3367,7 @@
                                 <state key="normal" title="보통"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPf-iX-kx6">
-                                <rect key="frame" x="193" y="421" width="79" height="33"/>
+                                <rect key="frame" x="212" y="530" width="79" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
@@ -3413,6 +3375,11 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="매우 어려움"/>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xok-rl-Onq">
+                                <rect key="frame" x="24" y="44" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GvR-88-1pz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3420,7 +3387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="64x-cQ-6fe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357.9710144927537" y="2173.6607142857142"/>
+            <point key="canvasLocation" x="2358" y="1424"/>
         </scene>
         <!--Item-->
         <scene sceneID="uuq-Qy-cCZ">

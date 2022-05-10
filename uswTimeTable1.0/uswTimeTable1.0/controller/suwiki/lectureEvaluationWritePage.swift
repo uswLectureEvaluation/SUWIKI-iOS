@@ -51,9 +51,9 @@ class lectureEvaluationWritePage: UIViewController {
     
     @IBOutlet weak var contentField: UITextView!
     
-    var teamWorkType = btnClickedType.teamWorkType()
-    var homeworkType = btnClickedType.homeworkType()
-    var difficultyType = btnClickedType.difficultyType()
+    var teamWorkType = evalBtnClickedType.teamWorkType()
+    var homeworkType = evalBtnClickedType.homeworkType()
+    var difficultyType = evalBtnClickedType.difficultyType()
     
     var lectureName: String = ""
     var professor: String = ""
@@ -70,15 +70,19 @@ class lectureEvaluationWritePage: UIViewController {
         self.contentField.layer.borderColor = UIColor.black.cgColor
         lectureNameLabel.text = lectureName
         
+        semesterDropDown.layer.borderWidth = 1.0
+        semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
+        semesterDropDown.layer.cornerRadius = 8.0
+        
         dropDown.anchorView = semesterDropDown
         dropDown.dataSource = semesterList
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
-        dropDown.textFont = UIFont.systemFont(ofSize: 13)
+        dropDown.textFont = UIFont.systemFont(ofSize: 16)
 
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.semesterTextField.text = semesterList[index]
-            self.semesterTextField.font = UIFont.systemFont(ofSize: 13)
+            self.semesterTextField.font = UIFont.systemFont(ofSize: 16)
             self.semesterTextField.textColor = UIColor.black
             self.semesterTextField.textAlignment = .center
         }
