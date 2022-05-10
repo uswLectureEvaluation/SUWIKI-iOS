@@ -2751,7 +2751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7j-o3-pCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="560.86956521739137" y="1864.2857142857142"/>
+            <point key="canvasLocation" x="1983" y="761"/>
         </scene>
         <!--Lecture Evaluation Write Page-->
         <scene sceneID="zpp-Tj-F68">
@@ -2761,239 +2761,298 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
-                                <rect key="frame" x="84" y="169" width="243" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" systemColor="systemYellowColor"/>
-                                <color key="maximumTrackTintColor" systemColor="systemYellowColor"/>
-                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="honeyPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="qlz-MI-dhk"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dq3-HV-eLg">
-                                <rect key="frame" x="84" y="221" width="243" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" red="0.92156863209999995" green="0.40392160420000001" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="maximumTrackTintColor" red="0.92156863209999995" green="0.40392160420000001" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <action selector="learningPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="wCI-R5-Uv1"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="89l-bv-u1M">
-                                <rect key="frame" x="84" y="272" width="243" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" systemColor="tintColor"/>
-                                <color key="maximumTrackTintColor" systemColor="tintColor"/>
-                                <connections>
-                                    <action selector="satisfactionValueChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="z4d-XU-CXn"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-8c-yfb">
-                                <rect key="frame" x="340" y="173" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="교수명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxS-tV-tHm">
-                                <rect key="frame" x="20" y="117" width="193" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="꿀강지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eJ-M3-F74">
-                                <rect key="frame" x="13" y="168" width="61" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="배움지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dy-sq-pMo">
-                                <rect key="frame" x="13" y="220" width="54" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="만족도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8d-kZ-XdW">
-                                <rect key="frame" x="13" y="271" width="39" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sya-5C-Nfu">
-                                <rect key="frame" x="340" y="225" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLB-2L-6ey">
-                                <rect key="frame" x="340" y="276" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="강의명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdy-yj-cb5">
-                                <rect key="frame" x="20" y="68" width="356" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kp1-hc-OUN">
-                                <rect key="frame" x="86" y="343" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="없음"/>
-                                <connections>
-                                    <action selector="noTeamBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="ExT-7D-nca"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsx-m0-Xdz">
-                                <rect key="frame" x="86" y="400" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="없음"/>
-                                <connections>
-                                    <action selector="noHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="Pge-bz-Zza"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-fw-19x">
-                                <rect key="frame" x="86" y="455" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="까다로움"/>
-                                <connections>
-                                    <action selector="easyDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="aDe-DI-RrL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLA-m5-yja">
-                                <rect key="frame" x="174" y="400" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="보통"/>
-                                <connections>
-                                    <action selector="usuallyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="AD1-Dn-6Un"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-no-Xap">
-                                <rect key="frame" x="174" y="455" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="보통"/>
-                                <connections>
-                                    <action selector="normalDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="RN0-DV-L5c"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lu-Ri-Jtz">
-                                <rect key="frame" x="258" y="400" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="많음"/>
-                                <connections>
-                                    <action selector="manyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="Kcc-G8-f9a"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5o-jd-Zek">
-                                <rect key="frame" x="174" y="343" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="있음"/>
-                                <connections>
-                                    <action selector="haveTeamBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="o37-yA-pb2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-xd-DCn">
-                                <rect key="frame" x="258" y="455" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="너그러움"/>
-                                <connections>
-                                    <action selector="hardDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="bnO-vc-OSa"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="조모임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-zz-Bji">
-                                <rect key="frame" x="13" y="343" width="39" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="과제" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpl-k5-lVL">
-                                <rect key="frame" x="13" y="400" width="39" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="학점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POh-pE-0uY">
-                                <rect key="frame" x="13" y="455" width="28" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="loc-ZG-fRz">
-                                <rect key="frame" x="20" y="494" width="374" height="368"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBF-9s-bAu">
+                                <rect key="frame" x="24" y="134" width="366" height="818"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LaQ-n0-yf9">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="805"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OM6-cX-16i">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="989"/>
+                                                <subviews>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
+                                                        <rect key="frame" x="26" y="198" width="314" height="31"/>
+                                                        <color key="minimumTrackTintColor" systemColor="systemYellowColor"/>
+                                                        <color key="maximumTrackTintColor" systemColor="systemYellowColor"/>
+                                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <connections>
+                                                            <action selector="honeyPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="qlz-MI-dhk"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dq3-HV-eLg">
+                                                        <rect key="frame" x="26" y="265" width="314" height="31"/>
+                                                        <color key="minimumTrackTintColor" red="0.92156863209999995" green="0.40392160420000001" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="maximumTrackTintColor" red="0.92156863209999995" green="0.40392160420000001" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <connections>
+                                                            <action selector="learningPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="wCI-R5-Uv1"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="89l-bv-u1M">
+                                                        <rect key="frame" x="26" y="339" width="313" height="31"/>
+                                                        <color key="minimumTrackTintColor" systemColor="tintColor"/>
+                                                        <color key="maximumTrackTintColor" systemColor="tintColor"/>
+                                                        <connections>
+                                                            <action selector="satisfactionValueChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="z4d-XU-CXn"/>
+                                                        </connections>
+                                                    </slider>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyv-8c-yfb">
+                                                        <rect key="frame" x="307.5" y="171" width="26.5" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
+                                                        <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="교수명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XxS-tV-tHm">
+                                                        <rect key="frame" x="23" y="479" width="193" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="꿀강지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eJ-M3-F74">
+                                                        <rect key="frame" x="28" y="171" width="55.5" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="AYd-EI-UOg"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배움지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dy-sq-pMo">
+                                                        <rect key="frame" x="28" y="238" width="55.5" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="722-k3-XhU"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="만족도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8d-kZ-XdW">
+                                                        <rect key="frame" x="28" y="305" width="41.5" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="qNF-Xa-zkX"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sya-5C-Nfu">
+                                                        <rect key="frame" x="307.5" y="238" width="26.5" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
+                                                        <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLB-2L-6ey">
+                                                        <rect key="frame" x="307.5" y="303" width="26.5" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
+                                                        <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kp1-hc-OUN">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="없음"/>
+                                                        <connections>
+                                                            <action selector="noTeamBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="ExT-7D-nca"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsx-m0-Xdz">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="없음"/>
+                                                        <connections>
+                                                            <action selector="noHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="Pge-bz-Zza"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcQ-fw-19x">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="까다로움"/>
+                                                        <connections>
+                                                            <action selector="easyDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="aDe-DI-RrL"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLA-m5-yja">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="보통"/>
+                                                        <connections>
+                                                            <action selector="usuallyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="AD1-Dn-6Un"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-no-Xap">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="보통"/>
+                                                        <connections>
+                                                            <action selector="normalDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="RN0-DV-L5c"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lu-Ri-Jtz">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="많음"/>
+                                                        <connections>
+                                                            <action selector="manyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="Kcc-G8-f9a"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5o-jd-Zek">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="있음"/>
+                                                        <connections>
+                                                            <action selector="haveTeamBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="o37-yA-pb2"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uwy-xd-DCn">
+                                                        <rect key="frame" x="86" y="479" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="너그러움"/>
+                                                        <connections>
+                                                            <action selector="hardDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="bnO-vc-OSa"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="조모임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-zz-Bji">
+                                                        <rect key="frame" x="100" y="479" width="39" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="과제" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpl-k5-lVL">
+                                                        <rect key="frame" x="100" y="479" width="39" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="학점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POh-pE-0uY">
+                                                        <rect key="frame" x="106" y="479" width="28" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="loc-ZG-fRz">
+                                                        <rect key="frame" x="224" y="475" width="83" height="203"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="강의평가 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyH-gK-feg">
+                                                        <rect key="frame" x="61" y="484" width="118" height="21"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhh-Pg-H3y">
+                                                        <rect key="frame" x="70" y="479" width="99" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="backgroundColor" red="0.15686275059999999" green="0.27843138579999999" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="완료(10+P)">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleShadowColor" red="0.15686275059999999" green="0.27843138579999999" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="finishedBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="tdm-YE-8D5"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="강의명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdy-yj-cb5">
+                                                        <rect key="frame" x="10" y="401" width="356" height="38"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="doz-1z-2TI" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="198" id="2UE-5I-VJi"/>
+                                                    <constraint firstItem="Dq3-HV-eLg" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="91U-2M-TMy"/>
+                                                    <constraint firstItem="Dq3-HV-eLg" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="265" id="BkV-Xs-iyT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Cyv-8c-yfb" secondAttribute="trailing" constant="32" id="EXB-8P-aDs"/>
+                                                    <constraint firstAttribute="trailing" secondItem="doz-1z-2TI" secondAttribute="trailing" constant="28" id="G4e-5t-jel"/>
+                                                    <constraint firstItem="89l-bv-u1M" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="OKx-Bk-ujm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sya-5C-Nfu" secondAttribute="trailing" constant="32" id="QEY-FV-nfk"/>
+                                                    <constraint firstItem="9Dy-sq-pMo" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="238" id="Vg8-Wj-Knv"/>
+                                                    <constraint firstItem="H8d-kZ-XdW" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="305" id="W3L-Fq-M4t"/>
+                                                    <constraint firstItem="8eJ-M3-F74" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="171" id="awB-H1-Z6k"/>
+                                                    <constraint firstItem="9Dy-sq-pMo" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="azA-wH-tQ7"/>
+                                                    <constraint firstItem="Cyv-8c-yfb" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="171" id="cjD-oI-ok0"/>
+                                                    <constraint firstItem="doz-1z-2TI" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="e0J-ve-6oV"/>
+                                                    <constraint firstAttribute="height" constant="989" id="hV5-Ti-8kI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Dq3-HV-eLg" secondAttribute="trailing" constant="28" id="iY0-L0-iUS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gLB-2L-6ey" secondAttribute="trailing" constant="32" id="il1-Zi-GAc"/>
+                                                    <constraint firstAttribute="trailing" secondItem="89l-bv-u1M" secondAttribute="trailing" constant="29" id="lBU-1K-MiS"/>
+                                                    <constraint firstItem="sya-5C-Nfu" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="238" id="ldn-YX-2oB"/>
+                                                    <constraint firstItem="H8d-kZ-XdW" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="qBe-ZI-C5o"/>
+                                                    <constraint firstItem="8eJ-M3-F74" firstAttribute="leading" secondItem="OM6-cX-16i" secondAttribute="leading" constant="28" id="ulH-iW-UBm"/>
+                                                    <constraint firstItem="gLB-2L-6ey" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="303" id="wEH-ED-oSa"/>
+                                                    <constraint firstItem="89l-bv-u1M" firstAttribute="top" secondItem="OM6-cX-16i" secondAttribute="top" constant="339" id="wJp-HK-h5k"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="trailing" secondItem="XwO-Ze-GdE" secondAttribute="trailing" constant="126" id="0xS-IC-dmF"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="leading" secondItem="XwO-Ze-GdE" secondAttribute="leading" id="7v8-UM-PKh"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="top" secondItem="XwO-Ze-GdE" secondAttribute="top" id="Pro-PH-419"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="leading" secondItem="q52-vb-CQs" secondAttribute="leading" id="QVS-MZ-bYe"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="trailing" secondItem="XwO-Ze-GdE" secondAttribute="trailing" constant="126" id="X2y-88-RvA"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="width" secondItem="q52-vb-CQs" secondAttribute="width" multiplier="0.655738" constant="126.00000000000003" id="nXX-oG-8lV"/>
+                                            <constraint firstItem="OM6-cX-16i" firstAttribute="bottom" secondItem="XwO-Ze-GdE" secondAttribute="bottom" id="xZF-2E-fEM"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="XwO-Ze-GdE"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="q52-vb-CQs"/>
+                                    </scrollView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="강의평가 쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyH-gK-feg">
-                                <rect key="frame" x="20" y="44" width="118" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhh-Pg-H3y">
-                                <rect key="frame" x="277" y="44" width="99" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.15686275059999999" green="0.27843138579999999" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="15"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="완료(10+P)">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" red="0.15686275059999999" green="0.27843138579999999" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="finishedBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="tdm-YE-8D5"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UCg-OP-Cyz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UBF-9s-bAu" firstAttribute="bottom" secondItem="UCg-OP-Cyz" secondAttribute="bottom" constant="90" id="0tg-Ff-DGV"/>
+                            <constraint firstItem="UCg-OP-Cyz" firstAttribute="trailing" secondItem="UBF-9s-bAu" secondAttribute="trailing" constant="24" id="PXx-X1-y8p"/>
+                            <constraint firstItem="UBF-9s-bAu" firstAttribute="top" secondItem="UCg-OP-Cyz" secondAttribute="top" constant="90" id="ZwF-R8-l0y"/>
+                            <constraint firstItem="UBF-9s-bAu" firstAttribute="leading" secondItem="UCg-OP-Cyz" secondAttribute="leading" constant="24" id="pbN-ti-u7R"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="contentField" destination="loc-ZG-fRz" id="nma-KR-Itl"/>
@@ -3017,7 +3076,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ArQ-p1-jV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357.9710144927537" y="1494.6428571428571"/>
+            <point key="canvasLocation" x="1637.68115942029" y="1423.6607142857142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sfv-Qd-2S7">
+            <objects>
+                <viewController id="Zfl-Dh-0rd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hKp-7k-hob">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKT-Su-3iF">
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vZ2-Ti-RLa"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="usW-i0-hro" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2450.7246376811595" y="1428.3482142857142"/>
         </scene>
         <!--Lecture Exam Write Page-->
         <scene sceneID="XyU-R1-rl1">
