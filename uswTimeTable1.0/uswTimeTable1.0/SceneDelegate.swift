@@ -45,13 +45,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window?.rootViewController = nc
                 self.window?.makeKeyAndVisible() // 화면에 보여줌
             } else {
-                let vc = storyboard.instantiateViewController(withIdentifier: "loginVC") as? loginController
-                let nc = UINavigationController(rootViewController: vc!)
-                self.window?.rootViewController = nc
-                self.window?.makeKeyAndVisible()
-            }
-            /*
-            else {
                 if userDB == 0{
                     let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
                     let nc = UINavigationController(rootViewController: vc!)
@@ -63,7 +56,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     self.window?.rootViewController = nc
                     self.window?.makeKeyAndVisible()
                 }
-            }*/
+            }
+            /*
+            else {
+                let vc = storyboard.instantiateViewController(withIdentifier: "loginVC") as? loginController
+                let nc = UINavigationController(rootViewController: vc!)
+                self.window?.rootViewController = nc
+                self.window?.makeKeyAndVisible()
+            }
+             */
+            /*
+            */
             
         }
         

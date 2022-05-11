@@ -54,6 +54,8 @@
 		AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */; };
 		AFCAABB327EEE651005D9421 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCAABB227EEE651005D9421 /* loginController.swift */; };
 		AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD2706927D4A487001EE098 /* GoogleService-Info.plist */; };
+		AFD470AB282BE3AB001A1119 /* myInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD470AA282BE3AB001A1119 /* myInfoPage.swift */; };
+		AFD470AD282BEB53001A1119 /* myInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD470AC282BEB53001A1119 /* myInfoModel.swift */; };
 		AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7766F27E731A300E83EC8 /* printGIF.swift */; };
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
 		AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */; };
@@ -134,6 +136,8 @@
 		AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailLectureModel.swift; sourceTree = "<group>"; };
 		AFCAABB227EEE651005D9421 /* loginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginController.swift; sourceTree = "<group>"; };
 		AFD2706927D4A487001EE098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AFD470AA282BE3AB001A1119 /* myInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoPage.swift; sourceTree = "<group>"; };
+		AFD470AC282BEB53001A1119 /* myInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoModel.swift; sourceTree = "<group>"; };
 		AFD7766F27E731A300E83EC8 /* printGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = printGIF.swift; sourceTree = "<group>"; };
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = suwikiHomePage.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 				AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */,
 				AFAF2E86280573F3005709C9 /* evaluationWriteModel.swift */,
 				AF0A76B1281AB34E005977C6 /* examWriteModel.swift */,
+				AFD470AC282BEB53001A1119 /* myInfoModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */,
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
 				AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */,
+				AFD470AA282BE3AB001A1119 /* myInfoPage.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
 				AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */,
 				AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */,
+				AFD470AB282BE3AB001A1119 /* myInfoPage.swift in Sources */,
 				AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
@@ -483,6 +490,7 @@
 				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
 				AFE5C105281FF2B000D3E4DF /* searchedResultPage.swift in Sources */,
 				AFAF2E87280573F3005709C9 /* evaluationWriteModel.swift in Sources */,
+				AFD470AD282BEB53001A1119 /* myInfoModel.swift in Sources */,
 				AFAFEF8D277F160900408F46 /* uswTimeTable1_0.xcdatamodeld in Sources */,
 				AF2E1093280AF2AB00051844 /* BaseInterceptor.swift in Sources */,
 				AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */,

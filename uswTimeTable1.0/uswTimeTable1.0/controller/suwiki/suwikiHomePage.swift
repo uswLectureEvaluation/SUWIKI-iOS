@@ -232,6 +232,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         UserDefaults.standard.removeObject(forKey: "id")
         UserDefaults.standard.removeObject(forKey: "pwd")
     }
+    
     func getLearningLecture(){
         self.tableViewUpdateData.removeAll()
         let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureLearningAvg&page=1"
