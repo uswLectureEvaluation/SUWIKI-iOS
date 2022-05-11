@@ -44,18 +44,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 let nc = UINavigationController(rootViewController: vc!)
                 self.window?.rootViewController = nc
                 self.window?.makeKeyAndVisible() // 화면에 보여줌
-            } else {
-                if userDB == 0{
-                    let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
-                    let nc = UINavigationController(rootViewController: vc!)
-                    self.window?.rootViewController = nc
-                    self.window?.makeKeyAndVisible() // 화면에 보여줌
-                } else{
-                    let vc = storyboard.instantiateViewController(withIdentifier: "showVC") as? showTimeTable
-                    let nc = UINavigationController(rootViewController: vc!)
-                    self.window?.rootViewController = nc
-                    self.window?.makeKeyAndVisible()
-                }
+            }
+            else {
+                print("else")
+                let vc = storyboard.instantiateViewController(withIdentifier: "tapbarVC") as? tabBarController
+                let nc = UINavigationController(rootViewController: vc!)
+                self.window?.rootViewController = nc
+                self.window?.makeKeyAndVisible()
             }
             /*
             else {
@@ -66,6 +61,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
              */
             /*
+             else {
+                 if userDB == 0{
+                     let vc = storyboard.instantiateViewController(withIdentifier: "firstVC") as? firstSceneCheck
+                     let nc = UINavigationController(rootViewController: vc!)
+                     self.window?.rootViewController = nc
+                     self.window?.makeKeyAndVisible() // 화면에 보여줌
+                 } else{
+                     let vc = storyboard.instantiateViewController(withIdentifier: "showVC") as? showTimeTable
+                     let nc = UINavigationController(rootViewController: vc!)
+                     self.window?.rootViewController = nc
+                     self.window?.makeKeyAndVisible()
+                 }
+             }
             */
             
         }

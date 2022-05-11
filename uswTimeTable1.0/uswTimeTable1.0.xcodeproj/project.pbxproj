@@ -56,6 +56,7 @@
 		AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFD2706927D4A487001EE098 /* GoogleService-Info.plist */; };
 		AFD470AB282BE3AB001A1119 /* myInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD470AA282BE3AB001A1119 /* myInfoPage.swift */; };
 		AFD470AD282BEB53001A1119 /* myInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD470AC282BEB53001A1119 /* myInfoModel.swift */; };
+		AFD470AF282BF69C001A1119 /* moveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD470AE282BF69B001A1119 /* moveViewController.swift */; };
 		AFD7767027E731A300E83EC8 /* printGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD7766F27E731A300E83EC8 /* printGIF.swift */; };
 		AFD7767427E7486C00E83EC8 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = AFD7767327E7486C00E83EC8 /* loading.gif */; };
 		AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */; };
@@ -138,6 +139,7 @@
 		AFD2706927D4A487001EE098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AFD470AA282BE3AB001A1119 /* myInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoPage.swift; sourceTree = "<group>"; };
 		AFD470AC282BEB53001A1119 /* myInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myInfoModel.swift; sourceTree = "<group>"; };
+		AFD470AE282BF69B001A1119 /* moveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moveViewController.swift; sourceTree = "<group>"; };
 		AFD7766F27E731A300E83EC8 /* printGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = printGIF.swift; sourceTree = "<group>"; };
 		AFD7767327E7486C00E83EC8 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = suwikiHomePage.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		AFD7766C27E7178B00E83EC8 /* timeTable */ = {
 			isa = PBXGroup;
 			children = (
+				AFD470AE282BF69B001A1119 /* moveViewController.swift */,
 				AFD7766F27E731A300E83EC8 /* printGIF.swift */,
 				AF07990427E3565300B39617 /* loadingView.swift */,
 				AFA725442781B6D1003EE008 /* firstSceneCheck.swift */,
@@ -484,6 +487,7 @@
 				AFE076B127F5BE56009E32B0 /* suwikiHomePage.swift in Sources */,
 				AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */,
 				AFE5C101281FD6E500D3E4DF /* findIdPage.swift in Sources */,
+				AFD470AF282BF69C001A1119 /* moveViewController.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,

@@ -104,13 +104,20 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let AD = UIApplication.shared.delegate as? AppDelegate
-        AD?.lectureId = tableViewUpdateData[indexPath.row].id 
-        // tokenReissuance(id: viewData[indexPath.row].id)
-        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-        detailVC.lectureId = tableViewUpdateData[indexPath.row].id 
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+        if keychain.get("AccessToken") != nil{
+            let AD = UIApplication.shared.delegate as? AppDelegate
+            AD?.lectureId = tableViewUpdateData[indexPath.row].id
+            // tokenReissuance(id: viewData[indexPath.row].id)
+            let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+            detailVC.lectureId = tableViewUpdateData[indexPath.row].id
+            self.navigationController?.pushViewController(detailVC, animated: true)
 
+        } else {
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
                
         
  
@@ -296,9 +303,15 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     @IBAction func searchBtnClicked(_ sender: Any) {
-        let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "resultVC") as! searchedResultPage
-        resultVC.searchData = searchTextField.text!
-        self.navigationController?.pushViewController(resultVC, animated: true)
+        if keychain.get("AccessToken") != nil {
+            let resultVC = self.storyboard?.instantiateViewController(withIdentifier: "resultVC") as! searchedResultPage
+            resultVC.searchData = searchTextField.text!
+            self.navigationController?.pushViewController(resultVC, animated: true)
+        } else {
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
     }
     /*
     func tokenReissuance(id: Int){
