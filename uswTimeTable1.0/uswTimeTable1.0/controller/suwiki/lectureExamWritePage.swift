@@ -9,9 +9,16 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import DropDown
 
 class lectureExamWritePage: UIViewController {
-
+    
+    @IBOutlet weak var examTypeDropDown: UIView!
+    @IBOutlet weak var examTypeTextField: UILabel!
+    
+    @IBOutlet weak var semesterDropDown: UIView!
+    @IBOutlet weak var semesterTextField: UILabel!
+    
     @IBOutlet weak var lectureNameLabel: UILabel!
     
     @IBOutlet weak var easyLevelBtn: UIButton!
@@ -27,6 +34,9 @@ class lectureExamWritePage: UIViewController {
     
     @IBOutlet weak var contentField: UITextView!
     
+   
+    let semeDropDown = DropDown()
+    let examDropDown = DropDown()
     let keychain = KeychainSwift()
     
     var levelType = examBtnClickedType.levelType()
@@ -38,11 +48,42 @@ class lectureExamWritePage: UIViewController {
     
     var examTypeArray: [String] = []
     var examTypeArrayCount = 0
+
+    var semesterList: [String] = []
+    let examTypeList = ["중간고사", "기말고사", "쪽지", "기타"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(keychain.get("AccessToken"))
         print(lectureId)
+        semeDropDown.anchorView = semesterDropDown
+        semeDropDown.dataSource = semesterList
+        semeDropDown.bottomOffset = CGPoint(x: 0, y:(semeDropDown.anchorView?.plainView.bounds.height)!)
+        semeDropDown.direction = .bottom
+        semeDropDown.textFont = UIFont.systemFont(ofSize: 16)
+
+        semeDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.semesterTextField.text = semesterList[index]
+            self.semesterTextField.font = UIFont.systemFont(ofSize: 16)
+            self.semesterTextField.textColor = UIColor.black
+            self.semesterTextField.textAlignment = .center
+        }
+        
+        examDropDown.anchorView = examTypeDropDown
+        examDropDown.dataSource = examTypeList
+        examDropDown.bottomOffset = CGPoint(x: 0, y:(examDropDown.anchorView?.plainView.bounds.height)!)
+        examDropDown.direction = .bottom
+        examDropDown.textFont = UIFont.systemFont(ofSize: 16)
+
+        examDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+            self.examTypeTextField.text = examTypeList[index]
+            self.examTypeTextField.font = UIFont.systemFont(ofSize: 16)
+            self.examTypeTextField.textColor = UIColor.black
+            self.examTypeTextField.textAlignment = .center
+        }
+        
+        
+        
     }
     
 
@@ -51,26 +92,30 @@ class lectureExamWritePage: UIViewController {
     
     
     @IBAction func finishBtnClicked(_ sender: Any) {
-        if examTypeArray.count == 0 || contentField.text == "" || levelType.levelPoint == 3 {
-            let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
+        if examTypeArray.count == 0 || contentField.text == "" || levelType.levelPoint == 3 || examTypeTextField.text == "선택" || semesterTextField.text == "선택" {
+            let alert = UIAlertController(title:"빈 데이터가 있어요 !",
                 message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(cancle)
             self.present(alert, animated: true, completion: nil)
-        } else {
+        }
+        
+        else {
             let examInfo: String = examTypeArray.joined(separator: ", ")
-            let url = "https://api.suwiki.kr/evaluate-posts/write/?lectureId=\(lectureId)"
-            
+            let url = "https://api.suwiki.kr/exam-posts/write/?lectureId=\(lectureId)"
+        
             let parameters: Parameters = [
                 "lectureName" : lectureName, //과목 이름
                 "professor" : professor, //교수이름
-                "selectedSemester" : "2022-1", //학기 (ex) 2022-1)
+                "semester" : semesterTextField.text!, //학기 (ex) 2022-1)
                 "examInfo" : examInfo, //시험 방식
-                "examType" : "-",
+                "examType" : examTypeTextField.text!,
                 "examDifficulty" : "쉬움", //시험 난이도
                 "content" : contentField.text!
             ]
+            print(parameters)
+            
             let headers: HTTPHeaders = [
                 "Authorization" : String(keychain.get("AccessToken") ?? "")
             ]

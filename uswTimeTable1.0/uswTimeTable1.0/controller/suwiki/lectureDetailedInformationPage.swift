@@ -145,6 +145,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
+            // 이후에 , 기준으로 쪼개서 append 한 상태로 옮겨주면 될듯함.
+            nextVC.semesterList.append(detailLectureArray[0].semester)
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
         } else {
@@ -152,6 +154,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
+            nextVC.semesterList.append(detailLectureArray[0].semester)
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
             
@@ -243,7 +246,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let data = response.value
             
             let json = JSON(data ?? "")["data"]
-      
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
@@ -253,9 +255,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
-            
         }
-        
         
     }
     
@@ -313,7 +313,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 }
                 let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
-                print(jsonData["semester"].stringValue)
+                
                 self.detailEvaluationArray.append(readData)
             }
             self.tableView.reloadData()
@@ -361,7 +361,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
                */
            
-            print(self.detailExamArray)
         }
     }
     

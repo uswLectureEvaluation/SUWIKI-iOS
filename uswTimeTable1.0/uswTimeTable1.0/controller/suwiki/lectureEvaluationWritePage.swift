@@ -62,7 +62,7 @@ class lectureEvaluationWritePage: UIViewController {
     let keychain = KeychainSwift()
     let dropDown = DropDown()
     
-    let semesterList = ["2022-1", "2021-1", "2020-1"]
+    var semesterList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
