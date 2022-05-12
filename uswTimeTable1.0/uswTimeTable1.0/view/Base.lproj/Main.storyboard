@@ -2020,6 +2020,72 @@
             </objects>
             <point key="canvasLocation" x="-2606" y="361"/>
         </scene>
+        <!--Written Post Page-->
+        <scene sceneID="pqN-IU-mE4">
+            <objects>
+                <viewController id="trB-nO-Rsg" customClass="writtenPostPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QPU-C2-BVJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="PDP-vF-Yit">
+                                <rect key="frame" x="24" y="64" width="96" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="96" id="PaF-u3-5ue"/>
+                                    <constraint firstAttribute="height" constant="26" id="qNH-2f-aqv"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRw-at-nPs">
+                                <rect key="frame" x="0.0" y="107" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.87843137979999997" green="0.87843137979999997" blue="0.87843137979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="2XO-pz-9sp"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lxh-Md-ZuL">
+                                <rect key="frame" x="24" y="198" width="366" height="654"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-tU-8jf">
+                                <rect key="frame" x="24" y="148" width="70" height="37"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="강의평가">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eej-wd-eVT">
+                                <rect key="frame" x="107" y="148" width="70" height="37"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="시험정보">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nip-mk-HYT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nip-mk-HYT" firstAttribute="bottom" secondItem="Lxh-Md-ZuL" secondAttribute="bottom" constant="10" id="1TE-7Q-uWt"/>
+                            <constraint firstItem="fgv-tU-8jf" firstAttribute="leading" secondItem="nip-mk-HYT" secondAttribute="leading" constant="24" id="1k2-YO-QDZ"/>
+                            <constraint firstItem="PDP-vF-Yit" firstAttribute="top" secondItem="nip-mk-HYT" secondAttribute="top" constant="20" id="1og-bv-adS"/>
+                            <constraint firstItem="PDP-vF-Yit" firstAttribute="leading" secondItem="nip-mk-HYT" secondAttribute="leading" constant="24" id="2na-Jx-xcQ"/>
+                            <constraint firstItem="nip-mk-HYT" firstAttribute="trailing" secondItem="Lxh-Md-ZuL" secondAttribute="trailing" constant="24" id="6Hj-U0-QBT"/>
+                            <constraint firstItem="Eej-wd-eVT" firstAttribute="leading" secondItem="nip-mk-HYT" secondAttribute="leading" constant="107" id="6vB-d4-Ny3"/>
+                            <constraint firstItem="Lxh-Md-ZuL" firstAttribute="leading" secondItem="nip-mk-HYT" secondAttribute="leading" constant="24" id="79M-8J-5NA"/>
+                            <constraint firstItem="fgv-tU-8jf" firstAttribute="top" secondItem="nip-mk-HYT" secondAttribute="top" constant="104" id="DNO-Nw-HoE"/>
+                            <constraint firstItem="Lxh-Md-ZuL" firstAttribute="top" secondItem="nip-mk-HYT" secondAttribute="top" constant="154" id="Nk6-Rq-Kqe"/>
+                            <constraint firstAttribute="trailing" secondItem="CRw-at-nPs" secondAttribute="trailing" id="dTb-Du-EfL"/>
+                            <constraint firstItem="Eej-wd-eVT" firstAttribute="top" secondItem="nip-mk-HYT" secondAttribute="top" constant="104" id="hQF-ET-lTG"/>
+                            <constraint firstItem="CRw-at-nPs" firstAttribute="top" secondItem="nip-mk-HYT" secondAttribute="top" constant="63" id="k1R-C4-9rF"/>
+                            <constraint firstItem="CRw-at-nPs" firstAttribute="leading" secondItem="QPU-C2-BVJ" secondAttribute="leading" id="s4O-dZ-Qbb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TuH-aS-i4g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2949.275362318841" y="1080.8035714285713"/>
+        </scene>
         <!--My Info Page-->
         <scene sceneID="3pF-DZ-iJB">
             <objects>
@@ -2579,31 +2645,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9h-6m-Zfm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2036.2318840579712" y="1088.1696428571429"/>
-        </scene>
-        <!--Move View Controller-->
-        <scene sceneID="P6w-bk-ZkZ">
-            <objects>
-                <viewController storyboardIdentifier="moveVC" id="jfB-ol-DG1" customClass="moveViewController" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uft-wP-nlb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kb2-gK-C02">
-                                <rect key="frame" x="87" y="369" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="W5b-hS-EE3"/>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Z8X-D8-wAC"/>
-                    <connections>
-                        <outlet property="loadingGif" destination="kb2-gK-C02" id="DNO-Oq-o9Z"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x4R-RA-WCO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="142" y="-540"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="RSH-va-92c">

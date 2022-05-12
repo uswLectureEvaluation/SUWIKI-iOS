@@ -49,6 +49,7 @@
 		AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF8E277F160B00408F46 /* Assets.xcassets */; };
 		AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */; };
 		AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */; };
+		AFBC03F7282D367E00DCEDA6 /* writtenPostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */; };
 		AFBD08D52822776D00A923CB /* searchedResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBD08D32822776D00A923CB /* searchedResultCell.swift */; };
 		AFBD08D62822776D00A923CB /* searchedResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBD08D42822776D00A923CB /* searchedResultCell.xib */; };
 		AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */; };
@@ -132,6 +133,7 @@
 		AFAFEF91277F160B00408F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureDetailedInformationPage.swift; sourceTree = "<group>"; };
+		AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writtenPostPage.swift; sourceTree = "<group>"; };
 		AFBD08D32822776D00A923CB /* searchedResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchedResultCell.swift; sourceTree = "<group>"; };
 		AFBD08D42822776D00A923CB /* searchedResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = searchedResultCell.xib; sourceTree = "<group>"; };
 		AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailLectureModel.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
 				AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */,
 				AFD470AA282BE3AB001A1119 /* myInfoPage.swift */,
+				AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */,
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
 				AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */,
+				AFBC03F7282D367E00DCEDA6 /* writtenPostPage.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
 				AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */,
