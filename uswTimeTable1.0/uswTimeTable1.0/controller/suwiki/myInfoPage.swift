@@ -23,6 +23,17 @@ class myInfoPage: UIViewController {
     
     @IBOutlet weak var userTotalPointLabel: UILabel!
     
+    @IBOutlet weak var writtenEvalNumber: UILabel!
+    @IBOutlet weak var writtenExamNumber: UILabel!
+    @IBOutlet weak var viewExamNumber: UILabel!
+    
+    
+    @IBOutlet weak var writtenEvalPoint: UILabel!
+    @IBOutlet weak var writtenExamPoint: UILabel!
+    @IBOutlet weak var viewExamPoint: UILabel!
+    
+    
+    
     let keychain = KeychainSwift()
     
     var userInfo = MyInfo(loginId: "", email: "", point: 0, writtenEvaluation: 0, writtenExam: 0, viewExam: 0)
@@ -95,7 +106,18 @@ class myInfoPage: UIViewController {
         loginIdLabel.text = userInfo.loginId
         emailLabel.text = userInfo.email
         userTotalPointLabel.text = "\(userInfo.point)P"
+        
+        writtenEvalNumber.text = "\(userInfo.writtenEvaluation)"
+        writtenExamNumber.text = "\(userInfo.writtenExam)"
+        viewExamNumber.text = "\(userInfo.viewExam)"
+        
+        writtenEvalPoint.text = "+\(userInfo.writtenEvaluation * 10)"
+        writtenExamPoint.text = "+\(userInfo.writtenExam * 20)"
+        viewExamPoint.text = "-\(userInfo.viewExam * 20)"
+        
     }
     
-
+    @IBAction func writtenPostBtnClicked(_ sender: Any) {
+    }
+    
 }
