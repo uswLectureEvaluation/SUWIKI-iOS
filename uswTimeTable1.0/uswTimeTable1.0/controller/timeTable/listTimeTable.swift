@@ -120,7 +120,7 @@ class listTimeTable: UIViewController, UITableViewDataSource, UITableViewDelegat
             if realm.objects(userDB.self).count > 0{
                 UserDefaults.standard.set(uswUser[0].timetableName, forKey: "name")
             } else {
-                let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "firstVC") as! firstSceneCheck
+                let firstVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! showTimeTable
                 self.navigationController?.pushViewController(firstVC, animated: true)
             }
         })

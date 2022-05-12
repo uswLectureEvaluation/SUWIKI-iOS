@@ -28,6 +28,8 @@ class myInfoPage: UIViewController {
     var userInfo = MyInfo(loginId: "", email: "", point: 0, writtenEvaluation: 0, writtenExam: 0, viewExam: 0)
     
     override func viewDidLoad() {
+        navigationBarHidden()
+        navigationBackSwipeMotion()
         super.viewDidLoad()
         loginInfoView.isHidden = true
         loginPointView.isHidden = true
@@ -52,6 +54,15 @@ class myInfoPage: UIViewController {
         self.navigationController?.pushViewController(nextVC, animated: true)
         
     }
+    
+    func navigationBarHidden() {
+            self.navigationController?.navigationBar.isHidden = true
+        }
+    
+    func navigationBackSwipeMotion() {
+           self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+       }
+    
     func getInfoData(){
         if let accessToken = keychain.get("AccessToken"){
             
