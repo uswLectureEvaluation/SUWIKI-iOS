@@ -29,7 +29,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시험유형" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHm-oy-ciU">
-                        <rect key="frame" x="111" y="71" width="41.5" height="14"/>
+                        <rect key="frame" x="105.5" y="71" width="41.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="cOP-tT-S2o"/>
                         </constraints>
@@ -73,7 +73,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="모릅니다~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znT-rQ-bob">
-                        <rect key="frame" x="160" y="71" width="49.5" height="14"/>
+                        <rect key="frame" x="155" y="71" width="49.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="Xpe-Vj-0yr"/>
                         </constraints>
@@ -94,13 +94,13 @@
                     <constraint firstAttribute="bottom" secondItem="aHd-vg-c8g" secondAttribute="bottom" constant="10" id="7sK-ob-knM"/>
                     <constraint firstItem="aHd-vg-c8g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="C9U-UO-bIf"/>
                     <constraint firstItem="aHd-vg-c8g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="108" id="CDb-MR-cf7"/>
+                    <constraint firstItem="znT-rQ-bob" firstAttribute="leading" secondItem="DHm-oy-ciU" secondAttribute="trailing" constant="8" id="DSL-9z-Gti"/>
                     <constraint firstItem="VtC-Ea-LT1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="IQu-NU-xnz"/>
                     <constraint firstItem="TvI-jP-3P7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="MJl-g6-PyP"/>
+                    <constraint firstItem="DHm-oy-ciU" firstAttribute="leading" secondItem="VtC-Ea-LT1" secondAttribute="trailing" constant="15" id="PIk-88-649"/>
                     <constraint firstItem="DBw-Y8-Orj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="R7K-un-14w"/>
                     <constraint firstItem="znT-rQ-bob" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="VcQ-kV-JHT"/>
-                    <constraint firstItem="DHm-oy-ciU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="111" id="jem-UM-8BW"/>
                     <constraint firstItem="DHm-oy-ciU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="llk-HN-c61"/>
-                    <constraint firstItem="znT-rQ-bob" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="160" id="pNf-3w-q8P"/>
                     <constraint firstItem="TvI-jP-3P7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="xlf-9F-4nj"/>
                     <constraint firstAttribute="trailing" secondItem="aHd-vg-c8g" secondAttribute="trailing" constant="20" id="y31-3B-K0F"/>
                 </constraints>
@@ -108,8 +108,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="content" destination="aHd-vg-c8g" id="e4Z-IG-H30"/>
-                <outlet property="examDifficulty" destination="znT-rQ-bob" id="kPv-uI-wsP"/>
-                <outlet property="examType" destination="VtC-Ea-LT1" id="p6L-Xp-pF0"/>
+                <outlet property="examDifficulty" destination="VtC-Ea-LT1" id="3pb-pj-g3y"/>
+                <outlet property="examType" destination="znT-rQ-bob" id="Gdm-LJ-sYx"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="51.5625"/>
         </tableViewCell>

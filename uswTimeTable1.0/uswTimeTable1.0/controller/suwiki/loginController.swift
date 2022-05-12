@@ -11,6 +11,8 @@ import SwiftyJSON
 import KeychainSwift
 import SwiftUI
 
+
+// 로그인 된 경우 메인페이지로 이동
 class loginController: UIViewController {
 
     
@@ -127,8 +129,8 @@ class loginController: UIViewController {
                 print(self.keychain.get("AccessToken") ?? "")
                 print(self.keychain.get("RefreshToken") ?? "")
                 
-                let tapbarVC = self.storyboard?.instantiateViewController(withIdentifier: "tapbarVC") as! tabBarController
-                self.navigationController?.pushViewController(tapbarVC, animated: true)
+                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "homePageVC") as! suwikiHomePage
+                self.navigationController?.pushViewController(nextVC, animated: true)
                 
             } else { // 이후에 alert로 수정 예정
                 print("로그인 실패")
