@@ -86,7 +86,9 @@ class myInfoPage: UIViewController {
                 let data = response.data
                 let json = JSON(data!)
                 
-                var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenEvaluation"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
+                print(json)
+                
+                var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenLecture"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
                 
                 self.userInfo = readUserData
                 self.logoutInfoView.isHidden = true
@@ -94,6 +96,7 @@ class myInfoPage: UIViewController {
                 self.viewUpdate()
                 self.loginInfoView.isHidden = false
                 self.loginPointView.isHidden = false
+                
             }
         } else {
             loginInfoView.isHidden = true
@@ -118,6 +121,8 @@ class myInfoPage: UIViewController {
     }
     
     @IBAction func writtenPostBtnClicked(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "writtenPostVC") as! writtenPostPage
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }
