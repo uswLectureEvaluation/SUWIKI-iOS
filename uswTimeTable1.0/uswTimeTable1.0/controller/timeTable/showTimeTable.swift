@@ -16,6 +16,9 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     
     @IBOutlet weak var timetable: Elliotable!
     @IBOutlet weak var timeTableNameTxt: UILabel!
+    @IBOutlet weak var timeTableView: UIView!
+    
+    @IBOutlet weak var firstSceneView: UIView!
     
     let dayString: [String] = ["월", "화", "수", "목", "금"]
     
@@ -24,10 +27,11 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
    
     
     var timeTableName = ""
- 
+    
     
     override func viewDidLoad() {
-        
+
+        checkUserData()
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         navigationBarHidden()
@@ -39,7 +43,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         // json 시간표 데이터 입력
 }
     override func viewWillAppear(_ animated: Bool) {
-
+        checkUserData()
         print("viewwillappear")
         navigationBarHidden()
         checkTimeTable()
@@ -49,7 +53,27 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     }
     
     
+    @IBAction func makeTimeTableBtnClicked(_ sender: Any) {
+        let makeVC = self.storyboard?.instantiateViewController(withIdentifier: "makeVC") as! uswMakeSchedule
+        self.navigationController?.pushViewController(makeVC, animated: true)
+    }
     
+    func checkUserData() {
+        firstSceneView.isHidden = true
+        timeTableView.isHidden = true
+        timetable.isHidden = true
+        let userData = realm.objects(userDB.self).count
+        if userData > 0 {
+            firstSceneView.isHidden = true
+            timeTableView.isHidden = false
+            timetable.isHidden = false
+        } else {
+            timeTableView.isHidden = true
+            timetable.isHidden = true
+            firstSceneView.isHidden = false
+        }
+    }
+   
     func checkTimeTable(){
         var userData: String = UserDefaults.standard.string(forKey: "name") ?? ""
         let dbTimeTable = realm.objects(userDB.self)
