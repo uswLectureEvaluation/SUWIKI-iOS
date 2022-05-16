@@ -14,7 +14,7 @@ struct WrittenExamPostData {
     let professor: String
     let majorType: String
     let selectedSemester: String
-    let semesterList: String
+    let examType: String
     let examInfo: String
     let examDifficulty: String
     let content: String

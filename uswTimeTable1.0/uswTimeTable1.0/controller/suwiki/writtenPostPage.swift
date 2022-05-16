@@ -47,6 +47,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         tableViewEvalData.removeAll()
         getWrittenEvalData(page: 1)
+        getWrittenExamData(page: 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,7 +111,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             if json != "" {
                 self.tableViewNumber = 1
-                print(json)
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
                     
@@ -153,7 +153,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.tableViewEvalData.append(readData)
                 }
                 self.tableView.reloadData()
-                print(self.tableViewEvalData)
             } else {
                 self.tableViewNumber = 0
             }
@@ -167,6 +166,34 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         let parameters: Parameters = [
             "page" : page
         ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            
+            let data = response.data
+            let json = JSON(data ?? "")
+            
+            if json != "" {
+                for index in 0..<json["data"].count{
+                    let jsonData = json["data"][index]
+                 
+                    let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                    
+                    self.tableViewExamData.append(readData)
+                     
+                }// 셀이랑 시험 정보 연결, 시험정보 수정, 시험정보 삭제 진행
+                self.tableView.reloadData()
+            } else {
+                self.tableViewNumber = 0
+            }
+            
+            
+            
+
+        }
         
         
         
