@@ -56,6 +56,9 @@ class lectureExamWritePage: UIViewController {
         super.viewDidLoad()
         print(keychain.get("AccessToken"))
         print(lectureId)
+        
+        
+        
         semeDropDown.anchorView = semesterDropDown
         semeDropDown.dataSource = semesterList
         semeDropDown.bottomOffset = CGPoint(x: 0, y:(semeDropDown.anchorView?.plainView.bounds.height)!)
@@ -145,7 +148,6 @@ class lectureExamWritePage: UIViewController {
                 } else {
                     self.dismiss(animated: true, completion: nil)
                 }
-                
             }
         }
         

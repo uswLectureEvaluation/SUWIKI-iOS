@@ -26,6 +26,7 @@ class writtenEvalPostCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
     
+    @IBOutlet weak var adjustBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

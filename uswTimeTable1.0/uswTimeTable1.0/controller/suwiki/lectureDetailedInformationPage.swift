@@ -147,6 +147,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureId = lectureId
             // 이후에 , 기준으로 쪼개서 append 한 상태로 옮겨주면 될듯함.
             nextVC.semesterList.append(detailLectureArray[0].semester)
+            nextVC.adjustBtn = 0
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
         } else {

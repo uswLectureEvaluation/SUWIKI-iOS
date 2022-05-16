@@ -35,7 +35,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         let examPostCell = UINib(nibName: "writtenExamPostCell", bundle: nil)
         tableView.register(examPostCell, forCellReuseIdentifier: "writtenExamCell")
         
-        getWrittenEvalData(page: 1)
         
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 210
@@ -43,6 +42,11 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableViewEvalData.removeAll()
+        getWrittenEvalData(page: 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,6 +69,10 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.difficultyLabel.text = tableViewEvalData[indexPath.row].difficulty
             
             cell.contentLabel.text = tableViewEvalData[indexPath.row].content + "\n"
+            
+            cell.adjustBtn.tag = indexPath.row
+            cell.adjustBtn.addTarget(self, action: #selector(adjustBtnClicked), for: .touchUpInside)
+
             
             return cell
         }
@@ -149,9 +157,68 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         }
     }
-
-
+    
+    
     func getWrittenExamData() {
         let url = "https://api.suwiki.kr/exam-posts/findByUserIdx/?page={}"
+    }
+    
+    
+    @objc func adjustBtnClicked(sender: UIButton)
+    {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+        
+        switch tableViewEvalData[indexPath.row].team {
+        case "없음" :
+            nextVC.teamWorkType.haveTeamWork = false
+            nextVC.teamWorkType.noTeamWork = true
+        case "있음" :
+            nextVC.teamWorkType.haveTeamWork = true
+            nextVC.teamWorkType.noTeamWork = false
+        default:
+            break
+        }
+        
+        switch tableViewEvalData[indexPath.row].homework{
+        case "없음" :
+            nextVC.homeworkType.noHomework = true
+            nextVC.homeworkType.usuallyHomework = false
+            nextVC.homeworkType.manyHomework = false
+        case "보통" :
+            nextVC.homeworkType.noHomework = false
+            nextVC.homeworkType.usuallyHomework = true
+            nextVC.homeworkType.manyHomework = false
+        case "많음" :
+            nextVC.homeworkType.noHomework = false
+            nextVC.homeworkType.usuallyHomework = false
+            nextVC.homeworkType.manyHomework = true
+        default:
+            break
+        }
+        
+        switch tableViewEvalData[indexPath.row].difficulty{
+        case "개꿀" :
+            nextVC.difficultyType.easyDifficulty = true
+            nextVC.difficultyType.normalDifficulty = false
+            nextVC.difficultyType.hardDifficulty = false
+        case "보통" :
+            nextVC.difficultyType.easyDifficulty = false
+            nextVC.difficultyType.normalDifficulty = true
+            nextVC.difficultyType.hardDifficulty = false
+        case "까다로움" :
+            nextVC.difficultyType.easyDifficulty = false
+            nextVC.difficultyType.normalDifficulty = false
+            nextVC.difficultyType.hardDifficulty = true
+        default:
+            break
+        }
+    
+        nextVC.adjustBtn = 1
+        nextVC.evaluateIdx = tableViewEvalData[indexPath.row].id
+        nextVC.adjustContent = tableViewEvalData[indexPath.row].content
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
     }
 }
