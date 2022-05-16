@@ -113,7 +113,7 @@ class lectureEvaluationWritePage: UIViewController {
             let parameters = [
                 "lectureName" : lectureName, //과목이름
                 "professor" : professor, //교수이름
-                "semester" : semesterTextField.text,//학기
+                "selectedSemester" : semesterTextField.text,//학기
                 "satisfaction" : Float(satisfactionPoint.text!) ?? 0, //만족도
                 "learning" : Float(learningPoint.text!) ?? 0, //배움지수
                 "honey" : Float(honeyPoint.text!) ?? 0, //꿀강지수

@@ -35,7 +35,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         let examPostCell = UINib(nibName: "writtenExamPostCell", bundle: nil)
         tableView.register(examPostCell, forCellReuseIdentifier: "writtenExamCell")
         
-        getWrittenEvalData(page: 0)
+        getWrittenEvalData(page: 1)
         
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 210
@@ -93,15 +93,17 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        AF.request(url, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
             let data = response.data
             let json = JSON(data ?? "")
             
             if json != "" {
                 self.tableViewNumber = 1
+                print(json)
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
+                    
                     
                     var team = ""
                     var difficulty = ""

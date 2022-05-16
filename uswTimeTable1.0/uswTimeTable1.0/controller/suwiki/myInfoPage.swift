@@ -88,7 +88,7 @@ class myInfoPage: UIViewController {
                 
                 print(json)
                 
-                var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenLecture"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
+                var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenEvaluation"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
                 
                 self.userInfo = readUserData
                 self.logoutInfoView.isHidden = true
