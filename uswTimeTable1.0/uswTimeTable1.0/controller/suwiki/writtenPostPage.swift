@@ -161,8 +161,15 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     
-    func getWrittenExamData() {
-        let url = "https://api.suwiki.kr/exam-posts/findByUserIdx/?page={}"
+    func getWrittenExamData(page: Int) {
+        let url = "https://api.suwiki.kr/exam-posts/findByUserIdx/"
+        
+        let parameters: Parameters = [
+            "page" : page
+        ]
+        
+        
+        
     }
     
     

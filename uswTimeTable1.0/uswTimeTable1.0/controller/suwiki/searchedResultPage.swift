@@ -140,7 +140,6 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
             page += 1
             if page <= pageCount {
                 getLectureData(searchValue: searchData, option: option, page: page)
-                print("API 호출")
             }
         }
     }

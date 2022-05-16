@@ -111,7 +111,7 @@ class lectureExamWritePage: UIViewController {
             let parameters: Parameters = [
                 "lectureName" : lectureName, //과목 이름
                 "professor" : professor, //교수이름
-                "semester" : semesterTextField.text!, //학기 (ex) 2022-1)
+                "selectedSemester" : semesterTextField.text!, //학기 (ex) 2022-1)
                 "examInfo" : examInfo, //시험 방식
                 "examType" : examTypeTextField.text!,
                 "examDifficulty" : "쉬움", //시험 난이도

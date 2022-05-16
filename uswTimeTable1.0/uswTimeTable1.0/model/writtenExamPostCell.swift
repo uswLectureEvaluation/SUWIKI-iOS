@@ -9,6 +9,16 @@ import UIKit
 
 class writtenExamPostCell: UITableViewCell {
 
+    @IBOutlet weak var semesterLabel: UILabel!
+    
+    @IBOutlet weak var lectureNameLabel: UILabel!
+    @IBOutlet weak var professorLabel: UILabel!
+    
+    @IBOutlet weak var examInfoLabel: UILabel!
+    @IBOutlet weak var examDifficultyLabel: UILabel!
+    
+    @IBOutlet weak var contentLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

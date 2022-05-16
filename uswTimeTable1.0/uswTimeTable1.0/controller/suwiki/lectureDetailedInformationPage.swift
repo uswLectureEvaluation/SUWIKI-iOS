@@ -242,7 +242,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
 
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
             let data = response.value
             
@@ -277,7 +277,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
     
@@ -330,12 +330,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         ]
         
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
-                print("false")
             } else if json["examDataExist"].boolValue == true {
                 
                 if json["data"].count == 0{
