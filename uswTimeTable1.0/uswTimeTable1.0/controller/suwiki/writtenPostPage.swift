@@ -64,7 +64,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.homeworkLabel.text = tableViewEvalData[indexPath.row].homework
             cell.difficultyLabel.text = tableViewEvalData[indexPath.row].difficulty
             
-            cell.contentLabel.text = tableViewEvalData[indexPath.row].content
+            cell.contentLabel.text = tableViewEvalData[indexPath.row].content + "\n"
             
             return cell
         }
