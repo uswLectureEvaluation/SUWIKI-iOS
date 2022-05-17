@@ -4729,6 +4729,9 @@
                                                                 <buttonConfiguration key="configuration" style="plain" title="">
                                                                     <backgroundConfiguration key="background"/>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="semesterBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="e5e-XF-Hr6"/>
+                                                                </connections>
                                                             </button>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrowtriangle.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lQR-u5-vhV">
                                                                 <rect key="frame" x="110" y="15" width="16" height="8"/>
@@ -4760,6 +4763,9 @@
                                                                 <buttonConfiguration key="configuration" style="plain" title="">
                                                                     <backgroundConfiguration key="background"/>
                                                                 </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="examTypeBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="UZV-Aa-lQu"/>
+                                                                </connections>
                                                             </button>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrowtriangle.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ATV-pQ-hXh">
                                                                 <rect key="frame" x="110" y="15" width="16" height="8"/>
@@ -4773,6 +4779,20 @@
                                                             <constraint firstAttribute="width" constant="134" id="xar-56-bIN"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tz-jh-xmn">
+                                                        <rect key="frame" x="322" y="26" width="32" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="1hb-1W-fbL"/>
+                                                            <constraint firstAttribute="width" constant="32" id="5yb-8j-R7H"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system">
+                                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="closeBtnClicked:" destination="hPY-dP-FKV" eventType="touchUpInside" id="bn7-Ha-5Qs"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -4815,7 +4835,9 @@
                                                     <constraint firstItem="HsR-iv-TO5" firstAttribute="leading" secondItem="fDp-Mq-bU3" secondAttribute="leading" id="l5Q-gc-78K"/>
                                                     <constraint firstItem="rBg-Xf-JNi" firstAttribute="top" secondItem="fDp-Mq-bU3" secondAttribute="top" constant="219" id="mCm-ez-B8V"/>
                                                     <constraint firstItem="LpQ-5t-G5E" firstAttribute="leading" secondItem="fDp-Mq-bU3" secondAttribute="leading" constant="174" id="mRH-RI-hlA"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4tz-jh-xmn" secondAttribute="trailing" constant="12" id="p40-5z-sAf"/>
                                                     <constraint firstItem="zF5-fW-USx" firstAttribute="leading" secondItem="fDp-Mq-bU3" secondAttribute="leading" constant="174" id="s5z-gM-qgX"/>
+                                                    <constraint firstItem="4tz-jh-xmn" firstAttribute="top" secondItem="fDp-Mq-bU3" secondAttribute="top" constant="26" id="uRC-dh-oD0"/>
                                                     <constraint firstItem="wd6-4w-Bww" firstAttribute="leading" secondItem="fDp-Mq-bU3" secondAttribute="leading" constant="28" id="uVY-QO-YtF"/>
                                                     <constraint firstItem="ZKz-MP-EgO" firstAttribute="top" secondItem="fDp-Mq-bU3" secondAttribute="top" constant="274" id="uon-iw-9hK"/>
                                                     <constraint firstItem="hzb-GF-PDh" firstAttribute="top" secondItem="fDp-Mq-bU3" secondAttribute="top" constant="311" id="vEt-gb-MsH"/>

@@ -89,13 +89,24 @@ class lectureExamWritePage: UIViewController {
         
     }
     
-
+    @IBAction func semesterBtnClicked(_ sender: Any) {
+        semeDropDown.show()
+    }
+    
+    
+    @IBAction func examTypeBtnClicked(_ sender: Any) {
+        examDropDown.show()
+    }
     // examType bool값 확인 후 true false 일 경우 append or remove - n번째 요소. or 그 단어 제거 해주기
     // list.joined(separator: ", ")로 완료 버튼 누를 시 update 해줌
-    //|| examTypeTextField.text == "선택" || semesterTextField.text == "선택" 
+    //
+    
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func finishBtnClicked(_ sender: Any) {
-        if examTypeArray.count == 0 || contentField.text == "" || levelType.levelPoint == 3 {
+        if examTypeArray.count == 0 || contentField.text == "" || levelType.levelPoint == 3 || examTypeTextField.text == "선택" || semesterTextField.text == "선택" {
             let alert = UIAlertController(title:"빈 데이터가 있어요 !",
                 message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
@@ -111,9 +122,9 @@ class lectureExamWritePage: UIViewController {
             let parameters: Parameters = [
                 "lectureName" : lectureName, //과목 이름
                 "professor" : professor, //교수이름
-                "selectedSemester" : "2022-1", //  semesterTextField.text!, //학기 (ex) 2022-1)
+                "selectedSemester" : semesterTextField.text!,, //  semesterTextField.text!, //학기 (ex) 2022-1)
                 "examInfo" : examInfo, //시험 방식
-                "examType" : "중간고사",   //examTypeTextField.text!,
+                "examType" : examTypeTextField.text!,   //examTypeTextField.text!,
                 "examDifficulty" : "쉬움", //시험 난이도
                 "content" : contentField.text!
             ]

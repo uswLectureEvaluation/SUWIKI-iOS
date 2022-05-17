@@ -221,6 +221,7 @@ class lectureEvaluationWritePage: UIViewController {
     @IBAction func closeBtnClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func honeyPointChanged(_ sender: UISlider) {
         let point = String(format: "%.1f", round(sender.value * 1000) / 1000)
         honeyPoint.text = point
