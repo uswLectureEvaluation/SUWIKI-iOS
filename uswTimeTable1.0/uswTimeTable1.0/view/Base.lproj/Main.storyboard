@@ -3163,15 +3163,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kQ-RH-2td">
-                                                    <rect key="frame" x="20" y="23" width="44" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="0i7-1e-9jE"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전핵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFO-LC-95L">
                                                     <rect key="frame" x="301" y="23" width="45" height="21"/>
                                                     <color key="backgroundColor" systemColor="systemGray3Color"/>
@@ -3251,6 +3242,16 @@
                                                         <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="icon_emptystar_24"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8kQ-RH-2td">
+                                                    <rect key="frame" x="20" y="23" width="246" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="0i7-1e-9jE"/>
+                                                        <constraint firstAttribute="width" constant="246" id="cXV-UF-aje"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3260,11 +3261,11 @@
                                                 <constraint firstItem="pNh-pJ-vFd" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="84" id="LEd-9O-hNB"/>
                                                 <constraint firstItem="pNh-pJ-vFd" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="Lwb-1h-5rn"/>
                                                 <constraint firstItem="gJG-Fv-S76" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="82" id="Neo-pG-07d"/>
-                                                <constraint firstItem="8kQ-RH-2td" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leadingMargin" id="Pho-QN-cuC"/>
                                                 <constraint firstAttribute="trailing" secondItem="GFO-LC-95L" secondAttribute="trailing" constant="20" id="VHI-eR-8GE"/>
+                                                <constraint firstItem="8kQ-RH-2td" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="Yoo-Kq-K4r"/>
+                                                <constraint firstItem="xbg-nb-h8Q" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="dJH-6c-m4U"/>
                                                 <constraint firstItem="GFO-LC-95L" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="23" id="fMZ-ha-beQ"/>
                                                 <constraint firstItem="8kQ-RH-2td" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="topMargin" constant="12" id="jQm-Wa-By7"/>
-                                                <constraint firstItem="xbg-nb-h8Q" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leadingMargin" id="olv-dR-2YW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

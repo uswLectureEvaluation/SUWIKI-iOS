@@ -6,9 +6,11 @@
 //
 
 import UIKit
+
 import KeychainSwift
 import Alamofire
 import SwiftyJSON
+import Cosmos
 
 // 1. 화면이 켜질 때 eval / exam 데이터 리스트에 저장
 // 2. 데이터는 10개씩만 테이블 뷰에 보여주고, 이후 스크롤 시 이후 데이터 마저 불러오기
@@ -192,6 +194,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.homework.text = detailEvaluationArray[indexPath.row].homework
             cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
             cell.content.text = detailEvaluationArray[indexPath.row].content
+            cell.ratingBarView.rating = Double(detailEvaluationArray[indexPath.row].totalAvg)!
             
             return cell
             

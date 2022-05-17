@@ -7,10 +7,13 @@
 
 import UIKit
 
+import Cosmos
+
 class detailEvaluationCell: UITableViewCell {
 
     
     
+    @IBOutlet weak var ratingBarView: CosmosView!
     @IBOutlet weak var totalAvg: UILabel!
     
     @IBOutlet weak var semester: UILabel!

@@ -6,16 +6,13 @@
 //
 
 import UIKit
+
 import Alamofire
 import SwiftyJSON
 import DropDown
+import Cosmos
 
 
-// 검색결과 테이블 뷰로 보여준다
-// 없는 데이터 검색 시 빈 배열
-// 즉 데이터 0일경우 다른 화면을 출력해줘야한다는 이야기임
-// xib로 셀 두개 만든 후 진행하는게 좋겠음
-// 5개의 배열 필요. 기본 값은 수정된 날짜로
 
 class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
  
@@ -127,6 +124,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         cell.professor.text = tableViewUpdateData[indexPath.row].professor
         cell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         cell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
+        cell.ratingBarView.rating = Double(tableViewUpdateData[indexPath.row].lectureTotalAvg)!
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
         cell.selectedBackgroundView = bgColorView
@@ -163,16 +161,20 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
             self.pageCount = (json["count"].intValue / 10) + 1
             if json != "" {
                 for index in 0..<json["data"].count{
+                    
+                    
                     let jsonData = json["data"][index]
+                    print(jsonData)
                     let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
                     let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
                     let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
                     let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
                     
-                    let readData = searchedResult(id: jsonData["id"].intValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                    let readData = searchedResult(id: jsonData["id"].intValue, semester: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                     
                     self.tableViewUpdateData.append(readData)
                 }
+
             }
             
             self.tableView?.reloadData()

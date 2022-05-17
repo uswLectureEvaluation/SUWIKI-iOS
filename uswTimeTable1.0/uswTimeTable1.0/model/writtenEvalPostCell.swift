@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Cosmos
+
 class writtenEvalPostCell: UITableViewCell {
 
     @IBOutlet weak var semesterLabel: UILabel!
@@ -14,6 +16,7 @@ class writtenEvalPostCell: UITableViewCell {
     @IBOutlet weak var professorLabel: UILabel!
     
     @IBOutlet weak var totalAvgLabel: UILabel!
+    @IBOutlet weak var ratingBarView: CosmosView!
     
     @IBOutlet weak var satisfactionLabel: UILabel!
     @IBOutlet weak var honeyLabel: UILabel!

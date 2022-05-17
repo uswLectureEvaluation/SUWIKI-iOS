@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import Cosmos
 
 class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -80,7 +81,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.professorLabel.text = tableViewEvalData[indexPath.row].professor
             
             cell.totalAvgLabel.text = tableViewEvalData[indexPath.row].totalAvg
-            
+            cell.ratingBarView.rating = Double(tableViewEvalData[indexPath.row].totalAvg)!
+    
             cell.satisfactionLabel.text = tableViewEvalData[indexPath.row].satisfaction
             cell.honeyLabel.text = tableViewEvalData[indexPath.row].honey
             cell.learningLabel.text = tableViewEvalData[indexPath.row].learning
