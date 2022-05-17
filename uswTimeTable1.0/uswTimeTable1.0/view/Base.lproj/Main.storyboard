@@ -4486,7 +4486,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="366" height="638"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDp-Mq-bU3">
-                                                <rect key="frame" x="0.0" y="0.0" width="366" height="1300"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="1000"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="난이도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-Md-bf3">
                                                         <rect key="frame" x="28" y="228" width="41.5" height="19"/>
@@ -4800,7 +4800,7 @@
                                                     <constraint firstItem="rBg-Xf-JNi" firstAttribute="leading" secondItem="fDp-Mq-bU3" secondAttribute="leading" constant="174" id="5Iz-Fz-PSG"/>
                                                     <constraint firstItem="UfK-BN-m8C" firstAttribute="top" secondItem="fDp-Mq-bU3" secondAttribute="top" constant="162" id="6VA-lO-8fO"/>
                                                     <constraint firstItem="LpQ-5t-G5E" firstAttribute="top" secondItem="fDp-Mq-bU3" secondAttribute="top" constant="311" id="6d5-eE-eHP"/>
-                                                    <constraint firstAttribute="height" constant="1300" id="8cS-2w-qjN"/>
+                                                    <constraint firstAttribute="height" constant="1000" id="8cS-2w-qjN"/>
                                                     <constraint firstItem="sjB-W1-9Vx" firstAttribute="leading" secondItem="fDp-Mq-bU3" secondAttribute="leading" id="8gM-J4-bx4"/>
                                                     <constraint firstItem="4J7-c1-ZYB" firstAttribute="top" secondItem="fDp-Mq-bU3" secondAttribute="top" constant="293" id="8li-Br-NpM"/>
                                                     <constraint firstItem="0dx-D0-8Pb" firstAttribute="leading" secondItem="fDp-Mq-bU3" secondAttribute="leading" constant="99" id="8tT-Ks-XWZ"/>

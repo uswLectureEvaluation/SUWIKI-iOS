@@ -404,4 +404,12 @@ class examInfoCell: UITableViewCell{
     
     @IBOutlet weak var takeBtn: UIButton!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 8.0
+    }
+    
 }
