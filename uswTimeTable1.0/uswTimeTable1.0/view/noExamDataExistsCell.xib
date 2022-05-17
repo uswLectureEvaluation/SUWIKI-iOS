@@ -22,23 +22,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등록된 시험정보가 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbZ-Ta-USs">
-                        <rect key="frame" x="89.5" y="103" width="205.5" height="24.5"/>
+                        <rect key="frame" x="89.5" y="100" width="205.5" height="30"/>
                         <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Labeldasdsadassdasdaasd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqN-ju-SdO">
-                        <rect key="frame" x="99" y="-21" width="186" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="bbZ-Ta-USs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4F7-Ij-Xj3"/>
+                    <constraint firstItem="bbZ-Ta-USs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="100" id="Dtl-l2-Y0o"/>
                     <constraint firstItem="bbZ-Ta-USs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Z5K-8z-TaX"/>
+                    <constraint firstAttribute="bottom" secondItem="bbZ-Ta-USs" secondAttribute="bottom" constant="100" id="rDq-ae-R7w"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

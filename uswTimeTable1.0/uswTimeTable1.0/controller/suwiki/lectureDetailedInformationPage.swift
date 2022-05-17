@@ -52,6 +52,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var lectureId = 0
     let keychain = KeychainSwift()
     
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+    let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
 
     var tableViewNumber = 0
     var examDataExist = 0
@@ -98,21 +100,16 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
-        writeBtn.setTitle("강의 정보 쓰기", for: .normal)
-        writeBtn.titleLabel!.font = UIFont.systemFont(ofSize: 13)
 
         tableViewNumber = 0
         evaluationBtn.tintColor = .darkGray
         examBtn.tintColor = .lightGray
         tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
-       
-        
+    
     }
     
     @IBAction func examBtnClicked(_ sender: Any) {
-        writeBtn.setTitle("시험 정보 쓰기", for: .normal)
-        writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
         examBtn.tintColor = .darkGray
         evaluationBtn.tintColor = .lightGray
@@ -191,8 +188,26 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.honeyPoint.text = detailEvaluationArray[indexPath.row].honey
             cell.learningPoint.text = detailEvaluationArray[indexPath.row].learning
             cell.team.text = detailEvaluationArray[indexPath.row].team
+            if detailEvaluationArray[indexPath.row].team == "없음" {
+                cell.team.textColor = colorLiteralBlue
+            } else {
+                cell.team.textColor = colorLiteralPurple
+            }
+            
             cell.homework.text = detailEvaluationArray[indexPath.row].homework
+            if detailEvaluationArray[indexPath.row].homework == "없음" {
+                cell.homework.textColor = colorLiteralBlue
+            } else {
+                cell.homework.textColor = colorLiteralPurple
+            }
+            
             cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
+            if detailEvaluationArray[indexPath.row].difficulty == "쉬움" {
+                cell.difficulty.textColor = colorLiteralBlue
+            } else {
+                cell.difficulty.textColor = colorLiteralPurple
+            }
+            
             cell.content.text = detailEvaluationArray[indexPath.row].content
             cell.ratingBarView.rating = Double(detailEvaluationArray[indexPath.row].totalAvg)!
             
@@ -200,7 +215,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
         } else if tableViewNumber == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
-            cell.noExamData.text = "시험 정보가 없어요 !"
+            
             return cell
             
         } else if tableViewNumber == 2{
@@ -228,13 +243,40 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func lectureViewUpdate(){
         
         lectureName.text = detailLectureArray[0].lectureName
-        lectureName.sizeToFit()
         professor.text = detailLectureArray[0].professor
-        professor.sizeToFit()
         lectureHoneyAvg.text = detailLectureArray[0].lectureHoneyAvg
         lectureLearningAvg.text = detailLectureArray[0].lectureLearningAvg
         lectureSatisAvg.text = detailLectureArray[0].lectureSatisfactionAvg
-    
+        
+        if detailLectureArray[0].lectureTeamAvg > 0.5 {
+            teamView.text = "있음"
+            teamView.textColor = colorLiteralBlue
+        } else {
+            teamView.text = "없음"
+            teamView.textColor = colorLiteralPurple
+        }
+        
+        if detailLectureArray[0].lectureHomeworkAvg < 0.5 {
+            homeworkView.text = "없음"
+            homeworkView.textColor = colorLiteralBlue
+        } else if detailLectureArray[0].lectureHomeworkAvg < 1.5 {
+            homeworkView.text = "보통"
+            homeworkView.textColor = colorLiteralPurple
+        } else {
+            homeworkView.text = "많음"
+            homeworkView.textColor = colorLiteralPurple
+        }
+        
+        if detailLectureArray[0].lectureDifficultyAvg < 0.5 {
+            pointView.text = "쉬움"
+            pointView.textColor = colorLiteralBlue
+        } else if detailLectureArray[0].lectureDifficultyAvg < 1.5 {
+            pointView.text = "보통"
+            pointView.textColor = colorLiteralPurple
+        } else {
+            pointView.text = "까다로움"
+            pointView.textColor = colorLiteralPurple
+        }
     }
     
     func getDetailPage(){
@@ -305,7 +347,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 } else if jsonData["difficulty"] == 1 {
                     difficulty = "보통"
                 } else if jsonData["difficulty"] == 2 {
-                    difficulty = "개꿀"
+                    difficulty = "쉬움"
                 }
                 
                 if jsonData["homework"] == 0 {

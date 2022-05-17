@@ -3661,10 +3661,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsd-qZ-FlW">
                                                 <rect key="frame" x="24" y="112" width="366" height="256"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강의제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-QU-vmW">
-                                                        <rect key="frame" x="20" y="23" width="62.5" height="21"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="강의제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-QU-vmW">
+                                                        <rect key="frame" x="20" y="23" width="240" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="0OY-t0-wiz"/>
+                                                            <constraint firstAttribute="width" constant="240" id="jab-Vs-ju3"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -3899,17 +3900,17 @@
                                                     <action selector="examBtnClicked:" destination="NsY-Ra-dGx" eventType="touchUpInside" id="jbk-9d-uWO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haU-LW-FPg">
-                                                <rect key="frame" x="312" y="414" width="78" height="34"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haU-LW-FPg">
+                                                <rect key="frame" x="312" y="407" width="78" height="34"/>
                                                 <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="UXw-OH-U0G"/>
                                                     <constraint firstAttribute="width" constant="78" id="aYT-8L-eD2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
-                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="쓰기">
+                                                <state key="normal" title=" 쓰기" image="pencil" catalog="system">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -3940,7 +3941,7 @@
                                             <constraint firstItem="hNx-U3-1kX" firstAttribute="top" secondItem="Zrj-ef-f5g" secondAttribute="top" constant="20" id="AYj-uf-0fh"/>
                                             <constraint firstItem="hNx-U3-1kX" firstAttribute="leading" secondItem="Zrj-ef-f5g" secondAttribute="leading" constant="24" id="HdC-Om-2Be"/>
                                             <constraint firstItem="qBn-BG-QBQ" firstAttribute="top" secondItem="Zrj-ef-f5g" secondAttribute="top" constant="63" id="Hxi-Gi-sLJ"/>
-                                            <constraint firstItem="haU-LW-FPg" firstAttribute="top" secondItem="Zrj-ef-f5g" secondAttribute="top" constant="414" id="Knh-MH-Lqw"/>
+                                            <constraint firstItem="haU-LW-FPg" firstAttribute="top" secondItem="Zrj-ef-f5g" secondAttribute="top" constant="407" id="Knh-MH-Lqw"/>
                                             <constraint firstAttribute="bottom" secondItem="pNt-l8-qrT" secondAttribute="bottom" constant="44" id="RHI-Sq-89s"/>
                                             <constraint firstItem="pNt-l8-qrT" firstAttribute="top" secondItem="Zrj-ef-f5g" secondAttribute="top" constant="454" id="YEo-K4-Aqs"/>
                                             <constraint firstItem="Hsd-qZ-FlW" firstAttribute="leading" secondItem="Zrj-ef-f5g" secondAttribute="leading" constant="24" id="aDt-cu-9hd"/>
@@ -3995,7 +3996,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7j-o3-pCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="761"/>
+            <point key="canvasLocation" x="1982.608695652174" y="760.71428571428567"/>
         </scene>
         <!--Lecture Evaluation Write Page-->
         <scene sceneID="zpp-Tj-F68">
@@ -5037,6 +5038,7 @@
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
