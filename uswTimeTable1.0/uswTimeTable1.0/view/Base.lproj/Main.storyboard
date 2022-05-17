@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -2496,20 +2497,33 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgv-tU-8jf">
-                                <rect key="frame" x="24" y="148" width="70" height="37"/>
+                                <rect key="frame" x="24" y="148" width="70" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Y4v-Gn-WaP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="강의평가">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="evalBtnClicked:" destination="trB-nO-Rsg" eventType="touchUpInside" id="013-kc-DAY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eej-wd-eVT">
-                                <rect key="frame" x="107" y="148" width="70" height="37"/>
+                                <rect key="frame" x="107" y="148" width="70" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="ZCL-gr-z7M"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <color key="tintColor" name="AccentColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="시험정보">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="examBtnClicked:" destination="trB-nO-Rsg" eventType="touchUpInside" id="0T6-hH-tfh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nip-mk-HYT"/>
@@ -2531,6 +2545,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="evalBtn" destination="fgv-tU-8jf" id="r3D-x6-WLe"/>
+                        <outlet property="examBtn" destination="Eej-wd-eVT" id="OvW-sz-BTb"/>
                         <outlet property="tableView" destination="Lxh-Md-ZuL" id="Rn7-tN-x9p"/>
                     </connections>
                 </viewController>
@@ -4950,6 +4966,9 @@
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="스샷 최종본" width="708" height="800"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

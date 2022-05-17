@@ -113,7 +113,7 @@
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7O-xV-YsK">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7O-xV-YsK">
                         <rect key="frame" x="20" y="130" width="326" height="36"/>
                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                         <nil key="textColor"/>
@@ -148,6 +148,7 @@
                 <outlet property="contentLabel" destination="D7O-xV-YsK" id="roc-Hy-m5J"/>
                 <outlet property="examDifficultyLabel" destination="OAD-Yq-k8G" id="fJA-Ok-Rwz"/>
                 <outlet property="examInfoLabel" destination="274-RS-YRA" id="7CO-ai-7JL"/>
+                <outlet property="examTypeLabel" destination="Oj0-d7-pLE" id="h4q-3v-7J4"/>
                 <outlet property="lectureNameLabel" destination="7La-hb-Sd6" id="x1H-Sc-hzI"/>
                 <outlet property="professorLabel" destination="lPu-EY-OKq" id="1Yf-fH-k0c"/>
                 <outlet property="semesterLabel" destination="ZoL-Ee-dNr" id="jgk-cl-Dfo"/>

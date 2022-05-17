@@ -16,6 +16,10 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     @IBOutlet weak var tableView: UITableView!
    
+    @IBOutlet weak var evalBtn: UIButton!
+    @IBOutlet weak var examBtn: UIButton!
+    
+    
     let keychain = KeychainSwift()
     
     var tableViewEvalData: Array<WrittenEvalPostData> = []
@@ -45,10 +49,26 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableViewExamData.removeAll()
         tableViewEvalData.removeAll()
         getWrittenEvalData(page: 1)
         getWrittenExamData(page: 1)
     }
+    
+    @IBAction func evalBtnClicked(_ sender: Any) {
+        tableViewNumber = 1
+        tableView.reloadData()
+        evalBtn.setTitleColor(.black, for: .normal)
+        examBtn.setTitleColor(.lightGray, for: .normal)
+    }
+    
+    @IBAction func examBtnClicked(_ sender: Any) {
+        tableViewNumber = 2
+        tableView.reloadData()
+        evalBtn.setTitleColor(.lightGray, for: .normal)
+        examBtn.setTitleColor(.black, for: .normal)
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableViewNumber == 1 {
@@ -78,6 +98,23 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.delBtn.addTarget(self, action: #selector(deleteEvaluationBtnClicked), for: .touchUpInside)
             
             return cell
+        } else if tableViewNumber == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "writtenExamCell", for: indexPath) as! writtenExamPostCell
+            
+            cell.semesterLabel.text = tableViewExamData[indexPath.row].selectedSemester
+            cell.examTypeLabel.text = tableViewExamData[indexPath.row].examType
+            
+            cell.lectureNameLabel.text = tableViewExamData[indexPath.row].lectureName
+            cell.professorLabel.text = tableViewExamData[indexPath.row].professor
+            
+            cell.examDifficultyLabel.text = tableViewExamData[indexPath.row].examDifficulty
+            cell.examInfoLabel.text = tableViewExamData[indexPath.row].examInfo
+            
+            cell.contentLabel.text = tableViewExamData[indexPath.row].content + "\n"
+            
+            return cell
+            
+            
         }
         
         return UITableViewCell()
@@ -86,6 +123,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 1 {
             return tableViewEvalData.count
+        } else if tableViewNumber == 2 {
+            return tableViewExamData.count
         } else {
             return 1
         }
@@ -110,7 +149,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             let json = JSON(data ?? "")
             
             if json != "" {
-                self.tableViewNumber = 1
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
                     
@@ -189,10 +227,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             } else {
                 self.tableViewNumber = 0
             }
-            
-            
-            
-
         }
         
         
