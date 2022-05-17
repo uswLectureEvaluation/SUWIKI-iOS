@@ -6,10 +6,12 @@
 //
 
 import UIKit
+
 import Alamofire
 import SwiftyJSON
 import DropDown
 import KeychainSwift
+import Cosmos
 
 class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,6 +22,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
+    
     
     @IBOutlet weak var tableView: UITableView!
     var tableViewUpdateData: Array<homePageData> = []
@@ -91,6 +94,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         mainCell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         mainCell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
         mainCell.professor.text = tableViewUpdateData[indexPath.row].professor
+        mainCell.ratingBarView.rating = Double(tableViewUpdateData[indexPath.row].lectureTotalAvg)!
         mainCell.lectureName.sizeToFit()
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor.white
@@ -358,6 +362,7 @@ class mainPageCell: UITableViewCell {
     @IBOutlet weak var lectureType: UILabel!
     @IBOutlet weak var lectureTotalAvg: UILabel!
     @IBOutlet weak var professor: UILabel!
+    @IBOutlet weak var ratingBarView: CosmosView!
     
     override func layoutSubviews() {
         super.layoutSubviews()

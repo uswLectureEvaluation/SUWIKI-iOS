@@ -3209,12 +3209,56 @@
                                                     <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNh-pJ-vFd" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="20" y="84" width="84" height="18"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="Dok-OA-NC7"/>
+                                                        <constraint firstAttribute="width" constant="84" id="N57-10-T7R"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="3.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="17"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                                            <color key="value" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                                            <color key="value" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                                            <color key="value" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                                            <real key="value" value="-1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="filledBorderWidth">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="icon_fullstar_24"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="icon_emptystar_24"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="xbg-nb-h8Q" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="topMargin" constant="39" id="6gg-rE-aD2"/>
                                                 <constraint firstItem="gJG-Fv-S76" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="107" id="7MG-0h-NFV"/>
+                                                <constraint firstItem="pNh-pJ-vFd" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="84" id="LEd-9O-hNB"/>
+                                                <constraint firstItem="pNh-pJ-vFd" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="Lwb-1h-5rn"/>
                                                 <constraint firstItem="gJG-Fv-S76" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="82" id="Neo-pG-07d"/>
                                                 <constraint firstItem="8kQ-RH-2td" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leadingMargin" id="Pho-QN-cuC"/>
                                                 <constraint firstAttribute="trailing" secondItem="GFO-LC-95L" secondAttribute="trailing" constant="20" id="VHI-eR-8GE"/>
@@ -3231,6 +3275,7 @@
                                             <outlet property="lectureTotalAvg" destination="gJG-Fv-S76" id="HBr-4b-Kao"/>
                                             <outlet property="lectureType" destination="GFO-LC-95L" id="JPh-ym-fpe"/>
                                             <outlet property="professor" destination="xbg-nb-h8Q" id="YYg-Vu-MIb"/>
+                                            <outlet property="ratingBarView" destination="pNh-pJ-vFd" id="r0L-m4-xGb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -3358,7 +3403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Qu-DG-zJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="561" y="753"/>
+            <point key="canvasLocation" x="560.86956521739137" y="752.67857142857144"/>
         </scene>
         <!--Searched Result Page-->
         <scene sceneID="4N2-is-XUv">
@@ -4954,10 +4999,17 @@
             <point key="canvasLocation" x="-1099" y="2174"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="pNh-pJ-vFd">
+            <size key="intrinsicContentSize" width="81" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="icon_emptystar_24" width="24" height="24"/>
+        <image name="icon_fullstar_24" width="24" height="24"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>

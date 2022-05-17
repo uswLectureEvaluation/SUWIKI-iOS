@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.5.0)
+  - Cosmos (23.0.0)
   - DropDown (2.3.13)
   - Elliotable (1.2.5)
   - Firebase/Analytics (8.13.0):
@@ -108,6 +109,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Cosmos
   - DropDown
   - Elliotable
   - Firebase/Analytics
@@ -122,6 +124,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Cosmos
     - DropDown
     - Elliotable
     - Firebase
@@ -144,6 +147,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Elliotable: e669fa7a974658c4e0ee4be4b335f6a561f1b2cb
   Firebase: ee9b1d9b1801371e29f5591eda89eb5a314ab599
@@ -164,6 +168,6 @@ SPEC CHECKSUMS:
   RealmSwift: 10ed6fa09c36aaaff55e12afdc71802ec3ddb1c0
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 790fb103ab20ea59fecddfa01281d1b83fbdf901
+PODFILE CHECKSUM: 55c8d264b4707b89d8c7e416008c53ee65d7de02
 
 COCOAPODS: 1.11.3
