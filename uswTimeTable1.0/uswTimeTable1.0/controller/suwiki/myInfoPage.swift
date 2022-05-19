@@ -125,4 +125,13 @@ class myInfoPage: UIViewController {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    
+    @IBAction func announcementBtnClicked(_ sender: Any) {
+        
+        
+        
+        
+    }
+    
+    
 }
