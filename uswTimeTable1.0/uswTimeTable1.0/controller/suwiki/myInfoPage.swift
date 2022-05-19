@@ -127,10 +127,8 @@ class myInfoPage: UIViewController {
     
     
     @IBAction func announcementBtnClicked(_ sender: Any) {
-        
-        
-        
-        
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "announcementVC") as! announcementPage
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     

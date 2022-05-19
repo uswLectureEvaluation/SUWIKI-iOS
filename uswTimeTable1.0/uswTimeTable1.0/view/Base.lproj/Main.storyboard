@@ -2382,6 +2382,70 @@
             </objects>
             <point key="canvasLocation" x="561" y="1464"/>
         </scene>
+        <!--Announcement Page-->
+        <scene sceneID="UNz-2C-Yin">
+            <objects>
+                <viewController storyboardIdentifier="announcementVC" id="VB9-Z1-Qy8" customClass="announcementPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jCs-9e-HUI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="vgF-cB-9ze">
+                                <rect key="frame" x="24" y="64" width="96" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="Sc9-ne-sWf"/>
+                                    <constraint firstAttribute="width" constant="96" id="erc-eL-boZ"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AwM-wY-JzC">
+                                <rect key="frame" x="0.0" y="107" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.87843137979999997" green="0.87843137979999997" blue="0.87843137979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="OMq-FD-4N6"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZS-Jj-nTA">
+                                <rect key="frame" x="24" y="148" width="69.5" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="MF1-FS-I9N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tEh-IA-CmN">
+                                <rect key="frame" x="24" y="198" width="366" height="639"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VB9-Z1-Qy8" id="BIm-5Q-ITp"/>
+                                    <outlet property="delegate" destination="VB9-Z1-Qy8" id="feg-aD-zss"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TkA-OG-jGX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tEh-IA-CmN" firstAttribute="top" secondItem="TkA-OG-jGX" secondAttribute="top" constant="154" id="7cU-yT-hSx"/>
+                            <constraint firstItem="AwM-wY-JzC" firstAttribute="top" secondItem="TkA-OG-jGX" secondAttribute="top" constant="63" id="CdI-xY-eLf"/>
+                            <constraint firstItem="TkA-OG-jGX" firstAttribute="trailing" secondItem="tEh-IA-CmN" secondAttribute="trailing" constant="24" id="Cjj-zI-s2P"/>
+                            <constraint firstItem="vgF-cB-9ze" firstAttribute="leading" secondItem="TkA-OG-jGX" secondAttribute="leading" constant="24" id="ETp-g2-vJj"/>
+                            <constraint firstItem="AwM-wY-JzC" firstAttribute="leading" secondItem="jCs-9e-HUI" secondAttribute="leading" id="IuV-B0-TR7"/>
+                            <constraint firstItem="vgF-cB-9ze" firstAttribute="top" secondItem="TkA-OG-jGX" secondAttribute="top" constant="20" id="JD0-fv-z3J"/>
+                            <constraint firstItem="9ZS-Jj-nTA" firstAttribute="leading" secondItem="TkA-OG-jGX" secondAttribute="leading" constant="24" id="RWK-rs-FoZ"/>
+                            <constraint firstItem="TkA-OG-jGX" firstAttribute="bottom" secondItem="tEh-IA-CmN" secondAttribute="bottom" constant="25" id="SvV-6Y-AZg"/>
+                            <constraint firstItem="tEh-IA-CmN" firstAttribute="leading" secondItem="TkA-OG-jGX" secondAttribute="leading" constant="24" id="eSF-L8-8zK"/>
+                            <constraint firstAttribute="trailing" secondItem="AwM-wY-JzC" secondAttribute="trailing" id="ldS-AD-98H"/>
+                            <constraint firstItem="9ZS-Jj-nTA" firstAttribute="top" secondItem="TkA-OG-jGX" secondAttribute="top" constant="104" id="wo8-iZ-AKQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="tEh-IA-CmN" id="5Ug-eh-sK3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q1P-b3-Pff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2030.4347826086957" y="1742.4107142857142"/>
+        </scene>
         <!--Find Id Page-->
         <scene sceneID="G7I-8G-yKR">
             <objects>
@@ -2462,7 +2526,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVY-er-ibG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1929" y="2174"/>
+            <point key="canvasLocation" x="-1100" y="1456"/>
         </scene>
         <!--Item-->
         <scene sceneID="1d8-9p-f4z">
