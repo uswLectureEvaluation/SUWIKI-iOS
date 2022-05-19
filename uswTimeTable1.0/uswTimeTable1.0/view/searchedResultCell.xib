@@ -22,9 +22,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="312" height="116"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학문과 사고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8Q-Me-pgU">
-                        <rect key="frame" x="20" y="23" width="83" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학문과 사고" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c8Q-Me-pgU">
+                        <rect key="frame" x="20" y="23" width="215" height="21"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="215" id="KWe-JL-Vsm"/>
                             <constraint firstAttribute="height" constant="21" id="V3d-WI-CgF"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="18"/>
@@ -66,6 +67,48 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAJ-f8-UD0" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="20" y="84" width="84" height="18"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="aHT-A6-VdL"/>
+                            <constraint firstAttribute="height" constant="18" id="h89-rK-Bt0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                <real key="value" value="3.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="17"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                <color key="value" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                <color key="value" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                <color key="value" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                <real key="value" value="-1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="filledBorderWidth">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="icon_fullstar_24"/>
+                            <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="icon_emptystar_24"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5N9-9G-6YO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="0gw-Em-ajh"/>
@@ -76,7 +119,9 @@
                     <constraint firstItem="c8Q-Me-pgU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="Iq0-CH-IFW"/>
                     <constraint firstItem="c8Q-Me-pgU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="LzH-zf-SW4"/>
                     <constraint firstItem="fOE-4d-utW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="82" id="bnM-4m-Gbm"/>
+                    <constraint firstItem="cAJ-f8-UD0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="84" id="vxf-1S-DX3"/>
                     <constraint firstItem="fOE-4d-utW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="107" id="weh-Ft-xSy"/>
+                    <constraint firstItem="cAJ-f8-UD0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="zoH-GD-iXC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -85,11 +130,22 @@
                 <outlet property="lectureTotalAvg" destination="fOE-4d-utW" id="YH0-At-hIB"/>
                 <outlet property="lectureType" destination="w8W-RS-XUf" id="p49-ZW-o7F"/>
                 <outlet property="professor" destination="5N9-9G-6YO" id="9la-bo-fWA"/>
+                <outlet property="ratingBarView" destination="cAJ-f8-UD0" id="F7E-uy-NRx"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="85.714285714285708"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="cAJ-f8-UD0">
+            <size key="intrinsicContentSize" width="81" height="17"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="icon_emptystar_24" width="24" height="24"/>
+        <image name="icon_fullstar_24" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

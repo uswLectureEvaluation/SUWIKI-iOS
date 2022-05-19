@@ -16,7 +16,9 @@ class examInfoTakeCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.black.cgColor
+        contentView.layer.cornerRadius = 8.0
         // Initialization code
     }
 
@@ -24,28 +26,6 @@ class examInfoTakeCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    @IBAction func takeInfoBtnClicked(_ sender: Any) {
-        let AD = UIApplication.shared.delegate as? AppDelegate
-        let lectureId = Int(AD?.lectureId ?? 0)
-        let headers: HTTPHeaders = [
-            "Authorization" : String(keychain.get("AccessToken") ?? "")
-        ]
-
-        let url = "https://api.suwiki.kr/exam-posts/buyExamInfo/?lectureId=\(lectureId)"
-        
-        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            let data = response.response?.statusCode
-            if Int(data!) == 200{
-                print("success")
-                
-            } else if Int(data!) == 403{
-                print("fail")
-                
-            }
-            
-        }
     }
     
 }

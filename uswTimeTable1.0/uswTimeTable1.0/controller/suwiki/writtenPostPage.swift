@@ -10,12 +10,17 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import Cosmos
 
 class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
 
     @IBOutlet weak var tableView: UITableView!
    
+    @IBOutlet weak var evalBtn: UIButton!
+    @IBOutlet weak var examBtn: UIButton!
+    
+    
     let keychain = KeychainSwift()
     
     var tableViewEvalData: Array<WrittenEvalPostData> = []
@@ -35,7 +40,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         let examPostCell = UINib(nibName: "writtenExamPostCell", bundle: nil)
         tableView.register(examPostCell, forCellReuseIdentifier: "writtenExamCell")
         
-        getWrittenEvalData(page: 0)
         
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 210
@@ -44,6 +48,28 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableViewExamData.removeAll()
+        tableViewEvalData.removeAll()
+        getWrittenEvalData(page: 1)
+        getWrittenExamData(page: 1)
+    }
+    
+    @IBAction func evalBtnClicked(_ sender: Any) {
+        tableViewNumber = 1
+        tableView.reloadData()
+        evalBtn.setTitleColor(.black, for: .normal)
+        examBtn.setTitleColor(.lightGray, for: .normal)
+    }
+    
+    @IBAction func examBtnClicked(_ sender: Any) {
+        tableViewNumber = 2
+        tableView.reloadData()
+        evalBtn.setTitleColor(.lightGray, for: .normal)
+        examBtn.setTitleColor(.black, for: .normal)
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableViewNumber == 1 {
@@ -55,7 +81,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.professorLabel.text = tableViewEvalData[indexPath.row].professor
             
             cell.totalAvgLabel.text = tableViewEvalData[indexPath.row].totalAvg
-            
+            cell.ratingBarView.rating = Double(tableViewEvalData[indexPath.row].totalAvg)!
+    
             cell.satisfactionLabel.text = tableViewEvalData[indexPath.row].satisfaction
             cell.honeyLabel.text = tableViewEvalData[indexPath.row].honey
             cell.learningLabel.text = tableViewEvalData[indexPath.row].learning
@@ -64,9 +91,32 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.homeworkLabel.text = tableViewEvalData[indexPath.row].homework
             cell.difficultyLabel.text = tableViewEvalData[indexPath.row].difficulty
             
-            cell.contentLabel.text = tableViewEvalData[indexPath.row].content
+            cell.contentLabel.text = tableViewEvalData[indexPath.row].content + "\n"
+            
+            cell.adjustBtn.tag = indexPath.row
+            cell.adjustBtn.addTarget(self, action: #selector(adjustEvaluationBtnClicked), for: .touchUpInside)
+
+            cell.delBtn.tag = indexPath.row
+            cell.delBtn.addTarget(self, action: #selector(deleteEvaluationBtnClicked), for: .touchUpInside)
             
             return cell
+        } else if tableViewNumber == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "writtenExamCell", for: indexPath) as! writtenExamPostCell
+            
+            cell.semesterLabel.text = tableViewExamData[indexPath.row].selectedSemester
+            cell.examTypeLabel.text = tableViewExamData[indexPath.row].examType
+            
+            cell.lectureNameLabel.text = tableViewExamData[indexPath.row].lectureName
+            cell.professorLabel.text = tableViewExamData[indexPath.row].professor
+            
+            cell.examDifficultyLabel.text = tableViewExamData[indexPath.row].examDifficulty
+            cell.examInfoLabel.text = tableViewExamData[indexPath.row].examInfo
+            
+            cell.contentLabel.text = tableViewExamData[indexPath.row].content + "\n"
+            
+            return cell
+            
+            
         }
         
         return UITableViewCell()
@@ -75,6 +125,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 1 {
             return tableViewEvalData.count
+        } else if tableViewNumber == 2 {
+            return tableViewExamData.count
         } else {
             return 1
         }
@@ -93,15 +145,15 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        AF.request(url, method: .get, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
             let data = response.data
             let json = JSON(data ?? "")
             
             if json != "" {
-                self.tableViewNumber = 1
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
+                    
                     
                     var team = ""
                     var difficulty = ""
@@ -141,15 +193,148 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.tableViewEvalData.append(readData)
                 }
                 self.tableView.reloadData()
-                print(self.tableViewEvalData)
             } else {
                 self.tableViewNumber = 0
             }
         }
     }
-
-
-    func getWrittenExamData() {
-        let url = "https://api.suwiki.kr/exam-posts/findByUserIdx/?page={}"
+    
+    
+    func getWrittenExamData(page: Int) {
+        let url = "https://api.suwiki.kr/exam-posts/findByUserIdx/"
+        
+        let parameters: Parameters = [
+            "page" : page
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            
+            let data = response.data
+            let json = JSON(data ?? "")
+            
+            if json != "" {
+                for index in 0..<json["data"].count{
+                    let jsonData = json["data"][index]
+                 
+                    let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                    
+                    self.tableViewExamData.append(readData)
+                     
+                }// 셀이랑 시험 정보 연결, 시험정보 수정, 시험정보 삭제 진행
+                self.tableView.reloadData()
+            } else {
+                self.tableViewNumber = 0
+            }
+        }
+        
+        
+        
     }
+    
+    
+    @objc func adjustEvaluationBtnClicked(sender: UIButton)
+    {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+        
+        switch tableViewEvalData[indexPath.row].team {
+        case "없음" :
+            nextVC.teamWorkType.haveTeamWork = false
+            nextVC.teamWorkType.noTeamWork = true
+        case "있음" :
+            nextVC.teamWorkType.haveTeamWork = true
+            nextVC.teamWorkType.noTeamWork = false
+        default:
+            break
+        }
+        
+        switch tableViewEvalData[indexPath.row].homework{
+        case "없음" :
+            nextVC.homeworkType.noHomework = true
+            nextVC.homeworkType.usuallyHomework = false
+            nextVC.homeworkType.manyHomework = false
+        case "보통" :
+            nextVC.homeworkType.noHomework = false
+            nextVC.homeworkType.usuallyHomework = true
+            nextVC.homeworkType.manyHomework = false
+        case "많음" :
+            nextVC.homeworkType.noHomework = false
+            nextVC.homeworkType.usuallyHomework = false
+            nextVC.homeworkType.manyHomework = true
+        default:
+            break
+        }
+        
+        switch tableViewEvalData[indexPath.row].difficulty{
+        case "개꿀" :
+            nextVC.difficultyType.easyDifficulty = true
+            nextVC.difficultyType.normalDifficulty = false
+            nextVC.difficultyType.hardDifficulty = false
+        case "보통" :
+            nextVC.difficultyType.easyDifficulty = false
+            nextVC.difficultyType.normalDifficulty = true
+            nextVC.difficultyType.hardDifficulty = false
+        case "까다로움" :
+            nextVC.difficultyType.easyDifficulty = false
+            nextVC.difficultyType.normalDifficulty = false
+            nextVC.difficultyType.hardDifficulty = true
+        default:
+            break
+        }
+    
+        nextVC.adjustBtn = 1
+        nextVC.evaluateIdx = tableViewEvalData[indexPath.row].id
+        nextVC.adjustContent = tableViewEvalData[indexPath.row].content
+        nextVC.lectureName = tableViewEvalData[indexPath.row].lectureName
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
+    }
+    
+    @objc func deleteEvaluationBtnClicked(sender: UIButton) {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let removeAlert = UIAlertController(title: "강의평가 삭제", message: "삭제 하시겠어요?", preferredStyle: UIAlertController.Style.alert)
+        
+        let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
+            print("Delete button tapped")
+            removeEvaluation(id: tableViewEvalData[indexPath.row].id)
+   
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        removeAlert.addAction(deleteButton)
+        removeAlert.addAction(cancelButton)
+        present(removeAlert, animated: true, completion: nil)
+    }
+    
+    func removeEvaluation(id: Int) {
+        let url = "https://api.suwiki.kr/evaluate-posts/delete/?evaluateIdx=\(id)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .delete, parameters: nil, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+            
+            if response.response?.statusCode == 403 {
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.viewWillAppear(true)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
 }

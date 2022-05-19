@@ -15,6 +15,7 @@ target 'uswTimeTable1.0' do
   pod 'SwiftyJSON'
   pod 'Alamofire'
   pod 'KeychainSwift'
+  pod 'Cosmos'
   # Pods for uswTimeTable1.0
 
 

@@ -22,6 +22,9 @@ import DropDown
 class lectureEvaluationWritePage: UIViewController {
     
     
+    @IBOutlet weak var superView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var semesterDropDown: UIView!
     @IBOutlet weak var semesterTextField: UILabel!
     
@@ -59,6 +62,10 @@ class lectureEvaluationWritePage: UIViewController {
     var professor: String = ""
     var lectureId: Int = 0
     
+    var adjustBtn: Int = 0
+    var adjustContent: String = ""
+    var evaluateIdx: Int = 0
+    
     let keychain = KeychainSwift()
     let dropDown = DropDown()
     
@@ -70,6 +77,22 @@ class lectureEvaluationWritePage: UIViewController {
         self.contentField.layer.borderColor = UIColor.black.cgColor
         lectureNameLabel.text = lectureName
         
+        if adjustBtn == 1 {
+            getAdjustEvaluation()
+        }
+        
+        
+
+        contentField.layer.cornerRadius = 8.0
+        
+        scrollView.layer.borderWidth = 1.0
+        scrollView.layer.borderColor = UIColor.lightGray.cgColor
+        scrollView.layer.cornerRadius = 8.0
+        
+        superView.layer.borderWidth = 1.0
+        superView.layer.borderColor = UIColor.lightGray.cgColor
+        superView.layer.cornerRadius = 8.0
+        
         semesterDropDown.layer.borderWidth = 1.0
         semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
         semesterDropDown.layer.cornerRadius = 8.0
@@ -79,12 +102,13 @@ class lectureEvaluationWritePage: UIViewController {
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
         dropDown.textFont = UIFont.systemFont(ofSize: 16)
+        dropDown.cornerRadius = 8.0
 
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.semesterTextField.text = semesterList[index]
             self.semesterTextField.font = UIFont.systemFont(ofSize: 16)
             self.semesterTextField.textColor = UIColor.black
-            self.semesterTextField.textAlignment = .center
+            self.semesterTextField.textAlignment = .left
         }
         // Do any additional setup after loading the view.
     }
@@ -105,56 +129,114 @@ class lectureEvaluationWritePage: UIViewController {
             self.present(alert, animated: true, completion: nil)
             
         } else {
-            let url = "https://api.suwiki.kr/evaluate-posts/write/?lectureId=\(lectureId)"
-            let headers: HTTPHeaders = [
-                "Authorization" : String(keychain.get("AccessToken") ?? "")
-            ]
+            if adjustBtn == 0 {
+                writeEvaluation()
+            } else if adjustBtn == 1 {
+                writeAdjustEvaluation()
+            }
+        }
+    }
+    
+    func writeEvaluation() {
+        
+        let url = "https://api.suwiki.kr/evaluate-posts/write/?lectureId=\(lectureId)"
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        let parameters = [
+            "lectureName" : lectureName, //과목이름
+            "professor" : professor, //교수이름
+            "selectedSemester" : semesterTextField.text,//학기
+            "satisfaction" : Float(satisfactionPoint.text!) ?? 0, //만족도
+            "learning" : Float(learningPoint.text!) ?? 0, //배움지수
+            "honey" : Float(honeyPoint.text!) ?? 0, //꿀강지수
+            "team" : teamWorkType.teamWorkPoint, //조별모임 유무(없음 == 0, 있음 == 1)
+            "difficulty" : difficultyType.difficultyPoint, //학점 잘주는가? (까다로움 == 0, 보통 == 1, 학점느님 ==2)
+            "homework" : homeworkType.homeworkPoint, //과제양 (없음 ==0, 보통 == 1, 많음 == 2)
+            "content" : contentField.text!
+        ] as [String : Any]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
-            let parameters = [
-                "lectureName" : lectureName, //과목이름
-                "professor" : professor, //교수이름
-                "semester" : semesterTextField.text,//학기
-                "satisfaction" : Float(satisfactionPoint.text!) ?? 0, //만족도
-                "learning" : Float(learningPoint.text!) ?? 0, //배움지수
-                "honey" : Float(honeyPoint.text!) ?? 0, //꿀강지수
-                "team" : teamWorkType.teamWorkPoint, //조별모임 유무(없음 == 0, 있음 == 1)
-                "difficulty" : difficultyType.difficultyPoint, //학점 잘주는가? (까다로움 == 0, 보통 == 1, 학점느님 ==2)
-                "homework" : homeworkType.homeworkPoint, //과제양 (없음 ==0, 보통 == 1, 많음 == 2)
-                "content" : contentField.text!
-            ] as [String : Any]
+            if response.response?.statusCode == 400{
+                let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            } else if response.response?.statusCode == 403 {
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                //2. 확인 버튼 만들기
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                //3. 확인 버튼을 경고창에 추가하기
+                alert.addAction(cancle)
+                //4. 경고창 보이기
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+
+    }
+    
+    func writeAdjustEvaluation() {
+        let url = "https://api.suwiki.kr/evaluate-posts/update/?evaluateIdx=\(evaluateIdx)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        let parameters = [
+            "selectedSemester" : semesterTextField.text,//학기
+            "satisfaction" : Float(satisfactionPoint.text!) ?? 0, //만족도
+            "learning" : Float(learningPoint.text!) ?? 0, //배움지수
+            "honey" : Float(honeyPoint.text!) ?? 0, //꿀강지수
+            "team" : teamWorkType.teamWorkPoint, //조별모임 유무(없음 == 0, 있음 == 1)
+            "difficulty" : difficultyType.difficultyPoint, //학점 잘주는가? (까다로움 == 0, 보통 == 1, 학점느님 ==2)
+            "homework" : homeworkType.homeworkPoint, //과제양 (없음 ==0, 보통 == 1, 많음 == 2)
+            "content" : contentField.text!
+        ] as [String : Any]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
-            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
-                
-                if response.response?.statusCode == 400{
-                    let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
-                        message: "확인을 눌러주세요!",
-                        preferredStyle: UIAlertController.Style.alert)
-                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
-                    alert.addAction(cancle)
-                    self.present(alert, animated: true, completion: nil)
-                } else if response.response?.statusCode == 403 {
-                    let alert = UIAlertController(title:"제한된 유저십니다 ^^",
-                        message: "확인을 눌러주세요!",
-                        preferredStyle: UIAlertController.Style.alert)
-                    //2. 확인 버튼 만들기
-                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
-                    //3. 확인 버튼을 경고창에 추가하기
-                    alert.addAction(cancle)
-                    //4. 경고창 보이기
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    self.dismiss(animated: true, completion: nil)
-                }
+            if response.response?.statusCode == 403 {
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                //2. 확인 버튼 만들기
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                //3. 확인 버튼을 경고창에 추가하기
+                alert.addAction(cancle)
+                //4. 경고창 보이기
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
-       
+    }
+        
+    func getAdjustEvaluation(){
+        
+        contentField.text = adjustContent
+        teamWorkType.checkPoint(no: teamWorkType.noTeamWork, have: teamWorkType.haveTeamWork)
+        teamWorkPointCheck()
+        homeworkType.checkPoint(no: homeworkType.noHomework, usually: homeworkType.usuallyHomework, many: homeworkType.manyHomework)
+        homeworkPointCheck()
+        difficultyType.checkPoint(easy: difficultyType.easyDifficulty, normal: difficultyType.normalDifficulty, hard: difficultyType.hardDifficulty)
+        difficultyPointCheck()
         
     }
+    
     
     @IBAction func closeBtnClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func honeyPointChanged(_ sender: UISlider) {
         let point = String(format: "%.1f", round(sender.value * 1000) / 1000)
         honeyPoint.text = point

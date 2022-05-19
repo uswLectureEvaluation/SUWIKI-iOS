@@ -11,6 +11,10 @@
 		AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */; };
 		AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76B1281AB34E005977C6 /* examWriteModel.swift */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
+		AF296C5E2836420300C961A3 /* announcementPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296C5D2836420300C961A3 /* announcementPage.swift */; };
+		AF296C602836429000C961A3 /* announceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296C5F2836429000C961A3 /* announceModel.swift */; };
+		AF296C652836458E00C961A3 /* announcementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296C632836458E00C961A3 /* announcementCell.swift */; };
+		AF296C662836458E00C961A3 /* announcementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF296C642836458E00C961A3 /* announcementCell.xib */; };
 		AF2E108428095ADB00051844 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E107B28095AD900051844 /* Pretendard-ExtraBold.otf */; };
 		AF2E108528095ADB00051844 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E107C28095AD900051844 /* Pretendard-Light.otf */; };
 		AF2E108628095ADB00051844 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E107D28095AD900051844 /* Pretendard-Regular.otf */; };
@@ -99,6 +103,10 @@
 		AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureExamWritePage.swift; sourceTree = "<group>"; };
 		AF0A76B1281AB34E005977C6 /* examWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examWriteModel.swift; sourceTree = "<group>"; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
+		AF296C5D2836420300C961A3 /* announcementPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announcementPage.swift; sourceTree = "<group>"; };
+		AF296C5F2836429000C961A3 /* announceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announceModel.swift; sourceTree = "<group>"; };
+		AF296C632836458E00C961A3 /* announcementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announcementCell.swift; sourceTree = "<group>"; };
+		AF296C642836458E00C961A3 /* announcementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = announcementCell.xib; sourceTree = "<group>"; };
 		AF2E107B28095AD900051844 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		AF2E107C28095AD900051844 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
 		AF2E107D28095AD900051844 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
@@ -282,6 +290,8 @@
 				AFBC03FC282D380A00DCEDA6 /* writtenExamPostCell.swift */,
 				AF4DD3DB282D403F00A43629 /* writtenEvalPostModel.swift */,
 				AF4DD3DD282D404A00A43629 /* writtenExamPostModel.swift */,
+				AF296C5F2836429000C961A3 /* announceModel.swift */,
+				AF296C632836458E00C961A3 /* announcementCell.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -297,6 +307,7 @@
 				AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */,
 				AFBC03F9282D37F300DCEDA6 /* writtenEvalPostCell.xib */,
 				AFBC03FD282D380A00DCEDA6 /* writtenExamPostCell.xib */,
+				AF296C642836458E00C961A3 /* announcementCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -325,6 +336,7 @@
 				AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */,
 				AFD470AA282BE3AB001A1119 /* myInfoPage.swift */,
 				AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */,
+				AF296C5D2836420300C961A3 /* announcementPage.swift */,
 			);
 			path = suwiki;
 			sourceTree = "<group>";
@@ -411,6 +423,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF296C662836458E00C961A3 /* announcementCell.xib in Resources */,
 				AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */,
 				AF2E108828095ADB00051844 /* Pretendard-Bold.otf in Resources */,
 				AF2E108928095ADB00051844 /* Pretendard-ExtraLight.otf in Resources */,
@@ -491,7 +504,10 @@
 				AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */,
 				AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */,
 				AFC58B4927FECBBC007899A4 /* detailLectureModel.swift in Sources */,
+				AF296C602836429000C961A3 /* announceModel.swift in Sources */,
+				AF296C652836458E00C961A3 /* announcementCell.swift in Sources */,
 				AFBC03F7282D367E00DCEDA6 /* writtenPostPage.swift in Sources */,
+				AF296C5E2836420300C961A3 /* announcementPage.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
 				AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */,

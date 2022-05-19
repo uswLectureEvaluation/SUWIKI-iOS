@@ -6,9 +6,11 @@
 //
 
 import UIKit
+
 import KeychainSwift
 import Alamofire
 import SwiftyJSON
+import Cosmos
 
 // 1. 화면이 켜질 때 eval / exam 데이터 리스트에 저장
 // 2. 데이터는 10개씩만 테이블 뷰에 보여주고, 이후 스크롤 시 이후 데이터 마저 불러오기
@@ -50,13 +52,16 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var lectureId = 0
     let keychain = KeychainSwift()
     
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+    let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
 
     var tableViewNumber = 0
     var examDataExist = 0
+    var evalDataExist = 0
     
     override func viewDidLoad() {
         
-        tableViewNumber = 0
+    
 
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
@@ -81,7 +86,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
+        
         
     }
     
@@ -92,25 +97,24 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         loadDetailData()
         getDetailPage()
-
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
-        writeBtn.setTitle("강의 정보 쓰기", for: .normal)
-        writeBtn.titleLabel!.font = UIFont.systemFont(ofSize: 13)
-
-        tableViewNumber = 0
+        
+        if evalDataExist == 0 {
+            tableViewNumber = 0
+        } else {
+            tableViewNumber = 100
+        }
+        
         evaluationBtn.tintColor = .darkGray
         examBtn.tintColor = .lightGray
         tableView.rowHeight = UITableView.automaticDimension
         tableView.reloadData()
-       
-        
+    
     }
     
     @IBAction func examBtnClicked(_ sender: Any) {
-        writeBtn.setTitle("시험 정보 쓰기", for: .normal)
-        writeBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         // tableviewNumber = 1은 시험 리스트 없을때 설정, 2는 미구매시
         examBtn.tintColor = .darkGray
         evaluationBtn.tintColor = .lightGray
@@ -140,13 +144,15 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     @IBAction func InfoWriteBtnClicked(_ sender: Any) {
         // 조건문 추가하여 어느
-        if tableViewNumber == 0 {
+        if tableViewNumber == 0 || tableViewNumber == 100{
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
             // 이후에 , 기준으로 쪼개서 append 한 상태로 옮겨주면 될듯함.
+            print(detailLectureArray)
             nextVC.semesterList.append(detailLectureArray[0].semester)
+            nextVC.adjustBtn = 0
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
         } else {
@@ -166,7 +172,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0 {
             return self.detailEvaluationArray.count
-        } else if tableViewNumber == 1 || tableViewNumber == 2{
+        } else if tableViewNumber == 1 || tableViewNumber == 2 || tableViewNumber == 100{
             return 1
         } else {
             return self.detailExamArray.count
@@ -188,15 +194,34 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.honeyPoint.text = detailEvaluationArray[indexPath.row].honey
             cell.learningPoint.text = detailEvaluationArray[indexPath.row].learning
             cell.team.text = detailEvaluationArray[indexPath.row].team
+            if detailEvaluationArray[indexPath.row].team == "없음" {
+                cell.team.textColor = colorLiteralBlue
+            } else {
+                cell.team.textColor = colorLiteralPurple
+            }
+            
             cell.homework.text = detailEvaluationArray[indexPath.row].homework
+            if detailEvaluationArray[indexPath.row].homework == "없음" {
+                cell.homework.textColor = colorLiteralBlue
+            } else {
+                cell.homework.textColor = colorLiteralPurple
+            }
+            
             cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
+            if detailEvaluationArray[indexPath.row].difficulty == "쉬움" {
+                cell.difficulty.textColor = colorLiteralBlue
+            } else {
+                cell.difficulty.textColor = colorLiteralPurple
+            }
+            
             cell.content.text = detailEvaluationArray[indexPath.row].content
+            cell.ratingBarView.rating = Double(detailEvaluationArray[indexPath.row].totalAvg)!
             
             return cell
             
         } else if tableViewNumber == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
-            cell.noExamData.text = "시험 정보가 없어요 !"
+            
             return cell
             
         } else if tableViewNumber == 2{
@@ -216,6 +241,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.content.text = detailExamArray[indexPath.row].content
             
             return cell
+        } else if tableViewNumber == 100 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            
+            cell.noExamData.text = "등록된 강의평가가 없어요!"
+            
+            return cell
         }
         return UITableViewCell()
            
@@ -224,13 +255,40 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func lectureViewUpdate(){
         
         lectureName.text = detailLectureArray[0].lectureName
-        lectureName.sizeToFit()
         professor.text = detailLectureArray[0].professor
-        professor.sizeToFit()
         lectureHoneyAvg.text = detailLectureArray[0].lectureHoneyAvg
         lectureLearningAvg.text = detailLectureArray[0].lectureLearningAvg
         lectureSatisAvg.text = detailLectureArray[0].lectureSatisfactionAvg
-    
+        
+        if detailLectureArray[0].lectureTeamAvg > 0.5 {
+            teamView.text = "있음"
+            teamView.textColor = colorLiteralBlue
+        } else {
+            teamView.text = "없음"
+            teamView.textColor = colorLiteralPurple
+        }
+        
+        if detailLectureArray[0].lectureHomeworkAvg < 0.5 {
+            homeworkView.text = "없음"
+            homeworkView.textColor = colorLiteralBlue
+        } else if detailLectureArray[0].lectureHomeworkAvg < 1.5 {
+            homeworkView.text = "보통"
+            homeworkView.textColor = colorLiteralPurple
+        } else {
+            homeworkView.text = "많음"
+            homeworkView.textColor = colorLiteralPurple
+        }
+        
+        if detailLectureArray[0].lectureDifficultyAvg < 0.5 {
+            pointView.text = "쉬움"
+            pointView.textColor = colorLiteralBlue
+        } else if detailLectureArray[0].lectureDifficultyAvg < 1.5 {
+            pointView.text = "보통"
+            pointView.textColor = colorLiteralPurple
+        } else {
+            pointView.text = "까다로움"
+            pointView.textColor = colorLiteralPurple
+        }
     }
     
     func getDetailPage(){
@@ -241,7 +299,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
 
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
             let data = response.value
             
@@ -251,7 +309,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
             let totalLearningAvg = String(format: "%.1f", round(json["lectureLearningAvg"].floatValue * 1000) / 1000)
             
-            let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["selectedSemester"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
+            let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["semesterList"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
 
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
@@ -276,7 +334,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
     
@@ -301,7 +359,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 } else if jsonData["difficulty"] == 1 {
                     difficulty = "보통"
                 } else if jsonData["difficulty"] == 2 {
-                    difficulty = "개꿀"
+                    difficulty = "쉬움"
                 }
                 
                 if jsonData["homework"] == 0 {
@@ -316,6 +374,14 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 
                 self.detailEvaluationArray.append(readData)
             }
+            if self.detailEvaluationArray.count != 0 {
+                self.evalDataExist = 0
+                self.tableViewNumber = 0
+            } else {
+                self.evalDataExist = 1
+                self.tableViewNumber = 100
+            }
+          
             self.tableView.reloadData()
         }
     }
@@ -329,12 +395,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         ]
         
         
-        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
-                print("false")
             } else if json["examDataExist"].boolValue == true {
                 
                 if json["data"].count == 0{
@@ -400,5 +465,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 class examInfoCell: UITableViewCell{
     
     @IBOutlet weak var takeBtn: UIButton!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 8.0
+    }
     
 }

@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-uswTimeTable1.0/Pods-uswTimeTable1.0-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework
 ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
 ${BUILT_PRODUCTS_DIR}/Elliotable/Elliotable.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
