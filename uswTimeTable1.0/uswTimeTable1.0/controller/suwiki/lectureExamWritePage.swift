@@ -49,7 +49,7 @@ class lectureExamWritePage: UIViewController {
     var examTypeArray: [String] = []
     var examTypeArrayCount = 0
 
-    var semesterList: [String] = ["2022-1"]
+    var semesterList: [String] = []
     let examTypeList = ["중간고사", "기말고사", "쪽지", "기타"]
     
     override func viewDidLoad() {

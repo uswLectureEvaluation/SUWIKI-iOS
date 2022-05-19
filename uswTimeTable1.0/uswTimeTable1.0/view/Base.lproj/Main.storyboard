@@ -4291,8 +4291,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbn-LZ-5xQ">
                                                         <rect key="frame" x="95" y="103" width="134" height="34"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2022-1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHU-3K-ZsK">
-                                                                <rect key="frame" x="0.0" y="0.0" width="81" height="38"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="선택" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHU-3K-ZsK">
+                                                                <rect key="frame" x="17" y="2" width="69" height="32"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4449,6 +4449,7 @@
                     </view>
                     <connections>
                         <outlet property="contentField" destination="loc-ZG-fRz" id="nma-KR-Itl"/>
+                        <outlet property="contentView" destination="OM6-cX-16i" id="hAR-Gt-TWr"/>
                         <outlet property="easyDifficultyBtn" destination="dcQ-fw-19x" id="JKb-lP-REv"/>
                         <outlet property="hardDiffcultyBtn" destination="Uwy-xd-DCn" id="1MY-Pz-PL4"/>
                         <outlet property="homeworkManyBtn" destination="7Lu-Ri-Jtz" id="if1-2i-XJE"/>
@@ -4462,8 +4463,10 @@
                         <outlet property="normalDifficultyBtn" destination="3mr-no-Xap" id="48G-WG-bmo"/>
                         <outlet property="satisfactionPoint" destination="gLB-2L-6ey" id="8AO-Bj-bFg"/>
                         <outlet property="satisfactionSlider" destination="89l-bv-u1M" id="qtD-kt-Ioy"/>
+                        <outlet property="scrollView" destination="LaQ-n0-yf9" id="nbM-as-K0Q"/>
                         <outlet property="semesterDropDown" destination="sbn-LZ-5xQ" id="Svz-m9-js3"/>
                         <outlet property="semesterTextField" destination="xHU-3K-ZsK" id="VYb-rh-ieM"/>
+                        <outlet property="superView" destination="UBF-9s-bAu" id="gJe-PH-w1Y"/>
                         <outlet property="teamHaveBtn" destination="Y5o-jd-Zek" id="oDG-Rw-Oxf"/>
                         <outlet property="teamNoBtn" destination="Kp1-hc-OUN" id="spd-iQ-fkx"/>
                     </connections>

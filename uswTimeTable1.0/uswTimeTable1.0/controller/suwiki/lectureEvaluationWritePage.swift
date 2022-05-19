@@ -22,6 +22,9 @@ import DropDown
 class lectureEvaluationWritePage: UIViewController {
     
     
+    @IBOutlet weak var superView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var semesterDropDown: UIView!
     @IBOutlet weak var semesterTextField: UILabel!
     
@@ -79,6 +82,17 @@ class lectureEvaluationWritePage: UIViewController {
         }
         
         
+
+        contentField.layer.cornerRadius = 8.0
+        
+        scrollView.layer.borderWidth = 1.0
+        scrollView.layer.borderColor = UIColor.lightGray.cgColor
+        scrollView.layer.cornerRadius = 8.0
+        
+        superView.layer.borderWidth = 1.0
+        superView.layer.borderColor = UIColor.lightGray.cgColor
+        superView.layer.cornerRadius = 8.0
+        
         semesterDropDown.layer.borderWidth = 1.0
         semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
         semesterDropDown.layer.cornerRadius = 8.0
@@ -88,12 +102,13 @@ class lectureEvaluationWritePage: UIViewController {
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
         dropDown.textFont = UIFont.systemFont(ofSize: 16)
+        dropDown.cornerRadius = 8.0
 
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.semesterTextField.text = semesterList[index]
             self.semesterTextField.font = UIFont.systemFont(ofSize: 16)
             self.semesterTextField.textColor = UIColor.black
-            self.semesterTextField.textAlignment = .center
+            self.semesterTextField.textAlignment = .left
         }
         // Do any additional setup after loading the view.
     }
