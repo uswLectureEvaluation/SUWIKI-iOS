@@ -57,10 +57,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     var tableViewNumber = 0
     var examDataExist = 0
+    var evalDataExist = 0
     
     override func viewDidLoad() {
         
-        tableViewNumber = 0
+    
 
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
@@ -85,7 +86,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-
+        
         
     }
     
@@ -96,12 +97,16 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         loadDetailData()
         getDetailPage()
-
     }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
-
-        tableViewNumber = 0
+        
+        if evalDataExist == 0 {
+            tableViewNumber = 0
+        } else {
+            tableViewNumber = 100
+        }
+        
         evaluationBtn.tintColor = .darkGray
         examBtn.tintColor = .lightGray
         tableView.rowHeight = UITableView.automaticDimension
@@ -139,7 +144,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     @IBAction func InfoWriteBtnClicked(_ sender: Any) {
         // 조건문 추가하여 어느
-        if tableViewNumber == 0 {
+        if tableViewNumber == 0 || tableViewNumber == 100{
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
@@ -166,7 +171,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0 {
             return self.detailEvaluationArray.count
-        } else if tableViewNumber == 1 || tableViewNumber == 2{
+        } else if tableViewNumber == 1 || tableViewNumber == 2 || tableViewNumber == 100{
             return 1
         } else {
             return self.detailExamArray.count
@@ -233,6 +238,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.examType.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
             cell.content.text = detailExamArray[indexPath.row].content
+            
+            return cell
+        } else if tableViewNumber == 100 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            
+            cell.noExamData.text = "등록된 강의평가가 없어요!"
             
             return cell
         }
@@ -362,6 +373,14 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 
                 self.detailEvaluationArray.append(readData)
             }
+            if self.detailEvaluationArray.count != 0 {
+                self.evalDataExist = 0
+                self.tableViewNumber = 0
+            } else {
+                self.evalDataExist = 1
+                self.tableViewNumber = 100
+            }
+          
             self.tableView.reloadData()
         }
     }
