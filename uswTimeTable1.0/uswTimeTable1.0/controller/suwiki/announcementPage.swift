@@ -9,6 +9,7 @@ import UIKit
 
 import Alamofire
 import SwiftyJSON
+import KeychainSwift
 
 class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -16,6 +17,7 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var tableView: UITableView!
     
+    let keychain = KeychainSwift()
     
     var announcementViewData: Array<announcePage> = []
     
@@ -45,8 +47,25 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // 다음페이지 띄워주기(공지사항 자세히 보기)
-        <#code#>
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // 다음페이지 띄워주기(공지사항 자세히 보기
+        
+        let url = "https://api.suwiki.kr/notice/?noticeId=\(announcementViewData[indexPath.row].id)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            
+            if response.response?.statusCode == 200 {
+                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "announceDetailVC") as! announcementDetailPage
+                nextVC.noticeId = self.announcementViewData[indexPath.row].id
+                self.present(nextVC, animated: true, completion: nil)
+            } else {
+                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+                self.navigationController?.pushViewController(nextVC, animated: true)
+            }
+        }
     }
     
 

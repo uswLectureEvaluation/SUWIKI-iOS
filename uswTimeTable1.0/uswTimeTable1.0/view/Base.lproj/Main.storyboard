@@ -5172,6 +5172,21 @@
             </objects>
             <point key="canvasLocation" x="-315.94202898550725" y="761.38392857142856"/>
         </scene>
+        <!--Announcement Detail Page-->
+        <scene sceneID="NWP-4L-0Fg">
+            <objects>
+                <viewController storyboardIdentifier="announceDetailVC" id="mg6-rt-eFW" customClass="announcementDetailPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4OQ-lh-x1E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KJb-5W-Bbm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISe-ge-VMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2043" y="2387"/>
+        </scene>
         <!--Find Pwd Page-->
         <scene sceneID="vLe-Pe-oiT">
             <objects>
