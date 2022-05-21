@@ -91,10 +91,6 @@ class lectureEvaluationWritePage: UIViewController {
         scrollView.layer.borderColor = UIColor.lightGray.cgColor
         scrollView.layer.cornerRadius = 8.0
         
-        superView.layer.borderWidth = 1.0
-        superView.layer.borderColor = UIColor.white.cgColor
-        superView.layer.cornerRadius = 8.0
-        
         semesterDropDown.layer.borderWidth = 1.0
         semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
         semesterDropDown.layer.cornerRadius = 8.0
