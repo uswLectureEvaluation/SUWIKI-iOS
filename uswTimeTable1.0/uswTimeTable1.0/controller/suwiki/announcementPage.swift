@@ -26,12 +26,11 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         let announcementCell = UINib(nibName: "announcementCell", bundle: nil)
         tableView.register(announcementCell, forCellReuseIdentifier: "announcementCell")
         
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 103
         
         getAnnouncementPage()
         // Do any additional setup after loading the view.
     }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return announcementViewData.count
@@ -46,6 +45,10 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
         
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 103.0
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // 다음페이지 띄워주기(공지사항 자세히 보기
         
@@ -55,7 +58,9 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .get, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            
+            print(response.response?.statusCode)
             
             if response.response?.statusCode == 200 {
                 let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "announceDetailVC") as! announcementDetailPage
