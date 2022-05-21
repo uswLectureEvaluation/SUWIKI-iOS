@@ -118,7 +118,9 @@ class lectureExamWritePage: UIViewController {
         else {
             let examInfo: String = examTypeArray.joined(separator: ", ")
             let url = "https://api.suwiki.kr/exam-posts/write/?lectureId=\(lectureId)"
+            //
         
+            
             let parameters: Parameters = [
                 "lectureName" : lectureName, //과목 이름
                 "professor" : professor, //교수이름
@@ -136,9 +138,7 @@ class lectureExamWritePage: UIViewController {
             
             AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
                 
-                
-                print(response.response?.statusCode)
-                
+        
                 if response.response?.statusCode == 400{
                     let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
                         message: "확인을 눌러주세요!",
