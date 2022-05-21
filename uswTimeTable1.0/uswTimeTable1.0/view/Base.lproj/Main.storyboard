@@ -2340,6 +2340,20 @@
                                     <constraint firstItem="In0-iR-TkE" firstAttribute="top" secondItem="uAF-zx-G5m" secondAttribute="top" id="V9U-17-Dio"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmH-ud-zRl">
+                                <rect key="frame" x="16" y="223" width="382" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Yxg-Ce-YML"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="is0-Y5-8yk">
+                                <rect key="frame" x="16" y="280" width="382" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="kfw-yD-bbK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yfw-VG-zGc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2350,11 +2364,17 @@
                             <constraint firstItem="yfw-VG-zGc" firstAttribute="trailing" secondItem="uAF-zx-G5m" secondAttribute="trailing" constant="70" id="3ue-aN-rof"/>
                             <constraint firstItem="yfw-VG-zGc" firstAttribute="trailing" secondItem="fbg-Yk-mOz" secondAttribute="trailing" constant="16" id="52l-F8-iZF"/>
                             <constraint firstItem="yfw-VG-zGc" firstAttribute="trailing" secondItem="OC2-mj-NkV" secondAttribute="trailing" constant="16" id="AJz-LM-pvO"/>
+                            <constraint firstItem="is0-Y5-8yk" firstAttribute="top" secondItem="OC2-mj-NkV" secondAttribute="bottom" constant="8" id="ANj-da-HPE"/>
                             <constraint firstItem="OC2-mj-NkV" firstAttribute="top" secondItem="mDb-Yr-LV8" secondAttribute="topMargin" constant="209" id="C5R-Ie-Q3K"/>
+                            <constraint firstItem="is0-Y5-8yk" firstAttribute="leading" secondItem="mDb-Yr-LV8" secondAttribute="leading" constant="16" id="DYl-UR-aSJ"/>
+                            <constraint firstAttribute="trailing" secondItem="zmH-ud-zRl" secondAttribute="trailing" constant="16" id="G8u-Ox-Snm"/>
+                            <constraint firstItem="zmH-ud-zRl" firstAttribute="top" secondItem="fbg-Yk-mOz" secondAttribute="bottom" constant="8" id="JWs-yF-6yX"/>
                             <constraint firstAttribute="bottomMargin" secondItem="uAF-zx-G5m" secondAttribute="bottom" constant="67" id="NVi-Cy-PvJ"/>
+                            <constraint firstItem="zmH-ud-zRl" firstAttribute="leading" secondItem="mDb-Yr-LV8" secondAttribute="leading" constant="16" id="Url-jz-9wf"/>
                             <constraint firstItem="yfw-VG-zGc" firstAttribute="trailing" secondItem="Cez-lJ-sGB" secondAttribute="trailing" constant="16" id="WyM-lz-AT7"/>
                             <constraint firstItem="yfw-VG-zGc" firstAttribute="bottom" secondItem="Cez-lJ-sGB" secondAttribute="bottom" constant="109" id="XUb-xq-XIO"/>
                             <constraint firstItem="dda-LU-faM" firstAttribute="top" secondItem="yfw-VG-zGc" secondAttribute="top" constant="54" id="YQj-wX-9zb"/>
+                            <constraint firstAttribute="trailing" secondItem="is0-Y5-8yk" secondAttribute="trailing" constant="16" id="Yhe-NR-vnr"/>
                             <constraint firstItem="uAF-zx-G5m" firstAttribute="centerX" secondItem="mDb-Yr-LV8" secondAttribute="centerX" id="he5-YC-AYe"/>
                             <constraint firstItem="Cez-lJ-sGB" firstAttribute="leading" secondItem="yfw-VG-zGc" secondAttribute="leading" constant="16" id="jEW-jM-umQ"/>
                             <constraint firstItem="fbg-Yk-mOz" firstAttribute="leading" secondItem="yfw-VG-zGc" secondAttribute="leading" constant="16" id="kOx-cO-3Dv"/>
@@ -2364,8 +2384,10 @@
                     <tabBarItem key="tabBarItem" title="Item" id="BHL-qK-q2A"/>
                     <connections>
                         <outlet property="idTextField" destination="fbg-Yk-mOz" id="JGb-2a-db7"/>
+                        <outlet property="idTextFieldLine" destination="zmH-ud-zRl" id="dz7-2D-djL"/>
                         <outlet property="loginBtn" destination="Cez-lJ-sGB" id="tGJ-KD-Ek8"/>
                         <outlet property="passwordTextField" destination="OC2-mj-NkV" id="Xk5-vq-hp3"/>
+                        <outlet property="passwordTextFieldLine" destination="is0-Y5-8yk" id="UC0-Io-hsi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKZ-Xd-3Pc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
