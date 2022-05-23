@@ -164,6 +164,12 @@ class loginController: UIViewController {
         self.navigationController?.pushViewController(findPwdVC, animated: true)
     }
     
+    @IBAction func signUpBtnClicked(_ sender: Any) {
+        let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "signUpVC") as! signUpPage
+        self.navigationController?.pushViewController(signUpVC, animated: true)
+    }
+    
+    
     @objc func didEndOnExit(_ sender: UITextField) {
         if idTextField.isFirstResponder {
             passwordTextField.becomeFirstResponder()
