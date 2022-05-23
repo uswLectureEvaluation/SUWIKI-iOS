@@ -14,6 +14,7 @@ import SwiftyJSON
 class signUpPage: UIViewController {
 
     
+    @IBOutlet weak var overLapBtn: UIButton!
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordCheckTextField: UITextField!
@@ -34,6 +35,9 @@ class signUpPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        overLapBtn.layer.cornerRadius = 8.0
+        overLapBtn.layer.borderColor = UIColor.lightGray.cgColor
+        overLapBtn.layer.borderWidth = 1.0
         
         passwordTextField.addTarget(self, action: #selector(passwordTextTypeCheck), for: .editingChanged)
         passwordCheckTextField.addTarget(self, action: #selector(passwordCheckTextTypeCheck), for: .editingChanged)
@@ -148,7 +152,7 @@ class signUpPage: UIViewController {
     }
     
     
-    @objc func passwordCheckTextTypeCheck(_ sender: UITextField){
+    @objc func passwordCheckTextTypeCheck(_ sender: UITextField){ // 비밀번호 일치 판별
         let passwordCheckLabel = UILabel(frame: CGRect(x: 16, y: passwordCheckTextFieldBottomLine.frame.maxY + 2, width: 190, height: 18))
         
         
