@@ -26,6 +26,7 @@ class signUpPage: UIViewController {
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
 
     var addPasswordLabel = false
+    var addPasswordTypeLabel = false
     var addPasswordCheckLabel = false
     
     let loginModel = userModel()
@@ -82,14 +83,23 @@ class signUpPage: UIViewController {
     
     
     @objc func passwordTextTypeCheck(_ sender: UITextField){
-        let passwordLabel = UILabel(frame: CGRect(x: 16, y: passwordTextFieldBottomLine.frame.maxY + 2, width: 120, height: 18))
+        guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
 
+        let passwordLabel = UILabel(frame: CGRect(x: 16, y: passwordTextFieldBottomLine.frame.maxY + 2, width: 120, height: 18))
+        let passwordTypeLabel = UILabel(frame: CGRect(x: 16, y: passwordTextFieldBottomLine.frame.maxY + 2, width: 200, height: 18))
+
+        
+        
         if passwordTextField.text?.count ?? 0 < 8 { // if문 내부에 정규식 true 반환할 경우 추가 필요
+            addPasswordTypeLabel = false // 정규식 부합한 이후 다시 8글자 아래로 수정한 이후 다시 입력할 경우
+
+            if let removeable = self.view.viewWithTag(102) {
+                removeable.removeFromSuperview()
+            }
             
             passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
-            
-            if addPasswordLabel == false {
-                print("addpasswdLabel")
+            if addPasswordLabel == false { // 1회 실행 시
+                
                 addPasswordLabel = true
                 passwordLabel.text = "8자 이상 입력하세요."
                 passwordLabel.textColor = colorLiteralPurple
@@ -99,14 +109,44 @@ class signUpPage: UIViewController {
             
             }
             
-        } else {
-            if let removeable = self.view.viewWithTag(100) {
-                removeable.removeFromSuperview()
-                addPasswordLabel = false
+        } else { // 8글자 이상일 경우
+            addPasswordLabel = false
+
+            if loginModel.isValidPassword(pwd: pwd){ // 정규식에 부합한 경우
+                print("true")
+                addPasswordTypeLabel = false // 8자 이상 입력한 이후 정규식 부합한 이후에 지웠을 때 다시 False
+
+                if let removeable = self.view.viewWithTag(100) {
+                    removeable.removeFromSuperview()
+                }
+                if let removeable = self.view.viewWithTag(102) {
+                    removeable.removeFromSuperview()
+                }
+                
+                passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
+                
+            } else { // 아닌경우
+                print("false")
+                if let removeable = self.view.viewWithTag(100) {
+                    removeable.removeFromSuperview()
+                }
+                passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+
+                if addPasswordTypeLabel == false {
+                    
+                    addPasswordTypeLabel = true
+                    passwordTypeLabel.text = "영문, 숫자, 특수문자를 포함하세요."
+                    passwordTypeLabel.textColor = colorLiteralPurple
+                    passwordTypeLabel.font = passwordTypeLabel.font.withSize(12)
+                    passwordTypeLabel.tag = 102
+                    self.view.addSubview(passwordTypeLabel)
+                    
+                }
+                
             }
-            passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
         }
     }
+    
     
     @objc func passwordCheckTextTypeCheck(_ sender: UITextField){
         let passwordCheckLabel = UILabel(frame: CGRect(x: 16, y: passwordCheckTextFieldBottomLine.frame.maxY + 2, width: 190, height: 18))
