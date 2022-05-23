@@ -214,7 +214,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 cell.difficulty.textColor = colorLiteralPurple
             }
             
-            cell.content.text = detailEvaluationArray[indexPath.row].content
+            cell.content.text = detailEvaluationArray[indexPath.row].content + "\n"
             cell.ratingBarView.rating = Double(detailEvaluationArray[indexPath.row].totalAvg)!
             
             return cell
@@ -238,7 +238,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             cell.examType.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
-            cell.content.text = detailExamArray[indexPath.row].content
+            cell.content.text = detailExamArray[indexPath.row].content + "\n"
             
             return cell
         } else if tableViewNumber == 100 {

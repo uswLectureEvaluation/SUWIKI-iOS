@@ -82,7 +82,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유저가 쓴 내용" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHd-vg-c8g">
-                        <rect key="frame" x="20" y="108" width="374" height="47"/>
+                        <rect key="frame" x="20" y="108" width="374" height="37"/>
                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                 <constraints>
                     <constraint firstItem="DBw-Y8-Orj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="30y-RL-Up4"/>
                     <constraint firstItem="VtC-Ea-LT1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="59" id="6nW-FV-gzL"/>
-                    <constraint firstAttribute="bottom" secondItem="aHd-vg-c8g" secondAttribute="bottom" constant="10" id="7sK-ob-knM"/>
+                    <constraint firstAttribute="bottom" secondItem="aHd-vg-c8g" secondAttribute="bottom" constant="20" id="7sK-ob-knM"/>
                     <constraint firstItem="aHd-vg-c8g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="C9U-UO-bIf"/>
                     <constraint firstItem="aHd-vg-c8g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="108" id="CDb-MR-cf7"/>
                     <constraint firstItem="znT-rQ-bob" firstAttribute="leading" secondItem="DHm-oy-ciU" secondAttribute="trailing" constant="8" id="DSL-9z-Gti"/>
