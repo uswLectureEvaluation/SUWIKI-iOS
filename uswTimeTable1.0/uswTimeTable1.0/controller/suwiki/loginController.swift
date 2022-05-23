@@ -46,29 +46,16 @@ class loginController: UIViewController {
         }
         
         idTextField.addTarget(self, action: #selector(idTextFieldClicked), for: .touchDown)
+        idTextField.addTarget(self, action: #selector(idTextFieldClicked), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextFieldClicked), for: .touchDown)
+        passwordTextField.addTarget(self, action: #selector(passwordTextFieldClicked), for: .editingChanged)
         
+        passwordTextField.isSecureTextEntry = true
         //cell.adjustBtn.addTarget(self, action: #selector(adjustEvaluationBtnClicked), for: .touchUpInside)
         super.viewDidLoad()
         
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidLayoutSubviews() {
-        /*
-        bottomLine1.frame = CGRect(x: 0, y: idTextField.frame.size.height + 16, width: idTextField.frame.width, height: 1)
-        bottomLine1.borderColor = UIColor.systemGray2.cgColor
-        bottomLine1.borderWidth = 1.0
-        idTextField.borderStyle = .none
-        idTextField.layer.addSublayer(bottomLine1)
-        
-        bottomLine2.frame = CGRect(x: 0, y: passwordTextField.frame.size.height + 16, width: passwordTextField.frame.width, height: 1)
-        bottomLine2.borderColor = UIColor.systemGray2.cgColor
-        bottomLine2.borderWidth = 1.0
-        passwordTextField.borderStyle = .none
-        passwordTextField.layer.addSublayer(bottomLine2)
-        */
     }
     
     
@@ -116,6 +103,14 @@ class loginController: UIViewController {
         
     }
 
+    @IBAction func passwordCheckBtnClicked(_ sender: Any) {
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+        } else {
+            passwordTextField.isSecureTextEntry = true
+        }
+        
+    }
     
     func loginCheck(id: String, pwd: String){
 

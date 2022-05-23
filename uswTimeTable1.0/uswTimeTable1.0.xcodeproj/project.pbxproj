@@ -26,6 +26,7 @@
 		AF2E108C28095ADB00051844 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */; };
 		AF2E1093280AF2AB00051844 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */; };
 		AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F69BA27EDB6BF0023243F /* loginModel.swift */; };
+		AF4160FE283B86F800A090D4 /* signUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4160FD283B86F800A090D4 /* signUpModel.swift */; };
 		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
 		AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */; };
@@ -55,6 +56,7 @@
 		AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF8E277F160B00408F46 /* Assets.xcassets */; };
 		AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */; };
 		AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */; };
+		AFB9D755283924E6004A842B /* signUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9D754283924E6004A842B /* signUpPage.swift */; };
 		AFBC03F7282D367E00DCEDA6 /* writtenPostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */; };
 		AFBC03FA282D37F300DCEDA6 /* writtenEvalPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC03F8282D37F300DCEDA6 /* writtenEvalPostCell.swift */; };
 		AFBC03FB282D37F300DCEDA6 /* writtenEvalPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFBC03F9282D37F300DCEDA6 /* writtenEvalPostCell.xib */; };
@@ -119,6 +121,7 @@
 		AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		AF2F69BA27EDB6BF0023243F /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		AF4160FD283B86F800A090D4 /* signUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpModel.swift; sourceTree = "<group>"; };
 		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
 		AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adjustCourseData.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		AFAFEF91277F160B00408F46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureDetailedInformationPage.swift; sourceTree = "<group>"; };
+		AFB9D754283924E6004A842B /* signUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpPage.swift; sourceTree = "<group>"; };
 		AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writtenPostPage.swift; sourceTree = "<group>"; };
 		AFBC03F8282D37F300DCEDA6 /* writtenEvalPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writtenEvalPostCell.swift; sourceTree = "<group>"; };
 		AFBC03F9282D37F300DCEDA6 /* writtenEvalPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = writtenEvalPostCell.xib; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		AFB9A42427EDA9D800B68CCD /* model */ = {
 			isa = PBXGroup;
 			children = (
+				AF4160FD283B86F800A090D4 /* signUpModel.swift */,
 				AF2F69BA27EDB6BF0023243F /* loginModel.swift */,
 				AFA7797127F5D375005816E5 /* homePageModel.swift */,
 				AFE5C106281FFADC00D3E4DF /* searchedResultPageModel.swift */,
@@ -328,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				AFE076B227F5C6AB009E32B0 /* tabBarController.swift */,
+				AFB9D754283924E6004A842B /* signUpPage.swift */,
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
 				AFE5C100281FD6E500D3E4DF /* findIdPage.swift */,
 				AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */,
@@ -523,6 +529,7 @@
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
 				AFAF2E8228056090005709C9 /* examInfoTakeCell.swift in Sources */,
 				AFE69752279F16BD00FB2BC7 /* listCourseData.swift in Sources */,
+				AFB9D755283924E6004A842B /* signUpPage.swift in Sources */,
 				AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AFE5C107281FFADC00D3E4DF /* searchedResultPageModel.swift in Sources */,
@@ -551,6 +558,7 @@
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
 				AFBC03FE282D380A00DCEDA6 /* writtenExamPostCell.swift in Sources */,
 				AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */,
+				AF4160FE283B86F800A090D4 /* signUpModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
