@@ -2528,11 +2528,11 @@
                     </view>
                     <connections>
                         <outlet property="idTextField" destination="60m-4h-X9P" id="k1O-vD-8cu"/>
-                        <outlet property="idTextFieldBottomLine" destination="sMf-Zd-tvw" id="QZF-NP-trn"/>
+                        <outlet property="idTextFieldBottomLine" destination="DQe-E4-GrC" id="Hsg-6A-k8P"/>
                         <outlet property="passwordCheckTextField" destination="sr8-pM-ORL" id="bah-wJ-ohr"/>
-                        <outlet property="passwordCheckTextFieldBottomLine" destination="sMf-Zd-tvw" id="DzK-ej-qpu"/>
+                        <outlet property="passwordCheckTextFieldBottomLine" destination="NeK-Xt-JXw" id="kRB-aP-EnH"/>
                         <outlet property="passwordTextField" destination="uUw-LQ-4c8" id="wzd-N4-2bN"/>
-                        <outlet property="passwordTextFieldBottomLine" destination="sMf-Zd-tvw" id="zDs-lv-Vi5"/>
+                        <outlet property="passwordTextFieldBottomLine" destination="4V3-UY-JgF" id="nRR-Em-oiV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXX-71-Vb4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

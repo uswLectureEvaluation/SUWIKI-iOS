@@ -31,6 +31,9 @@ class signUpPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        passwordTextField.addTarget(self, action: #selector(passwordTextTypeCheck), for: .editingChanged)
+        passwordCheckTextField.addTarget(self, action: #selector(passwordCheckTextTypeCheck), for: .editingChanged)
         // Do any additional setup after loading the view.
     }
     
@@ -55,7 +58,6 @@ class signUpPage: UIViewController {
                     self.showAlert(title: "중복된 아이디입니다 !")
                 }
                 
-                
             }
             
             
@@ -76,5 +78,22 @@ class signUpPage: UIViewController {
         present(alert,animated: true,completion: nil)
     }
     
+    
+    @objc func passwordTextTypeCheck(_ sender: UITextField){
+        if passwordTextField.text?.count ?? 0 < 8 {
+            passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+        } else {
+            passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
+        }
+    }
+    
+    @objc func passwordCheckTextTypeCheck(_ sender: UITextField){
+        if passwordTextField.text == passwordCheckTextField.text {
+            passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
+        } else {
+            passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+        }
+      
+    }
     
 }
