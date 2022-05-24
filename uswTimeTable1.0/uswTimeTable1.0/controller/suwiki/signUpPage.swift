@@ -9,6 +9,7 @@ import UIKit
 
 import Alamofire
 import SwiftyJSON
+import SwiftUI
 
 
 class signUpPage: UIViewController {
@@ -23,12 +24,20 @@ class signUpPage: UIViewController {
     @IBOutlet var passwordTextFieldBottomLine: UIView!
     @IBOutlet var passwordCheckTextFieldBottomLine: UIView!
     
+    
+    @IBOutlet weak var checkBoxBtn: UIImageView!
+    
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
 
     var addPasswordLabel = false
     var addPasswordTypeLabel = false
     var addPasswordCheckLabel = false
+    
+    var checkPasswordEqual = false
+    var overLapCheck = false
+    
+    var checkBoxBool = false
     
     let loginModel = userModel()
     
@@ -44,6 +53,40 @@ class signUpPage: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func nextBtnClicked(_ sender: Any) {
+        let id = idTextField.text ?? ""
+        let pwd = passwordTextField.text ?? ""
+        
+        if overLapCheck == false {
+            showAlert(title: "중복확인을 해주세요!")
+        } else if loginModel.isValidId(id: id) == false{
+            showAlert(title: "아이디 형식이 올바르지 않습니다.")
+        } else if loginModel.isValidPassword(pwd: pwd) == false{
+            showAlert(title: "비밀번호 형식이 올바르지 않습니다.")
+        } else if checkPasswordEqual == false {
+            showAlert(title: "비밀번호가 일치하지 않습니다.")
+        } else if checkBoxBool == false{
+            showAlert(title: "약관에 동의해주세요!")
+        } else {
+            
+        }
+
+        
+    }
+    
+    
+    @IBAction func checkboxBtnClicked(_ sender: Any) {
+        if checkBoxBool == true {
+            checkBoxBool = false
+            checkBoxBtn.image = UIImage(systemName: "square")
+            checkBoxBtn.tintColor = .lightGray
+        } else if checkBoxBool == false{
+            checkBoxBool = true
+            checkBoxBtn.image = UIImage(systemName: "checkmark.square.fill")
+            checkBoxBtn.tintColor = colorLiteralBlue
+        }
+    }
     
     @IBAction func overLapBtnClicked(_ sender: Any) {
         guard let id = idTextField.text, !id.isEmpty else { return }
@@ -61,8 +104,10 @@ class signUpPage: UIViewController {
                 print(json)
                 if json["overlap"].boolValue == false {
                     self.showAlert(title: "사용 가능한 아이디입니다 !")
+                    self.overLapCheck = true
                 } else {
                     self.showAlert(title: "중복된 아이디입니다 !")
+                    self.overLapCheck = false
                 }
                 
             }
@@ -75,8 +120,6 @@ class signUpPage: UIViewController {
         }
     }
     
-
-
     
     func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: "확인 버튼을 눌러주세요!", preferredStyle: UIAlertController.Style.alert)
@@ -91,6 +134,22 @@ class signUpPage: UIViewController {
 
         let passwordLabel = UILabel(frame: CGRect(x: 16, y: passwordTextFieldBottomLine.frame.maxY + 2, width: 120, height: 18))
         let passwordTypeLabel = UILabel(frame: CGRect(x: 16, y: passwordTextFieldBottomLine.frame.maxY + 2, width: 200, height: 18))
+        
+        
+        if passwordCheckTextField.text?.count ?? 0 > 8 {
+            if passwordTextField.text == passwordCheckTextField.text {
+                checkPasswordEqual = true
+                
+                passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
+                
+                if let removeable = self.view.viewWithTag(101) {
+                    
+                    removeable.removeFromSuperview()
+                    addPasswordCheckLabel = false
+                    
+                }
+            }
+        }
 
         
         
@@ -157,6 +216,9 @@ class signUpPage: UIViewController {
         
         
         if passwordTextField.text == passwordCheckTextField.text {
+            
+            checkPasswordEqual = true
+            
             passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
             
             if let removeable = self.view.viewWithTag(101) {
@@ -165,8 +227,12 @@ class signUpPage: UIViewController {
                 addPasswordCheckLabel = false
                 
             }
-
+            
+            
+            
         } else {
+            
+            checkPasswordEqual = false
             
             if addPasswordCheckLabel == false {
                 

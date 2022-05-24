@@ -2521,8 +2521,47 @@
                                 <buttonConfiguration key="configuration" style="plain" title="다음"/>
                                 <connections>
                                     <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="r9v-zv-zwJ"/>
+                                    <action selector="nextBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="Rqn-8E-bls"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j17-gv-Gc1">
+                                <rect key="frame" x="16" y="614" width="25" height="25"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qz0-Lh-P1H">
+                                        <rect key="frame" x="0.0" y="1" width="25" height="22.5"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="YIo-eg-b0j"/>
+                                            <constraint firstAttribute="height" constant="25" id="geV-KC-8jG"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faG-Ak-yxw">
+                                        <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="HSi-pD-xWV"/>
+                                            <constraint firstAttribute="width" constant="25" id="h2z-MC-O1y"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="checkboxBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="Pb0-TY-yKw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="qz0-Lh-P1H" firstAttribute="leading" secondItem="j17-gv-Gc1" secondAttribute="leading" id="2fe-yx-6O2"/>
+                                    <constraint firstAttribute="width" constant="25" id="9IS-RK-sOv"/>
+                                    <constraint firstAttribute="trailing" secondItem="qz0-Lh-P1H" secondAttribute="trailing" id="OTP-YB-RVh"/>
+                                    <constraint firstItem="faG-Ak-yxw" firstAttribute="top" secondItem="j17-gv-Gc1" secondAttribute="top" id="UAN-g7-uDW"/>
+                                    <constraint firstAttribute="trailing" secondItem="faG-Ak-yxw" secondAttribute="trailing" id="eXg-0J-Q1K"/>
+                                    <constraint firstAttribute="height" constant="25" id="gJX-eu-3Cp"/>
+                                    <constraint firstAttribute="bottom" secondItem="qz0-Lh-P1H" secondAttribute="bottom" id="hm5-Ou-qQp"/>
+                                    <constraint firstItem="qz0-Lh-P1H" firstAttribute="top" secondItem="j17-gv-Gc1" secondAttribute="top" id="rkV-sb-d20"/>
+                                    <constraint firstAttribute="bottom" secondItem="faG-Ak-yxw" secondAttribute="bottom" id="vMh-DL-ItA"/>
+                                    <constraint firstItem="faG-Ak-yxw" firstAttribute="leading" secondItem="j17-gv-Gc1" secondAttribute="leading" id="xC6-vV-Ueg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Z9t-2M-JCn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2537,6 +2576,7 @@
                             <constraint firstItem="4V3-UY-JgF" firstAttribute="top" secondItem="uUw-LQ-4c8" secondAttribute="bottom" constant="8" id="CN2-yt-zK6"/>
                             <constraint firstItem="uUw-LQ-4c8" firstAttribute="leading" secondItem="Z9t-2M-JCn" secondAttribute="leading" constant="16" id="ECs-gp-4ey"/>
                             <constraint firstItem="Z9t-2M-JCn" firstAttribute="trailing" secondItem="sr8-pM-ORL" secondAttribute="trailing" constant="16" id="Eg9-Hh-BiN"/>
+                            <constraint firstItem="Z9t-2M-JCn" firstAttribute="bottom" secondItem="j17-gv-Gc1" secondAttribute="bottom" constant="223" id="H08-HR-Jx4"/>
                             <constraint firstItem="NeK-Xt-JXw" firstAttribute="top" secondItem="sr8-pM-ORL" secondAttribute="bottom" constant="8" id="L3A-tZ-X3x"/>
                             <constraint firstItem="Z9t-2M-JCn" firstAttribute="trailing" secondItem="qjT-ez-LuD" secondAttribute="trailing" constant="16" id="Qq8-6M-RC7"/>
                             <constraint firstItem="NeK-Xt-JXw" firstAttribute="leading" secondItem="sMf-Zd-tvw" secondAttribute="leading" constant="16" id="T6o-Bg-kTx"/>
@@ -2545,6 +2585,7 @@
                             <constraint firstItem="Z9t-2M-JCn" firstAttribute="trailing" secondItem="vht-3W-yss" secondAttribute="trailing" constant="16" id="a7C-Yq-Qs5"/>
                             <constraint firstAttribute="trailing" secondItem="4V3-UY-JgF" secondAttribute="trailing" constant="16" id="bEj-qj-dQo"/>
                             <constraint firstItem="sr8-pM-ORL" firstAttribute="leading" secondItem="Z9t-2M-JCn" secondAttribute="leading" constant="16" id="ehz-82-aWt"/>
+                            <constraint firstItem="j17-gv-Gc1" firstAttribute="leading" secondItem="Z9t-2M-JCn" secondAttribute="leading" constant="16" id="epe-mW-em2"/>
                             <constraint firstItem="4V3-UY-JgF" firstAttribute="leading" secondItem="sMf-Zd-tvw" secondAttribute="leading" constant="16" id="gbU-RL-2TP"/>
                             <constraint firstItem="DQe-E4-GrC" firstAttribute="top" secondItem="60m-4h-X9P" secondAttribute="bottom" constant="8" id="kZL-Wr-Ppn"/>
                             <constraint firstItem="60m-4h-X9P" firstAttribute="top" secondItem="Z9t-2M-JCn" secondAttribute="top" constant="152" id="mLW-iS-Qe1"/>
@@ -2556,6 +2597,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="checkBoxBtn" destination="qz0-Lh-P1H" id="EhZ-WA-bo5"/>
                         <outlet property="idTextField" destination="60m-4h-X9P" id="k1O-vD-8cu"/>
                         <outlet property="idTextFieldBottomLine" destination="DQe-E4-GrC" id="Hsg-6A-k8P"/>
                         <outlet property="overLapBtn" destination="vht-3W-yss" id="ffH-LL-eU6"/>
@@ -2567,7 +2609,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXX-71-Vb4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1291" y="2174"/>
+            <point key="canvasLocation" x="1289.8550724637682" y="2173.6607142857142"/>
         </scene>
         <!--Announcement Page-->
         <scene sceneID="UNz-2C-Yin">
@@ -5470,6 +5512,11 @@
             <point key="canvasLocation" x="-1099" y="2174"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="pNh-pJ-vFd">
+            <size key="intrinsicContentSize" width="81" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
@@ -5483,6 +5530,7 @@
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="square" catalog="system" width="128" height="114"/>
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="스샷 최종본" width="708" height="800"/>
