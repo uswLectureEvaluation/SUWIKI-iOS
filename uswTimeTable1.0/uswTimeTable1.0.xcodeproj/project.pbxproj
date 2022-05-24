@@ -56,6 +56,7 @@
 		AFAFEF92277F160B00408F46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFAFEF90277F160B00408F46 /* LaunchScreen.storyboard */; };
 		AFB1469927FAF70500469868 /* lectureDetailedInformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */; };
 		AFB2291D283CEB8800D9EE3D /* SignUpEmailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2291C283CEB8800D9EE3D /* SignUpEmailPage.swift */; };
+		AFB2291F283CFA3500D9EE3D /* CompleteSignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB2291E283CFA3500D9EE3D /* CompleteSignUpPage.swift */; };
 		AFB9D755283924E6004A842B /* signUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB9D754283924E6004A842B /* signUpPage.swift */; };
 		AFBC03F7282D367E00DCEDA6 /* writtenPostPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */; };
 		AFBC03FA282D37F300DCEDA6 /* writtenEvalPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC03F8282D37F300DCEDA6 /* writtenEvalPostCell.swift */; };
@@ -153,6 +154,7 @@
 		AFAFEF93277F160B00408F46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureDetailedInformationPage.swift; sourceTree = "<group>"; };
 		AFB2291C283CEB8800D9EE3D /* SignUpEmailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailPage.swift; sourceTree = "<group>"; };
+		AFB2291E283CFA3500D9EE3D /* CompleteSignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpPage.swift; sourceTree = "<group>"; };
 		AFB9D754283924E6004A842B /* signUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpPage.swift; sourceTree = "<group>"; };
 		AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writtenPostPage.swift; sourceTree = "<group>"; };
 		AFBC03F8282D37F300DCEDA6 /* writtenEvalPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = writtenEvalPostCell.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				AFE076B227F5C6AB009E32B0 /* tabBarController.swift */,
 				AFB9D754283924E6004A842B /* signUpPage.swift */,
 				AFB2291C283CEB8800D9EE3D /* SignUpEmailPage.swift */,
+				AFB2291E283CFA3500D9EE3D /* CompleteSignUpPage.swift */,
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
 				AFE5C100281FD6E500D3E4DF /* findIdPage.swift */,
 				AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */,
@@ -541,6 +544,7 @@
 				AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */,
 				AFE5C101281FD6E500D3E4DF /* findIdPage.swift in Sources */,
 				AFD470AF282BF69C001A1119 /* moveViewController.swift in Sources */,
+				AFB2291F283CFA3500D9EE3D /* CompleteSignUpPage.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,

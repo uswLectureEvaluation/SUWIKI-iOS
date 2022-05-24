@@ -59,6 +59,8 @@ class SignUpEmailPage: UIViewController {
         ]
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+            
+            /*
             if response.response?.statusCode == 403 {
                 self.showAlert(title: "블랙리스트 유저입니다.")
             } else if response.response?.statusCode == 400{
@@ -66,6 +68,7 @@ class SignUpEmailPage: UIViewController {
             } else {
                 
             }
+             */
                         
         }
         
