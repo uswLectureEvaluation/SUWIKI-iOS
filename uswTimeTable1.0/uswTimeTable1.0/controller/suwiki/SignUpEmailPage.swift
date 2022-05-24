@@ -7,8 +7,21 @@
 
 import UIKit
 
+import Alamofire
+import SwiftyJSON
+
 class SignUpEmailPage: UIViewController {
 
+    
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    let loginModel = userModel()
+    
+    var userId = ""
+    var userPwd = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,14 +29,56 @@ class SignUpEmailPage: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func singUpBtnClicked(_ sender: Any) {
+        let email = emailTextField.text ?? ""
+        
+        let url = "https://api.suwiki.kr/user/check-email"
+        let parameters = [
+            "email" : email
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+            let data = response.data
+            let json = JSON(data ?? "")
+            print(json)
+            if json["overlap"].boolValue == false {
+                self.requestJoin(id: self.userId, pwd: self.userPwd, email: email)
+            } else {
+                self.showAlert(title: "중복된 이메일입니다 !")
+            }
+            
+        }
     }
-    */
+    
+    func requestJoin(id: String, pwd: String, email: String){
+        let url = "https://api.suwiki.kr/user/join"
+        let parameters = [
+            "loginId" : id,
+            "password" : pwd,
+            "email" : email
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
+            if response.response?.statusCode == 403 {
+                self.showAlert(title: "블랙리스트 유저입니다.")
+            } else if response.response?.statusCode == 400{
+                self.showAlert(title: "이미 가입된 유저 이메일입니다.")
+            } else {
+                
+            }
+                        
+        }
+        
+    }
+    
+    
+    
+    
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: "확인 버튼을 눌러주세요!", preferredStyle: UIAlertController.Style.alert)
+        let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(cancle)
+        present(alert,animated: true,completion: nil)
+    }
 
 }

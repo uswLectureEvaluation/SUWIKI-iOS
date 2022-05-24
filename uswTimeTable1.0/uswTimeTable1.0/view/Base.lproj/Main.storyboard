@@ -2611,6 +2611,103 @@
             </objects>
             <point key="canvasLocation" x="1289.8550724637682" y="2173.6607142857142"/>
         </scene>
+        <!--Sign Up Email Page-->
+        <scene sceneID="Jas-Qj-d34">
+            <objects>
+                <viewController storyboardIdentifier="signEmailVC" id="lBG-4B-4HQ" customClass="SignUpEmailPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ist-BF-A8y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg1-l9-8ab">
+                                <rect key="frame" x="178" y="94" width="58" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="58" id="0BM-at-rFl"/>
+                                    <constraint firstAttribute="height" constant="24" id="vps-nr-AyN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
+                                <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학교 이메일 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K0m-d1-0nQ">
+                                <rect key="frame" x="16" y="196" width="382" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5Dq-8p-wVr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwr-PS-VN4">
+                                <rect key="frame" x="16" y="224" width="382" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="iV5-VM-ffb"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@suwon.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFh-P5-jqq">
+                                <rect key="frame" x="310" y="198" width="88" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="H9V-nu-4BL"/>
+                                    <constraint firstAttribute="height" constant="15" id="YHu-UA-oyA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BV-Ck-hFF">
+                                <rect key="frame" x="16" y="705" width="382" height="48"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="4CO-Zc-T72"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="회원가입"/>
+                                <connections>
+                                    <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="a1L-wi-Deg"/>
+                                    <action selector="nextBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="mq5-mo-4MD"/>
+                                    <action selector="singUpBtnClicked:" destination="lBG-4B-4HQ" eventType="touchUpInside" id="Pcg-30-AmX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 메일로 인증 링크를 전송합니다." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2e4-jB-U04">
+                                <rect key="frame" x="101" y="777" width="203" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7tj-vs-ID5"/>
+                                    <constraint firstAttribute="width" constant="203" id="E2n-71-hgl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                                <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HOZ-rP-Zid"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qwr-PS-VN4" firstAttribute="leading" secondItem="Ist-BF-A8y" secondAttribute="leading" constant="16" id="5Ez-pn-O6e"/>
+                            <constraint firstItem="HOZ-rP-Zid" firstAttribute="bottom" secondItem="3BV-Ck-hFF" secondAttribute="bottom" constant="109" id="AR3-H1-5WS"/>
+                            <constraint firstItem="HOZ-rP-Zid" firstAttribute="trailing" secondItem="3BV-Ck-hFF" secondAttribute="trailing" constant="16" id="Czu-xz-a43"/>
+                            <constraint firstItem="kFh-P5-jqq" firstAttribute="top" secondItem="HOZ-rP-Zid" secondAttribute="top" constant="154" id="Dje-Rf-hxK"/>
+                            <constraint firstItem="HOZ-rP-Zid" firstAttribute="trailing" secondItem="kFh-P5-jqq" secondAttribute="trailing" constant="16" id="JeE-WV-dUL"/>
+                            <constraint firstItem="HOZ-rP-Zid" firstAttribute="bottom" secondItem="2e4-jB-U04" secondAttribute="bottom" constant="65" id="PkM-Ey-1Cg"/>
+                            <constraint firstItem="K0m-d1-0nQ" firstAttribute="top" secondItem="HOZ-rP-Zid" secondAttribute="top" constant="152" id="Q83-VV-s01"/>
+                            <constraint firstItem="Mg1-l9-8ab" firstAttribute="top" secondItem="HOZ-rP-Zid" secondAttribute="top" constant="50" id="QAP-xN-3vG"/>
+                            <constraint firstItem="3BV-Ck-hFF" firstAttribute="leading" secondItem="HOZ-rP-Zid" secondAttribute="leading" constant="16" id="QSm-p0-itY"/>
+                            <constraint firstAttribute="trailing" secondItem="qwr-PS-VN4" secondAttribute="trailing" constant="16" id="YYx-ic-csp"/>
+                            <constraint firstItem="qwr-PS-VN4" firstAttribute="top" secondItem="K0m-d1-0nQ" secondAttribute="bottom" constant="8" id="eeM-4F-qPf"/>
+                            <constraint firstItem="K0m-d1-0nQ" firstAttribute="leading" secondItem="HOZ-rP-Zid" secondAttribute="leading" constant="16" id="h4M-4a-HLU"/>
+                            <constraint firstItem="HOZ-rP-Zid" firstAttribute="trailing" secondItem="K0m-d1-0nQ" secondAttribute="trailing" constant="16" id="oQf-qs-pEm"/>
+                            <constraint firstItem="2e4-jB-U04" firstAttribute="centerX" secondItem="Ist-BF-A8y" secondAttribute="centerX" constant="-4.5" id="otI-Ez-w1k"/>
+                            <constraint firstItem="Mg1-l9-8ab" firstAttribute="centerX" secondItem="Ist-BF-A8y" secondAttribute="centerX" id="ulJ-Rl-voo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="K0m-d1-0nQ" id="XMN-VD-Oc7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cxp-eo-fob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2057.971014492754" y="2173.6607142857142"/>
+        </scene>
         <!--Announcement Page-->
         <scene sceneID="UNz-2C-Yin">
             <objects>

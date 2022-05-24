@@ -69,7 +69,10 @@ class signUpPage: UIViewController {
         } else if checkBoxBool == false{
             showAlert(title: "약관에 동의해주세요!")
         } else {
-            
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "signEmailVC") as! SignUpEmailPage
+            nextVC.userId = id
+            nextVC.userPwd = pwd
+            self.navigationController?.pushViewController(nextVC, animated: true)
         }
 
         
