@@ -120,7 +120,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         } else {
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.present(nextVC, animated: true, completion: nil)
         }
         
                
