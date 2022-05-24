@@ -48,6 +48,7 @@ class signUpPage: UIViewController {
         overLapBtn.layer.borderColor = UIColor.lightGray.cgColor
         overLapBtn.layer.borderWidth = 1.0
         
+        idTextField.addTarget(self, action: #selector(idTextFieldChangeCheck), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextTypeCheck), for: .editingChanged)
         passwordCheckTextField.addTarget(self, action: #selector(passwordCheckTextTypeCheck), for: .editingChanged)
         // Do any additional setup after loading the view.
@@ -72,7 +73,8 @@ class signUpPage: UIViewController {
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "signEmailVC") as! SignUpEmailPage
             nextVC.userId = id
             nextVC.userPwd = pwd
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            
+            self.present(nextVC, animated: true, completion: nil)
         }
 
         
@@ -129,6 +131,10 @@ class signUpPage: UIViewController {
         let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(cancle)
         present(alert,animated: true,completion: nil)
+    }
+    
+    @objc func idTextFieldChangeCheck(_ sender: UITextField){
+        overLapCheck = false
     }
     
     

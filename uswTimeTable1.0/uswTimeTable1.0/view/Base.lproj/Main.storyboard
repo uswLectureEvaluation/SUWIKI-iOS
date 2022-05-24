@@ -2746,6 +2746,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="로그인"/>
                                 <connections>
+                                    <action selector="loginBtnClicked:" destination="AeT-3b-S5L" eventType="touchUpInside" id="L8U-Xe-12o"/>
                                     <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="wCZ-FC-eEa"/>
                                     <action selector="nextBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="4vp-yg-8HH"/>
                                     <action selector="singUpBtnClicked:" destination="lBG-4B-4HQ" eventType="touchUpInside" id="oeH-lh-mpj"/>
@@ -2761,6 +2762,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="메일 확인하기"/>
                                 <connections>
+                                    <action selector="checkEmailBtnClicked:" destination="AeT-3b-S5L" eventType="touchUpInside" id="tDV-gj-fXz"/>
                                     <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="w7f-f9-wLM"/>
                                     <action selector="nextBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="QRx-S4-hJu"/>
                                     <action selector="singUpBtnClicked:" destination="lBG-4B-4HQ" eventType="touchUpInside" id="dsx-PF-GVS"/>
@@ -2929,6 +2931,15 @@
                                 <buttonConfiguration key="configuration" style="plain" title="전송"/>
                                 <connections>
                                     <action selector="sendBtnClicked:" destination="cwe-gV-coP" eventType="touchUpInside" id="G4J-7a-UzM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ee-mV-YFI">
+                                <rect key="frame" x="217" y="572" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="dismissTest:" destination="cwe-gV-coP" eventType="touchUpInside" id="ZqT-wy-yB9"/>
                                 </connections>
                             </button>
                         </subviews>

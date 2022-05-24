@@ -141,8 +141,7 @@ class loginController: UIViewController {
                 print(self.keychain.get("AccessToken") ?? "")
                 print(self.keychain.get("RefreshToken") ?? "")
                 
-                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "homePageVC") as! suwikiHomePage
-                self.navigationController?.pushViewController(nextVC, animated: true)
+                self.dismiss(animated: true, completion: nil)
                 
             } else { // 이후에 alert로 수정 예정
                 print("로그인 실패")
@@ -156,7 +155,7 @@ class loginController: UIViewController {
     
     @IBAction func findIdBtnClicked(_ sender: Any) {
         let findIdVC = self.storyboard?.instantiateViewController(withIdentifier: "findIdVC") as! findIdPage
-        self.navigationController?.pushViewController(findIdVC, animated: true)
+        self.present(findIdVC, animated: true, completion: nil)
     }
     
     @IBAction func findPwdBtnClicked(_ sender: Any) {
@@ -166,7 +165,8 @@ class loginController: UIViewController {
     
     @IBAction func signUpBtnClicked(_ sender: Any) {
         let signUpVC = self.storyboard?.instantiateViewController(withIdentifier: "signUpVC") as! signUpPage
-        self.navigationController?.pushViewController(signUpVC, animated: true)
+        self.present(signUpVC, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(signUpVC, animated: true)
     }
     
     

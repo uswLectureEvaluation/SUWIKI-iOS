@@ -58,8 +58,11 @@ class SignUpEmailPage: UIViewController {
             "email" : email
         ]
         
+        print(parameters)
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "completeVC") as! CompleteSignUpPage
+            self.present(nextVC, animated: true, completion: nil)
             /*
             if response.response?.statusCode == 403 {
                 self.showAlert(title: "블랙리스트 유저입니다.")

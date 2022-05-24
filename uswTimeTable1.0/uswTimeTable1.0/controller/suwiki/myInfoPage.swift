@@ -49,6 +49,7 @@ class myInfoPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getInfoData()
+        print("viewwillappear")
     }
     
     // UserDefaults.standard.removeObject(forKey: "id")
@@ -62,7 +63,9 @@ class myInfoPage: UIViewController {
     
     @IBAction func loginBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(nextVC, animated: true)
         
     }
     
