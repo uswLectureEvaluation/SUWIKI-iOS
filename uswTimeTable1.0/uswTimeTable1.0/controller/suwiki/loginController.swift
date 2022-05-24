@@ -21,18 +21,23 @@ class loginController: UIViewController {
     
     let keychain = KeychainSwift()
     let loginModel = userModel()
-    var useAutoLogin = 0
 
     let bottomLine1 = CALayer()
     let bottomLine2 = CALayer()
 
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
-
+    
+    
+    var checkBoxBool = false
+    
+    @IBOutlet weak var checkBoxBtn: UIImageView!
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
+    
+    
     
     override func viewDidLoad() {
         keychain.clear()
@@ -40,10 +45,7 @@ class loginController: UIViewController {
         
         print(UserDefaults.standard.string(forKey: "id"))
         print(UserDefaults.standard.string(forKey: "pwd"))
-        if (UserDefaults.standard.value(forKey: "id") != nil) == true{
-            useAutoLogin = 1
-            loginCheck(id: UserDefaults.standard.string(forKey: "id")!, pwd: UserDefaults.standard.string(forKey: "pwd")!)
-        }
+
         
         idTextField.addTarget(self, action: #selector(idTextFieldClicked), for: .touchDown)
         idTextField.addTarget(self, action: #selector(idTextFieldClicked), for: .editingChanged)
@@ -58,6 +60,25 @@ class loginController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func autoLoginBtnClicked(_ sender: Any) {
+        if checkBoxBool == true {
+            UserDefaults.standard.set(false, forKey: "autoLogin")
+            checkBoxBool = false
+            checkBoxBtn.image = UIImage(systemName: "square")
+            checkBoxBtn.tintColor = .lightGray
+        } else if checkBoxBool == false{
+            UserDefaults.standard.set(true, forKey: "autoLogin")
+            checkBoxBool = true
+            checkBoxBtn.image = UIImage(systemName: "checkmark.square.fill")
+            checkBoxBtn.tintColor = colorLiteralBlue
+        }
+    }
     
     @IBAction func loginButton (_ sender: Any) {
         guard let id = idTextField.text, !id.isEmpty else { return }
@@ -129,10 +150,7 @@ class loginController: UIViewController {
             let refreshToken = json["RefreshToken"].stringValue
         
             if accessToken != "" {
-                if self.useAutoLogin == 1 || (UserDefaults.standard.value(forKey: "id") == nil) == true{
-                    UserDefaults.standard.set(id, forKey: "id")
-                    UserDefaults.standard.set(pwd, forKey: "pwd")
-                }
+ 
                 print("로그인 성공")
                 self.keychain.set(accessToken, forKey: "AccessToken")
                 self.keychain.set(refreshToken, forKey: "RefreshToken")

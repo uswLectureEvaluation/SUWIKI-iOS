@@ -34,6 +34,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     let categoryList = ["최근 올라온 강의", "꿀 강의", "만족도가 높은 강의", "배울게 많은 강의", "Best 강의"]
     
     override func viewDidLoad() {
+        print(keychain.get("AccessToken"))
         tableView.separatorInset.left = 0 // 테이블뷰 왼쪽 여백
         searchTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 6.0, height: 0.0))
         searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
