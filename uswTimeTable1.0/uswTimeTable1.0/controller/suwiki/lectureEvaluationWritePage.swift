@@ -84,14 +84,12 @@ class lectureEvaluationWritePage: UIViewController {
         
 
         contentField.layer.cornerRadius = 8.0
+        contentField.layer.borderWidth = 1.0
+        contentField.layer.borderColor = UIColor.lightGray.cgColor
         
         scrollView.layer.borderWidth = 1.0
         scrollView.layer.borderColor = UIColor.lightGray.cgColor
         scrollView.layer.cornerRadius = 8.0
-        
-        superView.layer.borderWidth = 1.0
-        superView.layer.borderColor = UIColor.lightGray.cgColor
-        superView.layer.cornerRadius = 8.0
         
         semesterDropDown.layer.borderWidth = 1.0
         semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
@@ -158,6 +156,8 @@ class lectureEvaluationWritePage: UIViewController {
         ] as [String : Any]
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            
+           
             
             if response.response?.statusCode == 400{
                 let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",

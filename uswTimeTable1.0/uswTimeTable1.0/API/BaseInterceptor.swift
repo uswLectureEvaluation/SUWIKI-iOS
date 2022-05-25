@@ -24,14 +24,12 @@ class BaseInterceptor: RequestInterceptor{
             var urlRequest = urlRequest
             urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
       
-            print(urlRequest.url?.absoluteString ?? "print")
             completion(.success(urlRequest))
            
         }
     
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-        print("InRetry")
 
         guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
             completion(.doNotRetryWithError(error))

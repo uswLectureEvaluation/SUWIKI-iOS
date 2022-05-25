@@ -71,6 +71,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         scrollView.isDirectionalLockEnabled = true
         
         // Xib 등록
+        print(lectureId)
+        
         let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
         tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
         let examCellName = UINib(nibName: "detailExamCell", bundle: nil)
@@ -214,7 +216,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 cell.difficulty.textColor = colorLiteralPurple
             }
             
-            cell.content.text = detailEvaluationArray[indexPath.row].content
+            cell.content.text = detailEvaluationArray[indexPath.row].content + "\n"
             cell.ratingBarView.rating = Double(detailEvaluationArray[indexPath.row].totalAvg)!
             
             return cell
@@ -238,7 +240,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             cell.examType.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
-            cell.content.text = detailExamArray[indexPath.row].content
+            cell.content.text = detailExamArray[indexPath.row].content + "\n"
             
             return cell
         } else if tableViewNumber == 100 {
@@ -398,6 +400,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
+            print(json)
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
             } else if json["examDataExist"].boolValue == true {

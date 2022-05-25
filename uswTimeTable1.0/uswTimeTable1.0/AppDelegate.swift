@@ -6,9 +6,11 @@
 //
 
 import UIKit
+
 import CoreData
 import Firebase
 import RealmSwift
+import KeychainSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var lectureId: Int = 0
 
+    let keychain = KeychainSwift()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let config = Realm.Configuration(
@@ -65,6 +69,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         
         return UIInterfaceOrientationMask.portrait // 가로모드 제한
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
+        if autoLogin == false {
+            keychain.clear()
+        }
     }
 
     // MARK: - Core Data stack

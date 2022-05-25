@@ -52,6 +52,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" staticText="YES"/>
+            </accessibility>
             <connections>
                 <outlet property="modifiedDateLabel" destination="zto-fJ-pTE" id="emB-fJ-RF9"/>
                 <outlet property="titleLabel" destination="Eft-jx-f4g" id="Da6-b0-ShS"/>

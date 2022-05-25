@@ -19,6 +19,7 @@ class findIdPage: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
     
     @IBAction func sendBtnClicked(_ sender: Any) {
         let url = "https://api.suwiki.kr/user/find-id"
@@ -43,6 +44,7 @@ class findIdPage: UIViewController {
                 let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
                 alert.addAction(cancle)
                 self.present(alert, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
      
             }
         }
