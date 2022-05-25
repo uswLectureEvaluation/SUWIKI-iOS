@@ -19,9 +19,7 @@ class findIdPage: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func dismissTest(_ sender: Any) {
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
+
     
     @IBAction func sendBtnClicked(_ sender: Any) {
         let url = "https://api.suwiki.kr/user/find-id"
