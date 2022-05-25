@@ -119,10 +119,36 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGq-ub-OLY">
+                        <rect key="frame" x="295" y="24" width="22" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="j1t-oo-fRh"/>
+                            <constraint firstAttribute="width" constant="22" id="tlD-JI-Rzv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Light" family="Pretendard" pointSize="12"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="수정">
+                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKz-as-6lQ">
+                        <rect key="frame" x="325" y="24" width="21" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="IdY-Up-zet"/>
+                            <constraint firstAttribute="width" constant="21" id="kjV-Vi-aGg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Light" family="Pretendard" pointSize="12"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="삭제">
+                            <color key="titleColor" red="0.63921570780000003" green="0.63921570780000003" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="UGq-ub-OLY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="0JQ-FI-XHb"/>
                     <constraint firstItem="AP8-YS-swZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2UA-CF-Sg1"/>
                     <constraint firstItem="lPu-EY-OKq" firstAttribute="leading" secondItem="7La-hb-Sd6" secondAttribute="trailing" constant="8" id="4BX-1k-Zub"/>
+                    <constraint firstAttribute="trailing" secondItem="UGq-ub-OLY" secondAttribute="trailing" constant="49" id="ACE-ab-J0F"/>
                     <constraint firstItem="D7O-xV-YsK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ARV-4k-RYb"/>
                     <constraint firstItem="7La-hb-Sd6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Bp7-6w-IDa"/>
                     <constraint firstItem="lPu-EY-OKq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="66" id="EMZ-R1-QZ4"/>
@@ -132,8 +158,10 @@
                     <constraint firstItem="OAD-Yq-k8G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="59" id="RJt-e3-LCh"/>
                     <constraint firstItem="Oj0-d7-pLE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="S2G-Is-fXL"/>
                     <constraint firstItem="44y-P7-Kbt" firstAttribute="leading" secondItem="OAD-Yq-k8G" secondAttribute="trailing" constant="21" id="Udz-Bh-2lt"/>
+                    <constraint firstAttribute="trailing" secondItem="RKz-as-6lQ" secondAttribute="trailing" constant="20" id="cyf-L0-Yro"/>
                     <constraint firstItem="274-RS-YRA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="97" id="dyK-bD-cBW"/>
                     <constraint firstItem="D7O-xV-YsK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="130" id="j5Y-3F-4eu"/>
+                    <constraint firstItem="RKz-as-6lQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="neT-SY-JN2"/>
                     <constraint firstItem="44y-P7-Kbt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="97" id="nj6-li-o6x"/>
                     <constraint firstItem="ZoL-Ee-dNr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pz1-Id-vhg"/>
                     <constraint firstItem="7La-hb-Sd6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="64" id="tyu-D4-0RS"/>
@@ -145,7 +173,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="adBtn" destination="UGq-ub-OLY" id="9rV-jy-gbQ"/>
                 <outlet property="contentLabel" destination="D7O-xV-YsK" id="roc-Hy-m5J"/>
+                <outlet property="delBtn" destination="RKz-as-6lQ" id="Liq-B2-7aT"/>
                 <outlet property="examDifficultyLabel" destination="OAD-Yq-k8G" id="fJA-Ok-Rwz"/>
                 <outlet property="examInfoLabel" destination="274-RS-YRA" id="7CO-ai-7JL"/>
                 <outlet property="examTypeLabel" destination="Oj0-d7-pLE" id="h4q-3v-7J4"/>

@@ -235,7 +235,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         
     }
     
-    
+    // MARK: 강의평가 수정 및 삭제 버튼 클릭
     @objc func adjustEvaluationBtnClicked(sender: UIButton)
     {
         let indexPath = IndexPath(row: sender.tag, section: 0)
@@ -336,5 +336,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
         }
     }
+    
+    // MARK: 시험정보 수정 및 삭제 버튼 클릭
     
 }
