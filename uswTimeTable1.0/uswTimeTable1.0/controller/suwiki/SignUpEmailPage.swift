@@ -55,7 +55,7 @@ class SignUpEmailPage: UIViewController {
         let parameters = [
             "loginId" : id,
             "password" : pwd,
-            "email" : email
+            "email" : "\(email)@suwon.ac.kr"
         ]
         
         print(parameters)

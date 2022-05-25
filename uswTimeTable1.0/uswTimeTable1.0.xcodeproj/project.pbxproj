@@ -34,6 +34,8 @@
 		AF50233F27C378FB0030CF5D /* courseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF50233E27C378FB0030CF5D /* courseData.swift */; };
 		AF5621B9283E31D4002B8F23 /* PurchaseHistoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5621B8283E31D4002B8F23 /* PurchaseHistoryPage.swift */; };
 		AF5621BB283E32A1002B8F23 /* PurchaseHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5621BA283E32A1002B8F23 /* PurchaseHistoryModel.swift */; };
+		AF5621BE283E3364002B8F23 /* PurchaseHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5621BC283E3364002B8F23 /* PurchaseHistoryCell.swift */; };
+		AF5621BF283E3364002B8F23 /* PurchaseHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF5621BD283E3364002B8F23 /* PurchaseHistoryCell.xib */; };
 		AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */; };
 		AF6C1CC228019DF5000BAC48 /* detailEvaluationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6C1CC028019DF5000BAC48 /* detailEvaluationCell.xib */; };
 		AF6C1CC528019E4A000BAC48 /* detailExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */; };
@@ -132,6 +134,8 @@
 		AF50233E27C378FB0030CF5D /* courseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = courseData.swift; sourceTree = "<group>"; };
 		AF5621B8283E31D4002B8F23 /* PurchaseHistoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryPage.swift; sourceTree = "<group>"; };
 		AF5621BA283E32A1002B8F23 /* PurchaseHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryModel.swift; sourceTree = "<group>"; };
+		AF5621BC283E3364002B8F23 /* PurchaseHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryCell.swift; sourceTree = "<group>"; };
+		AF5621BD283E3364002B8F23 /* PurchaseHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseHistoryCell.xib; sourceTree = "<group>"; };
 		AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailEvaluationCell.swift; sourceTree = "<group>"; };
 		AF6C1CC028019DF5000BAC48 /* detailEvaluationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = detailEvaluationCell.xib; sourceTree = "<group>"; };
 		AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailExamCell.swift; sourceTree = "<group>"; };
@@ -299,11 +303,12 @@
 				AF0A76B1281AB34E005977C6 /* examWriteModel.swift */,
 				AFD470AC282BEB53001A1119 /* myInfoModel.swift */,
 				AF5621BA283E32A1002B8F23 /* PurchaseHistoryModel.swift */,
+				AF5621BC283E3364002B8F23 /* PurchaseHistoryCell.swift */,
 				AFBC03F8282D37F300DCEDA6 /* writtenEvalPostCell.swift */,
+				AF296C5F2836429000C961A3 /* announceModel.swift */,
 				AFBC03FC282D380A00DCEDA6 /* writtenExamPostCell.swift */,
 				AF4DD3DB282D403F00A43629 /* writtenEvalPostModel.swift */,
 				AF4DD3DD282D404A00A43629 /* writtenExamPostModel.swift */,
-				AF296C5F2836429000C961A3 /* announceModel.swift */,
 				AF296C632836458E00C961A3 /* announcementCell.swift */,
 			);
 			path = model;
@@ -321,6 +326,7 @@
 				AFBC03F9282D37F300DCEDA6 /* writtenEvalPostCell.xib */,
 				AFBC03FD282D380A00DCEDA6 /* writtenExamPostCell.xib */,
 				AF296C642836458E00C961A3 /* announcementCell.xib */,
+				AF5621BD283E3364002B8F23 /* PurchaseHistoryCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 				AF2E108828095ADB00051844 /* Pretendard-Bold.otf in Resources */,
 				AF2E108928095ADB00051844 /* Pretendard-ExtraLight.otf in Resources */,
 				AF2E108A28095ADB00051844 /* Pretendard-Medium.otf in Resources */,
+				AF5621BF283E3364002B8F23 /* PurchaseHistoryCell.xib in Resources */,
 				AF2E108B28095ADB00051844 /* Pretendard-Black.otf in Resources */,
 				AFBD08D62822776D00A923CB /* searchedResultCell.xib in Resources */,
 				AF2E108C28095ADB00051844 /* Pretendard-SemiBold.otf in Resources */,
@@ -565,6 +572,7 @@
 				AF4DD3DC282D403F00A43629 /* writtenEvalPostModel.swift in Sources */,
 				AF5621B9283E31D4002B8F23 /* PurchaseHistoryPage.swift in Sources */,
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
+				AF5621BE283E3364002B8F23 /* PurchaseHistoryCell.swift in Sources */,
 				AFBC03FA282D37F300DCEDA6 /* writtenEvalPostCell.swift in Sources */,
 				AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */,
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,

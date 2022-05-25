@@ -134,5 +134,10 @@ class myInfoPage: UIViewController {
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    @IBAction func purchaseHistoryBtnClicked(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "purchaseVC") as! PurchaseHistoryPage
+        self.present(nextVC, animated: true, completion: nil)
+    }
+    
     
 }

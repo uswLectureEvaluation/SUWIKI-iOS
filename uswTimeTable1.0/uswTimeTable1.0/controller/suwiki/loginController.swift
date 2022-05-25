@@ -148,7 +148,10 @@ class loginController: UIViewController {
             let json = JSON(data!)
             let accessToken = json["AccessToken"].stringValue
             let refreshToken = json["RefreshToken"].stringValue
-        
+            
+            print(json)
+            print(parameters)
+            
             if accessToken != "" {
  
                 print("로그인 성공")

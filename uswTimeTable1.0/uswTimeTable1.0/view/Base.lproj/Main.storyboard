@@ -2906,7 +2906,7 @@
         <!--Purchase History Page-->
         <scene sceneID="MVP-eE-9pY">
             <objects>
-                <viewController id="w0W-RW-YeQ" customClass="PurchaseHistoryPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="purchaseVC" id="w0W-RW-YeQ" customClass="PurchaseHistoryPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="biR-Xm-d3F">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2941,6 +2941,9 @@
                             <constraint firstItem="sa8-BH-gnn" firstAttribute="leading" secondItem="5JZ-m3-aoU" secondAttribute="leading" constant="24" id="yAg-Eh-NtR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="sa8-BH-gnn" id="rgA-Uv-cIW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deo-Tp-zf3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3722,6 +3725,9 @@
                                                         <state key="normal" title="구매 이력">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="purchaseHistoryBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="XIg-S3-NxP"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Web-Ll-D3f">
                                                         <rect key="frame" x="24" y="150" width="65" height="16"/>
