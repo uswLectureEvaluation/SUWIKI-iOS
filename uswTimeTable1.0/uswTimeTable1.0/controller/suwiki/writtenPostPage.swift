@@ -114,6 +114,9 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             cell.contentLabel.text = tableViewExamData[indexPath.row].content + "\n"
             
+            cell.adBtn.tag = indexPath.row
+            cell.adBtn.addTarget(self, action: #selector(adjustExamBtnClicked), for: .touchUpInside)
+            
             return cell
             
             
@@ -291,6 +294,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         nextVC.evaluateIdx = tableViewEvalData[indexPath.row].id
         nextVC.adjustContent = tableViewEvalData[indexPath.row].content
         nextVC.lectureName = tableViewEvalData[indexPath.row].lectureName
+        // 수정 시 여러개의 학기 받아오는 방법 생각해보아야 함.
+        nextVC.semesterList.append(tableViewExamData[indexPath.row].selectedSemester)
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
@@ -338,5 +343,39 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     // MARK: 시험정보 수정 및 삭제 버튼 클릭
+    @objc func adjustExamBtnClicked(sender: UIButton)
+    {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "examWriteVC") as! lectureExamWritePage
+        
+        switch tableViewExamData[indexPath.row].examDifficulty{
+        case "쉬움":
+            nextVC.levelType.easyLevel = true
+            nextVC.levelType.normalLevel = false
+            nextVC.levelType.hardLevel = false
+            
+        case "보통":
+            nextVC.levelType.easyLevel = false
+            nextVC.levelType.normalLevel = true
+            nextVC.levelType.hardLevel = false
+            
+        case "어려움":
+            nextVC.levelType.easyLevel = false
+            nextVC.levelType.normalLevel = true
+            nextVC.levelType.hardLevel = false
+        
+        default:
+            break
+        }
+        
+        nextVC.semesterList.append(tableViewExamData[indexPath.row].selectedSemester)
+        nextVC.adjustBtn = 1
+        nextVC.examIdx = tableViewExamData[indexPath.row].id
+        nextVC.adjustContent = tableViewExamData[indexPath.row].content
+        nextVC.lectureName = tableViewExamData[indexPath.row].lectureName
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
+    }
     
 }
