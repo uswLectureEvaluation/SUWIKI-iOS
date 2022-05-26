@@ -116,6 +116,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             cell.adBtn.tag = indexPath.row
             cell.adBtn.addTarget(self, action: #selector(adjustExamBtnClicked), for: .touchUpInside)
+            cell.delBtn.tag = indexPath.row
+            cell.delBtn.addTarget(self, action: #selector(deleteExamBtnClicked), for: .touchUpInside)
             
             return cell
             
@@ -376,6 +378,48 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         nextVC.lectureName = tableViewExamData[indexPath.row].lectureName
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
+    }
+    
+    @objc func deleteExamBtnClicked(sender: UIButton) {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let removeAlert = UIAlertController(title: "시험정보 삭제", message: "삭제 하시겠어요?", preferredStyle: UIAlertController.Style.alert)
+        
+        let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
+            print("Delete button tapped")
+            removeExam(id: tableViewExamData[indexPath.row].id)
+   
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        removeAlert.addAction(deleteButton)
+        removeAlert.addAction(cancelButton)
+        present(removeAlert, animated: true, completion: nil)
+    }
+    
+    func removeExam(id: Int){
+        let url = "https://api.suwiki.kr/exam-posts/?examIdx=\(id)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .delete, parameters: nil, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+            
+            if response.response?.statusCode == 403 {
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.viewWillAppear(true)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
 }
