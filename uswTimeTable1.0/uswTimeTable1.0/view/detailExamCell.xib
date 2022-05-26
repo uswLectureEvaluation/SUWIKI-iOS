@@ -110,6 +110,7 @@
                 <outlet property="content" destination="aHd-vg-c8g" id="e4Z-IG-H30"/>
                 <outlet property="examDifficulty" destination="VtC-Ea-LT1" id="3pb-pj-g3y"/>
                 <outlet property="examType" destination="znT-rQ-bob" id="Gdm-LJ-sYx"/>
+                <outlet property="semester" destination="DBw-Y8-Orj" id="2WI-fW-jly"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="51.5625"/>
         </tableViewCell>

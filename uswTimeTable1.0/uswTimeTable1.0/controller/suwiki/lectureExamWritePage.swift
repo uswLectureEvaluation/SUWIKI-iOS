@@ -52,6 +52,9 @@ class lectureExamWritePage: UIViewController {
     var semesterList: [String] = []
     let examTypeList = ["중간고사", "기말고사", "쪽지", "기타"]
     
+    var tableViewNumber = 0
+    var evalDataList = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(keychain.get("AccessToken"))
@@ -156,6 +159,9 @@ class lectureExamWritePage: UIViewController {
                     //4. 경고창 보이기
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+                    nextVC.tableViewNumber = self.tableViewNumber
+                    nextVC.evalDataExist = self.evalDataList
                     self.dismiss(animated: true, completion: nil)
                 }
             }

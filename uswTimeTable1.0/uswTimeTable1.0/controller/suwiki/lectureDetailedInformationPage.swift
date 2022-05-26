@@ -97,6 +97,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         detailLectureArray.removeAll()
         detailEvaluationArray.removeAll()
         
+        evaluationBtn.tintColor = .darkGray
+        examBtn.tintColor = .lightGray
+        
+        
+        print("viewwillappear")
+        
         loadDetailData()
         getDetailPage()
     }
@@ -163,6 +169,14 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
             nextVC.semesterList.append(detailLectureArray[0].semester)
+            if evalDataExist == 0 {
+                nextVC.tableViewNumber = 0
+                nextVC.evalDataList = 0
+            } else {
+                nextVC.tableViewNumber = 100
+                nextVC.evalDataList = 1
+            }
+            
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
             
@@ -223,6 +237,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
         } else if tableViewNumber == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            cell.noExamData.text = "등록된 시험정보가 없어요!"
             
             return cell
             
@@ -238,6 +253,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             cell.content.numberOfLines = 0
             
+            cell.semester.text = detailExamArray[indexPath.row].semester
             cell.examType.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
             cell.content.text = detailExamArray[indexPath.row].content + "\n"
@@ -443,7 +459,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
 
-        let url = "https://api.suwiki.kr/exam-posts/buyExamInfo/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/exam-posts/purchase/?lectureId=\(lectureId)"
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
