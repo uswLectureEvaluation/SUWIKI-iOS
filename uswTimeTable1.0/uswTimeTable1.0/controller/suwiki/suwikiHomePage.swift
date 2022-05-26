@@ -28,7 +28,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     var tableViewUpdateData: Array<homePageData> = []
     let dropDown = DropDown()
     let keychain = KeychainSwift()
+    
     var count = 0
+    
+    var option = "modifiedDate"
     
     
     let categoryList = ["최근 올라온 강의", "꿀 강의", "만족도가 높은 강의", "배울게 많은 강의", "Best 강의"]
@@ -40,7 +43,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
         navigationBarHidden()
         super.viewDidLoad()
-        getMainPage()
+        getLectureData(option: option)
         dropDown.anchorView = categoryDropDown
         dropDown.dataSource = categoryList
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
@@ -54,17 +57,34 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.categoryTextField.textColor = .black
             self.categoryTextField.textAlignment = .center
             
+            
             if categoryTextField.text == "최근 올라온 강의" {
-                getMainPage()
+                tableViewUpdateData.removeAll()
+                option = "modifiedDate"
+                getLectureData(option: option)
+                
             } else if categoryTextField.text == "꿀 강의" {
-                getHoneyLecture()
+                tableViewUpdateData.removeAll()
+                option = "lectureHoneyAvg"
+                getLectureData(option: option)
+                
             } else if categoryTextField.text == "만족도가 높은 강의"{
-                getSatisfactionLecture()
+                tableViewUpdateData.removeAll()
+                option = "lectureSatisfactionAvg"
+                getLectureData(option: option)
+                
             } else if categoryTextField.text == "배울게 많은 강의" {
-                getLearningLecture()
+                tableViewUpdateData.removeAll()
+                option = "lectureLearningAvg"
+                getLectureData(option: option)
+                
             } else if categoryTextField.text == "Best 강의"{
-                getTotalLecture()
+                tableViewUpdateData.removeAll()
+                option = "lectureTotalAvg"
+                getLectureData(option: option)
+                
             }
+            
             
         }
         // Do any additional setup after loading the view.
@@ -94,6 +114,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName
         mainCell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         mainCell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
+        mainCell.majorType.text = tableViewUpdateData[indexPath.row].majorType
         mainCell.professor.text = tableViewUpdateData[indexPath.row].professor
         mainCell.ratingBarView.rating = Double(tableViewUpdateData[indexPath.row].lectureTotalAvg)!
         mainCell.lectureName.sizeToFit()
@@ -123,11 +144,40 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.present(nextVC, animated: true, completion: nil)
         }
         
-               
-        
  
     }
     
+    // #MARK: 강의 데이터 불러오는 함수, 추후에 majorType 매개변수 추가, 파라미터 추가
+    func getLectureData(option: String){
+        let url = "https://api.suwiki.kr/lecture/all"
+        
+        let parameter: Parameters = [
+            "option" : option
+        ]
+    
+        // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
+        AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
+            
+            let data = response.data
+            let json = JSON(data!)
+            print(json)
+            for index in 0..<10{
+                let jsonData = json["data"][index]
+                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
+                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+                
+                
+                let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                
+                self.tableViewUpdateData.append(readData)
+            }
+            self.tableView?.reloadData()
+        }
+    }
+    
+    /*
     func getMainPage(){
 
         let url = "https://api.suwiki.kr/lecture/findAllList"
@@ -239,6 +289,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         }
     }
+  
     
     @IBAction func testLogOut(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "id")
@@ -303,6 +354,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+     */
+    
     func navigationBarHidden() {
             self.navigationController?.navigationBar.isHidden = true
     }
@@ -363,6 +416,8 @@ class mainPageCell: UITableViewCell {
     @IBOutlet weak var lectureType: UILabel!
     @IBOutlet weak var lectureTotalAvg: UILabel!
     @IBOutlet weak var professor: UILabel!
+    @IBOutlet weak var majorType: UILabel!
+    
     @IBOutlet weak var ratingBarView: CosmosView!
     
     override func layoutSubviews() {

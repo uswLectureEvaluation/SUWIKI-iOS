@@ -3955,6 +3955,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYX-X7-FYg">
+                                                    <rect key="frame" x="62.5" y="50" width="1" height="19"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="19" id="tia-On-AW1"/>
+                                                        <constraint firstAttribute="width" constant="1" id="uGn-d2-ngy"/>
+                                                    </constraints>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전핵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFO-LC-95L">
                                                     <rect key="frame" x="301" y="23" width="45" height="21"/>
                                                     <color key="backgroundColor" systemColor="systemGray3Color"/>
@@ -3973,9 +3981,18 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbg-nb-h8Q">
-                                                    <rect key="frame" x="20" y="50" width="34.5" height="16"/>
+                                                    <rect key="frame" x="71.5" y="50" width="34.5" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="89d-vJ-udh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvN-MF-Cck">
+                                                    <rect key="frame" x="20" y="50" width="34.5" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="hhV-vN-aP4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
@@ -4048,16 +4065,20 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="xbg-nb-h8Q" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="topMargin" constant="39" id="6gg-rE-aD2"/>
                                                 <constraint firstItem="gJG-Fv-S76" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="107" id="7MG-0h-NFV"/>
+                                                <constraint firstItem="xbg-nb-h8Q" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="50" id="8bK-3P-W6c"/>
+                                                <constraint firstItem="yvN-MF-Cck" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="50" id="B5e-zj-AEp"/>
                                                 <constraint firstItem="pNh-pJ-vFd" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="84" id="LEd-9O-hNB"/>
                                                 <constraint firstItem="pNh-pJ-vFd" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="Lwb-1h-5rn"/>
                                                 <constraint firstItem="gJG-Fv-S76" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="82" id="Neo-pG-07d"/>
+                                                <constraint firstItem="GYX-X7-FYg" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="50" id="Nsn-Dt-gD9"/>
+                                                <constraint firstItem="yvN-MF-Cck" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="Si2-dL-0eP"/>
                                                 <constraint firstAttribute="trailing" secondItem="GFO-LC-95L" secondAttribute="trailing" constant="20" id="VHI-eR-8GE"/>
                                                 <constraint firstItem="8kQ-RH-2td" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="Yoo-Kq-K4r"/>
-                                                <constraint firstItem="xbg-nb-h8Q" firstAttribute="leading" secondItem="a8J-aJ-wro" secondAttribute="leading" constant="20" id="dJH-6c-m4U"/>
                                                 <constraint firstItem="GFO-LC-95L" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="top" constant="23" id="fMZ-ha-beQ"/>
                                                 <constraint firstItem="8kQ-RH-2td" firstAttribute="top" secondItem="a8J-aJ-wro" secondAttribute="topMargin" constant="12" id="jQm-Wa-By7"/>
+                                                <constraint firstItem="xbg-nb-h8Q" firstAttribute="leading" secondItem="GYX-X7-FYg" secondAttribute="trailing" constant="8" id="mFB-1h-xyE"/>
+                                                <constraint firstItem="GYX-X7-FYg" firstAttribute="leading" secondItem="yvN-MF-Cck" secondAttribute="trailing" constant="8" id="yXh-of-1aK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4067,6 +4088,7 @@
                                             <outlet property="lectureName" destination="8kQ-RH-2td" id="deG-ef-jhl"/>
                                             <outlet property="lectureTotalAvg" destination="gJG-Fv-S76" id="HBr-4b-Kao"/>
                                             <outlet property="lectureType" destination="GFO-LC-95L" id="JPh-ym-fpe"/>
+                                            <outlet property="majorType" destination="yvN-MF-Cck" id="vkR-oS-drt"/>
                                             <outlet property="professor" destination="xbg-nb-h8Q" id="YYg-Vu-MIb"/>
                                             <outlet property="ratingBarView" destination="pNh-pJ-vFd" id="r0L-m4-xGb"/>
                                         </connections>
