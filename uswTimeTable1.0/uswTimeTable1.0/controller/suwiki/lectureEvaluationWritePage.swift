@@ -137,7 +137,7 @@ class lectureEvaluationWritePage: UIViewController {
     
     func writeEvaluation() {
         
-        let url = "https://api.suwiki.kr/evaluate-posts/write/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/evaluate-posts/?lectureId=\(lectureId)"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -184,7 +184,7 @@ class lectureEvaluationWritePage: UIViewController {
     }
     
     func writeAdjustEvaluation() {
-        let url = "https://api.suwiki.kr/evaluate-posts/update/?evaluateIdx=\(evaluateIdx)"
+        let url = "https://api.suwiki.kr/evaluate-posts/?evaluateIdx=\(evaluateIdx)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
@@ -201,7 +201,7 @@ class lectureEvaluationWritePage: UIViewController {
             "content" : contentField.text!
         ] as [String : Any]
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
             if response.response?.statusCode == 403 {
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",

@@ -330,7 +330,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func getDetailEvaluation(){
 
-        let url = "https://api.suwiki.kr/evaluate-posts/findByLectureId/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/evaluate-posts/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
@@ -390,7 +390,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func getDetailExam(){
         
-        let url = "https://api.suwiki.kr/exam-posts/findByLectureId/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")

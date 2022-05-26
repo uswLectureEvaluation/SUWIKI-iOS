@@ -136,7 +136,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func getWrittenEvalData(page: Int) {
-        let url = "https://api.suwiki.kr/evaluate-posts/findByUserIdx/"
+        let url = "https://api.suwiki.kr/evaluate-posts/written/"
         let parameters: Parameters = [
             "page" : page
         ]
@@ -315,7 +315,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func removeEvaluation(id: Int) {
-        let url = "https://api.suwiki.kr/evaluate-posts/delete/?evaluateIdx=\(id)"
+        let url = "https://api.suwiki.kr/evaluate-posts/?evaluateIdx=\(id)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")

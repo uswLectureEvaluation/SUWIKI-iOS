@@ -117,10 +117,9 @@ class lectureExamWritePage: UIViewController {
         
         else {
             let examInfo: String = examTypeArray.joined(separator: ", ")
-            let url = "https://api.suwiki.kr/exam-posts/write/?lectureId=\(lectureId)"
+            let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
             //
         
-            
             let parameters: Parameters = [
                 "lectureName" : lectureName, //과목 이름
                 "professor" : professor, //교수이름
