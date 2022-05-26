@@ -202,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802.8985507246377" y="75"/>
+            <point key="canvasLocation" x="1436" y="68"/>
         </scene>
         <!--First Scene Check-->
         <scene sceneID="Du7-aC-aic">
@@ -295,11 +295,13 @@
             </objects>
             <point key="canvasLocation" x="1803" y="-607"/>
         </scene>
-        <!--Item-->
+        <!--시간표-->
         <scene sceneID="Icf-Pl-pEm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eym-E1-aaN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="b2n-hZ-65a"/>
+                    <tabBarItem key="tabBarItem" title="시간표" image="icon_timetable_disabled_20" selectedImage="tablecells.badge.ellipsis" catalog="system" id="b2n-hZ-65a">
+                        <color key="badgeColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uO4-Wg-KxW">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -3095,11 +3097,13 @@
             </objects>
             <point key="canvasLocation" x="-1100" y="1456"/>
         </scene>
-        <!--Item-->
+        <!--내정보-->
         <scene sceneID="1d8-9p-f4z">
             <objects>
                 <navigationController id="YNz-s5-h5L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Rqh-jv-JLK"/>
+                    <tabBarItem key="tabBarItem" title="내정보" image="person" catalog="system" selectedImage="person" id="Rqh-jv-JLK">
+                        <color key="badgeColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="21n-wq-aJa">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3915,6 +3919,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="Eym-E1-aaN" kind="relationship" relationship="viewControllers" id="3Cc-Sx-TOK"/>
@@ -4486,7 +4491,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교수명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OC9-n8-Uay">
-                                                        <rect key="frame" x="20" y="50" width="36.5" height="16"/>
+                                                        <rect key="frame" x="86" y="50" width="36.5" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="sbV-Ie-8re"/>
                                                         </constraints>
@@ -4643,6 +4648,23 @@
                                                         <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교양대학" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH6-dg-KSB">
+                                                        <rect key="frame" x="20" y="50" width="49" height="16"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="vQI-Fd-5vI"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f69-d4-uDg">
+                                                        <rect key="frame" x="77" y="50" width="1" height="19"/>
+                                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="apN-rB-wf2"/>
+                                                            <constraint firstAttribute="width" constant="1" id="ayX-Eu-QlB"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4650,13 +4672,17 @@
                                                     <constraint firstItem="5Nh-QU-vmW" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="23" id="1S3-Xr-q8v"/>
                                                     <constraint firstItem="JZG-lZ-oDR" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="175" id="25A-gh-I77"/>
                                                     <constraint firstItem="5gl-jo-W2f" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="227" id="4Kx-Q1-dUQ"/>
+                                                    <constraint firstItem="OC9-n8-Uay" firstAttribute="leading" secondItem="f69-d4-uDg" secondAttribute="trailing" constant="8" id="4ws-pg-uvX"/>
                                                     <constraint firstItem="rTy-xZ-dT0" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="136" id="6AF-yx-QQG"/>
                                                     <constraint firstItem="eJp-97-vSh" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="115" id="6kE-Di-TV6"/>
                                                     <constraint firstItem="xyY-ld-bCO" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="21" id="6ww-OF-i2g"/>
                                                     <constraint firstAttribute="trailing" secondItem="xyY-ld-bCO" secondAttribute="trailing" constant="20" id="9ke-eo-1ar"/>
+                                                    <constraint firstItem="f69-d4-uDg" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="50" id="BXA-FZ-Nym"/>
                                                     <constraint firstItem="Qwe-gL-MC4" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="138" id="Cma-go-p7t"/>
                                                     <constraint firstItem="JZG-lZ-oDR" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="90" id="Ddh-qp-V5H"/>
+                                                    <constraint firstItem="f69-d4-uDg" firstAttribute="leading" secondItem="dH6-dg-KSB" secondAttribute="trailing" constant="8" id="Fej-8n-I2J"/>
                                                     <constraint firstItem="U0T-CB-jsM" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="138" id="Gk3-FB-6JF"/>
+                                                    <constraint firstItem="dH6-dg-KSB" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="50" id="HQM-72-nbU"/>
                                                     <constraint firstItem="aKh-Jj-hVr" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="177" id="Hae-Mm-48X"/>
                                                     <constraint firstItem="OC9-n8-Uay" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="50" id="LUo-BO-QGo"/>
                                                     <constraint firstItem="uGC-5g-WzJ" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="138" id="O6V-Ut-HEj"/>
@@ -4670,7 +4696,6 @@
                                                     <constraint firstItem="QwF-KP-TI4" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="227" id="dyw-nm-eLz"/>
                                                     <constraint firstItem="rTy-xZ-dT0" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="115" id="fVA-jy-B0Y"/>
                                                     <constraint firstItem="uGC-5g-WzJ" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="227" id="flD-xj-Za0"/>
-                                                    <constraint firstItem="OC9-n8-Uay" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="20" id="hoa-3q-uks"/>
                                                     <constraint firstItem="eJp-97-vSh" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="175" id="jF7-mc-ojJ"/>
                                                     <constraint firstItem="RFx-20-CMT" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="115" id="kxh-hz-MQp"/>
                                                     <constraint firstItem="3Gw-VQ-Bb8" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="177" id="lbX-zO-gM4"/>
@@ -4679,6 +4704,7 @@
                                                     <constraint firstItem="QwF-KP-TI4" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="177" id="rR2-Kx-F6e"/>
                                                     <constraint firstItem="3Gw-VQ-Bb8" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="25" id="rky-bV-g6F"/>
                                                     <constraint firstAttribute="height" constant="256" id="tIA-2R-VOE"/>
+                                                    <constraint firstItem="dH6-dg-KSB" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="20" id="wcO-u8-rby"/>
                                                     <constraint firstItem="U0T-CB-jsM" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="25" id="wkW-Jf-TRL"/>
                                                     <constraint firstItem="xvo-Dg-sbd" firstAttribute="top" secondItem="Hsd-qZ-FlW" secondAttribute="top" constant="215" id="xNo-Xl-Tvl"/>
                                                     <constraint firstItem="Qwe-gL-MC4" firstAttribute="leading" secondItem="Hsd-qZ-FlW" secondAttribute="leading" constant="162" id="xpP-FS-9LQ"/>
@@ -4800,6 +4826,7 @@
                         <outlet property="lectureName" destination="5Nh-QU-vmW" id="WAK-NI-MGP"/>
                         <outlet property="lectureSatisAvg" destination="hjs-Ps-Cm6" id="lIw-nL-gVf"/>
                         <outlet property="lectureView" destination="Hsd-qZ-FlW" id="5TW-9s-6Vf"/>
+                        <outlet property="majorType" destination="dH6-dg-KSB" id="ZTq-A7-mrU"/>
                         <outlet property="pointView" destination="5gl-jo-W2f" id="12F-QM-iNM"/>
                         <outlet property="professor" destination="OC9-n8-Uay" id="xqi-nF-Sxx"/>
                         <outlet property="scrollView" destination="lOV-Gc-lbB" id="cK2-g5-SQ2"/>
@@ -5691,11 +5718,13 @@
             </objects>
             <point key="canvasLocation" x="2357.971014492754" y="1423.6607142857142"/>
         </scene>
-        <!--Item-->
+        <!--강의평가-->
         <scene sceneID="uuq-Qy-cCZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Do-ay-8EP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nBE-ZJ-0at"/>
+                    <tabBarItem key="tabBarItem" title="강의평가" image="icon_lecture_active_20-2" selectedImage="icon_lecture_active_20-2" id="nBE-ZJ-0at">
+                        <color key="badgeColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8kI-US-bhP">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -5887,14 +5916,18 @@
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="icon_emptystar_24" width="24" height="24"/>
         <image name="icon_fullstar_24" width="24" height="24"/>
+        <image name="icon_lecture_active_20-2" width="30" height="30"/>
+        <image name="icon_timetable_disabled_20" width="15" height="15"/>
         <image name="illust_banner" width="554" height="485"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="square" catalog="system" width="128" height="114"/>
+        <image name="tablecells.badge.ellipsis" catalog="system" width="128" height="92"/>
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="스샷 최종본" width="708" height="800"/>

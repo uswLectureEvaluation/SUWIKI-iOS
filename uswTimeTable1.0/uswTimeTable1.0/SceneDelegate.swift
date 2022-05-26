@@ -24,7 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        
+        if let tbc = self.window?.rootViewController as? UITabBarController {
+            tbc.tabBar.tintColor = .green
+        }
         
     
       

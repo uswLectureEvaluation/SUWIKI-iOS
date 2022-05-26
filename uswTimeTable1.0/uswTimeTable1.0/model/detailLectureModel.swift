@@ -10,7 +10,7 @@ import Foundation
 struct detailLecture {
     
     let id: Int
-    let semester: String //강의년도 + 학기 (ex) "2021-1,2022-1" )
+    let semesterList: String //강의년도 + 학기 (ex) "2021-1,2022-1" )
     let professor: String //교수이름
     let majorType: String // 개설학과
     let lectureType: String //이수구분
@@ -49,6 +49,3 @@ struct detailExam {
     let content: String
 }
 
-struct cellData {
-    
-}
