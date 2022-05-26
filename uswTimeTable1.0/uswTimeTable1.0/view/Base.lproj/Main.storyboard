@@ -299,7 +299,7 @@
         <scene sceneID="Icf-Pl-pEm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eym-E1-aaN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="시간표" image="icon_timetable_disabled_20" selectedImage="tablecells.badge.ellipsis" catalog="system" id="b2n-hZ-65a">
+                    <tabBarItem key="tabBarItem" title="시간표" image="tablecells.badge.ellipsis" catalog="system" selectedImage="tablecells.badge.ellipsis" id="b2n-hZ-65a">
                         <color key="badgeColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -5917,7 +5917,6 @@
         <image name="icon_emptystar_24" width="24" height="24"/>
         <image name="icon_fullstar_24" width="24" height="24"/>
         <image name="icon_lecture_active_20-2" width="30" height="30"/>
-        <image name="icon_timetable_disabled_20" width="15" height="15"/>
         <image name="illust_banner" width="554" height="485"/>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>

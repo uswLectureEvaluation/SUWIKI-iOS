@@ -131,6 +131,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! searchedResultCell
         cell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName
+        cell.majorType.text = tableViewUpdateData[indexPath.row].majorType
         cell.professor.text = tableViewUpdateData[indexPath.row].professor
         cell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         cell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
