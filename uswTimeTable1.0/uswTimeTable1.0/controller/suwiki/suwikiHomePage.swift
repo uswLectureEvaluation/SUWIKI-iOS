@@ -44,6 +44,12 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationBarHidden()
         super.viewDidLoad()
         getLectureData(option: option)
+        
+        categoryDropDown.layer.borderWidth = 1.0
+        categoryDropDown.layer.borderColor = UIColor.lightGray.cgColor
+        categoryDropDown.layer.cornerRadius = 12.0
+        
+        
         dropDown.anchorView = categoryDropDown
         dropDown.dataSource = categoryList
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
@@ -90,6 +96,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
     }
     
+    /*
     override func viewDidLayoutSubviews() {
         let bottomLine1 = CALayer()
         bottomLine1.frame = CGRect(x: 0, y: searchTextField.frame.size.height + 16, width: searchTextField.frame.width, height: 1)
@@ -99,6 +106,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchTextField.layer.addSublayer(bottomLine1)
 
     }
+    */
   
     @IBAction func categoryButtonClicked(_ sender: Any) {
         dropDown.show()

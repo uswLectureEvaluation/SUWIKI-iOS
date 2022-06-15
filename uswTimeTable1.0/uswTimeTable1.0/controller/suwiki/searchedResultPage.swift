@@ -95,6 +95,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     
+    /*
     override func viewDidLayoutSubviews() {
         let bottomLine1 = CALayer()
         bottomLine1.frame = CGRect(x: 0, y: searchTextField.frame.size.height + 16, width: searchTextField.frame.width, height: 1)
@@ -103,6 +104,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         searchTextField.borderStyle = .none
         searchTextField.layer.addSublayer(bottomLine1)
     }
+    */
     
     
     @IBAction func searchBtnClicked(_ sender: Any) {
