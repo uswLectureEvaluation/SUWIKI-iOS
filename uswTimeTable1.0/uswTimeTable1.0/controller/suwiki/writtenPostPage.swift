@@ -114,6 +114,11 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             cell.contentLabel.text = tableViewExamData[indexPath.row].content + "\n"
             
+            cell.adBtn.tag = indexPath.row
+            cell.adBtn.addTarget(self, action: #selector(adjustExamBtnClicked), for: .touchUpInside)
+            cell.delBtn.tag = indexPath.row
+            cell.delBtn.addTarget(self, action: #selector(deleteExamBtnClicked), for: .touchUpInside)
+            
             return cell
             
             
@@ -136,7 +141,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func getWrittenEvalData(page: Int) {
-        let url = "https://api.suwiki.kr/evaluate-posts/findByUserIdx/"
+        let url = "https://api.suwiki.kr/evaluate-posts/written/"
         let parameters: Parameters = [
             "page" : page
         ]
@@ -201,7 +206,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func getWrittenExamData(page: Int) {
-        let url = "https://api.suwiki.kr/exam-posts/findByUserIdx/"
+        let url = "https://api.suwiki.kr/exam-posts/written/"
         
         let parameters: Parameters = [
             "page" : page
@@ -235,7 +240,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         
     }
     
-    
+    // MARK: 강의평가 수정 및 삭제 버튼 클릭
     @objc func adjustEvaluationBtnClicked(sender: UIButton)
     {
         let indexPath = IndexPath(row: sender.tag, section: 0)
@@ -291,6 +296,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         nextVC.evaluateIdx = tableViewEvalData[indexPath.row].id
         nextVC.adjustContent = tableViewEvalData[indexPath.row].content
         nextVC.lectureName = tableViewEvalData[indexPath.row].lectureName
+        // 수정 시 여러개의 학기 받아오는 방법 생각해보아야 함.
+        nextVC.semesterList.append(tableViewExamData[indexPath.row].selectedSemester)
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
@@ -315,7 +322,85 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func removeEvaluation(id: Int) {
-        let url = "https://api.suwiki.kr/evaluate-posts/delete/?evaluateIdx=\(id)"
+        let url = "https://api.suwiki.kr/evaluate-posts/?evaluateIdx=\(id)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .delete, parameters: nil, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+            
+            if response.response?.statusCode == 403 {
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.viewWillAppear(true)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    // MARK: 시험정보 수정 및 삭제 버튼 클릭
+    @objc func adjustExamBtnClicked(sender: UIButton)
+    {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+
+        let nextVC = storyboard?.instantiateViewController(withIdentifier: "examWriteVC") as! lectureExamWritePage
+        
+        switch tableViewExamData[indexPath.row].examDifficulty{
+        case "쉬움":
+            nextVC.levelType.easyLevel = true
+            nextVC.levelType.normalLevel = false
+            nextVC.levelType.hardLevel = false
+            
+        case "보통":
+            nextVC.levelType.easyLevel = false
+            nextVC.levelType.normalLevel = true
+            nextVC.levelType.hardLevel = false
+            
+        case "어려움":
+            nextVC.levelType.easyLevel = false
+            nextVC.levelType.normalLevel = true
+            nextVC.levelType.hardLevel = false
+        
+        default:
+            break
+        }
+        
+        nextVC.semesterList.append(tableViewExamData[indexPath.row].selectedSemester)
+        nextVC.adjustBtn = 1
+        nextVC.examIdx = tableViewExamData[indexPath.row].id
+        nextVC.adjustContent = tableViewExamData[indexPath.row].content
+        nextVC.lectureName = tableViewExamData[indexPath.row].lectureName
+        nextVC.modalPresentationStyle = .fullScreen
+        self.present(nextVC, animated: true, completion: nil)
+    }
+    
+    @objc func deleteExamBtnClicked(sender: UIButton) {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        let removeAlert = UIAlertController(title: "시험정보 삭제", message: "삭제 하시겠어요?", preferredStyle: UIAlertController.Style.alert)
+        
+        let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
+            print("Delete button tapped")
+            removeExam(id: tableViewExamData[indexPath.row].id)
+   
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        removeAlert.addAction(deleteButton)
+        removeAlert.addAction(cancelButton)
+        present(removeAlert, animated: true, completion: nil)
+    }
+    
+    func removeExam(id: Int){
+        let url = "https://api.suwiki.kr/exam-posts/?examIdx=\(id)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")

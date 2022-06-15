@@ -27,6 +27,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var lectureView: UIView!
     @IBOutlet weak var lectureName: UILabel!
     @IBOutlet weak var professor: UILabel!
+    @IBOutlet weak var majorType: UILabel!
     
     @IBOutlet weak var teamView: UILabel!
     @IBOutlet weak var homeworkView: UILabel!
@@ -97,6 +98,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         detailLectureArray.removeAll()
         detailEvaluationArray.removeAll()
         
+        evaluationBtn.tintColor = .darkGray
+        examBtn.tintColor = .lightGray
+        
+        
+        print("viewwillappear")
+        
         loadDetailData()
         getDetailPage()
     }
@@ -153,7 +160,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureId = lectureId
             // 이후에 , 기준으로 쪼개서 append 한 상태로 옮겨주면 될듯함.
             print(detailLectureArray)
-            nextVC.semesterList.append(detailLectureArray[0].semester)
+            nextVC.semesterList.append(detailLectureArray[0].semesterList)
             nextVC.adjustBtn = 0
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
@@ -162,7 +169,15 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
-            nextVC.semesterList.append(detailLectureArray[0].semester)
+            nextVC.semesterList.append(detailLectureArray[0].semesterList)
+            if evalDataExist == 0 {
+                nextVC.tableViewNumber = 0
+                nextVC.evalDataList = 0
+            } else {
+                nextVC.tableViewNumber = 100
+                nextVC.evalDataList = 1
+            }
+            
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
             
@@ -223,6 +238,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
         } else if tableViewNumber == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            cell.noExamData.text = "등록된 시험정보가 없어요!"
             
             return cell
             
@@ -238,6 +254,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             cell.content.numberOfLines = 0
             
+            cell.semester.text = detailExamArray[indexPath.row].semester
             cell.examType.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
             cell.content.text = detailExamArray[indexPath.row].content + "\n"
@@ -261,6 +278,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureHoneyAvg.text = detailLectureArray[0].lectureHoneyAvg
         lectureLearningAvg.text = detailLectureArray[0].lectureLearningAvg
         lectureSatisAvg.text = detailLectureArray[0].lectureSatisfactionAvg
+        majorType.text = detailLectureArray[0].majorType
         
         if detailLectureArray[0].lectureTeamAvg > 0.5 {
             teamView.text = "있음"
@@ -311,7 +329,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
             let totalLearningAvg = String(format: "%.1f", round(json["lectureLearningAvg"].floatValue * 1000) / 1000)
             
-            let detailLectureData = detailLecture(id: json["id"].intValue, semester: json["semesterList"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
+            let detailLectureData = detailLecture(id: json["id"].intValue, semesterList: json["semesterList"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
 
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
@@ -328,9 +346,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
     }
     
+    // #MARK: 무한스크롤 구현 필요
     func getDetailEvaluation(){
 
-        let url = "https://api.suwiki.kr/evaluate-posts/findByLectureId/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/evaluate-posts/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
@@ -390,7 +409,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func getDetailExam(){
         
-        let url = "https://api.suwiki.kr/exam-posts/findByLectureId/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
@@ -443,7 +462,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
 
-        let url = "https://api.suwiki.kr/exam-posts/buyExamInfo/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/exam-posts/purchase/?lectureId=\(lectureId)"
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode

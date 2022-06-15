@@ -52,11 +52,21 @@ class lectureExamWritePage: UIViewController {
     var semesterList: [String] = []
     let examTypeList = ["중간고사", "기말고사", "쪽지", "기타"]
     
+    var tableViewNumber = 0
+    var evalDataList = 0
+    
+    var adjustBtn = 0
+    var adjustContent: String = ""
+    var examIdx = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(keychain.get("AccessToken"))
         print(lectureId)
         
+        if adjustBtn == 1{
+            getAdjustExam()
+        }
         
         
         semeDropDown.anchorView = semesterDropDown
@@ -116,51 +126,103 @@ class lectureExamWritePage: UIViewController {
         }
         
         else {
-            let examInfo: String = examTypeArray.joined(separator: ", ")
-            let url = "https://api.suwiki.kr/exam-posts/write/?lectureId=\(lectureId)"
-            //
-        
-            
-            let parameters: Parameters = [
-                "lectureName" : lectureName, //과목 이름
-                "professor" : professor, //교수이름
-                "selectedSemester" : semesterTextField.text!, //  semesterTextField.text!, //학기 (ex) 2022-1)
-                "examInfo" : examInfo, //시험 방식
-                "examType" : examTypeTextField.text!,   //examTypeTextField.text!,
-                "examDifficulty" : "쉬움", //시험 난이도
-                "content" : contentField.text!
-            ]
-            print(parameters)
-            
-            let headers: HTTPHeaders = [
-                "Authorization" : String(keychain.get("AccessToken") ?? "")
-            ]
-            
-            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
-                
-        
-                if response.response?.statusCode == 400{
-                    let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
-                        message: "확인을 눌러주세요!",
-                        preferredStyle: UIAlertController.Style.alert)
-                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
-                    alert.addAction(cancle)
-                    self.present(alert, animated: true, completion: nil)
-                } else if response.response?.statusCode == 403 {
-                    let alert = UIAlertController(title:"제한된 유저십니다 ^^",
-                        message: "확인을 눌러주세요!",
-                        preferredStyle: UIAlertController.Style.alert)
-                    //2. 확인 버튼 만들기
-                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
-                    //3. 확인 버튼을 경고창에 추가하기
-                    alert.addAction(cancle)
-                    //4. 경고창 보이기
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    self.dismiss(animated: true, completion: nil)
-                }
+            if adjustBtn == 0 {
+                writeExam()
+            } else if adjustBtn == 1{
+                writeAdjustExam()
             }
         }
+        
+    }
+    
+    func writeExam() {
+        let examInfo: String = examTypeArray.joined(separator: ", ")
+        let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
+        //
+        let parameters: Parameters = [
+            "lectureName" : lectureName, //과목 이름
+            "professor" : professor, //교수이름
+            "selectedSemester" : semesterTextField.text!, //  semesterTextField.text!, //학기 (ex) 2022-1)
+            "examInfo" : examInfo, //시험 방식
+            "examType" : examTypeTextField.text!,   //examTypeTextField.text!,
+            "examDifficulty" : "쉬움", //시험 난이도
+            "content" : contentField.text!
+        ]
+        print(parameters)
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            
+    
+            if response.response?.statusCode == 400{
+                let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            } else if response.response?.statusCode == 403 {
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                //2. 확인 버튼 만들기
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                //3. 확인 버튼을 경고창에 추가하기
+                alert.addAction(cancle)
+                //4. 경고창 보이기
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+                nextVC.tableViewNumber = self.tableViewNumber
+                nextVC.evalDataExist = self.evalDataList
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func writeAdjustExam(){
+        let examInfo: String = examTypeArray.joined(separator: ", ")
+        let url = "https://api.suwiki.kr/exam-posts/?examIdx=\(examIdx)"
+        
+        let parameters: Parameters = [
+            "selectedSemester" : semesterTextField.text!, //  semesterTextField.text!, //학기 (ex) 2022-1)
+            "examInfo" : examInfo, //시험 방식
+            "examType" : examTypeTextField.text!,   //examTypeTextField.text!,
+            "examDifficulty" : "쉬움", //시험 난이도
+            "content" : contentField.text!
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            
+           if response.response?.statusCode == 403 {
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                //2. 확인 버튼 만들기
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                //3. 확인 버튼을 경고창에 추가하기
+                alert.addAction(cancle)
+                //4. 경고창 보이기
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+        }
+    }
+    
+    func getAdjustExam(){
+        
+        contentField.text = adjustContent
+        levelType.checkPoint(easy: levelType.easyLevel, normal: levelType.normalLevel, hard: levelType.hardLevel)
+        levelPointCheck()
         
     }
     
@@ -330,5 +392,11 @@ class lectureExamWritePage: UIViewController {
             normalLevelBtn.setTitleColor(.lightGray, for: .normal)
             hardLevelBtn.setTitleColor(.lightGray, for: .normal)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
     }
 }

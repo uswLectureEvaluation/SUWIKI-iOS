@@ -95,6 +95,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
 
     }
     
+    /*
     override func viewDidLayoutSubviews() {
         let bottomLine1 = CALayer()
         bottomLine1.frame = CGRect(x: 0, y: searchTextField.frame.size.height + 16, width: searchTextField.frame.width, height: 1)
@@ -103,6 +104,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         searchTextField.borderStyle = .none
         searchTextField.layer.addSublayer(bottomLine1)
     }
+    */
     
     
     @IBAction func searchBtnClicked(_ sender: Any) {
@@ -131,6 +133,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! searchedResultCell
         cell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName
+        cell.majorType.text = tableViewUpdateData[indexPath.row].majorType
         cell.professor.text = tableViewUpdateData[indexPath.row].professor
         cell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         cell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
@@ -154,7 +157,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     
     func getLectureData(searchValue: String, option: String, page: Int){ // 최근
 
-        let url = "https://api.suwiki.kr/lecture/findBySearchValue/"
+        let url = "https://api.suwiki.kr/lecture/search/"
         
         let parameter: Parameters = [
             "searchValue" : searchValue,
@@ -198,6 +201,12 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func categoryBtnClicked(_ sender: Any) {
         dropDown.show()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
     }
     
     

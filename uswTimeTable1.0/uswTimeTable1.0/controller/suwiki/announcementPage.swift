@@ -76,7 +76,7 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     
     func getAnnouncementPage() {
-        let url = "https://api.suwiki.kr/notice/findAllList"
+        let url = "https://api.suwiki.kr/notice/all"
         
         AF.request(url, method: .get, encoding: URLEncoding.default).responseJSON { (response) in
             let data = response.data

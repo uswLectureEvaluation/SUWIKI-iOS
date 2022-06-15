@@ -10,6 +10,7 @@ import UIKit
 class detailExamCell: UITableViewCell {
 
     
+    @IBOutlet weak var semester: UILabel!
     @IBOutlet weak var examType: UILabel!
     @IBOutlet weak var examDifficulty: UILabel!
     @IBOutlet weak var content: UILabel!
