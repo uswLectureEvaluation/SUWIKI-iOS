@@ -18,6 +18,12 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var logoutInfoView: UIView!
     
     
+    @IBOutlet weak var logoutPointPolicy: UIView!
+    @IBOutlet weak var loginPointPolicy: UIView!
+    
+    @IBOutlet weak var logoutInformation: UIView!
+    @IBOutlet weak var loginInformation: UIView!
+    
     @IBOutlet weak var loginIdLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
@@ -44,6 +50,8 @@ class myInfoPage: UIViewController {
         super.viewDidLoad()
         loginInfoView.isHidden = true
         loginPointView.isHidden = true
+        loginInformation.isHidden = true
+        loginPointPolicy.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -95,16 +103,28 @@ class myInfoPage: UIViewController {
                 
                 self.userInfo = readUserData
                 self.logoutInfoView.isHidden = true
+                self.logoutPointPolicy.isHidden = true
+                self.logoutInformation.isHidden = true
                 
                 self.viewUpdate()
                 self.loginInfoView.isHidden = false
                 self.loginPointView.isHidden = false
+                self.loginInformation.isHidden = false
+                self.loginPointPolicy.isHidden = false
+                
                 
             }
         } else {
             loginInfoView.isHidden = true
             loginPointView.isHidden = true
+            loginInformation.isHidden = true
+            loginPointPolicy.isHidden = true
+            
+            
             logoutInfoView.isHidden = false
+            logoutPointPolicy.isHidden = false
+            logoutInformation.isHidden = false
+            
         }
     }
     
