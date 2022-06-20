@@ -13,6 +13,9 @@ import DropDown
 
 class lectureExamWritePage: UIViewController {
     
+    
+    @IBOutlet weak var contentView: UIView!
+    
     @IBOutlet weak var examTypeDropDown: UIView!
     @IBOutlet weak var examTypeTextField: UILabel!
     
@@ -64,9 +67,15 @@ class lectureExamWritePage: UIViewController {
         print(keychain.get("AccessToken"))
         print(lectureId)
         
+        lectureNameLabel.text = lectureName
+        
         if adjustBtn == 1{
             getAdjustExam()
         }
+        
+        contentField.layer.borderColor = UIColor.lightGray.cgColor
+        contentField.layer.borderWidth = 1.0
+        contentField.layer.cornerRadius = 8.0
         
         examTypeDropDown.layer.cornerRadius = 8.0
         examTypeDropDown.layer.borderColor = UIColor.lightGray.cgColor
