@@ -38,6 +38,7 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var writtenExamPoint: UILabel!
     @IBOutlet weak var viewExamPoint: UILabel!
     
+    @IBOutlet weak var writtenPostBtn: UIButton!
     
     
     let keychain = KeychainSwift()
@@ -45,6 +46,7 @@ class myInfoPage: UIViewController {
     var userInfo = MyInfo(loginId: "", email: "", point: 0, writtenEvaluation: 0, writtenExam: 0, viewExam: 0)
     
     override func viewDidLoad() {
+        makeCornerRadius()
         navigationBarHidden()
         navigationBackSwipeMotion()
         super.viewDidLoad()
@@ -52,6 +54,7 @@ class myInfoPage: UIViewController {
         loginPointView.isHidden = true
         loginInformation.isHidden = true
         loginPointPolicy.isHidden = true
+        writtenPostBtn.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -111,6 +114,7 @@ class myInfoPage: UIViewController {
                 self.loginPointView.isHidden = false
                 self.loginInformation.isHidden = false
                 self.loginPointPolicy.isHidden = false
+                self.writtenPostBtn.isHidden = false
                 
                 
             }
@@ -119,6 +123,7 @@ class myInfoPage: UIViewController {
             loginPointView.isHidden = true
             loginInformation.isHidden = true
             loginPointPolicy.isHidden = true
+            writtenPostBtn.isHidden = true
             
             
             logoutInfoView.isHidden = false
@@ -140,6 +145,39 @@ class myInfoPage: UIViewController {
         writtenEvalPoint.text = "+\(userInfo.writtenEvaluation * 10)"
         writtenExamPoint.text = "+\(userInfo.writtenExam * 20)"
         viewExamPoint.text = "-\(userInfo.viewExam * 20)"
+        
+    }
+    
+    func makeCornerRadius(){
+        
+        loginInformation.layer.cornerRadius = 8.0
+        loginInformation.layer.borderWidth = 1.0
+        loginInformation.layer.borderColor = UIColor.lightGray.cgColor
+        
+        loginPointPolicy.layer.cornerRadius = 8.0
+        loginPointPolicy.layer.borderWidth = 1.0
+        loginPointPolicy.layer.borderColor = UIColor.lightGray.cgColor
+        
+        loginInfoView.layer.cornerRadius = 8.0
+        loginInfoView.layer.borderWidth = 1.0
+        loginInfoView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        loginPointView.layer.cornerRadius = 8.0
+        loginPointView.layer.borderWidth = 1.0
+        loginPointView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        
+        logoutInformation.layer.cornerRadius = 8.0
+        logoutInformation.layer.borderWidth = 1.0
+        logoutInformation.layer.borderColor = UIColor.lightGray.cgColor
+        
+        logoutPointPolicy.layer.cornerRadius = 8.0
+        logoutPointPolicy.layer.borderWidth = 1.0
+        logoutPointPolicy.layer.borderColor = UIColor.lightGray.cgColor
+        
+        logoutInfoView.layer.cornerRadius = 8.0
+        logoutInfoView.layer.borderWidth = 1.0
+        logoutInfoView.layer.borderColor = UIColor.lightGray.cgColor
         
     }
     
