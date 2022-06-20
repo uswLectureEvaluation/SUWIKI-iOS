@@ -68,6 +68,13 @@ class lectureExamWritePage: UIViewController {
             getAdjustExam()
         }
         
+        examTypeDropDown.layer.cornerRadius = 8.0
+        examTypeDropDown.layer.borderColor = UIColor.lightGray.cgColor
+        examTypeDropDown.layer.borderWidth = 1.0
+        
+        semesterDropDown.layer.cornerRadius = 8.0
+        semesterDropDown.layer.borderWidth = 1.0
+        semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
         
         semeDropDown.anchorView = semesterDropDown
         semeDropDown.dataSource = semesterList

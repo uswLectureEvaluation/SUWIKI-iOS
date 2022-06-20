@@ -169,6 +169,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
+            print(detailLectureArray[0].semesterList)
             nextVC.semesterList.append(detailLectureArray[0].semesterList)
             if evalDataExist == 0 {
                 nextVC.tableViewNumber = 0
