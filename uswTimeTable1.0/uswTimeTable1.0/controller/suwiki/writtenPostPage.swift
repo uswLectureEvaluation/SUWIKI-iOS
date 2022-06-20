@@ -40,6 +40,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         let examPostCell = UINib(nibName: "writtenExamPostCell", bundle: nil)
         tableView.register(examPostCell, forCellReuseIdentifier: "writtenExamCell")
         
+        let noExamDataExistsCellName = UINib(nibName: "noExamDataExistsCell", bundle: nil)
+        tableView.register(noExamDataExistsCellName, forCellReuseIdentifier: "noDataCell")
         
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 210
@@ -54,17 +56,29 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableViewEvalData.removeAll()
         getWrittenEvalData(page: 1)
         getWrittenExamData(page: 1)
+        evalBtn.setTitleColor(.black, for: .normal)
+        examBtn.setTitleColor(.lightGray, for: .normal)
     }
     
     @IBAction func evalBtnClicked(_ sender: Any) {
-        tableViewNumber = 1
+        if tableViewEvalData.count == 0{
+            tableViewNumber = 3
+        } else {
+            tableViewNumber = 1
+        }
+            
         tableView.reloadData()
         evalBtn.setTitleColor(.black, for: .normal)
         examBtn.setTitleColor(.lightGray, for: .normal)
     }
     
     @IBAction func examBtnClicked(_ sender: Any) {
-        tableViewNumber = 2
+        if tableViewExamData.count == 0 {
+            tableViewNumber = 4
+        } else {
+            tableViewNumber = 2
+        }
+        
         tableView.reloadData()
         evalBtn.setTitleColor(.lightGray, for: .normal)
         examBtn.setTitleColor(.black, for: .normal)
@@ -122,6 +136,16 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             return cell
             
             
+        } else if tableViewNumber == 3{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            cell.noExamData.text = "강의평가가 없습니다."
+            
+            return cell
+        } else if tableViewNumber == 4{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            cell.noExamData.text = "시험정보가 없습니다."
+            
+            return cell
         }
         
         return UITableViewCell()
@@ -154,8 +178,12 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             let data = response.data
             let json = JSON(data ?? "")
-            
-            if json != "" {
+            print(json)
+            print(json["data"].count)
+            if json["data"].count == 0 {
+                self.tableViewNumber = 3
+                
+            } else if json != "" {
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
                     
@@ -220,8 +248,9 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             let data = response.data
             let json = JSON(data ?? "")
-            
-            if json != "" {
+            if json["data"].count == 0 {
+                self.tableViewNumber = 4
+            } else if json != "" {
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
                  
@@ -330,7 +359,14 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         AF.request(url, method: .delete, parameters: nil, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
-            if response.response?.statusCode == 403 {
+            if response.response?.statusCode == 400 {
+                let alert = UIAlertController(title:"유저 포인트가 부족합니다.",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            } else if response.response?.statusCode == 403 {
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
                     preferredStyle: UIAlertController.Style.alert)
@@ -408,7 +444,16 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         AF.request(url, method: .delete, parameters: nil, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
-            if response.response?.statusCode == 403 {
+            print(JSON(response.data))
+            print(response.data)
+            if response.response?.statusCode == 400{
+                let alert = UIAlertController(title:"유저 포인트가 부족합니다.",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            } else if response.response?.statusCode == 403 {
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
                     preferredStyle: UIAlertController.Style.alert)
