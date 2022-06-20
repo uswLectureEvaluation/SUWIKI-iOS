@@ -17,7 +17,7 @@ class BaseInterceptor: RequestInterceptor{
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
             guard urlRequest.url?.absoluteString.hasPrefix("https://api.suwiki.kr/") == true,
                   let accessToken = keychain.get("AccessToken") else {
-                      completion(.failure(Error.self as! Error))
+                      completion(.success(urlRequest))
                       return
                   }
 

@@ -441,7 +441,7 @@ class lectureExamWritePage: UIViewController {
             keyboardTouchCheck = true
             if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
                 UIView.animate(withDuration: 0.8){
-                    self.contentView.frame.origin.y -= keyboardFrame.height - 60
+                    self.view.frame.origin.y -= keyboardFrame.height - 60
                 }
                 
             }
@@ -453,7 +453,7 @@ class lectureExamWritePage: UIViewController {
         if keyboardTouchCheck == true{
             keyboardTouchCheck = false
             UIView.animate(withDuration: 0.8){
-                self.contentView.frame.origin.y = 0
+                self.view.frame.origin.y = 0
             }
             
         }
