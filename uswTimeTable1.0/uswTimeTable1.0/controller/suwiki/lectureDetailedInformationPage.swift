@@ -17,6 +17,10 @@ import Cosmos
 // 3. 강의평가 -> 시험평가 버튼 클릭 시 메인 리스트 비우고, reloadData 진행
 // 테이블뷰넘버로 시험정보 구매 여부 확인 후 넘버 변경 -> 시험 정보 출력
 
+
+// 0620 -- 시험정보 부분 클릭 시 회색으로 바뀌는 부분 수정 필요
+
+
 class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     

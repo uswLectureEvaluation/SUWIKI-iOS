@@ -122,6 +122,13 @@ class lectureEvaluationWritePage: UIViewController {
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self) // 메모리
+        
+    }
+    
     @objc func MyTapMethod(_ sender: UITapGestureRecognizer){
         self.view.endEditing(true)
    

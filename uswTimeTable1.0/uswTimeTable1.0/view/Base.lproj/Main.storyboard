@@ -5013,7 +5013,7 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="보통"/>
                                                 <connections>
-                                                    <action selector="normalDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="RN0-DV-L5c"/>
+                                                    <action selector="usuallyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="utr-xx-IVc"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lu-Ri-Jtz">
@@ -5117,7 +5117,7 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="보통"/>
                                                 <connections>
-                                                    <action selector="usuallyHomeworkBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="AD1-Dn-6Un"/>
+                                                    <action selector="normalDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="Zbj-LI-Gsd"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1s-8O-218">
@@ -5278,13 +5278,13 @@
                         <outlet property="hardDiffcultyBtn" destination="Uwy-xd-DCn" id="1MY-Pz-PL4"/>
                         <outlet property="homeworkManyBtn" destination="7Lu-Ri-Jtz" id="if1-2i-XJE"/>
                         <outlet property="homeworkNoBtn" destination="Tsx-m0-Xdz" id="Uay-28-vkh"/>
-                        <outlet property="homeworkUsuallyBtn" destination="3mr-no-Xap" id="Bts-oe-Q96"/>
+                        <outlet property="homeworkUsuallyBtn" destination="3mr-no-Xap" id="kHi-9o-K1X"/>
                         <outlet property="honeyPoint" destination="Cyv-8c-yfb" id="T9c-0F-IAW"/>
                         <outlet property="honeySlider" destination="doz-1z-2TI" id="vCv-LW-Rbk"/>
                         <outlet property="learningPoint" destination="sya-5C-Nfu" id="rYM-jK-1gt"/>
                         <outlet property="learningSlider" destination="Dq3-HV-eLg" id="tUB-3D-BZB"/>
                         <outlet property="lectureNameLabel" destination="sdy-yj-cb5" id="Ae9-MP-fEv"/>
-                        <outlet property="normalDifficultyBtn" destination="NLA-m5-yja" id="oGi-oR-Zac"/>
+                        <outlet property="normalDifficultyBtn" destination="NLA-m5-yja" id="Dp5-i0-moQ"/>
                         <outlet property="satisfactionPoint" destination="gLB-2L-6ey" id="8AO-Bj-bFg"/>
                         <outlet property="satisfactionSlider" destination="89l-bv-u1M" id="qtD-kt-Ioy"/>
                         <outlet property="scrollView" destination="LaQ-n0-yf9" id="nbM-as-K0Q"/>
@@ -5701,6 +5701,7 @@
                         <outlet property="lectureNameLabel" destination="TP2-oi-2Dj" id="1fK-94-hdc"/>
                         <outlet property="normalLevelBtn" destination="rBg-Xf-JNi" id="Ojo-bc-9fr"/>
                         <outlet property="pptBtn" destination="ACn-jm-lHf" id="GCs-FR-d6I"/>
+                        <outlet property="scrollView" destination="U84-WM-jA8" id="G5I-o3-0KB"/>
                         <outlet property="semesterDropDown" destination="0dx-D0-8Pb" id="hie-pp-OFh"/>
                         <outlet property="semesterTextField" destination="KQt-ss-YWE" id="oSi-jL-rzL"/>
                         <outlet property="textbookBtn" destination="zF5-fW-USx" id="imZ-Ce-y8Q"/>
