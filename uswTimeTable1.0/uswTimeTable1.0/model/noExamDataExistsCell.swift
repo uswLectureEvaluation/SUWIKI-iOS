@@ -18,7 +18,7 @@ class noExamDataExistsCell:
         
         super.awakeFromNib()
         contentView.layer.borderWidth = 1.0
-        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderColor = UIColor.white.cgColor
         contentView.layer.cornerRadius = 8.0
         // Initialization code
     }

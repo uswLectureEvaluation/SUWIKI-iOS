@@ -13,6 +13,10 @@ import DropDown
 
 class lectureExamWritePage: UIViewController {
     
+    
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var examTypeDropDown: UIView!
     @IBOutlet weak var examTypeTextField: UILabel!
     
@@ -59,15 +63,31 @@ class lectureExamWritePage: UIViewController {
     var adjustContent: String = ""
     var examIdx = 0
     
+    var keyboardTouchCheck: Bool = false
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(keychain.get("AccessToken"))
         print(lectureId)
         
+        lectureNameLabel.text = lectureName
+        
         if adjustBtn == 1{
             getAdjustExam()
         }
         
+        contentField.layer.borderColor = UIColor.lightGray.cgColor
+        contentField.layer.borderWidth = 1.0
+        contentField.layer.cornerRadius = 8.0
+        
+        examTypeDropDown.layer.cornerRadius = 8.0
+        examTypeDropDown.layer.borderColor = UIColor.lightGray.cgColor
+        examTypeDropDown.layer.borderWidth = 1.0
+        
+        semesterDropDown.layer.cornerRadius = 8.0
+        semesterDropDown.layer.borderWidth = 1.0
+        semesterDropDown.layer.borderColor = UIColor.lightGray.cgColor
         
         semeDropDown.anchorView = semesterDropDown
         semeDropDown.dataSource = semesterList
@@ -95,9 +115,31 @@ class lectureExamWritePage: UIViewController {
             self.examTypeTextField.textAlignment = .center
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod)) // 스크롤 뷰 화면 터치 시 키보드 올라감
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self) // 메모리
+        
+    }
+    
+    @objc func MyTapMethod(_ sender: UITapGestureRecognizer){
+        self.view.endEditing(true)
+   
+    }
+    
     
     @IBAction func semesterBtnClicked(_ sender: Any) {
         semeDropDown.show()
@@ -394,9 +436,27 @@ class lectureExamWritePage: UIViewController {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
+    @objc func keyboardWillAppear(_ notification: NSNotification){
+        if keyboardTouchCheck == false {
+            keyboardTouchCheck = true
+            if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                UIView.animate(withDuration: 0.8){
+                    self.view.frame.origin.y -= keyboardFrame.height - 60
+                }
+                
+            }
+        }
+        
+    }
+    
+    @objc func keyboardWillDisappear(_ notification: Notification){
+        if keyboardTouchCheck == true{
+            keyboardTouchCheck = false
+            UIView.animate(withDuration: 0.8){
+                self.view.frame.origin.y = 0
+            }
+            
+        }
+        
     }
 }

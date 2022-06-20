@@ -71,6 +71,8 @@ class lectureEvaluationWritePage: UIViewController {
     
     var semesterList: [String] = []
     
+    var keyboardTouchCheck: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.contentField.layer.borderWidth = 1.0
@@ -108,9 +110,29 @@ class lectureEvaluationWritePage: UIViewController {
             self.semesterTextField.textColor = UIColor.black
             self.semesterTextField.textAlignment = .left
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod)) // 스크롤 뷰 화면 터치 시 키보드 올라감
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self) // 메모리
+        
+    }
+    
+    @objc func MyTapMethod(_ sender: UITapGestureRecognizer){
+        self.view.endEditing(true)
+   
+    }
     
     @IBAction func semesterDropDownClicked(_ sender: Any) {
         dropDown.show()
@@ -266,11 +288,15 @@ class lectureEvaluationWritePage: UIViewController {
     @IBAction func noHomeworkBtnClicked(_ sender: Any) {
         homeworkTypeCheck(homework: "no")
         homeworkType.checkPoint(no: homeworkType.noHomework, usually: homeworkType.usuallyHomework, many: homeworkType.manyHomework)
+        print(homeworkType.homeworkPoint)
+
         homeworkPointCheck()
     }
     @IBAction func usuallyHomeworkBtnClicked(_ sender: Any) {
         homeworkTypeCheck(homework: "usually")
         homeworkType.checkPoint(no: homeworkType.noHomework, usually: homeworkType.usuallyHomework, many: homeworkType.manyHomework)
+        print(homeworkType.homeworkPoint)
+
         homeworkPointCheck()
     }
     @IBAction func manyHomeworkBtnClicked(_ sender: Any) {
@@ -285,16 +311,19 @@ class lectureEvaluationWritePage: UIViewController {
         difficultyTypeCheck(difficulty: "easy")
         difficultyType.checkPoint(easy: difficultyType.easyDifficulty, normal: difficultyType.normalDifficulty, hard: difficultyType.hardDifficulty)
         difficultyPointCheck()
+        print(difficultyType.difficultyPoint)
     }
     @IBAction func normalDifficultyBtnClicked(_ sender: Any) {
         difficultyTypeCheck(difficulty: "normal")
         difficultyType.checkPoint(easy: difficultyType.easyDifficulty, normal: difficultyType.normalDifficulty, hard: difficultyType.hardDifficulty)
         difficultyPointCheck()
+        print(difficultyType.difficultyPoint)
     }
     @IBAction func hardDifficultyBtnClicked(_ sender: Any) {
         difficultyTypeCheck(difficulty: "hard")
         difficultyType.checkPoint(easy: difficultyType.easyDifficulty, normal: difficultyType.normalDifficulty, hard: difficultyType.hardDifficulty)
         difficultyPointCheck()
+        print(difficultyType.difficultyPoint)
     }
     
     
@@ -445,11 +474,32 @@ class lectureEvaluationWritePage: UIViewController {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
-          self.view.endEditing(true)
-
+    
+    @objc func keyboardWillAppear(_ notification: NSNotification){
+        if keyboardTouchCheck == false {
+            keyboardTouchCheck = true
+            if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                UIView.animate(withDuration: 0.8){
+                    self.view.frame.origin.y -= keyboardFrame.height
+                }
+                
+            }
+        }
+        
     }
+    
+    @objc func keyboardWillDisappear(_ notification: Notification){
+        if keyboardTouchCheck == true{
+            keyboardTouchCheck = false
+            UIView.animate(withDuration: 0.8){
+                self.view.frame.origin.y = 0
+            }
+            
+        }
+        
+    }
+    
+    
 }
 
 

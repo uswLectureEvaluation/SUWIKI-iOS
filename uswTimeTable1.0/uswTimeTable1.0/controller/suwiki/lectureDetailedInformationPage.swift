@@ -17,6 +17,10 @@ import Cosmos
 // 3. 강의평가 -> 시험평가 버튼 클릭 시 메인 리스트 비우고, reloadData 진행
 // 테이블뷰넘버로 시험정보 구매 여부 확인 후 넘버 변경 -> 시험 정보 출력
 
+
+// 0620 -- 시험정보 부분 클릭 시 회색으로 바뀌는 부분 수정 필요
+
+
 class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
@@ -169,6 +173,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
+            print(detailLectureArray[0].semesterList)
             nextVC.semesterList.append(detailLectureArray[0].semesterList)
             if evalDataExist == 0 {
                 nextVC.tableViewNumber = 0
@@ -466,11 +471,25 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
+            print(JSON(response.data))
             if Int(data!) == 200{
                 self.getDetailExam()
                 self.tableViewNumber = 3
             } else if Int(data!) == 403{
+                let alert = UIAlertController(title:"제한된 유저입니다!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
                 
+            } else if Int(data!) == 400{
+                let alert = UIAlertController(title:"포인트가 부족해요!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
             }
             
         }

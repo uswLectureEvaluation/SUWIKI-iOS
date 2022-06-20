@@ -18,6 +18,12 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var logoutInfoView: UIView!
     
     
+    @IBOutlet weak var logoutPointPolicy: UIView!
+    @IBOutlet weak var loginPointPolicy: UIView!
+    
+    @IBOutlet weak var logoutInformation: UIView!
+    @IBOutlet weak var loginInformation: UIView!
+    
     @IBOutlet weak var loginIdLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     
@@ -32,6 +38,7 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var writtenExamPoint: UILabel!
     @IBOutlet weak var viewExamPoint: UILabel!
     
+    @IBOutlet weak var writtenPostBtn: UIButton!
     
     
     let keychain = KeychainSwift()
@@ -39,11 +46,15 @@ class myInfoPage: UIViewController {
     var userInfo = MyInfo(loginId: "", email: "", point: 0, writtenEvaluation: 0, writtenExam: 0, viewExam: 0)
     
     override func viewDidLoad() {
+        makeCornerRadius()
         navigationBarHidden()
         navigationBackSwipeMotion()
         super.viewDidLoad()
         loginInfoView.isHidden = true
         loginPointView.isHidden = true
+        loginInformation.isHidden = true
+        loginPointPolicy.isHidden = true
+        writtenPostBtn.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -95,16 +106,30 @@ class myInfoPage: UIViewController {
                 
                 self.userInfo = readUserData
                 self.logoutInfoView.isHidden = true
+                self.logoutPointPolicy.isHidden = true
+                self.logoutInformation.isHidden = true
                 
                 self.viewUpdate()
                 self.loginInfoView.isHidden = false
                 self.loginPointView.isHidden = false
+                self.loginInformation.isHidden = false
+                self.loginPointPolicy.isHidden = false
+                self.writtenPostBtn.isHidden = false
+                
                 
             }
         } else {
             loginInfoView.isHidden = true
             loginPointView.isHidden = true
+            loginInformation.isHidden = true
+            loginPointPolicy.isHidden = true
+            writtenPostBtn.isHidden = true
+            
+            
             logoutInfoView.isHidden = false
+            logoutPointPolicy.isHidden = false
+            logoutInformation.isHidden = false
+            
         }
     }
     
@@ -120,6 +145,39 @@ class myInfoPage: UIViewController {
         writtenEvalPoint.text = "+\(userInfo.writtenEvaluation * 10)"
         writtenExamPoint.text = "+\(userInfo.writtenExam * 20)"
         viewExamPoint.text = "-\(userInfo.viewExam * 20)"
+        
+    }
+    
+    func makeCornerRadius(){
+        
+        loginInformation.layer.cornerRadius = 12.0
+        loginInformation.layer.borderWidth = 1.0
+        loginInformation.layer.borderColor = UIColor.lightGray.cgColor
+        
+        loginPointPolicy.layer.cornerRadius = 12.0
+        loginPointPolicy.layer.borderWidth = 1.0
+        loginPointPolicy.layer.borderColor = UIColor.lightGray.cgColor
+        
+        loginInfoView.layer.cornerRadius = 12.0
+        loginInfoView.layer.borderWidth = 1.0
+        loginInfoView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        loginPointView.layer.cornerRadius = 12.0
+        loginPointView.layer.borderWidth = 1.0
+        loginPointView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        
+        logoutInformation.layer.cornerRadius = 12.0
+        logoutInformation.layer.borderWidth = 1.0
+        logoutInformation.layer.borderColor = UIColor.lightGray.cgColor
+        
+        logoutPointPolicy.layer.cornerRadius = 12.0
+        logoutPointPolicy.layer.borderWidth = 1.0
+        logoutPointPolicy.layer.borderColor = UIColor.lightGray.cgColor
+        
+        logoutInfoView.layer.cornerRadius = 12.0
+        logoutInfoView.layer.borderWidth = 1.0
+        logoutInfoView.layer.borderColor = UIColor.lightGray.cgColor
         
     }
     
