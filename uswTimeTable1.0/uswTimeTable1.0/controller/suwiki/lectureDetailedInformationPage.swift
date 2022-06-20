@@ -471,11 +471,25 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
+            print(JSON(response.data))
             if Int(data!) == 200{
                 self.getDetailExam()
                 self.tableViewNumber = 3
             } else if Int(data!) == 403{
+                let alert = UIAlertController(title:"제한된 유저입니다!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
                 
+            } else if Int(data!) == 400{
+                let alert = UIAlertController(title:"포인트가 부족해요!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
             }
             
         }

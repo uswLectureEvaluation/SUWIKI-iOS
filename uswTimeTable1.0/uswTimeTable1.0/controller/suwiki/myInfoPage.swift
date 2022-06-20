@@ -150,32 +150,32 @@ class myInfoPage: UIViewController {
     
     func makeCornerRadius(){
         
-        loginInformation.layer.cornerRadius = 8.0
+        loginInformation.layer.cornerRadius = 12.0
         loginInformation.layer.borderWidth = 1.0
         loginInformation.layer.borderColor = UIColor.lightGray.cgColor
         
-        loginPointPolicy.layer.cornerRadius = 8.0
+        loginPointPolicy.layer.cornerRadius = 12.0
         loginPointPolicy.layer.borderWidth = 1.0
         loginPointPolicy.layer.borderColor = UIColor.lightGray.cgColor
         
-        loginInfoView.layer.cornerRadius = 8.0
+        loginInfoView.layer.cornerRadius = 12.0
         loginInfoView.layer.borderWidth = 1.0
         loginInfoView.layer.borderColor = UIColor.lightGray.cgColor
         
-        loginPointView.layer.cornerRadius = 8.0
+        loginPointView.layer.cornerRadius = 12.0
         loginPointView.layer.borderWidth = 1.0
         loginPointView.layer.borderColor = UIColor.lightGray.cgColor
         
         
-        logoutInformation.layer.cornerRadius = 8.0
+        logoutInformation.layer.cornerRadius = 12.0
         logoutInformation.layer.borderWidth = 1.0
         logoutInformation.layer.borderColor = UIColor.lightGray.cgColor
         
-        logoutPointPolicy.layer.cornerRadius = 8.0
+        logoutPointPolicy.layer.cornerRadius = 12.0
         logoutPointPolicy.layer.borderWidth = 1.0
         logoutPointPolicy.layer.borderColor = UIColor.lightGray.cgColor
         
-        logoutInfoView.layer.cornerRadius = 8.0
+        logoutInfoView.layer.cornerRadius = 12.0
         logoutInfoView.layer.borderWidth = 1.0
         logoutInfoView.layer.borderColor = UIColor.lightGray.cgColor
         
