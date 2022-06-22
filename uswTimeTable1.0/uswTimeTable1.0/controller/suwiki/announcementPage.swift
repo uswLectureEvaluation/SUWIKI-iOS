@@ -42,7 +42,9 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.titleLabel.text = announcementViewData[indexPath.row].title
         let modifiedDateView = announcementViewData[indexPath.row].modifiedDate.split(separator: "T")[0]
         cell.modifiedDateLabel.text = String(modifiedDateView)
-        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.white
+        cell.selectedBackgroundView = bgColorView
         return cell
         
     }

@@ -12,6 +12,10 @@ import SwiftyJSON
 import KeychainSwift
 import Cosmos
 
+
+// 개설학과 리스트 받아와야 함
+
+
 class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
 
