@@ -40,7 +40,8 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "announcementCell", for: indexPath) as! announcementCell
         cell.titleLabel.text = announcementViewData[indexPath.row].title
-        cell.modifiedDateLabel.text = announcementViewData[indexPath.row].modifiedDate
+        let modifiedDateView = announcementViewData[indexPath.row].modifiedDate.split(separator: "T")[0]
+        cell.modifiedDateLabel.text = String(modifiedDateView)
         
         return cell
         
@@ -76,7 +77,7 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     
     func getAnnouncementPage() {
-        let url = "https://api.suwiki.kr/notice/all"
+        let url = "https://api.suwiki.kr/notice/all?page=1"
         
         AF.request(url, method: .get, encoding: URLEncoding.default).responseJSON { (response) in
             let data = response.data
