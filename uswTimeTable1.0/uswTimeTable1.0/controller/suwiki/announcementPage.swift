@@ -21,37 +21,53 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     var announcementViewData: Array<announcePage> = []
     
+    var tableViewNumber = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let announcementCell = UINib(nibName: "announcementCell", bundle: nil)
         tableView.register(announcementCell, forCellReuseIdentifier: "announcementCell")
         
+        let noExamDataExistsCellName = UINib(nibName: "noExamDataExistsCell", bundle: nil)
+        tableView.register(noExamDataExistsCellName, forCellReuseIdentifier: "noDataCell")
         
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 103.0
+        self.tableView.reloadData()
         getAnnouncementPage()
         // Do any additional setup after loading the view.
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return announcementViewData.count
+        if tableViewNumber == 0{
+            return announcementViewData.count
+        } else {
+            return 1
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "announcementCell", for: indexPath) as! announcementCell
-        cell.titleLabel.text = announcementViewData[indexPath.row].title
-        let modifiedDateView = announcementViewData[indexPath.row].modifiedDate.split(separator: "T")[0]
-        cell.modifiedDateLabel.text = String(modifiedDateView)
-        let bgColorView = UIView()
-        bgColorView.backgroundColor = UIColor.white
-        cell.selectedBackgroundView = bgColorView
-        return cell
+        if tableViewNumber == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "announcementCell", for: indexPath) as! announcementCell
+            cell.titleLabel.text = announcementViewData[indexPath.row].title
+            let modifiedDateView = announcementViewData[indexPath.row].modifiedDate.split(separator: "T")[0]
+            cell.modifiedDateLabel.text = String(modifiedDateView)
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor.white
+            cell.selectedBackgroundView = bgColorView
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
+            cell.noExamData.text = "강의평가가 없습니다."
+            
+            return cell
+        }
         
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 103.0
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // 다음페이지 띄워주기(공지사항 자세히 보기
         
@@ -66,9 +82,15 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
             print(response.response?.statusCode)
             
             if response.response?.statusCode == 200 {
-                let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "announceDetailVC") as! announcementDetailPage
-                nextVC.noticeId = self.announcementViewData[indexPath.row].id
-                self.present(nextVC, animated: true, completion: nil)
+                let json = JSON(response.data)
+                if json["data"].count > 0 {
+                    self.tableViewNumber = 0
+                    let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "announceDetailVC") as! announcementDetailPage
+                    nextVC.noticeId = self.announcementViewData[indexPath.row].id
+                    self.present(nextVC, animated: true, completion: nil)
+                } else {
+                    self.tableViewNumber = 1
+                }
             } else {
                 let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
                 self.navigationController?.pushViewController(nextVC, animated: true)

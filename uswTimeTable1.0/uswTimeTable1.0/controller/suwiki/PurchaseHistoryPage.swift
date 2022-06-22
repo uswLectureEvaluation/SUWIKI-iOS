@@ -35,6 +35,9 @@ class PurchaseHistoryPage: UIViewController, UITableViewDelegate, UITableViewDat
         print(tableViewUpdateData)
     }
     
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0 {
