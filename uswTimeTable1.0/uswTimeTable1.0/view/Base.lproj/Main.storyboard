@@ -3058,7 +3058,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 계정을 입력하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2A-2y-ONY">
-                                <rect key="frame" x="24" y="185" width="114" height="14"/>
+                                <rect key="frame" x="24" y="185" width="113" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="F0V-Z6-DMB"/>
                                 </constraints>
@@ -6272,6 +6272,11 @@
             <point key="canvasLocation" x="-1099" y="2174"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="pNh-pJ-vFd">
+            <size key="intrinsicContentSize" width="81" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
