@@ -26,6 +26,7 @@
 		AF2E108C28095ADB00051844 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */; };
 		AF2E1093280AF2AB00051844 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */; };
 		AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F69BA27EDB6BF0023243F /* loginModel.swift */; };
+		AF40C83F287084A700E32690 /* MajorCategoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40C83E287084A700E32690 /* MajorCategoryPage.swift */; };
 		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
 		AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */; };
@@ -126,6 +127,7 @@
 		AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		AF2F69BA27EDB6BF0023243F /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		AF40C83E287084A700E32690 /* MajorCategoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryPage.swift; sourceTree = "<group>"; };
 		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
 		AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adjustCourseData.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				AFE5C100281FD6E500D3E4DF /* findIdPage.swift */,
 				AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */,
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
+				AF40C83E287084A700E32690 /* MajorCategoryPage.swift */,
 				AFE5C104281FF2B000D3E4DF /* searchedResultPage.swift */,
 				AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */,
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
@@ -550,6 +553,7 @@
 				AFB9D755283924E6004A842B /* signUpPage.swift in Sources */,
 				AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
+				AF40C83F287084A700E32690 /* MajorCategoryPage.swift in Sources */,
 				AFE5C107281FFADC00D3E4DF /* searchedResultPageModel.swift in Sources */,
 				AF6C1CC528019E4A000BAC48 /* detailExamCell.swift in Sources */,
 				AFBD08D52822776D00A923CB /* searchedResultCell.swift in Sources */,
