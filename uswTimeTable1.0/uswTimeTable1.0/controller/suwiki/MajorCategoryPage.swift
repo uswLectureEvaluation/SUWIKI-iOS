@@ -97,7 +97,13 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             if tableViewNumber == 1{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
                 cell.majorTypeLabel.text = tableViewUpdateData[indexPath.row].majorType
+                
+                cell.favoriteBtn.tag = indexPath.row
+                cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
+                
                 if tableViewUpdateData[indexPath.row].favoriteCheck == true {
+                    cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
+                } else{
                     cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
                 }
                 return cell
@@ -165,14 +171,19 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     func favoriteAdd(majorType: String){
         let url = "https://api.suwiki.kr/user/favorite-major"
         
-        let parameter: Parameters = [
-            "Authorization" : String(keychain.get("AccessToken") ?? ""),
+        let parameters: Parameters = [
             "majorType" : majorType
         ]
         
-        AF.request(url, method: .post, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? ""),
+        ]
+        
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
-            
+            print(headers)
+            print(parameters)
             if status == 403{
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
@@ -185,11 +196,42 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 self.present(alert, animated: true, completion: nil)
             }
             self.getFavorite()
+            print(JSON(response.data))
         }
         
     }
     
     func favoriteRemove(majorType: String){
+        let url = "https://api.suwiki.kr/user/favorite-major"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? ""),
+        ]
+        
+        let parameters: Parameters = [
+            "majorType" : majorType
+        ]
+        
+        
+        
+        AF.request(url, method: .delete, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            let status = response.response?.statusCode
+            print(headers)
+            print(parameters)
+            if status == 403{
+                let alert = UIAlertController(title:"제한된 유저십니다 ^^",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                //2. 확인 버튼 만들기
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                //3. 확인 버튼을 경고창에 추가하기
+                alert.addAction(cancle)
+                //4. 경고창 보이기
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.getFavorite()
+            print(JSON(response.data))
+        }
         
         
     }
@@ -199,10 +241,14 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let indexPath = IndexPath(row: sender.tag, section: 0)
         
         if tableViewNumber == 1{
+            print("\(tableViewUpdateData[indexPath.row].majorType)")
             if tableViewUpdateData[indexPath.row].favoriteCheck == true {
-                favoriteRemove(majorType: tableViewUpdateData[indexPath.row].majorType)
+                
+                favoriteRemove(majorType: "교양")
+                tableViewUpdateData[indexPath.row].favoriteCheck = false
             } else {
-                favoriteAdd(majorType: tableViewUpdateData[indexPath.row].majorType)
+                favoriteAdd(majorType: "교양")
+                tableViewUpdateData[indexPath.row].favoriteCheck = true
             }
         } else if tableViewNumber == 2{
             
