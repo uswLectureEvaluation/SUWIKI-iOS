@@ -34,7 +34,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         getMajorType()
-
+        getFavorite()
         let majorCellName = UINib(nibName: "MajorCategoryCell", bundle: nil)
         tableView.register(majorCellName, forCellReuseIdentifier: "majorCell")
         
@@ -141,7 +141,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             
             self.tableView.reloadData()
-            print(self.tableViewUpdateData)
+            print("\(self.tableViewUpdateData)" + " sex")
         }
     }
     
@@ -149,14 +149,14 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         favoritesMajorData.removeAll()
         let url = "https://api.suwiki.kr/user/favorite-major"
         let parameter: Parameters = [
-            "Authorization" : String(keychain.get("AccessToken") ?? "")
+            "Authorization" : String(keychain.get("AccessToken") ?? ""),
+            
         ]
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
             let data = response.data
-            
             let json = JSON(data ?? "")
-            
+            print(json)
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
                 let readData = MajorCategory(majorType: jsonData["majorType"].stringValue, favoriteCheck: true)
@@ -164,6 +164,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             self.tableView.reloadData()
         }
+        print(self.favoritesMajorData)
     }
     
 
@@ -176,14 +177,14 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         ]
         
         let headers: HTTPHeaders = [
-            "Authorization" : String(keychain.get("AccessToken") ?? ""),
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+            
         ]
         
         
-        AF.request(url, method: .post, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
-            print(headers)
-            print(parameters)
+            
             if status == 403{
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
@@ -205,7 +206,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let url = "https://api.suwiki.kr/user/favorite-major"
         
         let headers: HTTPHeaders = [
-            "Authorization" : String(keychain.get("AccessToken") ?? ""),
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
         let parameters: Parameters = [
@@ -214,10 +215,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         
         
         
-        AF.request(url, method: .delete, parameters: parameters, encoding: URLEncoding.httpBody, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
-            print(headers)
-            print(parameters)
+            print(status)
+            print(JSON(response.data))
             if status == 403{
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
@@ -228,9 +229,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 alert.addAction(cancle)
                 //4. 경고창 보이기
                 self.present(alert, animated: true, completion: nil)
+            } else {
+                self.getFavorite()
             }
-            self.getFavorite()
-            print(JSON(response.data))
+            
         }
         
         
@@ -244,10 +246,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             print("\(tableViewUpdateData[indexPath.row].majorType)")
             if tableViewUpdateData[indexPath.row].favoriteCheck == true {
                 
-                favoriteRemove(majorType: "교양")
+                favoriteRemove(majorType: "\(tableViewUpdateData[indexPath.row].majorType)")
                 tableViewUpdateData[indexPath.row].favoriteCheck = false
             } else {
-                favoriteAdd(majorType: "교양")
+                favoriteAdd(majorType: "\(tableViewUpdateData[indexPath.row].majorType)")
                 tableViewUpdateData[indexPath.row].favoriteCheck = true
             }
         } else if tableViewNumber == 2{
