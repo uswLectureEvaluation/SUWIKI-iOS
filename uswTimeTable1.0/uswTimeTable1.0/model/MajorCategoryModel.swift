@@ -10,4 +10,5 @@ import Foundation
 
 struct MajorCategory{
     let majorType: String
+    var favoriteCheck: Bool
 }

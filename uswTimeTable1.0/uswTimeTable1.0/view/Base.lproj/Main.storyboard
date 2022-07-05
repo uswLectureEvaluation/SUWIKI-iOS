@@ -5226,17 +5226,6 @@
                                 <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rGE-1c-LLB">
-                                <rect key="frame" x="16" y="199" width="382" height="293"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="293" id="Sp7-Ab-5rJ"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="GIH-GW-eDo" id="ObG-mN-4Uz"/>
-                                    <outlet property="delegate" destination="GIH-GW-eDo" id="dgc-sP-E3L"/>
-                                </connections>
-                            </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="개설학과를 검색하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-16-bnx">
                                 <rect key="frame" x="48" y="152" width="318" height="19"/>
                                 <constraints>
@@ -5265,20 +5254,41 @@
                                     <action selector="searchBtnClicked:" destination="GIH-GW-eDo" eventType="touchUpInside" id="apw-oc-jpC"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-g7-pFh">
+                                <rect key="frame" x="16" y="199" width="382" height="293"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rGE-1c-LLB">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="293"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="GIH-GW-eDo" id="ObG-mN-4Uz"/>
+                                            <outlet property="delegate" destination="GIH-GW-eDo" id="dgc-sP-E3L"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="rGE-1c-LLB" secondAttribute="bottom" id="026-sb-MtJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="rGE-1c-LLB" secondAttribute="trailing" id="2mZ-9J-jce"/>
+                                    <constraint firstAttribute="height" constant="293" id="JgZ-ff-Ld2"/>
+                                    <constraint firstItem="rGE-1c-LLB" firstAttribute="top" secondItem="NX7-g7-pFh" secondAttribute="top" id="aY5-jO-i7n"/>
+                                    <constraint firstItem="rGE-1c-LLB" firstAttribute="leading" secondItem="NX7-g7-pFh" secondAttribute="leading" id="hqZ-wh-QCf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="adb-2U-S0N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CL7-cI-DOC" firstAttribute="leading" secondItem="1Br-BO-lxv" secondAttribute="leading" constant="16" id="2ox-BP-eVj"/>
-                            <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="rGE-1c-LLB" secondAttribute="trailing" constant="16" id="6QR-gi-wit"/>
                             <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="Sy8-16-bnx" secondAttribute="trailing" constant="48" id="8dL-RW-zUs"/>
                             <constraint firstItem="Sy8-16-bnx" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="48" id="942-XJ-3nU"/>
                             <constraint firstItem="CL7-cI-DOC" firstAttribute="top" secondItem="Sy8-16-bnx" secondAttribute="bottom" constant="15" id="9rX-vz-17o"/>
                             <constraint firstItem="Sy8-16-bnx" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="topMargin" constant="108" id="Pe5-yv-IQL"/>
-                            <constraint firstItem="rGE-1c-LLB" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="aIp-Me-1FY"/>
+                            <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="NX7-g7-pFh" secondAttribute="trailing" constant="16" id="XRv-f2-4Mu"/>
                             <constraint firstItem="Y6A-z7-KiB" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="e5a-R6-5XY"/>
                             <constraint firstAttribute="trailing" secondItem="CL7-cI-DOC" secondAttribute="trailing" constant="16" id="iHA-T0-Arj"/>
-                            <constraint firstItem="rGE-1c-LLB" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="top" constant="199" id="mXb-YY-tWl"/>
+                            <constraint firstItem="NX7-g7-pFh" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="q9z-xD-85d"/>
+                            <constraint firstItem="NX7-g7-pFh" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="top" constant="199" id="t8r-eT-TY9"/>
                             <constraint firstItem="Y6A-z7-KiB" firstAttribute="top" secondItem="adb-2U-S0N" secondAttribute="top" constant="105" id="zpU-wu-5Ed"/>
                         </constraints>
                     </view>
@@ -5289,7 +5299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AyY-sQ-NVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="1412"/>
+            <point key="canvasLocation" x="586.95652173913049" y="1411.6071428571429"/>
         </scene>
         <!--Lecture Evaluation Write Page-->
         <scene sceneID="zpp-Tj-F68">

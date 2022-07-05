@@ -47,6 +47,8 @@
 		AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */; };
 		AF7D4B1F287441BC00268EB0 /* MajorCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */; };
 		AF7D4B20287441BC00268EB0 /* MajorCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7D4B1E287441BC00268EB0 /* MajorCategoryCell.xib */; };
+		AF7D4B2328745B2B00268EB0 /* MajorCategoryNoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B2128745B2B00268EB0 /* MajorCategoryNoDataCell.swift */; };
+		AF7D4B2428745B2B00268EB0 /* MajorCategoryNoDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7D4B2228745B2B00268EB0 /* MajorCategoryNoDataCell.xib */; };
 		AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */; };
 		AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
@@ -151,6 +153,8 @@
 		AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryModel.swift; sourceTree = "<group>"; };
 		AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryCell.swift; sourceTree = "<group>"; };
 		AF7D4B1E287441BC00268EB0 /* MajorCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MajorCategoryCell.xib; sourceTree = "<group>"; };
+		AF7D4B2128745B2B00268EB0 /* MajorCategoryNoDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryNoDataCell.swift; sourceTree = "<group>"; };
+		AF7D4B2228745B2B00268EB0 /* MajorCategoryNoDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MajorCategoryNoDataCell.xib; sourceTree = "<group>"; };
 		AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noExamDataExistsCell.swift; sourceTree = "<group>"; };
 		AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = noExamDataExistsCell.xib; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
@@ -303,6 +307,7 @@
 				AFE5C106281FFADC00D3E4DF /* searchedResultPageModel.swift */,
 				AFBD08D32822776D00A923CB /* searchedResultCell.swift */,
 				AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */,
+				AF7D4B2128745B2B00268EB0 /* MajorCategoryNoDataCell.swift */,
 				AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */,
 				AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */,
 				AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */,
@@ -330,6 +335,7 @@
 				AFAFEF88277F160900408F46 /* Main.storyboard */,
 				AFBD08D42822776D00A923CB /* searchedResultCell.xib */,
 				AF7D4B1E287441BC00268EB0 /* MajorCategoryCell.xib */,
+				AF7D4B2228745B2B00268EB0 /* MajorCategoryNoDataCell.xib */,
 				AF6C1CC028019DF5000BAC48 /* detailEvaluationCell.xib */,
 				AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */,
 				AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */,
@@ -483,6 +489,7 @@
 				AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */,
 				AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */,
 				AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */,
+				AF7D4B2428745B2B00268EB0 /* MajorCategoryNoDataCell.xib in Resources */,
 				AFAFEF8A277F160900408F46 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,6 +557,7 @@
 				AFC7E5A528364D4A00586C9C /* announcementDetailPage.swift in Sources */,
 				AFBC03F7282D367E00DCEDA6 /* writtenPostPage.swift in Sources */,
 				AF296C5E2836420300C961A3 /* announcementPage.swift in Sources */,
+				AF7D4B2328745B2B00268EB0 /* MajorCategoryNoDataCell.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
 				AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */,
