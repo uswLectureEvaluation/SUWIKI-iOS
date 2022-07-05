@@ -108,6 +108,11 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     */
   
+    @IBAction func majorCategoryBtnClicked(_ sender: Any) {
+        let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
+        self.navigationController?.pushViewController(majorVC, animated: true)
+        
+    }
     @IBAction func categoryButtonClicked(_ sender: Any) {
         dropDown.show()
     }

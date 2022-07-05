@@ -7,12 +7,32 @@
 
 import UIKit
 
-class MajorCategoryPage: UIViewController {
+import Alamofire
+import SwiftyJSON
+import KeychainSwift
 
+class MajorCategoryPage: UIViewController {
+    
+    let keychain = KeychainSwift()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func getMajorType(){
+        let url = "https://api.suwiki.kr/lecture/search/"
+        
+        let parameter: Parameters = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
+        AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
+            let data = response.data
+            let json = JSON(data ?? "")
+            print(json)
+        }
     }
     
 

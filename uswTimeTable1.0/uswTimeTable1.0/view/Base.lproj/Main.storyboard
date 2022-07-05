@@ -4451,7 +4451,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ojc-a1-eCv">
-                                <rect key="frame" x="16" y="256" width="141" height="32"/>
+                                <rect key="frame" x="144" y="256" width="141" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="최근 올라온 강의" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2q-ed-b7M">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="38"/>
@@ -4538,19 +4538,40 @@
                                     <action selector="testLogOut:" destination="nWD-BY-JaL" eventType="touchUpInside" id="z8L-6Z-zkJ"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQ6-Xl-P9Q">
+                                <rect key="frame" x="16" y="256" width="120" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACT-pr-Pq1">
+                                        <rect key="frame" x="0.0" y="-1" width="120" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="majorCategoryBtnClicked:" destination="nWD-BY-JaL" eventType="touchUpInside" id="6iR-Y6-985"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="iRx-lP-2d3"/>
+                                    <constraint firstAttribute="height" constant="32" id="jgx-Nj-DZ5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hkq-nz-xuM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tjH-gS-Ppi" firstAttribute="top" secondItem="y6q-Bm-Wb3" secondAttribute="bottom" constant="123" id="3ev-23-PF1"/>
                             <constraint firstItem="RDW-dd-2au" firstAttribute="leading" secondItem="hkq-nz-xuM" secondAttribute="leading" constant="24" id="3fD-OY-fWN"/>
+                            <constraint firstItem="qQ6-Xl-P9Q" firstAttribute="top" secondItem="y6q-Bm-Wb3" secondAttribute="bottom" constant="148" id="4k6-Pu-xHA"/>
                             <constraint firstAttribute="trailing" secondItem="tjH-gS-Ppi" secondAttribute="trailing" constant="16" id="4zf-6X-8Yq"/>
                             <constraint firstItem="tpu-My-7p7" firstAttribute="top" secondItem="Ojc-a1-eCv" secondAttribute="bottom" constant="8" id="5U4-Jx-CSM"/>
                             <constraint firstItem="y6q-Bm-Wb3" firstAttribute="top" secondItem="hkq-nz-xuM" secondAttribute="top" constant="63" id="5vB-Hf-s72"/>
                             <constraint firstAttribute="bottom" secondItem="tpu-My-7p7" secondAttribute="bottom" constant="30" id="60v-Zq-OpI"/>
+                            <constraint firstItem="qQ6-Xl-P9Q" firstAttribute="leading" secondItem="hkq-nz-xuM" secondAttribute="leading" constant="16" id="9d5-8X-jDi"/>
                             <constraint firstItem="hkq-nz-xuM" firstAttribute="trailing" secondItem="VJ9-KH-iIx" secondAttribute="trailing" constant="55" id="KOm-e8-N2g"/>
                             <constraint firstItem="tjH-gS-Ppi" firstAttribute="leading" secondItem="a7Z-Hi-CkJ" secondAttribute="leading" constant="16" id="KZW-fd-Ewq"/>
-                            <constraint firstItem="Ojc-a1-eCv" firstAttribute="leading" secondItem="hkq-nz-xuM" secondAttribute="leading" constant="16" id="OfA-O6-E84"/>
+                            <constraint firstItem="Ojc-a1-eCv" firstAttribute="leading" secondItem="hkq-nz-xuM" secondAttribute="leading" constant="144" id="OfA-O6-E84"/>
                             <constraint firstItem="1BU-Ld-qax" firstAttribute="leading" secondItem="hkq-nz-xuM" secondAttribute="leading" constant="20" id="TBc-Jo-KON"/>
                             <constraint firstItem="VJ9-KH-iIx" firstAttribute="leading" secondItem="hkq-nz-xuM" secondAttribute="leading" constant="55" id="VSA-kG-KmI"/>
                             <constraint firstAttribute="trailing" secondItem="y6q-Bm-Wb3" secondAttribute="trailing" id="WKq-mf-UL1"/>
@@ -5189,6 +5210,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7j-o3-pCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1982.608695652174" y="760.71428571428567"/>
+        </scene>
+        <!--Major Category Page-->
+        <scene sceneID="HIG-2d-tIp">
+            <objects>
+                <viewController storyboardIdentifier="majorVC" id="GIH-GW-eDo" customClass="MajorCategoryPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Br-BO-lxv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="개설학과" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qX-Xj-O6u">
+                                <rect key="frame" x="151" y="301" width="70" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="adb-2U-S0N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AyY-sQ-NVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="587" y="1412"/>
         </scene>
         <!--Lecture Evaluation Write Page-->
         <scene sceneID="zpp-Tj-F68">

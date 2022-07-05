@@ -44,6 +44,7 @@
 		AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75EAE927E8851B00DD8645 /* announcementView.swift */; };
 		AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF75EAEB27E8AC5700DD8645 /* Settings.bundle */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
+		AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */; };
 		AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */; };
 		AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
@@ -145,6 +146,7 @@
 		AF75EAE927E8851B00DD8645 /* announcementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announcementView.swift; sourceTree = "<group>"; };
 		AF75EAEB27E8AC5700DD8645 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
+		AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryModel.swift; sourceTree = "<group>"; };
 		AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noExamDataExistsCell.swift; sourceTree = "<group>"; };
 		AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = noExamDataExistsCell.xib; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */,
 				AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */,
 				AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */,
+				AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */,
 				AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */,
 				AFAF2E86280573F3005709C9 /* evaluationWriteModel.swift */,
 				AF0A76B1281AB34E005977C6 /* examWriteModel.swift */,
@@ -529,6 +532,7 @@
 				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
 				AFB2291D283CEB8800D9EE3D /* SignUpEmailPage.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
+				AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */,
 				AFAF2E852805665B005709C9 /* lectureEvaluationWritePage.swift in Sources */,
 				AF5621BB283E32A1002B8F23 /* PurchaseHistoryModel.swift in Sources */,
 				AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */,
