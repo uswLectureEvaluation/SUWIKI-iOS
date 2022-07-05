@@ -5220,16 +5220,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="개설학과" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qX-Xj-O6u">
-                                <rect key="frame" x="151" y="301" width="70" height="25"/>
+                                <rect key="frame" x="172" y="93" width="70" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
                                 <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rGE-1c-LLB">
+                                <rect key="frame" x="16" y="199" width="382" height="293"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="293" id="Sp7-Ab-5rJ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="GIH-GW-eDo" id="ObG-mN-4Uz"/>
+                                    <outlet property="delegate" destination="GIH-GW-eDo" id="dgc-sP-E3L"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="adb-2U-S0N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="rGE-1c-LLB" secondAttribute="trailing" constant="16" id="6QR-gi-wit"/>
+                            <constraint firstItem="rGE-1c-LLB" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="aIp-Me-1FY"/>
+                            <constraint firstItem="rGE-1c-LLB" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="top" constant="199" id="mXb-YY-tWl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="rGE-1c-LLB" id="iAx-EV-et0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AyY-sQ-NVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

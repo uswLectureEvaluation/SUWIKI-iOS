@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+
+struct MajorCategory{
+    let majorType: String
+}
