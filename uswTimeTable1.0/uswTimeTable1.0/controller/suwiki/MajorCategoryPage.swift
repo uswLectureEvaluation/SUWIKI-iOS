@@ -16,14 +16,16 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     // 버튼 눌렀을 때 api 호출 --> majorType 넘겨준다.
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
+    
     
     let keychain = KeychainSwift()
     
     private var tableViewUpdateData: Array<MajorCategory> = []
-    
     private var searchTableViewData: Array<MajorCategory> = []
-
-    private var
+    private var favoritesMajorData : Array<MajorCategory> = []
+    
+    var tableViewNumber = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,15 +44,26 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func searchBtnClicked(_ sender: Any) {
+        if tableViewNumber == 1{
+            for i in 0..<tableViewUpdateData.count{
+                var searchData: String = "\(tableViewUpdateData[i].majorType)"
+                if searchData.contains(searchTextField.text ?? ""){
+                    print(searchData)
+                    searchTableViewData.append(MajorCategory(majorType: searchData))
+                }
+            }
+        print(searchTableViewData)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewUpdateData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
-        let data = tableViewUpdateData[indexPath.row]
-        
-        cell.majorTypeLabel.text = "\(data.stringValue)"
+        cell.majorTypeLabel.text = tableViewUpdateData[indexPath.row].majorType
         return cell
     }
     
@@ -65,11 +78,21 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             let data = response.data
             
             let json = JSON(data ?? "")
+            print(json)
+            for index in 0..<json["data"].count {
+                
+                let readData = MajorCategory(majorType: json["data"][index].stringValue)
+                self.tableViewUpdateData.append(readData)
+                
+            }
             
-            self.tableViewUpdateData = json["data"].arrayValue
             self.tableView.reloadData()
             print(self.tableViewUpdateData)
         }
+    }
+    
+    func getFavorite(){
+        let url = "https://api.suwiki.kr/user/favorite-major"
     }
     
 

@@ -5237,16 +5237,53 @@
                                     <outlet property="delegate" destination="GIH-GW-eDo" id="dgc-sP-E3L"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="개설학과를 검색하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sy8-16-bnx">
+                                <rect key="frame" x="48" y="152" width="318" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="ftu-md-WWB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL7-cI-DOC">
+                                <rect key="frame" x="16" y="186" width="382" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ghH-i3-0Tj"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6A-z7-KiB">
+                                <rect key="frame" x="16" y="149" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="1JA-TL-NMx"/>
+                                    <constraint firstAttribute="height" constant="24" id="ex3-He-Tpj"/>
+                                </constraints>
+                                <color key="tintColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system" title=""/>
+                                <connections>
+                                    <action selector="searchBtnClicked:" destination="GIH-GW-eDo" eventType="touchUpInside" id="apw-oc-jpC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="adb-2U-S0N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="CL7-cI-DOC" firstAttribute="leading" secondItem="1Br-BO-lxv" secondAttribute="leading" constant="16" id="2ox-BP-eVj"/>
                             <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="rGE-1c-LLB" secondAttribute="trailing" constant="16" id="6QR-gi-wit"/>
+                            <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="Sy8-16-bnx" secondAttribute="trailing" constant="48" id="8dL-RW-zUs"/>
+                            <constraint firstItem="Sy8-16-bnx" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="48" id="942-XJ-3nU"/>
+                            <constraint firstItem="CL7-cI-DOC" firstAttribute="top" secondItem="Sy8-16-bnx" secondAttribute="bottom" constant="15" id="9rX-vz-17o"/>
+                            <constraint firstItem="Sy8-16-bnx" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="topMargin" constant="108" id="Pe5-yv-IQL"/>
                             <constraint firstItem="rGE-1c-LLB" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="aIp-Me-1FY"/>
+                            <constraint firstItem="Y6A-z7-KiB" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="e5a-R6-5XY"/>
+                            <constraint firstAttribute="trailing" secondItem="CL7-cI-DOC" secondAttribute="trailing" constant="16" id="iHA-T0-Arj"/>
                             <constraint firstItem="rGE-1c-LLB" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="top" constant="199" id="mXb-YY-tWl"/>
+                            <constraint firstItem="Y6A-z7-KiB" firstAttribute="top" secondItem="adb-2U-S0N" secondAttribute="top" constant="105" id="zpU-wu-5Ed"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchTextField" destination="Sy8-16-bnx" id="uNo-v5-kJB"/>
                         <outlet property="tableView" destination="rGE-1c-LLB" id="iAx-EV-et0"/>
                     </connections>
                 </viewController>
