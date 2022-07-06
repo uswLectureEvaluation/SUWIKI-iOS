@@ -26,6 +26,7 @@
 		AF2E108C28095ADB00051844 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */; };
 		AF2E1093280AF2AB00051844 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */; };
 		AF2F69BB27EDB6BF0023243F /* loginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2F69BA27EDB6BF0023243F /* loginModel.swift */; };
+		AF40C83F287084A700E32690 /* MajorCategoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF40C83E287084A700E32690 /* MajorCategoryPage.swift */; };
 		AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */; };
 		AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */; };
 		AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */; };
@@ -43,6 +44,11 @@
 		AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75EAE927E8851B00DD8645 /* announcementView.swift */; };
 		AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF75EAEB27E8AC5700DD8645 /* Settings.bundle */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
+		AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */; };
+		AF7D4B1F287441BC00268EB0 /* MajorCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */; };
+		AF7D4B20287441BC00268EB0 /* MajorCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7D4B1E287441BC00268EB0 /* MajorCategoryCell.xib */; };
+		AF7D4B2328745B2B00268EB0 /* MajorCategoryNoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B2128745B2B00268EB0 /* MajorCategoryNoDataCell.swift */; };
+		AF7D4B2428745B2B00268EB0 /* MajorCategoryNoDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7D4B2228745B2B00268EB0 /* MajorCategoryNoDataCell.xib */; };
 		AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */; };
 		AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
@@ -126,6 +132,7 @@
 		AF2E108328095ADB00051844 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		AF2E1092280AF2AA00051844 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		AF2F69BA27EDB6BF0023243F /* loginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginModel.swift; sourceTree = "<group>"; };
+		AF40C83E287084A700E32690 /* MajorCategoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryPage.swift; sourceTree = "<group>"; };
 		AF499F2B27D7356B00EE89A6 /* popUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUpViewController.swift; sourceTree = "<group>"; };
 		AF49FD272786DC2C0046BD6A /* timeTableDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeTableDatabase.swift; sourceTree = "<group>"; };
 		AF4BA4AF27D0994700B32ED5 /* adjustCourseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adjustCourseData.swift; sourceTree = "<group>"; };
@@ -143,6 +150,11 @@
 		AF75EAE927E8851B00DD8645 /* announcementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announcementView.swift; sourceTree = "<group>"; };
 		AF75EAEB27E8AC5700DD8645 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
+		AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryModel.swift; sourceTree = "<group>"; };
+		AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryCell.swift; sourceTree = "<group>"; };
+		AF7D4B1E287441BC00268EB0 /* MajorCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MajorCategoryCell.xib; sourceTree = "<group>"; };
+		AF7D4B2128745B2B00268EB0 /* MajorCategoryNoDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryNoDataCell.swift; sourceTree = "<group>"; };
+		AF7D4B2228745B2B00268EB0 /* MajorCategoryNoDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MajorCategoryNoDataCell.xib; sourceTree = "<group>"; };
 		AFA0A73F280804C200C59769 /* noExamDataExistsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noExamDataExistsCell.swift; sourceTree = "<group>"; };
 		AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = noExamDataExistsCell.xib; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
@@ -294,6 +306,9 @@
 				AFA7797127F5D375005816E5 /* homePageModel.swift */,
 				AFE5C106281FFADC00D3E4DF /* searchedResultPageModel.swift */,
 				AFBD08D32822776D00A923CB /* searchedResultCell.swift */,
+				AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */,
+				AF7D4B2128745B2B00268EB0 /* MajorCategoryNoDataCell.swift */,
+				AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */,
 				AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */,
 				AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */,
 				AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */,
@@ -319,6 +334,8 @@
 			children = (
 				AFAFEF88277F160900408F46 /* Main.storyboard */,
 				AFBD08D42822776D00A923CB /* searchedResultCell.xib */,
+				AF7D4B1E287441BC00268EB0 /* MajorCategoryCell.xib */,
+				AF7D4B2228745B2B00268EB0 /* MajorCategoryNoDataCell.xib */,
 				AF6C1CC028019DF5000BAC48 /* detailEvaluationCell.xib */,
 				AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */,
 				AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */,
@@ -352,6 +369,7 @@
 				AFE5C100281FD6E500D3E4DF /* findIdPage.swift */,
 				AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */,
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
+				AF40C83E287084A700E32690 /* MajorCategoryPage.swift */,
 				AFE5C104281FF2B000D3E4DF /* searchedResultPage.swift */,
 				AFB1469827FAF70500469868 /* lectureDetailedInformationPage.swift */,
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
@@ -460,6 +478,7 @@
 				AFAF2E8328056090005709C9 /* examInfoTakeCell.xib in Resources */,
 				AFBC03FB282D37F300DCEDA6 /* writtenEvalPostCell.xib in Resources */,
 				AFBC03FF282D380A00DCEDA6 /* writtenExamPostCell.xib in Resources */,
+				AF7D4B20287441BC00268EB0 /* MajorCategoryCell.xib in Resources */,
 				AFD2706A27D4A487001EE098 /* GoogleService-Info.plist in Resources */,
 				AF2E108628095ADB00051844 /* Pretendard-Regular.otf in Resources */,
 				AFD7767427E7486C00E83EC8 /* loading.gif in Resources */,
@@ -470,6 +489,7 @@
 				AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */,
 				AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */,
 				AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */,
+				AF7D4B2428745B2B00268EB0 /* MajorCategoryNoDataCell.xib in Resources */,
 				AFAFEF8A277F160900408F46 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +546,7 @@
 				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
 				AFB2291D283CEB8800D9EE3D /* SignUpEmailPage.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
+				AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */,
 				AFAF2E852805665B005709C9 /* lectureEvaluationWritePage.swift in Sources */,
 				AF5621BB283E32A1002B8F23 /* PurchaseHistoryModel.swift in Sources */,
 				AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */,
@@ -536,6 +557,7 @@
 				AFC7E5A528364D4A00586C9C /* announcementDetailPage.swift in Sources */,
 				AFBC03F7282D367E00DCEDA6 /* writtenPostPage.swift in Sources */,
 				AF296C5E2836420300C961A3 /* announcementPage.swift in Sources */,
+				AF7D4B2328745B2B00268EB0 /* MajorCategoryNoDataCell.swift in Sources */,
 				AFE076B327F5C6AB009E32B0 /* tabBarController.swift in Sources */,
 				AF07990527E3565300B39617 /* loadingView.swift in Sources */,
 				AFA0A741280804C200C59769 /* noExamDataExistsCell.swift in Sources */,
@@ -543,6 +565,7 @@
 				AFD470AB282BE3AB001A1119 /* myInfoPage.swift in Sources */,
 				AF4DD3DE282D404A00A43629 /* writtenExamPostModel.swift in Sources */,
 				AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */,
+				AF7D4B1F287441BC00268EB0 /* MajorCategoryCell.swift in Sources */,
 				AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */,
 				AFAFEF87277F160900408F46 /* ViewController.swift in Sources */,
 				AFAF2E8228056090005709C9 /* examInfoTakeCell.swift in Sources */,
@@ -550,6 +573,7 @@
 				AFB9D755283924E6004A842B /* signUpPage.swift in Sources */,
 				AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */,
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
+				AF40C83F287084A700E32690 /* MajorCategoryPage.swift in Sources */,
 				AFE5C107281FFADC00D3E4DF /* searchedResultPageModel.swift in Sources */,
 				AF6C1CC528019E4A000BAC48 /* detailExamCell.swift in Sources */,
 				AFBD08D52822776D00A923CB /* searchedResultCell.swift in Sources */,

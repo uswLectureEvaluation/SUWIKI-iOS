@@ -223,6 +223,9 @@ class lectureEvaluationWritePage: UIViewController {
             "content" : contentField.text!
         ] as [String : Any]
         
+        print(parameters)
+        print(headers)
+        
         AF.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
             if response.response?.statusCode == 403 {

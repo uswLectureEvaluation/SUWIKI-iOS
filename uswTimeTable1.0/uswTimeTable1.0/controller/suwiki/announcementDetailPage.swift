@@ -14,6 +14,7 @@ import KeychainSwift
 class announcementDetailPage: UIViewController {
     
     
+    @IBOutlet weak var announceView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var modifiedDateLabel: UILabel!
@@ -28,11 +29,17 @@ class announcementDetailPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        announceView.layer.borderColor = UIColor.lightGray.cgColor
+        announceView.layer.cornerRadius = 12.0
+        announceView.layer.borderWidth = 1.0
         
         getAnnouncementDetailPage()
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     func getAnnouncementDetailPage() {
         
         let url = "https://api.suwiki.kr/notice/?noticeId=\(noticeId)"
