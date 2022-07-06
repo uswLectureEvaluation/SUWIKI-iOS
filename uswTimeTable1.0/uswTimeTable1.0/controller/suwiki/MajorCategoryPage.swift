@@ -33,7 +33,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getMajorType()
         getFavorite()
         let majorCellName = UINib(nibName: "MajorCategoryCell", bundle: nil)
         tableView.register(majorCellName, forCellReuseIdentifier: "majorCell")
@@ -50,15 +49,25 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     @IBAction func searchBtnClicked(_ sender: Any) {
-        if tableViewNumber == 1 && tableViewNumber == 3{
+        print(tableViewUpdateData)
+        print(tableViewNumber)
+        if tableViewNumber == 1 || tableViewNumber == 3{
             searchTableViewData.removeAll()
             tableViewNumber = 3
+            print(tableViewUpdateData)
             for i in 0..<tableViewUpdateData.count{
                 var searchData: String = "\(tableViewUpdateData[i].majorType)"
                 // if contain 확인 후 True or false
                 if searchData.contains(searchTextField.text ?? ""){
+                    
+                    print(searchTextField.text)
                     print(searchData)
-                    // searchTableViewData.append(MajorCategory(majorType: searchData))
+                    if favoritesMajorData.contains(where: {$0.majorType == searchData}){
+                        searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: true))
+                    } else {
+                        searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: false))
+                    }
+                    
                 }
             }
             tableView.reloadData()
@@ -78,6 +87,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             }
         }
+        
+        print(searchTableViewData)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -111,6 +122,17 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             } else if tableViewNumber == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
                 cell.majorTypeLabel.text = searchTableViewData[indexPath.row].majorType
+            
+                cell.favoriteBtn.tag = indexPath.row
+                cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
+                
+                if searchTableViewData[indexPath.row].favoriteCheck == true {
+                    cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
+                } else{
+                    cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
+                }
+                
+                
                 return cell
             }
         }
@@ -141,6 +163,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             
             self.tableView.reloadData()
+            
         }
     }
     
@@ -164,7 +187,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 self.favoritesMajorData.append(readData)
             }
             self.tableView.reloadData()
-            print(self.favoritesMajorData)
+            self.getMajorType()
+            
         }
         
     }
@@ -261,7 +285,14 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         } else if tableViewNumber == 2{
             
         } else if tableViewNumber == 3{
-            
+            if searchTableViewData[indexPath.row].favoriteCheck == true {
+                
+                favoriteRemove(majorType: "\(searchTableViewData[indexPath.row].majorType)")
+                searchTableViewData[indexPath.row].favoriteCheck = false
+            } else {
+                favoriteAdd(majorType: "\(searchTableViewData[indexPath.row].majorType)")
+                searchTableViewData[indexPath.row].favoriteCheck = true
+            }
         } else if tableViewNumber == 4{
             
         }

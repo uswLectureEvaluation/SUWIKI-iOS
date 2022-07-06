@@ -5251,7 +5251,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system" title=""/>
                                 <connections>
-                                    <action selector="searchBtnClicked:" destination="GIH-GW-eDo" eventType="touchUpInside" id="apw-oc-jpC"/>
+                                    <action selector="searchBtnClicked:" destination="GIH-GW-eDo" eventType="touchUpInside" id="col-qt-EK1"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-g7-pFh">
