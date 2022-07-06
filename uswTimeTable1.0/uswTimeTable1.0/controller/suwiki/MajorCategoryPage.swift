@@ -147,22 +147,26 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     func getFavorite(){
         favoritesMajorData.removeAll()
         let url = "https://api.suwiki.kr/user/favorite-major"
-        let parameter: Parameters = [
+        
+        let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? ""),
             
         ]
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
-        AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
+        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON {
+            (response) in
             let data = response.data
+            print(JSON(response.value))
             let json = JSON(data ?? "")
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
-                let readData = MajorCategory(majorType: jsonData["majorType"].stringValue, favoriteCheck: true)
+                let readData = MajorCategory(majorType: jsonData.stringValue, favoriteCheck: true)
                 self.favoritesMajorData.append(readData)
             }
             self.tableView.reloadData()
+            print(self.favoritesMajorData)
         }
-        print(self.favoritesMajorData)
+        
     }
     
 
