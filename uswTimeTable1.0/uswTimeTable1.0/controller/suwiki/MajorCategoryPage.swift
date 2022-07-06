@@ -38,6 +38,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let majorCellName = UINib(nibName: "MajorCategoryCell", bundle: nil)
         tableView.register(majorCellName, forCellReuseIdentifier: "majorCell")
         
+        print(String(keychain.get("AccessToken") ?? ""))
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 63
         self.tableView.reloadData()
@@ -128,7 +129,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             let data = response.data
             
             let json = JSON(data ?? "")
-            print(json)
             for index in 0..<json["data"].count {
                 
                 var readData = MajorCategory(majorType: json["data"][index].stringValue, favoriteCheck: false)
@@ -141,7 +141,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             
             self.tableView.reloadData()
-            print("\(self.tableViewUpdateData)" + " sex")
         }
     }
     
@@ -156,7 +155,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
             let data = response.data
             let json = JSON(data ?? "")
-            print(json)
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
                 let readData = MajorCategory(majorType: jsonData["majorType"].stringValue, favoriteCheck: true)
@@ -168,23 +166,23 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
 
-    
+    // 전공 즐겨찾기 하기
     func favoriteAdd(majorType: String){
         let url = "https://api.suwiki.kr/user/favorite-major"
         
         let parameters: Parameters = [
-            "majorType" : majorType
-        ]
-        
-        let headers: HTTPHeaders = [
+            "majorType" : majorType,
             "Authorization" : String(keychain.get("AccessToken") ?? "")
-            
         ]
+//
+//        let headers: HTTPHeaders = [
+//            "Authorization" : String(keychain.get("AccessToken") ?? "")
+//        ]
         
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
-            
+            print(status)
             if status == 403{
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
@@ -197,7 +195,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 self.present(alert, animated: true, completion: nil)
             }
             self.getFavorite()
-            print(JSON(response.data))
         }
         
     }
@@ -205,20 +202,25 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     func favoriteRemove(majorType: String){
         let url = "https://api.suwiki.kr/user/favorite-major"
         
-        let headers: HTTPHeaders = [
-            "Authorization" : String(keychain.get("AccessToken") ?? "")
-        ]
+//        let headers: HTTPHeaders = [
+//
+//            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+//        ]
         
         let parameters: Parameters = [
             "majorType" : majorType
         ]
+//
+//
         
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
         
-        
-        AF.request(url, method: .delete, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .delete, parameters: parameters, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
+            
             print(status)
-            print(JSON(response.data))
             if status == 403{
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
