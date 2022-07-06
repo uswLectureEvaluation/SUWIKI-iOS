@@ -48,18 +48,20 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         // Do any additional setup after loading the view.
     }
     
+    // 즐겨찾기 이후 검색 시 리스트가 두번 출력되는 버그
+    
     @IBAction func searchBtnClicked(_ sender: Any) {
+        searchTableViewData.removeAll()
         print(tableViewUpdateData)
         print(tableViewNumber)
         if tableViewNumber == 1 || tableViewNumber == 3{
-            searchTableViewData.removeAll()
             tableViewNumber = 3
             print(tableViewUpdateData)
             for i in 0..<tableViewUpdateData.count{
                 var searchData: String = "\(tableViewUpdateData[i].majorType)"
                 // if contain 확인 후 True or false
                 if searchData.contains(searchTextField.text ?? ""){
-                    
+                    print(tableViewUpdateData.count)
                     print(searchTextField.text)
                     print(searchData)
                     if favoritesMajorData.contains(where: {$0.majorType == searchData}){
@@ -71,7 +73,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 }
             }
             tableView.reloadData()
-        } else {
+        } else if tableViewNumber == 2 || tableViewNumber == 4 {
             searchTableViewData.removeAll()
             tableViewNumber = 4
             for i in 0..<favoritesMajorData.count{
@@ -147,23 +149,33 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
-        AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
-            let data = response.data
-            
-            let json = JSON(data ?? "")
-            for index in 0..<json["data"].count {
+        if tableViewUpdateData.count == 0 { // 최초 호출
+            AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
+                let data = response.data
                 
-                var readData = MajorCategory(majorType: json["data"][index].stringValue, favoriteCheck: false)
-                let checkData: String = "\(readData.majorType)"
-                if self.favoritesMajorData.contains(where: {$0.majorType == checkData}){
-                    readData.favoriteCheck = true
+                let json = JSON(data ?? "")
+                for index in 0..<json["data"].count {
+                    var readData = MajorCategory(majorType: json["data"][index].stringValue, favoriteCheck: false)
+                    let checkData: String = "\(readData.majorType)"
+                    if self.favoritesMajorData.contains(where: {$0.majorType == checkData}){
+                        readData.favoriteCheck = true
+                    }
+                    self.tableViewUpdateData.append(readData)
+                    
                 }
-                self.tableViewUpdateData.append(readData)
+                
+                self.tableView.reloadData()
                 
             }
-            
-            self.tableView.reloadData()
-            
+        } else {
+            for i in 0..<tableViewUpdateData.count{
+                if self.favoritesMajorData.contains(where: {$0.majorType == tableViewUpdateData[i].majorType}){
+                    tableViewUpdateData[i].favoriteCheck = true
+                } else {
+                    tableViewUpdateData[i].favoriteCheck = false
+                }
+            }
+        
         }
     }
     
@@ -179,7 +191,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON {
             (response) in
             let data = response.data
-            print(JSON(response.value))
+            
             let json = JSON(data ?? "")
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
@@ -188,8 +200,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             self.tableView.reloadData()
             self.getMajorType()
-            
+            print(self.favoritesMajorData)
         }
+        
         
     }
     
@@ -199,18 +212,16 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let url = "https://api.suwiki.kr/user/favorite-major"
         
         let parameters: Parameters = [
-            "majorType" : majorType,
-            "Authorization" : String(keychain.get("AccessToken") ?? "")
+            "majorType" : majorType
         ]
 //
-//        let headers: HTTPHeaders = [
-//            "Authorization" : String(keychain.get("AccessToken") ?? "")
-//        ]
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
         
         
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, interceptor: BaseInterceptor()).validate().responseJSON { response in
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
-            print(status)
             if status == 403{
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
@@ -240,7 +251,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         ]
 //
 //
-        
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -248,7 +258,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         AF.request(url, method: .delete, parameters: parameters, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
             
-            print(status)
             if status == 403{
                 let alert = UIAlertController(title:"제한된 유저십니다 ^^",
                     message: "확인을 눌러주세요!",
