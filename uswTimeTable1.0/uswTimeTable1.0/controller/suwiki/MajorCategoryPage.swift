@@ -93,10 +93,25 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         print(searchTableViewData)
     }
     
+    @IBAction func favoriteBtnClicked(_ sender: Any) {
+        print("0")
+        if tableViewDataExists == 1 {
+            print("2")
+            tableViewNumber = 2
+            print(favoritesMajorData)
+        } else {
+            print("3")
+            tableViewNumber = 5
+        }
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewDataExists == 1{
             if tableViewNumber == 1 {
                 return tableViewUpdateData.count
+            } else if tableViewNumber == 2 {
+                return favoritesMajorData.count
             } else {
                 return searchTableViewData.count
             }
@@ -121,6 +136,22 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                     cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
                 }
                 return cell
+            } else if tableViewNumber == 2{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
+                cell.majorTypeLabel.text = favoritesMajorData[indexPath.row].majorType
+                
+                cell.favoriteBtn.tag = indexPath.row
+                cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
+                
+                if favoritesMajorData[indexPath.row].favoriteCheck == true {
+                    cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
+                } else{
+                    cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
+                }
+                
+                return cell
+
+                
             } else if tableViewNumber == 3 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
                 cell.majorTypeLabel.text = searchTableViewData[indexPath.row].majorType
@@ -193,14 +224,18 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             let data = response.data
             
             let json = JSON(data ?? "")
-            for index in 0..<json["data"].count{
-                let jsonData = json["data"][index]
-                let readData = MajorCategory(majorType: jsonData.stringValue, favoriteCheck: true)
-                self.favoritesMajorData.append(readData)
+            if json["data"].count > 0 {
+                for index in 0..<json["data"].count{
+                    let jsonData = json["data"][index]
+                    let readData = MajorCategory(majorType: jsonData.stringValue, favoriteCheck: true)
+                    self.favoritesMajorData.append(readData)
+                }
+                self.tableView.reloadData()
+                self.getMajorType()
+                
+            } else {
+                self.tableViewDataExists = 0
             }
-            self.tableView.reloadData()
-            self.getMajorType()
-            print(self.favoritesMajorData)
         }
         
         
@@ -292,6 +327,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 tableViewUpdateData[indexPath.row].favoriteCheck = true
             }
         } else if tableViewNumber == 2{
+            
+            favoriteRemove(majorType: "\(favoritesMajorData[indexPath.row].majorType)")
             
         } else if tableViewNumber == 3{
             if searchTableViewData[indexPath.row].favoriteCheck == true {

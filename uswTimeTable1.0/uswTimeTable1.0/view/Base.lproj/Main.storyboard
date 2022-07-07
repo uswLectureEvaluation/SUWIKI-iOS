@@ -5255,7 +5255,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NX7-g7-pFh">
-                                <rect key="frame" x="16" y="199" width="382" height="293"/>
+                                <rect key="frame" x="16" y="243" width="382" height="293"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rGE-1c-LLB">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="293"/>
@@ -5275,20 +5275,47 @@
                                     <constraint firstItem="rGE-1c-LLB" firstAttribute="leading" secondItem="NX7-g7-pFh" secondAttribute="leading" id="hqZ-wh-QCf"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQa-mp-fin">
+                                <rect key="frame" x="16" y="208" width="30" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="h9h-em-iv4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="전체"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWN-Ec-OVQ">
+                                <rect key="frame" x="52" y="208" width="56" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="xfh-Gm-X0K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="즐겨찾기"/>
+                                <connections>
+                                    <action selector="favoriteBtnClicked:" destination="GIH-GW-eDo" eventType="touchUpInside" id="wkU-d3-ayh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="adb-2U-S0N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CL7-cI-DOC" firstAttribute="leading" secondItem="1Br-BO-lxv" secondAttribute="leading" constant="16" id="2ox-BP-eVj"/>
+                            <constraint firstItem="fQa-mp-fin" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="3Sy-LL-WgY"/>
                             <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="Sy8-16-bnx" secondAttribute="trailing" constant="48" id="8dL-RW-zUs"/>
                             <constraint firstItem="Sy8-16-bnx" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="48" id="942-XJ-3nU"/>
                             <constraint firstItem="CL7-cI-DOC" firstAttribute="top" secondItem="Sy8-16-bnx" secondAttribute="bottom" constant="15" id="9rX-vz-17o"/>
                             <constraint firstItem="Sy8-16-bnx" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="topMargin" constant="108" id="Pe5-yv-IQL"/>
+                            <constraint firstItem="oWN-Ec-OVQ" firstAttribute="top" secondItem="adb-2U-S0N" secondAttribute="top" constant="164" id="TFq-dZ-UMt"/>
                             <constraint firstItem="adb-2U-S0N" firstAttribute="trailing" secondItem="NX7-g7-pFh" secondAttribute="trailing" constant="16" id="XRv-f2-4Mu"/>
+                            <constraint firstItem="fQa-mp-fin" firstAttribute="top" secondItem="adb-2U-S0N" secondAttribute="top" constant="164" id="ZhQ-He-3Y1"/>
                             <constraint firstItem="Y6A-z7-KiB" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="e5a-R6-5XY"/>
                             <constraint firstAttribute="trailing" secondItem="CL7-cI-DOC" secondAttribute="trailing" constant="16" id="iHA-T0-Arj"/>
                             <constraint firstItem="NX7-g7-pFh" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="16" id="q9z-xD-85d"/>
-                            <constraint firstItem="NX7-g7-pFh" firstAttribute="top" secondItem="1Br-BO-lxv" secondAttribute="top" constant="199" id="t8r-eT-TY9"/>
+                            <constraint firstItem="NX7-g7-pFh" firstAttribute="top" secondItem="adb-2U-S0N" secondAttribute="top" constant="199" id="qpT-XQ-5St"/>
+                            <constraint firstItem="oWN-Ec-OVQ" firstAttribute="leading" secondItem="adb-2U-S0N" secondAttribute="leading" constant="52" id="zUH-Ru-Y25"/>
                             <constraint firstItem="Y6A-z7-KiB" firstAttribute="top" secondItem="adb-2U-S0N" secondAttribute="top" constant="105" id="zpU-wu-5Ed"/>
                         </constraints>
                     </view>
