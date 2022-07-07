@@ -32,6 +32,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     override func viewDidLoad() {
+        tableViewNumber = 1
         super.viewDidLoad()
         getFavorite()
         let majorCellName = UINib(nibName: "MajorCategoryCell", bundle: nil)
@@ -95,7 +96,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBAction func favoriteBtnClicked(_ sender: Any) {
         print("0")
-        if tableViewDataExists == 1 {
+        if favoritesMajorData.count > 0{
             print("2")
             tableViewNumber = 2
             print(favoritesMajorData)
@@ -107,69 +108,73 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableViewDataExists == 1{
-            if tableViewNumber == 1 {
-                return tableViewUpdateData.count
-            } else if tableViewNumber == 2 {
-                return favoritesMajorData.count
-            } else {
-                return searchTableViewData.count
-            }
+        
+        if tableViewNumber == 1 {
+            return tableViewUpdateData.count
+        } else if tableViewNumber == 2 {
+            return favoritesMajorData.count
+        } else if tableViewNumber == 3 || tableViewNumber == 4{
+            return searchTableViewData.count
         } else {
             return 1
         }
         
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableViewDataExists == 1{
-            if tableViewNumber == 1{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
-                cell.majorTypeLabel.text = tableViewUpdateData[indexPath.row].majorType
-                
-                cell.favoriteBtn.tag = indexPath.row
-                cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
-                
-                if tableViewUpdateData[indexPath.row].favoriteCheck == true {
-                    cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
-                } else{
-                    cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
-                }
-                return cell
-            } else if tableViewNumber == 2{
-                let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
-                cell.majorTypeLabel.text = favoritesMajorData[indexPath.row].majorType
-                
-                cell.favoriteBtn.tag = indexPath.row
-                cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
-                
-                if favoritesMajorData[indexPath.row].favoriteCheck == true {
-                    cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
-                } else{
-                    cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
-                }
-                
-                return cell
-
-                
-            } else if tableViewNumber == 3 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
-                cell.majorTypeLabel.text = searchTableViewData[indexPath.row].majorType
+        
+        if tableViewNumber == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
+            cell.majorTypeLabel.text = tableViewUpdateData[indexPath.row].majorType
             
-                cell.favoriteBtn.tag = indexPath.row
-                cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
-                
-                if searchTableViewData[indexPath.row].favoriteCheck == true {
-                    cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
-                } else{
-                    cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
-                }
-                
-                
-                return cell
+            cell.favoriteBtn.tag = indexPath.row
+            cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
+            
+            if tableViewUpdateData[indexPath.row].favoriteCheck == true {
+                cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
+            } else{
+                cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
             }
+            return cell
+        } else if tableViewNumber == 2{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
+            cell.majorTypeLabel.text = favoritesMajorData[indexPath.row].majorType
+            
+            cell.favoriteBtn.tag = indexPath.row
+            cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
+            
+            if favoritesMajorData[indexPath.row].favoriteCheck == true {
+                cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
+            } else{
+                cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
+            }
+            
+            return cell
+
+            
+        } else if tableViewNumber == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
+            cell.majorTypeLabel.text = searchTableViewData[indexPath.row].majorType
+        
+            cell.favoriteBtn.tag = indexPath.row
+            cell.favoriteBtn.addTarget(self, action: #selector(favoriteBtnClicked), for: .touchUpInside)
+            
+            if searchTableViewData[indexPath.row].favoriteCheck == true {
+                cell.favoriteBtn.setImage(UIImage(named: "icon_fullstar_24"), for: .normal)
+            } else{
+                cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
+            }
+            
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
+            cell.majorTypeLabel.text = "테스트"
+            return cell
         }
         
+    
         return UITableViewCell()
     }
     
@@ -231,11 +236,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                     self.favoritesMajorData.append(readData)
                 }
                 self.tableView.reloadData()
-                self.getMajorType()
-                
-            } else {
-                self.tableViewDataExists = 0
+
             }
+            self.getMajorType()
+            
         }
         
         
@@ -327,7 +331,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 tableViewUpdateData[indexPath.row].favoriteCheck = true
             }
         } else if tableViewNumber == 2{
-            
+            if favoritesMajorData.count == 1{
+                tableViewNumber = 5
+            }
             favoriteRemove(majorType: "\(favoritesMajorData[indexPath.row].majorType)")
             
         } else if tableViewNumber == 3{
