@@ -21,7 +21,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var tableViewBorder: UIView!
     
     let keychain = KeychainSwift()
-    
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+
     private var tableViewUpdateData: Array<MajorCategory> = []
     private var searchTableViewData: Array<MajorCategory> = []
     private var favoritesMajorData : Array<MajorCategory> = []
@@ -55,6 +56,20 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     // 즐겨찾기 이후 검색 시 리스트가 두번 출력되는 버그
+//    let AD = UIApplication.shared.delegate as? AppDelegate
+//
+//    AD?.roomName = roomTextField.text ?? ""
+//    AD?.startTime = "\(String(describing: startTextField.text!)):30"
+//    AD?.endTime = "\(String(describing: endTextField.text!)):20"
+//    
+//    self.dismiss(animated: true, completion: nil)
+    
+    
+    @IBAction func finishBtnClicked(_ sender: Any) {
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        
+//        AD?.majorType =
+    }
     
     @IBAction func searchBtnClicked(_ sender: Any) {
         searchTableViewData.removeAll()
@@ -133,6 +148,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableViewNumber == 1{ // 전체
@@ -194,6 +210,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
     }
     
     func getMajorType(){

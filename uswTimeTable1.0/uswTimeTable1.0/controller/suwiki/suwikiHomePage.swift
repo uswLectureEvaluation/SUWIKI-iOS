@@ -24,16 +24,19 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var categoryTextField: UILabel!
     @IBOutlet weak var majorCategoryBtn: UIView!
     
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+
     var tableViewUpdateData: Array<homePageData> = []
     let dropDown = DropDown()
     let keychain = KeychainSwift()
-    
+
     var count = 0
     
     var option = "modifiedDate"
     
+    var majorType: String = ""
     
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
     
@@ -44,7 +47,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
         navigationBarHidden()
         super.viewDidLoad()
-        getLectureData(option: option)
+        getLectureData(option: option, majorType: majorType)
         
         categoryDropDown.layer.borderWidth = 1.0
         categoryDropDown.layer.borderColor = UIColor.systemGray5.cgColor
@@ -59,46 +62,52 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         dropDown.dataSource = categoryList
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
-        dropDown.textFont = UIFont.systemFont(ofSize: 13)
+        dropDown.textFont = UIFont.systemFont(ofSize: 14)
+        
 
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
             self.categoryTextField.text = categoryList[index]
-            self.categoryTextField.font = UIFont.systemFont(ofSize: 13)
-            self.categoryTextField.textColor = .black
-            self.categoryTextField.textAlignment = .center
+            self.categoryTextField.font = UIFont(name: "Pretendard", size: 14)
+            self.categoryTextField.textColor = colorLiteralBlue
             
             
             if categoryTextField.text == "최근 올라온 강의" {
                 tableViewUpdateData.removeAll()
                 option = "modifiedDate"
-                getLectureData(option: option)
+                getLectureData(option: option, majorType: majorType)
                 
             } else if categoryTextField.text == "꿀 강의" {
                 tableViewUpdateData.removeAll()
                 option = "lectureHoneyAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             } else if categoryTextField.text == "만족도가 높은 강의"{
                 tableViewUpdateData.removeAll()
                 option = "lectureSatisfactionAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             } else if categoryTextField.text == "배울게 많은 강의" {
                 tableViewUpdateData.removeAll()
                 option = "lectureLearningAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             } else if categoryTextField.text == "Best 강의"{
                 tableViewUpdateData.removeAll()
                 option = "lectureTotalAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             }
             
             
         }
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getMajorType()
+        super.viewWillAppear(true)
+        getLectureData(option: option, majorType: majorType)
     }
     
     /*
@@ -112,6 +121,21 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     */
+    
+//    func readADData(){
+//        let AD = UIApplication.shared.delegate as? AppDelegate
+//
+//        if let roomName = AD?.roomName{
+//            roomNameData = roomName
+//        }
+//        if let startTime = AD?.startTime{
+//            startTimeData = startTime
+//        }
+//        if let endTime = AD?.endTime{
+//            endTimeData = endTime
+//        }
+//    }
+
   
     @IBAction func majorCategoryBtnClicked(_ sender: Any) {
         let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
@@ -165,12 +189,23 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
  
     }
     
+
+    func getMajorType(){
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        
+        if let majorData = AD?.majorType{
+            majorType = majorData
+        }
+        
+    }
+    
     // #MARK: 강의 데이터 불러오는 함수, 추후에 majorType 매개변수 추가, 파라미터 추가
-    func getLectureData(option: String){
+    func getLectureData(option: String, majorType: String){
         let url = "https://api.suwiki.kr/lecture/all"
         
         let parameter: Parameters = [
-            "option" : option
+            "option" : option,
+            "majorType" : majorType
         ]
     
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)

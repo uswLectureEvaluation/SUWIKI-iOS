@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let keychain = KeychainSwift()
     
+    var majorType: String = ""
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let config = Realm.Configuration(

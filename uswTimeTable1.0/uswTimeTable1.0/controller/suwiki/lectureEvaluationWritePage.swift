@@ -72,6 +72,7 @@ class lectureEvaluationWritePage: UIViewController {
     var semesterList: [String] = []
     
     var keyboardTouchCheck: Bool = false
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
