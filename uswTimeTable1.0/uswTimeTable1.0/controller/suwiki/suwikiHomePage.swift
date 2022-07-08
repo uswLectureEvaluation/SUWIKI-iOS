@@ -41,7 +41,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
     
     override func viewDidLoad() {
-        print(keychain.get("AccessToken"))
         tableView.separatorInset.left = 0 // 테이블뷰 왼쪽 여백
         searchTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 6.0, height: 0.0))
         searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
@@ -105,9 +104,11 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableViewUpdateData.removeAll()
         getMajorType()
-        super.viewWillAppear(true)
         getLectureData(option: option, majorType: majorType)
+
+        super.viewWillAppear(true)
     }
     
     /*
@@ -138,8 +139,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
   
     @IBAction func majorCategoryBtnClicked(_ sender: Any) {
+        
         let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
-        self.navigationController?.pushViewController(majorVC, animated: true)
+        majorVC.modalPresentationStyle = .fullScreen
+        self.present(majorVC, animated: true, completion: nil)
         
     }
     @IBAction func categoryButtonClicked(_ sender: Any) {
@@ -213,19 +216,38 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             let data = response.data
             let json = JSON(data!)
-            print(json)
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+            if json["data"].count == 10{
+                for index in 0..<10{
+                    
+                    let jsonData = json["data"][index]
+                    let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+                    let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
+                    let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+                    let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+                    
+                    
+                    let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
+                    self.tableViewUpdateData.append(readData)
+                    
+                }
+            } else {
                 
-                let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-            
-                self.tableViewUpdateData.append(readData)
+                for index in 0..<json["data"].count{
+                    let jsonData = json["data"][index]
+                    let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+                    let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
+                    let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+                    let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+                    
+                    
+                    let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                
+                    self.tableViewUpdateData.append(readData)
+                    
+                }
             }
+            
             
             self.tableView?.reloadData()
             

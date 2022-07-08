@@ -32,6 +32,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     // 1은 데이터 있을 때, 0은 데이터 없을 때
     var tableViewDataExists = 1
     
+    var sendMajorData: String = ""
     
     override func viewDidLoad() {
         tableViewNumber = 1
@@ -66,18 +67,35 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     @IBAction func finishBtnClicked(_ sender: Any) {
-        let AD = UIApplication.shared.delegate as? AppDelegate
+        if sendMajorData != "" {
+            
+            let AD = UIApplication.shared.delegate as? AppDelegate
+            print(sendMajorData)
+            AD?.majorType = sendMajorData
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        } else {
+            
+            let alert = UIAlertController(title:"학과를 선택해주세요!",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            //2. 확인 버튼 만들기
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            //3. 확인 버튼을 경고창에 추가하기
+            alert.addAction(cancle)
+            //4. 경고창 보이기
+            self.present(alert, animated: true, completion: nil)
+            
+        }
         
-//        AD?.majorType =
+
     }
     
     @IBAction func searchBtnClicked(_ sender: Any) {
         searchTableViewData.removeAll()
-        print(tableViewUpdateData)
-        print(tableViewNumber)
         if tableViewNumber == 1 || tableViewNumber == 3{
             tableViewNumber = 3
-            print(tableViewUpdateData)
             for i in 0..<tableViewUpdateData.count{
                 var searchData: String = "\(tableViewUpdateData[i].majorType)"
                 // if contain 확인 후 True or false
@@ -113,7 +131,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         tableView.reloadData()
-        print(searchTableViewData)
     }
     
     @IBAction func totalBtnClicked(_ sender: Any) {
@@ -212,7 +229,21 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        if tableViewNumber == 1{
+            
+            sendMajorData = tableViewUpdateData[indexPath.row].majorType
+            
+        } else if tableViewNumber == 2{
+            
+            sendMajorData = favoritesMajorData[indexPath.row].majorType
+            
+        } else if tableViewNumber == 3 || tableViewNumber == 4{
+            
+            sendMajorData = searchTableViewData[indexPath.row].majorType
+            
+        }
+        
+        print(sendMajorData)
     }
     
     func getMajorType(){
@@ -348,7 +379,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let indexPath = IndexPath(row: sender.tag, section: 0)
         
         if tableViewNumber == 1{
-            print("\(tableViewUpdateData[indexPath.row].majorType)")
+   
             if tableViewUpdateData[indexPath.row].favoriteCheck == true {
                 
                 favoriteRemove(majorType: "\(tableViewUpdateData[indexPath.row].majorType)")
