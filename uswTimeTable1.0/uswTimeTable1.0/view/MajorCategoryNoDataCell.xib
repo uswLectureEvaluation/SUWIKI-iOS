@@ -23,18 +23,33 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="즐겨찾기가 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fj9-la-1WK">
                         <rect key="frame" x="131.5" y="69" width="119" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="jwN-61-6o5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                        <color key="textColor" red="0.63529413940000001" green="0.63921570780000003" blue="0.63529413940000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTF-jA-gTD">
+                        <rect key="frame" x="124.5" y="90" width="133" height="20"/>
                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                         <color key="textColor" red="0.63529413940000001" green="0.63921570780000003" blue="0.63529413940000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="tTF-jA-gTD" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="7Md-Wb-wZB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="fj9-la-1WK" secondAttribute="bottom" constant="197" id="FcD-ek-EOm"/>
                     <constraint firstItem="fj9-la-1WK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="58" id="QWE-hb-RVH"/>
                     <constraint firstItem="fj9-la-1WK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="a3h-0p-peZ"/>
+                    <constraint firstItem="tTF-jA-gTD" firstAttribute="top" secondItem="fj9-la-1WK" secondAttribute="bottom" constant="5" id="kje-R7-cN3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="hiddenLabel" destination="tTF-jA-gTD" id="hJq-A6-s5I"/>
+                <outlet property="noMajorLabel" destination="fj9-la-1WK" id="2CX-RB-tH3"/>
+            </connections>
             <point key="canvasLocation" x="176.81159420289856" y="125.55803571428571"/>
         </tableViewCell>
     </objects>

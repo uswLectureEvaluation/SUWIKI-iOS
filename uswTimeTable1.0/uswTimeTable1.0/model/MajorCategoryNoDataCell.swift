@@ -9,6 +9,10 @@ import UIKit
 
 class MajorCategoryNoDataCell: UITableViewCell {
 
+    @IBOutlet weak var noMajorLabel: UILabel!
+    
+    @IBOutlet weak var hiddenLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

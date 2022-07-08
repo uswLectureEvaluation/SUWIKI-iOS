@@ -122,15 +122,15 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             for i in 0..<favoritesMajorData.count{
                 var searchData: String = "\(favoritesMajorData[i].majorType)"
                 if searchData.contains(searchTextField.text ?? ""){
+                
+                    searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: true))
                     
-                    if favoritesMajorData.contains(where: {$0.majorType == searchData}){
-                        searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: true))
-                    } else {
-                        searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: false))
-                    }
-                    //
                 }
             }
+        }
+        
+        if searchTableViewData.count == 0{
+            tableViewNumber = 6
         }
         
         tableView.reloadData()
@@ -232,14 +232,19 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             return cell
             // 4는 즐겨찾기에서 검색
         } else if tableViewNumber == 5 {
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "noMajorCell", for: indexPath) as! MajorCategoryNoDataCell
-            
+            cell.noMajorLabel.text = "즐겨찾기가 없어요!"
+            cell.hiddenLabel.isHidden = true
             return cell
             
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
-            cell.majorTypeLabel.text = "테스트"
+        } else if tableViewNumber == 6{
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noMajorCell", for: indexPath) as! MajorCategoryNoDataCell
+            cell.noMajorLabel.text = "'\(searchTextField.text ?? "1")'에 대한"
+            cell.hiddenLabel.isHidden = false
             return cell
+            
         }
 
         
