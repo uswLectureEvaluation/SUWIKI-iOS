@@ -37,6 +37,9 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if tableViewEvalData.count == 0 {
+            tableViewNumber = 3
+        }
     
         
         let evalPostCell = UINib(nibName: "writtenEvalPostCell", bundle: nil)

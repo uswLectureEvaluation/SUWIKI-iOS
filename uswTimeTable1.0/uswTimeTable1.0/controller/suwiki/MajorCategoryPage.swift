@@ -22,6 +22,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     let keychain = KeychainSwift()
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+    let chooseColor = #colorLiteral(red: 0.9590070844, green: 0.9689564109, blue: 0.9988682866, alpha: 1)
+    
+    
 
     private var tableViewUpdateData: Array<MajorCategory> = []
     private var searchTableViewData: Array<MajorCategory> = []
@@ -180,6 +183,11 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             } else{
                 cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
             }
+            
+            var bgColorView = UIView()
+            bgColorView.backgroundColor = chooseColor
+            cell.selectedBackgroundView = bgColorView
+            
             return cell
             
         } else if tableViewNumber == 2{ // 즐겨찾기
@@ -195,6 +203,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             } else{
                 cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
             }
+            
+            var bgColorView = UIView()
+            bgColorView.backgroundColor = chooseColor
+            cell.selectedBackgroundView = bgColorView
             
             return cell
 
@@ -213,6 +225,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
             }
             
+            var bgColorView = UIView()
+            bgColorView.backgroundColor = chooseColor
+            cell.selectedBackgroundView = bgColorView
+            
             return cell
             // 4는 즐겨찾기에서 검색
         } else if tableViewNumber == 5 {
@@ -225,6 +241,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.majorTypeLabel.text = "테스트"
             return cell
         }
+
+        
+        
         
         return UITableViewCell()
     }
