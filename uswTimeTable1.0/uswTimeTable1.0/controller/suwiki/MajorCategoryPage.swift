@@ -41,7 +41,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let noMajorCellName = UINib(nibName: "MajorCategoryNoDataCell", bundle: nil)
         tableView.register(noMajorCellName, forCellReuseIdentifier: "noMajorCell")
         
-        print(String(keychain.get("AccessToken") ?? ""))
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 63
         self.tableView.reloadData()
@@ -51,7 +50,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         
         tableViewBorder.layer.borderColor = UIColor.lightGray.cgColor
         tableViewBorder.layer.borderWidth = 1.0
-        tableViewBorder.layer.cornerRadius = 8.0
+        tableViewBorder.layer.cornerRadius = 12.0
         // Do any additional setup after loading the view.
     }
     
@@ -68,18 +67,19 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 var searchData: String = "\(tableViewUpdateData[i].majorType)"
                 // if contain 확인 후 True or false
                 if searchData.contains(searchTextField.text ?? ""){
-                    print(tableViewUpdateData.count)
-                    print(searchTextField.text)
-                    print(searchData)
+                    
+//                    print(tableViewUpdateData.count)
+//                    print(searchTextField.text)
+//                    print(searchData)
+                    
                     if favoritesMajorData.contains(where: {$0.majorType == searchData}){
                         searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: true))
                     } else {
                         searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: false))
                     }
-                    
                 }
             }
-            tableView.reloadData()
+            
         } else if tableViewNumber == 2 || tableViewNumber == 4 {
             searchTableViewData.removeAll()
             tableViewNumber = 4
@@ -97,6 +97,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             }
         }
         
+        tableView.reloadData()
         print(searchTableViewData)
     }
     
@@ -107,7 +108,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBAction func favoriteBtnClicked(_ sender: Any) {
         print("0")
         if favoritesMajorData.count > 0{
-            print("2")
+            self.getFavorite()
             tableViewNumber = 2
             print(favoritesMajorData)
         } else {
@@ -134,7 +135,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if tableViewNumber == 1{
+        if tableViewNumber == 1{ // 전체
             let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
             cell.majorTypeLabel.text = tableViewUpdateData[indexPath.row].majorType
             
@@ -147,7 +148,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
             }
             return cell
-        } else if tableViewNumber == 2{
+            
+        } else if tableViewNumber == 2{ // 즐겨찾기
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
             cell.majorTypeLabel.text = favoritesMajorData[indexPath.row].majorType
             
@@ -163,7 +166,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             return cell
 
             
-        } else if tableViewNumber == 3 {
+        } else if tableViewNumber == 3 { // 전체 검색
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
             cell.majorTypeLabel.text = searchTableViewData[indexPath.row].majorType
         
@@ -177,6 +181,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             }
             
             return cell
+            // 4는 즐겨찾기에서 검색
         } else if tableViewNumber == 5 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noMajorCell", for: indexPath) as! MajorCategoryNoDataCell
             
@@ -188,7 +193,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             return cell
         }
         
-    
         return UITableViewCell()
     }
     
@@ -198,7 +202,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let parameter: Parameters = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
-        // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
         if tableViewUpdateData.count == 0 { // 최초 호출
             AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
                 let data = response.data
@@ -211,12 +214,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                         readData.favoriteCheck = true
                     }
                     self.tableViewUpdateData.append(readData)
-                    
                 }
-                
                 self.tableView.reloadData()
-                
             }
+            
         } else {
             for i in 0..<tableViewUpdateData.count{
                 if self.favoritesMajorData.contains(where: {$0.majorType == tableViewUpdateData[i].majorType}){
@@ -272,7 +273,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let status = response.response?.statusCode
             if status == 403{
@@ -294,16 +294,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     func favoriteRemove(majorType: String){
         let url = "https://api.suwiki.kr/user/favorite-major"
         
-//        let headers: HTTPHeaders = [
-//
-//            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-//        ]
-        
         let parameters: Parameters = [
             "majorType" : majorType
         ]
-//
-//
+        
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -322,12 +316,12 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 //4. 경고창 보이기
                 self.present(alert, animated: true, completion: nil)
             } else {
-                self.getFavorite()
+                self.tableView.reloadData()
             }
-            
+//            } else {
+//                self.getFavorite()
+//            }
         }
-        
-        
     }
    
     
@@ -344,12 +338,17 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 favoriteAdd(majorType: "\(tableViewUpdateData[indexPath.row].majorType)")
                 tableViewUpdateData[indexPath.row].favoriteCheck = true
             }
-        } else if tableViewNumber == 2{
+        } else if tableViewNumber == 2{ // 데이터 유지 시키기가 더 좋을 듯 함. reloadData 되는 도중에 index 벗어나는 버그 발생함
+            
             if favoritesMajorData.count == 1{
                 tableViewNumber = 5
                 tableView.reloadData()
             }
+            
             favoriteRemove(majorType: "\(favoritesMajorData[indexPath.row].majorType)")
+            favoritesMajorData[indexPath.row].favoriteCheck = false
+//            let dataIndex: Int = tableViewUpdateData.firstIndex(where: {$0.majorType == favoritesMajorData[indexPath.row].majorType}) ?? 0
+//            tableViewUpdateData[dataIndex].favoriteCheck = false
             
         } else if tableViewNumber == 3{
             if searchTableViewData[indexPath.row].favoriteCheck == true {
