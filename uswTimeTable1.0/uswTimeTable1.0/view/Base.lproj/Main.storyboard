@@ -5284,6 +5284,9 @@
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="전체"/>
+                                <connections>
+                                    <action selector="totalBtnClicked:" destination="GIH-GW-eDo" eventType="touchUpInside" id="z4E-DS-wZT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWN-Ec-OVQ">
                                 <rect key="frame" x="52" y="208" width="56" height="19"/>
@@ -5322,6 +5325,7 @@
                     <connections>
                         <outlet property="searchTextField" destination="Sy8-16-bnx" id="uNo-v5-kJB"/>
                         <outlet property="tableView" destination="rGE-1c-LLB" id="iAx-EV-et0"/>
+                        <outlet property="tableViewBorder" destination="NX7-g7-pFh" id="iWL-k8-lKp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AyY-sQ-NVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

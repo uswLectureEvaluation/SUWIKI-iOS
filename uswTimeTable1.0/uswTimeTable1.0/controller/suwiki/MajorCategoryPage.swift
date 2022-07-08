@@ -18,6 +18,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
+    @IBOutlet weak var tableViewBorder: UIView!
     
     let keychain = KeychainSwift()
     
@@ -37,6 +38,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         getFavorite()
         let majorCellName = UINib(nibName: "MajorCategoryCell", bundle: nil)
         tableView.register(majorCellName, forCellReuseIdentifier: "majorCell")
+        let noMajorCellName = UINib(nibName: "MajorCategoryNoDataCell", bundle: nil)
+        tableView.register(noMajorCellName, forCellReuseIdentifier: "noMajorCell")
         
         print(String(keychain.get("AccessToken") ?? ""))
         self.tableView.rowHeight = UITableView.automaticDimension
@@ -46,6 +49,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        tableViewBorder.layer.borderColor = UIColor.lightGray.cgColor
+        tableViewBorder.layer.borderWidth = 1.0
+        tableViewBorder.layer.cornerRadius = 8.0
         // Do any additional setup after loading the view.
     }
     
@@ -94,6 +100,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         print(searchTableViewData)
     }
     
+    @IBAction func totalBtnClicked(_ sender: Any) {
+        tableViewNumber = 1
+        tableView.reloadData()
+    }
     @IBAction func favoriteBtnClicked(_ sender: Any) {
         print("0")
         if favoritesMajorData.count > 0{
@@ -166,8 +176,12 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 cell.favoriteBtn.setImage(UIImage(named: "icon_emptystar_24"), for: .normal)
             }
             
+            return cell
+        } else if tableViewNumber == 5 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noMajorCell", for: indexPath) as! MajorCategoryNoDataCell
             
             return cell
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
             cell.majorTypeLabel.text = "테스트"
@@ -253,7 +267,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let parameters: Parameters = [
             "majorType" : majorType
         ]
-//
+
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -333,6 +347,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         } else if tableViewNumber == 2{
             if favoritesMajorData.count == 1{
                 tableViewNumber = 5
+                tableView.reloadData()
             }
             favoriteRemove(majorType: "\(favoritesMajorData[indexPath.row].majorType)")
             
@@ -348,20 +363,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         } else if tableViewNumber == 4{
             
         }
-//        let removeAlert = UIAlertController(title: "강의평가 삭제", message: "삭제 하시겠어요?", preferredStyle: UIAlertController.Style.alert)
-//
-//        let deleteButton = UIAlertAction(title: "삭제", style: .destructive, handler: { [self] (action) -> Void in
-//            print("Delete button tapped")
-//            removeEvaluation(id: tableViewEvalData[indexPath.row].id)
-//
-//        })
-//
-//        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
-//            print("Cancel button tapped")
-//        })
-//
-//        removeAlert.addAction(deleteButton)
-//        removeAlert.addAction(cancelButton)
-//        present(removeAlert, animated: true, completion: nil)
+
     }
 }
