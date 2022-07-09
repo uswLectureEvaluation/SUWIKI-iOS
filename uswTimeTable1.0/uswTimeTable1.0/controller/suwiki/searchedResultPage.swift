@@ -26,6 +26,8 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var chooseMajorLabel: UILabel!
     @IBOutlet weak var majorTypeLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
+    @IBOutlet weak var noSearchDataView: UIView!
+    @IBOutlet weak var noSearchDataLabel: UILabel!
     
     
     let dropDown = DropDown()
@@ -43,11 +45,16 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
     
     override func viewDidLoad() {
+        noSearchDataView.isHidden = true
         super.viewDidLoad()
         getMajorType()
 
         let searchedResultCellName = UINib(nibName: "searchedResultCell", bundle: nil)
         tableView.register(searchedResultCellName, forCellReuseIdentifier: "resultCell")
+        
+        noSearchDataView.layer.borderWidth = 1.0
+        noSearchDataView.layer.cornerRadius = 10.0
+        noSearchDataView.layer.borderColor = UIColor.lightGray.cgColor
         
         categoryDropDown.layer.borderWidth = 1.0
         categoryDropDown.layer.borderColor = UIColor.systemGray5.cgColor
@@ -98,13 +105,14 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
                 getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
             }
         }
+        tableView.isHidden = true
     }
     
     // 검색결과 없을 때 표시 해주는 부분 필요
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewwillappear")
-        tableViewUpdateData.removeAll()
+        
         getMajorType()
         page = 1
         getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
@@ -205,6 +213,9 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
+            
+            self.tableViewUpdateData.removeAll()
+            
             let data = response.data
             let json = JSON(data ?? "")
             print(json["count"])
@@ -226,6 +237,15 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
                     self.tableViewUpdateData.append(readData)
                 }
 
+            }
+            
+            if self.tableViewUpdateData.count == 0{
+                self.tableView.isHidden = true
+                self.noSearchDataView.isHidden = false
+                self.noSearchDataLabel.text = "'\(searchValue)'에 대한"
+            } else {
+                self.tableView.isHidden = false
+                self.noSearchDataView.isHidden = true
             }
             
             self.tableView?.reloadData()

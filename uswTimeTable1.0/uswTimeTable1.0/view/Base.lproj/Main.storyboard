@@ -4505,7 +4505,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="NGs-vX-v9L"/>
                                 </constraints>
-                                <color key="textColor" red="0.63921570780000003" green="0.63921570780000003" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="13"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -4680,8 +4680,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-OR-c7c">
-                                <rect key="frame" x="24" y="333" width="366" height="499"/>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-OR-c7c">
+                                <rect key="frame" x="16" y="333" width="382" height="499"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="H1B-xj-VQl" id="XIp-QD-WlM"/>
@@ -4879,6 +4879,30 @@
                                     <constraint firstItem="mEM-BY-ocL" firstAttribute="leading" secondItem="Xir-Rt-oTJ" secondAttribute="leading" constant="8" id="yMf-EQ-3VJ"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="teU-cS-Jl7">
+                                <rect key="frame" x="16" y="333" width="382" height="499"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'~~~~'에 대한" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpR-bt-6DX">
+                                        <rect key="frame" x="142" y="100" width="98" height="20"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="17"/>
+                                        <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색결과가 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2D-ke-Ch3">
+                                        <rect key="frame" x="120.5" y="128" width="141" height="20"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="17"/>
+                                        <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="OpR-bt-6DX" firstAttribute="top" secondItem="teU-cS-Jl7" secondAttribute="top" constant="100" id="5PR-N7-uzj"/>
+                                    <constraint firstItem="J2D-ke-Ch3" firstAttribute="top" secondItem="OpR-bt-6DX" secondAttribute="bottom" constant="8" id="Kja-YA-hQg"/>
+                                    <constraint firstItem="J2D-ke-Ch3" firstAttribute="centerX" secondItem="teU-cS-Jl7" secondAttribute="centerX" id="RFi-B0-sE8"/>
+                                    <constraint firstItem="OpR-bt-6DX" firstAttribute="centerX" secondItem="teU-cS-Jl7" secondAttribute="centerX" id="rDh-VJ-nA5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WLn-ER-suD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -4886,10 +4910,13 @@
                         <constraints>
                             <constraint firstItem="bZx-py-evw" firstAttribute="top" secondItem="gcz-By-Vws" secondAttribute="bottom" constant="37" id="458-O5-IjE"/>
                             <constraint firstAttribute="trailing" secondItem="hJa-SN-Exz" secondAttribute="trailing" constant="16" id="4yZ-9a-ZGK"/>
+                            <constraint firstItem="WLn-ER-suD" firstAttribute="bottom" secondItem="teU-cS-Jl7" secondAttribute="bottom" constant="30" id="5XT-3e-jeD"/>
                             <constraint firstItem="M4i-jk-lPx" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="16" id="5xg-TN-tCQ"/>
+                            <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="teU-cS-Jl7" secondAttribute="trailing" constant="16" id="BVn-zy-G6v"/>
                             <constraint firstItem="gcz-By-Vws" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="63" id="Ck7-hr-TGg"/>
+                            <constraint firstItem="teU-cS-Jl7" firstAttribute="top" secondItem="I9h-iH-U1B" secondAttribute="topMargin" constant="289" id="Ds5-kf-Ip0"/>
                             <constraint firstItem="hJa-SN-Exz" firstAttribute="top" secondItem="gcz-By-Vws" secondAttribute="bottom" constant="123" id="Fh1-V6-f9t"/>
-                            <constraint firstItem="YgK-OR-c7c" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="24" id="Gk8-yO-iq4"/>
+                            <constraint firstItem="YgK-OR-c7c" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="16" id="Gk8-yO-iq4"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="bottom" secondItem="YgK-OR-c7c" secondAttribute="bottom" constant="30" id="ITl-Ys-TDD"/>
                             <constraint firstItem="M4i-jk-lPx" firstAttribute="top" secondItem="gcz-By-Vws" secondAttribute="bottom" constant="90" id="JK4-tz-8oR"/>
                             <constraint firstItem="hJa-SN-Exz" firstAttribute="leading" secondItem="I9h-iH-U1B" secondAttribute="leading" constant="16" id="JNT-7z-KH4"/>
@@ -4903,12 +4930,13 @@
                             <constraint firstItem="dcd-dj-b5l" firstAttribute="top" secondItem="hJa-SN-Exz" secondAttribute="bottom" constant="24" id="XhC-nL-RwR"/>
                             <constraint firstItem="0ia-Ip-pxO" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="20" id="fIK-9e-OIt"/>
                             <constraint firstItem="hUK-4i-UD1" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="257" id="k3F-Z7-F8d"/>
+                            <constraint firstItem="teU-cS-Jl7" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="16" id="laZ-xI-41z"/>
                             <constraint firstAttribute="trailing" secondItem="gcz-By-Vws" secondAttribute="trailing" id="mfD-8g-Lwm"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="hUK-4i-UD1" secondAttribute="trailing" constant="24" id="oES-0U-ka7"/>
                             <constraint firstItem="kKZ-1T-auO" firstAttribute="top" secondItem="gcz-By-Vws" secondAttribute="bottom" constant="93" id="qwr-tA-iSj"/>
                             <constraint firstItem="Xir-Rt-oTJ" firstAttribute="top" secondItem="hJa-SN-Exz" secondAttribute="bottom" constant="24" id="vba-Wc-bSO"/>
                             <constraint firstItem="kKZ-1T-auO" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="48" id="yEV-SH-jxb"/>
-                            <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="YgK-OR-c7c" secondAttribute="trailing" constant="24" id="yg6-F7-7cx"/>
+                            <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="YgK-OR-c7c" secondAttribute="trailing" constant="16" id="yg6-F7-7cx"/>
                         </constraints>
                     </view>
                     <connections>
@@ -4918,6 +4946,8 @@
                         <outlet property="majorCategoryBtn" destination="Xir-Rt-oTJ" id="yin-YC-ZMF"/>
                         <outlet property="majorLabel" destination="8O4-Cd-6ah" id="gtv-eV-HNZ"/>
                         <outlet property="majorTypeLabel" destination="mEM-BY-ocL" id="Dar-Ic-3qO"/>
+                        <outlet property="noSearchDataLabel" destination="OpR-bt-6DX" id="X7b-Dj-W13"/>
+                        <outlet property="noSearchDataView" destination="teU-cS-Jl7" id="6No-sB-ue8"/>
                         <outlet property="searchResultCountLabel" destination="so8-lm-seU" id="Zhf-ek-EVA"/>
                         <outlet property="searchTextField" destination="kKZ-1T-auO" id="1VB-ff-t7W"/>
                         <outlet property="tableView" destination="YgK-OR-c7c" id="IUb-Bm-uI6"/>
@@ -5471,6 +5501,7 @@
                     </view>
                     <connections>
                         <outlet property="favoriteBtn" destination="oWN-Ec-OVQ" id="3pD-1G-QyC"/>
+                        <outlet property="finishBtn" destination="QdB-Eb-ti1" id="CU7-ku-RYC"/>
                         <outlet property="searchTextField" destination="Sy8-16-bnx" id="uNo-v5-kJB"/>
                         <outlet property="tableView" destination="rGE-1c-LLB" id="iAx-EV-et0"/>
                         <outlet property="tableViewBorder" destination="NX7-g7-pFh" id="iWL-k8-lKp"/>

@@ -18,11 +18,12 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    
     @IBOutlet weak var tableViewBorder: UIView!
-    
     @IBOutlet weak var totalBtn: UIButton!
     @IBOutlet weak var favoriteBtn: UIButton!
+    @IBOutlet weak var finishBtn: UIButton!
+    
+    
     
     let keychain = KeychainSwift()
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
@@ -42,6 +43,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     var sendMajorData: String = ""
     
     override func viewDidLoad() {
+        
+        finishBtn.layer.cornerRadius = 10.0
+        finishBtn.layer.borderWidth = 1.0
         
         totalBtn.tintColor = .black
         favoriteBtn.tintColor = .lightGray

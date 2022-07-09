@@ -123,9 +123,19 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
   
     @IBAction func majorCategoryBtnClicked(_ sender: Any) {
         
-        let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
-        majorVC.modalPresentationStyle = .fullScreen
-        self.present(majorVC, animated: true, completion: nil)
+        if keychain.get("AccessToken") != nil {
+            
+            let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
+            majorVC.modalPresentationStyle = .fullScreen
+            self.present(majorVC, animated: true, completion: nil)
+            
+        } else {
+            
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+            self.present(nextVC, animated: true, completion: nil)
+            
+        }
+
         
     }
     @IBAction func categoryButtonClicked(_ sender: Any) {
@@ -139,7 +149,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainPageCell
-        mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName
+        mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName ?? ""
         mainCell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         mainCell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
         mainCell.majorType.text = tableViewUpdateData[indexPath.row].majorType
@@ -272,7 +282,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.navigationController?.pushViewController(resultVC, animated: true)
         } else {
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.present(nextVC, animated: true, completion: nil)
         }
         
     }
