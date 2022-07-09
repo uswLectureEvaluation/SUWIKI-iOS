@@ -20,9 +20,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
-    
-    @IBOutlet weak var majorCategoryDropDown: UIView!
-    
+        
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchResultCountLabel: UILabel!
@@ -34,11 +32,10 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     var tableViewUpdateData: Array<searchedResult> = []
     var pageCount = 0
 
-    
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(searchData)
         
         let searchedResultCellName = UINib(nibName: "searchedResultCell", bundle: nil)
         tableView.register(searchedResultCellName, forCellReuseIdentifier: "resultCell")
@@ -46,10 +43,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         categoryDropDown.layer.borderWidth = 1.0
         categoryDropDown.layer.borderColor = UIColor.lightGray.cgColor
         categoryDropDown.layer.cornerRadius = 8.0
-        majorCategoryDropDown.layer.borderWidth = 1.0
-        majorCategoryDropDown.layer.borderColor = UIColor.lightGray.cgColor
-        majorCategoryDropDown.layer.cornerRadius = 8.0
-        
+
         getLectureData(searchValue: searchData, option: option, page: page)
         
         dropDown.anchorView = categoryDropDown
@@ -91,21 +85,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
                 getLectureData(searchValue: searchData, option: option, page: page)
             }
         }
-        
-
     }
-    
-    /*
-    override func viewDidLayoutSubviews() {
-        let bottomLine1 = CALayer()
-        bottomLine1.frame = CGRect(x: 0, y: searchTextField.frame.size.height + 16, width: searchTextField.frame.width, height: 1)
-        bottomLine1.borderColor = UIColor.black.cgColor
-        bottomLine1.borderWidth = 1.0
-        searchTextField.borderStyle = .none
-        searchTextField.layer.addSublayer(bottomLine1)
-    }
-    */
-    
     
     @IBAction func searchBtnClicked(_ sender: Any) {
         tableViewUpdateData.removeAll()

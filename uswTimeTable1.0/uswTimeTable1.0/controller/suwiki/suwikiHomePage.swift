@@ -43,9 +43,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     var majorType: String = ""
     
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
-    
-    
-    
+
     override func viewDidLoad() {
         
         tableView.separatorInset.left = 0
