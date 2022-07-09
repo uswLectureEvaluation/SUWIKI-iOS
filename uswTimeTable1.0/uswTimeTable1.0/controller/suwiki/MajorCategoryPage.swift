@@ -21,6 +21,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     @IBOutlet weak var tableViewBorder: UIView!
     
+    @IBOutlet weak var totalBtn: UIButton!
+    @IBOutlet weak var favoriteBtn: UIButton!
+    
     let keychain = KeychainSwift()
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let chooseColor = #colorLiteral(red: 0.9590070844, green: 0.9689564109, blue: 0.9988682866, alpha: 1)
@@ -39,6 +42,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     var sendMajorData: String = ""
     
     override func viewDidLoad() {
+        
+        totalBtn.tintColor = .black
+        favoriteBtn.tintColor = .lightGray
+        
         tableViewNumber = 1
         super.viewDidLoad()
         getFavorite()
@@ -152,6 +159,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     @IBAction func totalBtnClicked(_ sender: Any) {
+        totalBtn.tintColor = .black
+        favoriteBtn.tintColor = .lightGray
         tableViewNumber = 1
         tableView.reloadData()
     }
@@ -166,6 +175,9 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             print("3")
             tableViewNumber = 5
         }
+        totalBtn.tintColor = .lightGray
+        favoriteBtn.tintColor = .black
+        
         tableView.reloadData()
     }
     
