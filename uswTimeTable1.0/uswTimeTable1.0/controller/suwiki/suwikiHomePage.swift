@@ -115,8 +115,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         tableViewUpdateData.removeAll()
         getMajorType()
-        
-
         getLectureData(option: option, majorType: majorType)
 
         super.viewWillAppear(true)
@@ -200,11 +198,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
                 majorTypeLabel.isHidden = true
                 majorLabel.isHidden = true
             }
-
-            
         }
-        
-        
     }
     
     // #MARK: 강의 데이터 불러오는 함수, 추후에 majorType 매개변수 추가, 파라미터 추가

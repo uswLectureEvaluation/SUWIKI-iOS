@@ -20,71 +20,103 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
-        
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var searchResultCountLabel: UILabel!
+    @IBOutlet weak var majorCategoryBtn: UIView!
+    @IBOutlet weak var chooseMajorLabel: UILabel!
+    @IBOutlet weak var majorTypeLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
+    
+    
     let dropDown = DropDown()
     
     var searchData: String = ""
     var page = 1
+    var majorType: String = ""
     var option: String = "lectureTotalAvg"
     var tableViewUpdateData: Array<searchedResult> = []
     var pageCount = 0
+    var tableViewNumber = 1
+    
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
 
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getMajorType()
+
         let searchedResultCellName = UINib(nibName: "searchedResultCell", bundle: nil)
         tableView.register(searchedResultCellName, forCellReuseIdentifier: "resultCell")
         
         categoryDropDown.layer.borderWidth = 1.0
-        categoryDropDown.layer.borderColor = UIColor.lightGray.cgColor
-        categoryDropDown.layer.cornerRadius = 8.0
+        categoryDropDown.layer.borderColor = UIColor.systemGray5.cgColor
+        categoryDropDown.layer.cornerRadius = 10.0
+        
+        majorCategoryBtn.layer.borderWidth = 1.0
+        majorCategoryBtn.layer.borderColor = UIColor.systemGray5.cgColor
+        majorCategoryBtn.layer.cornerRadius = 10.0
+        
 
-        getLectureData(searchValue: searchData, option: option, page: page)
+        getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
         
         dropDown.anchorView = categoryDropDown
         dropDown.dataSource = categoryList
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
-        dropDown.textFont = UIFont.systemFont(ofSize: 13)
+        dropDown.textFont = UIFont.systemFont(ofSize: 14)
 
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.categoryTextField.text = categoryList[index]
-            self.categoryTextField.font = UIFont.systemFont(ofSize: 13)
-            self.categoryTextField.textColor = UIColor.systemBlue
-            self.categoryTextField.textAlignment = .center
+            self.categoryTextField.font = UIFont(name: "Pretendard", size: 14)
+            self.categoryTextField.textColor = colorLiteralBlue
             
             if categoryTextField.text == "종합" { // 토탈 에버리지
                 tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureTotalAvg"
-                getLectureData(searchValue: searchData, option: option, page: page)
+                getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
             } else if categoryTextField.text == "만족도" { // 만족 에버리지
                 tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureSatisfactionAvg"
-                getLectureData(searchValue: searchData, option: option, page: page)
+                getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
             } else if categoryTextField.text == "꿀강"{ // 꿀 에버리지
                 tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureHoneyAvg"
-                getLectureData(searchValue: searchData, option: option, page: page)
+                getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
             } else if categoryTextField.text == "배움" { // 러닝 에버리지
                 tableViewUpdateData.removeAll()
                 page = 1
                 option = "lectureLearningAvg"
-                getLectureData(searchValue: searchData, option: option, page: page)
+                getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
             } else if categoryTextField.text == "날짜"{ // 최근
                 tableViewUpdateData.removeAll()
                 page = 1
                 option = "modifiedDate"
-                getLectureData(searchValue: searchData, option: option, page: page)
+                getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
             }
         }
+    }
+    
+    // 검색결과 없을 때 표시 해주는 부분 필요
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewwillappear")
+        tableViewUpdateData.removeAll()
+        getMajorType()
+        page = 1
+        getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
+        super.viewWillAppear(animated)
+    }
+    
+    @IBAction func majorCategoryBtnClicked(_ sender: Any) {
+        
+        let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
+        majorVC.modalPresentationStyle = .fullScreen
+        self.present(majorVC, animated: true, completion: nil)
+        
     }
     
     @IBAction func searchBtnClicked(_ sender: Any) {
@@ -92,7 +124,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         searchData = searchTextField.text!
         page = 1
         option = "lectureTotalAvg"
-        getLectureData(searchValue: searchData, option: option, page: page)
+        getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -130,19 +162,45 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         if indexPath.row == lastIndex{
             page += 1
             if page <= pageCount {
-                getLectureData(searchValue: searchData, option: option, page: page)
+                getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
             }
         }
     }
     
-    func getLectureData(searchValue: String, option: String, page: Int){ // 최근
+    func getMajorType(){
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        
+        if let majorData = AD?.majorType{
+            
+            if majorData == "1"{
+                chooseMajorLabel.isHidden = true
+                majorTypeLabel.isHidden = false
+                majorLabel.isHidden = false
+            } else {
+                if majorData == ""{
+                    majorType = ""
+                    chooseMajorLabel.text = "전체"
+                } else {
+                    majorType = majorData
+                    chooseMajorLabel.text = majorType
+                }
+                
+                chooseMajorLabel.isHidden = false
+                majorTypeLabel.isHidden = true
+                majorLabel.isHidden = true
+            }
+        }
+    }
+    
+    func getLectureData(searchValue: String, option: String, page: Int, majorType: String){ // 최근
 
         let url = "https://api.suwiki.kr/lecture/search/"
         
         let parameter: Parameters = [
             "searchValue" : searchValue,
             "option" : option,
-            "page" : page
+            "page" : page,
+            "majorType" : majorType
         ]
     
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)

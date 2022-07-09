@@ -4815,6 +4815,9 @@
                                         <state key="normal">
                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="majorCategoryBtnClicked:" destination="H1B-xj-VQl" eventType="touchUpInside" id="Vvp-sb-PM3"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개설학과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEM-BY-ocL">
                                         <rect key="frame" x="8" y="8" width="49" height="16"/>
@@ -4890,6 +4893,10 @@
                     <connections>
                         <outlet property="categoryDropDown" destination="dcd-dj-b5l" id="HnG-Z8-Cv1"/>
                         <outlet property="categoryTextField" destination="NmJ-2w-cju" id="epw-7x-O02"/>
+                        <outlet property="chooseMajorLabel" destination="1YI-bT-Nzn" id="IlS-J1-Wye"/>
+                        <outlet property="majorCategoryBtn" destination="Xir-Rt-oTJ" id="yin-YC-ZMF"/>
+                        <outlet property="majorLabel" destination="8O4-Cd-6ah" id="gtv-eV-HNZ"/>
+                        <outlet property="majorTypeLabel" destination="mEM-BY-ocL" id="Dar-Ic-3qO"/>
                         <outlet property="searchResultCountLabel" destination="so8-lm-seU" id="Zhf-ek-EVA"/>
                         <outlet property="searchTextField" destination="kKZ-1T-auO" id="1VB-ff-t7W"/>
                         <outlet property="tableView" destination="YgK-OR-c7c" id="IUb-Bm-uI6"/>
