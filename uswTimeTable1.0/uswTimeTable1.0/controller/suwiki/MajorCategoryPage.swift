@@ -45,6 +45,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         
         finishBtn.layer.cornerRadius = 10.0
+        finishBtn.layer.borderColor = UIColor.white.cgColor
         finishBtn.layer.borderWidth = 1.0
         
         totalBtn.tintColor = .black

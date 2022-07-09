@@ -25,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var majorType: String = "1"
     
+    let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
+
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -75,7 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
         if autoLogin == false {
             keychain.clear()
         }
