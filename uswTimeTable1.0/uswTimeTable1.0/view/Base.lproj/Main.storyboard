@@ -4569,8 +4569,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-XQ-3oy">
-                                        <rect key="frame" x="0.0" y="8" width="120" height="16"/>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-XQ-3oy">
+                                        <rect key="frame" x="8" y="8" width="104" height="16"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
                                         <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -4596,9 +4596,9 @@
                                     <constraint firstAttribute="bottom" secondItem="ZRZ-vO-kMm" secondAttribute="bottom" constant="8" id="fXN-Md-teG"/>
                                     <constraint firstAttribute="width" constant="120" id="iRx-lP-2d3"/>
                                     <constraint firstAttribute="height" constant="32" id="jgx-Nj-DZ5"/>
-                                    <constraint firstItem="Eac-XQ-3oy" firstAttribute="leading" secondItem="qQ6-Xl-P9Q" secondAttribute="leading" id="ktC-An-nz0"/>
+                                    <constraint firstItem="Eac-XQ-3oy" firstAttribute="leading" secondItem="qQ6-Xl-P9Q" secondAttribute="leading" constant="8" id="ktC-An-nz0"/>
                                     <constraint firstItem="6mo-Z0-uu1" firstAttribute="top" secondItem="qQ6-Xl-P9Q" secondAttribute="top" constant="8" id="lKJ-7I-dhI"/>
-                                    <constraint firstAttribute="trailing" secondItem="Eac-XQ-3oy" secondAttribute="trailing" id="vo0-OX-KhS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eac-XQ-3oy" secondAttribute="trailing" constant="8" id="vo0-OX-KhS"/>
                                     <constraint firstAttribute="bottom" secondItem="Eac-XQ-3oy" secondAttribute="bottom" constant="8" id="wPY-8g-EPe"/>
                                 </constraints>
                             </view>

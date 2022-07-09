@@ -78,8 +78,12 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         if sendMajorData != "" {
             
             let AD = UIApplication.shared.delegate as? AppDelegate
-            print(sendMajorData)
-            AD?.majorType = sendMajorData
+            if sendMajorData == "전체" {
+                AD?.majorType = ""
+            } else {
+                AD?.majorType = sendMajorData
+            }
+            
             
             self.dismiss(animated: true, completion: nil)
             
@@ -151,6 +155,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         tableViewNumber = 1
         tableView.reloadData()
     }
+    
     @IBAction func favoriteBtnClicked(_ sender: Any) {
         print("0")
         if favoritesMajorData.count > 0{
@@ -292,6 +297,10 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 let data = response.data
                 
                 let json = JSON(data ?? "")
+                self.tableViewUpdateData.append(MajorCategory(majorType: "전체", favoriteCheck: false))
+                if self.favoritesMajorData.contains(where: {$0.majorType == "전체"}) {
+                    self.tableViewUpdateData[0].favoriteCheck = true
+                }
                 for index in 0..<json["data"].count {
                     var readData = MajorCategory(majorType: json["data"][index].stringValue, favoriteCheck: false)
                     let checkData: String = "\(readData.majorType)"

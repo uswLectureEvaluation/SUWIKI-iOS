@@ -48,10 +48,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         
-        chooseMajorLabel.isHidden = true
-        majorTypeLabel.isHidden = false
-        majorLabel.isHidden = false
-        
         tableView.separatorInset.left = 0
 // 테이블뷰 왼쪽 여백
         
@@ -118,8 +114,11 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
         tableViewUpdateData.removeAll()
         getMajorType()
+        
+
         getLectureData(option: option, majorType: majorType)
 
         super.viewWillAppear(true)
@@ -186,13 +185,27 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let majorData = AD?.majorType{
             
-            majorType = majorData
-            chooseMajorLabel.text = majorData
-            chooseMajorLabel.isHidden = false
-            majorTypeLabel.isHidden = true
-            majorLabel.isHidden = true
+            if majorData == "1"{
+                chooseMajorLabel.isHidden = true
+                majorTypeLabel.isHidden = false
+                majorLabel.isHidden = false
+            } else {
+                if majorData == ""{
+                    majorType = ""
+                    chooseMajorLabel.text = "전체"
+                } else {
+                    majorType = majorData
+                    chooseMajorLabel.text = majorType
+                }
+                
+                chooseMajorLabel.isHidden = false
+                majorTypeLabel.isHidden = true
+                majorLabel.isHidden = true
+            }
+
             
         }
+        
         
     }
     
@@ -200,16 +213,18 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getLectureData(option: String, majorType: String){
         let url = "https://api.suwiki.kr/lecture/all"
         
+   
         let parameter: Parameters = [
             "option" : option,
             "majorType" : majorType
         ]
-    
+        print(majorType)
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
             
             let data = response.data
             let json = JSON(data!)
+            print(json)
             if json["data"].count == 10{
                 for index in 0..<10{
                     
