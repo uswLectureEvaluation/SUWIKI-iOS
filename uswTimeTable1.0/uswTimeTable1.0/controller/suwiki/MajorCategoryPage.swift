@@ -14,6 +14,7 @@ import KeychainSwift
 class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
     // 버튼 눌렀을 때 api 호출 --> majorType 넘겨준다.
+    // 개설학과 전체 다 보여주는 그거 만들어야 함
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
@@ -68,8 +69,12 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
 //    
 //    self.dismiss(animated: true, completion: nil)
     
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     
     @IBAction func finishBtnClicked(_ sender: Any) {
+        
         if sendMajorData != "" {
             
             let AD = UIApplication.shared.delegate as? AppDelegate
@@ -96,9 +101,13 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     @IBAction func searchBtnClicked(_ sender: Any) {
+        
         searchTableViewData.removeAll()
+        
         if tableViewNumber == 1 || tableViewNumber == 3{
+            
             tableViewNumber = 3
+            
             for i in 0..<tableViewUpdateData.count{
                 var searchData: String = "\(tableViewUpdateData[i].majorType)"
                 // if contain 확인 후 True or false
@@ -119,10 +128,12 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         } else if tableViewNumber == 2 || tableViewNumber == 4 {
             searchTableViewData.removeAll()
             tableViewNumber = 4
+            
             for i in 0..<favoritesMajorData.count{
                 var searchData: String = "\(favoritesMajorData[i].majorType)"
+                print(searchData)
                 if searchData.contains(searchTextField.text ?? ""){
-                
+                    print("success")
                     searchTableViewData.append(MajorCategory(majorType: searchData, favoriteCheck: true))
                     
                 }
@@ -211,7 +222,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             return cell
 
             
-        } else if tableViewNumber == 3 { // 전체 검색
+        } else if tableViewNumber == 3 || tableViewNumber == 4{ // 전체 검색
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "majorCell", for: indexPath) as! MajorCategoryCell
             cell.majorTypeLabel.text = searchTableViewData[indexPath.row].majorType
@@ -230,7 +241,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.selectedBackgroundView = bgColorView
             
             return cell
-            // 4는 즐겨찾기에서 검색
+            
         } else if tableViewNumber == 5 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "noMajorCell", for: indexPath) as! MajorCategoryNoDataCell
@@ -424,7 +435,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
 //            let dataIndex: Int = tableViewUpdateData.firstIndex(where: {$0.majorType == favoritesMajorData[indexPath.row].majorType}) ?? 0
 //            tableViewUpdateData[dataIndex].favoriteCheck = false
             
-        } else if tableViewNumber == 3{
+        } else if tableViewNumber == 3 || tableViewNumber == 4{
             if searchTableViewData[indexPath.row].favoriteCheck == true {
                 
                 favoriteRemove(majorType: "\(searchTableViewData[indexPath.row].majorType)")
@@ -433,8 +444,6 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
                 favoriteAdd(majorType: "\(searchTableViewData[indexPath.row].majorType)")
                 searchTableViewData[indexPath.row].favoriteCheck = true
             }
-        } else if tableViewNumber == 4{
-            
         }
 
     }

@@ -26,6 +26,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var majorTypeLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
+    @IBOutlet weak var chooseMajorLabel: UILabel!
+    
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
 
     var tableViewUpdateData: Array<homePageData> = []
@@ -40,10 +44,20 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
     
+    
+    
     override func viewDidLoad() {
-        tableView.separatorInset.left = 0 // 테이블뷰 왼쪽 여백
+        
+        chooseMajorLabel.isHidden = true
+        majorTypeLabel.isHidden = false
+        majorLabel.isHidden = false
+        
+        tableView.separatorInset.left = 0
+// 테이블뷰 왼쪽 여백
+        
         searchTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 6.0, height: 0.0))
         searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
+        
         navigationBarHidden()
         super.viewDidLoad()
         getLectureData(option: option, majorType: majorType)
@@ -110,32 +124,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         super.viewWillAppear(true)
     }
-    
-    /*
-    override func viewDidLayoutSubviews() {
-        let bottomLine1 = CALayer()
-        bottomLine1.frame = CGRect(x: 0, y: searchTextField.frame.size.height + 16, width: searchTextField.frame.width, height: 1)
-        bottomLine1.borderColor = UIColor.black.cgColor
-        bottomLine1.borderWidth = 1.0
-        searchTextField.borderStyle = .none
-        searchTextField.layer.addSublayer(bottomLine1)
-
-    }
-    */
-    
-//    func readADData(){
-//        let AD = UIApplication.shared.delegate as? AppDelegate
-//
-//        if let roomName = AD?.roomName{
-//            roomNameData = roomName
-//        }
-//        if let startTime = AD?.startTime{
-//            startTimeData = startTime
-//        }
-//        if let endTime = AD?.endTime{
-//            endTimeData = endTime
-//        }
-//    }
 
   
     @IBAction func majorCategoryBtnClicked(_ sender: Any) {
@@ -197,7 +185,13 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         let AD = UIApplication.shared.delegate as? AppDelegate
         
         if let majorData = AD?.majorType{
+            
             majorType = majorData
+            chooseMajorLabel.text = majorData
+            chooseMajorLabel.isHidden = false
+            majorTypeLabel.isHidden = true
+            majorLabel.isHidden = true
+            
         }
         
     }
