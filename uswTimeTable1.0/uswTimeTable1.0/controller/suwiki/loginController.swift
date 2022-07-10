@@ -59,7 +59,12 @@ class loginController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        checkBoxBool = false
+        UserDefaults.standard.set(false, forKey: "autoLogin")
+        print("viewwillappear")
+        super.viewWillAppear(true)
+    }
     
     @IBAction func closeBtnClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -72,11 +77,14 @@ class loginController: UIViewController {
             checkBoxBool = false
             checkBoxBtn.image = UIImage(systemName: "square")
             checkBoxBtn.tintColor = .lightGray
+            print("FalseautoLogin")
         } else if checkBoxBool == false{
             UserDefaults.standard.set(true, forKey: "autoLogin")
             checkBoxBool = true
             checkBoxBtn.image = UIImage(systemName: "checkmark.square.fill")
             checkBoxBtn.tintColor = colorLiteralBlue
+            print("TrueautoLogin")
+            
         }
     }
     

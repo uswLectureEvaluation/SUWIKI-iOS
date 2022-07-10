@@ -61,6 +61,8 @@ class myInfoPage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         getInfoData()
         print("viewwillappear")
+        print(keychain.get("AccessToken"))
+        print(keychain.get("RefreshToken"))
     }
     
     // UserDefaults.standard.removeObject(forKey: "id")

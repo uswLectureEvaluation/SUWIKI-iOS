@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var majorType: String = "1"
     
-    let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
+    var autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
 
     
     
@@ -79,8 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         if autoLogin == false {
+            print("keychainClear")
             keychain.clear()
         }
+        print("keychainSave")
     }
 
     // MARK: - Core Data stack
