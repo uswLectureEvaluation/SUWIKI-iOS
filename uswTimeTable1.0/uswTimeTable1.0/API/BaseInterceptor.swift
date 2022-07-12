@@ -32,12 +32,13 @@ class BaseInterceptor: RequestInterceptor{
     
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-
+        
         guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
             print("donottry")
             completion(.doNotRetryWithError(error))
             return
         }
+        
         print("retry")
         let url = "https://api.suwiki.kr/user/refresh"
         let headers: HTTPHeaders = [
