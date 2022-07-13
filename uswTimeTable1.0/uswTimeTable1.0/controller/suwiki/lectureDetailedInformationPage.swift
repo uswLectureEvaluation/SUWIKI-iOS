@@ -335,7 +335,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             let totalLearningAvg = String(format: "%.1f", round(json["lectureLearningAvg"].floatValue * 1000) / 1000)
             
             let detailLectureData = detailLecture(id: json["id"].intValue, semesterList: json["semesterList"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
-
+            
+            print(detailLectureData)
+            
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
         }
@@ -396,6 +398,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                     homework = "많음"
                 }
                 let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
+                
                 
                 
                 self.detailEvaluationArray.append(readData)
