@@ -199,7 +199,6 @@ class lectureExamWritePage: UIViewController {
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
-    
             if response.response?.statusCode == 400{
                 let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
                     message: "확인을 눌러주세요!",

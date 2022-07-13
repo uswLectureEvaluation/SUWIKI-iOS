@@ -61,19 +61,6 @@ class BaseInterceptor: RequestInterceptor{
             
             
         }
-        
-        /*
-            RefreshTokenAPI.refreshToken { result in
-                switch result {
-                case .success(let accessToken):
-                    KeychainServiceImpl.shared.accessToken = accessToken
-                    completion(.retry)
-                    
-                case .failure(let error):
-                    completion(.doNotRetryWithError(error))
-                }
-            }
-        */
         }
     
     

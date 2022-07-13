@@ -102,25 +102,40 @@ class myInfoPage: UIViewController {
                 let data = response.data
                 let json = JSON(data!)
                 
-                print(json)
-                
-                var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenEvaluation"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
-                
-                self.userInfo = readUserData
-                self.logoutInfoView.isHidden = true
-                self.logoutPointPolicy.isHidden = true
-                self.logoutInformation.isHidden = true
-                
-                self.viewUpdate()
-                self.loginInfoView.isHidden = false
-                self.loginPointView.isHidden = false
-                self.loginInformation.isHidden = false
-                self.loginPointPolicy.isHidden = false
-                self.writtenPostBtn.isHidden = false
-                
+                if response.response?.statusCode != 500 {
+                    print(json)
+                    
+                    var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenEvaluation"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
+                    
+                    self.userInfo = readUserData
+                    self.logoutInfoView.isHidden = true
+                    self.logoutPointPolicy.isHidden = true
+                    self.logoutInformation.isHidden = true
+                    
+                    self.viewUpdate()
+                    self.loginInfoView.isHidden = false
+                    self.loginPointView.isHidden = false
+                    self.loginInformation.isHidden = false
+                    self.loginPointPolicy.isHidden = false
+                    self.writtenPostBtn.isHidden = false
+                } else {
+                    
+                    self.loginInfoView.isHidden = true
+                    self.loginPointView.isHidden = true
+                    self.loginInformation.isHidden = true
+                    self.loginPointPolicy.isHidden = true
+                    self.writtenPostBtn.isHidden = true
+                    
+                    
+                    self.logoutInfoView.isHidden = false
+                    self.logoutPointPolicy.isHidden = false
+                    self.logoutInformation.isHidden = false
+                    
+                }
                 
             }
         } else {
+            
             loginInfoView.isHidden = true
             loginPointView.isHidden = true
             loginInformation.isHidden = true
