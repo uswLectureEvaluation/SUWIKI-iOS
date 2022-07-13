@@ -65,7 +65,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         majorCategoryBtn.layer.cornerRadius = 10.0
         
 
-        getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
+        // getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
         
         dropDown.anchorView = categoryDropDown
         dropDown.dataSource = categoryList
@@ -120,7 +120,8 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func majorCategoryBtnClicked(_ sender: Any) {
-        
+        tableViewUpdateData.removeAll()
+
         let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
         majorVC.modalPresentationStyle = .fullScreen
         self.present(majorVC, animated: true, completion: nil)
@@ -213,15 +214,14 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
-            
-            self.tableViewUpdateData.removeAll()
-            
+                        
             let data = response.data
             let json = JSON(data ?? "")
             print(json["count"])
             self.searchResultCountLabel.text = "\(json["count"].intValue)"
             self.pageCount = (json["count"].intValue / 10) + 1
             if json != "" {
+                
                 for index in 0..<json["data"].count{
                     
                     
@@ -240,12 +240,16 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             if self.tableViewUpdateData.count == 0{
+                
                 self.tableView.isHidden = true
                 self.noSearchDataView.isHidden = false
                 self.noSearchDataLabel.text = "'\(searchValue)'에 대한"
+                
             } else {
+                
                 self.tableView.isHidden = false
                 self.noSearchDataView.isHidden = true
+                
             }
             
             self.tableView?.reloadData()
