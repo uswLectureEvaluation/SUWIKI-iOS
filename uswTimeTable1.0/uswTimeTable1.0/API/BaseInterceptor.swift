@@ -38,7 +38,6 @@ class BaseInterceptor: RequestInterceptor{
             completion(.doNotRetryWithError(error))
             return
         }
-        
         print("retry")
         let url = "https://api.suwiki.kr/user/refresh"
         let headers: HTTPHeaders = [

@@ -84,6 +84,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         print("keychainSave")
     }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        if autoLogin == false {
+            print("keychainClear")
+            keychain.clear()
+        }
+        print("keychainSave")
+    }
 
     // MARK: - Core Data stack
 

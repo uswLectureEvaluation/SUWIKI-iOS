@@ -149,7 +149,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainPageCell
-        mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName ?? ""
+        mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName 
         mainCell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         mainCell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
         mainCell.majorType.text = tableViewUpdateData[indexPath.row].majorType
