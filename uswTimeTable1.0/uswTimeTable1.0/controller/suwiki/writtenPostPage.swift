@@ -37,9 +37,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if tableViewEvalData.count == 0 {
-            tableViewNumber = 3
-        }
+   
     
         
         let evalPostCell = UINib(nibName: "writtenEvalPostCell", bundle: nil)
@@ -233,8 +231,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                     self.tableViewEvalData.append(readData)
                 }
                 self.tableView.reloadData()
-            } else {
-                self.tableViewNumber = 0
             }
         }
     }
@@ -255,9 +251,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             let data = response.data
             let json = JSON(data ?? "")
-            if json["data"].count == 0 {
-                self.tableViewNumber = 4
-            } else if json != "" {
+            if json != "" {
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
                  
