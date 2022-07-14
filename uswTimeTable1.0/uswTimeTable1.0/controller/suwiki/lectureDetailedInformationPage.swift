@@ -25,6 +25,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     
 
+    @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var contentsView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
@@ -519,3 +520,32 @@ class examInfoCell: UITableViewCell{
     }
     
 }
+
+class DetailSemesterCell: UICollectionViewCell{
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.cornerRadius = 8.0
+    }
+}
+
+
+extension lectureDetailedInformationPage: UICollectionViewDelegate{
+    
+}
+
+
+extension lectureDetailedInformationPage: UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collection.dequeueReusableCell(withReuseIdentifier: "detailSemeCell", for: indexPath) as! DetailSemesterCell
+        
+        return cell
+    }
+}
+

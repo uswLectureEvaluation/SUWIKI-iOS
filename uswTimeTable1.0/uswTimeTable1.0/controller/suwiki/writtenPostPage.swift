@@ -230,8 +230,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                     
                     self.tableViewEvalData.append(readData)
                 }
-                self.tableView.reloadData()
             }
+            self.tableView.reloadData()
         }
     }
     
