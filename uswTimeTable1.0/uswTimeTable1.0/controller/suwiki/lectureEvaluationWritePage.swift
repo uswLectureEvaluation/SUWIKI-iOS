@@ -90,7 +90,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
         contentField.delegate = self
         contentField.text = "강의평가를 작성해주세요."
         contentField.textColor = UIColor.lightGray
-
+        contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
 
         contentField.layer.cornerRadius = 8.0
         contentField.layer.borderWidth = 1.0
@@ -147,7 +147,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
         
     @IBAction func finishedBtnClicked(_ sender: Any) {
         
-        if teamWorkType.teamWorkPoint == 3 || difficultyType.difficultyPoint == 3 || homeworkType.homeworkPoint == 3 || contentField.text == "" {
+        if teamWorkType.teamWorkPoint == 3 || difficultyType.difficultyPoint == 3 || homeworkType.homeworkPoint == 3 || semesterTextField.text == "선택" {
             let alert = UIAlertController(title:"데이터가 없네용!! 작성해주세연 !!",
                 message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
@@ -155,7 +155,16 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
             alert.addAction(cancle)
             self.present(alert, animated: true, completion: nil)
             
-        } else {
+        } else if contentField.text.count < 30 || contentField.text.count > 1000 {
+            let alert = UIAlertController(title:"강의평가를 확인해주세요!",
+                message: "내용은 30자 이상, 1000자 이하로 작성해주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
+
+        }
+        else {
             if adjustBtn == 0 {
                 writeEvaluation()
             } else if adjustBtn == 1 {
