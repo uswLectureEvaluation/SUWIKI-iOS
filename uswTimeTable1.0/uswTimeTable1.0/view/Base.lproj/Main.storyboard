@@ -5208,6 +5208,9 @@
                                                                 </collectionViewCellContentView>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <size key="customSize" width="65" height="23"/>
+                                                                <connections>
+                                                                    <outlet property="semesterLabel" destination="jwZ-Bf-bHU" id="Sy4-nn-HbQ"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                         <connections>

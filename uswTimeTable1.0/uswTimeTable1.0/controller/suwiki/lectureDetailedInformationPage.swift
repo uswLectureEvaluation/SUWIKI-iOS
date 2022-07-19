@@ -50,8 +50,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
     var detailExamArray: Array<detailExam> = []
-    var lectureSemesterList: Array<String> = []
-    
+    var componentsSemester: Array<String> = []
     var testArray = ["1", "2", "3", "4", "5"]
     var testArray1 = ["1", "2", "3"]
     
@@ -160,14 +159,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         // 조건문 추가하여 어느
         if tableViewNumber == 0 || tableViewNumber == 100{
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
-            let splitSemester = String(detailLectureArray[0].semesterList).components(separatedBy: ", ")
-            print(splitSemester)
+            
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
             // 이후에 , 기준으로 쪼개서 append 한 상태로 옮겨주면 될듯함.
-            for index in 0..<splitSemester.count {
-                nextVC.semesterList.append(splitSemester[index])
+            for index in 0..<componentsSemester.count {
+                nextVC.semesterList.append(componentsSemester[index])
             }
             
             nextVC.adjustBtn = 0
@@ -178,10 +176,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
-            let splitSemester = String(detailLectureArray[0].semesterList).components(separatedBy: ", ")
-            for index in 0..<splitSemester.count {
-                nextVC.semesterList.append(splitSemester[index])
+            
+            for index in 0..<componentsSemester.count {
+                nextVC.semesterList.append(componentsSemester[index])
             }
+            
             if evalDataExist == 0 {
                 nextVC.tableViewNumber = 0
                 nextVC.evalDataList = 0
@@ -321,6 +320,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             pointView.text = "까다로움"
             pointView.textColor = colorLiteralPurple
         }
+        
+        let componentsData = String(detailLectureArray[0].semesterList).components(separatedBy: ", ")
+        componentsSemester = componentsData
+        collection.reloadData()
+        print(componentsSemester)
+        
     }
     
     func getDetailPage(){
@@ -531,6 +536,9 @@ class examInfoCell: UITableViewCell{
 }
 
 class DetailSemesterCell: UICollectionViewCell{
+    
+    @IBOutlet weak var semesterLabel: UILabel!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -555,12 +563,12 @@ extension lectureDetailedInformationPage: UICollectionViewDelegate{
 
 extension lectureDetailedInformationPage: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return componentsSemester.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collection.dequeueReusableCell(withReuseIdentifier: "detailSemeCell", for: indexPath) as! DetailSemesterCell
-        
+        cell.semesterLabel.text = componentsSemester[indexPath.row]
         return cell
     }
     
