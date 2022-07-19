@@ -526,9 +526,16 @@ class DetailSemesterCell: UICollectionViewCell{
         super.layoutSubviews()
         
         contentView.layer.borderWidth = 1.0
-        contentView.layer.borderColor = UIColor.lightGray.cgColor
-        contentView.layer.cornerRadius = 8.0
+        contentView.layer.borderColor = UIColor.white.cgColor
+        contentView.layer.cornerRadius = 5.0
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
     }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
+//    }
 }
 
 
@@ -537,7 +544,7 @@ extension lectureDetailedInformationPage: UICollectionViewDelegate{
 }
 
 
-extension lectureDetailedInformationPage: UICollectionViewDataSource{
+extension lectureDetailedInformationPage: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
@@ -547,5 +554,22 @@ extension lectureDetailedInformationPage: UICollectionViewDataSource{
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 61, height: 23)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+        
+    }
+    
 }
-
+//
+//extension lectureDetailedInformationPage: UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0.2
+//
+//    }
+//}
