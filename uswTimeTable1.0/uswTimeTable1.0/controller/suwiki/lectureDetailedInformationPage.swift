@@ -543,7 +543,7 @@ extension lectureDetailedInformationPage: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collection.dequeueReusableCell(withReuseIdentifier: "detailSemeCell", for: indexPath) as! DetailSemesterCell
+        let cell = self.collection.dequeueReusableCell(withReuseIdentifier: "detailSemeCell", for: indexPath) as! DetailSemesterCell
         
         return cell
     }
