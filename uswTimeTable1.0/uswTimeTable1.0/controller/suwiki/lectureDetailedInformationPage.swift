@@ -24,7 +24,6 @@ import Cosmos
 class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var contentsView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -51,6 +50,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
     var detailExamArray: Array<detailExam> = []
+    var lectureSemesterList: Array<String> = []
     
     var testArray = ["1", "2", "3", "4", "5"]
     var testArray1 = ["1", "2", "3"]
@@ -160,12 +160,16 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         // 조건문 추가하여 어느
         if tableViewNumber == 0 || tableViewNumber == 100{
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+            let splitSemester = String(detailLectureArray[0].semesterList).components(separatedBy: ", ")
+            print(splitSemester)
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
             // 이후에 , 기준으로 쪼개서 append 한 상태로 옮겨주면 될듯함.
-            print(detailLectureArray)
-            nextVC.semesterList.append(detailLectureArray[0].semesterList)
+            for index in 0..<splitSemester.count {
+                nextVC.semesterList.append(splitSemester[index])
+            }
+            
             nextVC.adjustBtn = 0
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
@@ -174,8 +178,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
-            print(detailLectureArray[0].semesterList)
-            nextVC.semesterList.append(detailLectureArray[0].semesterList)
+            let splitSemester = String(detailLectureArray[0].semesterList).components(separatedBy: ", ")
+            for index in 0..<splitSemester.count {
+                nextVC.semesterList.append(splitSemester[index])
+            }
             if evalDataExist == 0 {
                 nextVC.tableViewNumber = 0
                 nextVC.evalDataList = 0
@@ -328,8 +334,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
             let data = response.value
-            
+
             let json = JSON(data ?? "")["data"]
+            
+            print(json)
+            
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
