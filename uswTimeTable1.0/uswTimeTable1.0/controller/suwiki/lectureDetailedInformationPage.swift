@@ -75,6 +75,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         evaluationBtn.tintColor = .darkGray
         scrollView.isDirectionalLockEnabled = true
         
+        writeBtn.layer.cornerRadius = 10.0
+        writeBtn.layer.borderColor = UIColor.white.cgColor
+        writeBtn.layer.borderWidth = 1.0
+        
         // Xib 등록
         print(lectureId)
         
@@ -544,7 +548,7 @@ class DetailSemesterCell: UICollectionViewCell{
         
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.white.cgColor
-        contentView.layer.cornerRadius = 5.0
+        contentView.layer.cornerRadius = 8.0
 //        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
     }
     
