@@ -3242,7 +3242,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1Y-PH-RBr">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1450"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO" translatesAutoresizingMaskIntoConstraints="NO" id="PTh-AR-ODP">
                                                 <rect key="frame" x="16" y="20" width="96" height="26"/>
@@ -3737,7 +3737,7 @@
                                                 </connections>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXK-5Z-0cP">
-                                                <rect key="frame" x="16" y="829" width="382" height="355"/>
+                                                <rect key="frame" x="16" y="829" width="382" height="316"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUN-j2-Mh1">
                                                         <rect key="frame" x="24" y="23" width="59.5" height="19"/>
@@ -3820,29 +3820,16 @@
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsW-SR-Hqn">
-                                                        <rect key="frame" x="24" y="306" width="101" height="16"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="16" id="OyC-DN-sg1"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="오픈소스 라이선스">
-                                                            <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </state>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="BUN-j2-Mh1" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="23" id="0Ig-9C-d8H"/>
                                                     <constraint firstItem="zyK-FA-JRp" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="267" id="0Nq-AT-SIQ"/>
-                                                    <constraint firstItem="XsW-SR-Hqn" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="0l3-as-O2a"/>
                                                     <constraint firstItem="qrO-jI-QAZ" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="8m0-kW-nsm"/>
                                                     <constraint firstItem="qrO-jI-QAZ" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="189" id="JJo-lJ-k0w"/>
                                                     <constraint firstItem="thA-Kz-tVO" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="Q6d-at-iLi"/>
                                                     <constraint firstItem="thA-Kz-tVO" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="111" id="XNM-D9-J7l"/>
-                                                    <constraint firstAttribute="height" constant="355" id="a7K-vQ-6Us"/>
-                                                    <constraint firstItem="XsW-SR-Hqn" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="306" id="bUN-AB-Og2"/>
+                                                    <constraint firstAttribute="height" constant="316" id="a7K-vQ-6Us"/>
                                                     <constraint firstItem="siK-ty-hhN" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="228" id="dyQ-Zh-g60"/>
                                                     <constraint firstItem="Mt5-2l-TqW" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="150" id="krL-Mb-86H"/>
                                                     <constraint firstItem="Mt5-2l-TqW" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="nuF-ib-AHS"/>
@@ -4171,7 +4158,7 @@
                                             <constraint firstItem="Elu-w3-uxZ" firstAttribute="top" secondItem="pNl-jG-lWw" secondAttribute="bottom" constant="16" id="BC9-PI-mCX"/>
                                             <constraint firstItem="hJW-IF-9wf" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" constant="16" id="CB5-i1-xwn"/>
                                             <constraint firstItem="nFq-TR-YbC" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" constant="20" id="CYJ-kF-Ddq"/>
-                                            <constraint firstAttribute="height" constant="1500" id="GGm-f3-m3w"/>
+                                            <constraint firstAttribute="height" constant="1450" id="GGm-f3-m3w"/>
                                             <constraint firstItem="rq8-v5-r92" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" constant="16" id="GvV-yn-GHO"/>
                                             <constraint firstItem="hJW-IF-9wf" firstAttribute="top" secondItem="rq8-v5-r92" secondAttribute="bottom" constant="8" id="Hja-JM-N7e"/>
                                             <constraint firstItem="U3c-bk-wPx" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" constant="16" id="Hv8-1h-lt7"/>
@@ -4222,6 +4209,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="emailLabel" destination="nVa-9F-hbb" id="yao-mu-Vt7"/>
+                        <outlet property="loginBtn" destination="EJG-ic-Qc8" id="llo-dI-ziM"/>
                         <outlet property="loginIdLabel" destination="kLk-jJ-by6" id="c0h-3e-Lbu"/>
                         <outlet property="loginInfoView" destination="SaA-uZ-lKF" id="vft-5o-V1H"/>
                         <outlet property="loginInformation" destination="Elu-w3-uxZ" id="xIh-2X-aho"/>

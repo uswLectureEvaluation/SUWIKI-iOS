@@ -39,6 +39,7 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var viewExamPoint: UILabel!
     
     @IBOutlet weak var writtenPostBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     
     
     let keychain = KeychainSwift()
@@ -166,6 +167,14 @@ class myInfoPage: UIViewController {
     }
     
     func makeCornerRadius(){
+        
+        loginBtn.layer.borderColor = UIColor.white.cgColor
+        loginBtn.layer.borderWidth = 1.0
+        loginBtn.layer.cornerRadius = 10.0
+        
+        writtenPostBtn.layer.borderWidth = 1.0
+        writtenPostBtn.layer.borderColor = UIColor.white.cgColor
+        writtenPostBtn.layer.cornerRadius = 10.0
         
         loginInformation.layer.cornerRadius = 12.0
         loginInformation.layer.borderWidth = 1.0
