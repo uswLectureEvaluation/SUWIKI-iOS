@@ -207,6 +207,26 @@ class myInfoPage: UIViewController {
         
     }
     
+    @IBAction func logoutBtnClicked(_ sender: Any) {
+        
+        let logoutAlert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠어요?", preferredStyle: UIAlertController.Style.alert)
+        
+        let logoutButton = UIAlertAction(title: "로그아웃", style: .destructive, handler: { [self] (action) -> Void in
+            keychain.clear()
+            UserDefaults.standard.set(false, forKey: "autoLogin")
+            viewDidLoad()
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        logoutAlert.addAction(logoutButton)
+        logoutAlert.addAction(cancelButton)
+        present(logoutAlert, animated: true, completion: nil)
+
+    }
+    
     @IBAction func writtenPostBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "writtenPostVC") as! writtenPostPage
         self.navigationController?.pushViewController(nextVC, animated: true)
