@@ -12,7 +12,7 @@ import KeychainSwift
 import DropDown
 
 
-class lectureExamWritePage: UIViewController {
+class lectureExamWritePage: UIViewController, UITextViewDelegate{
     
     
     @IBOutlet weak var contentView: UIView!
@@ -36,6 +36,7 @@ class lectureExamWritePage: UIViewController {
     @IBOutlet weak var applicationBtn: UIButton!
     @IBOutlet weak var trainingBtn: UIButton!
     @IBOutlet weak var homeworkBtn: UIButton!
+    @IBOutlet weak var finishBtn: UIButton!
     
     @IBOutlet weak var contentField: UITextView!
     
@@ -65,18 +66,24 @@ class lectureExamWritePage: UIViewController {
     var examIdx = 0
     
     var keyboardTouchCheck: Bool = false
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+    let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(keychain.get("AccessToken"))
-        print(lectureId)
-        
         lectureNameLabel.text = lectureName
         
         if adjustBtn == 1{
             getAdjustExam()
         }
+        
+        btnCustom()
+        
+        contentField.delegate = self
+        contentField.text = "강의평가를 작성해주세요."
+        contentField.textColor = UIColor.lightGray
+        contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
         
         contentField.layer.borderColor = UIColor.lightGray.cgColor
         contentField.layer.borderWidth = 1.0
@@ -98,8 +105,7 @@ class lectureExamWritePage: UIViewController {
 
         semeDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.semesterTextField.text = semesterList[index]
-            self.semesterTextField.font = UIFont.systemFont(ofSize: 16)
-            self.semesterTextField.textColor = UIColor.black
+            self.semesterTextField.font = UIFont(name: "Pretendard", size: 14)
             self.semesterTextField.textAlignment = .center
         }
         
@@ -111,8 +117,7 @@ class lectureExamWritePage: UIViewController {
 
         examDropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.examTypeTextField.text = examTypeList[index]
-            self.examTypeTextField.font = UIFont.systemFont(ofSize: 16)
-            self.examTypeTextField.textColor = UIColor.black
+            self.examTypeTextField.font = UIFont(name: "Pretendard", size: 14)
             self.examTypeTextField.textAlignment = .center
         }
         
@@ -178,6 +183,50 @@ class lectureExamWritePage: UIViewController {
         
     }
     
+    func btnCustom(){
+        
+        easyLevelBtn.layer.cornerRadius = 10.0
+        easyLevelBtn.layer.borderColor = UIColor.white.cgColor
+        easyLevelBtn.layer.borderWidth = 1.0
+        
+        normalLevelBtn.layer.cornerRadius = 10.0
+        normalLevelBtn.layer.borderWidth = 1.0
+        normalLevelBtn.layer.borderColor = UIColor.white.cgColor
+        
+        hardLevelBtn.layer.cornerRadius = 10.0
+        hardLevelBtn.layer.borderColor = UIColor.white.cgColor
+        hardLevelBtn.layer.borderWidth = 1.0
+        
+        jokboBtn.layer.borderWidth = 1.0
+        jokboBtn.layer.borderColor = UIColor.white.cgColor
+        jokboBtn.layer.cornerRadius = 10.0
+        
+        textbookBtn.layer.borderWidth = 1.0
+        textbookBtn.layer.borderColor = UIColor.white.cgColor
+        textbookBtn.layer.cornerRadius = 10.0
+        
+        pptBtn.layer.borderColor = UIColor.white.cgColor
+        pptBtn.layer.borderWidth = 1.0
+        pptBtn.layer.cornerRadius = 10.0
+    
+        applicationBtn.layer.cornerRadius = 10.0
+        applicationBtn.layer.borderWidth = 1.0
+        applicationBtn.layer.borderColor = UIColor.white.cgColor
+        
+        trainingBtn.layer.cornerRadius = 10.0
+        trainingBtn.layer.borderColor = UIColor.white.cgColor
+        trainingBtn.layer.borderWidth = 1.0
+        
+        finishBtn.layer.cornerRadius = 10.0
+        finishBtn.layer.borderWidth = 1.0
+        finishBtn.layer.borderColor = UIColor.white.cgColor
+        
+        homeworkBtn.layer.cornerRadius = 10.0
+        homeworkBtn.layer.borderColor = UIColor.white.cgColor
+        homeworkBtn.layer.borderWidth = 1.0
+
+    }
+    
     func writeExam() {
         let examInfo: String = examTypeArray.joined(separator: ", ")
         let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
@@ -199,6 +248,7 @@ class lectureExamWritePage: UIViewController {
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             
+    
             if response.response?.statusCode == 400{
                 let alert = UIAlertController(title:"이미 작성하셨습니다 ^^",
                     message: "확인을 눌러주세요!",
@@ -268,6 +318,20 @@ class lectureExamWritePage: UIViewController {
         
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if contentField.textColor == UIColor.lightGray {
+            contentField.text = nil
+            contentField.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if contentField.text.isEmpty {
+            contentField.text = "강의평가를 작성해주세요."
+            contentField.textColor = UIColor.lightGray
+        }
+    }
+//    
     @IBAction func jokboBtnClicked(_ sender: Any) {
         if examType.jokboCheck {
             examType.jokboCheck = false
@@ -418,17 +482,17 @@ class lectureExamWritePage: UIViewController {
     
     func levelPointCheck() {
         if levelType.levelPoint == 0 {
-            easyLevelBtn.setTitleColor(.black, for: .normal)
+            easyLevelBtn.setTitleColor(colorLiteralBlue, for: .normal)
             normalLevelBtn.setTitleColor(.lightGray, for: .normal)
             hardLevelBtn.setTitleColor(.lightGray, for: .normal)
         } else if levelType.levelPoint == 1 {
             easyLevelBtn.setTitleColor(.lightGray, for: .normal)
-            normalLevelBtn.setTitleColor(.black, for: .normal)
+            normalLevelBtn.setTitleColor(colorLiteralPurple, for: .normal)
             hardLevelBtn.setTitleColor(.lightGray, for: .normal)
         } else if levelType.levelPoint == 2 {
             easyLevelBtn.setTitleColor(.lightGray, for: .normal)
             normalLevelBtn.setTitleColor(.lightGray, for: .normal)
-            hardLevelBtn.setTitleColor(.black, for: .normal)
+            hardLevelBtn.setTitleColor(colorLiteralPurple, for: .normal)
         } else {
             easyLevelBtn.setTitleColor(.lightGray, for: .normal)
             normalLevelBtn.setTitleColor(.lightGray, for: .normal)
@@ -460,3 +524,4 @@ class lectureExamWritePage: UIViewController {
         
     }
 }
+
