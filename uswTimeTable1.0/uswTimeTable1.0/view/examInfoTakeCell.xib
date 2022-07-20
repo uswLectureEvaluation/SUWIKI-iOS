@@ -27,7 +27,7 @@
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBW-UW-YEj">
                         <rect key="frame" x="26" y="140" width="332" height="31"/>
-                        <color key="backgroundColor" red="0.15686275059999999" green="0.27843138579999999" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" name="Pretendard-SemiBold" family="Pretendard" pointSize="16"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="포인트 사용하기(-20P)">

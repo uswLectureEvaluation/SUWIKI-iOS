@@ -3259,7 +3259,7 @@
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rq8-v5-r92">
-                                                <rect key="frame" x="16" y="163" width="382" height="150"/>
+                                                <rect key="frame" x="16" y="153" width="382" height="150"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내가 쓴 글과 포인트를 확인하려면 로그인하세요." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eR-0y-4MX">
                                                         <rect key="frame" x="110" y="31" width="162" height="40"/>
@@ -3297,7 +3297,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내정보" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFq-TR-YbC">
-                                                <rect key="frame" x="20" y="114" width="52" height="24"/>
+                                                <rect key="frame" x="20" y="104" width="52" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="Bfj-Kw-cyV"/>
                                                 </constraints>
@@ -3305,8 +3305,8 @@
                                                 <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaA-uZ-lKF">
-                                                <rect key="frame" x="16" y="163" width="382" height="150"/>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SaA-uZ-lKF">
+                                                <rect key="frame" x="16" y="153" width="382" height="150"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 계정" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOD-3r-10G">
                                                         <rect key="frame" x="20" y="24" width="46" height="19"/>
@@ -3387,7 +3387,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3c-bk-wPx">
-                                                <rect key="frame" x="16" y="321" width="382" height="189"/>
+                                                <rect key="frame" x="16" y="311" width="382" height="189"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 보유 포인트" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wR-QW-IqJ">
                                                         <rect key="frame" x="20" y="23" width="105" height="16"/>
@@ -3562,7 +3562,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNl-jG-lWw">
-                                                <rect key="frame" x="16" y="518" width="382" height="500"/>
+                                                <rect key="frame" x="16" y="508" width="382" height="500"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="포인트 제도 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRT-oL-1SG">
                                                         <rect key="frame" x="20" y="23" width="105" height="19.5"/>
@@ -3739,7 +3739,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okC-vR-k6D">
-                                                <rect key="frame" x="318" y="114" width="80" height="26"/>
+                                                <rect key="frame" x="318" y="104" width="80" height="26"/>
                                                 <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="aPt-Gs-qix"/>
@@ -3754,7 +3754,7 @@
                                                 </connections>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXK-5Z-0cP">
-                                                <rect key="frame" x="16" y="829" width="382" height="316"/>
+                                                <rect key="frame" x="16" y="819" width="382" height="316"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUN-j2-Mh1">
                                                         <rect key="frame" x="24" y="23" width="59.5" height="19"/>
@@ -3858,7 +3858,7 @@
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJW-IF-9wf">
-                                                <rect key="frame" x="16" y="321" width="382" height="500"/>
+                                                <rect key="frame" x="16" y="311" width="382" height="500"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="포인트 제도 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XU1-ra-0bj">
                                                         <rect key="frame" x="20" y="23" width="105" height="19.5"/>
@@ -4035,7 +4035,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Elu-w3-uxZ">
-                                                <rect key="frame" x="16" y="1034" width="382" height="381"/>
+                                                <rect key="frame" x="16" y="1024" width="382" height="381"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8To-9S-gVE">
                                                         <rect key="frame" x="24" y="23" width="59.5" height="19"/>
@@ -4183,17 +4183,17 @@
                                             <constraint firstItem="U3c-bk-wPx" firstAttribute="top" secondItem="SaA-uZ-lKF" secondAttribute="bottom" constant="8" id="L8v-er-ztH"/>
                                             <constraint firstItem="SaA-uZ-lKF" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" constant="16" id="Uar-a2-Vg1"/>
                                             <constraint firstItem="PTh-AR-ODP" firstAttribute="top" secondItem="T1Y-PH-RBr" secondAttribute="top" constant="20" id="Vuv-zW-GO9"/>
-                                            <constraint firstItem="okC-vR-k6D" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="50" id="W9H-no-zrK"/>
+                                            <constraint firstItem="okC-vR-k6D" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="40" id="W9H-no-zrK"/>
                                             <constraint firstItem="yqU-S6-PVa" firstAttribute="top" secondItem="T1Y-PH-RBr" secondAttribute="top" constant="63" id="WSA-hV-HSx"/>
                                             <constraint firstAttribute="trailing" secondItem="U3c-bk-wPx" secondAttribute="trailing" constant="16" id="Y48-HN-Xah"/>
-                                            <constraint firstItem="nFq-TR-YbC" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="50" id="YDX-uf-ZQb"/>
+                                            <constraint firstItem="nFq-TR-YbC" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="40" id="YDX-uf-ZQb"/>
                                             <constraint firstAttribute="trailing" secondItem="okC-vR-k6D" secondAttribute="trailing" constant="16" id="ZQV-iD-VTK"/>
                                             <constraint firstItem="UXK-5Z-0cP" firstAttribute="top" secondItem="hJW-IF-9wf" secondAttribute="bottom" constant="8" id="bCe-ZO-hDZ"/>
-                                            <constraint firstItem="SaA-uZ-lKF" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="99" id="bGd-wF-6zx"/>
+                                            <constraint firstItem="SaA-uZ-lKF" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="89" id="bGd-wF-6zx"/>
                                             <constraint firstItem="yqU-S6-PVa" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" id="k1d-Y7-VVl"/>
                                             <constraint firstItem="pNl-jG-lWw" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" constant="16" id="lM2-aD-JBR"/>
                                             <constraint firstAttribute="trailing" secondItem="pNl-jG-lWw" secondAttribute="trailing" constant="16" id="mJE-Lw-A7d"/>
-                                            <constraint firstItem="rq8-v5-r92" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="99" id="oFd-gR-KNx"/>
+                                            <constraint firstItem="rq8-v5-r92" firstAttribute="top" secondItem="yqU-S6-PVa" secondAttribute="bottom" constant="89" id="oFd-gR-KNx"/>
                                             <constraint firstAttribute="trailing" secondItem="SaA-uZ-lKF" secondAttribute="trailing" constant="16" id="p2r-VX-SPb"/>
                                             <constraint firstAttribute="trailing" secondItem="hJW-IF-9wf" secondAttribute="trailing" constant="16" id="p79-7I-krm"/>
                                             <constraint firstItem="UXK-5Z-0cP" firstAttribute="leading" secondItem="T1Y-PH-RBr" secondAttribute="leading" constant="16" id="q4r-xL-9s4"/>

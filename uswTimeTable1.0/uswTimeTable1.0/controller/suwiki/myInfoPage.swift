@@ -56,6 +56,9 @@ class myInfoPage: UIViewController {
         loginInformation.isHidden = true
         loginPointPolicy.isHidden = true
         writtenPostBtn.isHidden = true
+        logoutInfoView.isHidden = false
+        logoutPointPolicy.isHidden = false
+        logoutInformation.isHidden = false
         // Do any additional setup after loading the view.
     }
     

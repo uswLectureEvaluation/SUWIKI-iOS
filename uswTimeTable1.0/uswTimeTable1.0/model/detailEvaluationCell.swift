@@ -26,6 +26,8 @@ class detailEvaluationCell: UITableViewCell {
     @IBOutlet weak var team: UILabel!
     @IBOutlet weak var homework: UILabel!
     @IBOutlet weak var difficulty: UILabel!
+
+    @IBOutlet weak var reportBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

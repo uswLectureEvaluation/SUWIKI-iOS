@@ -250,6 +250,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.content.text = detailEvaluationArray[indexPath.row].content + "\n"
             cell.ratingBarView.rating = Double(detailEvaluationArray[indexPath.row].totalAvg)!
             
+            cell.reportBtn.tag = indexPath.row
+            cell.reportBtn.addTarget(self, action: #selector(evalReportBtnClikced), for: .touchUpInside)
+            
             return cell
             
         } else if tableViewNumber == 1{
@@ -479,6 +482,59 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    @objc func evalReportBtnClikced(sender: UIButton){
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        
+        let evaluateIdx = detailEvaluationArray[indexPath.row].id
+        
+        let evalReportAlert = UIAlertController(title: "신고 하시겠습니까?", message: "허위 신고시 제재가 가해질 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
+        
+        let reportButton = UIAlertAction(title: "신고", style: .destructive, handler: { [self] (action) -> Void in
+            evalReport(evaluateIdx: evaluateIdx)
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        evalReportAlert.addAction(reportButton)
+        evalReportAlert.addAction(cancelButton)
+        present(evalReportAlert, animated: true, completion: nil)
+        
+    }
+    
+    func evalReport(evaluateIdx: Int){
+        
+        let url = "https://api.suwiki.kr/user/report/evaluate"
+        
+        let parameters: Parameters = [
+            "evaluateIdx" : evaluateIdx,
+            "content" : ""
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            let data = response.response?.statusCode
+            
+            if Int(data!) == 403 {
+                let alert = UIAlertController(title:"제한된 유저입니다!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
+    @objc func examReportBtnClicked(sender: UIButton){
+        
+    }
+    
     @objc func takeBtnClicked(sender: UIButton){
         let indexPath = IndexPath(row: sender.tag, section: 0)
         
@@ -532,6 +588,10 @@ class examInfoCell: UITableViewCell{
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        takeBtn.layer.borderWidth = 1.0
+        takeBtn.layer.borderColor = UIColor.white.cgColor
+        takeBtn.layer.cornerRadius = 10.0
         
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.lightGray.cgColor

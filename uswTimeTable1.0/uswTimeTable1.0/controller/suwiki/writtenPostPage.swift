@@ -98,6 +98,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             cell.lectureNameLabel.text = tableViewEvalData[indexPath.row].lectureName
             cell.professorLabel.text = tableViewEvalData[indexPath.row].professor
+            cell.majorLabel.text = tableViewEvalData[indexPath.row].majorType
             
             cell.totalAvgLabel.text = tableViewEvalData[indexPath.row].totalAvg
             cell.ratingBarView.rating = Double(tableViewEvalData[indexPath.row].totalAvg)!
