@@ -16,7 +16,7 @@ target 'uswTimeTable1.0' do
   pod 'Alamofire'
   pod 'KeychainSwift'
   pod 'Cosmos'
+  pod 'Google-Mobile-Ads-SDK'
   # Pods for uswTimeTable1.0
-
 
 end

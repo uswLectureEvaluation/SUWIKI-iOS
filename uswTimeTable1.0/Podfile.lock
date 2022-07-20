@@ -49,6 +49,9 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
   - Gifu (3.3.1)
+  - Google-Mobile-Ads-SDK (9.7.0):
+    - GoogleAppMeasurement (< 10.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (8.13.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.13.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
@@ -73,6 +76,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
+  - GoogleUserMessagingPlatform (2.0.0)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -116,6 +120,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Gifu
+  - Google-Mobile-Ads-SDK
   - KeychainSwift
   - Realm
   - RealmSwift
@@ -134,8 +139,10 @@ SPEC REPOS:
     - FirebaseDatabase
     - FirebaseInstallations
     - Gifu
+    - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleUserMessagingPlatform
     - GoogleUtilities
     - KeychainSwift
     - leveldb-library
@@ -157,8 +164,10 @@ SPEC CHECKSUMS:
   FirebaseDatabase: c610ab55bcb033d5eb3d17acba57301068a28497
   FirebaseInstallations: 60edbf7e11d91ae4c751d26c200dfd037099abe0
   Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
+  Google-Mobile-Ads-SDK: 2685d6b3374b26de8a71f535614396e57cf80b13
   GoogleAppMeasurement: 135c2fbcf5038e0f37dbce04fa641a702fc275d1
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
+  GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
@@ -168,6 +177,6 @@ SPEC CHECKSUMS:
   RealmSwift: 10ed6fa09c36aaaff55e12afdc71802ec3ddb1c0
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: 55c8d264b4707b89d8c7e416008c53ee65d7de02
+PODFILE CHECKSUM: 6c3c0fac8bfe6fcc5a663b7cb7a5233a74e0659c
 
 COCOAPODS: 1.11.3

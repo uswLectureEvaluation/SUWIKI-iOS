@@ -4536,17 +4536,6 @@
                                     <constraint firstAttribute="height" constant="1" id="bCd-SG-AgM"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="3Dr-o1-GGF">
-                                <rect key="frame" x="359" y="69" width="35" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="line.horizontal.3" catalog="system"/>
-                                <connections>
-                                    <action selector="testLogOut:" destination="nWD-BY-JaL" eventType="touchUpInside" id="z8L-6Z-zkJ"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qQ6-Xl-P9Q">
                                 <rect key="frame" x="16" y="256" width="120" height="32"/>
                                 <subviews>
@@ -6645,11 +6634,6 @@
             <point key="canvasLocation" x="-1099" y="2174"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="pNh-pJ-vFd">
-            <size key="intrinsicContentSize" width="81" height="17"/>
-        </designable>
-    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
