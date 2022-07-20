@@ -278,6 +278,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
             cell.content.text = detailExamArray[indexPath.row].content + "\n"
             
+            cell.reportBtn.tag = indexPath.row
+            cell.reportBtn.addTarget(self, action: #selector(examReportBtnClicked), for: .touchUpInside)
+            
             return cell
         } else if tableViewNumber == 100 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
@@ -533,6 +536,52 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     @objc func examReportBtnClicked(sender: UIButton){
         
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        
+        let examIdx = detailExamArray[indexPath.row].id
+        
+        let examReportAlert = UIAlertController(title: "신고 하시겠습니까?", message: "허위 신고시 제재가 가해질 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
+        
+        let reportButton = UIAlertAction(title: "신고", style: .destructive, handler: { [self] (action) -> Void in
+            examReport(examIdx: examIdx)
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        examReportAlert.addAction(reportButton)
+        examReportAlert.addAction(cancelButton)
+        present(examReportAlert, animated: true, completion: nil)
+        
+    }
+    
+    func examReport(examIdx: Int){
+        
+        let url = "https://api.suwiki.kr/user/report/exam"
+        
+        let parameters: Parameters = [
+            "evaluateIdx" : examIdx,
+            "content" : ""
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            let data = response.response?.statusCode
+            
+            if Int(data!) == 403 {
+                let alert = UIAlertController(title:"제한된 유저입니다!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    
     }
     
     @objc func takeBtnClicked(sender: UIButton){

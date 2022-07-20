@@ -14,6 +14,7 @@ class detailExamCell: UITableViewCell {
     @IBOutlet weak var examType: UILabel!
     @IBOutlet weak var examDifficulty: UILabel!
     @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var reportBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

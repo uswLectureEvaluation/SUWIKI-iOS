@@ -87,10 +87,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bML-Tz-SrJ">
+                        <rect key="frame" x="375" y="16" width="23" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="FIl-Yi-GcM"/>
+                            <constraint firstAttribute="width" constant="23" id="jKa-Qb-BAV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="신고">
+                            <color key="titleColor" red="0.63921570780000003" green="0.63921570780000003" blue="0.63921570780000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DBw-Y8-Orj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="30y-RL-Up4"/>
                     <constraint firstItem="VtC-Ea-LT1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="59" id="6nW-FV-gzL"/>
+                    <constraint firstAttribute="trailing" secondItem="bML-Tz-SrJ" secondAttribute="trailing" constant="16" id="7Fm-pO-ngX"/>
                     <constraint firstAttribute="bottom" secondItem="aHd-vg-c8g" secondAttribute="bottom" constant="20" id="7sK-ob-knM"/>
                     <constraint firstItem="aHd-vg-c8g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="C9U-UO-bIf"/>
                     <constraint firstItem="aHd-vg-c8g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="108" id="CDb-MR-cf7"/>
@@ -100,6 +113,7 @@
                     <constraint firstItem="DHm-oy-ciU" firstAttribute="leading" secondItem="VtC-Ea-LT1" secondAttribute="trailing" constant="15" id="PIk-88-649"/>
                     <constraint firstItem="DBw-Y8-Orj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="R7K-un-14w"/>
                     <constraint firstItem="znT-rQ-bob" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="VcQ-kV-JHT"/>
+                    <constraint firstItem="bML-Tz-SrJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="hkM-ei-eh3"/>
                     <constraint firstItem="DHm-oy-ciU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="71" id="llk-HN-c61"/>
                     <constraint firstItem="TvI-jP-3P7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="xlf-9F-4nj"/>
                     <constraint firstAttribute="trailing" secondItem="aHd-vg-c8g" secondAttribute="trailing" constant="20" id="y31-3B-K0F"/>
@@ -110,6 +124,7 @@
                 <outlet property="content" destination="aHd-vg-c8g" id="e4Z-IG-H30"/>
                 <outlet property="examDifficulty" destination="VtC-Ea-LT1" id="3pb-pj-g3y"/>
                 <outlet property="examType" destination="znT-rQ-bob" id="Gdm-LJ-sYx"/>
+                <outlet property="reportBtn" destination="bML-Tz-SrJ" id="P9q-BU-gWm"/>
                 <outlet property="semester" destination="DBw-Y8-Orj" id="2WI-fW-jly"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="51.5625"/>
