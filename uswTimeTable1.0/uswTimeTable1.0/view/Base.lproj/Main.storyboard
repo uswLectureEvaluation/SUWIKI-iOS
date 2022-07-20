@@ -4309,12 +4309,12 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전핵" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GFO-LC-95L">
                                                     <rect key="frame" x="321" y="16" width="45" height="21"/>
-                                                    <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="F16-AL-tYa"/>
                                                         <constraint firstAttribute="height" constant="21" id="uSD-Fx-ZGQ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>

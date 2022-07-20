@@ -274,7 +274,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.content.numberOfLines = 0
             
             cell.semester.text = detailExamArray[indexPath.row].semester
-            cell.examType.text = detailExamArray[indexPath.row].examInfo
+            cell.examTypeLabel.text = detailExamArray[indexPath.row].examType
+            // cell.examType.text = detailExamArray[indexPath.row].examInfo
+            cell.examInfoLabel.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
             cell.content.text = detailExamArray[indexPath.row].content + "\n"
             
