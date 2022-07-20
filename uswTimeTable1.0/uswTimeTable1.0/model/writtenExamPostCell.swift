@@ -14,6 +14,7 @@ class writtenExamPostCell: UITableViewCell {
     
     @IBOutlet weak var lectureNameLabel: UILabel!
     @IBOutlet weak var professorLabel: UILabel!
+    @IBOutlet weak var majorTypeLabel: UILabel!
     
     @IBOutlet weak var examInfoLabel: UILabel!
     @IBOutlet weak var examDifficultyLabel: UILabel!

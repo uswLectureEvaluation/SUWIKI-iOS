@@ -128,6 +128,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             cell.lectureNameLabel.text = tableViewExamData[indexPath.row].lectureName
             cell.professorLabel.text = tableViewExamData[indexPath.row].professor
+            cell.majorTypeLabel.text = tableViewExamData[indexPath.row].majorType
             
             cell.examDifficultyLabel.text = tableViewExamData[indexPath.row].examDifficulty
             cell.examInfoLabel.text = tableViewExamData[indexPath.row].examInfo

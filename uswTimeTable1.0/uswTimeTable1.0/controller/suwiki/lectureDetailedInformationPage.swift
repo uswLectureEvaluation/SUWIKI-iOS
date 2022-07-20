@@ -278,6 +278,13 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             // cell.examType.text = detailExamArray[indexPath.row].examInfo
             cell.examInfoLabel.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
+            
+            if detailExamArray[indexPath.row].examDifficulty == "쉬움"{
+                cell.examDifficulty.tintColor = colorLiteralBlue
+            } else {
+                cell.examDifficulty.tintColor = colorLiteralPurple
+            }
+            
             cell.content.text = detailExamArray[indexPath.row].content + "\n"
             
             cell.reportBtn.tag = indexPath.row

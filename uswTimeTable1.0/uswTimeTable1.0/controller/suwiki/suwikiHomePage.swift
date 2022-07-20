@@ -114,6 +114,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
 
         tableViewUpdateData.removeAll()
+        tableView.reloadData()
         getMajorType()
         getLectureData(option: option, majorType: majorType)
 
