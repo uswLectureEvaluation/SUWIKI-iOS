@@ -3776,7 +3776,7 @@
                                                 </connections>
                                             </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXK-5Z-0cP">
-                                                <rect key="frame" x="16" y="819" width="382" height="316"/>
+                                                <rect key="frame" x="16" y="819" width="382" height="277"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUN-j2-Mh1">
                                                         <rect key="frame" x="24" y="23" width="60" height="19"/>
@@ -3801,22 +3801,8 @@
                                                             <action selector="announcementBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="ab9-sz-3CB"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="thA-Kz-tVO">
-                                                        <rect key="frame" x="24" y="111" width="52" height="16"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="16" id="2yv-Gw-h2L"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
-                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                        <state key="normal" title="구매 이력">
-                                                            <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="purchaseHistoryBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="O1q-qw-WtW"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mt5-2l-TqW">
-                                                        <rect key="frame" x="24" y="150" width="65" height="16"/>
+                                                        <rect key="frame" x="24" y="111" width="65" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="0vJ-Mq-3Jz"/>
                                                         </constraints>
@@ -3825,9 +3811,12 @@
                                                         <state key="normal" title="피드백 전송">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="feedbackBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="oB2-Ln-taL"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrO-jI-QAZ">
-                                                        <rect key="frame" x="24" y="189" width="49" height="16"/>
+                                                        <rect key="frame" x="24" y="150" width="49" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="SvQ-Te-eVD"/>
                                                         </constraints>
@@ -3838,7 +3827,7 @@
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siK-ty-hhN">
-                                                        <rect key="frame" x="24" y="228" width="49" height="16"/>
+                                                        <rect key="frame" x="24" y="189" width="49" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="syy-PQ-SNz"/>
                                                         </constraints>
@@ -3847,9 +3836,12 @@
                                                         <state key="normal" title="이용약관">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="serviceBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="hEl-cS-sIw"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyK-FA-JRp">
-                                                        <rect key="frame" x="24" y="267" width="104" height="16"/>
+                                                        <rect key="frame" x="24" y="228" width="104" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="YvO-gw-2BO"/>
                                                         </constraints>
@@ -3858,19 +3850,20 @@
                                                         <state key="normal" title="개인정보 처리 방침">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="privacyBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="Vpk-0P-x2C"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="BUN-j2-Mh1" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="23" id="0Ig-9C-d8H"/>
-                                                    <constraint firstItem="zyK-FA-JRp" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="267" id="0Nq-AT-SIQ"/>
+                                                    <constraint firstItem="zyK-FA-JRp" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="228" id="0Nq-AT-SIQ"/>
                                                     <constraint firstItem="qrO-jI-QAZ" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="8m0-kW-nsm"/>
-                                                    <constraint firstItem="qrO-jI-QAZ" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="189" id="JJo-lJ-k0w"/>
-                                                    <constraint firstItem="thA-Kz-tVO" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="Q6d-at-iLi"/>
-                                                    <constraint firstItem="thA-Kz-tVO" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="111" id="XNM-D9-J7l"/>
-                                                    <constraint firstAttribute="height" constant="316" id="a7K-vQ-6Us"/>
-                                                    <constraint firstItem="siK-ty-hhN" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="228" id="dyQ-Zh-g60"/>
-                                                    <constraint firstItem="Mt5-2l-TqW" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="150" id="krL-Mb-86H"/>
+                                                    <constraint firstItem="qrO-jI-QAZ" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="150" id="JJo-lJ-k0w"/>
+                                                    <constraint firstAttribute="height" constant="277" id="a7K-vQ-6Us"/>
+                                                    <constraint firstItem="siK-ty-hhN" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="189" id="dyQ-Zh-g60"/>
+                                                    <constraint firstItem="Mt5-2l-TqW" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="111" id="krL-Mb-86H"/>
                                                     <constraint firstItem="Mt5-2l-TqW" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="nuF-ib-AHS"/>
                                                     <constraint firstItem="BUN-j2-Mh1" firstAttribute="leading" secondItem="UXK-5Z-0cP" secondAttribute="leading" constant="24" id="pJG-8i-RpE"/>
                                                     <constraint firstItem="y1H-gH-Zrn" firstAttribute="top" secondItem="UXK-5Z-0cP" secondAttribute="top" constant="72" id="tKK-EP-Zlf"/>
@@ -4056,7 +4049,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="3Wg-Lu-D2Z" secondAttribute="trailing" constant="22" id="wFO-FT-goG"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Elu-w3-uxZ">
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Elu-w3-uxZ">
                                                 <rect key="frame" x="16" y="1024" width="382" height="381"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8To-9S-gVE">
@@ -6668,6 +6661,11 @@
             <point key="canvasLocation" x="-1099" y="2174"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="pNh-pJ-vFd">
+            <size key="intrinsicContentSize" width="81" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>

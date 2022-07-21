@@ -87,13 +87,22 @@ class myInfoPage: UIViewController {
         
     }
     
-    @IBAction func feedbackBtnClicked(_ sender: Any) {
+    @IBAction func feedbackBtnClicked(_ sender: Any) {let url = NSURL(string: "https://forms.gle/tZByKoN6rJCysvNz6")
+        let feedbackSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(feedbackSafariView, animated: true, completion: nil)
     }
     
     @IBAction func askBtnClicked(_ sender: Any) {
+//        NSURL(string: "https://forms.gle/tZByKoN6rJCysvNz6")
+//        let askSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+//        self.present(askSafariView, animated: true, completion: nil)
     }
     
     @IBAction func serviceBtnClicked(_ sender: Any) {
+        let url = NSURL(string: "https://sites.google.com/view/suwiki-policy-terms/")
+        let serviceSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(serviceSafariView, animated: true, completion: nil)
+    
     }
     
     
