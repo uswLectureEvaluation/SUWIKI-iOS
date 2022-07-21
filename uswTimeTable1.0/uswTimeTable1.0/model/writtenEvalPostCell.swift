@@ -14,6 +14,7 @@ class writtenEvalPostCell: UITableViewCell {
     @IBOutlet weak var semesterLabel: UILabel!
     @IBOutlet weak var lectureNameLabel: UILabel!
     @IBOutlet weak var professorLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
     
     @IBOutlet weak var totalAvgLabel: UILabel!
     @IBOutlet weak var ratingBarView: CosmosView!

@@ -23,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let keychain = KeychainSwift()
     
+    var majorType: String = "1"
+    
+    var autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
+
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let config = Realm.Configuration(
@@ -72,10 +78,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        let autoLogin = UserDefaults.standard.bool(forKey: "autoLogin")
         if autoLogin == false {
+            print("keychainClear")
             keychain.clear()
         }
+        print("keychainSave")
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        if autoLogin == false {
+            print("keychainClear")
+            keychain.clear()
+        }
+        print("keychainSave")
     }
 
     // MARK: - Core Data stack

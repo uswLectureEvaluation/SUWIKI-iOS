@@ -8,6 +8,7 @@
 import UIKit
 
 import Alamofire
+import SafariServices
 import SwiftyJSON
 import KeychainSwift
 
@@ -39,6 +40,7 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var viewExamPoint: UILabel!
     
     @IBOutlet weak var writtenPostBtn: UIButton!
+    @IBOutlet weak var loginBtn: UIButton!
     
     
     let keychain = KeychainSwift()
@@ -55,12 +57,17 @@ class myInfoPage: UIViewController {
         loginInformation.isHidden = true
         loginPointPolicy.isHidden = true
         writtenPostBtn.isHidden = true
+        logoutInfoView.isHidden = false
+        logoutPointPolicy.isHidden = false
+        logoutInformation.isHidden = false
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getInfoData()
         print("viewwillappear")
+        print(keychain.get("AccessToken"))
+        print(keychain.get("RefreshToken"))
     }
     
     // UserDefaults.standard.removeObject(forKey: "id")
@@ -78,6 +85,22 @@ class myInfoPage: UIViewController {
         present(nextVC, animated: true, completion: nil)
         //self.navigationController?.pushViewController(nextVC, animated: true)
         
+    }
+    
+    @IBAction func feedbackBtnClicked(_ sender: Any) {
+    }
+    
+    @IBAction func askBtnClicked(_ sender: Any) {
+    }
+    
+    @IBAction func serviceBtnClicked(_ sender: Any) {
+    }
+    
+    
+    @IBAction func privacyBtnClicked(_ sender: Any) {
+        let url = NSURL(string: "https://sites.google.com/view/suwiki-policy-privacy")
+        let privacySafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(privacySafariView, animated: true, completion: nil)
     }
     
     func navigationBarHidden() {
@@ -100,25 +123,40 @@ class myInfoPage: UIViewController {
                 let data = response.data
                 let json = JSON(data!)
                 
-                print(json)
-                
-                var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenEvaluation"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
-                
-                self.userInfo = readUserData
-                self.logoutInfoView.isHidden = true
-                self.logoutPointPolicy.isHidden = true
-                self.logoutInformation.isHidden = true
-                
-                self.viewUpdate()
-                self.loginInfoView.isHidden = false
-                self.loginPointView.isHidden = false
-                self.loginInformation.isHidden = false
-                self.loginPointPolicy.isHidden = false
-                self.writtenPostBtn.isHidden = false
-                
+                if response.response?.statusCode != 500 {
+                    print(json)
+                    
+                    var readUserData = MyInfo(loginId: json["loginId"].stringValue, email: json["email"].stringValue, point: json["point"].intValue, writtenEvaluation: json["writtenEvaluation"].intValue, writtenExam: json["writtenExam"].intValue, viewExam: json["viewExam"].intValue)
+                    
+                    self.userInfo = readUserData
+                    self.logoutInfoView.isHidden = true
+                    self.logoutPointPolicy.isHidden = true
+                    self.logoutInformation.isHidden = true
+                    
+                    self.viewUpdate()
+                    self.loginInfoView.isHidden = false
+                    self.loginPointView.isHidden = false
+                    self.loginInformation.isHidden = false
+                    self.loginPointPolicy.isHidden = false
+                    self.writtenPostBtn.isHidden = false
+                } else {
+                    
+                    self.loginInfoView.isHidden = true
+                    self.loginPointView.isHidden = true
+                    self.loginInformation.isHidden = true
+                    self.loginPointPolicy.isHidden = true
+                    self.writtenPostBtn.isHidden = true
+                    
+                    
+                    self.logoutInfoView.isHidden = false
+                    self.logoutPointPolicy.isHidden = false
+                    self.logoutInformation.isHidden = false
+                    
+                }
                 
             }
         } else {
+            
             loginInfoView.isHidden = true
             loginPointView.isHidden = true
             loginInformation.isHidden = true
@@ -149,6 +187,14 @@ class myInfoPage: UIViewController {
     }
     
     func makeCornerRadius(){
+        
+        loginBtn.layer.borderColor = UIColor.white.cgColor
+        loginBtn.layer.borderWidth = 1.0
+        loginBtn.layer.cornerRadius = 10.0
+        
+        writtenPostBtn.layer.borderWidth = 1.0
+        writtenPostBtn.layer.borderColor = UIColor.white.cgColor
+        writtenPostBtn.layer.cornerRadius = 10.0
         
         loginInformation.layer.cornerRadius = 12.0
         loginInformation.layer.borderWidth = 1.0
@@ -181,6 +227,26 @@ class myInfoPage: UIViewController {
         
     }
     
+    @IBAction func logoutBtnClicked(_ sender: Any) {
+        
+        let logoutAlert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠어요?", preferredStyle: UIAlertController.Style.alert)
+        
+        let logoutButton = UIAlertAction(title: "로그아웃", style: .destructive, handler: { [self] (action) -> Void in
+            keychain.clear()
+            UserDefaults.standard.set(false, forKey: "autoLogin")
+            viewDidLoad()
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        logoutAlert.addAction(logoutButton)
+        logoutAlert.addAction(cancelButton)
+        present(logoutAlert, animated: true, completion: nil)
+
+    }
+    
     @IBAction func writtenPostBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "writtenPostVC") as! writtenPostPage
         self.navigationController?.pushViewController(nextVC, animated: true)
@@ -189,12 +255,13 @@ class myInfoPage: UIViewController {
     
     @IBAction func announcementBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "announcementVC") as! announcementPage
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true, completion: nil)
     }
     
     @IBAction func purchaseHistoryBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "purchaseVC") as! PurchaseHistoryPage
-        self.present(nextVC, animated: true, completion: nil)
+        present(nextVC, animated: true, completion: nil)
     }
     
     

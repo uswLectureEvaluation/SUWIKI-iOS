@@ -15,27 +15,30 @@ class BaseInterceptor: RequestInterceptor{
     let keychain = KeychainSwift()
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+        
             guard urlRequest.url?.absoluteString.hasPrefix("https://api.suwiki.kr/") == true,
                   let accessToken = keychain.get("AccessToken") else {
                       completion(.success(urlRequest))
                       return
                   }
-
+        
+            print("adapt")
             var urlRequest = urlRequest
             urlRequest.setValue(accessToken, forHTTPHeaderField: "Authorization")
-      
+
             completion(.success(urlRequest))
            
         }
     
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-
+        
         guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
+            print("donottry")
             completion(.doNotRetryWithError(error))
             return
         }
-        
+        print("retry")
         let url = "https://api.suwiki.kr/user/refresh"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("RefreshToken") ?? "")
@@ -49,6 +52,7 @@ class BaseInterceptor: RequestInterceptor{
                 self.keychain.clear()
                 self.keychain.set(json["RefreshToken"].stringValue, forKey: "RefreshToken")
                 self.keychain.set(json["AccessToken"].stringValue, forKey: "AccessToken")
+                print("keychainSet")
                 completion(.retry)
             case .failure(let error):
                 completion(.doNotRetryWithError(error))
@@ -56,19 +60,6 @@ class BaseInterceptor: RequestInterceptor{
             
             
         }
-        
-        /*
-            RefreshTokenAPI.refreshToken { result in
-                switch result {
-                case .success(let accessToken):
-                    KeychainServiceImpl.shared.accessToken = accessToken
-                    completion(.retry)
-                    
-                case .failure(let error):
-                    completion(.doNotRetryWithError(error))
-                }
-            }
-        */
         }
     
     

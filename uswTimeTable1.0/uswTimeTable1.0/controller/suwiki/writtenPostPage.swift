@@ -37,6 +37,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+   
     
         
         let evalPostCell = UINib(nibName: "writtenEvalPostCell", bundle: nil)
@@ -64,6 +65,9 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         examBtn.setTitleColor(.lightGray, for: .normal)
     }
     
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     @IBAction func evalBtnClicked(_ sender: Any) {
         if tableViewEvalData.count == 0{
             tableViewNumber = 3
@@ -97,6 +101,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             cell.lectureNameLabel.text = tableViewEvalData[indexPath.row].lectureName
             cell.professorLabel.text = tableViewEvalData[indexPath.row].professor
+            cell.majorLabel.text = tableViewEvalData[indexPath.row].majorType
             
             cell.totalAvgLabel.text = tableViewEvalData[indexPath.row].totalAvg
             cell.ratingBarView.rating = Double(tableViewEvalData[indexPath.row].totalAvg)!
@@ -126,6 +131,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             cell.lectureNameLabel.text = tableViewExamData[indexPath.row].lectureName
             cell.professorLabel.text = tableViewExamData[indexPath.row].professor
+            cell.majorTypeLabel.text = tableViewExamData[indexPath.row].majorType
             
             cell.examDifficultyLabel.text = tableViewExamData[indexPath.row].examDifficulty
             cell.examInfoLabel.text = tableViewExamData[indexPath.row].examInfo
@@ -229,10 +235,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                     
                     self.tableViewEvalData.append(readData)
                 }
-                self.tableView.reloadData()
-            } else {
-                self.tableViewNumber = 0
             }
+            self.tableView.reloadData()
         }
     }
     
@@ -252,9 +256,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             let data = response.data
             let json = JSON(data ?? "")
-            if json["data"].count == 0 {
-                self.tableViewNumber = 4
-            } else if json != "" {
+            if json != "" {
                 for index in 0..<json["data"].count{
                     let jsonData = json["data"][index]
                  

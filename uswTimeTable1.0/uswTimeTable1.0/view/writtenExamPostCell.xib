@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -29,7 +30,7 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022-2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZoL-Ee-dNr">
                         <rect key="frame" x="16" y="16" width="61" height="22"/>
-                        <color key="backgroundColor" red="0.97254908080000002" green="0.97647058959999999" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <color key="tintColor" red="0.97254908080000002" green="0.97647058959999999" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="Fau-kW-sPc"/>
@@ -47,7 +48,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="중간고사" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj0-d7-pLE">
                         <rect key="frame" x="85" y="16" width="66" height="22"/>
-                        <color key="backgroundColor" red="0.97254908080000002" green="0.97647058959999999" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="66" id="964-pU-6u5"/>
                             <constraint firstAttribute="height" constant="22" id="Qh2-wq-5Zm"/>
@@ -69,7 +70,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이다민" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPu-EY-OKq">
-                        <rect key="frame" x="130" y="73" width="36.5" height="17"/>
+                        <rect key="frame" x="81.5" y="73" width="36.5" height="17"/>
                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -137,6 +138,23 @@
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="교양대학" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHZ-Ke-HSt">
+                        <rect key="frame" x="16" y="73" width="48.5" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="wTP-DK-e2Z"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0N-ks-Gtz">
+                        <rect key="frame" x="72.5" y="76" width="1" height="11"/>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="iGl-mC-bXe"/>
+                            <constraint firstAttribute="height" constant="11" id="qNU-eE-KyJ"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="UGq-ub-OLY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="0JQ-FI-XHb"/>
@@ -149,17 +167,21 @@
                     <constraint firstItem="7La-hb-Sd6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Bp7-6w-IDa"/>
                     <constraint firstItem="274-RS-YRA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="127" id="Ey6-1c-MfJ"/>
                     <constraint firstItem="44y-P7-Kbt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="127" id="F5m-WA-GxN"/>
-                    <constraint firstItem="lPu-EY-OKq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="130" id="Gel-rL-W0s"/>
+                    <constraint firstItem="aHZ-Ke-HSt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="73" id="HGv-Dq-WRm"/>
                     <constraint firstItem="AP8-YS-swZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="105" id="Ite-XM-Qhd"/>
                     <constraint firstItem="ZoL-Ee-dNr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="MvL-Ls-BaB"/>
                     <constraint firstItem="274-RS-YRA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="65" id="NtS-Li-WNR"/>
                     <constraint firstAttribute="bottomMargin" secondItem="D7O-xV-YsK" secondAttribute="bottom" constant="16" id="OPD-UN-xPr"/>
                     <constraint firstItem="Oj0-d7-pLE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="S2G-Is-fXL"/>
                     <constraint firstItem="D7O-xV-YsK" firstAttribute="top" secondItem="44y-P7-Kbt" secondAttribute="bottom" constant="16" id="Xs9-xJ-ttn"/>
+                    <constraint firstItem="F0N-ks-Gtz" firstAttribute="leading" secondItem="aHZ-Ke-HSt" secondAttribute="trailing" constant="8" id="Ysb-Mc-haS"/>
+                    <constraint firstItem="aHZ-Ke-HSt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bBC-xC-Buj"/>
                     <constraint firstAttribute="trailing" secondItem="RKz-as-6lQ" secondAttribute="trailing" constant="20" id="cyf-L0-Yro"/>
+                    <constraint firstItem="lPu-EY-OKq" firstAttribute="leading" secondItem="F0N-ks-Gtz" secondAttribute="trailing" constant="8" id="fUU-Pn-luu"/>
                     <constraint firstItem="OAD-Yq-k8G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="105" id="h8L-x0-c3v"/>
                     <constraint firstItem="RKz-as-6lQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="neT-SY-JN2"/>
                     <constraint firstItem="ZoL-Ee-dNr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="pz1-Id-vhg"/>
+                    <constraint firstItem="F0N-ks-Gtz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="76" id="tmb-z3-tOf"/>
                     <constraint firstItem="7La-hb-Sd6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="46" id="tyu-D4-0RS"/>
                     <constraint firstItem="Oj0-d7-pLE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="85" id="ugZ-co-leb"/>
                     <constraint firstAttribute="trailing" secondItem="D7O-xV-YsK" secondAttribute="trailing" constant="20" id="xmX-qR-Pde"/>
@@ -174,10 +196,16 @@
                 <outlet property="examInfoLabel" destination="274-RS-YRA" id="7CO-ai-7JL"/>
                 <outlet property="examTypeLabel" destination="Oj0-d7-pLE" id="h4q-3v-7J4"/>
                 <outlet property="lectureNameLabel" destination="7La-hb-Sd6" id="x1H-Sc-hzI"/>
+                <outlet property="majorTypeLabel" destination="aHZ-Ke-HSt" id="xUU-ce-3vZ"/>
                 <outlet property="professorLabel" destination="lPu-EY-OKq" id="1Yf-fH-k0c"/>
                 <outlet property="semesterLabel" destination="ZoL-Ee-dNr" id="jgk-cl-Dfo"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="88.392857142857139"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

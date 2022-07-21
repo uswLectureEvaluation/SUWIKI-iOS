@@ -19,7 +19,7 @@ import DropDown
 // 한번에 set으로 넣어주는 방법이 제일 좋아보이긴 하나, 순서가 중요하다면 array로 넣는 방법으로 진행
 // point 셋다 3 아니여야 넘어가는 방법 적용
 
-class lectureEvaluationWritePage: UIViewController {
+class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
     
     
     @IBOutlet weak var superView: UIView!
@@ -42,17 +42,17 @@ class lectureEvaluationWritePage: UIViewController {
     @IBOutlet weak var teamNoBtn: UIButton!
     @IBOutlet weak var teamHaveBtn: UIButton!
     
-    
     @IBOutlet weak var homeworkNoBtn: UIButton!
     @IBOutlet weak var homeworkUsuallyBtn: UIButton!
     @IBOutlet weak var homeworkManyBtn: UIButton!
-    
     
     @IBOutlet weak var easyDifficultyBtn: UIButton!
     @IBOutlet weak var normalDifficultyBtn: UIButton!
     @IBOutlet weak var hardDiffcultyBtn: UIButton!
     
     @IBOutlet weak var contentField: UITextView!
+    
+    @IBOutlet weak var finishBtn: UIButton!
     
     var teamWorkType = evalBtnClickedType.teamWorkType()
     var homeworkType = evalBtnClickedType.homeworkType()
@@ -72,9 +72,13 @@ class lectureEvaluationWritePage: UIViewController {
     var semesterList: [String] = []
     
     var keyboardTouchCheck: Bool = false
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+    let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnCustom()
+        
         self.contentField.layer.borderWidth = 1.0
         self.contentField.layer.borderColor = UIColor.black.cgColor
         lectureNameLabel.text = lectureName
@@ -82,8 +86,11 @@ class lectureEvaluationWritePage: UIViewController {
         if adjustBtn == 1 {
             getAdjustEvaluation()
         }
-        
-        
+
+        contentField.delegate = self
+        contentField.text = "강의평가를 작성해주세요."
+        contentField.textColor = UIColor.lightGray
+        contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
 
         contentField.layer.cornerRadius = 8.0
         contentField.layer.borderWidth = 1.0
@@ -104,11 +111,11 @@ class lectureEvaluationWritePage: UIViewController {
         dropDown.textFont = UIFont.systemFont(ofSize: 16)
         dropDown.cornerRadius = 8.0
 
+        //            self.categoryTextField.font = UIFont(name: "Pretendard", size: 14)
+
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.semesterTextField.text = semesterList[index]
-            self.semesterTextField.font = UIFont.systemFont(ofSize: 16)
-            self.semesterTextField.textColor = UIColor.black
-            self.semesterTextField.textAlignment = .left
+            self.semesterTextField.font = UIFont(name: "Pretendard", size: 14)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -140,7 +147,7 @@ class lectureEvaluationWritePage: UIViewController {
         
     @IBAction func finishedBtnClicked(_ sender: Any) {
         
-        if teamWorkType.teamWorkPoint == 3 || difficultyType.difficultyPoint == 3 || homeworkType.homeworkPoint == 3 || contentField.text == "" {
+        if teamWorkType.teamWorkPoint == 3 || difficultyType.difficultyPoint == 3 || homeworkType.homeworkPoint == 3 || semesterTextField.text == "선택" {
             let alert = UIAlertController(title:"데이터가 없네용!! 작성해주세연 !!",
                 message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
@@ -148,7 +155,16 @@ class lectureEvaluationWritePage: UIViewController {
             alert.addAction(cancle)
             self.present(alert, animated: true, completion: nil)
             
-        } else {
+        } else if contentField.text.count < 30 || contentField.text.count > 1000 {
+            let alert = UIAlertController(title:"강의평가를 확인해주세요!",
+                message: "내용은 30자 이상, 1000자 이하로 작성해주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
+
+        }
+        else {
             if adjustBtn == 0 {
                 writeEvaluation()
             } else if adjustBtn == 1 {
@@ -242,6 +258,47 @@ class lectureEvaluationWritePage: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+        
+    }
+    
+    func btnCustom(){
+        
+        teamNoBtn.layer.cornerRadius = 10.0
+        teamNoBtn.layer.borderWidth = 1.0
+        teamNoBtn.layer.borderColor = UIColor.white.cgColor
+        
+        teamHaveBtn.layer.cornerRadius = 10.0
+        teamHaveBtn.layer.borderColor = UIColor.white.cgColor
+        teamHaveBtn.layer.borderWidth = 1.0
+        
+        homeworkNoBtn.layer.cornerRadius = 10.0
+        homeworkNoBtn.layer.borderWidth = 1.0
+        homeworkNoBtn.layer.borderColor = UIColor.white.cgColor
+        
+        homeworkUsuallyBtn.layer.cornerRadius = 10.0
+        homeworkUsuallyBtn.layer.borderColor = UIColor.white.cgColor
+        homeworkUsuallyBtn.layer.borderWidth = 1.0
+        
+        homeworkManyBtn.layer.cornerRadius = 10.0
+        homeworkManyBtn.layer.borderWidth = 1.0
+        homeworkManyBtn.layer.borderColor = UIColor.white.cgColor
+
+        easyDifficultyBtn.layer.cornerRadius = 10.0
+        easyDifficultyBtn.layer.borderColor = UIColor.white.cgColor
+        easyDifficultyBtn.layer.borderWidth = 1.0
+        
+        normalDifficultyBtn.layer.cornerRadius = 10.0
+        normalDifficultyBtn.layer.borderWidth = 1.0
+        normalDifficultyBtn.layer.borderColor = UIColor.white.cgColor
+        
+        hardDiffcultyBtn.layer.cornerRadius = 10.0
+        hardDiffcultyBtn.layer.borderColor = UIColor.white.cgColor
+        hardDiffcultyBtn.layer.borderWidth = 1.0
+        
+        finishBtn.layer.cornerRadius = 10.0
+        finishBtn.layer.borderWidth = 1.0
+        finishBtn.layer.borderColor = UIColor.white.cgColor
+//        @IBOutlet weak var contentField: UITextView!
         
     }
         
@@ -426,11 +483,11 @@ class lectureEvaluationWritePage: UIViewController {
     
     func teamWorkPointCheck(){
         if teamWorkType.teamWorkPoint == 0 {
-            teamNoBtn.setTitleColor(.red, for: .normal)
+            teamNoBtn.setTitleColor(colorLiteralBlue, for: .normal)
             teamHaveBtn.setTitleColor(.darkGray, for: .normal)
         } else if teamWorkType.teamWorkPoint == 1 {
             teamNoBtn.setTitleColor(.darkGray, for: .normal)
-            teamHaveBtn.setTitleColor(.red, for: .normal)
+            teamHaveBtn.setTitleColor(colorLiteralPurple, for: .normal)
         } else {
             teamNoBtn.setTitleColor(.darkGray, for: .normal)
             teamHaveBtn.setTitleColor(.darkGray, for: .normal)
@@ -439,17 +496,17 @@ class lectureEvaluationWritePage: UIViewController {
     
     func homeworkPointCheck(){
         if homeworkType.homeworkPoint == 0{
-            homeworkNoBtn.setTitleColor(.red, for: .normal)
+            homeworkNoBtn.setTitleColor(colorLiteralBlue, for: .normal)
             homeworkUsuallyBtn.setTitleColor(.darkGray, for: .normal)
             homeworkManyBtn.setTitleColor(.darkGray, for: .normal)
         } else if homeworkType.homeworkPoint == 1{
             homeworkNoBtn.setTitleColor(.darkGray, for: .normal)
-            homeworkUsuallyBtn.setTitleColor(.red, for: .normal)
+            homeworkUsuallyBtn.setTitleColor(colorLiteralPurple, for: .normal)
             homeworkManyBtn.setTitleColor(.darkGray, for: .normal)
         } else if homeworkType.homeworkPoint == 2 {
             homeworkNoBtn.setTitleColor(.darkGray, for: .normal)
             homeworkUsuallyBtn.setTitleColor(.darkGray, for: .normal)
-            homeworkManyBtn.setTitleColor(.red, for: .normal)
+            homeworkManyBtn.setTitleColor(colorLiteralPurple, for: .normal)
         } else {
             homeworkNoBtn.setTitleColor(.darkGray, for: .normal)
             homeworkUsuallyBtn.setTitleColor(.darkGray, for: .normal)
@@ -459,17 +516,17 @@ class lectureEvaluationWritePage: UIViewController {
     
     func difficultyPointCheck(){
         if difficultyType.difficultyPoint == 0{
-            easyDifficultyBtn.setTitleColor(.red, for: .normal)
+            easyDifficultyBtn.setTitleColor(colorLiteralBlue, for: .normal)
             normalDifficultyBtn.setTitleColor(.darkGray, for: .normal)
             hardDiffcultyBtn.setTitleColor(.darkGray, for: .normal)
         } else if difficultyType.difficultyPoint == 1{
             easyDifficultyBtn.setTitleColor(.darkGray, for: .normal)
-            normalDifficultyBtn.setTitleColor(.red, for: .normal)
+            normalDifficultyBtn.setTitleColor(colorLiteralPurple, for: .normal)
             hardDiffcultyBtn.setTitleColor(.darkGray, for: .normal)
         } else if difficultyType.difficultyPoint == 2{
             easyDifficultyBtn.setTitleColor(.darkGray, for: .normal)
             normalDifficultyBtn.setTitleColor(.darkGray, for: .normal)
-            hardDiffcultyBtn.setTitleColor(.red, for: .normal)
+            hardDiffcultyBtn.setTitleColor(colorLiteralPurple, for: .normal)
         } else {
             easyDifficultyBtn.setTitleColor(.darkGray, for: .normal)
             normalDifficultyBtn.setTitleColor(.darkGray, for: .normal)
@@ -477,6 +534,19 @@ class lectureEvaluationWritePage: UIViewController {
         }
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if contentField.textColor == UIColor.lightGray {
+            contentField.text = nil
+            contentField.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if contentField.text.isEmpty {
+            contentField.text = "강의평가를 작성해주세요."
+            contentField.textColor = UIColor.lightGray
+        }
+    }
     
     @objc func keyboardWillAppear(_ notification: NSNotification){
         if keyboardTouchCheck == false {

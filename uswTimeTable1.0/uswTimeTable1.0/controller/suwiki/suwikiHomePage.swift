@@ -1,4 +1,4 @@
-    //
+//
 //  suwikiHomePage.swift
 //  uswTimeTable1.0
 //
@@ -22,73 +22,88 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
-    
+    @IBOutlet weak var majorCategoryBtn: UIView!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var majorTypeLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
+    @IBOutlet weak var chooseMajorLabel: UILabel!
+    
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+
     var tableViewUpdateData: Array<homePageData> = []
     let dropDown = DropDown()
     let keychain = KeychainSwift()
-    
+
     var count = 0
     
     var option = "modifiedDate"
     
+    var majorType: String = ""
     
-    let categoryList = ["최근 올라온 강의", "꿀 강의", "만족도가 높은 강의", "배울게 많은 강의", "Best 강의"]
-    
+    let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
+
     override func viewDidLoad() {
-        print(keychain.get("AccessToken"))
-        tableView.separatorInset.left = 0 // 테이블뷰 왼쪽 여백
+        
+        tableView.separatorInset.left = 0
+// 테이블뷰 왼쪽 여백
+        
         searchTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 6.0, height: 0.0))
         searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
+        
         navigationBarHidden()
         super.viewDidLoad()
-        getLectureData(option: option)
+        getLectureData(option: option, majorType: majorType)
         
         categoryDropDown.layer.borderWidth = 1.0
-        categoryDropDown.layer.borderColor = UIColor.lightGray.cgColor
-        categoryDropDown.layer.cornerRadius = 12.0
+        categoryDropDown.layer.borderColor = UIColor.systemGray5.cgColor
+        categoryDropDown.layer.cornerRadius = 10.0
+        
+        majorCategoryBtn.layer.borderWidth = 1.0
+        majorCategoryBtn.layer.borderColor = UIColor.systemGray5.cgColor
+        majorCategoryBtn.layer.cornerRadius = 10.0
         
         
         dropDown.anchorView = categoryDropDown
         dropDown.dataSource = categoryList
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
         dropDown.direction = .bottom
-        dropDown.textFont = UIFont.systemFont(ofSize: 13)
+        dropDown.textFont = UIFont.systemFont(ofSize: 14)
+        
 
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
           print("Selected item: \(item) at index: \(index)")
             self.categoryTextField.text = categoryList[index]
-            self.categoryTextField.font = UIFont.systemFont(ofSize: 13)
-            self.categoryTextField.textColor = .black
-            self.categoryTextField.textAlignment = .center
+            self.categoryTextField.font = UIFont(name: "Pretendard", size: 14)
+            self.categoryTextField.textColor = colorLiteralBlue
             
             
             if categoryTextField.text == "최근 올라온 강의" {
                 tableViewUpdateData.removeAll()
                 option = "modifiedDate"
-                getLectureData(option: option)
+                getLectureData(option: option, majorType: majorType)
                 
             } else if categoryTextField.text == "꿀 강의" {
                 tableViewUpdateData.removeAll()
                 option = "lectureHoneyAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             } else if categoryTextField.text == "만족도가 높은 강의"{
                 tableViewUpdateData.removeAll()
                 option = "lectureSatisfactionAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             } else if categoryTextField.text == "배울게 많은 강의" {
                 tableViewUpdateData.removeAll()
                 option = "lectureLearningAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             } else if categoryTextField.text == "Best 강의"{
                 tableViewUpdateData.removeAll()
                 option = "lectureTotalAvg"
-                getLectureData(option: option)
-                
+                getLectureData(option: option, majorType: majorType)
+
             }
             
             
@@ -96,21 +111,32 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
     }
     
-    /*
-    override func viewDidLayoutSubviews() {
-        let bottomLine1 = CALayer()
-        bottomLine1.frame = CGRect(x: 0, y: searchTextField.frame.size.height + 16, width: searchTextField.frame.width, height: 1)
-        bottomLine1.borderColor = UIColor.black.cgColor
-        bottomLine1.borderWidth = 1.0
-        searchTextField.borderStyle = .none
-        searchTextField.layer.addSublayer(bottomLine1)
+    override func viewWillAppear(_ animated: Bool) {
 
+        tableViewUpdateData.removeAll()
+        tableView.reloadData()
+        getMajorType()
+        getLectureData(option: option, majorType: majorType)
+
+        super.viewWillAppear(true)
     }
-    */
+
   
     @IBAction func majorCategoryBtnClicked(_ sender: Any) {
-        let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
-        self.navigationController?.pushViewController(majorVC, animated: true)
+        
+        if keychain.get("AccessToken") != nil {
+            
+            let majorVC = self.storyboard?.instantiateViewController(withIdentifier: "majorVC") as! MajorCategoryPage
+            majorVC.modalPresentationStyle = .fullScreen
+            self.present(majorVC, animated: true, completion: nil)
+            
+        } else {
+            
+            let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+            self.present(nextVC, animated: true, completion: nil)
+            
+        }
+
         
     }
     @IBAction func categoryButtonClicked(_ sender: Any) {
@@ -124,7 +150,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let mainCell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainPageCell
-        mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName
+        mainCell.lectureName.text = tableViewUpdateData[indexPath.row].lectureName 
         mainCell.lectureType.text = tableViewUpdateData[indexPath.row].lectureType
         mainCell.lectureTotalAvg.text = tableViewUpdateData[indexPath.row].lectureTotalAvg
         mainCell.majorType.text = tableViewUpdateData[indexPath.row].majorType
@@ -160,33 +186,83 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
  
     }
     
+
+    func getMajorType(){
+        let AD = UIApplication.shared.delegate as? AppDelegate
+        
+        if let majorData = AD?.majorType{
+            
+            if majorData == "1"{
+                chooseMajorLabel.isHidden = true
+                majorTypeLabel.isHidden = false
+                majorLabel.isHidden = false
+            } else {
+                if majorData == ""{
+                    majorType = ""
+                    chooseMajorLabel.text = "전체"
+                } else {
+                    majorType = majorData
+                    chooseMajorLabel.text = majorType
+                }
+                
+                chooseMajorLabel.isHidden = false
+                majorTypeLabel.isHidden = true
+                majorLabel.isHidden = true
+            }
+        }
+    }
+    
     // #MARK: 강의 데이터 불러오는 함수, 추후에 majorType 매개변수 추가, 파라미터 추가
-    func getLectureData(option: String){
+    func getLectureData(option: String, majorType: String){
         let url = "https://api.suwiki.kr/lecture/all"
         
+   
         let parameter: Parameters = [
-            "option" : option
+            "option" : option,
+            "majorType" : majorType
         ]
-    
+        print(majorType)
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
             
             let data = response.data
             let json = JSON(data!)
             print(json)
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+            if json["data"].count == 10{
+                for index in 0..<10{
+                    
+                    let jsonData = json["data"][index]
+                    let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+                    let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
+                    let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+                    let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+                    
+                    
+                    let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
+                    self.tableViewUpdateData.append(readData)
+                    
+                }
+            } else {
                 
-                let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+                for index in 0..<json["data"].count{
+                    let jsonData = json["data"][index]
+                    let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+                    let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
+                    let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+                    let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+                    
+                    
+                    let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
                 
-                self.tableViewUpdateData.append(readData)
+                    self.tableViewUpdateData.append(readData)
+                    
+                }
             }
+            
+            
             self.tableView?.reloadData()
+            
         }
     }
     
@@ -195,185 +271,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
           self.view.endEditing(true)
 
     }
-    
-    /*
-    func getMainPage(){
-
-        let url = "https://api.suwiki.kr/lecture/findAllList"
-        // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
-            let data = response.data
-            let json = JSON(data!)
-            
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                
-                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-                
-                self.tableViewUpdateData.append(readData)
-                            
-            }
-            self.tableView?.reloadData()
-        }
-        
-    }
-    
-    func getModifiedDate(){
-        self.tableViewUpdateData.removeAll()
-        let url = "https://api.suwiki.kr/lecture/findAllList"
-        // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
-            let data = response.data
-            let json = JSON(data!)
-           
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                
-                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-                
-                self.tableViewUpdateData.append(readData)
-                            
-            }
-            self.tableView?.reloadData()
-
-        }
-    }
-    
-    func getHoneyLecture(){
-        self.tableViewUpdateData.removeAll()
-        let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureHoneyAvg&page=1"
-        
-        // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
-            let data = response.data
-            let json = JSON(data!)
-           
-        
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalStatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                
-                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalStatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-                
-                self.tableViewUpdateData.append(readData)
-                            
-            }
-            self.tableView?.reloadData()
-            self.tableView?.beginUpdates()
-            self.tableView.endUpdates()
-
-        }
-    }
-    
-    func getSatisfactionLecture(){
-        self.tableViewUpdateData.removeAll()
-        let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureSatisfactionAvg&page=1"
-        
-        // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
-            let data = response.data
-            let json = JSON(data!)
-           
-        
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                
-                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-                
-                self.tableViewUpdateData.append(readData)
-                            
-            }
-            self.tableView?.reloadData()
-            self.tableView?.beginUpdates()
-            self.tableView.endUpdates()
-
-        }
-    }
-  
-    
-    @IBAction func testLogOut(_ sender: Any) {
-        UserDefaults.standard.removeObject(forKey: "id")
-        UserDefaults.standard.removeObject(forKey: "pwd")
-    }
-    
-    func getLearningLecture(){
-        self.tableViewUpdateData.removeAll()
-        let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureLearningAvg&page=1"
-        
-        // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
-            let data = response.data
-            let json = JSON(data!)
-           
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                
-                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-                
-                self.tableViewUpdateData.append(readData)
-                            
-            }
-            self.tableView?.reloadData()
-            self.tableView?.beginUpdates()
-            self.tableView.endUpdates()
-
-        }
-    }
-    
-    func getTotalLecture(){
-        self.tableViewUpdateData.removeAll()
-        let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
-        
-        // let url = "https://api.suwiki.kr/lecture/findAllList/?option=lectureTotalAvg&page=1"
-        
-        AF.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { (response) in
-            let data = response.data
-            let json = JSON(data!)
-           
-            for index in 0..<10{
-                let jsonData = json["data"][index]
-                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                
-                let readData = homePageData(id: jsonData["id"].intValue, selectedSemester: jsonData["selectedSemester"].stringValue, semester: jsonData["semester"].stringValue, professor: jsonData["professor"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-                
-                self.tableViewUpdateData.append(readData)
-                            
-            }
-            self.tableView?.reloadData()
-            self.tableView?.beginUpdates()
-            self.tableView.endUpdates()
-
-        }
-    }
-    
-     */
     
     func navigationBarHidden() {
             self.navigationController?.navigationBar.isHidden = true
@@ -386,46 +283,11 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.navigationController?.pushViewController(resultVC, animated: true)
         } else {
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.present(nextVC, animated: true, completion: nil)
         }
         
     }
-    /*
-    func tokenReissuance(id: Int){
-        let headers: HTTPHeaders = [
-            "Authorization" : String(keychain.get("RefreshToken") ?? "")
-        ]
 
-        let url = "https://api.suwiki.kr/user/refresh"
-
-        AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            let data = response.response?.statusCode
-            let json = JSON(response.value!)
-            if Int(data!) == 200{
-                print("success")
-                self.keychain.clear()
-                self.keychain.set(json["RefreshToken"].stringValue, forKey: "RefreshToken")
-                self.keychain.set(json["AccessToken"].stringValue, forKey: "AccessToken")
-                print(self.keychain.get("AccessToken") ?? "")
-                
-                let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-                detailVC.lectureId = id
-                self.navigationController?.pushViewController(detailVC, animated: true)
-                
-                
-            } else if Int(data!) == 401{ // 토큰 재발급 실패
-                print("fail")
-                self.keychain.clear()
-                UserDefaults.standard.removeObject(forKey: "id")
-                UserDefaults.standard.removeObject(forKey: "pwd")
-                let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
-                self.navigationController?.pushViewController(loginVC, animated: true)
-    
-            }
-            
-        }
-    }
-    */
     
 }
 

@@ -11,9 +11,11 @@ class detailExamCell: UITableViewCell {
 
     
     @IBOutlet weak var semester: UILabel!
-    @IBOutlet weak var examType: UILabel!
+    @IBOutlet weak var examTypeLabel: UILabel!
     @IBOutlet weak var examDifficulty: UILabel!
+    @IBOutlet weak var examInfoLabel: UILabel!
     @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var reportBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +23,7 @@ class detailExamCell: UITableViewCell {
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.cornerRadius = 8.0
+        
     }
     
     override func layoutSubviews() {

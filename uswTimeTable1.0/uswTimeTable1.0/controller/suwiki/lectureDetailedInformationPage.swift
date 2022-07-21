@@ -24,7 +24,7 @@ import Cosmos
 class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-
+    @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var contentsView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
@@ -50,7 +50,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
     var detailExamArray: Array<detailExam> = []
-    
+    var componentsSemester: Array<String> = []
     var testArray = ["1", "2", "3", "4", "5"]
     var testArray1 = ["1", "2", "3"]
     
@@ -59,6 +59,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
+    
 
     var tableViewNumber = 0
     var examDataExist = 0
@@ -74,6 +75,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         evaluationBtn.tintColor = .darkGray
         scrollView.isDirectionalLockEnabled = true
+        
+        writeBtn.layer.cornerRadius = 10.0
+        writeBtn.layer.borderColor = UIColor.white.cgColor
+        writeBtn.layer.borderWidth = 1.0
         
         // Xib 등록
         print(lectureId)
@@ -159,12 +164,15 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         // 조건문 추가하여 어느
         if tableViewNumber == 0 || tableViewNumber == 100{
             let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+            
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
             // 이후에 , 기준으로 쪼개서 append 한 상태로 옮겨주면 될듯함.
-            print(detailLectureArray)
-            nextVC.semesterList.append(detailLectureArray[0].semesterList)
+            for index in 0..<componentsSemester.count {
+                nextVC.semesterList.append(componentsSemester[index])
+            }
+            
             nextVC.adjustBtn = 0
             nextVC.modalPresentationStyle = .fullScreen
             self.present(nextVC, animated: true, completion: nil)
@@ -173,8 +181,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             nextVC.lectureName = lectureName.text!
             nextVC.professor = professor.text!
             nextVC.lectureId = lectureId
-            print(detailLectureArray[0].semesterList)
-            nextVC.semesterList.append(detailLectureArray[0].semesterList)
+            
+            for index in 0..<componentsSemester.count {
+                nextVC.semesterList.append(componentsSemester[index])
+            }
+            
             if evalDataExist == 0 {
                 nextVC.tableViewNumber = 0
                 nextVC.evalDataList = 0
@@ -239,6 +250,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.content.text = detailEvaluationArray[indexPath.row].content + "\n"
             cell.ratingBarView.rating = Double(detailEvaluationArray[indexPath.row].totalAvg)!
             
+            cell.reportBtn.tag = indexPath.row
+            cell.reportBtn.addTarget(self, action: #selector(evalReportBtnClikced), for: .touchUpInside)
+            
             return cell
             
         } else if tableViewNumber == 1{
@@ -260,9 +274,21 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.content.numberOfLines = 0
             
             cell.semester.text = detailExamArray[indexPath.row].semester
-            cell.examType.text = detailExamArray[indexPath.row].examInfo
+            cell.examTypeLabel.text = detailExamArray[indexPath.row].examType
+            // cell.examType.text = detailExamArray[indexPath.row].examInfo
+            cell.examInfoLabel.text = detailExamArray[indexPath.row].examInfo
             cell.examDifficulty.text = detailExamArray[indexPath.row].examDifficulty
+            
+            if detailExamArray[indexPath.row].examDifficulty == "쉬움"{
+                cell.examDifficulty.tintColor = colorLiteralBlue
+            } else {
+                cell.examDifficulty.tintColor = colorLiteralPurple
+            }
+            
             cell.content.text = detailExamArray[indexPath.row].content + "\n"
+            
+            cell.reportBtn.tag = indexPath.row
+            cell.reportBtn.addTarget(self, action: #selector(examReportBtnClicked), for: .touchUpInside)
             
             return cell
         } else if tableViewNumber == 100 {
@@ -314,6 +340,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             pointView.text = "까다로움"
             pointView.textColor = colorLiteralPurple
         }
+        
+        let componentsData = String(detailLectureArray[0].semesterList).components(separatedBy: ", ")
+        componentsSemester = componentsData
+        collection.reloadData()
+        print(componentsSemester)
+        
     }
     
     func getDetailPage(){
@@ -327,15 +359,20 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
             let data = response.value
-            
+
             let json = JSON(data ?? "")["data"]
+            
+            print(json)
+            
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
             let totalLearningAvg = String(format: "%.1f", round(json["lectureLearningAvg"].floatValue * 1000) / 1000)
             
             let detailLectureData = detailLecture(id: json["id"].intValue, semesterList: json["semesterList"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
-
+            
+            print(detailLectureData)
+            
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
         }
@@ -398,6 +435,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 let readData = detailEvaluation(id: jsonData["id"].intValue, semester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfaction, learning: learning, honey: honey, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
                 
+                
                 self.detailEvaluationArray.append(readData)
             }
             if self.detailEvaluationArray.count != 0 {
@@ -456,6 +494,105 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    @objc func evalReportBtnClikced(sender: UIButton){
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        
+        let evaluateIdx = detailEvaluationArray[indexPath.row].id
+        
+        let evalReportAlert = UIAlertController(title: "신고 하시겠습니까?", message: "허위 신고시 제재가 가해질 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
+        
+        let reportButton = UIAlertAction(title: "신고", style: .destructive, handler: { [self] (action) -> Void in
+            evalReport(evaluateIdx: evaluateIdx)
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        evalReportAlert.addAction(reportButton)
+        evalReportAlert.addAction(cancelButton)
+        present(evalReportAlert, animated: true, completion: nil)
+        
+    }
+    
+    func evalReport(evaluateIdx: Int){
+        
+        let url = "https://api.suwiki.kr/user/report/evaluate"
+        
+        let parameters: Parameters = [
+            "evaluateIdx" : evaluateIdx,
+            "content" : ""
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            let data = response.response?.statusCode
+            
+            if Int(data!) == 403 {
+                let alert = UIAlertController(title:"제한된 유저입니다!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+    }
+    
+    @objc func examReportBtnClicked(sender: UIButton){
+        
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+        
+        let examIdx = detailExamArray[indexPath.row].id
+        
+        let examReportAlert = UIAlertController(title: "신고 하시겠습니까?", message: "허위 신고시 제재가 가해질 수 있습니다.", preferredStyle: UIAlertController.Style.alert)
+        
+        let reportButton = UIAlertAction(title: "신고", style: .destructive, handler: { [self] (action) -> Void in
+            examReport(examIdx: examIdx)
+        })
+        
+        let cancelButton = UIAlertAction(title: "취소", style: .cancel, handler: { (action) -> Void in
+            print("Cancel button tapped")
+        })
+        
+        examReportAlert.addAction(reportButton)
+        examReportAlert.addAction(cancelButton)
+        present(examReportAlert, animated: true, completion: nil)
+        
+    }
+    
+    func examReport(examIdx: Int){
+        
+        let url = "https://api.suwiki.kr/user/report/exam"
+        
+        let parameters: Parameters = [
+            "evaluateIdx" : examIdx,
+            "content" : ""
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
+            let data = response.response?.statusCode
+            
+            if Int(data!) == 403 {
+                let alert = UIAlertController(title:"제한된 유저입니다!",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    
+    }
+    
     @objc func takeBtnClicked(sender: UIButton){
         let indexPath = IndexPath(row: sender.tag, section: 0)
         
@@ -510,9 +647,69 @@ class examInfoCell: UITableViewCell{
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        takeBtn.layer.borderWidth = 1.0
+        takeBtn.layer.borderColor = UIColor.white.cgColor
+        takeBtn.layer.cornerRadius = 10.0
+        
         contentView.layer.borderWidth = 1.0
         contentView.layer.borderColor = UIColor.lightGray.cgColor
         contentView.layer.cornerRadius = 8.0
     }
     
 }
+
+class DetailSemesterCell: UICollectionViewCell{
+    
+    @IBOutlet weak var semesterLabel: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.white.cgColor
+        contentView.layer.cornerRadius = 8.0
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4))
+    }
+    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0))
+//    }
+}
+
+
+extension lectureDetailedInformationPage: UICollectionViewDelegate{
+    
+}
+
+
+extension lectureDetailedInformationPage: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return componentsSemester.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.collection.dequeueReusableCell(withReuseIdentifier: "detailSemeCell", for: indexPath) as! DetailSemesterCell
+        cell.semesterLabel.text = componentsSemester[indexPath.row]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: 61, height: 23)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+        
+    }
+    
+}
+//
+//extension lectureDetailedInformationPage: UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0.2
+//
+//    }
+//}
