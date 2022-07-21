@@ -18,6 +18,7 @@ class loginController: UIViewController {
     
     @IBOutlet weak var idTextFieldLine: UIView!
     @IBOutlet var passwordTextFieldLine: UIView!
+    @IBOutlet weak var incorrectView: UIView!
     
     let keychain = KeychainSwift()
     let loginModel = userModel()
@@ -42,10 +43,7 @@ class loginController: UIViewController {
     override func viewDidLoad() {
         keychain.clear()
         self.navigationItem.hidesBackButton = true
-        
-        print(UserDefaults.standard.string(forKey: "id"))
-        print(UserDefaults.standard.string(forKey: "pwd"))
-
+        incorrectView.isHidden = true
         
         idTextField.addTarget(self, action: #selector(idTextFieldClicked), for: .touchDown)
         idTextField.addTarget(self, action: #selector(idTextFieldClicked), for: .editingChanged)
@@ -63,6 +61,7 @@ class loginController: UIViewController {
         checkBoxBool = false
         UserDefaults.standard.set(false, forKey: "autoLogin")
         print("viewwillappear")
+        incorrectView.isHidden = true
         super.viewWillAppear(true)
     }
     
@@ -89,45 +88,54 @@ class loginController: UIViewController {
     }
     
     @IBAction func loginButton (_ sender: Any) {
-        guard let id = idTextField.text, !id.isEmpty else { return }
-        guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
-
-        let emailLabel = UILabel(frame: CGRect(x: 30, y: idTextField.frame.maxY+5, width: 279, height: 25))
-        let passwordLabel = UILabel(frame: CGRect(x: 30, y: passwordTextField.frame.maxY+5, width: 279, height: 25))
+        guard let id = idTextField.text, !id.isEmpty
+        else {
+            wrongAccount()
+            return }
+        guard let pwd = passwordTextField.text, !pwd.isEmpty
+        else {
+            wrongAccount()
+            return }
         
     
-        if loginModel.isValidId(id: id){
-            if let removeable = self.view.viewWithTag(100){
-                removeable.removeFromSuperview()
-                idTextFieldLine.layer.backgroundColor = UIColor.lightGray.cgColor
-            }
-        } else {
-            emailLabel.isHidden = false
-            emailLabel.text = "아이디 형식을 확인해 주세요"
-            emailLabel.textColor = UIColor.red
-            emailLabel.tag = 100
-            idTextFieldLine.layer.backgroundColor = colorLiteralPurple.cgColor
-            
-            self.view.addSubview(emailLabel)
-        } // 아이디 형식 오류
-            
-        if loginModel.isValidPassword(pwd: pwd){
-            if let removeable = self.view.viewWithTag(101){
-                removeable.removeFromSuperview()
-                passwordTextFieldLine.layer.backgroundColor = UIColor.lightGray.cgColor
-            }
-        } else {
-            passwordLabel.isHidden = false
-            passwordLabel.text = "비밀번호 형식을 확인해 주세요"
-            passwordLabel.textColor = UIColor.red
-            passwordLabel.tag = 101
-            passwordTextFieldLine.layer.backgroundColor = colorLiteralPurple.cgColor
-            
-            self.view.addSubview(passwordLabel)
-        } // 비밀번호 형식 오류
+//        let emailLabel = UILabel(frame: CGRect(x: 16, y: idTextField.frame.maxY+5, width: 279, height: 25))
+//        let passwordLabel = UILabel(frame: CGRect(x: 30, y: passwordTextField.frame.maxY+5, width: 279, height: 25))
+//
+//        if loginModel.isValidId(id: id){
+//            if let removeable = self.view.viewWithTag(100){
+//                removeable.removeFromSuperview()
+//                idTextFieldLine.layer.backgroundColor = UIColor.lightGray.cgColor
+//            }
+//        } else {
+//            emailLabel.isHidden = false
+//            emailLabel.text = "아이디 형식을 확인해 주세요"
+//            emailLabel.font = UIFont(name: "Pretendard", size: 11)
+//            emailLabel.textColor = UIColor.red
+//            emailLabel.tag = 100
+//            idTextFieldLine.layer.backgroundColor = colorLiteralPurple.cgColor
+//
+//            self.view.addSubview(emailLabel)
+//        } // 아이디 형식 오류
+//
+//        if loginModel.isValidPassword(pwd: pwd){
+//            if let removeable = self.view.viewWithTag(101){
+//                removeable.removeFromSuperview()
+//                passwordTextFieldLine.layer.backgroundColor = UIColor.lightGray.cgColor
+//            }
+//        } else {
+//            passwordLabel.isHidden = false
+//            passwordLabel.text = "비밀번호 형식을 확인해 주세요"
+//            passwordLabel.textColor = UIColor.red
+//            passwordLabel.tag = 101
+//            passwordTextFieldLine.layer.backgroundColor = colorLiteralPurple.cgColor
+//
+//            self.view.addSubview(passwordLabel)
+//        } // 비밀번호 형식 오류
             
         if loginModel.isValidId(id: id) && loginModel.isValidPassword(pwd: pwd) { // 형식이 맞을 경우 로그인 확인
             loginCheck(id: id, pwd: pwd)
+        } else {
+            wrongAccount()
         }
         
     }
@@ -174,13 +182,17 @@ class loginController: UIViewController {
                 
             } else { // 이후에 alert로 수정 예정
                 print("로그인 실패")
-                let loginFailLabel = UILabel(frame: CGRect(x: 30, y: self.loginBtn.frame.minY - 5, width: 279, height: 45))
-                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
-                loginFailLabel.textColor = UIColor.red
-                self.view.addSubview(loginFailLabel)
+                self.wrongAccount()
             }
         }
     }
+    
+    func wrongAccount(){
+        incorrectView.isHidden = false
+        idTextFieldLine.layer.backgroundColor = UIColor.red.cgColor
+        passwordTextFieldLine.layer.backgroundColor = UIColor.red.cgColor
+    }
+    
     
     @IBAction func findIdBtnClicked(_ sender: Any) {
         let findIdVC = self.storyboard?.instantiateViewController(withIdentifier: "findIdVC") as! findIdPage
