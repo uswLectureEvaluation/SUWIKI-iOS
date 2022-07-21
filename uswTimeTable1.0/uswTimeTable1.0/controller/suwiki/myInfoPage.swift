@@ -87,6 +87,22 @@ class myInfoPage: UIViewController {
         
     }
     
+    @IBAction func feedbackBtnClicked(_ sender: Any) {
+    }
+    
+    @IBAction func askBtnClicked(_ sender: Any) {
+    }
+    
+    @IBAction func serviceBtnClicked(_ sender: Any) {
+    }
+    
+    
+    @IBAction func privacyBtnClicked(_ sender: Any) {
+        let url = NSURL(string: "https://sites.google.com/view/suwiki-policy-privacy")
+        let privacySafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(privacySafariView, animated: true, completion: nil)
+    }
+    
     func navigationBarHidden() {
             self.navigationController?.navigationBar.isHidden = true
         }

@@ -4106,6 +4106,9 @@
                                                         <state key="normal" title="피드백 전송">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="feedbackBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="s9y-Pe-n3H"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qY-m7-KTg">
                                                         <rect key="frame" x="24" y="189" width="49" height="16"/>
@@ -4117,6 +4120,9 @@
                                                         <state key="normal" title="문의하기">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="askBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="3gE-iP-L7d"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCg-RO-2CC">
                                                         <rect key="frame" x="24" y="228" width="49" height="16"/>
@@ -4128,6 +4134,9 @@
                                                         <state key="normal" title="이용약관">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="serviceBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="ZeP-3T-fVU"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljl-Zn-sB7">
                                                         <rect key="frame" x="24" y="267" width="104" height="16"/>
@@ -4139,6 +4148,9 @@
                                                         <state key="normal" title="개인정보 처리 방침">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="privacyBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="B3o-lh-fPv"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bc0-fV-Bfk">
                                                         <rect key="frame" x="24" y="306" width="77" height="16"/>
