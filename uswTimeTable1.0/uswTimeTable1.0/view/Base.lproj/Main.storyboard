@@ -1902,7 +1902,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="만족도" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QjS-Ei-Mw1">
-                                                        <rect key="frame" x="28" y="305" width="41.5" height="19"/>
+                                                        <rect key="frame" x="28" y="305" width="42" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="Kmz-bc-cZh"/>
                                                         </constraints>
@@ -2037,19 +2037,19 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조모임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfM-Qj-deI">
-                                                        <rect key="frame" x="28" y="403" width="41.5" height="19.5"/>
+                                                        <rect key="frame" x="28" y="403" width="42" height="19"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="과제" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7fu-Dv-Vv4">
-                                                        <rect key="frame" x="28" y="449" width="28" height="19.5"/>
+                                                        <rect key="frame" x="28" y="449" width="28" height="19"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFs-8y-nox">
-                                                        <rect key="frame" x="28" y="495" width="28" height="19.5"/>
+                                                        <rect key="frame" x="28" y="495" width="28" height="19"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -3565,7 +3565,7 @@
                                                 <rect key="frame" x="16" y="508" width="382" height="500"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="포인트 제도 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRT-oL-1SG">
-                                                        <rect key="frame" x="20" y="23" width="105" height="19.5"/>
+                                                        <rect key="frame" x="20" y="23" width="105" height="19"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -3757,7 +3757,7 @@
                                                 <rect key="frame" x="16" y="819" width="382" height="316"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUN-j2-Mh1">
-                                                        <rect key="frame" x="24" y="23" width="59.5" height="19"/>
+                                                        <rect key="frame" x="24" y="23" width="60" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="I3m-Na-V1F"/>
                                                         </constraints>
@@ -3861,7 +3861,7 @@
                                                 <rect key="frame" x="16" y="311" width="382" height="500"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="포인트 제도 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XU1-ra-0bj">
-                                                        <rect key="frame" x="20" y="23" width="105" height="19.5"/>
+                                                        <rect key="frame" x="20" y="23" width="105" height="19"/>
                                                         <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -4038,7 +4038,7 @@
                                                 <rect key="frame" x="16" y="1024" width="382" height="381"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8To-9S-gVE">
-                                                        <rect key="frame" x="24" y="23" width="59.5" height="19"/>
+                                                        <rect key="frame" x="24" y="23" width="60" height="19"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="19" id="0uW-dV-2LJ"/>
                                                         </constraints>
@@ -4998,7 +4998,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="꿀강지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0T-CB-jsM">
-                                                        <rect key="frame" x="16" y="110" width="41.5" height="14"/>
+                                                        <rect key="frame" x="16" y="110" width="42" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="9H1-xi-SPn"/>
                                                         </constraints>
@@ -5025,7 +5025,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배움지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gw-VQ-Bb8">
-                                                        <rect key="frame" x="16" y="141" width="41.5" height="14"/>
+                                                        <rect key="frame" x="16" y="141" width="42" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="0j9-h1-4lN"/>
                                                         </constraints>
@@ -5118,7 +5118,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="까다로움" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gl-jo-W2f">
-                                                        <rect key="frame" x="171" y="172" width="41.5" height="16"/>
+                                                        <rect key="frame" x="171" y="172" width="42" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="vZC-d2-gWn"/>
                                                         </constraints>
@@ -5610,7 +5610,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="꿀강지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eJ-M3-F74">
-                                                <rect key="frame" x="16" y="150" width="41.5" height="18"/>
+                                                <rect key="frame" x="16" y="150" width="42" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="AYd-EI-UOg"/>
                                                 </constraints>
@@ -5619,7 +5619,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배움지수" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Dy-sq-pMo">
-                                                <rect key="frame" x="16" y="187" width="41.5" height="18"/>
+                                                <rect key="frame" x="16" y="187" width="42" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="722-k3-XhU"/>
                                                 </constraints>
@@ -5769,19 +5769,19 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조모임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-zz-Bji">
-                                                <rect key="frame" x="16" y="265" width="31.5" height="14.5"/>
+                                                <rect key="frame" x="16" y="265" width="31.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="과제" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpl-k5-lVL">
-                                                <rect key="frame" x="16" y="304" width="21" height="14.5"/>
+                                                <rect key="frame" x="16" y="304" width="21" height="14"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="POh-pE-0uY">
-                                                <rect key="frame" x="16" y="343" width="21" height="14.5"/>
+                                                <rect key="frame" x="16" y="343" width="21" height="14"/>
                                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -5849,7 +5849,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수강학기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EjW-u2-2ml">
-                                                <rect key="frame" x="16" y="112" width="41.5" height="14"/>
+                                                <rect key="frame" x="16" y="112" width="42" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="UxG-eJ-Hud"/>
                                                 </constraints>
@@ -6030,7 +6030,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시험유형" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKz-MP-EgO">
-                                                <rect key="frame" x="16" y="242" width="41.5" height="14"/>
+                                                <rect key="frame" x="16" y="242" width="42" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="6nA-9O-D0S"/>
                                                 </constraints>
@@ -6177,7 +6177,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수강학기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wd6-4w-Bww">
-                                                <rect key="frame" x="16" y="112" width="41.5" height="14"/>
+                                                <rect key="frame" x="16" y="112" width="42" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="ae5-Ci-Jdd"/>
                                                 </constraints>
@@ -6186,7 +6186,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시험종류" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfK-BN-m8C">
-                                                <rect key="frame" x="16" y="162" width="41.5" height="14"/>
+                                                <rect key="frame" x="16" y="162" width="42" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="58N-sI-1uA"/>
                                                 </constraints>

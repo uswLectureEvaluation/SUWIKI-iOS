@@ -53,7 +53,9 @@ class PurchaseHistoryPage: UIViewController, UITableViewDelegate, UITableViewDat
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! PurchaseHistoryCell
             
-            cell.createDateLabel.text = tableViewUpdateData[indexPath.row].createDate
+            let range = tableViewUpdateData[indexPath.row].createDate.startIndex..<tableViewUpdateData[indexPath.row].createDate.index(tableViewUpdateData[indexPath.row].createDate.startIndex, offsetBy: 10)
+            
+            cell.createDateLabel.text = "\(tableViewUpdateData[indexPath.row].createDate[range])"
             cell.lectureNameLabel.text = tableViewUpdateData[indexPath.row].lectureName
             cell.majorTypeLabel.text = tableViewUpdateData[indexPath.row].majortype
             cell.professorLabel.text = tableViewUpdateData[indexPath.row].professor
