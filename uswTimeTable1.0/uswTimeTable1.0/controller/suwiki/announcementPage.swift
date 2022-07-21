@@ -39,6 +39,9 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableViewNumber == 0{
             return announcementViewData.count
@@ -61,7 +64,7 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath) as! noExamDataExistsCell
-            cell.noExamData.text = "강의평가가 없습니다."
+            cell.noExamData.text = "공지사항이 없습니다."
             
             return cell
         }
@@ -110,14 +113,20 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
             print(json)
             
             if json != "" {
-                for index in 0..<json["data"].count{
-                    let jsonData = json["data"][index]
-                    
-                    let readData = announcePage(id: jsonData["id"].intValue, title: jsonData["title"].stringValue, modifiedDate: jsonData["modifiedDate"].stringValue)
-                    
-                    self.announcementViewData.append(readData)
-                    print(readData)
+                if json["data"].count > 0{
+                    self.tableViewNumber = 0
+                    for index in 0..<json["data"].count{
+                        let jsonData = json["data"][index]
+                        
+                        let readData = announcePage(id: jsonData["id"].intValue, title: jsonData["title"].stringValue, modifiedDate: jsonData["modifiedDate"].stringValue)
+                        
+                        self.announcementViewData.append(readData)
+                        print(readData)
+                    }
+                } else {
+                    self.tableViewNumber = 1
                 }
+                
             }
             self.tableView.reloadData()
             

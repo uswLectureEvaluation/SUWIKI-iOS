@@ -65,6 +65,9 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         examBtn.setTitleColor(.lightGray, for: .normal)
     }
     
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     @IBAction func evalBtnClicked(_ sender: Any) {
         if tableViewEvalData.count == 0{
             tableViewNumber = 3

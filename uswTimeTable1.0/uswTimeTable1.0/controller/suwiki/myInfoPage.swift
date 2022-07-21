@@ -8,6 +8,7 @@
 import UIKit
 
 import Alamofire
+import SafariServices
 import SwiftyJSON
 import KeychainSwift
 
@@ -238,12 +239,13 @@ class myInfoPage: UIViewController {
     
     @IBAction func announcementBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "announcementVC") as! announcementPage
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true, completion: nil)
     }
     
     @IBAction func purchaseHistoryBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "purchaseVC") as! PurchaseHistoryPage
-        self.present(nextVC, animated: true, completion: nil)
+        present(nextVC, animated: true, completion: nil)
     }
     
     
