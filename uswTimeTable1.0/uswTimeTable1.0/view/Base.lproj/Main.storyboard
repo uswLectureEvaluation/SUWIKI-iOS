@@ -3271,8 +3271,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@suwon.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRI-Bc-rFx">
-                                <rect key="frame" x="295" y="245" width="100" height="19"/>
+                                <rect key="frame" x="296" y="245" width="102" height="19"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="102" id="eej-B7-hsn"/>
                                     <constraint firstAttribute="height" constant="19" id="hws-zN-fpi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
@@ -3280,7 +3281,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="학교 이메일 입력" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLk-gP-xHH">
-                                <rect key="frame" x="24" y="245" width="366" height="19"/>
+                                <rect key="frame" x="20" y="245" width="378" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="Pqz-9q-jJV"/>
                                 </constraints>
@@ -3288,43 +3289,57 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ps-Jq-HJS">
-                                <rect key="frame" x="24" y="424" width="366" height="48"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <rect key="frame" x="16" y="663" width="382" height="48"/>
+                                <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="VnK-8h-gu1"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="전송"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="아이디 찾기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="sendBtnClicked:" destination="cwe-gV-coP" eventType="touchUpInside" id="G4J-7a-UzM"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23d-Bn-Rae">
+                                <rect key="frame" x="16" y="272" width="382" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="30S-d3-rnp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c7n-KQ-SxE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="5ev-Kr-Ti4" firstAttribute="top" secondItem="c7n-KQ-SxE" secondAttribute="top" constant="104" id="1fj-zZ-19h"/>
-                            <constraint firstItem="c7n-KQ-SxE" firstAttribute="trailing" secondItem="HLk-gP-xHH" secondAttribute="trailing" constant="24" id="2fK-ed-Lnx"/>
+                            <constraint firstItem="c7n-KQ-SxE" firstAttribute="trailing" secondItem="HLk-gP-xHH" secondAttribute="trailing" constant="16" id="2fK-ed-Lnx"/>
                             <constraint firstItem="5ev-Kr-Ti4" firstAttribute="leading" secondItem="c7n-KQ-SxE" secondAttribute="leading" constant="24" id="A7V-Ky-BQM"/>
-                            <constraint firstItem="HLk-gP-xHH" firstAttribute="leading" secondItem="c7n-KQ-SxE" secondAttribute="leading" constant="24" id="AG4-5v-wNW"/>
+                            <constraint firstItem="HLk-gP-xHH" firstAttribute="leading" secondItem="c7n-KQ-SxE" secondAttribute="leading" constant="20" id="AG4-5v-wNW"/>
                             <constraint firstItem="jRI-Bc-rFx" firstAttribute="top" secondItem="c7n-KQ-SxE" secondAttribute="top" constant="201" id="PBD-bm-Ir8"/>
-                            <constraint firstItem="1Ps-Jq-HJS" firstAttribute="leading" secondItem="c7n-KQ-SxE" secondAttribute="leading" constant="24" id="Rmh-cy-xh1"/>
+                            <constraint firstItem="23d-Bn-Rae" firstAttribute="top" secondItem="HLk-gP-xHH" secondAttribute="bottom" constant="8" id="Pf6-Nr-s0a"/>
+                            <constraint firstItem="1Ps-Jq-HJS" firstAttribute="leading" secondItem="c7n-KQ-SxE" secondAttribute="leading" constant="16" id="Rmh-cy-xh1"/>
+                            <constraint firstItem="23d-Bn-Rae" firstAttribute="leading" secondItem="Rik-4u-Nn5" secondAttribute="leading" constant="16" id="Zmh-fw-Iio"/>
                             <constraint firstItem="HLk-gP-xHH" firstAttribute="top" secondItem="Rik-4u-Nn5" secondAttribute="topMargin" constant="201" id="bTp-IW-jyA"/>
                             <constraint firstItem="T2A-2y-ONY" firstAttribute="leading" secondItem="c7n-KQ-SxE" secondAttribute="leading" constant="24" id="dPi-p0-RfI"/>
-                            <constraint firstItem="c7n-KQ-SxE" firstAttribute="trailing" secondItem="jRI-Bc-rFx" secondAttribute="trailing" constant="19" id="ija-VJ-6Pe"/>
-                            <constraint firstItem="1Ps-Jq-HJS" firstAttribute="top" secondItem="Rik-4u-Nn5" secondAttribute="topMargin" constant="380" id="ujb-7M-VOK"/>
+                            <constraint firstItem="c7n-KQ-SxE" firstAttribute="trailing" secondItem="jRI-Bc-rFx" secondAttribute="trailing" constant="16" id="ija-VJ-6Pe"/>
+                            <constraint firstItem="c7n-KQ-SxE" firstAttribute="bottom" secondItem="1Ps-Jq-HJS" secondAttribute="bottom" constant="151" id="vIP-KP-1GJ"/>
                             <constraint firstItem="T2A-2y-ONY" firstAttribute="top" secondItem="Rik-4u-Nn5" secondAttribute="topMargin" constant="141" id="yBy-l7-OkY"/>
-                            <constraint firstItem="c7n-KQ-SxE" firstAttribute="trailing" secondItem="1Ps-Jq-HJS" secondAttribute="trailing" constant="24" id="zzF-M0-7tv"/>
+                            <constraint firstAttribute="trailing" secondItem="23d-Bn-Rae" secondAttribute="trailing" constant="16" id="yoe-If-eWZ"/>
+                            <constraint firstItem="c7n-KQ-SxE" firstAttribute="trailing" secondItem="1Ps-Jq-HJS" secondAttribute="trailing" constant="16" id="zzF-M0-7tv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="idTextField" destination="HLk-gP-xHH" id="Hjd-eL-8AC"/>
+                        <outlet property="sendBtn" destination="1Ps-Jq-HJS" id="xhV-vy-WQW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVY-er-ibG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1100" y="1456"/>
+            <point key="canvasLocation" x="-652.17391304347836" y="1518.75"/>
         </scene>
         <!--내정보-->
         <scene sceneID="1d8-9p-f4z">
@@ -6856,7 +6871,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyt-lI-hFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1099" y="2174"/>
+            <point key="canvasLocation" x="-652" y="2186"/>
         </scene>
     </scenes>
     <designables>

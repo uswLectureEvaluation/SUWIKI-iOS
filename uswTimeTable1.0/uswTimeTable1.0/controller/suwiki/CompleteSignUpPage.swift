@@ -24,11 +24,12 @@ class CompleteSignUpPage: UIViewController {
         navigationBarHidden()
         
         loginBtn.layer.borderWidth = 1.0
-        loginBtn.layer.borderColor = colorLiteralBlue
+        loginBtn.layer.borderColor = colorLiteralBlue.cgColor
         loginBtn.layer.cornerRadius = 13.0
         
         checkEmailBtn.layer.borderWidth = 1.0
-        checkEmailBtn.layer
+        checkEmailBtn.layer.borderColor = UIColor.white.cgColor
+        checkEmailBtn.layer.cornerRadius = 13.0
         // Do any additional setup after loading the view.
     }
 
@@ -39,6 +40,9 @@ class CompleteSignUpPage: UIViewController {
     
     
     @IBAction func checkEmailBtnClicked(_ sender: Any) {
+        let url = NSURL(string: "https://portal.suwon.ac.kr/enview/")
+        let portalSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(portalSafariView, animated: true, completion: nil)
     }
     
     func navigationBarHidden() {

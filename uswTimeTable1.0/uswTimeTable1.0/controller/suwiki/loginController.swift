@@ -205,8 +205,10 @@ class loginController: UIViewController {
     }
     
     @IBAction func findPwdBtnClicked(_ sender: Any) {
+        
         let findPwdVC = self.storyboard?.instantiateViewController(withIdentifier: "findPwdVC") as! findPwdPage
-        self.navigationController?.pushViewController(findPwdVC, animated: true)
+        self.present(findPwdVC, animated: true, completion: nil)
+        
     }
     
     @IBAction func signUpBtnClicked(_ sender: Any) {
