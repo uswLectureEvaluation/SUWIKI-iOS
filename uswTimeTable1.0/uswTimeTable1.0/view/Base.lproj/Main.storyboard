@@ -2439,7 +2439,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system">
-                                    <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="passwordCheckBtnClicked:" destination="vIs-8r-M03" eventType="touchUpInside" id="W2H-No-ZYJ"/>
@@ -2604,6 +2604,20 @@
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4F-vE-jHy">
+                                <rect key="frame" x="374" y="251" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Kbh-IW-9Pa"/>
+                                    <constraint firstAttribute="width" constant="24" id="jpm-Nn-bxj"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system">
+                                    <color key="baseForegroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="passwordBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="wEi-1b-amI"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="아이디 입력(영문 6~20자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="60m-4h-X9P">
                                 <rect key="frame" x="16" y="196" width="382" height="20"/>
                                 <constraints>
@@ -2660,7 +2674,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="47N-XX-EJp"/>
                                     <constraint firstAttribute="height" constant="24" id="e8I-xi-NVY"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="t2R-wl-Jew"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                 <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -2763,6 +2776,9 @@
                                         <state key="normal" title="이용약관">
                                             <color key="titleColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="serviceBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="kLi-5T-y0d"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuM-dz-SOt">
                                         <rect key="frame" x="184" y="0.0" width="97" height="20"/>
@@ -2774,6 +2790,9 @@
                                         <state key="normal" title="개인정보처리방침">
                                             <color key="titleColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <connections>
+                                            <action selector="privacyBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="AAW-HB-J2b"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동의하게 됩니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydr-40-rFD">
                                         <rect key="frame" x="0.0" y="20" width="92" height="20"/>
@@ -2803,6 +2822,20 @@
                                     <constraint firstItem="UuM-dz-SOt" firstAttribute="leading" secondItem="STI-Qo-luo" secondAttribute="trailing" constant="2" id="xb8-Mw-U34"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTD-Ac-BFN">
+                                <rect key="frame" x="374" y="308" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="6tL-Ix-AFP"/>
+                                    <constraint firstAttribute="width" constant="24" id="FND-Ld-zhG"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="eye.fill" catalog="system">
+                                    <color key="baseForegroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="passwordCheckBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="cdN-LZ-JJA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Z9t-2M-JCn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2814,6 +2847,7 @@
                             <constraint firstItem="Z9t-2M-JCn" firstAttribute="trailing" secondItem="60m-4h-X9P" secondAttribute="trailing" constant="16" id="7e0-Oz-Jvg"/>
                             <constraint firstItem="sr8-pM-ORL" firstAttribute="top" secondItem="4V3-UY-JgF" secondAttribute="bottom" constant="28" id="8p8-OY-qec"/>
                             <constraint firstItem="Z9t-2M-JCn" firstAttribute="trailing" secondItem="uUw-LQ-4c8" secondAttribute="trailing" constant="16" id="AZF-df-CGb"/>
+                            <constraint firstItem="Z9t-2M-JCn" firstAttribute="trailing" secondItem="oTD-Ac-BFN" secondAttribute="trailing" constant="16" id="Azc-OK-jM7"/>
                             <constraint firstAttribute="trailing" secondItem="NeK-Xt-JXw" secondAttribute="trailing" constant="16" id="Bbo-n1-Okn"/>
                             <constraint firstItem="jmg-7a-tS8" firstAttribute="centerX" secondItem="sMf-Zd-tvw" secondAttribute="centerX" id="ByU-Gb-Hze"/>
                             <constraint firstItem="4V3-UY-JgF" firstAttribute="top" secondItem="uUw-LQ-4c8" secondAttribute="bottom" constant="8" id="CN2-yt-zK6"/>
@@ -2832,6 +2866,7 @@
                             <constraint firstItem="4wI-p8-vIG" firstAttribute="top" secondItem="s60-tm-dR2" secondAttribute="bottom" constant="7" id="csq-TO-Mhv"/>
                             <constraint firstItem="sr8-pM-ORL" firstAttribute="leading" secondItem="Z9t-2M-JCn" secondAttribute="leading" constant="16" id="ehz-82-aWt"/>
                             <constraint firstItem="j17-gv-Gc1" firstAttribute="leading" secondItem="Z9t-2M-JCn" secondAttribute="leading" constant="16" id="epe-mW-em2"/>
+                            <constraint firstItem="oTD-Ac-BFN" firstAttribute="top" secondItem="4V3-UY-JgF" secondAttribute="bottom" constant="26" id="fla-hV-iJK"/>
                             <constraint firstItem="4V3-UY-JgF" firstAttribute="leading" secondItem="sMf-Zd-tvw" secondAttribute="leading" constant="16" id="gbU-RL-2TP"/>
                             <constraint firstItem="DQe-E4-GrC" firstAttribute="top" secondItem="60m-4h-X9P" secondAttribute="bottom" constant="8" id="kZL-Wr-Ppn"/>
                             <constraint firstItem="60m-4h-X9P" firstAttribute="top" secondItem="Z9t-2M-JCn" secondAttribute="top" constant="152" id="mLW-iS-Qe1"/>
@@ -2839,6 +2874,8 @@
                             <constraint firstItem="Z9t-2M-JCn" firstAttribute="bottom" secondItem="qjT-ez-LuD" secondAttribute="bottom" constant="151" id="tAr-EC-eH6"/>
                             <constraint firstAttribute="trailing" secondItem="DQe-E4-GrC" secondAttribute="trailing" constant="16" id="tgr-zh-YAz"/>
                             <constraint firstItem="vht-3W-yss" firstAttribute="top" secondItem="Z9t-2M-JCn" secondAttribute="top" constant="148" id="tpT-It-Rw1"/>
+                            <constraint firstItem="Z9t-2M-JCn" firstAttribute="trailing" secondItem="B4F-vE-jHy" secondAttribute="trailing" constant="16" id="vA5-F5-V7z"/>
+                            <constraint firstItem="B4F-vE-jHy" firstAttribute="top" secondItem="DQe-E4-GrC" secondAttribute="bottom" constant="26" id="wYl-a1-wKB"/>
                             <constraint firstItem="DQe-E4-GrC" firstAttribute="top" secondItem="60m-4h-X9P" secondAttribute="bottom" constant="8" id="yUq-0z-8Fe"/>
                         </constraints>
                     </view>

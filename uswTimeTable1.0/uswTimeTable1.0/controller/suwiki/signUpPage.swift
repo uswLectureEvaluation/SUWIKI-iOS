@@ -8,6 +8,7 @@
 import UIKit
 
 import Alamofire
+import SafariServices
 import SwiftyJSON
 import SwiftUI
 
@@ -59,7 +60,43 @@ class signUpPage: UIViewController {
         
         passwordTextField.isSecureTextEntry = true
         passwordCheckTextField.isSecureTextEntry = true
+        passwordTextField.textContentType = .newPassword
+        passwordCheckTextField.textContentType = .newPassword
         // Do any additional setup after loading the view.
+    }
+    
+    
+    
+    @IBAction func passwordBtnClicked(_ sender: Any) {
+        
+        if passwordTextField.isSecureTextEntry {
+            passwordTextField.isSecureTextEntry = false
+        } else {
+            passwordTextField.isSecureTextEntry = true
+        }
+        
+    }
+    
+    @IBAction func passwordCheckBtnClicked(_ sender: Any) {
+        
+        if passwordCheckTextField.isSecureTextEntry {
+            passwordCheckTextField.isSecureTextEntry = false
+        } else {
+            passwordCheckTextField.isSecureTextEntry = true
+        }
+    
+    }
+    
+    @IBAction func serviceBtnClicked(_ sender: Any) {
+        let url = NSURL(string: "https://sites.google.com/view/suwiki-policy-terms/")
+        let serviceSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(serviceSafariView, animated: true, completion: nil)
+    }
+    
+    @IBAction func privacyBtnClicked(_ sender: Any) {
+        let url = NSURL(string: "https://sites.google.com/view/suwiki-policy-privacy")
+        let privacySafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(privacySafariView, animated: true, completion: nil)
     }
     
     
