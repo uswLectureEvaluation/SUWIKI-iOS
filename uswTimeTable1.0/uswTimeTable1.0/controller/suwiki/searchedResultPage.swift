@@ -240,7 +240,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
             }
             
             if self.tableViewUpdateData.count == 0{
-                
+
                 self.tableView.isHidden = true
                 self.noSearchDataView.isHidden = false
                 self.noSearchDataLabel.text = "'\(searchValue)'에 대한"

@@ -2662,7 +2662,7 @@
                                     <constraint firstAttribute="width" constant="68" id="glC-qX-cD5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
-                                <color key="tintColor" red="0.63921570780000003" green="0.63921570780000003" blue="0.64313727620000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="중복확인"/>
                                 <connections>
@@ -2940,13 +2940,14 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BV-Ck-hFF">
                                 <rect key="frame" x="16" y="663" width="382" height="48"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="4CO-Zc-T72"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="회원가입"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="회원가입"/>
                                 <connections>
                                     <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="a1L-wi-Deg"/>
                                     <action selector="nextBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="mq5-mo-4MD"/>
@@ -2986,6 +2987,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="K0m-d1-0nQ" id="XMN-VD-Oc7"/>
+                        <outlet property="signUpBtn" destination="3BV-Ck-hFF" id="jWC-UM-4U6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cxp-eo-fob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3022,9 +3024,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="2V1-XZ-orU"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                 <color key="tintColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="로그인"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="로그인">
+                                    <color key="titleColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
                                 <connections>
                                     <action selector="loginBtnClicked:" destination="AeT-3b-S5L" eventType="touchUpInside" id="L8U-Xe-12o"/>
                                     <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="wCZ-FC-eEa"/>
@@ -3034,13 +3039,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Vs-41-RBy">
                                 <rect key="frame" x="16" y="663" width="382" height="48"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="eVn-GX-0XJ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="메일 확인하기"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="메일 확인하기"/>
                                 <connections>
                                     <action selector="checkEmailBtnClicked:" destination="AeT-3b-S5L" eventType="touchUpInside" id="tDV-gj-fXz"/>
                                     <action selector="loginButton:" destination="vIs-8r-M03" eventType="touchUpInside" id="w7f-f9-wLM"/>
@@ -3088,6 +3094,10 @@
                             <constraint firstItem="g1D-cS-KFO" firstAttribute="top" secondItem="nk7-CR-GhF" secondAttribute="top" constant="139" id="zS7-Sv-pz0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="checkEmailBtn" destination="8Vs-41-RBy" id="qra-FX-JtG"/>
+                        <outlet property="loginBtn" destination="nww-HR-3gB" id="rlG-cS-Pai"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FgO-H1-PfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

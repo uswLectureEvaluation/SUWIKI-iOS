@@ -60,8 +60,9 @@ class signUpPage: UIViewController {
         
         passwordTextField.isSecureTextEntry = true
         passwordCheckTextField.isSecureTextEntry = true
-        passwordTextField.textContentType = .newPassword
-        passwordCheckTextField.textContentType = .newPassword
+        passwordTextField.textContentType = .none
+        passwordCheckTextField.textContentType = .none
+
         // Do any additional setup after loading the view.
     }
     
@@ -155,6 +156,10 @@ class signUpPage: UIViewController {
                 if json["overlap"].boolValue == false {
                     self.showAlert(title: "사용 가능한 아이디입니다 !")
                     self.overLapCheck = true
+                    self.overLapBtn.layer.borderColor = UIColor.white.cgColor
+                    self.overLapBtn.backgroundColor = self.colorLiteralBlue
+                    self.overLapBtn.tintColor = .white
+                    
                 } else {
                     self.showAlert(title: "중복된 아이디입니다 !")
                     self.overLapCheck = false
@@ -179,7 +184,14 @@ class signUpPage: UIViewController {
     }
     
     @objc func idTextFieldChangeCheck(_ sender: UITextField){
+        if overLapCheck == true {
+            overLapBtn.layer.borderColor = UIColor.lightGray.cgColor
+            overLapBtn.backgroundColor = .white
+            overLapBtn.tintColor = .lightGray
+        }
+        
         overLapCheck = false
+        
     }
     
     

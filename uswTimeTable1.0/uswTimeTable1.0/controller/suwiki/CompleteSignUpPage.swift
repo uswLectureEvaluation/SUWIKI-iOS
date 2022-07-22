@@ -7,12 +7,28 @@
 
 import UIKit
 
+import SafariServices
+
 class CompleteSignUpPage: UIViewController {
 
+    
+    
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var checkEmailBtn: UIButton!
+    
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarHidden()
         
+        loginBtn.layer.borderWidth = 1.0
+        loginBtn.layer.borderColor = colorLiteralBlue
+        loginBtn.layer.cornerRadius = 13.0
+        
+        checkEmailBtn.layer.borderWidth = 1.0
+        checkEmailBtn.layer
         // Do any additional setup after loading the view.
     }
 
