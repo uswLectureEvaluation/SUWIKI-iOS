@@ -45,7 +45,7 @@ class loginController: UIViewController {
         self.navigationItem.hidesBackButton = true
         incorrectView.isHidden = true
         
-        loginBtn.layer.cornerRadius = 9.0
+        loginBtn.layer.cornerRadius = 13.0
         loginBtn.layer.borderColor = UIColor.white.cgColor
         loginBtn.layer.borderWidth = 1.0
         

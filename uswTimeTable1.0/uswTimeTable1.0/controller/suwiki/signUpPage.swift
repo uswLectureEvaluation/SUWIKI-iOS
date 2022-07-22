@@ -24,7 +24,8 @@ class signUpPage: UIViewController {
     @IBOutlet var passwordTextFieldBottomLine: UIView!
     @IBOutlet var passwordCheckTextFieldBottomLine: UIView!
     
-    
+
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var checkBoxBtn: UIImageView!
     
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
@@ -48,9 +49,16 @@ class signUpPage: UIViewController {
         overLapBtn.layer.borderColor = UIColor.lightGray.cgColor
         overLapBtn.layer.borderWidth = 1.0
         
+        nextBtn.layer.cornerRadius = 13.0
+        nextBtn.layer.borderWidth = 1.0
+        nextBtn.layer.borderColor = UIColor.white.cgColor
+        
         idTextField.addTarget(self, action: #selector(idTextFieldChangeCheck), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextTypeCheck), for: .editingChanged)
         passwordCheckTextField.addTarget(self, action: #selector(passwordCheckTextTypeCheck), for: .editingChanged)
+        
+        passwordTextField.isSecureTextEntry = true
+        passwordCheckTextField.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
     
