@@ -21,8 +21,8 @@ class ChangePasswordPage: UIViewController {
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
     
-    var addViewCheck: Bool = false
-    var addTextFieldCheck: Bool = false
+    var addTextFieldLengthCheck: Bool = false
+    var addTextFieldTypeCheck: Bool = false
 
     
     override func viewDidLoad() {
@@ -46,34 +46,15 @@ class ChangePasswordPage: UIViewController {
         let presentLabel = UILabel(frame: CGRect(x: 16, y: presentBottomLine.frame.maxY + 2, width: 120, height: 18))
         let presentTypeLabel = UILabel(frame: CGRect(x: 16, y: presentBottomLine.frame.maxY + 2, width: 200, height: 18)) // 정규식 레이블
         
-      
-        
-        
-//        if let removeable = self.view.viewWithTag(102) {
-//            removeable.removeFromSuperview()
-//        }
-//
-//        passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
-//
-//        if addPasswordLabel == false { // 1회 실행 시
-//
-//            addPasswordLabel = true
-//            passwordLabel.text = "8자 이상 입력하세요."
-//            passwordLabel.textColor = colorLiteralPurple
-//            passwordLabel.font = passwordLabel.font.withSize(12)
-//            passwordLabel.tag = 100
-//            self.view.addSubview(passwordLabel)
-        
-        
         if presentPasswordTextField.text?.count ?? 0 < 8 { // 비밀번호 8자 이하 입력 시
             
-            // 다른 텍스트 삭제하는 조건 필요
+            addTextFieldTypeCheck = false
             
             presentBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
             
-            if addViewCheck == false {
+            if addTextFieldLengthCheck == false {
                 
-                addViewCheck = true
+                addTextFieldLengthCheck = true
                 presentLabel.text = "8자 이상 입력하세요"
                 presentLabel.textColor = colorLiteralPurple
                 presentLabel.font = UIFont(name: "Pretendard", size: 12)
@@ -84,12 +65,37 @@ class ChangePasswordPage: UIViewController {
             
         } else { // 8자 이상 입력 시
             
+            addTextFieldLengthCheck = false
+            
             if loginModel.isValidPassword(pwd: pwd) { // 비밀번호 정규식에 부합한 경우
                 
+                if let removeable = self.view.viewWithTag(100) {
+                    removeable.removeFromSuperview()
+                }
+                if let removeable = self.view.viewWithTag(101) {
+                    removeable.removeFromSuperview()
+                }
                 
+                presentBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
                 
             } else { // 비밀번호 정규식에 부합하지 않은 경우
                 
+                if let removeable = self.view.viewWithTag(100) {
+                    removeable.removeFromSuperview()
+                }
+                
+                presentBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+                
+                if addTextFieldTypeCheck == false {
+                    
+                    addTextFieldTypeCheck = true
+                    presentTypeLabel.text = "영문, 숫자, 특수문자를 포함하세요."
+                    presentTypeLabel.textColor = colorLiteralPurple
+                    presentTypeLabel.font = UIFont(name: "Pretendard", size: 12)
+                    presentTypeLabel.tag = 101
+                    self.view.addSubview(presentTypeLabel)
+                    
+                }
                 
                 
             }
