@@ -13,10 +13,17 @@ class findPwdPage: UIViewController {
 
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
+    @IBOutlet weak var sendBtn: UIButton!
     
     override func viewDidLoad() {
+        
+        sendBtn.layer.borderWidth = 1.0
+        sendBtn.layer.cornerRadius = 13.0
+        sendBtn.layer.borderColor = UIColor.white.cgColor
+        
+        
         super.viewDidLoad()
+    
 
         // Do any additional setup after loading the view.
     }
@@ -32,8 +39,8 @@ class findPwdPage: UIViewController {
 
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
             let checkStatus = Int(response.response!.statusCode)
- 
-            if checkStatus == 405{
+            print(JSON(response.data))
+            if checkStatus == 400{
                 let alert = UIAlertController(title:"없는 계정이거나, 잘못 입력하셨습니다.",
                     message: "확인을 눌러주세요!",
                     preferredStyle: UIAlertController.Style.alert)

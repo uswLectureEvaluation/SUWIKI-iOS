@@ -6832,41 +6832,74 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ze7-fE-9o3">
-                                <rect key="frame" x="24" y="424" width="366" height="48"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <rect key="frame" x="16" y="653" width="382" height="48"/>
+                                <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="R4V-os-VNy"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="n6J-Gg-Gfk"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="전송"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="비밀번호 찾기"/>
                                 <connections>
                                     <action selector="sendBtnClicked:" destination="rqT-WO-sZF" eventType="touchUpInside" id="64u-gM-YOm"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiL-AK-SHC">
+                                <rect key="frame" x="24" y="334" width="366" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Tdq-sD-lwx"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGu-W4-8J3">
+                                <rect key="frame" x="24" y="272" width="366" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="xhw-gy-ie0"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@suwon.ac.kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uv-gI-VF6">
+                                <rect key="frame" x="288" y="307" width="102" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="TDN-Ma-HBa"/>
+                                    <constraint firstAttribute="width" constant="102" id="ZJN-9v-QI2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kIU-Wc-TYB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ze7-fE-9o3" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="77H-t8-xGS"/>
+                            <constraint firstAttribute="trailing" secondItem="bGu-W4-8J3" secondAttribute="trailing" constant="24" id="06u-Ub-jY1"/>
+                            <constraint firstItem="Ze7-fE-9o3" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="16" id="77H-t8-xGS"/>
                             <constraint firstItem="YgW-yA-emT" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="201" id="8od-nw-H8P"/>
+                            <constraint firstItem="NiL-AK-SHC" firstAttribute="leading" secondItem="Yba-ER-luS" secondAttribute="leading" constant="24" id="FIa-Kf-ETV"/>
                             <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="tCC-XK-pbQ" secondAttribute="trailing" constant="24" id="Fnz-Yh-hNm"/>
                             <constraint firstItem="HZa-gM-UMd" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="GsP-xY-XUD"/>
                             <constraint firstItem="HZa-gM-UMd" firstAttribute="top" secondItem="kIU-Wc-TYB" secondAttribute="top" constant="104" id="H03-lj-haf"/>
-                            <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="Ze7-fE-9o3" secondAttribute="trailing" constant="24" id="Ila-dk-MbY"/>
+                            <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="Ze7-fE-9o3" secondAttribute="trailing" constant="16" id="Ila-dk-MbY"/>
+                            <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="0uv-gI-VF6" secondAttribute="trailing" constant="24" id="NHQ-sN-TvW"/>
                             <constraint firstItem="rK8-nP-Ftc" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="141" id="TxR-Q9-1k7"/>
+                            <constraint firstItem="NiL-AK-SHC" firstAttribute="top" secondItem="tCC-XK-pbQ" secondAttribute="bottom" constant="8" id="WMK-iF-Ok8"/>
+                            <constraint firstItem="bGu-W4-8J3" firstAttribute="top" secondItem="YgW-yA-emT" secondAttribute="bottom" constant="8" id="dBy-Px-Y5B"/>
                             <constraint firstItem="kIU-Wc-TYB" firstAttribute="trailing" secondItem="YgW-yA-emT" secondAttribute="trailing" constant="24" id="db8-As-MHA"/>
+                            <constraint firstAttribute="trailing" secondItem="NiL-AK-SHC" secondAttribute="trailing" constant="24" id="fCI-kJ-n74"/>
+                            <constraint firstItem="kIU-Wc-TYB" firstAttribute="bottom" secondItem="Ze7-fE-9o3" secondAttribute="bottom" constant="161" id="fvN-pm-5DY"/>
+                            <constraint firstItem="0uv-gI-VF6" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="263" id="fvy-iT-kFH"/>
                             <constraint firstItem="YgW-yA-emT" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="gtd-VR-2YA"/>
-                            <constraint firstItem="Ze7-fE-9o3" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="380" id="uPr-Lz-Izg"/>
                             <constraint firstItem="tCC-XK-pbQ" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="vHO-8t-6QB"/>
                             <constraint firstItem="rK8-nP-Ftc" firstAttribute="leading" secondItem="kIU-Wc-TYB" secondAttribute="leading" constant="24" id="vWe-hg-mWh"/>
                             <constraint firstItem="tCC-XK-pbQ" firstAttribute="top" secondItem="Yba-ER-luS" secondAttribute="topMargin" constant="263" id="xDj-3J-CNM"/>
+                            <constraint firstItem="bGu-W4-8J3" firstAttribute="leading" secondItem="Yba-ER-luS" secondAttribute="leading" constant="24" id="xpK-Ei-gdP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="tCC-XK-pbQ" id="bjV-6d-ndZ"/>
                         <outlet property="idTextField" destination="YgW-yA-emT" id="eDl-bi-EnV"/>
+                        <outlet property="sendBtn" destination="Ze7-fE-9o3" id="Rmc-uL-Ru8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyt-lI-hFJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -6909,9 +6942,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
