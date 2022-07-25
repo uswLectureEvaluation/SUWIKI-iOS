@@ -81,7 +81,7 @@ class myInfoPage: UIViewController {
     
     @IBAction func loginBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
-        nextVC.modalPresentationStyle = .fullScreen
+        // nextVC.modalPresentationStyle = .fullScreen
         present(nextVC, animated: true, completion: nil)
         //self.navigationController?.pushViewController(nextVC, animated: true)
         
