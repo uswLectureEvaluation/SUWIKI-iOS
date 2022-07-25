@@ -227,6 +227,7 @@ class signUpPage: UIViewController {
             }
             
             passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+            
             if addPasswordLabel == false { // 1회 실행 시
                 
                 addPasswordLabel = true
@@ -261,6 +262,9 @@ class signUpPage: UIViewController {
                 }
                 passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
 
+                // addPasswordLabel은 최초 작성시의 텍스트 8자 이하를 체크하기 위한 변수
+                // addPasswordTypeLabel은 텍스트 변화를 체크해주는 변수이다. 즉, addPasswordCheck가 False가 되기 위해서는 텍스트 입력이 진행되어야 하고, 그 이유는 정규식에 부합하지 않을 경우 true가 되는데, addSubView를 중복으로 하여 뷰가 remove 되지 않고 남아있는것을 방지하기 위한 flag
+                
                 if addPasswordTypeLabel == false {
                     
                     addPasswordTypeLabel = true
