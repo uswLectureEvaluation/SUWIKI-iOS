@@ -43,6 +43,10 @@ class ChangePasswordPage: UIViewController {
         newPasswordTextField.isSecureTextEntry = true
         newPasswordTextField.textContentType = .none
 
+        nextBtn.layer.cornerRadius = 13.0
+        nextBtn.layer.borderColor = UIColor.white.cgColor
+        nextBtn.layer.borderWidth = 1.0
+        
         presentPasswordTextField.addTarget(self,
                                            action: #selector(passwordTextTypeCheck),
                                            for: .touchDown)
@@ -118,10 +122,12 @@ class ChangePasswordPage: UIViewController {
             
             print(JSON(response.data))
             
-            if response.response?.statusCode == 403 {
-                self.showAlert(title: "오류입니다!")
+            if response.response?.statusCode == 400 {
+                self.showAlert(title: "기존 비밀번호가 일치하지 않습니다.")
             } else {
+                self.showToast(message: "변경 완료!")
                 self.dismiss(animated: true)
+                
             }
         }
     }
@@ -165,7 +171,10 @@ class ChangePasswordPage: UIViewController {
             
             addTextFieldLengthCheck = false
             
+            
             if loginModel.isValidPassword(pwd: pwd) { // 비밀번호 정규식에 부합한 경우
+                    
+                addTextFieldTypeCheck = false
                 
                 if let removeable = self.view.viewWithTag(110) {
                     removeable.removeFromSuperview()
@@ -237,9 +246,8 @@ class ChangePasswordPage: UIViewController {
             
             addNewTextFieldLengthCheck = false
             
-           
-            
             if loginModel.isValidPassword(pwd: pwd) { // 비밀번호 정규식에 부합한 경우
+                addNewTextFieldTypeCheck = false
                 
                 if let removeable = self.view.viewWithTag(114) {
                     removeable.removeFromSuperview()
