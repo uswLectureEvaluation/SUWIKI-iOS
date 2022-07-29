@@ -3363,7 +3363,7 @@
         <!--Change Password Page-->
         <scene sceneID="CW3-tK-CvD">
             <objects>
-                <viewController id="n22-Vf-c4L" customClass="ChangePasswordPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="changePasswdVC" id="n22-Vf-c4L" customClass="ChangePasswordPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nnH-pW-IhA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3381,7 +3381,6 @@
                                 <rect key="frame" x="20" y="220" width="374" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="fA0-wU-dDO"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="wDh-ME-6Lo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -4475,6 +4474,9 @@
                                                         <state key="normal" title="비밀번호 변경">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="passwordChangeBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="PGR-yd-ptg"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npB-tU-iDK">
                                                         <rect key="frame" x="24" y="345" width="52" height="16"/>
