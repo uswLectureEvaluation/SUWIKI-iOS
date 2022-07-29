@@ -124,6 +124,7 @@ class myInfoPage: UIViewController {
         if let accessToken = keychain.get("AccessToken"){
             
             let url = "https://api.suwiki.kr/user/my-page"
+            
             let headers: HTTPHeaders = [
                 "Authorization" : String(accessToken)
             ]
