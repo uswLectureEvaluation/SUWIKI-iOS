@@ -42,11 +42,35 @@ class ChangePasswordPage: UIViewController {
         presentPasswordTextField.addTarget(self,
                                            action: #selector(passwordTextTypeCheck),
                                            for: .editingChanged)
+        newPasswordTextField.addTarget(self,
+                                       action: #selector(newPasswordTextTypeCheck),
+                                       for: .touchDown)
+        newPasswordTextField.addTarget(self,
+                                       action: #selector(newPasswordTextTypeCheck),
+                                       for: .editingChanged)
         // Do any additional setup after loading the view.
     }
     
 
+    @IBAction func presentPasswordBtnClicked(_ sender: Any) {
+        
+        if presentPasswordTextField.isSecureTextEntry{
+            presentPasswordTextField.isSecureTextEntry = false
+        } else {
+            presentPasswordTextField.isSecureTextEntry = true
+        }
+        
+    }
     
+    @IBAction func newPasswordBtnClicked(_ sender: Any) {
+        
+        if newPasswordTextField.isSecureTextEntry{
+            newPasswordTextField.isSecureTextEntry = false
+        } else {
+            newPasswordTextField.isSecureTextEntry = true
+        }
+        
+    }
     //MARK: - objc passwordChange
     
     @objc func passwordTextTypeCheck(_ sender: UITextField) {
@@ -115,7 +139,7 @@ class ChangePasswordPage: UIViewController {
         }
     }
     
-    @objc func newPasswordTypeCheck(_ sender: UITextField) {
+    @objc func newPasswordTextTypeCheck(_ sender: UITextField) {
         guard let pwd = presentPasswordTextField.text, !pwd.isEmpty else { return }
         
         let newTypeLabel = UILabel(frame: CGRect(x: 20,

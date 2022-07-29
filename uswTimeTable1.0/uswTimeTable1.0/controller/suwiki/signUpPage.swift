@@ -111,8 +111,10 @@ class signUpPage: UIViewController {
             showAlert(title: "아이디 형식이 올바르지 않습니다.")
         } else if loginModel.isValidPassword(pwd: pwd) == false{
             showAlert(title: "비밀번호 형식이 올바르지 않습니다.")
-        } else if checkPasswordEqual == false {
+        } else if passwordTextField.text != passwordCheckTextField.text {
             showAlert(title: "비밀번호가 일치하지 않습니다.")
+            passwordTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+            passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
         } else if checkBoxBool == false{
             showAlert(title: "약관에 동의해주세요!")
         } else {
@@ -201,7 +203,8 @@ class signUpPage: UIViewController {
         let passwordLabel = UILabel(frame: CGRect(x: 16, y: passwordTextFieldBottomLine.frame.maxY + 2, width: 120, height: 18))
         let passwordTypeLabel = UILabel(frame: CGRect(x: 16, y: passwordTextFieldBottomLine.frame.maxY + 2, width: 200, height: 18))
         
-        
+        // changePassword()
+
         if passwordCheckTextField.text?.count ?? 0 > 8 {
             if passwordTextField.text == passwordCheckTextField.text {
                 checkPasswordEqual = true
@@ -318,6 +321,42 @@ class signUpPage: UIViewController {
             passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
         }
       
+    }
+    
+    func changePassword() {
+        let passwordCheckLabel = UILabel(frame: CGRect(x: 16, y: passwordCheckTextFieldBottomLine.frame.maxY + 2, width: 190, height: 18))
+        if passwordTextField.text == passwordCheckTextField.text {
+            
+            checkPasswordEqual = true
+            
+            passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
+            
+            if let removeable = self.view.viewWithTag(101) {
+                
+                removeable.removeFromSuperview()
+                addPasswordCheckLabel = false
+                
+            }
+            
+            
+            
+        } else {
+            
+            checkPasswordEqual = false
+            
+            if addPasswordCheckLabel == false {
+                
+                addPasswordCheckLabel = true
+                passwordCheckLabel.text = "비밀번호가 일치하지 않습니다."
+                passwordCheckLabel.textColor = colorLiteralPurple
+                passwordCheckLabel.font = passwordCheckLabel.font.withSize(12)
+                passwordCheckLabel.tag = 101
+                self.view.addSubview(passwordCheckLabel)
+                
+            }
+
+            passwordCheckTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
