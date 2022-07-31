@@ -9,11 +9,34 @@ import UIKit
 
 class QuitAccountPage: UIViewController {
 
+    //MARK: IBOutlet
+    
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var idBottomLine: UIView!
+    @IBOutlet weak var passwordBottomLine: UIView!
+    @IBOutlet weak var quitBtn: UIButton!
+    
+    
+    
     override func viewDidLoad() {
+        
+        quitBtn.layer.borderWidth = 1.0
+        quitBtn.layer.cornerRadius = 13.0
+        quitBtn.layer.borderColor = UIColor.white.cgColor
+        
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.textContentType = .none
+        
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
+    
+    //MARK: btnAction
+    
+    @IBAction func quitBtnClicked(_ sender: Any) {
+    }
+    
     
 
 }
