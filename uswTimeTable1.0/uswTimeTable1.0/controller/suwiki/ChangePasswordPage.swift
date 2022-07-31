@@ -63,6 +63,9 @@ class ChangePasswordPage: UIViewController {
     }
     
     //MARK: - btnAction
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     
     @IBAction func nextBtnClicked(_ sender: Any) {
         let prePassword = presentPasswordTextField.text ?? ""
