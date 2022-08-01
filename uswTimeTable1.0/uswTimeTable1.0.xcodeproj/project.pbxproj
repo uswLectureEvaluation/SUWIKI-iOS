@@ -429,6 +429,8 @@
 			dependencies = (
 			);
 			name = uswTimeTable1.0;
+			packageProductDependencies = (
+			);
 			productName = uswTimeTable1.0;
 			productReference = AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */;
 			productType = "com.apple.product-type.application";
@@ -457,6 +459,8 @@
 				Base,
 			);
 			mainGroup = AFAFEF76277F160900408F46;
+			packageReferences = (
+			);
 			productRefGroup = AFAFEF80277F160900408F46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

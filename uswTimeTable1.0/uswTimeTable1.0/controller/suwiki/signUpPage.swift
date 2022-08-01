@@ -63,8 +63,8 @@ class signUpPage: UIViewController {
         
         passwordTextField.isSecureTextEntry = true
         passwordCheckTextField.isSecureTextEntry = true
-        passwordTextField.textContentType = .none
-        passwordCheckTextField.textContentType = .none
+        passwordTextField.textContentType = .oneTimeCode
+        passwordCheckTextField.textContentType = .oneTimeCode
 
         // Do any additional setup after loading the view.
     }

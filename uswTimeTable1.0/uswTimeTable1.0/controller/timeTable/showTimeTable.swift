@@ -8,12 +8,14 @@
 import UIKit
 import Elliotable
 import RealmSwift
+import GoogleMobileAds
 
 
 class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     
     let realm = try! Realm()
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var timetable: Elliotable!
     @IBOutlet weak var timeTableNameTxt: UILabel!
     @IBOutlet weak var timeTableView: UIView!
@@ -39,6 +41,9 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         readCourseDB()
         readTimeTable()
         print(courseList.count)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         // json 시간표 데이터 입력
 }
@@ -83,6 +88,8 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
             timeTableNameTxt.text = userData
         }
     }
+    
+    
     
     func readTimeTable(){
         timetable.delegate = self

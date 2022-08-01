@@ -174,6 +174,13 @@
                                 <rect key="frame" x="0.0" y="119" width="414" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5i-nP-ZY5" customClass="GADBannerView">
+                                <rect key="frame" x="24" y="733" width="366" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wj7-9W-G8g"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -184,8 +191,11 @@
                             <constraint firstItem="6tv-aY-QcQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BAS-Zj-zfn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Ra-3C-Sx2" secondAttribute="trailing" id="Fhy-J8-Njs"/>
                             <constraint firstItem="6Ra-3C-Sx2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MjX-ct-fdc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a5i-nP-ZY5" secondAttribute="trailing" constant="24" id="NTE-ka-q2Y"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="a5i-nP-ZY5" secondAttribute="bottom" constant="30" id="RKm-2V-uFA"/>
                             <constraint firstItem="6tv-aY-QcQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="djS-WV-zgT"/>
                             <constraint firstItem="351-EM-8wU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iCL-Bl-bbK"/>
+                            <constraint firstItem="a5i-nP-ZY5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="lX6-0L-yHZ"/>
                             <constraint firstItem="351-EM-8wU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="lnI-Ni-wze"/>
                             <constraint firstItem="6Ra-3C-Sx2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="q9L-AT-azg"/>
                             <constraint firstItem="6tv-aY-QcQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vJT-M5-A3M"/>
@@ -195,6 +205,7 @@
                     <navigationItem key="navigationItem" id="fHl-4e-Ihd"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bannerView" destination="a5i-nP-ZY5" id="s2n-tE-QtE"/>
                         <outlet property="firstSceneView" destination="6tv-aY-QcQ" id="skS-hp-Ig8"/>
                         <outlet property="timeTableNameTxt" destination="grv-7H-TlS" id="pPc-AS-4Bb"/>
                         <outlet property="timeTableView" destination="6Ra-3C-Sx2" id="FjS-LM-6Tp"/>
@@ -294,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i8d-lH-wxR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1803" y="-607"/>
+            <point key="canvasLocation" x="1802.8985507246377" y="-607.36607142857144"/>
         </scene>
         <!--시간표-->
         <scene sceneID="Icf-Pl-pEm">
@@ -2602,7 +2613,7 @@
                                     <constraint firstAttribute="height" constant="20" id="vx9-Pp-OAc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4F-vE-jHy">
                                 <rect key="frame" x="374" y="251" width="24" height="24"/>
@@ -2646,7 +2657,7 @@
                                     <constraint firstAttribute="height" constant="20" id="QEv-RG-Fpm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeK-Xt-JXw">
                                 <rect key="frame" x="16" y="338" width="382" height="1"/>
@@ -7201,11 +7212,6 @@
             <point key="canvasLocation" x="-652" y="2186"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="pNh-pJ-vFd">
-            <size key="intrinsicContentSize" width="81" height="17"/>
-        </designable>
-    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
@@ -7236,6 +7242,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -38,10 +38,10 @@ class ChangePasswordPage: UIViewController {
         super.viewDidLoad()
         
         presentPasswordTextField.isSecureTextEntry = true
-        presentPasswordTextField.textContentType = .none
+        presentPasswordTextField.textContentType = .oneTimeCode
         
         newPasswordTextField.isSecureTextEntry = true
-        newPasswordTextField.textContentType = .none
+        newPasswordTextField.textContentType = .oneTimeCode
 
         nextBtn.layer.cornerRadius = 13.0
         nextBtn.layer.borderColor = UIColor.white.cgColor

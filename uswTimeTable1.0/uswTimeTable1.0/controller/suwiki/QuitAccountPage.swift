@@ -36,7 +36,7 @@ class QuitAccountPage: UIViewController {
         quitBtn.layer.borderColor = UIColor.white.cgColor
         
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.textContentType = .none
+        passwordTextField.textContentType = .oneTimeCode
         
         idTextField.addTarget(self,
                               action: #selector(idTextFieldTypeCheck),
@@ -140,7 +140,7 @@ class QuitAccountPage: UIViewController {
     
     @objc func idTextFieldTypeCheck(_ sender: UITextField){
         guard let id = idTextField.text, !id.isEmpty else { return }
-        let idLabel = UILabel(frame: CGRect(x: 16,
+        let idLabel = UILabel(frame: CGRect(x: 20,
                                             y: idBottomLine.frame.maxY + 2,
                                             width: 200,
                                             height: 18))
@@ -169,7 +169,7 @@ class QuitAccountPage: UIViewController {
     
     @objc func passwordTextFieldTypeCheck(_ sender: UITextField){
         guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
-        let pwdlabel = UILabel(frame: CGRect(x: 16,
+        let pwdlabel = UILabel(frame: CGRect(x: 20,
                                             y: passwordBottomLine.frame.maxY + 2,
                                             width: 200,
                                             height: 18))
