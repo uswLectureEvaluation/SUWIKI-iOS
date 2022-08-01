@@ -60,8 +60,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
     
-    var evalPageLast: Bool = false // page의 수를 계산해주는 변수
+    var evalPageLast: Bool = false// page의 수를 계산해주는 변수
     var evalPage = 1
+    var examPageLast: Bool = false
     var examPage = 1
     var tableViewNumber = 0
     var examDataExist = 0
