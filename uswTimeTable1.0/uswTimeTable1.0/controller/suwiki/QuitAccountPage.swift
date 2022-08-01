@@ -79,25 +79,17 @@ class QuitAccountPage: UIViewController {
             let deleteButton = UIAlertAction(title: "탈퇴",
                                              style: .destructive,
                                              handler: { [self] (action) -> Void in
-                let alert = UIAlertController(title:"회원탈퇴 되었습니다.",
-                    message: "확인을 눌러주세요!",
-                    preferredStyle: UIAlertController.Style.alert)
-                let cancle = UIAlertAction(title: "확인", style: .default, handler: { [self]
-                    (action) -> Void in
-                    self.dismiss(animated: true)
-                    self.dismiss(animated: true)
-                })
-                alert.addAction(cancle)
-                self.present(alert, animated: true, completion: nil)
                 AF.request(url,
                            method: .post,
                            parameters: parameters,
                            encoding: JSONEncoding.default,
                            headers: headers,
                            interceptor: BaseInterceptor()).validate().responseJSON { response in
-                    print(JSON(response.data))
+                    
                     if response.response?.statusCode == 200 {
-
+                        self.keychain.clear()
+                        UserDefaults.standard.set(false, forKey: "autoLogin")
+                        
                         let alert = UIAlertController(title:"회원탈퇴 되었습니다.",
                             message: "확인을 눌러주세요!",
                             preferredStyle: UIAlertController.Style.alert)
@@ -120,6 +112,7 @@ class QuitAccountPage: UIViewController {
 
                     }
                 }
+
                 
             })
             
