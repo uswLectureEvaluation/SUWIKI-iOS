@@ -191,7 +191,10 @@ class signUpPage: UIViewController {
     @objc func idTextFieldTypeCheck(_ sender: UITextField){
         guard let id = idTextField.text, !id.isEmpty else { return }
         
-        let idLabel = UILabel(frame: CGRect(x: 16, y: idTextFieldBottomLine.frame.maxY + 2, width: 120, height: 18))
+        let idLabel = UILabel(frame: CGRect(x: 16,
+                                            y: idTextFieldBottomLine.frame.maxY + 2,
+                                            width: 200,
+                                            height: 18))
         
         if loginModel.isValidId(id: id){
             idTypeCheck = false
