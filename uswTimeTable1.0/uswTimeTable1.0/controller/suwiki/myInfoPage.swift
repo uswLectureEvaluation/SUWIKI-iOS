@@ -279,4 +279,11 @@ class myInfoPage: UIViewController {
         present(nextVC, animated: true, completion: nil)
     }
     
+    @IBAction func quitAccountPageBtnClicked(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "QuitVC") as! QuitAccountPage
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true, completion: nil)
+    }
+    
+    
 }

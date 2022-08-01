@@ -171,19 +171,40 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if keychain.get("AccessToken") != nil{
-            let AD = UIApplication.shared.delegate as? AppDelegate
-            AD?.lectureId = tableViewUpdateData[indexPath.row].id
-            // tokenReissuance(id: viewData[indexPath.row].id)
-            let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-            detailVC.lectureId = tableViewUpdateData[indexPath.row].id
-            self.navigationController?.pushViewController(detailVC, animated: true)
+            let url = "https://api.suwiki.kr/lecture/?lectureId=\(tableViewUpdateData[indexPath.row].id)"
+            
+            let headers: HTTPHeaders = [
+                "Authorization" : String(keychain.get("AccessToken") ?? "")
+            ]
 
+            AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+                print(JSON(response.data))
+                print(response.response?.statusCode)
+                if response.response?.statusCode == 403{
+                    
+                    let alert = UIAlertController(title:"권한이 없는 사용자입니다.",
+                        message: "관리자에게 문의하거나, 이용 제한 내역을 확인해주세요!",
+                        preferredStyle: UIAlertController.Style.alert)
+                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alert.addAction(cancle)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else if response.response?.statusCode == 200 {
+                    let AD = UIApplication.shared.delegate as? AppDelegate
+                    AD?.lectureId = self.tableViewUpdateData[indexPath.row].id
+                    // tokenReissuance(id: viewData[indexPath.row].id)
+                    let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+                    detailVC.lectureId = self.tableViewUpdateData[indexPath.row].id
+                    self.navigationController?.pushViewController(detailVC, animated: true)
+                }
+            }
+            
         } else {
+            
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
             self.present(nextVC, animated: true, completion: nil)
+                    
         }
-        
- 
     }
     
 
@@ -285,8 +306,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
             self.present(nextVC, animated: true, completion: nil)
         }
-        
     }
+    
 
     
 }

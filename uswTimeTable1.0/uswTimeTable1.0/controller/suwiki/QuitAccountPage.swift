@@ -7,6 +7,10 @@
 
 import UIKit
 
+import Alamofire
+import SwiftyJSON
+import KeychainSwift
+
 class QuitAccountPage: UIViewController {
 
     //MARK: IBOutlet
@@ -18,7 +22,7 @@ class QuitAccountPage: UIViewController {
     @IBOutlet weak var quitBtn: UIButton!
     
     //MARK: properties
-    
+    let keychain = KeychainSwift()
     let loginmodel = userModel()
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
@@ -47,10 +51,97 @@ class QuitAccountPage: UIViewController {
     
     //MARK: btnAction
     
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     @IBAction func quitBtnClicked(_ sender: Any) {
+        
+        guard let id = idTextField.text, !id.isEmpty else { return }
+        guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
+        
+        let url = "https://api.suwiki.kr/user/quit"
+        
+        let parameters = [
+            "loginId" : id,
+            "password" : pwd
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : String(keychain.get("AccessToken") ?? "")
+        ]
+        
+        if loginmodel.isValidId(id: idTextField.text!) &&
+            loginmodel.isValidPassword(pwd: passwordTextField.text!) {
+            let quitAlert = UIAlertController(title: "회원 탈퇴",
+                                              message: "탈퇴 하시겠어요?",
+                                              preferredStyle: UIAlertController.Style.alert)
+            
+            let deleteButton = UIAlertAction(title: "탈퇴",
+                                             style: .destructive,
+                                             handler: { [self] (action) -> Void in
+                let alert = UIAlertController(title:"회원탈퇴 되었습니다.",
+                    message: "확인을 눌러주세요!",
+                    preferredStyle: UIAlertController.Style.alert)
+                let cancle = UIAlertAction(title: "확인", style: .default, handler: { [self]
+                    (action) -> Void in
+                    self.dismiss(animated: true)
+                    self.dismiss(animated: true)
+                })
+                alert.addAction(cancle)
+                self.present(alert, animated: true, completion: nil)
+                AF.request(url,
+                           method: .post,
+                           parameters: parameters,
+                           encoding: JSONEncoding.default,
+                           headers: headers,
+                           interceptor: BaseInterceptor()).validate().responseJSON { response in
+                    print(JSON(response.data))
+                    if response.response?.statusCode == 200 {
+
+                        let alert = UIAlertController(title:"회원탈퇴 되었습니다.",
+                            message: "확인을 눌러주세요!",
+                            preferredStyle: UIAlertController.Style.alert)
+                        let cancle = UIAlertAction(title: "확인", style: .default, handler: { [self]
+                            (action) -> Void in
+                            self.dismiss(animated: true)
+                            self.dismiss(animated: true)
+                        })
+                        alert.addAction(cancle)
+                        self.present(alert, animated: true, completion: nil)
+
+                    } else {
+
+                        let alert = UIAlertController(title:"입력하신 정보가 일치하지 않습니다.",
+                            message: "확인을 눌러주세요!",
+                            preferredStyle: UIAlertController.Style.alert)
+                        let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                        alert.addAction(cancle)
+                        self.present(alert, animated: true, completion: nil)
+
+                    }
+                }
+                
+            })
+            
+            let cancelButton = UIAlertAction(title: "취소",
+                                             style: .cancel,
+                                             handler: { (action) -> Void in
+            })
+            
+            quitAlert.addAction(deleteButton)
+            quitAlert.addAction(cancelButton)
+            self.present(quitAlert, animated: true, completion: nil)
+        }
+
     }
     
-    
+    @IBAction func passwordBtnClicked(_ sender: Any) {
+        if passwordTextField.isSecureTextEntry{
+            passwordTextField.isSecureTextEntry = false
+        } else {
+            passwordTextField.isSecureTextEntry = true
+        }
+    }
     
     //MARK: objc function
     
@@ -91,6 +182,12 @@ class QuitAccountPage: UIViewController {
                                             height: 18))
         
         if loginmodel.isValidPassword(pwd: pwd){
+            passwordBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
+            pwdTypeCheck = false
+            
+            if let removeable = self.view.viewWithTag(131){
+                removeable.removeFromSuperview()
+            }
             
         } else {
             passwordBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
@@ -104,7 +201,29 @@ class QuitAccountPage: UIViewController {
                 self.view.addSubview(pwdlabel)
             }
         }
-        
     }
+    
+    //MARK: etc.
+    
+//    private func showToast(message : String) {
+//        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75,
+//                                               y: nextBtn.frame.maxY,
+//                                               width: 150,
+//                                               height: 35))
+//            toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//            toastLabel.textColor = UIColor.white
+//            toastLabel.font = UIFont(name: "Pretendard", size: 12)
+//            toastLabel.textAlignment = .center;
+//            toastLabel.text = message
+//            toastLabel.alpha = 1.0
+//            toastLabel.layer.cornerRadius = 10;
+//            toastLabel.clipsToBounds = true
+//            self.view.addSubview(toastLabel)
+//            UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+//                 toastLabel.alpha = 0.0
+//            }, completion: {(isCompleted) in
+//                toastLabel.removeFromSuperview()
+//            })
+//        }
 
 }

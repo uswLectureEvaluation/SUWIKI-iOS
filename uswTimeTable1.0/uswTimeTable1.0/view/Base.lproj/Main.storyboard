@@ -3363,7 +3363,7 @@
         <!--Quit Account Page-->
         <scene sceneID="g5W-EF-Ww4">
             <objects>
-                <viewController id="cKf-uC-ilf" customClass="QuitAccountPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuitVC" id="cKf-uC-ilf" customClass="QuitAccountPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k0T-r0-NPQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3417,11 +3417,12 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
                                 <connections>
+                                    <action selector="closeBtnClicked:" destination="cKf-uC-ilf" eventType="touchUpInside" id="Fir-P5-HxW"/>
                                     <action selector="closeBtnClicked:" destination="n22-Vf-c4L" eventType="touchUpInside" id="W81-ZE-uqx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-2s-CxO">
-                                <rect key="frame" x="366" y="286" width="24" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-2s-CxO">
+                                <rect key="frame" x="370" y="286" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="IYx-jo-PvM"/>
                                     <constraint firstAttribute="height" constant="24" id="vB5-pR-ECy"/>
@@ -3432,6 +3433,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="newPasswordBtnClicked:" destination="n22-Vf-c4L" eventType="touchUpInside" id="nYb-EC-omS"/>
+                                    <action selector="passwordBtnClicked:" destination="cKf-uC-ilf" eventType="touchUpInside" id="NUo-wj-tzA"/>
                                     <action selector="passwordBtnClicked:" destination="kAf-Yq-nTb" eventType="touchUpInside" id="z0E-Vi-KRC"/>
                                 </connections>
                             </button>
@@ -3471,6 +3473,7 @@
                             <constraint firstItem="dTP-aQ-Yyz" firstAttribute="top" secondItem="paW-OU-6Pn" secondAttribute="bottom" constant="8" id="aT9-8f-jWB"/>
                             <constraint firstItem="aKY-qv-UaA" firstAttribute="leading" secondItem="k0T-r0-NPQ" secondAttribute="leading" constant="20" id="rgM-hP-bl9"/>
                             <constraint firstItem="8yl-ii-xAw" firstAttribute="trailing" secondItem="paW-OU-6Pn" secondAttribute="trailing" constant="20" id="sBI-ah-jQD"/>
+                            <constraint firstItem="8yl-ii-xAw" firstAttribute="trailing" secondItem="2Ff-2s-CxO" secondAttribute="trailing" constant="20" id="tK8-FJ-iaw"/>
                             <constraint firstItem="paW-OU-6Pn" firstAttribute="top" secondItem="8yl-ii-xAw" secondAttribute="top" constant="176" id="tak-kr-GrX"/>
                             <constraint firstItem="cH1-Am-zzF" firstAttribute="centerX" secondItem="k0T-r0-NPQ" secondAttribute="centerX" id="u2C-XL-Y6J"/>
                             <constraint firstItem="8yl-ii-xAw" firstAttribute="trailing" secondItem="ijv-dn-WFk" secondAttribute="trailing" constant="20" id="wNa-Lu-GPO"/>
@@ -4659,6 +4662,9 @@
                                                         <state key="normal" title="회원 탈퇴">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="quitAccountPageBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="Sas-nB-ypg"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
