@@ -380,7 +380,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     func loadDetailData(){
         DispatchQueue.global().async {
             self.getDetailEvaluation(lectureId: self.lectureId, evalPage: 1)
-            self.getDetailExam()
+            self.getDetailExam(lectureId: self.lectureId, examPage: 1)
         }
         tableView.reloadData()
         
@@ -388,11 +388,21 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if tableViewNumber == 0{
+            examPageLast = false
             let lastIndex = detailEvaluationArray.count - 1
             if indexPath.row == lastIndex{
                 evalPage += 1
                 if evalPageLast != true {
                     getDetailEvaluation(lectureId: lectureId, evalPage: evalPage)
+                }
+            }
+        } else if tableViewNumber == 3 {
+            evalPageLast = false
+            let lastIndex = detailExamArray.count - 1
+            if indexPath.row == lastIndex{
+                examPage += 1
+                if examPageLast != true{
+                    getDetailExam(lectureId: lectureId, examPage: examPage)
                 }
             }
         }
@@ -469,27 +479,35 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    func getDetailExam(){
+    func getDetailExam(lectureId: Int, examPage: Int){
         
-        let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/exam-posts/"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
         
-        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        let parameters: Parameters = [
+            "lectureId" : lectureId,
+            "page" : examPage
+        ]
+        
+        
+        AF.request(url, method: .get,parameters: parameters ,encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
 
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
             } else if json["examDataExist"].boolValue == true {
-                
                 if json["data"].count == 0{
                     self.examDataExist = 1 // 시험 정보는 존재하나 구매하지 않은 상태
                     
                 } else {
+                    if json["data"].count < 10{
+                        self.examPageLast = true
+                    }
                     self.examDataExist = 2 // 시험 정보 구매한 상태
                     for index in 0..<json["data"].count{
                         let jsonData = json["data"][index]
@@ -628,7 +646,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
             if Int(data!) == 200{
-                self.getDetailExam()
+                self.getDetailExam(lectureId: self.lectureId, examPage: 1)
                 self.tableViewNumber = 3
             } else if Int(data!) == 403{
                 let alert = UIAlertController(title:"제한된 유저입니다!",
