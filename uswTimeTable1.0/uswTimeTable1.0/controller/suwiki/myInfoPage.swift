@@ -18,6 +18,7 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var loginPointView: UIView!
     @IBOutlet weak var logoutInfoView: UIView!
     
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var logoutPointPolicy: UIView!
     @IBOutlet weak var loginPointPolicy: UIView!
@@ -52,6 +53,7 @@ class myInfoPage: UIViewController {
         navigationBarHidden()
         navigationBackSwipeMotion()
         super.viewDidLoad()
+        imageView.isHidden = false
         loginInfoView.isHidden = true
         loginPointView.isHidden = true
         loginInformation.isHidden = true
@@ -142,6 +144,8 @@ class myInfoPage: UIViewController {
                     self.logoutInfoView.isHidden = true
                     self.logoutPointPolicy.isHidden = true
                     self.logoutInformation.isHidden = true
+                    self.imageView.isHidden = true
+                    
                     
                     self.viewUpdate()
                     self.loginInfoView.isHidden = false
@@ -149,6 +153,7 @@ class myInfoPage: UIViewController {
                     self.loginInformation.isHidden = false
                     self.loginPointPolicy.isHidden = false
                     self.writtenPostBtn.isHidden = false
+                    
                 } else {
                     
                     self.loginInfoView.isHidden = true
@@ -173,7 +178,7 @@ class myInfoPage: UIViewController {
             loginPointPolicy.isHidden = true
             writtenPostBtn.isHidden = true
             
-            
+            imageView.isHidden = false
             logoutInfoView.isHidden = false
             logoutPointPolicy.isHidden = false
             logoutInformation.isHidden = false
@@ -197,6 +202,8 @@ class myInfoPage: UIViewController {
     }
     
     func makeCornerRadius(){
+        
+    
         
         loginBtn.layer.borderColor = UIColor.white.cgColor
         loginBtn.layer.borderWidth = 1.0

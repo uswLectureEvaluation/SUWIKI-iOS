@@ -60,7 +60,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
     
-
+    var evalPageLast: Bool = false // page의 수를 계산해주는 변수
+    var evalPage = 1
+    var examPage = 1
     var tableViewNumber = 0
     var examDataExist = 0
     var evalDataExist = 0
@@ -376,26 +378,47 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func loadDetailData(){
         DispatchQueue.global().async {
-            self.getDetailEvaluation()
+            self.getDetailEvaluation(lectureId: self.lectureId, evalPage: 1)
             self.getDetailExam()
         }
         tableView.reloadData()
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if tableViewNumber == 0{
+            let lastIndex = detailEvaluationArray.count - 1
+            if indexPath.row == lastIndex{
+                evalPage += 1
+                if evalPageLast != true {
+                    getDetailEvaluation(lectureId: lectureId, evalPage: evalPage)
+                }
+            }
+        }
+    }
+    
     // #MARK: 무한스크롤 구현 필요
-    func getDetailEvaluation(){
+    func getDetailEvaluation(lectureId: Int, evalPage: Int){
 
-        let url = "https://api.suwiki.kr/evaluate-posts/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/evaluate-posts/"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        let parameters: Parameters = [
+            "lectureId" : lectureId,
+            "page" : evalPage
+        ]
+        
+        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
-    
+
+            print(JSON(response.data))
+            if json["data"].count < 10 {
+                self.evalPageLast = true
+            }
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
                 var team = ""

@@ -111,6 +111,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     // 검색결과 없을 때 표시 해주는 부분 필요
     
     override func viewWillAppear(_ animated: Bool) {
+        tableViewUpdateData.removeAll()
         print("viewwillappear")
         
         getMajorType()
@@ -219,6 +220,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
             let json = JSON(data ?? "")
             print(json["count"])
             self.searchResultCountLabel.text = "\(json["count"].intValue)"
+            print(json["count"].intValue)
             self.pageCount = (json["count"].intValue / 10) + 1
             if json != "" {
                 
@@ -226,7 +228,6 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
                     
                     
                     let jsonData = json["data"][index]
-                    print(jsonData)
                     let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
                     let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
                     let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
