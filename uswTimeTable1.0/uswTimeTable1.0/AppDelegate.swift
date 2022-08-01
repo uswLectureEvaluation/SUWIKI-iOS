@@ -11,6 +11,9 @@ import CoreData
 import Firebase
 import RealmSwift
 import KeychainSwift
+import GoogleMobileAds
+
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Now that we've told Realm how to handle the schema change, opening the file
         // will automatically perform the migration
 
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
         
         FirebaseApp.configure()
         return true

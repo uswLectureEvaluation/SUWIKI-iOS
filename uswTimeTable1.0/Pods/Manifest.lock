@@ -49,7 +49,7 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
   - Gifu (3.3.1)
-  - Google-Mobile-Ads-SDK (9.7.0):
+  - Google-Mobile-Ads-SDK (9.8.0):
     - GoogleAppMeasurement (< 10.0, >= 7.0)
     - GoogleUserMessagingPlatform (>= 1.1)
   - GoogleAppMeasurement (8.13.0):
@@ -164,7 +164,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: c610ab55bcb033d5eb3d17acba57301068a28497
   FirebaseInstallations: 60edbf7e11d91ae4c751d26c200dfd037099abe0
   Gifu: 416d4e38c4c2fed012f019e0a1d3ffcb58e5b842
-  Google-Mobile-Ads-SDK: 2685d6b3374b26de8a71f535614396e57cf80b13
+  Google-Mobile-Ads-SDK: a6a8fe7ebb1daf345ccdc225a99c1b3074ce0376
   GoogleAppMeasurement: 135c2fbcf5038e0f37dbce04fa641a702fc275d1
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca

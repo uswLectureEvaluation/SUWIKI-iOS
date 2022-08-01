@@ -60,7 +60,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
     
-
+    var evalPageLast: Bool = false// page의 수를 계산해주는 변수
+    var evalPage = 1
+    var examPageLast: Bool = false
+    var examPage = 1
     var tableViewNumber = 0
     var examDataExist = 0
     var evalDataExist = 0
@@ -81,7 +84,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         writeBtn.layer.borderWidth = 1.0
         
         // Xib 등록
-        print(lectureId)
         
         let evaluationCellName = UINib(nibName: "detailEvaluationCell", bundle: nil)
         tableView.register(evaluationCellName, forCellReuseIdentifier: "evaluationCell")
@@ -344,7 +346,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         let componentsData = String(detailLectureArray[0].semesterList).components(separatedBy: ", ")
         componentsSemester = componentsData
         collection.reloadData()
-        print(componentsSemester)
         
     }
     
@@ -362,8 +363,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
             let json = JSON(data ?? "")["data"]
             
-            print(json)
-            
             let totalAvg = String(format: "%.1f", round(json["lectureTotalAvg"].floatValue * 1000) / 1000)
             let totalSatisfactionAvg = String(format: "%.1f", round(json["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
             let totalHoneyAvg = String(format: "%.1f", round(json["lectureHoneyAvg"].floatValue * 1000) / 1000)
@@ -371,7 +370,6 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             
             let detailLectureData = detailLecture(id: json["id"].intValue, semesterList: json["semesterList"].stringValue, professor: json["professor"].stringValue, majorType: json["majorType"].stringValue, lectureType: json["lectureType"].stringValue, lectureName: json["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg, lectureTeamAvg: json["lectureTeamAvg"].floatValue, lectureDifficultyAvg: json["lectureDifficultyAvg"].floatValue, lectureHomeworkAvg: json["lectureHomeworkAvg"].floatValue)
             
-            print(detailLectureData)
             
             self.detailLectureArray.append(detailLectureData)
             self.lectureViewUpdate()
@@ -381,26 +379,57 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func loadDetailData(){
         DispatchQueue.global().async {
-            self.getDetailEvaluation()
-            self.getDetailExam()
+            self.getDetailEvaluation(lectureId: self.lectureId, evalPage: 1)
+            self.getDetailExam(lectureId: self.lectureId, examPage: 1)
         }
         tableView.reloadData()
         
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if tableViewNumber == 0{
+            examPageLast = false
+            let lastIndex = detailEvaluationArray.count - 1
+            if indexPath.row == lastIndex{
+                evalPage += 1
+                if evalPageLast != true {
+                    getDetailEvaluation(lectureId: lectureId, evalPage: evalPage)
+                }
+            }
+        } else if tableViewNumber == 3 {
+            evalPageLast = false
+            let lastIndex = detailExamArray.count - 1
+            if indexPath.row == lastIndex{
+                examPage += 1
+                if examPageLast != true{
+                    getDetailExam(lectureId: lectureId, examPage: examPage)
+                }
+            }
+        }
+    }
+    
     // #MARK: 무한스크롤 구현 필요
-    func getDetailEvaluation(){
+    func getDetailEvaluation(lectureId: Int, evalPage: Int){
 
-        let url = "https://api.suwiki.kr/evaluate-posts/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/evaluate-posts/"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        let parameters: Parameters = [
+            "lectureId" : lectureId,
+            "page" : evalPage
+        ]
+        
+        AF.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
-    
+
+            print(JSON(response.data))
+            if json["data"].count < 10 {
+                self.evalPageLast = true
+            }
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
                 var team = ""
@@ -450,27 +479,35 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    func getDetailExam(){
+    func getDetailExam(lectureId: Int, examPage: Int){
         
-        let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
+        let url = "https://api.suwiki.kr/exam-posts/"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
         
-        AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+        let parameters: Parameters = [
+            "lectureId" : lectureId,
+            "page" : examPage
+        ]
+        
+        
+        AF.request(url, method: .get,parameters: parameters ,encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
-            print(json)
+
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
             } else if json["examDataExist"].boolValue == true {
-                
                 if json["data"].count == 0{
                     self.examDataExist = 1 // 시험 정보는 존재하나 구매하지 않은 상태
                     
                 } else {
+                    if json["data"].count < 10{
+                        self.examPageLast = true
+                    }
                     self.examDataExist = 2 // 시험 정보 구매한 상태
                     for index in 0..<json["data"].count{
                         let jsonData = json["data"][index]
@@ -608,9 +645,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
-            print(JSON(response.data))
             if Int(data!) == 200{
-                self.getDetailExam()
+                self.getDetailExam(lectureId: self.lectureId, examPage: 1)
                 self.tableViewNumber = 3
             } else if Int(data!) == 403{
                 let alert = UIAlertController(title:"제한된 유저입니다!",

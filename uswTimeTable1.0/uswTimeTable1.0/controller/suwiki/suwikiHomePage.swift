@@ -45,7 +45,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
 
     override func viewDidLoad() {
-        
+        print("viewdidLoad")
         tableView.separatorInset.left = 0
 // 테이블뷰 왼쪽 여백
         
@@ -54,7 +54,6 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         navigationBarHidden()
         super.viewDidLoad()
-        getLectureData(option: option, majorType: majorType)
         
         categoryDropDown.layer.borderWidth = 1.0
         categoryDropDown.layer.borderColor = UIColor.systemGray5.cgColor
@@ -112,7 +111,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        print("viewwillappear")
         tableViewUpdateData.removeAll()
         tableView.reloadData()
         getMajorType()
@@ -171,19 +170,39 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if keychain.get("AccessToken") != nil{
-            let AD = UIApplication.shared.delegate as? AppDelegate
-            AD?.lectureId = tableViewUpdateData[indexPath.row].id
-            // tokenReissuance(id: viewData[indexPath.row].id)
-            let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-            detailVC.lectureId = tableViewUpdateData[indexPath.row].id
-            self.navigationController?.pushViewController(detailVC, animated: true)
+            let url = "https://api.suwiki.kr/lecture/?lectureId=\(tableViewUpdateData[indexPath.row].id)"
+            
+            let headers: HTTPHeaders = [
+                "Authorization" : String(keychain.get("AccessToken") ?? "")
+            ]
 
+            AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
+                
+                if response.response?.statusCode == 403{
+                    
+                    let alert = UIAlertController(title:"권한이 없는 사용자입니다.",
+                        message: "관리자에게 문의하거나, 이용 제한 내역을 확인해주세요!",
+                        preferredStyle: UIAlertController.Style.alert)
+                    let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+                    alert.addAction(cancle)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else if response.response?.statusCode == 200 {
+                    let AD = UIApplication.shared.delegate as? AppDelegate
+                    AD?.lectureId = self.tableViewUpdateData[indexPath.row].id
+                    // tokenReissuance(id: viewData[indexPath.row].id)
+                    let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+                    detailVC.lectureId = self.tableViewUpdateData[indexPath.row].id
+                    self.navigationController?.pushViewController(detailVC, animated: true)
+                }
+            }
+            
         } else {
+            
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
             self.present(nextVC, animated: true, completion: nil)
+                    
         }
-        
- 
     }
     
 
@@ -212,6 +231,23 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //            if json["data"].count == 10{
+    //                for index in 0..<10{
+    //
+    //                    let jsonData = json["data"][index]
+    //                    let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+    //                    let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
+    //                    let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+    //                    let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
+    //
+    //
+    //                    let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+    //
+    //                    self.tableViewUpdateData.append(readData)
+    //
+    //                }
+    //            } else {
+    
     // #MARK: 강의 데이터 불러오는 함수, 추후에 majorType 매개변수 추가, 파라미터 추가
     func getLectureData(option: String, majorType: String){
         let url = "https://api.suwiki.kr/lecture/all"
@@ -221,44 +257,25 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             "option" : option,
             "majorType" : majorType
         ]
-        print(majorType)
         // JSONEncoding --> URLEncoding으로 변경해야 데이터 넘어옴(파라미터 사용 시)
         AF.request(url, method: .get, parameters: parameter, encoding: URLEncoding.default).responseJSON { (response) in
             
             let data = response.data
             let json = JSON(data!)
-            print(json)
-            if json["data"].count == 10{
-                for index in 0..<10{
-                    
-                    let jsonData = json["data"][index]
-                    let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                    let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                    let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                    let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                    
-                    
-                    let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+
+            for index in 0..<json["data"].count{
+                let jsonData = json["data"][index]
+                let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
+                let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
+                let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
+                let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
                 
-                    self.tableViewUpdateData.append(readData)
-                    
-                }
-            } else {
                 
-                for index in 0..<json["data"].count{
-                    let jsonData = json["data"][index]
-                    let totalAvg = String(format: "%.1f", round(jsonData["lectureTotalAvg"].floatValue * 1000) / 1000)
-                    let totalSatisfactionAvg = String(format: "%.1f", round(jsonData["lectureSatisfactionAvg"].floatValue * 1000) / 1000)
-                    let totalHoneyAvg = String(format: "%.1f", round(jsonData["lectureHoneyAvg"].floatValue * 1000) / 1000)
-                    let totalLearningAvg = String(format: "%.1f", round(jsonData["lectureLearningAvg"].floatValue * 1000) / 1000)
-                    
-                    
-                    let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
-                
-                    self.tableViewUpdateData.append(readData)
-                    
-                }
+                let readData = homePageData(id: jsonData["id"].intValue, semesterList: jsonData["semesterList"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, lectureType: jsonData["lectureType"].stringValue, lectureName: jsonData["lectureName"].stringValue, lectureTotalAvg: totalAvg, lectureSatisfactionAvg: totalSatisfactionAvg, lectureHoneyAvg: totalHoneyAvg, lectureLearningAvg: totalLearningAvg)
+            
+                self.tableViewUpdateData.append(readData)
             }
+            
             
             
             self.tableView?.reloadData()
@@ -285,8 +302,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
             self.present(nextVC, animated: true, completion: nil)
         }
-        
     }
+    
 
     
 }

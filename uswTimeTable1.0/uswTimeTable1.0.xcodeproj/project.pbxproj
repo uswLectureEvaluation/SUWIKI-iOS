@@ -10,6 +10,7 @@
 		AF07990527E3565300B39617 /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF07990427E3565300B39617 /* loadingView.swift */; };
 		AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */; };
 		AF0A76B2281AB34E005977C6 /* examWriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0A76B1281AB34E005977C6 /* examWriteModel.swift */; };
+		AF15D939288E9891007A994B /* ChangePasswordPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF15D938288E9891007A994B /* ChangePasswordPage.swift */; };
 		AF296BBA27887CAD0044E8ED /* uswMakeSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */; };
 		AF296C5E2836420300C961A3 /* announcementPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296C5D2836420300C961A3 /* announcementPage.swift */; };
 		AF296C602836429000C961A3 /* announceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF296C5F2836429000C961A3 /* announceModel.swift */; };
@@ -53,6 +54,7 @@
 		AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */; };
 		AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA725442781B6D1003EE008 /* firstSceneCheck.swift */; };
 		AFA7797227F5D375005816E5 /* homePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA7797127F5D375005816E5 /* homePageModel.swift */; };
+		AFAD31252894138800C092FB /* QuitAccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAD31242894138700C092FB /* QuitAccountPage.swift */; };
 		AFAF2E8228056090005709C9 /* examInfoTakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */; };
 		AFAF2E8328056090005709C9 /* examInfoTakeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */; };
 		AFAF2E852805665B005709C9 /* lectureEvaluationWritePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */; };
@@ -116,6 +118,7 @@
 		AF07990427E3565300B39617 /* loadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
 		AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureExamWritePage.swift; sourceTree = "<group>"; };
 		AF0A76B1281AB34E005977C6 /* examWriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examWriteModel.swift; sourceTree = "<group>"; };
+		AF15D938288E9891007A994B /* ChangePasswordPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPage.swift; sourceTree = "<group>"; };
 		AF296BB927887CAD0044E8ED /* uswMakeSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uswMakeSchedule.swift; sourceTree = "<group>"; };
 		AF296C5D2836420300C961A3 /* announcementPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announcementPage.swift; sourceTree = "<group>"; };
 		AF296C5F2836429000C961A3 /* announceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announceModel.swift; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 		AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = noExamDataExistsCell.xib; sourceTree = "<group>"; };
 		AFA725442781B6D1003EE008 /* firstSceneCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstSceneCheck.swift; sourceTree = "<group>"; };
 		AFA7797127F5D375005816E5 /* homePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePageModel.swift; sourceTree = "<group>"; };
+		AFAD31242894138700C092FB /* QuitAccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitAccountPage.swift; sourceTree = "<group>"; };
 		AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = examInfoTakeCell.swift; sourceTree = "<group>"; };
 		AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = examInfoTakeCell.xib; sourceTree = "<group>"; };
 		AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lectureEvaluationWritePage.swift; sourceTree = "<group>"; };
@@ -368,6 +372,8 @@
 				AFCAABB227EEE651005D9421 /* loginController.swift */,
 				AFE5C100281FD6E500D3E4DF /* findIdPage.swift */,
 				AFE5C102281FD6F200D3E4DF /* findPwdPage.swift */,
+				AF15D938288E9891007A994B /* ChangePasswordPage.swift */,
+				AFAD31242894138700C092FB /* QuitAccountPage.swift */,
 				AFE076B027F5BE56009E32B0 /* suwikiHomePage.swift */,
 				AF40C83E287084A700E32690 /* MajorCategoryPage.swift */,
 				AFE5C104281FF2B000D3E4DF /* searchedResultPage.swift */,
@@ -423,6 +429,8 @@
 			dependencies = (
 			);
 			name = uswTimeTable1.0;
+			packageProductDependencies = (
+			);
 			productName = uswTimeTable1.0;
 			productReference = AFAFEF7F277F160900408F46 /* uswTimeTable1.0.app */;
 			productType = "com.apple.product-type.application";
@@ -451,6 +459,8 @@
 				Base,
 			);
 			mainGroup = AFAFEF76277F160900408F46;
+			packageReferences = (
+			);
 			productRefGroup = AFAFEF80277F160900408F46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -544,9 +554,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF4BA4B027D0994700B32ED5 /* adjustCourseData.swift in Sources */,
+				AFAD31252894138800C092FB /* QuitAccountPage.swift in Sources */,
 				AFB2291D283CEB8800D9EE3D /* SignUpEmailPage.swift in Sources */,
 				AF49FD282786DC2C0046BD6A /* timeTableDatabase.swift in Sources */,
 				AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */,
+				AF15D939288E9891007A994B /* ChangePasswordPage.swift in Sources */,
 				AFAF2E852805665B005709C9 /* lectureEvaluationWritePage.swift in Sources */,
 				AF5621BB283E32A1002B8F23 /* PurchaseHistoryModel.swift in Sources */,
 				AFE5C103281FD6F200D3E4DF /* findPwdPage.swift in Sources */,

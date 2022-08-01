@@ -18,6 +18,7 @@ class myInfoPage: UIViewController {
     @IBOutlet weak var loginPointView: UIView!
     @IBOutlet weak var logoutInfoView: UIView!
     
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var logoutPointPolicy: UIView!
     @IBOutlet weak var loginPointPolicy: UIView!
@@ -52,6 +53,7 @@ class myInfoPage: UIViewController {
         navigationBarHidden()
         navigationBackSwipeMotion()
         super.viewDidLoad()
+        imageView.isHidden = false
         loginInfoView.isHidden = true
         loginPointView.isHidden = true
         loginInformation.isHidden = true
@@ -87,13 +89,22 @@ class myInfoPage: UIViewController {
         
     }
     
-    @IBAction func feedbackBtnClicked(_ sender: Any) {
+    @IBAction func feedbackBtnClicked(_ sender: Any) {let url = NSURL(string: "https://forms.gle/tZByKoN6rJCysvNz6")
+        let feedbackSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(feedbackSafariView, animated: true, completion: nil)
     }
     
     @IBAction func askBtnClicked(_ sender: Any) {
+//        NSURL(string: "https://forms.gle/tZByKoN6rJCysvNz6")
+//        let askSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+//        self.present(askSafariView, animated: true, completion: nil)
     }
     
     @IBAction func serviceBtnClicked(_ sender: Any) {
+        let url = NSURL(string: "https://sites.google.com/view/suwiki-policy-terms/")
+        let serviceSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
+        self.present(serviceSafariView, animated: true, completion: nil)
+    
     }
     
     
@@ -115,6 +126,7 @@ class myInfoPage: UIViewController {
         if let accessToken = keychain.get("AccessToken"){
             
             let url = "https://api.suwiki.kr/user/my-page"
+            
             let headers: HTTPHeaders = [
                 "Authorization" : String(accessToken)
             ]
@@ -132,6 +144,8 @@ class myInfoPage: UIViewController {
                     self.logoutInfoView.isHidden = true
                     self.logoutPointPolicy.isHidden = true
                     self.logoutInformation.isHidden = true
+                    self.imageView.isHidden = true
+                    
                     
                     self.viewUpdate()
                     self.loginInfoView.isHidden = false
@@ -139,6 +153,7 @@ class myInfoPage: UIViewController {
                     self.loginInformation.isHidden = false
                     self.loginPointPolicy.isHidden = false
                     self.writtenPostBtn.isHidden = false
+                    
                 } else {
                     
                     self.loginInfoView.isHidden = true
@@ -163,7 +178,7 @@ class myInfoPage: UIViewController {
             loginPointPolicy.isHidden = true
             writtenPostBtn.isHidden = true
             
-            
+            imageView.isHidden = false
             logoutInfoView.isHidden = false
             logoutPointPolicy.isHidden = false
             logoutInformation.isHidden = false
@@ -187,6 +202,8 @@ class myInfoPage: UIViewController {
     }
     
     func makeCornerRadius(){
+        
+    
         
         loginBtn.layer.borderColor = UIColor.white.cgColor
         loginBtn.layer.borderWidth = 1.0
@@ -261,6 +278,17 @@ class myInfoPage: UIViewController {
     
     @IBAction func purchaseHistoryBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "purchaseVC") as! PurchaseHistoryPage
+        present(nextVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func passwordChangeBtnClicked(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "changePasswdVC") as! ChangePasswordPage
+        present(nextVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func quitAccountPageBtnClicked(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "QuitVC") as! QuitAccountPage
+        nextVC.modalPresentationStyle = .fullScreen
         present(nextVC, animated: true, completion: nil)
     }
     

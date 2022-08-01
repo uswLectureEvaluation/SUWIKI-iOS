@@ -32,7 +32,8 @@ class BaseInterceptor: RequestInterceptor{
     
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-        
+        let test = request.task?.response as? HTTPURLResponse
+        print(test?.statusCode)
         guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 401 else {
             print("donottry")
             completion(.doNotRetryWithError(error))
