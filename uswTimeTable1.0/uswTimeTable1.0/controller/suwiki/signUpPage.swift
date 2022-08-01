@@ -32,6 +32,8 @@ class signUpPage: UIViewController {
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
 
+    var idTypeCheck: Bool = false
+    
     var addPasswordLabel = false
     var addPasswordTypeLabel = false
     var addPasswordCheckLabel = false
@@ -55,6 +57,7 @@ class signUpPage: UIViewController {
         nextBtn.layer.borderColor = UIColor.white.cgColor
         
         idTextField.addTarget(self, action: #selector(idTextFieldChangeCheck), for: .editingChanged)
+        idTextField.addTarget(self, action: #selector(idTextFieldTypeCheck), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(passwordTextTypeCheck), for: .editingChanged)
         passwordCheckTextField.addTarget(self, action: #selector(passwordCheckTextTypeCheck), for: .editingChanged)
         
@@ -183,6 +186,38 @@ class signUpPage: UIViewController {
         let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(cancle)
         present(alert,animated: true,completion: nil)
+    }
+    
+    @objc func idTextFieldTypeCheck(_ sender: UITextField){
+        guard let id = idTextField.text, !id.isEmpty else { return }
+        
+        let idLabel = UILabel(frame: CGRect(x: 16, y: idTextFieldBottomLine.frame.maxY + 2, width: 120, height: 18))
+        
+        if loginModel.isValidId(id: id){
+            idTypeCheck = false
+            idTextFieldBottomLine.layer.backgroundColor = colorLiteralBlue.cgColor
+            
+            if let removeable = self.view.viewWithTag(120){
+                removeable.removeFromSuperview()
+            }
+            
+        } else {
+            idTextFieldBottomLine.layer.backgroundColor = colorLiteralPurple.cgColor
+            
+            if idTypeCheck == false{
+                idTypeCheck = true
+                idLabel.text = "아이디 형식이 올바르지 않습니다."
+                idLabel.textColor = colorLiteralPurple
+                idLabel.font = idLabel.font.withSize(12)
+                idLabel.tag = 120
+                self.view.addSubview(idLabel)
+                
+                
+            }
+            
+        }
+        
+        
     }
     
     @objc func idTextFieldChangeCheck(_ sender: UITextField){

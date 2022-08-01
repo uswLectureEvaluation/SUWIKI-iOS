@@ -17,6 +17,8 @@ class QuitAccountPage: UIViewController {
     @IBOutlet weak var passwordBottomLine: UIView!
     @IBOutlet weak var quitBtn: UIButton!
     
+    //MARK: properties
+    let loginmodel = userModel()
     
     
     override func viewDidLoad() {
