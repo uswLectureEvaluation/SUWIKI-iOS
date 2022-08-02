@@ -11,6 +11,7 @@ import Alamofire
 import SafariServices
 import SwiftyJSON
 import KeychainSwift
+import GoogleMobileAds
 
 class myInfoPage: UIViewController {
 

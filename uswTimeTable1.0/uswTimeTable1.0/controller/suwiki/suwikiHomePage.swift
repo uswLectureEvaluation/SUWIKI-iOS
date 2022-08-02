@@ -9,9 +9,11 @@ import UIKit
 
 import Alamofire
 import SwiftyJSON
+import GoogleMobileAds
 import DropDown
 import KeychainSwift
 import Cosmos
+
 
 class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -29,6 +31,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var majorTypeLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var chooseMajorLabel: UILabel!
+    
+    @IBOutlet weak var bannerView: GADBannerView!
     
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
 
@@ -48,7 +52,10 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("viewdidLoad")
         tableView.separatorInset.left = 0
 // 테이블뷰 왼쪽 여백
-        
+        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+                        
         searchTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 6.0, height: 0.0))
         searchTextField.leftViewMode = .always // 텍스트 필드 왼쪽 여백 주기
         
