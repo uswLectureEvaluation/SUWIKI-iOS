@@ -56,8 +56,22 @@ class QuitAccountPage: UIViewController {
     }
     @IBAction func quitBtnClicked(_ sender: Any) {
         
-        guard let id = idTextField.text, !id.isEmpty else { return }
-        guard let pwd = passwordTextField.text, !pwd.isEmpty else { return }
+        guard let id = idTextField.text, !id.isEmpty else {
+            let alert = UIAlertController(title:"입력하신 정보가 올바르지 않습니다.",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
+            return }
+        guard let pwd = passwordTextField.text, !pwd.isEmpty else {
+            let alert = UIAlertController(title:"입력하신 정보가 올바르지 않습니다.",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
+            return }
         
         let url = "https://api.suwiki.kr/user/quit"
         
@@ -124,6 +138,13 @@ class QuitAccountPage: UIViewController {
             quitAlert.addAction(deleteButton)
             quitAlert.addAction(cancelButton)
             self.present(quitAlert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title:"입력정보가 올바르지 않습니다.",
+                message: "확인을 눌러주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
         }
 
     }

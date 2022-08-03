@@ -267,7 +267,8 @@ class myInfoPage: UIViewController {
     
     @IBAction func writtenPostBtnClicked(_ sender: Any) {
         let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "writtenPostVC") as! writtenPostPage
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        nextVC.modalPresentationStyle = .fullScreen
+        present(nextVC, animated: true, completion: nil)
     }
     
     

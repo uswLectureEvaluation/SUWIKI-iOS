@@ -148,7 +148,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
     @IBAction func finishedBtnClicked(_ sender: Any) {
         
         if teamWorkType.teamWorkPoint == 3 || difficultyType.difficultyPoint == 3 || homeworkType.homeworkPoint == 3 || semesterTextField.text == "선택" {
-            let alert = UIAlertController(title:"데이터가 없네용!! 작성해주세연 !!",
+            let alert = UIAlertController(title:"입력하지 않은 내용이 있습니다.",
                 message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)

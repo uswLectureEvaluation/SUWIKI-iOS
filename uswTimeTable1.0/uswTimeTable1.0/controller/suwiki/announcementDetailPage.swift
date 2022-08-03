@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import GoogleMobileAds
 
 class announcementDetailPage: UIViewController {
     
@@ -17,6 +18,7 @@ class announcementDetailPage: UIViewController {
     @IBOutlet weak var announceView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var modifiedDateLabel: UILabel!
     
     @IBOutlet weak var contentLabel: UILabel!
@@ -29,6 +31,11 @@ class announcementDetailPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(keychain.get("AccessToken"))
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
         announceView.layer.borderColor = UIColor.lightGray.cgColor
         announceView.layer.cornerRadius = 12.0
         announceView.layer.borderWidth = 1.0
@@ -67,9 +74,14 @@ class announcementDetailPage: UIViewController {
         }
     }
     
+    //let range = tableViewUpdateData[indexPath.row].createDate.startIndex..<tableViewUpdateData[indexPath.row].createDate.index(tableViewUpdateData[indexPath.row].createDate.startIndex, offsetBy: 10)
+    
+    //cell.createDateLabel.text = "\(tableViewUpdateData[indexPath.row].createDate[range])"
+    
     func detailViewUpdate() {
         titleLabel.text = announcementDetailPageData[0].title
-        modifiedDateLabel.text = announcementDetailPageData[0].modifiedDate
+        let dateData = announcementDetailPageData[0].modifiedDate.split(separator: "T")[0]
+        modifiedDateLabel.text = String(dateData)
         contentLabel.text = announcementDetailPageData[0].content
     }
 

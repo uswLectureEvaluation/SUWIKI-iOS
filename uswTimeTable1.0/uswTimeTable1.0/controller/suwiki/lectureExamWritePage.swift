@@ -165,7 +165,7 @@ class lectureExamWritePage: UIViewController, UITextViewDelegate{
     
     @IBAction func finishBtnClicked(_ sender: Any) {
         if examTypeArray.count == 0 || contentField.text == "" || levelType.levelPoint == 3 || examTypeTextField.text == "선택" || semesterTextField.text == "선택" {
-            let alert = UIAlertController(title:"빈 데이터가 있어요 !",
+            let alert = UIAlertController(title:"입력하지 않은 내용이 있습니다.",
                 message: "확인을 눌러주세요!",
                 preferredStyle: UIAlertController.Style.alert)
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)

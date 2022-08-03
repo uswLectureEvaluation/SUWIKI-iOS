@@ -52,7 +52,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("viewdidLoad")
         tableView.separatorInset.left = 0
 // 테이블뷰 왼쪽 여백
-        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        // bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
                         
