@@ -90,7 +90,7 @@ class PurchaseHistoryPage: UIViewController, UITableViewDelegate, UITableViewDat
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let data = response.data
             let json = JSON(data ?? "")
-            
+            print(json)
             print(json["data"].count)
             if json["data"].count > 0 {
                 self.tableViewNumber = 0

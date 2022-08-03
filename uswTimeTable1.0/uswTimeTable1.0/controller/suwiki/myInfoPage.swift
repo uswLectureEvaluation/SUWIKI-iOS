@@ -245,6 +245,11 @@ class myInfoPage: UIViewController {
         
     }
     
+    @IBAction func restrictBtnClicked(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "restrictedVC") as! RestrictedPage
+        present(nextVC, animated: true, completion: nil)
+    }
+    
     @IBAction func logoutBtnClicked(_ sender: Any) {
         
         let logoutAlert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠어요?", preferredStyle: UIAlertController.Style.alert)

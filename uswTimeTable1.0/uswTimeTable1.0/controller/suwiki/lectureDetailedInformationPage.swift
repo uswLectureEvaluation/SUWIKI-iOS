@@ -525,7 +525,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         AF.request(url, method: .get,parameters: parameters ,encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             let data = response.value
             let json = JSON(data ?? "")
-
+            print(json)
             if json["examDataExist"].boolValue == false {
                 self.examDataExist = 0
             } else if json["examDataExist"].boolValue == true {
@@ -668,11 +668,12 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
-
+        
         let url = "https://api.suwiki.kr/exam-posts/purchase/?lectureId=\(lectureId)"
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode
+            print(JSON(response.data))
             if Int(data!) == 200{
                 self.getDetailExam(lectureId: self.lectureId, examPage: 1)
                 self.tableViewNumber = 3

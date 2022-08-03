@@ -171,8 +171,25 @@ class lectureExamWritePage: UIViewController, UITextViewDelegate{
             let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
             alert.addAction(cancle)
             self.present(alert, animated: true, completion: nil)
+        } else if contentField.text.count < 30 || contentField.text.count > 1000 {
+            let alert = UIAlertController(title:"시험정보를 확인해주세요!",
+                                        message: "내용은 30자 이상, 1000자 이하로 작성해주세요!",
+                                        preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
         }
         
+//            lse if contentField.text.count < 30 || contentField.text.count > 1000 {
+//                let alert = UIAlertController(title:"강의평가를 확인해주세요!",
+//                    message: "내용은 30자 이상, 1000자 이하로 작성해주세요!",
+//                    preferredStyle: UIAlertController.Style.alert)
+//                let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+//                alert.addAction(cancle)
+//                self.present(alert, animated: true, completion: nil)
+//
+//            }
+//
         else {
             if adjustBtn == 0 {
                 writeExam()

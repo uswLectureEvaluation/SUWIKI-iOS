@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import GoogleMobileAds
 
 class RestrictedPage: UIViewController {
 
@@ -20,6 +21,7 @@ class RestrictedPage: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var noDataLabel: UILabel!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     //MARK: properties
     
@@ -29,6 +31,9 @@ class RestrictedPage: UIViewController {
     
     override func viewDidLoad() {
         getRestricted()
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         super.viewDidLoad()
         
         let restrictedcell = UINib(nibName: "RestrictedCell", bundle: nil)
@@ -40,17 +45,21 @@ class RestrictedPage: UIViewController {
     //MARK: btnAction
     
     @IBAction func restrictBtnClicked(_ sender: Any) {
-        restrictBtn.tintColor = .black
-        blackListBtn.tintColor = .lightGray
+        restrictBtn.setTitleColor(.black, for: .normal)
+        blackListBtn.setTitleColor(.lightGray, for: .normal)
         getRestricted()
         
     }
     
     @IBAction func blackListBtnClikcked(_ sender: Any) {
-        restrictBtn.tintColor = .lightGray
-        blackListBtn.tintColor = .black
+        restrictBtn.setTitleColor(.lightGray, for: .normal)
+        blackListBtn.setTitleColor(.black, for: .normal)
         getBlackList()
         
+    }
+    
+    @IBAction func closeBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
     //MARK: API Func
@@ -71,11 +80,12 @@ class RestrictedPage: UIViewController {
                    interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
             let json = JSON(response.data)
-            
+            print(response.response?.statusCode)
+            print(json)
             if json["data"].count == 0 {
                 
                 self.noDataView.isHidden = false
-                self.noDataLabel.text = "이용 제한 내역이 없습니다"
+                self.noDataLabel.text = "이용 제한 내역이 없습니다."
                 self.noDataLabel.isHidden = false
                 self.tableView.isHidden = true
                 
@@ -115,11 +125,12 @@ class RestrictedPage: UIViewController {
                    interceptor: BaseInterceptor()).validate().responseJSON { (response) in
             
             let json = JSON(response.data)
-            
+            print(response.response?.statusCode)
+            print(json)
             if json["data"].count == 0 {
                 
                 self.noDataView.isHidden = false
-                self.noDataLabel.text = "블랙리스트 내역이 없습니다"
+                self.noDataLabel.text = "블랙리스트 내역이 없습니다."
                 self.noDataLabel.isHidden = false
                 self.tableView.isHidden = true
                 
@@ -158,6 +169,15 @@ extension RestrictedPage: UITableViewDelegate, UITableViewDataSource{
         
         if tableViewNumber == 1 || tableViewNumber == 2 {
             
+            let cell = tableView.dequeueReusableCell(withIdentifier: "restrictCell", for: indexPath) as! RestrictedCell
+            cell.reasonLabel.text = tableViewUpdateData[indexPath.row].reason
+            let createdAtData = tableViewUpdateData[indexPath.row].createdAt.split(separator: "T")[0]
+            cell.createdAtLabel.text = String(createdAtData)
+            let expiredAtData = tableViewUpdateData[indexPath.row].expiredAt.split(separator: "T")[0]
+            cell.expiredAtLabel.text = String(expiredAtData)
+            cell.judgementLabel.text = tableViewUpdateData[indexPath.row].judgement
+            
+            return cell
         }
         
         return UITableViewCell()

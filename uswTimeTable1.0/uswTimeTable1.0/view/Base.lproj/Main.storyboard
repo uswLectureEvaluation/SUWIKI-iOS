@@ -4743,7 +4743,7 @@
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="passwordChangeBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="lxC-7X-5bd"/>
+                                                            <action selector="restrictBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="Mul-ev-pxz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -5514,11 +5514,19 @@
                                     <constraint firstItem="OpR-bt-6DX" firstAttribute="centerX" secondItem="teU-cS-Jl7" secondAttribute="centerX" id="rDh-VJ-nA5"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sr3-OH-rtJ" customClass="GADBannerView">
+                                <rect key="frame" x="16" y="812" width="382" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="drO-zb-v4U"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WLn-ER-suD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Sr3-OH-rtJ" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="16" id="0Cs-tR-Jdx"/>
                             <constraint firstItem="bZx-py-evw" firstAttribute="top" secondItem="gcz-By-Vws" secondAttribute="bottom" constant="37" id="458-O5-IjE"/>
                             <constraint firstAttribute="trailing" secondItem="hJa-SN-Exz" secondAttribute="trailing" constant="16" id="4yZ-9a-ZGK"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="bottom" secondItem="teU-cS-Jl7" secondAttribute="bottom" constant="60" id="5XT-3e-jeD"/>
@@ -5537,6 +5545,7 @@
                             <constraint firstItem="gcz-By-Vws" firstAttribute="leading" secondItem="I9h-iH-U1B" secondAttribute="leading" id="Q3y-eu-dA1"/>
                             <constraint firstItem="YgK-OR-c7c" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="289" id="QUW-kL-jAG"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="kKZ-1T-auO" secondAttribute="trailing" constant="16" id="T7c-UQ-Ybg"/>
+                            <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="Sr3-OH-rtJ" secondAttribute="trailing" constant="16" id="Vk5-5k-vdf"/>
                             <constraint firstItem="0ia-Ip-pxO" firstAttribute="top" secondItem="WLn-ER-suD" secondAttribute="top" constant="20" id="WSv-0p-Kcy"/>
                             <constraint firstItem="dcd-dj-b5l" firstAttribute="top" secondItem="hJa-SN-Exz" secondAttribute="bottom" constant="24" id="XhC-nL-RwR"/>
                             <constraint firstItem="0ia-Ip-pxO" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="16" id="fIK-9e-OIt"/>
@@ -5546,11 +5555,13 @@
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="hUK-4i-UD1" secondAttribute="trailing" constant="24" id="oES-0U-ka7"/>
                             <constraint firstItem="kKZ-1T-auO" firstAttribute="top" secondItem="gcz-By-Vws" secondAttribute="bottom" constant="93" id="qwr-tA-iSj"/>
                             <constraint firstItem="Xir-Rt-oTJ" firstAttribute="top" secondItem="hJa-SN-Exz" secondAttribute="bottom" constant="24" id="vba-Wc-bSO"/>
+                            <constraint firstItem="WLn-ER-suD" firstAttribute="bottom" secondItem="Sr3-OH-rtJ" secondAttribute="bottom" constant="10" id="wqC-mh-s2P"/>
                             <constraint firstItem="kKZ-1T-auO" firstAttribute="leading" secondItem="WLn-ER-suD" secondAttribute="leading" constant="48" id="yEV-SH-jxb"/>
                             <constraint firstItem="WLn-ER-suD" firstAttribute="trailing" secondItem="YgK-OR-c7c" secondAttribute="trailing" constant="16" id="yg6-F7-7cx"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="Sr3-OH-rtJ" id="AXY-vp-9o1"/>
                         <outlet property="categoryDropDown" destination="dcd-dj-b5l" id="HnG-Z8-Cv1"/>
                         <outlet property="categoryTextField" destination="NmJ-2w-cju" id="epw-7x-O02"/>
                         <outlet property="chooseMajorLabel" destination="1YI-bT-Nzn" id="IlS-J1-Wye"/>
@@ -6340,7 +6351,7 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="까다로움"/>
                                                 <connections>
-                                                    <action selector="easyDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="aDe-DI-RrL"/>
+                                                    <action selector="hardDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="L8s-vT-F7S"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-no-Xap">
@@ -6400,7 +6411,7 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="너그러움"/>
                                                 <connections>
-                                                    <action selector="hardDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="bnO-vc-OSa"/>
+                                                    <action selector="easyDifficultyBtnClicked:" destination="fnZ-eA-fWl" eventType="touchUpInside" id="jc4-21-XWT"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조모임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZaB-zz-Bji">
@@ -6616,9 +6627,9 @@
                     <connections>
                         <outlet property="contentField" destination="loc-ZG-fRz" id="nma-KR-Itl"/>
                         <outlet property="contentView" destination="OM6-cX-16i" id="hAR-Gt-TWr"/>
-                        <outlet property="easyDifficultyBtn" destination="dcQ-fw-19x" id="JKb-lP-REv"/>
+                        <outlet property="easyDifficultyBtn" destination="Uwy-xd-DCn" id="peV-sf-A7i"/>
                         <outlet property="finishBtn" destination="Mhh-Pg-H3y" id="g4K-gU-U8p"/>
-                        <outlet property="hardDiffcultyBtn" destination="Uwy-xd-DCn" id="1MY-Pz-PL4"/>
+                        <outlet property="hardDiffcultyBtn" destination="dcQ-fw-19x" id="nj6-4U-HWc"/>
                         <outlet property="homeworkManyBtn" destination="7Lu-Ri-Jtz" id="if1-2i-XJE"/>
                         <outlet property="homeworkNoBtn" destination="Tsx-m0-Xdz" id="Uay-28-vkh"/>
                         <outlet property="homeworkUsuallyBtn" destination="3mr-no-Xap" id="kHi-9o-K1X"/>
@@ -7080,7 +7091,7 @@
         <!--Restricted Page-->
         <scene sceneID="joN-Fc-Qua">
             <objects>
-                <viewController id="gA4-nW-6io" customClass="RestrictedPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="restrictedVC" id="gA4-nW-6io" customClass="RestrictedPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u2f-ma-0cV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7132,7 +7143,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-vS-Wdd">
-                                <rect key="frame" x="16" y="192" width="382" height="634"/>
+                                <rect key="frame" x="16" y="192" width="382" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 제한 내역이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGI-eS-aq1">
                                         <rect key="frame" x="107" y="70" width="168.5" height="20"/>
@@ -7147,12 +7158,37 @@
                                     <constraint firstItem="CGI-eS-aq1" firstAttribute="centerX" secondItem="kgn-vS-Wdd" secondAttribute="centerX" id="Yvt-ei-uZs"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYl-I9-1eX">
+                                <rect key="frame" x="374" y="96" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="ZIv-WI-tbM"/>
+                                    <constraint firstAttribute="height" constant="24" id="zv9-58-PBC"/>
+                                </constraints>
+                                <color key="tintColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="closeBtnClicked:" destination="VB9-Z1-Qy8" eventType="touchUpInside" id="7Gy-Ki-WRx"/>
+                                    <action selector="closeBtnClicked:" destination="gA4-nW-6io" eventType="touchUpInside" id="7yY-Oy-Fn6"/>
+                                    <action selector="closeBtnClicked:" destination="w0W-RW-YeQ" eventType="touchUpInside" id="8cg-f8-CHv"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EB0-KL-o99" customClass="GADBannerView">
+                                <rect key="frame" x="16" y="812" width="382" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Yzp-qD-UbQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ja3-kw-T21"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Ja3-kw-T21" firstAttribute="trailing" secondItem="EB0-KL-o99" secondAttribute="trailing" constant="16" id="4Y9-U6-hTH"/>
+                            <constraint firstItem="EB0-KL-o99" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="16" id="6kF-KL-nth"/>
+                            <constraint firstItem="Ja3-kw-T21" firstAttribute="bottom" secondItem="kgn-vS-Wdd" secondAttribute="bottom" constant="70" id="7vn-Lw-meG"/>
+                            <constraint firstItem="Ja3-kw-T21" firstAttribute="bottom" secondItem="EB0-KL-o99" secondAttribute="bottom" constant="10" id="8cT-gF-Mvg"/>
                             <constraint firstItem="kgn-vS-Wdd" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="16" id="9p8-Yr-75n"/>
-                            <constraint firstAttribute="bottom" secondItem="kgn-vS-Wdd" secondAttribute="bottom" constant="70" id="CQB-7g-KQ8"/>
                             <constraint firstItem="UZU-xe-z29" firstAttribute="top" secondItem="Ja3-kw-T21" secondAttribute="top" constant="52" id="Iga-Mt-SbP"/>
                             <constraint firstItem="HBQ-r6-dx3" firstAttribute="leading" secondItem="V0w-wX-ML7" secondAttribute="trailing" constant="14" id="Ixs-Iu-kbP"/>
                             <constraint firstItem="Ja3-kw-T21" firstAttribute="trailing" secondItem="XEM-uZ-32W" secondAttribute="trailing" constant="16" id="TUK-Yl-dFK"/>
@@ -7161,13 +7197,16 @@
                             <constraint firstItem="HBQ-r6-dx3" firstAttribute="top" secondItem="Ja3-kw-T21" secondAttribute="top" constant="105" id="av6-Mm-qOy"/>
                             <constraint firstItem="V0w-wX-ML7" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="20" id="ccT-Wp-xJA"/>
                             <constraint firstItem="Ja3-kw-T21" firstAttribute="bottom" secondItem="XEM-uZ-32W" secondAttribute="bottom" constant="70" id="kf7-71-Z6t"/>
+                            <constraint firstItem="OYl-I9-1eX" firstAttribute="top" secondItem="Ja3-kw-T21" secondAttribute="top" constant="52" id="npg-gj-h0y"/>
                             <constraint firstItem="XEM-uZ-32W" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="16" id="p1z-4i-Qx5"/>
+                            <constraint firstItem="Ja3-kw-T21" firstAttribute="trailing" secondItem="OYl-I9-1eX" secondAttribute="trailing" constant="16" id="rWZ-LP-ey8"/>
                             <constraint firstItem="UZU-xe-z29" firstAttribute="centerX" secondItem="u2f-ma-0cV" secondAttribute="centerX" id="rpO-7v-Z7y"/>
                             <constraint firstItem="kgn-vS-Wdd" firstAttribute="top" secondItem="UZU-xe-z29" secondAttribute="bottom" constant="72" id="tgW-IB-dsH"/>
                             <constraint firstItem="Ja3-kw-T21" firstAttribute="trailing" secondItem="kgn-vS-Wdd" secondAttribute="trailing" constant="16" id="wcP-Ja-J7Z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="EB0-KL-o99" id="TOJ-TY-8cg"/>
                         <outlet property="blackListBtn" destination="HBQ-r6-dx3" id="Yr1-dO-gsW"/>
                         <outlet property="noDataLabel" destination="CGI-eS-aq1" id="bkn-0x-94u"/>
                         <outlet property="noDataView" destination="kgn-vS-Wdd" id="wr8-65-h8a"/>
