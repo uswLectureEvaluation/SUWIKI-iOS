@@ -11,6 +11,7 @@ import KeychainSwift
 import Alamofire
 import SwiftyJSON
 import Cosmos
+import GoogleMobileAds
 
 // 1. 화면이 켜질 때 eval / exam 데이터 리스트에 저장
 // 2. 데이터는 10개씩만 테이블 뷰에 보여주고, 이후 스크롤 시 이후 데이터 마저 불러오기
@@ -46,6 +47,9 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var writeBtn: UIButton!
     
+    @IBOutlet weak var bannerView: GADBannerView!
+    
+    
     
     var detailLectureArray: Array<detailLecture> = []
     var detailEvaluationArray: Array<detailEvaluation> = []
@@ -71,7 +75,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         
     
-
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        
         lectureView.layer.borderWidth = 1.0
         lectureView.layer.borderColor = UIColor.lightGray.cgColor
         lectureView.layer.cornerRadius = 12.0
@@ -118,6 +125,27 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         loadDetailData()
         getDetailPage()
     }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                 attribute: .bottom,
+                                 relatedBy: .equal,
+                                 toItem: bottomLayoutGuide,
+                                 attribute: .top,
+                                 multiplier: 1,
+                                 constant: 0),
+              NSLayoutConstraint(item: bannerView,
+                                 attribute: .centerX,
+                                 relatedBy: .equal,
+                                 toItem: view,
+                                 attribute: .centerX,
+                                 multiplier: 1,
+                                 constant: 0)
+             ])
+          }
     
     @IBAction func evaluationBtnClicked(_ sender: Any) {
         

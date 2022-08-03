@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 import Realm
 import DropDown
+import GoogleMobileAds
 
 class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +18,7 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var numDropDown: UIView!
     @IBOutlet weak var majorDropDown: UIView!
     @IBOutlet weak var choiceNumDropDown: UILabel!
@@ -42,6 +44,10 @@ class listCourseData: UIViewController, UITableViewDataSource, UITableViewDelega
     var checkTimeTable: String = UserDefaults.standard.string(forKey: "name") ?? ""
     
     override func viewDidLoad() {
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         super.viewDidLoad()
 
