@@ -7085,6 +7085,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XEM-uZ-32W">
+                                <rect key="frame" x="16" y="192" width="382" height="600"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gA4-nW-6io" id="Faj-ob-1n8"/>
+                                    <outlet property="delegate" destination="gA4-nW-6io" id="Ofj-xU-tyT"/>
+                                </connections>
+                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 제한 내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZU-xe-z29">
                                 <rect key="frame" x="150" y="96" width="114" height="24"/>
                                 <constraints>
@@ -7094,27 +7102,76 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XEM-uZ-32W">
-                                <rect key="frame" x="16" y="192" width="382" height="600"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-r6-dx3">
+                                <rect key="frame" x="104" y="149" width="87" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="8GV-lk-Hwd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="블랙리스트">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <outlet property="dataSource" destination="gA4-nW-6io" id="Faj-ob-1n8"/>
-                                    <outlet property="delegate" destination="gA4-nW-6io" id="Ofj-xU-tyT"/>
+                                    <action selector="blackListBtnClikcked:" destination="gA4-nW-6io" eventType="touchUpInside" id="Mvf-Yo-iDK"/>
                                 </connections>
-                            </tableView>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0w-wX-ML7">
+                                <rect key="frame" x="20" y="149" width="70" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="sld-66-D3a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="이용제한">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="restrictBtnClicked:" destination="gA4-nW-6io" eventType="touchUpInside" id="5eL-9b-ccn"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-vS-Wdd">
+                                <rect key="frame" x="16" y="192" width="382" height="634"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 제한 내역이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGI-eS-aq1">
+                                        <rect key="frame" x="107" y="70" width="168.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
+                                        <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="CGI-eS-aq1" firstAttribute="top" secondItem="kgn-vS-Wdd" secondAttribute="top" constant="70" id="2xw-VY-Icm"/>
+                                    <constraint firstItem="CGI-eS-aq1" firstAttribute="centerX" secondItem="kgn-vS-Wdd" secondAttribute="centerX" id="Yvt-ei-uZs"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ja3-kw-T21"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kgn-vS-Wdd" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="16" id="9p8-Yr-75n"/>
+                            <constraint firstAttribute="bottom" secondItem="kgn-vS-Wdd" secondAttribute="bottom" constant="70" id="CQB-7g-KQ8"/>
                             <constraint firstItem="UZU-xe-z29" firstAttribute="top" secondItem="Ja3-kw-T21" secondAttribute="top" constant="52" id="Iga-Mt-SbP"/>
+                            <constraint firstItem="HBQ-r6-dx3" firstAttribute="leading" secondItem="V0w-wX-ML7" secondAttribute="trailing" constant="14" id="Ixs-Iu-kbP"/>
                             <constraint firstItem="Ja3-kw-T21" firstAttribute="trailing" secondItem="XEM-uZ-32W" secondAttribute="trailing" constant="16" id="TUK-Yl-dFK"/>
+                            <constraint firstItem="V0w-wX-ML7" firstAttribute="top" secondItem="Ja3-kw-T21" secondAttribute="top" constant="105" id="YVF-6D-NPe"/>
                             <constraint firstItem="XEM-uZ-32W" firstAttribute="top" secondItem="UZU-xe-z29" secondAttribute="bottom" constant="72" id="Zde-HV-3Ca"/>
+                            <constraint firstItem="HBQ-r6-dx3" firstAttribute="top" secondItem="Ja3-kw-T21" secondAttribute="top" constant="105" id="av6-Mm-qOy"/>
+                            <constraint firstItem="V0w-wX-ML7" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="20" id="ccT-Wp-xJA"/>
                             <constraint firstItem="Ja3-kw-T21" firstAttribute="bottom" secondItem="XEM-uZ-32W" secondAttribute="bottom" constant="70" id="kf7-71-Z6t"/>
                             <constraint firstItem="XEM-uZ-32W" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="16" id="p1z-4i-Qx5"/>
                             <constraint firstItem="UZU-xe-z29" firstAttribute="centerX" secondItem="u2f-ma-0cV" secondAttribute="centerX" id="rpO-7v-Z7y"/>
+                            <constraint firstItem="kgn-vS-Wdd" firstAttribute="top" secondItem="UZU-xe-z29" secondAttribute="bottom" constant="72" id="tgW-IB-dsH"/>
+                            <constraint firstItem="Ja3-kw-T21" firstAttribute="trailing" secondItem="kgn-vS-Wdd" secondAttribute="trailing" constant="16" id="wcP-Ja-J7Z"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blackListBtn" destination="HBQ-r6-dx3" id="Yr1-dO-gsW"/>
+                        <outlet property="noDataLabel" destination="CGI-eS-aq1" id="bkn-0x-94u"/>
+                        <outlet property="noDataView" destination="kgn-vS-Wdd" id="wr8-65-h8a"/>
+                        <outlet property="restrictBtn" destination="V0w-wX-ML7" id="Zd5-66-DwE"/>
                         <outlet property="tableView" destination="XEM-uZ-32W" id="cgS-0f-s7y"/>
                     </connections>
                 </viewController>

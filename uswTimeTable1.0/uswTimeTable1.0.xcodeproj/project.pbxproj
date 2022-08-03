@@ -46,6 +46,8 @@
 		AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF75EAEB27E8AC5700DD8645 /* Settings.bundle */; };
 		AF789D6F289A84ED0039E449 /* RestrictedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF789D6E289A84ED0039E449 /* RestrictedPage.swift */; };
 		AF789D71289A861D0039E449 /* RestrictedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF789D70289A861D0039E449 /* RestrictedModel.swift */; };
+		AF789D74289A8D120039E449 /* RestrictedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF789D72289A8D120039E449 /* RestrictedCell.swift */; };
+		AF789D75289A8D120039E449 /* RestrictedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF789D73289A8D120039E449 /* RestrictedCell.xib */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
 		AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */; };
 		AF7D4B1F287441BC00268EB0 /* MajorCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */; };
@@ -156,6 +158,8 @@
 		AF75EAEB27E8AC5700DD8645 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		AF789D6E289A84ED0039E449 /* RestrictedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedPage.swift; sourceTree = "<group>"; };
 		AF789D70289A861D0039E449 /* RestrictedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedModel.swift; sourceTree = "<group>"; };
+		AF789D72289A8D120039E449 /* RestrictedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedCell.swift; sourceTree = "<group>"; };
+		AF789D73289A8D120039E449 /* RestrictedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestrictedCell.xib; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
 		AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryModel.swift; sourceTree = "<group>"; };
 		AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryCell.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */,
 				AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */,
 				AF789D70289A861D0039E449 /* RestrictedModel.swift */,
+				AF789D72289A8D120039E449 /* RestrictedCell.swift */,
 				AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */,
 				AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */,
 				AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */,
@@ -349,6 +354,7 @@
 				AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */,
 				AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */,
 				AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */,
+				AF789D73289A8D120039E449 /* RestrictedCell.xib */,
 				AFBC03F9282D37F300DCEDA6 /* writtenEvalPostCell.xib */,
 				AFBC03FD282D380A00DCEDA6 /* writtenExamPostCell.xib */,
 				AF296C642836458E00C961A3 /* announcementCell.xib */,
@@ -502,6 +508,7 @@
 				AF6C1CC228019DF5000BAC48 /* detailEvaluationCell.xib in Resources */,
 				AF2E108428095ADB00051844 /* Pretendard-ExtraBold.otf in Resources */,
 				AF2E108728095ADB00051844 /* Pretendard-Thin.otf in Resources */,
+				AF789D75289A8D120039E449 /* RestrictedCell.xib in Resources */,
 				AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */,
 				AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */,
 				AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */,
@@ -604,6 +611,7 @@
 				AFB2291F283CFA3500D9EE3D /* CompleteSignUpPage.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */,
+				AF789D74289A8D120039E449 /* RestrictedCell.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
 				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
 				AFE5C105281FF2B000D3E4DF /* searchedResultPage.swift in Sources */,

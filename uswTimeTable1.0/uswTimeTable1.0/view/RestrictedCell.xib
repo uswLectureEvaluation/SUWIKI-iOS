@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Pretendard-Medium.otf">
+            <string>Pretendard-Medium</string>
+        </array>
+        <array key="Pretendard-Regular.otf">
+            <string>Pretendard-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="restrictCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="RestrictedCell" customModule="uswTimeTable1_0" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="366" height="117"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="366" height="117"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="중복 정보 신고 누적으로 인한 제제 안내" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFU-Ub-bLd">
+                        <rect key="frame" x="16" y="16" width="334" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Pretendard-Medium" family="Pretendard" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX.XX.XX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wA-DH-w0Z">
+                        <rect key="frame" x="71" y="43" width="65" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="ehe-3B-GAx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX.XX.XX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwR-YB-V8M">
+                        <rect key="frame" x="71" y="65" width="65" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="hX4-ZY-nfs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기분나쁨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cte-gx-I5C">
+                        <rect key="frame" x="71" y="87" width="41.5" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="2Rr-Bb-xgN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제한 일시 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipc-dw-YyA">
+                        <rect key="frame" x="16" y="43" width="51" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="wVP-lk-YqH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제한 기간 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5pL-1w-A00">
+                        <rect key="frame" x="16" y="65" width="51" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="c6b-c4-Vs8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제한 조치 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDM-vd-g7H">
+                        <rect key="frame" x="16" y="87" width="51" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="HYR-lu-XuM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qDM-vd-g7H" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="8Eq-yI-cTa"/>
+                    <constraint firstItem="qDM-vd-g7H" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="87" id="A7V-b5-CYP"/>
+                    <constraint firstItem="5wA-DH-w0Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="43" id="HZe-ug-F5q"/>
+                    <constraint firstItem="pwR-YB-V8M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="65" id="NVb-ol-yWC"/>
+                    <constraint firstAttribute="trailing" secondItem="XFU-Ub-bLd" secondAttribute="trailing" constant="16" id="RPL-ag-tTp"/>
+                    <constraint firstItem="XFU-Ub-bLd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Xec-DP-eEF"/>
+                    <constraint firstItem="5wA-DH-w0Z" firstAttribute="leading" secondItem="Ipc-dw-YyA" secondAttribute="trailing" constant="4" id="aZ3-KI-rOG"/>
+                    <constraint firstItem="5pL-1w-A00" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dE2-et-cDE"/>
+                    <constraint firstItem="5pL-1w-A00" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="65" id="nnK-1s-MzN"/>
+                    <constraint firstItem="Ipc-dw-YyA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="43" id="qIN-px-trk"/>
+                    <constraint firstItem="XFU-Ub-bLd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="qQC-ls-Tth"/>
+                    <constraint firstItem="Ipc-dw-YyA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="uUN-Hi-u3Q"/>
+                    <constraint firstItem="cte-gx-I5C" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="87" id="wbr-Su-8dW"/>
+                    <constraint firstItem="pwR-YB-V8M" firstAttribute="leading" secondItem="5pL-1w-A00" secondAttribute="trailing" constant="4" id="wrO-EO-CO3"/>
+                    <constraint firstItem="cte-gx-I5C" firstAttribute="leading" secondItem="qDM-vd-g7H" secondAttribute="trailing" constant="4" id="zbv-iw-E3t"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="createdAtLabel" destination="5wA-DH-w0Z" id="Y8i-4O-VHS"/>
+                <outlet property="expiredAtLabel" destination="pwR-YB-V8M" id="LUV-zs-c19"/>
+                <outlet property="judgementLabel" destination="cte-gx-I5C" id="lWp-Fy-qSR"/>
+                <outlet property="reasonLabel" destination="XFU-Ub-bLd" id="Q9g-Om-XMi"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="84.709821428571431"/>
+        </tableViewCell>
+    </objects>
+</document>

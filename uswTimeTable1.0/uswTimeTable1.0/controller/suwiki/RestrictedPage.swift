@@ -15,7 +15,11 @@ class RestrictedPage: UIViewController {
 
     //MARK: IBOutlet
     
+    @IBOutlet weak var restrictBtn: UIButton!
+    @IBOutlet weak var blackListBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noDataView: UIView!
+    @IBOutlet weak var noDataLabel: UILabel!
     
     //MARK: properties
     
@@ -24,12 +28,37 @@ class RestrictedPage: UIViewController {
     var tableViewNumber = 1 // 1 이용제한 2 블랙리스트 3 이용제한 무 4 블랙리스트 무
     
     override func viewDidLoad() {
+        getRestricted()
         super.viewDidLoad()
+        
+        let restrictedcell = UINib(nibName: "RestrictedCell", bundle: nil)
+        tableView.register(restrictedcell, forCellReuseIdentifier: "restrictCell")
+        
+        
+    }
+    
+    //MARK: btnAction
+    
+    @IBAction func restrictBtnClicked(_ sender: Any) {
+        restrictBtn.tintColor = .black
+        blackListBtn.tintColor = .lightGray
+        getRestricted()
+        
+    }
+    
+    @IBAction func blackListBtnClikcked(_ sender: Any) {
+        restrictBtn.tintColor = .lightGray
+        blackListBtn.tintColor = .black
+        getBlackList()
+        
     }
     
     //MARK: API Func
     
     private func getRestricted(){
+        
+        tableViewUpdateData.removeAll()
+        
         let url = "https://api.suwiki.kr/user/restricted-reason"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken")!)
@@ -44,10 +73,18 @@ class RestrictedPage: UIViewController {
             let json = JSON(response.data)
             
             if json["data"].count == 0 {
-                self.tableViewNumber = 3
-            } else {
-                self.tableViewNumber = 1
                 
+                self.noDataView.isHidden = false
+                self.noDataLabel.text = "이용 제한 내역이 없습니다"
+                self.noDataLabel.isHidden = false
+                self.tableView.isHidden = true
+                
+            } else {
+
+                self.tableViewNumber = 1
+                self.noDataView.isHidden = true
+                self.tableView.isHidden = false
+
                 for i in 0..<json["data"].count{
                     
                     let data = json["data"][i]
@@ -63,6 +100,9 @@ class RestrictedPage: UIViewController {
     }
     
     private func getBlackList() {
+        
+        tableViewUpdateData.removeAll()
+        
         let url = "https://api.suwiki.kr/user/blacklist-reason"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken")!)
@@ -77,9 +117,17 @@ class RestrictedPage: UIViewController {
             let json = JSON(response.data)
             
             if json["data"].count == 0 {
-                self.tableViewNumber = 4
+                
+                self.noDataView.isHidden = false
+                self.noDataLabel.text = "블랙리스트 내역이 없습니다"
+                self.noDataLabel.isHidden = false
+                self.tableView.isHidden = true
+                
             } else {
+                
                 self.tableViewNumber = 2
+                self.noDataView.isHidden = true
+                self.tableView.isHidden = false
                 
                 for i in 0..<json["data"].count{
                     
@@ -101,8 +149,18 @@ class RestrictedPage: UIViewController {
 
 extension RestrictedPage: UITableViewDelegate, UITableViewDataSource{
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 117.0
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        
+        if tableViewNumber == 1 || tableViewNumber == 2 {
+            
+        }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
