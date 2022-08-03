@@ -7077,6 +7077,51 @@
             </objects>
             <point key="canvasLocation" x="-315.94202898550725" y="761.38392857142856"/>
         </scene>
+        <!--Restricted Page-->
+        <scene sceneID="joN-Fc-Qua">
+            <objects>
+                <viewController id="gA4-nW-6io" customClass="RestrictedPage" customModule="uswTimeTable1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u2f-ma-0cV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 제한 내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZU-xe-z29">
+                                <rect key="frame" x="150" y="96" width="114" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="ohN-BI-4ST"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XEM-uZ-32W">
+                                <rect key="frame" x="16" y="192" width="382" height="600"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gA4-nW-6io" id="Faj-ob-1n8"/>
+                                    <outlet property="delegate" destination="gA4-nW-6io" id="Ofj-xU-tyT"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ja3-kw-T21"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UZU-xe-z29" firstAttribute="top" secondItem="Ja3-kw-T21" secondAttribute="top" constant="52" id="Iga-Mt-SbP"/>
+                            <constraint firstItem="Ja3-kw-T21" firstAttribute="trailing" secondItem="XEM-uZ-32W" secondAttribute="trailing" constant="16" id="TUK-Yl-dFK"/>
+                            <constraint firstItem="XEM-uZ-32W" firstAttribute="top" secondItem="UZU-xe-z29" secondAttribute="bottom" constant="72" id="Zde-HV-3Ca"/>
+                            <constraint firstItem="Ja3-kw-T21" firstAttribute="bottom" secondItem="XEM-uZ-32W" secondAttribute="bottom" constant="70" id="kf7-71-Z6t"/>
+                            <constraint firstItem="XEM-uZ-32W" firstAttribute="leading" secondItem="Ja3-kw-T21" secondAttribute="leading" constant="16" id="p1z-4i-Qx5"/>
+                            <constraint firstItem="UZU-xe-z29" firstAttribute="centerX" secondItem="u2f-ma-0cV" secondAttribute="centerX" id="rpO-7v-Z7y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="XEM-uZ-32W" id="cgS-0f-s7y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="quI-Dd-OTt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2995.6521739130435" y="2412.7232142857142"/>
+        </scene>
         <!--Announcement Detail Page-->
         <scene sceneID="NWP-4L-0Fg">
             <objects>
