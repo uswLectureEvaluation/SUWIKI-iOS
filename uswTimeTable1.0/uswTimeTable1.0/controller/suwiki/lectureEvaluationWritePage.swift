@@ -73,6 +73,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
     
     var keyboardTouchCheck: Bool = false
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+    let colorLiteralBlack = #colorLiteral(red: 0.1333333254, green: 0.1333333254, blue: 0.1333333254, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
     
     override func viewDidLoad() {
@@ -501,7 +502,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
             homeworkManyBtn.setTitleColor(.darkGray, for: .normal)
         } else if homeworkType.homeworkPoint == 1{
             homeworkNoBtn.setTitleColor(.darkGray, for: .normal)
-            homeworkUsuallyBtn.setTitleColor(colorLiteralPurple, for: .normal)
+            homeworkUsuallyBtn.setTitleColor(colorLiteralBlack, for: .normal)
             homeworkManyBtn.setTitleColor(.darkGray, for: .normal)
         } else if homeworkType.homeworkPoint == 2 {
             homeworkNoBtn.setTitleColor(.darkGray, for: .normal)
@@ -521,7 +522,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
             hardDiffcultyBtn.setTitleColor(.darkGray, for: .normal)
         } else if difficultyType.difficultyPoint == 1{
             easyDifficultyBtn.setTitleColor(.darkGray, for: .normal)
-            normalDifficultyBtn.setTitleColor(colorLiteralPurple, for: .normal)
+            normalDifficultyBtn.setTitleColor(colorLiteralBlack, for: .normal)
             hardDiffcultyBtn.setTitleColor(.darkGray, for: .normal)
         } else if difficultyType.difficultyPoint == 2{
             easyDifficultyBtn.setTitleColor(.darkGray, for: .normal)

@@ -2689,12 +2689,13 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vht-3W-yss">
                                 <rect key="frame" x="330" y="192" width="68" height="24"/>
+                                <color key="backgroundColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="daf-VN-7RQ"/>
                                     <constraint firstAttribute="width" constant="68" id="glC-qX-cD5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="12"/>
-                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="중복확인"/>
                                 <connections>
@@ -2771,8 +2772,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wI-p8-vIG">
                                 <rect key="frame" x="37" y="588" width="340" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약관에 동의시 SWLE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKs-gs-P7C">
-                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약관에 동의시 Suwiki" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKs-gs-P7C">
+                                        <rect key="frame" x="0.0" y="0.0" width="120.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="iwp-pL-j1f"/>
                                         </constraints>
@@ -2781,7 +2782,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="및" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STI-Qo-luo">
-                                        <rect key="frame" x="169.5" y="0.0" width="12.5" height="20"/>
+                                        <rect key="frame" x="173.5" y="0.0" width="12.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="wur-pm-192"/>
                                         </constraints>
@@ -2790,7 +2791,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="에" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJr-c8-0Fn">
-                                        <rect key="frame" x="281" y="0.0" width="12.5" height="20"/>
+                                        <rect key="frame" x="285" y="0.0" width="12.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="amM-yU-N3F"/>
                                         </constraints>
@@ -2799,7 +2800,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYf-yy-GtS">
-                                        <rect key="frame" x="118.5" y="0.0" width="49" height="20"/>
+                                        <rect key="frame" x="122.5" y="0.0" width="49" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Zcb-3I-S27"/>
                                         </constraints>
@@ -2813,7 +2814,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UuM-dz-SOt">
-                                        <rect key="frame" x="184" y="0.0" width="97" height="20"/>
+                                        <rect key="frame" x="188" y="0.0" width="97" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="X7j-R7-hzt"/>
                                         </constraints>

@@ -124,7 +124,44 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
         getMajorType()
         getLectureData(option: option, majorType: majorType)
+        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+          print("Selected item: \(item) at index: \(index)")
+            self.categoryTextField.text = categoryList[index]
+            self.categoryTextField.font = UIFont(name: "Pretendard", size: 14)
+            self.categoryTextField.textColor = colorLiteralBlue
+            
+            
+            if categoryTextField.text == "최근 올라온 강의" {
+                tableViewUpdateData.removeAll()
+                option = "modifiedDate"
+                getLectureData(option: option, majorType: majorType)
+                
+            } else if categoryTextField.text == "꿀 강의" {
+                tableViewUpdateData.removeAll()
+                option = "lectureHoneyAvg"
+                getLectureData(option: option, majorType: majorType)
 
+            } else if categoryTextField.text == "만족도가 높은 강의"{
+                tableViewUpdateData.removeAll()
+                option = "lectureSatisfactionAvg"
+                getLectureData(option: option, majorType: majorType)
+
+            } else if categoryTextField.text == "배울게 많은 강의" {
+                tableViewUpdateData.removeAll()
+                option = "lectureLearningAvg"
+                getLectureData(option: option, majorType: majorType)
+
+            } else if categoryTextField.text == "Best 강의"{
+                tableViewUpdateData.removeAll()
+                option = "lectureTotalAvg"
+                getLectureData(option: option, majorType: majorType)
+
+            }
+            
+            
+        }
+        
+        
         super.viewWillAppear(true)
     }
 
@@ -260,7 +297,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getLectureData(option: String, majorType: String){
         let url = "https://api.suwiki.kr/lecture/all"
         
-   
+        print(option)
         let parameter: Parameters = [
             "option" : option,
             "majorType" : majorType
