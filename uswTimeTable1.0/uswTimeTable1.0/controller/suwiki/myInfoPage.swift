@@ -12,6 +12,7 @@ import SafariServices
 import SwiftyJSON
 import KeychainSwift
 import GoogleMobileAds
+import MessageUI
 
 class myInfoPage: UIViewController {
 

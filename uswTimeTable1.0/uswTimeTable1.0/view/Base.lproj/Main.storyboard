@@ -4128,18 +4128,6 @@
                                                     <constraint firstItem="dJf-iH-wpr" firstAttribute="top" secondItem="U3c-bk-wPx" secondAttribute="top" constant="150" id="zUT-RK-mXm"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="pyt-Wj-hdb">
-                                                <rect key="frame" x="355" y="24" width="35" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="line.horizontal.3" catalog="system"/>
-                                                <connections>
-                                                    <action selector="testLogOut:" destination="nWD-BY-JaL" eventType="touchUpInside" id="ILy-Nh-pnR"/>
-                                                    <action selector="testLogout:" destination="WVF-BO-b6X" eventType="touchUpInside" id="Z5y-k5-Xvn"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNl-jG-lWw">
                                                 <rect key="frame" x="16" y="508" width="382" height="500"/>
                                                 <subviews>
@@ -7471,7 +7459,6 @@
         <image name="icon_fullstar_24" width="24" height="24"/>
         <image name="icon_lecture_active_20-2" width="30" height="30"/>
         <image name="illust_banner" width="554" height="485"/>
-        <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
