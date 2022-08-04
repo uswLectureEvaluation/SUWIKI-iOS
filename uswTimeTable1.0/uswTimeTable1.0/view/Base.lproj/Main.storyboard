@@ -311,7 +311,7 @@
         <scene sceneID="Icf-Pl-pEm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eym-E1-aaN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="시간표" image="tablecells.badge.ellipsis" catalog="system" selectedImage="tablecells.badge.ellipsis" id="b2n-hZ-65a">
+                    <tabBarItem key="tabBarItem" title="시간표" image="icon_timetable_active_20" selectedImage="icon_timetable_active_20" id="b2n-hZ-65a">
                         <color key="badgeColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -1402,7 +1402,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWD-Ya-7Kk">
                                 <rect key="frame" x="35" y="256" width="90" height="37"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlU-ec-2e3">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlU-ec-2e3">
                                         <rect key="frame" x="0.0" y="-5" width="90" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -1471,6 +1471,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bannerView" destination="33u-qw-vOm" id="ZYt-Qw-0JM"/>
                         <outlet property="nameTxtField" destination="TGy-Pz-hvD" id="NeN-K1-OWo"/>
                         <outlet property="semeDropdown" destination="SWD-Ya-7Kk" id="v3z-MO-RYJ"/>
                         <outlet property="semeTxtField" destination="MlU-ec-2e3" id="xea-DP-lpf"/>
@@ -1759,14 +1760,14 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLf-40-d8N">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                        <color key="backgroundColor" red="0.15686275059999999" green="0.27843138579999999" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tortoise.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="htw-A4-xkE">
                                         <rect key="frame" x="59" y="100" width="276" height="213"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="276" id="Sct-Q0-ZXA"/>
                                             <constraint firstAttribute="height" constant="217" id="khX-XF-lob"/>
@@ -1779,21 +1780,25 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간표 데이터를 받아오고 있어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-VX-aEF">
-                                        <rect key="frame" x="58" y="491" width="276" height="26"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="58" y="491" width="276" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="21"/>
+                                        <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="처음 오셨네요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cn-9B-HMs">
-                                        <rect key="frame" x="59" y="64" width="115" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="59.5" y="64" width="114.5" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                        <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="거북쿤이 열심히 일하는 중입니다 . ." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF0-hI-Qlc">
-                                        <rect key="frame" x="59" y="321" width="277" height="47"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="거북쿤이 열심히 일하는 중입니다 . ." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yF0-hI-Qlc">
+                                        <rect key="frame" x="58.5" y="321" width="277" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="W0Z-Ob-MnF"/>
+                                            <constraint firstAttribute="width" constant="277" id="XZr-rt-IVN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
+                                        <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1803,7 +1808,6 @@
                                     <constraint firstItem="qDe-T6-Do4" firstAttribute="top" secondItem="qus-my-bwk" secondAttribute="top" constant="108" id="0n3-qH-9Fr"/>
                                     <constraint firstItem="R1E-VX-aEF" firstAttribute="leading" secondItem="htw-A4-xkE" secondAttribute="leading" constant="-1" id="3pH-vO-AdO"/>
                                     <constraint firstItem="qus-my-bwk" firstAttribute="trailing" secondItem="zLf-40-d8N" secondAttribute="trailing" id="EHa-up-1EC"/>
-                                    <constraint firstItem="yF0-hI-Qlc" firstAttribute="leading" secondItem="htw-A4-xkE" secondAttribute="leading" id="Ljn-Aq-63j"/>
                                     <constraint firstItem="zLf-40-d8N" firstAttribute="top" secondItem="BH0-IM-BYf" secondAttribute="top" id="NYJ-Ba-JKN"/>
                                     <constraint firstAttribute="bottom" secondItem="zLf-40-d8N" secondAttribute="bottom" id="SK7-3C-FK1"/>
                                     <constraint firstItem="3Cn-9B-HMs" firstAttribute="trailing" secondItem="qDe-T6-Do4" secondAttribute="trailing" id="TGm-kM-UPO"/>
@@ -3400,7 +3404,7 @@
         <scene sceneID="1d8-9p-f4z">
             <objects>
                 <navigationController id="YNz-s5-h5L" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="내정보" image="person" catalog="system" selectedImage="person" id="Rqh-jv-JLK">
+                    <tabBarItem key="tabBarItem" title="내정보" image="icon_mypage_active_20" selectedImage="icon_mypage_active_20" id="Rqh-jv-JLK">
                         <color key="badgeColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="21n-wq-aJa">
@@ -4370,6 +4374,9 @@
                                                         <state key="normal" title="문의하기">
                                                             <color key="titleColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="askBtnClicked:" destination="WVF-BO-b6X" eventType="touchUpInside" id="ZI5-S6-I2Y"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siK-ty-hhN">
                                                         <rect key="frame" x="24" y="189" width="49" height="16"/>
@@ -7060,7 +7067,7 @@
         <scene sceneID="uuq-Qy-cCZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Do-ay-8EP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="강의평가" image="icon_lecture_active_20-2" selectedImage="icon_lecture_active_20-2" id="nBE-ZJ-0at">
+                    <tabBarItem key="tabBarItem" title="강의평가" image="icon_lecture_active_20-1" selectedImage="icon_lecture_active_20-1" id="nBE-ZJ-0at">
                         <color key="badgeColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -7457,16 +7464,16 @@
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="icon_emptystar_24" width="24" height="24"/>
         <image name="icon_fullstar_24" width="24" height="24"/>
-        <image name="icon_lecture_active_20-2" width="30" height="30"/>
+        <image name="icon_lecture_active_20-1" width="20" height="20"/>
+        <image name="icon_mypage_active_20" width="20" height="20"/>
+        <image name="icon_timetable_active_20" width="20" height="20"/>
         <image name="illust_banner" width="554" height="485"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="square" catalog="system" width="128" height="114"/>
-        <image name="tablecells.badge.ellipsis" catalog="system" width="128" height="92"/>
         <image name="tortoise.fill" catalog="system" width="128" height="66"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="스샷 최종본" width="708" height="800"/>

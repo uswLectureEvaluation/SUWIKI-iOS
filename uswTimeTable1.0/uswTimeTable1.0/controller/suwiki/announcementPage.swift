@@ -27,7 +27,7 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         let announcementCell = UINib(nibName: "announcementCell", bundle: nil)

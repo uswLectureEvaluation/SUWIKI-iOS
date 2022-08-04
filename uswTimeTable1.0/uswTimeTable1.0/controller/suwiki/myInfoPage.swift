@@ -14,7 +14,7 @@ import KeychainSwift
 import GoogleMobileAds
 import MessageUI
 
-class myInfoPage: UIViewController {
+class myInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var loginInfoView: UIView!
     @IBOutlet weak var loginPointView: UIView!
@@ -97,9 +97,35 @@ class myInfoPage: UIViewController {
     }
     
     @IBAction func askBtnClicked(_ sender: Any) {
-//        NSURL(string: "https://forms.gle/tZByKoN6rJCysvNz6")
-//        let askSafariView: SFSafariViewController = SFSafariViewController(url: url as! URL)
-//        self.present(askSafariView, animated: true, completion: nil)
+        
+        if MFMailComposeViewController.canSendMail() {
+            
+            let emailVC = MFMailComposeViewController()
+            emailVC.mailComposeDelegate = self
+            // suwikiask@gmail.com
+            
+            emailVC.setToRecipients(["suwikiask@gmail.com"])
+            emailVC.setSubject("")
+            emailVC.setMessageBody("", isHTML: false)
+            
+            
+            
+            self.present(emailVC, animated: true, completion: nil)
+            
+        } else {
+            
+            let alert = UIAlertController(title:"이메일 설정이 되어있지 않습니다.",
+                message: "이메일을 설정해주세요!",
+                preferredStyle: UIAlertController.Style.alert)
+            let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(cancle)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func serviceBtnClicked(_ sender: Any) {
