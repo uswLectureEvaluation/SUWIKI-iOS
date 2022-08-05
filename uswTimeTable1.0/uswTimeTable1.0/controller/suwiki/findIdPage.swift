@@ -63,7 +63,7 @@ class findIdPage: UIViewController {
      
             }
         }
-        
+    // 1242 2688, 1242 2208
     }
     /*
     // MARK: - Navigation

@@ -1655,13 +1655,6 @@
                                             <action selector="dismissBtn:" destination="Xz5-Ij-oP8" eventType="touchUpInside" id="616-mv-ytZ"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="illust_banner" translatesAutoresizingMaskIntoConstraints="NO" id="vCQ-Ul-C3C">
-                                        <rect key="frame" x="35" y="259" width="200" height="142"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="142" id="6aX-Sz-6NQ"/>
-                                            <constraint firstAttribute="width" constant="200" id="9GN-Gr-CID"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -1684,9 +1677,6 @@
                                     <constraint firstAttribute="trailing" secondItem="IKn-Ta-zaW" secondAttribute="trailing" constant="25" id="gKe-jE-l1G"/>
                                     <constraint firstItem="WTv-mg-Obx" firstAttribute="centerX" secondItem="jFC-dg-dBB" secondAttribute="centerX" id="hEa-CI-f4D"/>
                                     <constraint firstItem="7bj-E0-dKg" firstAttribute="top" secondItem="jFC-dg-dBB" secondAttribute="top" constant="97" id="lL9-VC-92S"/>
-                                    <constraint firstItem="vCQ-Ul-C3C" firstAttribute="top" secondItem="gbp-fP-Lyr" secondAttribute="bottom" constant="35" id="mkg-23-IJm"/>
-                                    <constraint firstItem="q4o-3Z-HB0" firstAttribute="top" secondItem="vCQ-Ul-C3C" secondAttribute="bottom" constant="20" id="oZB-6A-Jba"/>
-                                    <constraint firstItem="vCQ-Ul-C3C" firstAttribute="leading" secondItem="jFC-dg-dBB" secondAttribute="leading" constant="35" id="s0J-0C-KDf"/>
                                     <constraint firstItem="8rY-XH-5qw" firstAttribute="top" secondItem="jFC-dg-dBB" secondAttribute="top" constant="160" id="vog-e6-qCD"/>
                                     <constraint firstItem="XKa-17-i0b" firstAttribute="leading" secondItem="jFC-dg-dBB" secondAttribute="leading" constant="35" id="wNu-8R-Eow"/>
                                     <constraint firstItem="aZC-S4-ttV" firstAttribute="leading" secondItem="jFC-dg-dBB" secondAttribute="leading" constant="35" id="wVr-ba-hlx"/>
@@ -1786,7 +1776,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="처음 오셨네요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cn-9B-HMs">
-                                        <rect key="frame" x="59.5" y="64" width="114.5" height="24.5"/>
+                                        <rect key="frame" x="59" y="64" width="115" height="24.5"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Bold" family="Pretendard" pointSize="20"/>
                                         <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -7142,7 +7132,7 @@
                                 <rect key="frame" x="16" y="192" width="382" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이용 제한 내역이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGI-eS-aq1">
-                                        <rect key="frame" x="107" y="70" width="168.5" height="20"/>
+                                        <rect key="frame" x="107" y="70" width="168.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
                                         <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -7451,11 +7441,6 @@
             <point key="canvasLocation" x="-652" y="2186"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="pNh-pJ-vFd">
-            <size key="intrinsicContentSize" width="81" height="17"/>
-        </designable>
-    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>
