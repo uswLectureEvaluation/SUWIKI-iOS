@@ -49,7 +49,7 @@ class signUpPage: UIViewController {
         super.viewDidLoad()
 
         overLapBtn.layer.cornerRadius = 8.0
-        overLapBtn.layer.borderColor = UIColor.lightGray.cgColor
+        overLapBtn.layer.borderColor = UIColor.white.cgColor
         overLapBtn.layer.borderWidth = 1.0
         
         nextBtn.layer.cornerRadius = 13.0
@@ -161,9 +161,9 @@ class signUpPage: UIViewController {
                 if json["overlap"].boolValue == false {
                     self.showAlert(title: "사용 가능한 아이디입니다 !")
                     self.overLapCheck = true
-                    self.overLapBtn.layer.borderColor = UIColor.white.cgColor
-                    self.overLapBtn.backgroundColor = self.colorLiteralBlue
-                    self.overLapBtn.tintColor = .white
+                    self.overLapBtn.layer.borderColor = UIColor.lightGray.cgColor
+                    self.overLapBtn.backgroundColor = .white
+                    self.overLapBtn.tintColor = .lightGray
                     
                 } else {
                     self.showAlert(title: "중복된 아이디입니다 !")
@@ -225,9 +225,9 @@ class signUpPage: UIViewController {
     
     @objc func idTextFieldChangeCheck(_ sender: UITextField){
         if overLapCheck == true {
-            overLapBtn.layer.borderColor = UIColor.lightGray.cgColor
-            overLapBtn.backgroundColor = .white
-            overLapBtn.tintColor = .lightGray
+            overLapBtn.layer.borderColor = UIColor.white.cgColor
+            overLapBtn.backgroundColor = colorLiteralBlue
+            overLapBtn.tintColor = .white
         }
         
         overLapCheck = false

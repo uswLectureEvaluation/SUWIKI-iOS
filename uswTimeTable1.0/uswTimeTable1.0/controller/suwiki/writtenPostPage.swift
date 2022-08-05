@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 import KeychainSwift
 import Cosmos
+import GoogleMobileAds
 
 
 // 개설학과 리스트 받아와야 함
@@ -24,6 +25,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var evalBtn: UIButton!
     @IBOutlet weak var examBtn: UIButton!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     
     let keychain = KeychainSwift()
     
@@ -36,9 +38,10 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-   
     
+        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         let evalPostCell = UINib(nibName: "writtenEvalPostCell", bundle: nil)
         tableView.register(evalPostCell, forCellReuseIdentifier: "writtenEvalCell")

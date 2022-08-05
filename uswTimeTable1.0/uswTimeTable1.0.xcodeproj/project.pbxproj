@@ -44,6 +44,10 @@
 		AF6C1CC628019E4A000BAC48 /* detailExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */; };
 		AF75EAEA27E8851B00DD8645 /* announcementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF75EAE927E8851B00DD8645 /* announcementView.swift */; };
 		AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF75EAEB27E8AC5700DD8645 /* Settings.bundle */; };
+		AF789D6F289A84ED0039E449 /* RestrictedPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF789D6E289A84ED0039E449 /* RestrictedPage.swift */; };
+		AF789D71289A861D0039E449 /* RestrictedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF789D70289A861D0039E449 /* RestrictedModel.swift */; };
+		AF789D74289A8D120039E449 /* RestrictedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF789D72289A8D120039E449 /* RestrictedCell.swift */; };
+		AF789D75289A8D120039E449 /* RestrictedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF789D73289A8D120039E449 /* RestrictedCell.xib */; };
 		AF7AA1C627831F8500996874 /* showTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7AA1C527831F8500996874 /* showTimeTable.swift */; };
 		AF7D4B1C2874406B00268EB0 /* MajorCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */; };
 		AF7D4B1F287441BC00268EB0 /* MajorCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */; };
@@ -152,6 +156,10 @@
 		AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = detailExamCell.xib; sourceTree = "<group>"; };
 		AF75EAE927E8851B00DD8645 /* announcementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = announcementView.swift; sourceTree = "<group>"; };
 		AF75EAEB27E8AC5700DD8645 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		AF789D6E289A84ED0039E449 /* RestrictedPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedPage.swift; sourceTree = "<group>"; };
+		AF789D70289A861D0039E449 /* RestrictedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedModel.swift; sourceTree = "<group>"; };
+		AF789D72289A8D120039E449 /* RestrictedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictedCell.swift; sourceTree = "<group>"; };
+		AF789D73289A8D120039E449 /* RestrictedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestrictedCell.xib; sourceTree = "<group>"; };
 		AF7AA1C527831F8500996874 /* showTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showTimeTable.swift; sourceTree = "<group>"; };
 		AF7D4B1B2874406B00268EB0 /* MajorCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryModel.swift; sourceTree = "<group>"; };
 		AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCategoryCell.swift; sourceTree = "<group>"; };
@@ -314,6 +322,8 @@
 				AF7D4B2128745B2B00268EB0 /* MajorCategoryNoDataCell.swift */,
 				AF7D4B1D287441BC00268EB0 /* MajorCategoryCell.swift */,
 				AFC58B4827FECBBC007899A4 /* detailLectureModel.swift */,
+				AF789D70289A861D0039E449 /* RestrictedModel.swift */,
+				AF789D72289A8D120039E449 /* RestrictedCell.swift */,
 				AF6C1CBF28019DF5000BAC48 /* detailEvaluationCell.swift */,
 				AF6C1CC328019E4A000BAC48 /* detailExamCell.swift */,
 				AFAF2E8028056090005709C9 /* examInfoTakeCell.swift */,
@@ -344,6 +354,7 @@
 				AF6C1CC428019E4A000BAC48 /* detailExamCell.xib */,
 				AFAF2E8128056090005709C9 /* examInfoTakeCell.xib */,
 				AFA0A740280804C200C59769 /* noExamDataExistsCell.xib */,
+				AF789D73289A8D120039E449 /* RestrictedCell.xib */,
 				AFBC03F9282D37F300DCEDA6 /* writtenEvalPostCell.xib */,
 				AFBC03FD282D380A00DCEDA6 /* writtenExamPostCell.xib */,
 				AF296C642836458E00C961A3 /* announcementCell.xib */,
@@ -381,6 +392,7 @@
 				AFAF2E842805665B005709C9 /* lectureEvaluationWritePage.swift */,
 				AF0A76AF281AB33D005977C6 /* lectureExamWritePage.swift */,
 				AFD470AA282BE3AB001A1119 /* myInfoPage.swift */,
+				AF789D6E289A84ED0039E449 /* RestrictedPage.swift */,
 				AF5621B8283E31D4002B8F23 /* PurchaseHistoryPage.swift */,
 				AFBC03F6282D367E00DCEDA6 /* writtenPostPage.swift */,
 				AF296C5D2836420300C961A3 /* announcementPage.swift */,
@@ -496,6 +508,7 @@
 				AF6C1CC228019DF5000BAC48 /* detailEvaluationCell.xib in Resources */,
 				AF2E108428095ADB00051844 /* Pretendard-ExtraBold.otf in Resources */,
 				AF2E108728095ADB00051844 /* Pretendard-Thin.otf in Resources */,
+				AF789D75289A8D120039E449 /* RestrictedCell.xib in Resources */,
 				AFAFEF8F277F160B00408F46 /* Assets.xcassets in Resources */,
 				AFA0A742280804C200C59769 /* noExamDataExistsCell.xib in Resources */,
 				AF75EAEC27E8AC5700DD8645 /* Settings.bundle in Resources */,
@@ -587,6 +600,7 @@
 				AFA725452781B6D1003EE008 /* firstSceneCheck.swift in Sources */,
 				AF40C83F287084A700E32690 /* MajorCategoryPage.swift in Sources */,
 				AFE5C107281FFADC00D3E4DF /* searchedResultPageModel.swift in Sources */,
+				AF789D6F289A84ED0039E449 /* RestrictedPage.swift in Sources */,
 				AF6C1CC528019E4A000BAC48 /* detailExamCell.swift in Sources */,
 				AFBD08D52822776D00A923CB /* searchedResultCell.swift in Sources */,
 				AFAFEF83277F160900408F46 /* AppDelegate.swift in Sources */,
@@ -597,6 +611,7 @@
 				AFB2291F283CFA3500D9EE3D /* CompleteSignUpPage.swift in Sources */,
 				AFCAABB327EEE651005D9421 /* loginController.swift in Sources */,
 				AF6C1CC128019DF5000BAC48 /* detailEvaluationCell.swift in Sources */,
+				AF789D74289A8D120039E449 /* RestrictedCell.swift in Sources */,
 				AFE696CD27BBCD0500262BEF /* listTimeTable.swift in Sources */,
 				AF499F2C27D7356B00EE89A6 /* popUpViewController.swift in Sources */,
 				AFE5C105281FF2B000D3E4DF /* searchedResultPage.swift in Sources */,
@@ -610,6 +625,7 @@
 				AFED499A27ABD0B500CE242D /* infoCourseData.swift in Sources */,
 				AF5621BE283E3364002B8F23 /* PurchaseHistoryCell.swift in Sources */,
 				AFBC03FA282D37F300DCEDA6 /* writtenEvalPostCell.swift in Sources */,
+				AF789D71289A861D0039E449 /* RestrictedModel.swift in Sources */,
 				AF0A76B0281AB33D005977C6 /* lectureExamWritePage.swift in Sources */,
 				AF50233F27C378FB0030CF5D /* courseData.swift in Sources */,
 				AFAFEF85277F160900408F46 /* SceneDelegate.swift in Sources */,
@@ -778,7 +794,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -809,7 +825,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

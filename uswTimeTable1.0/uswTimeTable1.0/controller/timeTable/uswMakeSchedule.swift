@@ -8,6 +8,7 @@
 import UIKit
 import DropDown
 import RealmSwift
+import GoogleMobileAds
 
 
 class uswMakeSchedule: UIViewController, UITextFieldDelegate {
@@ -21,6 +22,7 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var semeDropdown: UIView!
     @IBOutlet weak var semeTxtField: UILabel!
     @IBOutlet weak var nameTxtField: UITextField!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     @IBOutlet weak var test2: UITextField!
     @IBOutlet weak var test: UITextField!
@@ -37,6 +39,9 @@ class uswMakeSchedule: UIViewController, UITextFieldDelegate {
         navigationBarHidden()
         navigationBackSwipeMotion()
         
+        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         
         
         dropDown1.anchorView = yearDropdown

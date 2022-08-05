@@ -10,11 +10,13 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import GoogleMobileAds
 
 class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     
     let keychain = KeychainSwift()
@@ -25,6 +27,9 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         let announcementCell = UINib(nibName: "announcementCell", bundle: nil)
         tableView.register(announcementCell, forCellReuseIdentifier: "announcementCell")
         

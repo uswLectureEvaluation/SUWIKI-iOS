@@ -11,12 +11,14 @@ import Alamofire
 import SwiftyJSON
 import DropDown
 import Cosmos
-
+import GoogleMobileAds
+import KeychainSwift
 
 
 class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
  
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var categoryDropDown: UIView!
     @IBOutlet weak var categoryTextField: UILabel!
@@ -31,7 +33,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     let dropDown = DropDown()
-    
+    let keychain = KeychainSwift()
     var searchData: String = ""
     var page = 1
     var majorType: String = ""
@@ -45,6 +47,9 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     let categoryList = ["종합", "만족도", "꿀강", "배움", "날짜"]
     
     override func viewDidLoad() {
+        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         noSearchDataView.isHidden = true
         super.viewDidLoad()
         getMajorType()
@@ -146,9 +151,15 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
-        detailVC.lectureId = tableViewUpdateData[indexPath.row].id
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        if keychain.get("AccessToken") != nil {
+            let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "detailVC") as! lectureDetailedInformationPage
+            detailVC.lectureId = tableViewUpdateData[indexPath.row].id
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        else {
+           let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
+           self.present(nextVC, animated: true, completion: nil)
+       }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

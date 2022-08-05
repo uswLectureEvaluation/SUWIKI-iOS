@@ -24,8 +24,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="366" height="103"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항_Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eft-jx-f4g">
-                        <rect key="frame" x="20" y="23" width="94" height="19"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항_Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Eft-jx-f4g">
+                        <rect key="frame" x="20" y="23" width="326" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="Oyf-it-kP7"/>
                         </constraints>
@@ -47,6 +47,7 @@
                     <constraint firstItem="zto-fJ-pTE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2CC-lS-7io"/>
                     <constraint firstItem="Eft-jx-f4g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="C4A-NM-UKL"/>
                     <constraint firstItem="Eft-jx-f4g" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="23" id="C4Y-vW-p2G"/>
+                    <constraint firstAttribute="trailing" secondItem="Eft-jx-f4g" secondAttribute="trailing" constant="20" id="TYL-2r-q1i"/>
                     <constraint firstItem="zto-fJ-pTE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="51" id="hDA-Gu-40b"/>
                     <constraint firstAttribute="bottom" secondItem="zto-fJ-pTE" secondAttribute="bottom" constant="38" id="iFh-gL-k2b"/>
                 </constraints>

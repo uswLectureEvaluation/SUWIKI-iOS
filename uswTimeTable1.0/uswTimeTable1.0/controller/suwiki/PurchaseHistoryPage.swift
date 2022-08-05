@@ -10,10 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import GoogleMobileAds
 
 class PurchaseHistoryPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var tableView: UITableView!
     
     var tableViewUpdateData: Array<purchaseModel> = []
@@ -24,7 +26,9 @@ class PurchaseHistoryPage: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         getPurchaseHistoryData()
-
+        bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
         super.viewDidLoad()
         
         let historyCell = UINib(nibName: "PurchaseHistoryCell", bundle: nil)
@@ -86,7 +90,7 @@ class PurchaseHistoryPage: UIViewController, UITableViewDelegate, UITableViewDat
         AF.request(url, method: .get, encoding: URLEncoding.default, headers: headers, interceptor: BaseInterceptor()).validate().responseJSON { response in
             let data = response.data
             let json = JSON(data ?? "")
-            
+            print(json)
             print(json["data"].count)
             if json["data"].count > 0 {
                 self.tableViewNumber = 0
