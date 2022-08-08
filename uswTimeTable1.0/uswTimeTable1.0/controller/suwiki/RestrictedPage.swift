@@ -82,7 +82,8 @@ class RestrictedPage: UIViewController {
             let json = JSON(response.data)
             print(response.response?.statusCode)
             print(json)
-            if json["data"].count == 0 {
+            print(json.count)
+            if json.count == 0 {
                 
                 self.noDataView.isHidden = false
                 self.noDataLabel.text = "이용 제한 내역이 없습니다."
@@ -95,9 +96,9 @@ class RestrictedPage: UIViewController {
                 self.noDataView.isHidden = true
                 self.tableView.isHidden = false
 
-                for i in 0..<json["data"].count{
+                for i in 0..<json.count{
                     
-                    let data = json["data"][i]
+                    let data = json[i]
                     let readData = restricted(reason: data["restrictedReason"].stringValue,
                                               judgement: data["judgement"].stringValue,
                                               createdAt: data["createdAt"].stringValue,
@@ -127,7 +128,7 @@ class RestrictedPage: UIViewController {
             let json = JSON(response.data)
             print(response.response?.statusCode)
             print(json)
-            if json["data"].count == 0 {
+            if json.count == 0 {
                 
                 self.noDataView.isHidden = false
                 self.noDataLabel.text = "블랙리스트 내역이 없습니다."
@@ -140,9 +141,9 @@ class RestrictedPage: UIViewController {
                 self.noDataView.isHidden = true
                 self.tableView.isHidden = false
                 
-                for i in 0..<json["data"].count{
+                for i in 0..<json.count{
                     
-                    let data = json["data"][i]
+                    let data = json[i]
                     let readData = restricted(reason: data["blackListReason"].stringValue,
                                               judgement: data["judgement"].stringValue,
                                               createdAt: data["createdAt"].stringValue,
