@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import KeychainSwift
 
-class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
   
     // 버튼 눌렀을 때 api 호출 --> majorType 넘겨준다.
     // 개설학과 전체 다 보여주는 그거 만들어야 함
@@ -69,6 +69,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         tableViewBorder.layer.borderColor = UIColor.lightGray.cgColor
         tableViewBorder.layer.borderWidth = 1.0
         tableViewBorder.layer.cornerRadius = 12.0
+        
+        self.searchTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -199,6 +201,15 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == searchTextField {
+            searchBtnClicked(self)
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
     
     

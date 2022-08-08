@@ -37,6 +37,9 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     var evalPost: Bool = false
     var examPage = 1
     var examPost: Bool = false
+    let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
+    let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
+    let colorLiteralBlack = #colorLiteral(red: 0.1333333254, green: 0.1333333254, blue: 0.1333333254, alpha: 1)
     
     
     
@@ -58,6 +61,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 210
         self.tableView.reloadData()
+        self.tableView.separatorColor = self.tableView.backgroundColor
+
         
         
         // Do any additional setup after loading the view.
@@ -120,8 +125,29 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.learningLabel.text = tableViewEvalData[indexPath.row].learning
             
             cell.teamLabel.text = tableViewEvalData[indexPath.row].team
+            if tableViewEvalData[indexPath.row].team == "없음"{
+                cell.teamLabel.textColor = colorLiteralBlue
+            } else {
+                cell.teamLabel.textColor = colorLiteralPurple
+            }
+            
             cell.homeworkLabel.text = tableViewEvalData[indexPath.row].homework
+            if tableViewEvalData[indexPath.row].homework == "없음" {
+                cell.homeworkLabel.textColor = colorLiteralBlue
+            } else if tableViewEvalData[indexPath.row].homework == "보통" {
+                cell.homeworkLabel.textColor = colorLiteralBlack
+            } else {
+                cell.homeworkLabel.textColor = colorLiteralPurple
+            }
+            
             cell.difficultyLabel.text = tableViewEvalData[indexPath.row].difficulty
+            if tableViewEvalData[indexPath.row].difficulty == "너그러움" {
+                cell.difficultyLabel.textColor = colorLiteralBlue
+            } else if tableViewEvalData[indexPath.row].difficulty == "보통" {
+                cell.difficultyLabel.textColor = colorLiteralBlack
+            } else {
+                cell.difficultyLabel.textColor = colorLiteralPurple
+            }
                         
             cell.contentLabel.text = tableViewEvalData[indexPath.row].content + "\n"
             
@@ -195,17 +221,17 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                     getWrittenEvalData(page: evalPage)
                 }
             }
+        } else if tableViewNumber == 3 {
+            evalPost = false
+            let lastIndex = tableViewExamData.count - 1
+            if indexPath.row == lastIndex{
+                examPage += 1
+                if examPost != true{
+                    print(examPage)
+                    getWrittenExamData(page: examPage)
+                }
+            }
         }
-//        } else if tableViewNumber == 3 {
-//            evalPageLast = false
-//            let lastIndex = detailExamArray.count - 1
-//            if indexPath.row == lastIndex{
-//                examPage += 1
-//                if examPageLast != true{
-//                    getDetailExam(lectureId: lectureId, examPage: examPage)
-//                }
-//            }
-//        }
     }
     
     
@@ -229,6 +255,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             if json["data"].count < 10 {
                 self.evalPost = true
+                
             }
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
@@ -295,24 +322,26 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             let data = response.data
             let json = JSON(data ?? "")
-            if json != "" {
-                for index in 0..<json["data"].count{
-                    let jsonData = json["data"][index]
+            if json["data"].count < 10{
+                self.examPost = true
+        
+            }
+            for index in 0..<json["data"].count{
+                let jsonData = json["data"][index]
+             
+                let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                
+                self.tableViewExamData.append(readData)
                  
-                    let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
-                    
-                    self.tableViewExamData.append(readData)
-                     
-                }// 셀이랑 시험 정보 연결, 시험정보 수정, 시험정보 삭제 진행
-                self.tableView.reloadData()
-            } else {
+            }// 셀이랑 시험 정보 연결, 시험정보 수정, 시험정보 삭제 진행
+            self.tableView.reloadData()
+            if self.tableViewExamData.count == 0 {
                 self.tableViewNumber = 0
             }
         }
-        
-        
-        
+       
     }
+
     
     // MARK: 강의평가 수정 및 삭제 버튼 클릭
     @objc func adjustEvaluationBtnClicked(sender: UIButton)
@@ -420,7 +449,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                 self.present(alert, animated: true, completion: nil)
             } else {
                 self.viewWillAppear(true)
-                self.dismiss(animated: true, completion: nil)
             }
         }
     }
