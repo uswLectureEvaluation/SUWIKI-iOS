@@ -33,6 +33,10 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     var tableViewExamData: Array<WrittenExamPostData> = []
     
     var tableViewNumber = 1
+    var evalPage = 1
+    var evalPost: Bool = false
+    var examPage = 1
+    var examPost: Bool = false
     
     
     
@@ -100,6 +104,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         if tableViewNumber == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "writtenEvalCell", for: indexPath) as! writtenEvalPostCell
             
+            cell.contentLabel.numberOfLines = 0
+
             cell.semesterLabel.text = tableViewEvalData[indexPath.row].selectedSemester
             
             cell.lectureNameLabel.text = tableViewEvalData[indexPath.row].lectureName
@@ -116,7 +122,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.teamLabel.text = tableViewEvalData[indexPath.row].team
             cell.homeworkLabel.text = tableViewEvalData[indexPath.row].homework
             cell.difficultyLabel.text = tableViewEvalData[indexPath.row].difficulty
-            
+                        
             cell.contentLabel.text = tableViewEvalData[indexPath.row].content + "\n"
             
             cell.adjustBtn.tag = indexPath.row
@@ -129,6 +135,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         } else if tableViewNumber == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "writtenExamCell", for: indexPath) as! writtenExamPostCell
             
+            cell.contentLabel.numberOfLines = 0
+            
             cell.semesterLabel.text = tableViewExamData[indexPath.row].selectedSemester
             cell.examTypeLabel.text = tableViewExamData[indexPath.row].examType
             
@@ -139,7 +147,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             cell.examDifficultyLabel.text = tableViewExamData[indexPath.row].examDifficulty
             cell.examInfoLabel.text = tableViewExamData[indexPath.row].examInfo
             
-            cell.contentLabel.text = tableViewExamData[indexPath.row].content + "\n"
+            cell.contentLabel.text = tableViewExamData[indexPath.row].content.replacingOccurrences(of: "\\n", with: "\n") + "\n"
             
             cell.adBtn.tag = indexPath.row
             cell.adBtn.addTarget(self, action: #selector(adjustExamBtnClicked), for: .touchUpInside)
@@ -175,6 +183,32 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     
+    //MARK: 내가 쓴 글 무한스크롤
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if tableViewNumber == 1{
+            examPost = false
+            let lastIndex = tableViewEvalData.count - 1
+            if indexPath.row == lastIndex{
+                evalPage += 1
+                if evalPost != true {
+                    print(evalPage)
+                    getWrittenEvalData(page: evalPage)
+                }
+            }
+        }
+//        } else if tableViewNumber == 3 {
+//            evalPageLast = false
+//            let lastIndex = detailExamArray.count - 1
+//            if indexPath.row == lastIndex{
+//                examPage += 1
+//                if examPageLast != true{
+//                    getDetailExam(lectureId: lectureId, examPage: examPage)
+//                }
+//            }
+//        }
+    }
+    
+    
     
     
     func getWrittenEvalData(page: Int) {
@@ -191,54 +225,56 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             
             let data = response.data
             let json = JSON(data ?? "")
-            print(json)
-            print(json["data"].count)
-            if json["data"].count == 0 {
-                self.tableViewNumber = 3
-                
-            } else if json != "" {
-                for index in 0..<json["data"].count{
-                    let jsonData = json["data"][index]
-                    
-                    
-                    var team = ""
-                    var difficulty = ""
-                    var homework = ""
-                    
-                    let totalAvg = String(format: "%.1f", round(jsonData["totalAvg"].floatValue * 1000) / 1000)
-                    let satisfactionAvg = String(format: "%.1f", round(jsonData["satisfaction"].floatValue * 1000) / 1000)
-                    let honeyAvg = String(format: "%.1f", round(jsonData["honey"].floatValue * 1000) / 1000)
-                    let learningAvg = String(format: "%.1f", round(jsonData["learning"].floatValue * 1000) / 1000)
-                    
-                    if jsonData["team"] == 0 {
-                        team = "없음"
-                    } else if jsonData["team"] == 1 {
-                        team = "있음"
-                    }
-                    
-                    if jsonData["difficulty"] == 0{
-                        difficulty = "까다로움"
-                    } else if jsonData["difficulty"] == 1 {
-                        difficulty = "보통"
-                    } else if jsonData["difficulty"] == 2 {
-                        difficulty = "너그러움"
-                    }
-                    
-                    if jsonData["homework"] == 0 {
-                        homework = "없음"
-                    } else if jsonData["homework"] == 1{
-                        homework = "보통"
-                    } else if jsonData["homework"] == 2 {
-                        homework = "많음"
-                    }
-                    
-    
-                    let readData = WrittenEvalPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfactionAvg, learning: learningAvg, honey: honeyAvg, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
-                    
-                    
-                    self.tableViewEvalData.append(readData)
-                }
+            
+            
+            if json["data"].count < 10 {
+                self.evalPost = true
             }
+            for index in 0..<json["data"].count{
+                let jsonData = json["data"][index]
+                print(jsonData["content"].stringValue)
+                var team = ""
+                var difficulty = ""
+                var homework = ""
+                
+                let totalAvg = String(format: "%.1f", round(jsonData["totalAvg"].floatValue * 1000) / 1000)
+                let satisfactionAvg = String(format: "%.1f", round(jsonData["satisfaction"].floatValue * 1000) / 1000)
+                let honeyAvg = String(format: "%.1f", round(jsonData["honey"].floatValue * 1000) / 1000)
+                let learningAvg = String(format: "%.1f", round(jsonData["learning"].floatValue * 1000) / 1000)
+                
+                if jsonData["team"] == 0 {
+                    team = "없음"
+                } else if jsonData["team"] == 1 {
+                    team = "있음"
+                }
+                
+                if jsonData["difficulty"] == 0{
+                    difficulty = "까다로움"
+                } else if jsonData["difficulty"] == 1 {
+                    difficulty = "보통"
+                } else if jsonData["difficulty"] == 2 {
+                    difficulty = "너그러움"
+                }
+                
+                if jsonData["homework"] == 0 {
+                    homework = "없음"
+                } else if jsonData["homework"] == 1{
+                    homework = "보통"
+                } else if jsonData["homework"] == 2 {
+                    homework = "많음"
+                }
+                
+
+                let readData = WrittenEvalPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfactionAvg, learning: learningAvg, honey: honeyAvg, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
+                
+                
+                self.tableViewEvalData.append(readData)
+            }
+            
+            if self.tableViewEvalData.count == 0 {
+                self.tableViewNumber = 3
+            }
+            print(self.tableViewEvalData.count)
             self.tableView.reloadData()
         }
     }
