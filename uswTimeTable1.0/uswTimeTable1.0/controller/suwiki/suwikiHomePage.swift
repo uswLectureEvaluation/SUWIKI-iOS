@@ -15,7 +15,7 @@ import KeychainSwift
 import Cosmos
 
 
-class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     // main Page == tableView 구현 스크롤 최대 10개 제한
 
@@ -116,6 +116,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             
         }
+        
+        self.searchTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -313,6 +315,14 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
             let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "loginVC") as! loginController
             self.present(nextVC, animated: true, completion: nil)
         }
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.searchTextField {
+            searchBtnClicked(self)
+        }
+        return true
     }
     
 
