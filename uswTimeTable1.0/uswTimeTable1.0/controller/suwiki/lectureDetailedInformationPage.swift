@@ -267,13 +267,17 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.homework.text = detailEvaluationArray[indexPath.row].homework
             if detailEvaluationArray[indexPath.row].homework == "없음" {
                 cell.homework.textColor = colorLiteralBlue
+            } else if detailEvaluationArray[indexPath.row].homework == "보통"{
+                cell.homework.textColor = colorLiteralBlack
             } else {
                 cell.homework.textColor = colorLiteralPurple
             }
             
             cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
-            if detailEvaluationArray[indexPath.row].difficulty == "쉬움" {
+            if detailEvaluationArray[indexPath.row].difficulty == "너그러움" {
                 cell.difficulty.textColor = colorLiteralBlue
+            } else if detailEvaluationArray[indexPath.row].difficulty == "보통"{
+                cell.difficulty.textColor = colorLiteralBlack
             } else {
                 cell.difficulty.textColor = colorLiteralPurple
             }
@@ -476,11 +480,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 }
                 
                 if jsonData["difficulty"] == 0{
-                    difficulty = "까다로움"
+                    difficulty = "너그러움"
                 } else if jsonData["difficulty"] == 1 {
                     difficulty = "보통"
                 } else if jsonData["difficulty"] == 2 {
-                    difficulty = "쉬움"
+                    difficulty = "까다로움"
                 }
                 
                 if jsonData["homework"] == 0 {

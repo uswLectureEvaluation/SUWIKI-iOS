@@ -5057,7 +5057,7 @@
                                             <action selector="categoryButtonClicked:" destination="nWD-BY-JaL" eventType="touchUpInside" id="JRV-8h-UyJ"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정렬" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2q-ed-b7M">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2q-ed-b7M">
                                         <rect key="frame" x="40" y="8" width="24.5" height="16"/>
                                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
                                         <color key="textColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -6196,18 +6196,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OM6-cX-16i">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="930"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
-                                                <rect key="frame" x="73" y="151" width="273" height="17"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="16" id="N6u-zU-uZf"/>
-                                                </constraints>
-                                                <color key="minimumTrackTintColor" systemColor="tintColor"/>
-                                                <color key="maximumTrackTintColor" red="0.94117647410000005" green="0.94509804249999996" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <color key="thumbTintColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <connections>
-                                                    <action selector="honeyPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="qlz-MI-dhk"/>
-                                                </connections>
-                                            </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dq3-HV-eLg">
                                                 <rect key="frame" x="73" y="188" width="273" height="17"/>
                                                 <constraints>
@@ -6523,6 +6511,18 @@
                                                     <constraint firstAttribute="height" constant="33" id="V7I-1E-emu"/>
                                                 </constraints>
                                             </view>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
+                                                <rect key="frame" x="73" y="151" width="273" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="N6u-zU-uZf"/>
+                                                </constraints>
+                                                <color key="minimumTrackTintColor" systemColor="tintColor"/>
+                                                <color key="maximumTrackTintColor" red="0.94117647410000005" green="0.94509804249999996" blue="0.94509804249999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="thumbTintColor" red="0.2588235438" green="0.4196078479" blue="0.96078431610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <connections>
+                                                    <action selector="honeyPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="qlz-MI-dhk"/>
+                                                </connections>
+                                            </slider>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -7441,6 +7441,11 @@
             <point key="canvasLocation" x="-652" y="2186"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="pNh-pJ-vFd">
+            <size key="intrinsicContentSize" width="81" height="17"/>
+        </designable>
+    </designables>
     <resources>
         <image name="LOGO" width="144" height="38"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="124"/>

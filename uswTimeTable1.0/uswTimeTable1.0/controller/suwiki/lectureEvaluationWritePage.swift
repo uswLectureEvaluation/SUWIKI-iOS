@@ -321,18 +321,43 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func honeyPointChanged(_ sender: UISlider) {
-        let point = String(format: "%.1f", round(sender.value * 1000) / 1000)
-        honeyPoint.text = point
+        
+        let sliderPoint = String(format: "%.1f", round(sender.value * 100) / 100)
+        let roundIndex = sliderPoint.index(sliderPoint.startIndex, offsetBy: 2)
+        var point = Double(String(sliderPoint[sliderPoint.startIndex]))!
+        let roundPoint = Int(String(sliderPoint[roundIndex]))!
+        if roundPoint > 5{
+            point += 0.5
+        }
+
+        honeyPoint.text = String(point)
+    
     }
     
     @IBAction func learningPointChanged(_ sender: UISlider) {
-        let point = String(format: "%.1f", round(sender.value * 1000) / 1000)
-        learningPoint.text = point
+        
+        let sliderPoint = String(format: "%.1f", round(sender.value * 100) / 100)
+        let roundIndex = sliderPoint.index(sliderPoint.startIndex, offsetBy: 2)
+        var point = Double(String(sliderPoint[sliderPoint.startIndex]))!
+        let roundPoint = Int(String(sliderPoint[roundIndex]))!
+        if roundPoint > 5{
+            point += 0.5
+        }
+        
+        learningPoint.text = String(point)
     }
     
     @IBAction func satisfactionValueChanged(_ sender: UISlider) {
-        let point = String(format: "%.1f", round(sender.value * 1000) / 1000)
-        satisfactionPoint.text = point
+        
+        let sliderPoint = String(format: "%.1f", round(sender.value * 100) / 100)
+        let roundIndex = sliderPoint.index(sliderPoint.startIndex, offsetBy: 2)
+        var point = Double(String(sliderPoint[sliderPoint.startIndex]))!
+        let roundPoint = Int(String(sliderPoint[roundIndex]))!
+        if roundPoint > 5{
+            point += 0.5
+        }
+        
+        satisfactionPoint.text = String(point)
     }
      
     @IBAction func noTeamBtnClicked(_ sender: Any) {
