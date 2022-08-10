@@ -3432,7 +3432,7 @@
                                     <constraint firstAttribute="height" constant="19" id="W0o-oG-qV0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTP-aQ-Yyz">
                                 <rect key="frame" x="20" y="247" width="374" height="1"/>
@@ -3447,7 +3447,7 @@
                                     <constraint firstAttribute="height" constant="19" id="7I9-QT-zxq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKY-qv-UaA">
                                 <rect key="frame" x="20" y="316" width="374" height="1"/>
