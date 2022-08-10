@@ -15,7 +15,7 @@ import GoogleMobileAds
 import KeychainSwift
 
 
-class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
  
     
     @IBOutlet weak var bannerView: GADBannerView!
@@ -69,7 +69,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         majorCategoryBtn.layer.borderColor = UIColor.systemGray5.cgColor
         majorCategoryBtn.layer.cornerRadius = 10.0
         
-
+        self.searchTextField.delegate = self
         // getLectureData(searchValue: searchData, option: option, page: page, majorType: majorType)
         
         dropDown.anchorView = categoryDropDown
@@ -281,6 +281,14 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
 
           self.view.endEditing(true)
 
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.searchTextField {
+            searchBtnClicked(self)
+        }
+        textField.resignFirstResponder()
+        return true
     }
     
     

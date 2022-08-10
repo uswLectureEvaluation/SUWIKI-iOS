@@ -14,7 +14,7 @@ import SwiftUI
 
 
 // 로그인 된 경우 메인페이지로 이동
-class loginController: UIViewController {
+class loginController: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var idTextFieldLine: UIView!
@@ -57,6 +57,8 @@ class loginController: UIViewController {
         
         passwordTextField.isSecureTextEntry = true
         //cell.adjustBtn.addTarget(self, action: #selector(adjustEvaluationBtnClicked), for: .touchUpInside)
+        self.idTextField.delegate = self
+        self.passwordTextField.delegate = self
         super.viewDidLoad()
         
 
@@ -234,10 +236,21 @@ class loginController: UIViewController {
         passwordTextFieldLine.layer.backgroundColor = colorLiteralBlue.cgColor
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == idTextField{
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField{
+            passwordTextField.resignFirstResponder()
+        }
+        return true
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
 
           self.view.endEditing(true)
 
     }
+    
+    
 }

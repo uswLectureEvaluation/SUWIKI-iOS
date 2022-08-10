@@ -12,7 +12,7 @@ import SwiftyJSON
 import KeychainSwift
 
 
-class ChangePasswordPage: UIViewController {
+class ChangePasswordPage: UIViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var presentPasswordTextField: UITextField!
@@ -59,6 +59,10 @@ class ChangePasswordPage: UIViewController {
         newPasswordTextField.addTarget(self,
                                        action: #selector(newPasswordTextTypeCheck),
                                        for: .editingChanged)
+        
+        self.presentPasswordTextField.delegate = self
+        self.newPasswordTextField.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
@@ -285,6 +289,16 @@ class ChangePasswordPage: UIViewController {
     
     //MARK: etc.
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == presentPasswordTextField {
+            newPasswordTextField.becomeFirstResponder()
+        } else {
+            newPasswordTextField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
     private func showToast(message : String) {
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75,
                                                y: nextBtn.frame.maxY,
@@ -313,6 +327,13 @@ class ChangePasswordPage: UIViewController {
         let cancle = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(cancle)
         present(alert,animated: true,completion: nil)
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
     }
     
     

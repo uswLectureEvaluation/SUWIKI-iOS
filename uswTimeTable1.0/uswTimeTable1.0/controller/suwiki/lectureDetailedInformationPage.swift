@@ -63,6 +63,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     let colorLiteralBlue = #colorLiteral(red: 0.2016981244, green: 0.4248289466, blue: 0.9915582538, alpha: 1)
     let colorLiteralPurple = #colorLiteral(red: 0.4726856351, green: 0, blue: 0.9996752143, alpha: 1)
+    let colorLiteralBlack = #colorLiteral(red: 0.1333333254, green: 0.1333333254, blue: 0.1333333254, alpha: 1)
     
     var evalPageLast: Bool = false// page의 수를 계산해주는 변수
     var evalPage = 1
@@ -266,13 +267,17 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             cell.homework.text = detailEvaluationArray[indexPath.row].homework
             if detailEvaluationArray[indexPath.row].homework == "없음" {
                 cell.homework.textColor = colorLiteralBlue
+            } else if detailEvaluationArray[indexPath.row].homework == "보통"{
+                cell.homework.textColor = colorLiteralBlack
             } else {
                 cell.homework.textColor = colorLiteralPurple
             }
             
             cell.difficulty.text = detailEvaluationArray[indexPath.row].difficulty
-            if detailEvaluationArray[indexPath.row].difficulty == "쉬움" {
+            if detailEvaluationArray[indexPath.row].difficulty == "너그러움" {
                 cell.difficulty.textColor = colorLiteralBlue
+            } else if detailEvaluationArray[indexPath.row].difficulty == "보통"{
+                cell.difficulty.textColor = colorLiteralBlack
             } else {
                 cell.difficulty.textColor = colorLiteralPurple
             }
@@ -343,10 +348,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         
         if detailLectureArray[0].lectureTeamAvg > 0.5 {
             teamView.text = "있음"
-            teamView.textColor = colorLiteralBlue
+            teamView.textColor = colorLiteralPurple
         } else {
             teamView.text = "없음"
-            teamView.textColor = colorLiteralPurple
+            teamView.textColor = colorLiteralBlue
         }
         
         if detailLectureArray[0].lectureHomeworkAvg < 0.5 {
@@ -354,18 +359,18 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             homeworkView.textColor = colorLiteralBlue
         } else if detailLectureArray[0].lectureHomeworkAvg < 1.5 {
             homeworkView.text = "보통"
-            homeworkView.textColor = colorLiteralPurple
+            homeworkView.textColor = colorLiteralBlack
         } else {
             homeworkView.text = "많음"
             homeworkView.textColor = colorLiteralPurple
         }
         
         if detailLectureArray[0].lectureDifficultyAvg < 0.5 {
-            pointView.text = "쉬움"
+            pointView.text = "너그러움"
             pointView.textColor = colorLiteralBlue
         } else if detailLectureArray[0].lectureDifficultyAvg < 1.5 {
             pointView.text = "보통"
-            pointView.textColor = colorLiteralPurple
+            pointView.textColor = colorLiteralBlack
         } else {
             pointView.text = "까다로움"
             pointView.textColor = colorLiteralPurple
@@ -475,11 +480,11 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
                 }
                 
                 if jsonData["difficulty"] == 0{
-                    difficulty = "까다로움"
+                    difficulty = "너그러움"
                 } else if jsonData["difficulty"] == 1 {
                     difficulty = "보통"
                 } else if jsonData["difficulty"] == 2 {
-                    difficulty = "쉬움"
+                    difficulty = "까다로움"
                 }
                 
                 if jsonData["homework"] == 0 {

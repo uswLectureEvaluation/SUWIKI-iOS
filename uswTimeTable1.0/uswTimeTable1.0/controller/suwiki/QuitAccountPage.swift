@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 import KeychainSwift
 
-class QuitAccountPage: UIViewController {
+class QuitAccountPage: UIViewController, UITextFieldDelegate {
 
     //MARK: IBOutlet
     
@@ -44,6 +44,9 @@ class QuitAccountPage: UIViewController {
         passwordTextField.addTarget(self,
                                     action: #selector(passwordTextFieldTypeCheck),
                                     for: .editingChanged)
+        
+        self.idTextField.delegate = self
+        self.passwordTextField.delegate = self
         
         super.viewDidLoad()
         
@@ -217,6 +220,20 @@ class QuitAccountPage: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == idTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+
+          self.view.endEditing(true)
+
+    }
     //MARK: etc.
     
 //    private func showToast(message : String) {

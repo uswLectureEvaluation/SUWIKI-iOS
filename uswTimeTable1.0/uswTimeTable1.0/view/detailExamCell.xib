@@ -84,7 +84,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유저가 쓴 내용" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHd-vg-c8g">
-                        <rect key="frame" x="24" y="104" width="366" height="45"/>
+                        <rect key="frame" x="16" y="104" width="382" height="45"/>
                         <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -118,7 +118,7 @@
                     <constraint firstItem="DHm-oy-ciU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="5OR-FK-3pO"/>
                     <constraint firstAttribute="trailing" secondItem="bML-Tz-SrJ" secondAttribute="trailing" constant="16" id="7Fm-pO-ngX"/>
                     <constraint firstAttribute="bottom" secondItem="aHd-vg-c8g" secondAttribute="bottom" constant="16" id="7sK-ob-knM"/>
-                    <constraint firstItem="aHd-vg-c8g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="C9U-UO-bIf"/>
+                    <constraint firstItem="aHd-vg-c8g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="C9U-UO-bIf"/>
                     <constraint firstItem="VtC-Ea-LT1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="52" id="IQu-NU-xnz"/>
                     <constraint firstItem="DHm-oy-ciU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="74" id="Lyc-mj-sUI"/>
                     <constraint firstItem="TvI-jP-3P7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="52" id="MJl-g6-PyP"/>
@@ -129,7 +129,7 @@
                     <constraint firstItem="bML-Tz-SrJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="hkM-ei-eh3"/>
                     <constraint firstItem="aHd-vg-c8g" firstAttribute="top" secondItem="DHm-oy-ciU" secondAttribute="bottom" constant="16" id="rpx-Ow-IHs"/>
                     <constraint firstItem="TvI-jP-3P7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xlf-9F-4nj"/>
-                    <constraint firstAttribute="trailing" secondItem="aHd-vg-c8g" secondAttribute="trailing" constant="24" id="y31-3B-K0F"/>
+                    <constraint firstAttribute="trailing" secondItem="aHd-vg-c8g" secondAttribute="trailing" constant="16" id="y31-3B-K0F"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
