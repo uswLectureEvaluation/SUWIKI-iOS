@@ -2991,6 +2991,15 @@
                                 <color key="textColor" red="0.13333332540000001" green="0.13333332540000001" blue="0.13333332540000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 이메일 인증 시 주의 사항 웹메일이 휴면 상태인지 확인해주세요.     웹메일 계정은 포털 계정과 다르니 이 부분 주의 바랍니다." textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0H-fp-pjW">
+                                <rect key="frame" x="16" y="270" width="382" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="q5W-M1-Cjc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Pretendard-Regular" family="Pretendard" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HOZ-rP-Zid"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2999,12 +3008,15 @@
                             <constraint firstItem="HOZ-rP-Zid" firstAttribute="bottom" secondItem="3BV-Ck-hFF" secondAttribute="bottom" constant="151" id="AR3-H1-5WS"/>
                             <constraint firstItem="HOZ-rP-Zid" firstAttribute="trailing" secondItem="3BV-Ck-hFF" secondAttribute="trailing" constant="16" id="Czu-xz-a43"/>
                             <constraint firstItem="kFh-P5-jqq" firstAttribute="top" secondItem="HOZ-rP-Zid" secondAttribute="top" constant="154" id="Dje-Rf-hxK"/>
+                            <constraint firstItem="V0H-fp-pjW" firstAttribute="top" secondItem="qwr-PS-VN4" secondAttribute="bottom" constant="45" id="EFP-Kn-SKP"/>
                             <constraint firstItem="HOZ-rP-Zid" firstAttribute="trailing" secondItem="kFh-P5-jqq" secondAttribute="trailing" constant="16" id="JeE-WV-dUL"/>
                             <constraint firstItem="HOZ-rP-Zid" firstAttribute="bottom" secondItem="2e4-jB-U04" secondAttribute="bottom" constant="111" id="PkM-Ey-1Cg"/>
                             <constraint firstItem="K0m-d1-0nQ" firstAttribute="top" secondItem="HOZ-rP-Zid" secondAttribute="top" constant="152" id="Q83-VV-s01"/>
                             <constraint firstItem="Mg1-l9-8ab" firstAttribute="top" secondItem="HOZ-rP-Zid" secondAttribute="top" constant="50" id="QAP-xN-3vG"/>
                             <constraint firstItem="3BV-Ck-hFF" firstAttribute="leading" secondItem="HOZ-rP-Zid" secondAttribute="leading" constant="16" id="QSm-p0-itY"/>
+                            <constraint firstItem="HOZ-rP-Zid" firstAttribute="trailing" secondItem="V0H-fp-pjW" secondAttribute="trailing" constant="16" id="Tmt-te-v9s"/>
                             <constraint firstAttribute="trailing" secondItem="qwr-PS-VN4" secondAttribute="trailing" constant="16" id="YYx-ic-csp"/>
+                            <constraint firstItem="V0H-fp-pjW" firstAttribute="leading" secondItem="HOZ-rP-Zid" secondAttribute="leading" constant="16" id="bK1-US-OIQ"/>
                             <constraint firstItem="qwr-PS-VN4" firstAttribute="top" secondItem="K0m-d1-0nQ" secondAttribute="bottom" constant="8" id="eeM-4F-qPf"/>
                             <constraint firstItem="K0m-d1-0nQ" firstAttribute="leading" secondItem="HOZ-rP-Zid" secondAttribute="leading" constant="16" id="h4M-4a-HLU"/>
                             <constraint firstItem="HOZ-rP-Zid" firstAttribute="trailing" secondItem="K0m-d1-0nQ" secondAttribute="trailing" constant="16" id="oQf-qs-pEm"/>
