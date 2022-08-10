@@ -73,8 +73,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         tableViewEvalData.removeAll()
         getWrittenEvalData(page: 1)
         getWrittenExamData(page: 1)
-        evalBtn.setTitleColor(.black, for: .normal)
-        examBtn.setTitleColor(.lightGray, for: .normal)
     }
     
     @IBAction func closeBtnClicked(_ sender: Any) {
@@ -535,7 +533,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                 self.present(alert, animated: true, completion: nil)
             } else {
                 self.viewWillAppear(true)
-                self.dismiss(animated: true, completion: nil)
             }
         }
     }
