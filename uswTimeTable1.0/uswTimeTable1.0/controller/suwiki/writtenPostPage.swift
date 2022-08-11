@@ -274,11 +274,11 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
                 
                 if jsonData["difficulty"] == 0{
-                    difficulty = "까다로움"
+                    difficulty = "너그러움"
                 } else if jsonData["difficulty"] == 1 {
                     difficulty = "보통"
                 } else if jsonData["difficulty"] == 2 {
-                    difficulty = "너그러움"
+                    difficulty = "까다로움"
                 }
                 
                 if jsonData["homework"] == 0 {
