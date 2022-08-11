@@ -15,6 +15,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     
     let realm = try! Realm()
     
+    @IBOutlet weak var timeTableCornerView: UIView!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var timetable: Elliotable!
     @IBOutlet weak var timeTableNameTxt: UILabel!
@@ -32,7 +33,9 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     
     
     override func viewDidLoad() {
-
+        timeTableCornerView.layer.cornerRadius = 13.0
+        timeTableCornerView.layer.borderWidth = 1.0
+        timeTableCornerView.layer.borderColor = UIColor.systemGray6.cgColor
         checkUserData()
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -48,6 +51,9 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         // json 시간표 데이터 입력
 }
     override func viewWillAppear(_ animated: Bool) {
+        timeTableCornerView.layer.cornerRadius = 13.0
+        timeTableCornerView.layer.borderWidth = 1.0
+        timeTableCornerView.layer.borderColor = UIColor.systemGray6.cgColor
         checkUserData()
         print("viewwillappear")
         navigationBarHidden()
@@ -101,11 +107,11 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
 
         timetable.textEdgeInsets = UIEdgeInsets(top: 2, left: 3, bottom: 2, right: 10)
         timetable.courseItemMaxNameLength = 18
-        timetable.courseItemTextSize = 12.5
+        timetable.courseItemTextSize = 11
         timetable.courseTextAlignment = .left
 
         timetable.borderCornerRadius = 24
-        timetable.roomNameFontSize = 8
+        timetable.roomNameFontSize = 9
 
         timetable.courseItemHeight = 70.0
         timetable.symbolFontSize = 14
@@ -113,7 +119,7 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         timetable.symbolFontColor = UIColor(displayP3Red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
         timetable.symbolTimeFontColor = UIColor(displayP3Red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
         
-        timetable.isFullBorder = true // 시간표 겉 테두리
+        timetable.isFullBorder = false // 시간표 겉 테두리
     
         timetable.reloadData()
     }
@@ -140,41 +146,30 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
         var rand = x
         switch rand{
         case 0:
-            return UIColor(red: 0.6353, green: 0.6078, blue: 0.9961, alpha: 1.0) /* #a29bfe */
-
+            return UIColor(red: 0.5255, green: 0.8078, blue: 0.7569, alpha: 1.0)
         case 1:
-            return UIColor(red: 0.9922, green: 0.4745, blue: 0.6588, alpha: 1.0) /* #fd79a8 */
-
+            return UIColor(red: 0.4039, green: 0.5686, blue: 0.9922, alpha: 1.0) /* #6791fd */
         case 2:
-            return UIColor(red: 0.8824, green: 0.4392, blue: 0.3333, alpha: 1.0) /* #e17055 */
+            return UIColor(red: 0.1569, green: 0.6824, blue: 0.5882, alpha: 1.0) /* #28ae96 */
 
-             /* #d6a2e8 */
         case 3:
-            return UIColor(red: 0.4549, green: 0.7255, blue: 1, alpha: 1.0) /* #74b9ff */
-
+            return UIColor(red: 0.6902, green: 0.851, blue: 0.5451, alpha: 1.0) /* #b0d98b */
         case 4:
-            return UIColor(red: 0.9922, green: 0.7961, blue: 0.4314, alpha: 1.0) /* #fdcb6e */
-
+            return UIColor(red: 0.9608, green: 0.7804, blue: 0.5647, alpha: 1.0) /* #f5c790 */
         case 5:
-            return UIColor(red: 0, green: 0.8078, blue: 0.7882, alpha: 1.0) /* #00cec9 */
-
+            return UIColor(red: 0.9529, green: 0.5686, blue: 0.5098, alpha: 1.0) /* #f39182 */
         case 6:
-            return UIColor(red: 0.3333, green: 0.9373, blue: 0.7686, alpha: 1.0) /* #55efc4 */
-
+            return UIColor(red: 0.6824, green: 0.4, blue: 1, alpha: 1.0) /* #ae66ff */
         case 7:
-            return UIColor(red: 0.0353, green: 0.5176, blue: 0.8902, alpha: 1.0) /* #0984e3 */
-
+            return UIColor(red: 0.549, green: 0.6118, blue: 0.9686, alpha: 1.0) /* #8c9cf7 */
         case 8:
-            return UIColor(red: 0.9098, green: 0.2627, blue: 0.5765, alpha: 1.0) /* #e84393 */
-
+            return UIColor(red: 0.7608, green: 0.7569, blue: 0.7412, alpha: 1.0) /* #c2c1bd */
         case 9:
-            return UIColor(red: 0.4235, green: 0.3608, blue: 0.9059, alpha: 1.0) /* #6c5ce7 */
-
+            return UIColor(red: 0.9608, green: 0.7373, blue: 0.3137, alpha: 1.0) /* #f5bc50 */
         case 10:
-            return UIColor(red: 0.9804, green: 0.6941, blue: 0.6275, alpha: 1.0) /* #fab1a0 */
-
+            return UIColor(red: 0.4431, green: 0.2784, blue: 0.6235, alpha: 1.0) /* #71479f */
         default:
-            return UIColor(red: 0.698, green: 0.7451, blue: 0.7647, alpha: 1.0) /* #b2bec3 */
+            return UIColor(red: 0.5255, green: 0.8078, blue: 0.7569, alpha: 1.0) /* #86cec1 */
 
     }
 }
