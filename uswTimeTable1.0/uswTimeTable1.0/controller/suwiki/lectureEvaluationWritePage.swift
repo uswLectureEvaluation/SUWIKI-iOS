@@ -83,15 +83,15 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
         self.contentField.layer.borderWidth = 1.0
         self.contentField.layer.borderColor = UIColor.black.cgColor
         lectureNameLabel.text = lectureName
+        contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
         
         if adjustBtn == 1 {
             getAdjustEvaluation()
+        } else {
+            contentField.delegate = self
+            contentField.text = "강의평가를 작성해주세요."
+            contentField.textColor = UIColor.lightGray
         }
-
-        contentField.delegate = self
-        contentField.text = "강의평가를 작성해주세요."
-        contentField.textColor = UIColor.lightGray
-        contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
 
         contentField.layer.cornerRadius = 8.0
         contentField.layer.borderWidth = 1.0
@@ -134,6 +134,21 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
         super.viewWillDisappear(animated)
         
         NotificationCenter.default.removeObserver(self) // 메모리
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
+        
+        if adjustBtn == 1 {
+            getAdjustEvaluation()
+        } else {
+            contentField.delegate = self
+            contentField.text = "강의평가를 작성해주세요."
+            contentField.textColor = UIColor.lightGray
+            contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
+        }
         
     }
     
@@ -304,7 +319,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
     }
         
     func getAdjustEvaluation(){
-        
+        print(adjustContent)
         contentField.text = adjustContent
         teamWorkType.checkPoint(no: teamWorkType.noTeamWork, have: teamWorkType.haveTeamWork)
         teamWorkPointCheck()
