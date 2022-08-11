@@ -329,7 +329,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
              
-                let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, semesterList: jsonData["semesterList"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
                 
                 self.tableViewExamData.append(readData)
                  
@@ -486,9 +486,12 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             break
         }
         
+        let semesterData: Array<String> = tableViewExamData[indexPath.row].semesterList.components(separatedBy: ", ")
         
+        for index in 0..<semesterData.count{
+            nextVC.semesterList.append(semesterData[index])
+        }
         
-
         nextVC.adjustBtn = 1
         nextVC.examIdx = tableViewExamData[indexPath.row].id
         nextVC.adjustContent = tableViewExamData[indexPath.row].content

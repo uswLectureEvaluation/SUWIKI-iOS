@@ -84,11 +84,12 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
         self.contentField.layer.borderColor = UIColor.black.cgColor
         lectureNameLabel.text = lectureName
         contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
-        
+        contentField.delegate = self
+
         if adjustBtn == 1 {
             getAdjustEvaluation()
+            finishBtn.setTitle("수정하기", for: .normal)
         } else {
-            contentField.delegate = self
             contentField.text = "강의평가를 작성해주세요."
             contentField.textColor = UIColor.lightGray
         }
@@ -142,6 +143,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
         contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
         
         if adjustBtn == 1 {
+            finishBtn.setTitle("수정하기", for: .normal)
             getAdjustEvaluation()
         } else {
             contentField.delegate = self
