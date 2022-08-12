@@ -47,7 +47,10 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        getWrittenEvalData(page: 1)
+        getWrittenExamData(page: 1)
+        
         bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
@@ -73,6 +76,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         tableViewExamData.removeAll()
         tableViewEvalData.removeAll()
+        self.tableView.reloadData()
         getWrittenEvalData(page: 1)
         getWrittenExamData(page: 1)
     }
@@ -110,7 +114,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             let cell = tableView.dequeueReusableCell(withIdentifier: "writtenEvalCell", for: indexPath) as! writtenEvalPostCell
             
             cell.contentLabel.numberOfLines = 0
-
+            //MARK: ERROR 1
             cell.semesterLabel.text = tableViewEvalData[indexPath.row].selectedSemester
             
             cell.lectureNameLabel.text = tableViewEvalData[indexPath.row].lectureName
@@ -297,12 +301,13 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                 let readData = WrittenEvalPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, semesterList: jsonData["semesterList"].stringValue, totalAvg: totalAvg, satisfaction: satisfactionAvg, learning: learningAvg, honey: honeyAvg, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
                 self.tableViewEvalData.append(readData)
+                
             }
-            
+            self.tableView.reloadData()
             if self.tableViewEvalData.count == 0 {
                 self.tableViewNumber = 3
             }
-            self.tableView.reloadData()
+            
         }
     }
     
@@ -347,8 +352,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     @objc func adjustEvaluationBtnClicked(sender: UIButton)
     {
         let indexPath = IndexPath(row: sender.tag, section: 0)
-
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+        print(indexPath)
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
         
         switch tableViewEvalData[indexPath.row].team {
         case "없음" :
@@ -379,7 +384,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         switch tableViewEvalData[indexPath.row].difficulty{
-        case "개꿀" :
+        case "너그러움" :
             nextVC.difficultyType.easyDifficulty = true
             nextVC.difficultyType.normalDifficulty = false
             nextVC.difficultyType.hardDifficulty = false
