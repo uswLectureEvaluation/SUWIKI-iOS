@@ -31,6 +31,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     var tableViewEvalData: Array<WrittenEvalPostData> = []
     var tableViewExamData: Array<WrittenExamPostData> = []
+    var componentsSemester: Array<String> = []
+
     
     var tableViewNumber = 1
     var evalPage = 1
@@ -45,7 +47,10 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        getWrittenEvalData(page: 1)
+        getWrittenExamData(page: 1)
+        
         bannerView.adUnitID = "ca-app-pub-8919128352699409/3950816041"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
@@ -71,6 +76,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         tableViewExamData.removeAll()
         tableViewEvalData.removeAll()
+        self.tableView.reloadData()
         getWrittenEvalData(page: 1)
         getWrittenExamData(page: 1)
     }
@@ -108,7 +114,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             let cell = tableView.dequeueReusableCell(withIdentifier: "writtenEvalCell", for: indexPath) as! writtenEvalPostCell
             
             cell.contentLabel.numberOfLines = 0
-
+            //MARK: ERROR 1
             cell.semesterLabel.text = tableViewEvalData[indexPath.row].selectedSemester
             
             cell.lectureNameLabel.text = tableViewEvalData[indexPath.row].lectureName
@@ -148,6 +154,9 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
                         
             cell.contentLabel.text = tableViewEvalData[indexPath.row].content + "\n"
+            
+
+            
             
             cell.adjustBtn.tag = indexPath.row
             cell.adjustBtn.addTarget(self, action: #selector(adjustEvaluationBtnClicked), for: .touchUpInside)
@@ -257,7 +266,6 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             }
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
-                print(jsonData["content"].stringValue)
                 var team = ""
                 var difficulty = ""
                 var homework = ""
@@ -274,11 +282,11 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
                 
                 if jsonData["difficulty"] == 0{
-                    difficulty = "까다로움"
+                    difficulty = "너그러움"
                 } else if jsonData["difficulty"] == 1 {
                     difficulty = "보통"
                 } else if jsonData["difficulty"] == 2 {
-                    difficulty = "너그러움"
+                    difficulty = "까다로움"
                 }
                 
                 if jsonData["homework"] == 0 {
@@ -290,17 +298,16 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
                 
 
-                let readData = WrittenEvalPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, totalAvg: totalAvg, satisfaction: satisfactionAvg, learning: learningAvg, honey: honeyAvg, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
-                
+                let readData = WrittenEvalPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, semesterList: jsonData["semesterList"].stringValue, totalAvg: totalAvg, satisfaction: satisfactionAvg, learning: learningAvg, honey: honeyAvg, team: team, difficulty: difficulty, homework: homework, content: jsonData["content"].stringValue)
                 
                 self.tableViewEvalData.append(readData)
+                
             }
-            
+            self.tableView.reloadData()
             if self.tableViewEvalData.count == 0 {
                 self.tableViewNumber = 3
             }
-            print(self.tableViewEvalData.count)
-            self.tableView.reloadData()
+            
         }
     }
     
@@ -327,7 +334,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             for index in 0..<json["data"].count{
                 let jsonData = json["data"][index]
              
-                let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
+                let readData = WrittenExamPostData(id: jsonData["id"].intValue, lectureName: jsonData["lectureName"].stringValue, professor: jsonData["professor"].stringValue, majorType: jsonData["majorType"].stringValue, selectedSemester: jsonData["selectedSemester"].stringValue, semesterList: jsonData["semesterList"].stringValue, examType: jsonData["examType"].stringValue, examInfo: jsonData["examInfo"].stringValue, examDifficulty: jsonData["examDifficulty"].stringValue, content: jsonData["content"].stringValue)
                 
                 self.tableViewExamData.append(readData)
                  
@@ -345,8 +352,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     @objc func adjustEvaluationBtnClicked(sender: UIButton)
     {
         let indexPath = IndexPath(row: sender.tag, section: 0)
-
-        let nextVC = storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
+        print(indexPath)
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "evalWriteVC") as! lectureEvaluationWritePage
         
         switch tableViewEvalData[indexPath.row].team {
         case "없음" :
@@ -377,7 +384,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         switch tableViewEvalData[indexPath.row].difficulty{
-        case "개꿀" :
+        case "너그러움" :
             nextVC.difficultyType.easyDifficulty = true
             nextVC.difficultyType.normalDifficulty = false
             nextVC.difficultyType.hardDifficulty = false
@@ -392,13 +399,19 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         default:
             break
         }
+        
+        let semesterData: Array<String> = tableViewEvalData[indexPath.row].semesterList.components(separatedBy: ", ")
     
+        
         nextVC.adjustBtn = 1
         nextVC.evaluateIdx = tableViewEvalData[indexPath.row].id
         nextVC.adjustContent = tableViewEvalData[indexPath.row].content
         nextVC.lectureName = tableViewEvalData[indexPath.row].lectureName
         // 수정 시 여러개의 학기 받아오는 방법 생각해보아야 함.
-        nextVC.semesterList.append(tableViewExamData[indexPath.row].selectedSemester)
+        for index in 0..<semesterData.count{
+            nextVC.semesterList.append(semesterData[index])
+        }
+        
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
@@ -478,7 +491,12 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
             break
         }
         
-        nextVC.semesterList.append(tableViewExamData[indexPath.row].selectedSemester)
+        let semesterData: Array<String> = tableViewExamData[indexPath.row].semesterList.components(separatedBy: ", ")
+        
+        for index in 0..<semesterData.count{
+            nextVC.semesterList.append(semesterData[index])
+        }
+        
         nextVC.adjustBtn = 1
         nextVC.examIdx = tableViewExamData[indexPath.row].id
         nextVC.adjustContent = tableViewExamData[indexPath.row].content

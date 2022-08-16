@@ -76,13 +76,16 @@ class lectureExamWritePage: UIViewController, UITextViewDelegate{
         
         if adjustBtn == 1{
             getAdjustExam()
+            finishBtn.setTitle("수정하기", for: .normal)
+        } else {
+            contentField.text = "강의평가를 작성해주세요."
+            contentField.textColor = UIColor.lightGray
         }
         
         btnCustom()
         
         contentField.delegate = self
-        contentField.text = "강의평가를 작성해주세요."
-        contentField.textColor = UIColor.lightGray
+       
         contentField.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
         
         contentField.layer.borderColor = UIColor.lightGray.cgColor
@@ -139,6 +142,16 @@ class lectureExamWritePage: UIViewController, UITextViewDelegate{
         
         NotificationCenter.default.removeObserver(self) // 메모리
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if adjustBtn == 1{
+            finishBtn.setTitle("수정하기", for: .normal)
+            getAdjustExam()
+        } else {
+            contentField.text = "강의평가를 작성해주세요."
+            contentField.textColor = UIColor.lightGray
+        }
     }
     
     @objc func MyTapMethod(_ sender: UITapGestureRecognizer){

@@ -14,6 +14,7 @@ struct WrittenEvalPostData {
     let professor: String
     let majorType: String
     let selectedSemester: String
+    let semesterList: String
     let totalAvg: String
     let satisfaction: String
     let learning: String

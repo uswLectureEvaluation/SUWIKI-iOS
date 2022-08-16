@@ -38,9 +38,11 @@ class SignUpEmailPage: UIViewController {
         let email = emailTextField.text ?? ""
         
         let url = "https://api.suwiki.kr/user/check-email"
+        
         let parameters = [
-            "email" : email
+            "email" : "\(email)@suwon.ac.kr"
         ]
+        
         if emailTextField.text != "" {
             AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { (response) in
                 let data = response.data
