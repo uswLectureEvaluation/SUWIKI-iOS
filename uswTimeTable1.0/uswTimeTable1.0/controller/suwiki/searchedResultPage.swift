@@ -125,6 +125,10 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewWillAppear(animated)
     }
     
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func majorCategoryBtnClicked(_ sender: Any) {
         tableViewUpdateData.removeAll()
 
