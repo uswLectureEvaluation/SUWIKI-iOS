@@ -221,7 +221,7 @@ class infoCourseData: UIViewController{
             checkTimeCrash()
         }
         
-        if changeDay == 7 { // 시간표 토요일 (이러닝 같은 수업)
+        if changeDay == 7 || varietyDay.contains(7) || changeDay == 0 || varietyDay.contains(0) { // 시간표 토요일 (이러닝 같은 수업)
             showAlert(title: "이러닝은 추가할 수 없어요!")
             
         } else if setNum == 1 { // 시간표 중복
@@ -235,7 +235,7 @@ class infoCourseData: UIViewController{
                 showAlert(title: "시간표가 중복되었어요!")
                 
             } else if varietyDay.count == 0 {
-                    writeCourseMyRealm()
+                writeCourseMyRealm()
             }
         }
     }
@@ -723,6 +723,7 @@ class infoCourseData: UIViewController{
     
     
     func changeDayToInt(checkDay: Character){
+        
         switch checkDay{
         case "월":
             varietyDay.append(1)
@@ -748,6 +749,8 @@ class infoCourseData: UIViewController{
             nowCourseDay.append(7)
 
         }
+        print(varietyDay)
+        print(nowCourseDay)
     }
     
     
