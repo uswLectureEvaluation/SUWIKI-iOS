@@ -37,16 +37,8 @@ ___
 
 ## 📜 기술 스택
 
-### Android
-- Android Studio
-- Kotlin
-- MVVM
-- Navigation
-- Firebase
-- Coroutine
-- Flow
-- LiveData
-- EncryptSharedPreference
+### iOS
+
 
 <br>
 
