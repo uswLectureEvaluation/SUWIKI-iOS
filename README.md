@@ -17,7 +17,7 @@
 
 | **시간표** |||
 | :---: | :---: | :---: |
-| ![시간표](https://i.ibb.co/Jd1yLWs/1.png) | ![](https://i.ibb.co/Dgx4B9B/2.png) | ![](https://i.ibb.co/5LQ3VTD/3.png) |
+| ![시간표](https://velog.velcdn.com/images/sozohoy/post/6ae52c9c-baf0-45ec-b555-e7c328625b47/image.png) | ![](https://velog.velcdn.com/images/sozohoy/post/b7f50284-825a-4be2-ac15-945d3c1b02d7/image.png) | ![](https://velog.velcdn.com/images/sozohoy/post/e0bd5c99-e318-4d3f-a13e-7ed2cf7a7788/image.png) |
 
 | **로그인** |||
 | :---: | :---: | :---: |
@@ -25,7 +25,7 @@
 
 | **강의평가 메인** | **강의평가 필터링** | **강의평가 상세보기** |
 | :---: | :---: | :---: |
-| ![강의평가 메인](https://user-images.githubusercontent.com/81678959/182595106-1c4cc7b5-e75a-4093-b790-e3aab44350b7.gif) | ![강의평가 필터링](https://user-images.githubusercontent.com/81678959/182595107-9313792b-66e4-47bf-ac79-7f1bd6f6f758.gif) | ![강의평가 상세보기](https://user-images.githubusercontent.com/81678959/182595108-04588363-90f1-4969-9071-f351a0336978.gif) |
+| ![강의평가 메인](https://user-images.githubusercontent.com/81678959/182595106-1c4cc7b5-e75a-4093-b790-e3aab44350b7.gif) | ![강의평가 필터링](https://velog.velcdn.com/images/sozohoy/post/d29a9ca2-9396-4f8f-a40b-f2545cd7ea68/image.gif) | ![강의평가 상세보기](https://user-images.githubusercontent.com/81678959/182595108-04588363-90f1-4969-9071-f351a0336978.gif) |
 
 | **강의평가 작성** | **내 정보** | **공지사항** |
 | :---: | :---: | :---: |
