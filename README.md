@@ -25,13 +25,22 @@
 
 | **강의평가 메인** | **강의평가 필터링** | **강의평가 상세보기** |
 | :---: | :---: | :---: |
-| ![강의평가 메인](https://user-images.githubusercontent.com/81678959/182595106-1c4cc7b5-e75a-4093-b790-e3aab44350b7.gif) | ![강의평가 필터링](https://velog.velcdn.com/images/sozohoy/post/d29a9ca2-9396-4f8f-a40b-f2545cd7ea68/image.gif) | ![강의평가 상세보기](https://user-images.githubusercontent.com/81678959/182595108-04588363-90f1-4969-9071-f351a0336978.gif) |
+| ![강의평가 메인](https://user-images.githubusercontent.com/81678959/182595106-1c4cc7b5-e75a-4093-b790-e3aab44350b7.gif) | ![강의평가 필터링](https://user-images.githubusercontent.com/49385546/203535149-f4583326-e5cd-43a3-98a0-c2cd59603d91.gif) | ![강의평가 상세보기](https://user-images.githubusercontent.com/49385546/203535036-ffba8e80-e37a-4e3b-a07c-1d6f982dafc2.gif) |
 
-| **강의평가 작성** | **내 정보** | **공지사항** |
+| **강의평가 작성** | **강의평가 작성** | **공지사항** |
 | :---: | :---: | :---: |
-| ![강의평가 작성](https://user-images.githubusercontent.com/81678959/182595110-169db09f-33c2-4e6d-b292-bc595060d6e1.gif) | ![내정보](https://user-images.githubusercontent.com/81678959/182595114-0f2fbfdf-d8d2-432b-be44-eb3837e66cf7.gif) | ![공지사항](https://user-images.githubusercontent.com/81678959/182595115-524aac07-7d52-4a04-bb5f-64b6a06c7400.gif) |
+| ![강의평가 작성](https://user-images.githubusercontent.com/49385546/203535237-24fd2012-e67f-4a8c-8ea6-e7396d313343.gif) | ![강의평가 작성](https://user-images.githubusercontent.com/49385546/203535225-44509bb3-3b4e-4a63-9f39-1f00e40cacb7.gif) | ![공지사항](https://user-images.githubusercontent.com/81678959/182595115-524aac07-7d52-4a04-bb5f-64b6a06c7400.gif) |
 
-___
+___![강의평가자세히보기](https://user-images.githubusercontent.com/49385546/203535036-ffba8e80-e37a-4e3b-a07c-1d6f982dafc2.gif)
+![강의평가필터링](https://user-images.githubusercontent.com/49385546/203535149-f4583326-e5cd-43a3-98a0-c2cd59603d91.gif)
+
+
+![강의평가검색](https://user-images.githubusercontent.com/49385546/203535225-44509bb3-3b4e-4a63-9f39-1f00e40cacb7.gif)
+![강의평가쓰기](https://user-images.githubusercontent.com/49385546/203535237-24fd2012-e67f-4a8c-8ea6-e7396d313343.gif)
+
+
+
+
 
 <br>
 
