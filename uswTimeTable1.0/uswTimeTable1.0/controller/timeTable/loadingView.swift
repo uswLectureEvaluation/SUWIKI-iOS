@@ -42,19 +42,21 @@ class loadingView: UIViewController {
 
     func getExternalData(){
         
-        uswFireDB.getData { [self] (error, snapshot) in
+      uswFireDB.getData { [self] (error, snapshot) in
             
-            let semesterCount = Int(snapshot.childrenCount)
-            let userDataCount = self.realm.objects(CourseData.self).count
-            let userDatabase = self.realm.objects(CourseData.self)
-            let userTable = self.realm.objects(userDB.self).count
-            
-            print(semesterCount)
+          let semesterCount = Int(snapshot?.childrenCount ?? 0)
+          let userDataCount = self.realm.objects(CourseData.self).count
+          let userDatabase = self.realm.objects(CourseData.self)
+          let userTable = self.realm.objects(userDB.self).count
+          guard let fireBaseSnapshotChildren = snapshot?.children else { return }
+          guard let fireBaseSnapshotChildrenCount = snapshot?.childrenCount else { return }
+          
             if semesterCount != userDataCount{
                 try! realm.write{
                     realm.delete(userDatabase)
                 }
-                for data in snapshot.children{
+            
+                for data in fireBaseSnapshotChildren{
                     var dataSnapshot = data as? DataSnapshot
                     var value = dataSnapshot?.value as? NSDictionary
                     var startTime = value?["startTime"] as? String ?? " "
@@ -72,7 +74,7 @@ class loadingView: UIViewController {
                     var readData = externalData(classNum: classNum, classification: classfication, courseDay: courseDay, courseName: courseName, credit: credit, endTime: endTime, major: major, num: num, professor: professor, roomName: roomName, startTime: startTime)
                     self.fireBaseArray.append(readData)
                     
-                    let checkCount = Int(snapshot.childrenCount) - 3
+                    let checkCount = Int(fireBaseSnapshotChildrenCount) - 3
                     
                     if self.fireBaseArray.count == checkCount{
                         self.boolCheck = true
@@ -83,7 +85,7 @@ class loadingView: UIViewController {
                 if self.boolCheck == true {
                    
                     try! realm.write{
-                    for i in 0..<Int(snapshot.childrenCount){
+                    for i in 0..<Int(fireBaseSnapshotChildrenCount){
                         let realm = try! Realm()
                         let insideDB = CourseData()
                         insideDB.startTime = self.fireBaseArray[i].startTime
@@ -111,7 +113,7 @@ class loadingView: UIViewController {
 
                     // insideDB.startTime = self.fireBaseArray1.startTime
             } else {
-                for data in snapshot.children{
+                for data in fireBaseSnapshotChildren{
                     var dataSnapshot = data as? DataSnapshot
                     var value = dataSnapshot?.value as? NSDictionary
                     var startTime = value?["startTime"] as? String ?? " "
@@ -129,7 +131,7 @@ class loadingView: UIViewController {
                     var readData = externalData(classNum: classNum, classification: classfication, courseDay: courseDay, courseName: courseName, credit: credit, endTime: endTime, major: major, num: num, professor: professor, roomName: roomName, startTime: startTime)
                     self.fireBaseArray.append(readData)
                     
-                    let checkCount = Int(snapshot.childrenCount) - 3
+                    let checkCount = Int(fireBaseSnapshotChildrenCount) - 3
                     
                     if self.fireBaseArray.count == checkCount{
                         self.boolCheck = true
@@ -140,7 +142,7 @@ class loadingView: UIViewController {
                 if self.boolCheck == true {
                    
                     try! realm.write{
-                    for i in 0..<Int(snapshot.childrenCount){
+                    for i in 0..<Int(fireBaseSnapshotChildrenCount){
                         let realm = try! Realm()
                         let insideDB = CourseData()
                         insideDB.startTime = self.fireBaseArray[i].startTime

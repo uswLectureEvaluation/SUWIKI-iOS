@@ -26,13 +26,14 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
 
     
     @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var contentsView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+//    @IBOutlet weak var contentsView: UIView!
+//    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lectureView: UIView!
     @IBOutlet weak var lectureName: UILabel!
     @IBOutlet weak var professor: UILabel!
     @IBOutlet weak var majorType: UILabel!
+    @IBOutlet weak var lectureType: UILabel!
     
     @IBOutlet weak var teamView: UILabel!
     @IBOutlet weak var homeworkView: UILabel!
@@ -85,7 +86,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureView.layer.cornerRadius = 12.0
         super.viewDidLoad()
         evaluationBtn.tintColor = .darkGray
-        scrollView.isDirectionalLockEnabled = true
+//        scrollView.isDirectionalLockEnabled = true
         
         writeBtn.layer.cornerRadius = 10.0
         writeBtn.layer.borderColor = UIColor.white.cgColor
@@ -190,7 +191,10 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
         
     }
-
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func InfoWriteBtnClicked(_ sender: Any) {
         // 조건문 추가하여 어느
         if tableViewNumber == 0 || tableViewNumber == 100{
@@ -345,6 +349,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
         lectureLearningAvg.text = detailLectureArray[0].lectureLearningAvg
         lectureSatisAvg.text = detailLectureArray[0].lectureSatisfactionAvg
         majorType.text = detailLectureArray[0].majorType
+        lectureType.text = detailLectureArray[0].lectureType
         
         if detailLectureArray[0].lectureTeamAvg > 0.5 {
             teamView.text = "있음"

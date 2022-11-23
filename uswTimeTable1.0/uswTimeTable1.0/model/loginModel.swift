@@ -13,7 +13,7 @@ struct userModel{
     // 2. 형식에 알맞을 시 해당 str post -> token check 하여 로그인        
     
     func isValidId(id: String) -> Bool {
-            let IdRegEx = "[A-Za-z0-9]{5,13}"
+            let IdRegEx = "[a-z0-9]{5,13}"
             let IdTest = NSPredicate(format: "SELF MATCHES %@", IdRegEx)
             return IdTest.evaluate(with: id)
         } // 아이디 형식 검사

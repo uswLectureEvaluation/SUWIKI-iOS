@@ -70,17 +70,21 @@ class showTimeTable: UIViewController, ElliotableDelegate, ElliotableDataSource{
     }
     
     func checkUserData() {
-        firstSceneView.isHidden = true
-        timeTableView.isHidden = true
-        timetable.isHidden = true
+        firstSceneView.isHidden = false
+        timeTableCornerView.isHidden = false
+        timeTableView.isHidden = false
+        timetable.isHidden = false
         let userData = realm.objects(userDB.self).count
+        print("\(userData)test")
         if userData > 0 {
             firstSceneView.isHidden = true
             timeTableView.isHidden = false
+            timeTableCornerView.isHidden = false
             timetable.isHidden = false
         } else {
-            timeTableView.isHidden = true
             timetable.isHidden = true
+            timeTableView.isHidden = true
+            timeTableCornerView.isHidden = true
             firstSceneView.isHidden = false
         }
     }
