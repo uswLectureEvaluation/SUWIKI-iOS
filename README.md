@@ -1,4 +1,4 @@
-# SUWIKI
+# SUWIKI(2022.01 ~ )
 <br>
 
 ![image](https://user-images.githubusercontent.com/81678959/182590817-3ffdfe89-cafc-434b-821c-9241d486c322.png)
