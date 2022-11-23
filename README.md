@@ -15,6 +15,10 @@
 
 ## 📱서비스 화면 (일부)
 
+<details>
+<summary>살펴보기</summary>
+<div markdown="1">
+
 | **시간표** |||
 | :---: | :---: | :---: |
 | ![시간표](https://velog.velcdn.com/images/sozohoy/post/6ae52c9c-baf0-45ec-b555-e7c328625b47/image.png) | ![](https://velog.velcdn.com/images/sozohoy/post/b7f50284-825a-4be2-ac15-945d3c1b02d7/image.png) | ![](https://velog.velcdn.com/images/sozohoy/post/e0bd5c99-e318-4d3f-a13e-7ed2cf7a7788/image.png) |
@@ -34,11 +38,16 @@
 | **회원가입** |||
 | :---: | :---: | :---: |
 | ![회원가입](https://user-images.githubusercontent.com/49385546/203537563-f0d11807-74a2-44ef-becd-6ca0899ad5d3.png) | ![](https://user-images.githubusercontent.com/49385546/203537574-d8aec9c1-b6a5-41a1-8542-af8473f2acd7.png) | ![](https://user-images.githubusercontent.com/49385546/203537585-f138b2f7-faae-4982-a66a-c774c12ecf47.png) |
+ 
+<br> 
+</div>
+</details>
 
+## 📖 사용한 기술
 
-<br>
-
-## 📜 사용한 기술
+<details>
+<summary>살펴보기</summary>
+<div markdown="1">
 
 ### iOS
 
@@ -62,9 +71,14 @@
 - UITabBarController
 - NotificationCenter
 
-<br>
+</div>
+</details>
 
-## Problems  
+## 😭 Problems  
+
+<details>
+<summary>살펴보기</summary>
+<div markdown="1">
 
 ### 1. 종속성 관리
 
@@ -93,12 +107,12 @@ https://github.com/Usw-SUGO/iOS
 &nbsp;수위키는 자동로그인을 지원하고 있는데, 자동로그인을 위해서는 토큰을 인터셉트한 후 유효성 검사를 마친 뒤 <br>
 재발급을 해주어야 했다. 다양한 키워드들을 수집하고 적용하여 해결하게 되었다.
 <br>&nbsp;`Alamofire`에서 제공하는 `RequestIntercepter` 프로토콜을 이용, `adapt`, `retry` 메소드를 활용하여 인터셉터를 적용하였다.
-
+https://sozohoy.tistory.com/25
 <br>
 
  <img width="796" alt="스크린샷 2022-11-23 오후 10 21 46" src="https://user-images.githubusercontent.com/49385546/203557987-5107a17a-6b1e-4226-9357-5bc4184946a6.png">
-https://sozohoy.tistory.com/25
-
-<br>
-
-&nbsp;이 외에도 기술적인 문제들은 많지만, 나열하기엔 끝이 없을 것 같다.
+ 
+### 이외에도...
+&nbsp;기술적인 문제들은 많다. 엉망이고 효율적이지 않은 코드들을 리펙토링할 수 없는 지경이기에, 2023년 상반기에 시간표 부분을 전체적으로 재구현 할 예정이다.<br>(현 상황에선 리펙토링이 불가하다고 판단.) 마무리 되는대로 강의평가 부분도 리펙토링을 진행할 예정이다.
+</div>
+</details>
