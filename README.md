@@ -38,9 +38,17 @@
 
 <br>
 
-## 📜 기술 스택
+## 📜 사용한 기술
 
 ### iOS
+
+- Xcode
+- Swift
+- UIKit
+- Alamofire
+- Firebase
+- Realm
+- Keychain, UserDefaults
 
 
 <br>
