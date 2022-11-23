@@ -50,11 +50,21 @@
 - Realm
 - Keychain, UserDefaults
 
+### 기능 키워드
+
+- UITableView
+- UIScrollView
+- UICollectionView
+- Delegate
+- UITextView
+- UITextField
+- Network
+- UITabBarController
+- NotificationCenter
+
 <br>
 
-## Problems 
-
-## Problems 
+## Problems  
 
 ### 1. 종속성 관리
 
@@ -72,7 +82,8 @@ https://github.com/realm/realm-swift/issues/7643
 
 ### 2. 네트워크, API 주소 관리
 &nbsp;완성된 프로젝트 에서는 API 주소를 매번 컨트롤러 내부에서 선언하고 있다. 
-<br> &nbsp;새로 하게된 프로젝트(**https://github.com/Usw-SUGO/iOS**)에서는 API 주소를 관리하도록 `enum`을 사용했고, API URL을 따로 관리하게 되니 훨씬 편리하고 컨트롤러에서의 코드도 줄었다.
+<br> &nbsp;새로 하게된 프로젝트에서는 API 주소를 관리하도록 `enum`을 사용했고, API URL을 따로 관리하게 되니 훨씬 편리하고 컨트롤러에서의 코드도 줄었다.<br>
+https://github.com/Usw-SUGO/iOS
 
 ### 3. 아키텍쳐 패턴의 중요성
 &nbsp;첫 개발이었기에 아키텍쳐 패턴의 존재를 모르고 있었다. 최근에 시간표 부분에서의 버그가 존재하여 버그를 찾으려 해봤지만 수백 ~ 길면 수천줄의 코드가 지저분하게 나열된 덕분에 어느 부분에서의 문제인지 판단이 서지 않았다.
@@ -81,7 +92,13 @@ https://github.com/realm/realm-swift/issues/7643
 ### 4. 토큰 재발급
 &nbsp;수위키는 자동로그인을 지원하고 있는데, 자동로그인을 위해서는 토큰을 인터셉트한 후 유효성 검사를 마친 뒤 <br>
 재발급을 해주어야 했다. 다양한 키워드들을 수집하고 적용하여 해결하게 되었다.
-<br>&nbsp;`Alamofire`에서 제공하는 `RequestIntercepter` 프로토콜을 이용, `adapt`, `retry` 메소드를 활용하여 인터셉터를 적용하였다.<br>
-https://sozohoy.tistory.com/25
- <img width="796" alt="스크린샷 2022-11-23 오후 10 21 46" src="https://user-images.githubusercontent.com/49385546/203557987-5107a17a-6b1e-4226-9357-5bc4184946a6.png">
+<br>&nbsp;`Alamofire`에서 제공하는 `RequestIntercepter` 프로토콜을 이용, `adapt`, `retry` 메소드를 활용하여 인터셉터를 적용하였다.
 
+<br>
+
+ <img width="796" alt="스크린샷 2022-11-23 오후 10 21 46" src="https://user-images.githubusercontent.com/49385546/203557987-5107a17a-6b1e-4226-9357-5bc4184946a6.png">
+https://sozohoy.tistory.com/25
+
+<br>
+
+&nbsp;이 외에도 기술적인 문제들은 많지만, 나열하기엔 끝이 없을 것 같다.
