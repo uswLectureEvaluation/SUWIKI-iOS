@@ -15,6 +15,10 @@
 
 ## 📱서비스 화면 (일부)
 
+| **시간표** |||
+| :---: | :---: | :---: |
+| ![시간표](https://i.ibb.co/Jd1yLWs/1.png) | ![](https://i.ibb.co/Dgx4B9B/2.png) | ![](https://i.ibb.co/5LQ3VTD/3.png) |
+
 | **로그인** |||
 | :---: | :---: | :---: |
 | ![로그인](https://i.ibb.co/drqHwZ4/1.png) | ![](https://i.ibb.co/W3Lk4D6/2.png) | ![](https://i.ibb.co/W3Lk4D6/2.png) |
