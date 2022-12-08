@@ -224,6 +224,7 @@ class signUpPage: UIViewController {
     }
     
     @objc func idTextFieldChangeCheck(_ sender: UITextField){
+        
         if overLapCheck == true {
             overLapBtn.layer.borderColor = UIColor.white.cgColor
             overLapBtn.backgroundColor = colorLiteralBlue

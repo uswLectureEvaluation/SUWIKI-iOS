@@ -59,7 +59,6 @@ class BaseInterceptor: RequestInterceptor{
                 completion(.doNotRetryWithError(error))
             }
             
-            
         }
         }
     
