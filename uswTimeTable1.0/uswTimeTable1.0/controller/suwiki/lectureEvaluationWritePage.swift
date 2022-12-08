@@ -120,7 +120,9 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
             self.semesterTextField.font = UIFont(name: "Pretendard", size: 14)
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillAppear),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear), name: UIResponder.keyboardWillHideNotification, object: nil)
         // Do any additional setup after loading the view.
         
@@ -337,45 +339,36 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func honeyPointChanged(_ sender: UISlider) {
-        
-        let sliderPoint = String(format: "%.1f", round(sender.value * 100) / 100)
-        let roundIndex = sliderPoint.index(sliderPoint.startIndex, offsetBy: 2)
-        var point = Double(String(sliderPoint[sliderPoint.startIndex]))!
-        let roundPoint = Int(String(sliderPoint[roundIndex]))!
-        if roundPoint > 5{
-            point += 0.5
-        }
-
-        honeyPoint.text = String(point)
+  private func pointChanger(sender: UISlider) -> String {
     
+    let sliderPoint = String(format: "%.1f", round(sender.value * 10) / 10)
+    let decimalIndex = sliderPoint.index(sliderPoint.startIndex, offsetBy: 2)
+    guard var doublePoint = Double(String(sliderPoint[sliderPoint.startIndex])) else {
+      return "2.5"
     }
-    
-    @IBAction func learningPointChanged(_ sender: UISlider) {
-        
-        let sliderPoint = String(format: "%.1f", round(sender.value * 100) / 100)
-        let roundIndex = sliderPoint.index(sliderPoint.startIndex, offsetBy: 2)
-        var point = Double(String(sliderPoint[sliderPoint.startIndex]))!
-        let roundPoint = Int(String(sliderPoint[roundIndex]))!
-        if roundPoint > 5{
-            point += 0.5
-        }
-        
-        learningPoint.text = String(point)
+    guard let decimalPoint = Int(String(sliderPoint[decimalIndex])) else {
+      return "2.5"
     }
-    
-    @IBAction func satisfactionValueChanged(_ sender: UISlider) {
-        
-        let sliderPoint = String(format: "%.1f", round(sender.value * 100) / 100)
-        let roundIndex = sliderPoint.index(sliderPoint.startIndex, offsetBy: 2)
-        var point = Double(String(sliderPoint[sliderPoint.startIndex]))!
-        let roundPoint = Int(String(sliderPoint[roundIndex]))!
-        if roundPoint > 5{
-            point += 0.5
-        }
-        
-        satisfactionPoint.text = String(point)
+    if decimalPoint > 5 {
+      doublePoint += 0.5
     }
+    if doublePoint < 0.5 {
+      doublePoint = 0.5
+    }
+    return String(doublePoint)
+  }
+  
+  @IBAction func honeyPointChanged(_ sender: UISlider) {
+    honeyPoint.text = pointChanger(sender: sender)
+  }
+  
+  @IBAction func learningPointChanged(_ sender: UISlider) {
+    learningPoint.text = pointChanger(sender: sender)
+  }
+  
+  @IBAction func satisfactionValueChanged(_ sender: UISlider) {
+    satisfactionPoint.text = pointChanger(sender: sender)
+  }
      
     @IBAction func noTeamBtnClicked(_ sender: Any) {
         teamWorkTypeCheck(teamWork: "no")

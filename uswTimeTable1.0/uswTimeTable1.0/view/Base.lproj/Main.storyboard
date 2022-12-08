@@ -272,7 +272,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="list.dash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OqC-u0-cd0">
-                                        <rect key="frame" x="322" y="3.0000000000000018" width="30" height="29"/>
+                                        <rect key="frame" x="322" y="3" width="30" height="29"/>
                                         <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Mvs-tp-YSU"/>
@@ -6176,7 +6176,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OM6-cX-16i">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="930"/>
                                         <subviews>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dq3-HV-eLg">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.5" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Dq3-HV-eLg">
                                                 <rect key="frame" x="73" y="188" width="273" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="tc3-2A-HnN"/>
@@ -6188,7 +6188,7 @@
                                                     <action selector="learningPointChanged:" destination="fnZ-eA-fWl" eventType="valueChanged" id="wCI-R5-Uv1"/>
                                                 </connections>
                                             </slider>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="89l-bv-u1M">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.5" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="89l-bv-u1M">
                                                 <rect key="frame" x="74" y="225" width="272" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="CW5-Ha-TG7"/>
@@ -6491,7 +6491,7 @@
                                                     <constraint firstAttribute="height" constant="33" id="V7I-1E-emu"/>
                                                 </constraints>
                                             </view>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2.5" minValue="0.5" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="doz-1z-2TI">
                                                 <rect key="frame" x="73" y="151" width="273" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="N6u-zU-uZf"/>
