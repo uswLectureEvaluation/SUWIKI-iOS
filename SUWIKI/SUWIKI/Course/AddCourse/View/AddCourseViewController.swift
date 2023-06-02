@@ -11,15 +11,19 @@ import Combine
 import CombineCocoa
 import SnapKit
 import Then
-
-
+// 32
 class AddCourseViewController: UIViewController {
     
     var cancellable = Set<AnyCancellable>()
     var viewModel = DepartmentCategoryViewModel()
     
     private let categoryTableView = UITableView(frame: .zero, style: .insetGrouped).then {
-        $0.register(cellType: DepartmentCell.self)
+        $0.isScrollEnabled = false
+        $0.register(cellType: CategoryCell.self)
+    }
+    
+    private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
+        $0.register(cellType: CourseCell.self)
     }
 
     override func viewDidLoad() {
@@ -30,7 +34,7 @@ class AddCourseViewController: UIViewController {
     }
 
     func navigationSetUp() {
-        self.title = "Hi"
+        self.title = "시간표 추가"
         let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightButtonTapped))
         let leftButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftButtonTapped))
         self.navigationItem.rightBarButtonItem = rightButton
@@ -39,18 +43,28 @@ class AddCourseViewController: UIViewController {
 
     func addSubView() {
         self.view.addSubview(self.categoryTableView)
+        self.view.addSubview(self.courseTableView)
     }
 
     func setUpTableView() {
         self.categoryTableView.snp.makeConstraints {
+            $0.top.equalTo(additionalSafeAreaInsets.top)
+            $0.trailing.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.height.equalTo(225)
+        }
+        self.courseTableView.snp.makeConstraints {
+            $0.top.equalTo(categoryTableView.snp.bottom)
             $0.bottom.equalToSuperview()
-            $0.leading.equalTo(20)
-            $0.trailing.equalTo(-20)
-            $0.top.equalTo(10)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
         }
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
         categoryTableView.reloadData()
+        courseTableView.delegate = self
+        courseTableView.dataSource = self
+        courseTableView.reloadData()
     }
     
     @objc func rightButtonTapped() {
@@ -64,24 +78,48 @@ class AddCourseViewController: UIViewController {
 }
 
 extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return viewModel.department.section.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return viewModel.department.section[section]
-//    }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == categoryTableView {
+            return 44
+        }
+        return 90
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if tableView == categoryTableView {
+            return 2
+        }
+        return 50 // 시간표 갯수
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath) as DepartmentCell
-        cell.justLabel.text = "학과 - 어디학과"
-        return cell
+        if tableView == categoryTableView {
+            let cell = tableView.dequeueReusableCell(for: indexPath) as CategoryCell
+            switch indexPath {
+            case [0, 0]:
+                cell.categoryNameLabel.text = "학과"
+                cell.selectedLabel.text = "컴퓨터공학과"
+            case [0, 1]:
+                cell.categoryNameLabel.text = "학년"
+                cell.selectedLabel.text = "4학년"
+            default:
+                print("Hi")
+            }
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(for: indexPath) as CourseCell
+            cell.courseName.text = "데이터베이스설계및관리"
+            cell.classification.text = "전핵"
+            cell.major.text = "정보보호⎪"
+            cell.professor.text = "김명숙⎪"
+            cell.grade.text = "3학년"
+            cell.courseTime.text = "IT306(수6,7,8)"
+            return cell
+        }
     }
-    
+//
+
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let courseViewController = CourseViewController()
 //        self.navigationController?.pushViewController(courseViewController, animated: true)
