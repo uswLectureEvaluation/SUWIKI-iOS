@@ -12,8 +12,6 @@ import Reusable
 
 class DepartmentCell: UITableViewCell, Reusable {
     
-    static let reuseIdentifier: String = "DepartmentCell"
-    
     let justLabel = UILabel().then {
         $0.textColor = .black
     }

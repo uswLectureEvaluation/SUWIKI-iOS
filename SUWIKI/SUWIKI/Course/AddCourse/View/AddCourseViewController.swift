@@ -23,6 +23,7 @@ class AddCourseViewController: UIViewController {
     }
     
     private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
+        $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CourseCell.self)
     }
 
@@ -51,7 +52,7 @@ class AddCourseViewController: UIViewController {
             $0.top.equalTo(additionalSafeAreaInsets.top)
             $0.trailing.equalToSuperview()
             $0.leading.equalToSuperview()
-            $0.height.equalTo(225)
+            $0.height.equalTo(244)
         }
         self.courseTableView.snp.makeConstraints {
             $0.top.equalTo(categoryTableView.snp.bottom)
