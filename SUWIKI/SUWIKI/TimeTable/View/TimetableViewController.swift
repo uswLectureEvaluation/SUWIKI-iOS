@@ -29,20 +29,14 @@ class TimetableViewController: UIViewController {
     
     func navigationSetUp() {
         self.title = "시간표 추가시간표 추가시간표 추가시간표 추가"
-        let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightButtonTapped))
-        let leftButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftButtonTapped))
+        let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonTapped))
         self.navigationItem.rightBarButtonItem = rightButton
-        self.navigationItem.leftBarButtonItem = leftButton
     }
     
     @objc
-    func rightButtonTapped() {
-        
-    }
-    
-    @objc
-    func leftButtonTapped() {
-        
+    func addButtonTapped() {
+        let addCourseVC = UINavigationController(rootViewController: AddCourseViewController())
+        self.present(addCourseVC, animated: true)
     }
     
     func addSubView() {
