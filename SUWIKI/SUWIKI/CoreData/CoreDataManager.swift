@@ -39,8 +39,28 @@ final class CoreDataManager {
     }
     
     // MARK: - [Create] 코어데이터에 데이터 생성하기
-    func saveCourseData() {
-        
+    func saveCourseData(course: [FirebaseCourse]) {
+        if context != nil {
+            guard let entity = NSEntityDescription.entity(forEntityName: "Course", in: context!) else {
+                return
+            }
+            for i in 0..<course.count {
+                // 외부에서 객체를 초기화할 경우 동일한 객체를 가리키기 때문에 하나만 저장이 됨.
+                let courseEntity = NSManagedObject(entity: entity, insertInto: context)
+                courseEntity.setValue(course[i].classNum, forKey: "classNum")
+                courseEntity.setValue(course[i].classification, forKey: "classification")
+                courseEntity.setValue(course[i].courseDay, forKey: "courseDay")
+                courseEntity.setValue(course[i].courseName, forKey: "courseName")
+                courseEntity.setValue(course[i].credit, forKey: "credit")
+                courseEntity.setValue(course[i].startTime, forKey: "startTime")
+                courseEntity.setValue(course[i].endTime, forKey: "endTime")
+                courseEntity.setValue(course[i].major, forKey: "major")
+                courseEntity.setValue(course[i].num, forKey: "num")
+                courseEntity.setValue(course[i].professor, forKey: "professor")
+                courseEntity.setValue(course[i].roomName, forKey: "roomName")
+                try? context?.save()
+            }
+        }
     }
 //    func saveToDoData(toDoText: String?, colorInt: Int64, completion: @escaping () -> Void) {
 //        // 임시저장소 있는지 확인
