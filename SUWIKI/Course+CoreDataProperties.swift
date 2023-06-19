@@ -2,7 +2,7 @@
 //  Course+CoreDataProperties.swift
 //  
 //
-//  Created by 한지석 on 2023/06/10.
+//  Created by 한지석 on 2023/06/19.
 //
 //
 
@@ -16,14 +16,16 @@ extension Course {
         return NSFetchRequest<Course>(entityName: "Course")
     }
 
-    @NSManaged public var courseName: String?
-    @NSManaged public var courseId: String?
-    @NSManaged public var startTime: String?
-    @NSManaged public var endTime: String?
-    @NSManaged public var roomName: String?
-    @NSManaged public var professor: String?
+    @NSManaged public var classification: String?
+    @NSManaged public var classNum: Int16
     @NSManaged public var courseDay: String?
-    @NSManaged public var textColor: String?
-    @NSManaged public var backgroundColor: String?
+    @NSManaged public var courseName: String?
+    @NSManaged public var credit: Int16
+    @NSManaged public var endTime: String?
+    @NSManaged public var major: String?
+    @NSManaged public var num: Int16
+    @NSManaged public var professor: String?
+    @NSManaged public var roomName: String?
+    @NSManaged public var startTime: String?
 
 }
