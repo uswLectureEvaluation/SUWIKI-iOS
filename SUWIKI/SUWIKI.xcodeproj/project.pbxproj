@@ -8,20 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		A611AD5EF9CE19A401B24552 /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7E63F687FFE57937A7F6FC /* Pods_SUWIKI.framework */; };
+		AF3C07482A349A3A00806AEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */; };
+		AF3C074B2A349A9700806AEE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF3C074A2A349A9700806AEE /* FirebaseAnalytics */; };
+		AF3C074E2A34BAE000806AEE /* Course.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF3C074C2A34BAE000806AEE /* Course.xcdatamodeld */; };
+		AF3C07502A34BF7400806AEE /* TempViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C074F2A34BF7400806AEE /* TempViewModel.swift */; };
+		AF3C07522A34C18D00806AEE /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AF3C07512A34C18D00806AEE /* FirebaseDatabase */; };
 		AF60C2782A29BF5B00AE0126 /* DepartmentCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* DepartmentCategoryViewController.swift */; };
 		AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */; };
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
 		AFA499E12A2798600047A4B4 /* DepartmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA499E02A2798600047A4B4 /* DepartmentCell.swift */; };
 		AFA499E72A2881BF0047A4B4 /* DepartmentCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA499E62A2881BF0047A4B4 /* DepartmentCategoryViewModel.swift */; };
+		AFD5CC0C2A39923B008F95B7 /* InitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */; };
+		AFD5CC102A3993A2008F95B7 /* FirebaseCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0F2A3993A2008F95B7 /* FirebaseCourse.swift */; };
+		AFD5CC122A404338008F95B7 /* AddCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC112A404338008F95B7 /* AddCourseViewModel.swift */; };
 		AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */; };
 		AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */; };
 		AFE18EF92A1C8ABF009D4D58 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF82A1C8ABF009D4D58 /* AddCourseViewController.swift */; };
-		AFE18EFF2A1C8ABF009D4D58 /* SUWIKI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EFD2A1C8ABF009D4D58 /* SUWIKI.xcdatamodeld */; };
 		AFE18F012A1C8AC1009D4D58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */; };
 		AFE18F042A1C8AC1009D4D58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F022A1C8AC1009D4D58 /* LaunchScreen.storyboard */; };
 		AFE18F1A2A271755009D4D58 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18F192A271755009D4D58 /* Department.swift */; };
+		AFEC86962A37712A008C5781 /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86952A37712A008C5781 /* TimeTableViewModel.swift */; };
+		AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86982A3771C6008C5781 /* CoreDataManager.swift */; };
 		AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */; };
-		AFF9DE902A34821800CCB1D2 /* CourseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* CourseList.swift */; };
+		AFF9DE902A34821800CCB1D2 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* Course.swift */; };
 		AFF9DE922A34841D00CCB1D2 /* TimetableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -41,22 +50,29 @@
 /* Begin PBXFileReference section */
 		0BB131572D389638FAF026DB /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
 		AF134A9FE8BDA7A46433D3B7 /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
+		AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AF3C074D2A34BAE000806AEE /* Course.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Course.xcdatamodel; sourceTree = "<group>"; };
+		AF3C074F2A34BF7400806AEE /* TempViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewModel.swift; sourceTree = "<group>"; };
 		AF60C2772A29BF5B00AE0126 /* DepartmentCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentCategoryViewController.swift; sourceTree = "<group>"; };
 		AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		AFA499E02A2798600047A4B4 /* DepartmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentCell.swift; sourceTree = "<group>"; };
 		AFA499E62A2881BF0047A4B4 /* DepartmentCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentCategoryViewModel.swift; sourceTree = "<group>"; };
+		AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAppViewModel.swift; sourceTree = "<group>"; };
+		AFD5CC0F2A3993A2008F95B7 /* FirebaseCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCourse.swift; sourceTree = "<group>"; };
+		AFD5CC112A404338008F95B7 /* AddCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewModel.swift; sourceTree = "<group>"; };
 		AFE18EF12A1C8ABF009D4D58 /* SUWIKI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUWIKI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AFE18EF82A1C8ABF009D4D58 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
-		AFE18EFE2A1C8ABF009D4D58 /* SUWIKI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SUWIKI.xcdatamodel; sourceTree = "<group>"; };
 		AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFE18F032A1C8AC1009D4D58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFE18F052A1C8AC1009D4D58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFE18F192A271755009D4D58 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		AFEC86952A37712A008C5781 /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
+		AFEC86982A3771C6008C5781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
-		AFF9DE8F2A34821800CCB1D2 /* CourseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseList.swift; sourceTree = "<group>"; };
+		AFF9DE8F2A34821800CCB1D2 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
 		BE7E63F687FFE57937A7F6FC /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -66,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF3C07522A34C18D00806AEE /* FirebaseDatabase in Frameworks */,
+				AF3C074B2A349A9700806AEE /* FirebaseAnalytics in Frameworks */,
 				A611AD5EF9CE19A401B24552 /* Pods_SUWIKI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				AFE18EF82A1C8ABF009D4D58 /* AddCourseViewController.swift */,
+				AFD5CC112A404338008F95B7 /* AddCourseViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +168,40 @@
 			path = AddCourse;
 			sourceTree = "<group>";
 		};
+		AFD5CC082A3991E4008F95B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF3C074F2A34BF7400806AEE /* TempViewModel.swift */,
+				AFEC86952A37712A008C5781 /* TimeTableViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AFD5CC0A2A39920C008F95B7 /* InitApp */ = {
+			isa = PBXGroup;
+			children = (
+				AFD5CC0E2A399395008F95B7 /* Model */,
+				AFD5CC0D2A39923E008F95B7 /* ViewModel */,
+			);
+			path = InitApp;
+			sourceTree = "<group>";
+		};
+		AFD5CC0D2A39923E008F95B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AFD5CC0E2A399395008F95B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AFD5CC0F2A3993A2008F95B7 /* FirebaseCourse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AFE18EE82A1C8ABF009D4D58 = {
 			isa = PBXGroup;
 			children = (
@@ -170,14 +223,15 @@
 		AFE18EF32A1C8ABF009D4D58 /* SUWIKI */ = {
 			isa = PBXGroup;
 			children = (
+				AFD5CC0A2A39920C008F95B7 /* InitApp */,
+				AFEC86972A3771B4008C5781 /* CoreData */,
 				AFF9DE892A34817F00CCB1D2 /* TimeTable */,
 				AFE18F152A270F69009D4D58 /* Course */,
-				AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */,
+				AFEC86942A377067008C5781 /* Resources */,
 				AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */,
-				AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */,
-				AFE18F022A1C8AC1009D4D58 /* LaunchScreen.storyboard */,
 				AFE18F052A1C8AC1009D4D58 /* Info.plist */,
-				AFE18EFD2A1C8ABF009D4D58 /* SUWIKI.xcdatamodeld */,
+				AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */,
+				AF3C074C2A34BAE000806AEE /* Course.xcdatamodeld */,
 			);
 			path = SUWIKI;
 			sourceTree = "<group>";
@@ -201,9 +255,28 @@
 			path = DepartmentCategory;
 			sourceTree = "<group>";
 		};
+		AFEC86942A377067008C5781 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */,
+				AFE18F022A1C8AC1009D4D58 /* LaunchScreen.storyboard */,
+				AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AFEC86972A3771B4008C5781 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AFEC86982A3771C6008C5781 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		AFF9DE892A34817F00CCB1D2 /* TimeTable */ = {
 			isa = PBXGroup;
 			children = (
+				AFD5CC082A3991E4008F95B7 /* ViewModel */,
 				AFF9DE8B2A3481BB00CCB1D2 /* Model */,
 				AFF9DE8A2A3481A800CCB1D2 /* View */,
 			);
@@ -222,7 +295,7 @@
 		AFF9DE8B2A3481BB00CCB1D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AFF9DE8F2A34821800CCB1D2 /* CourseList.swift */,
+				AFF9DE8F2A34821800CCB1D2 /* Course.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +319,10 @@
 			dependencies = (
 			);
 			name = SUWIKI;
+			packageProductDependencies = (
+				AF3C074A2A349A9700806AEE /* FirebaseAnalytics */,
+				AF3C07512A34C18D00806AEE /* FirebaseDatabase */,
+			);
 			productName = SUWIKI;
 			productReference = AFE18EF12A1C8ABF009D4D58 /* SUWIKI.app */;
 			productType = "com.apple.product-type.application";
@@ -274,6 +351,9 @@
 				Base,
 			);
 			mainGroup = AFE18EE82A1C8ABF009D4D58;
+			packageReferences = (
+				AF3C07492A349A9600806AEE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = AFE18EF22A1C8ABF009D4D58 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -289,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFE18F042A1C8AC1009D4D58 /* LaunchScreen.storyboard in Resources */,
+				AF3C07482A349A3A00806AEE /* GoogleService-Info.plist in Resources */,
 				AFE18F012A1C8AC1009D4D58 /* Assets.xcassets in Resources */,
 				AFF9DE922A34841D00CCB1D2 /* TimetableView.storyboard in Resources */,
 			);
@@ -344,17 +425,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFE18EF92A1C8ABF009D4D58 /* AddCourseViewController.swift in Sources */,
+				AF3C074E2A34BAE000806AEE /* Course.xcdatamodeld in Sources */,
+				AFD5CC102A3993A2008F95B7 /* FirebaseCourse.swift in Sources */,
+				AFD5CC0C2A39923B008F95B7 /* InitAppViewModel.swift in Sources */,
 				AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */,
+				AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */,
 				AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */,
 				AFE18F1A2A271755009D4D58 /* Department.swift in Sources */,
-				AFF9DE902A34821800CCB1D2 /* CourseList.swift in Sources */,
+				AFF9DE902A34821800CCB1D2 /* Course.swift in Sources */,
 				AFA499E12A2798600047A4B4 /* DepartmentCell.swift in Sources */,
 				AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */,
+				AFEC86962A37712A008C5781 /* TimeTableViewModel.swift in Sources */,
+				AF3C07502A34BF7400806AEE /* TempViewModel.swift in Sources */,
 				AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */,
 				AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */,
 				AF60C2782A29BF5B00AE0126 /* DepartmentCategoryViewController.swift in Sources */,
 				AFA499E72A2881BF0047A4B4 /* DepartmentCategoryViewModel.swift in Sources */,
-				AFE18EFF2A1C8ABF009D4D58 /* SUWIKI.xcdatamodeld in Sources */,
+				AFD5CC122A404338008F95B7 /* AddCourseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +596,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.SUWIKI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -540,7 +627,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.SUWIKI;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -571,14 +658,38 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		AF3C07492A349A9600806AEE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF3C074A2A349A9700806AEE /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF3C07492A349A9600806AEE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		AF3C07512A34C18D00806AEE /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF3C07492A349A9600806AEE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
+
 /* Begin XCVersionGroup section */
-		AFE18EFD2A1C8ABF009D4D58 /* SUWIKI.xcdatamodeld */ = {
+		AF3C074C2A34BAE000806AEE /* Course.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				AFE18EFE2A1C8ABF009D4D58 /* SUWIKI.xcdatamodel */,
+				AF3C074D2A34BAE000806AEE /* Course.xcdatamodel */,
 			);
-			currentVersion = AFE18EFE2A1C8ABF009D4D58 /* SUWIKI.xcdatamodel */;
-			path = SUWIKI.xcdatamodeld;
+			currentVersion = AF3C074D2A34BAE000806AEE /* Course.xcdatamodel */;
+			path = Course.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
