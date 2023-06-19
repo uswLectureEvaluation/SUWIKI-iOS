@@ -15,7 +15,7 @@ import Then
 class AddCourseViewController: UIViewController {
     
     var cancellable = Set<AnyCancellable>()
-    var viewModel = DepartmentCategoryViewModel()
+    var viewModel = AddCourseViewModel()
     
     private let categoryTableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.isScrollEnabled = false
@@ -23,6 +23,7 @@ class AddCourseViewController: UIViewController {
     }
     
     private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
+        $0.backgroundColor = .blue
         $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CourseCell.self)
     }
@@ -32,6 +33,7 @@ class AddCourseViewController: UIViewController {
         navigationSetUp()
         addSubView()
         setUpTableView()
+        viewModel.getCourse()
     }
 
     func navigationSetUp() {
@@ -52,7 +54,7 @@ class AddCourseViewController: UIViewController {
             $0.top.equalTo(additionalSafeAreaInsets.top)
             $0.trailing.equalToSuperview()
             $0.leading.equalToSuperview()
-            $0.height.equalTo(244)
+            $0.height.equalTo(200)
         }
         self.courseTableView.snp.makeConstraints {
             $0.top.equalTo(categoryTableView.snp.bottom)
@@ -73,7 +75,7 @@ class AddCourseViewController: UIViewController {
     }
     
     @objc func leftButtonTapped() {
-        print("Left")
+        self.dismiss(animated: true)
     }
 
 }
@@ -91,7 +93,11 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == categoryTableView {
             return 2
         }
-        return 50 // 시간표 갯수
+        return 100 // 시간표 갯수
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,21 +116,36 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath) as CourseCell
-            cell.courseName.text = "데이터베이스설계및관리"
-            cell.classification.text = "전핵"
-            cell.major.text = "정보보호⎪"
-            cell.professor.text = "김명숙⎪"
-            cell.grade.text = "3학년"
-            cell.courseTime.text = "IT306(수6,7,8)"
+            cell.courseName.text = viewModel.course[indexPath.row].courseName
+            cell.classification.text = viewModel.course[indexPath.row].classification
+            cell.major.text = "\(String(describing: viewModel.course[indexPath.row].major!))⎪"
+            cell.professor.text = "\(String(describing: viewModel.course[indexPath.row].professor!))⎪"
+            cell.grade.text = "\(viewModel.course[indexPath.row].credit)학점"
+            cell.courseTime.text = viewModel.course[indexPath.row].roomName
             return cell
         }
     }
-//
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if tableView == courseTableView {
+            return .delete
+        }
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView == courseTableView {
+            if editingStyle == .delete {
+                print("@Log delete")
+            }
+        }
+   }
 
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let courseViewController = CourseViewController()
 //        self.navigationController?.pushViewController(courseViewController, animated: true)
 //    }
+        
 }
 
 
