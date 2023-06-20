@@ -26,11 +26,23 @@ final class CoreDataManager {
     let modelName: String = "Course"
     
     // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
-    func getCourseFromCoreData() -> [Course] {
-        var course: [Course] = []
+    func getFirebaseCourseFromCoreData() -> [FirebaseCourseData] {
+        var course: [FirebaseCourseData] = []
         if let context = context {
             do {
-                course = try context.fetch(Course.fetchRequest())
+                course = try context.fetch(FirebaseCourseData.fetchRequest())
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return course
+    }
+    
+    func getTimetableCourseFromCoreData() -> [TimetableCourseData] {
+        var course: [TimetableCourseData] = []
+        if let context = context {
+            do {
+                course = try context.fetch(TimetableCourseData.fetchRequest())
             } catch {
                 print(error.localizedDescription)
             }
@@ -39,9 +51,9 @@ final class CoreDataManager {
     }
     
     // MARK: - [Create] 코어데이터에 데이터 생성하기
-    func saveCourseData(course: [FirebaseCourse]) {
+    func saveFirebaseCourse(course: [FirebaseCourse]) {
         if context != nil {
-            guard let entity = NSEntityDescription.entity(forEntityName: "Course", in: context!) else {
+            guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourseData", in: context!) else {
                 return
             }
             for i in 0..<course.count {
@@ -62,6 +74,25 @@ final class CoreDataManager {
             }
         }
     }
+    
+    func saveTimetableCourse(course: TimetableCourse) {
+        if context != nil {
+            guard let entity = NSEntityDescription.entity(forEntityName: "TimetableCourseData", in: context!) else {
+                return
+            }
+            let courseEntity = NSManagedObject(entity: entity, insertInto: context)
+            courseEntity.setValue(course.courseId, forKey: "courseId")
+            courseEntity.setValue(course.courseName, forKey: "courseName")
+            courseEntity.setValue(course.roomName, forKey: "roomName")
+            courseEntity.setValue(course.professor, forKey: "professor")
+            courseEntity.setValue(course.courseDay, forKey: "courseDay")
+            courseEntity.setValue(course.startTime, forKey: "startTime")
+            courseEntity.setValue(course.endTime, forKey: "endTime")
+            try? context?.save()
+        }
+    }
+    
+//    func save
 //    func saveToDoData(toDoText: String?, colorInt: Int64, completion: @escaping () -> Void) {
 //        // 임시저장소 있는지 확인
 //        if let context = context {
@@ -178,5 +209,6 @@ final class CoreDataManager {
 //            }
 //        }
 //    }
+
 }
 
