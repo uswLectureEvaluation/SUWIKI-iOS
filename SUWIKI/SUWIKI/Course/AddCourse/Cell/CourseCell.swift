@@ -12,6 +12,12 @@ import SnapKit
 import Then
 
 class CourseCell: UITableViewCell, Reusable {
+    
+    var viewModel: AddCourseViewModel! {
+        didSet {
+            configureUI()
+        }
+    }
 
     //MARK: UI
     
@@ -39,12 +45,12 @@ class CourseCell: UITableViewCell, Reusable {
         $0.font = UIFont.systemFont(ofSize: 14)
     }
     
-    let courseTime = UILabel().then {
+    let roomName = UILabel().then {
         $0.textColor = .gray
         $0.font = UIFont.systemFont(ofSize: 14)
     }
     
-    let grade = UILabel().then {
+    let credit = UILabel().then {
         $0.textColor = .gray
         $0.font = UIFont.systemFont(ofSize: 14)
     }
@@ -73,8 +79,8 @@ class CourseCell: UITableViewCell, Reusable {
         contentView.addSubview(classification)
         contentView.addSubview(major)
         contentView.addSubview(professor)
-        contentView.addSubview(courseTime)
-        contentView.addSubview(grade)
+        contentView.addSubview(roomName)
+        contentView.addSubview(credit)
     }
     
     func setUpLabels() {
@@ -96,15 +102,23 @@ class CourseCell: UITableViewCell, Reusable {
             $0.leading.equalTo(major.snp.trailing)
             $0.top.equalTo(courseName.snp.bottom).offset(5)
         }
-        grade.snp.makeConstraints {
+        credit.snp.makeConstraints {
             $0.leading.equalTo(professor.snp.trailing)
             $0.top.equalTo(courseName.snp.bottom).offset(5)
         }
-        courseTime.snp.makeConstraints {
+        roomName.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(15)
             $0.top.equalTo(major.snp.bottom).offset(5)
         }
-        
+    }
+    
+    func configureUI() {
+        self.classification.text = viewModel.classification
+        self.courseName.text = viewModel.courseName
+        self.credit.text = viewModel.credit
+        self.major.text = viewModel.major
+        self.professor.text = viewModel.professor
+        self.roomName.text = viewModel.roomName
     }
 
 }
