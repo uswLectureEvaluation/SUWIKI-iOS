@@ -1,8 +1,8 @@
 //
-//  Course+CoreDataProperties.swift
+//  FirebaseCourseData+CoreDataProperties.swift
 //  
 //
-//  Created by 한지석 on 2023/06/19.
+//  Created by 한지석 on 2023/06/20.
 //
 //
 
@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 
-extension Course {
+extension FirebaseCourseData {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Course> {
-        return NSFetchRequest<Course>(entityName: "Course")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<FirebaseCourseData> {
+        return NSFetchRequest<FirebaseCourseData>(entityName: "FirebaseCourseData")
     }
 
     @NSManaged public var classification: String?
