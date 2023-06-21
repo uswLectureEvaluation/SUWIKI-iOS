@@ -2,10 +2,16 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Course+CoreDataClass.swift">
+      location = "group:TimetableCourseData+CoreDataClass.swift">
    </FileRef>
    <FileRef
-      location = "group:Course+CoreDataProperties.swift">
+      location = "group:TimetableCourseData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
+      location = "group:FirebaseCourseData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:FirebaseCourseData+CoreDataProperties.swift">
    </FileRef>
    <FileRef
       location = "group:SUWIKI.xcodeproj">
