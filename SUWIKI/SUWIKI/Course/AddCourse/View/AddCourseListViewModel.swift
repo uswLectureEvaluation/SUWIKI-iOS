@@ -68,14 +68,30 @@ class AddCourseListViewModel: ObservableObject {
     /// 2. endTime
     /// - 11:30 ~ 13:20 사이에 존재한다면 중복
     ///
-    func isCourseDuplicated(course: FirebaseCourseData) {
+    func isCourseDuplicated(existingCourse: FirebaseCourseData, newCourse: FirebaseCourseData) {
+        /// 데이터베이스에 저장된 시작 / 종료시간을 Int형으로 변환하여 중복확인을 위한 변수.
+        /// - startTime,endTimeStr = "9:30" -> startTime, endTime = 930
+        let existingCourseStartTimeStr = existingCourse.startTime?.filter { $0 != ":" }
+        let existingCourseEndTimeStr = existingCourse.endTime?.filter { $0 != ":" }
+        let newCourseStartTimeStr = newCourse.startTime?.filter { $0 != ":" }
+        let newCourseEndTimeStr = newCourse.endTime?.filter { $0 != ":" }
+        guard let existingCourseStartTime = Int(existingCourseStartTimeStr ?? "100"),
+              let existingCourseEndTime = Int(existingCourseEndTimeStr ?? "100"),
+              let newCourseStartTime = Int(newCourseStartTimeStr ?? "100"),
+              let newCourseEndTime = Int(newCourseEndTimeStr ?? "100")
+        else { return }
         
+        isTimeDuplicated(existingTime: existingCourseStartTime, newTime: newCourseStartTime)
+        isTimeDuplicated(existingTime: existingCourseEndTime, newTime: newCourseEndTime)
+    }
+    
+    func isTimeDuplicated(existingTime: Int, newTime: Int) -> Bool {
+        return true
     }
     
     func tempStringToDate() {
         let timetableCourseData = coreDataManager.getTimetableCourseFromCoreData()
-        /// 데이터베이스에 저장된 시작 / 종료시간을 Int형으로 변환하여 중복확인을 위한 변수.
-        /// - courseDataStartTime,EndTime = "9:30" -> startTime, endTime = 930
+        
         let courseDataStartTime = timetableCourseData[0].startTime?.filter { $0 != ":" }
         let courseDataEndTime = timetableCourseData[0].endTime?.filter { $0 != ":" }
         guard let startTime = Int(courseDataStartTime ?? "100") else { return }
@@ -92,7 +108,6 @@ class AddCourseListViewModel: ObservableObject {
             print(temp[i].courseName)
             print("startTime - \(temp[i].startTime)")
             print("endTime - \(temp[i].endTime)")
-            
         }
     }
     
