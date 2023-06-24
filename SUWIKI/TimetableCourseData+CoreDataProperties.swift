@@ -16,7 +16,7 @@ extension TimetableCourseData {
         return NSFetchRequest<TimetableCourseData>(entityName: "TimetableCourseData")
     }
 
-    @NSManaged public var courseId: Int64
+    @NSManaged public var courseId: String?
     @NSManaged public var courseName: String?
     @NSManaged public var roomName: String?
     @NSManaged public var professor: String?
