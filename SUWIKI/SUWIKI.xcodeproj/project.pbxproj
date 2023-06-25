@@ -28,10 +28,10 @@
 		AFE18F012A1C8AC1009D4D58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */; };
 		AFE18F042A1C8AC1009D4D58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F022A1C8AC1009D4D58 /* LaunchScreen.storyboard */; };
 		AFE18F1A2A271755009D4D58 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18F192A271755009D4D58 /* Department.swift */; };
-		AFEC86962A37712A008C5781 /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86952A37712A008C5781 /* TimeTableViewModel.swift */; };
+		AFEC86962A37712A008C5781 /* TimetableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86952A37712A008C5781 /* TimetableViewModel.swift */; };
 		AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86982A3771C6008C5781 /* CoreDataManager.swift */; };
 		AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */; };
-		AFF9DE902A34821800CCB1D2 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* Course.swift */; };
+		AFF9DE902A34821800CCB1D2 /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */; };
 		AFF9DE922A34841D00CCB1D2 /* TimetableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +62,7 @@
 		AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAppViewModel.swift; sourceTree = "<group>"; };
 		AFD5CC0F2A3993A2008F95B7 /* FirebaseCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCourse.swift; sourceTree = "<group>"; };
 		AFD5CC112A404338008F95B7 /* AddCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewModel.swift; sourceTree = "<group>"; };
-		AFD5CC132A405BFE008F95B7 /* AddCourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseListViewModel.swift; sourceTree = "<group>"; };
+		AFD5CC132A405BFE008F95B7 /* AddCourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseListViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		AFE18EF12A1C8ABF009D4D58 /* SUWIKI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUWIKI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,10 +71,10 @@
 		AFE18F032A1C8AC1009D4D58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFE18F052A1C8AC1009D4D58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFE18F192A271755009D4D58 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
-		AFEC86952A37712A008C5781 /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
+		AFEC86952A37712A008C5781 /* TimetableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewModel.swift; sourceTree = "<group>"; };
 		AFEC86982A3771C6008C5781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
-		AFF9DE8F2A34821800CCB1D2 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCourse.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
 		BE7E63F687FFE57937A7F6FC /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -175,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				AF3C074F2A34BF7400806AEE /* TempViewModel.swift */,
-				AFEC86952A37712A008C5781 /* TimeTableViewModel.swift */,
+				AFEC86952A37712A008C5781 /* TimetableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 		AFF9DE8B2A3481BB00CCB1D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AFF9DE8F2A34821800CCB1D2 /* Course.swift */,
+				AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,10 +436,10 @@
 				AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */,
 				AFE18F1A2A271755009D4D58 /* Department.swift in Sources */,
 				AFD5CC142A405BFE008F95B7 /* AddCourseListViewModel.swift in Sources */,
-				AFF9DE902A34821800CCB1D2 /* Course.swift in Sources */,
+				AFF9DE902A34821800CCB1D2 /* TimetableCourse.swift in Sources */,
 				AFA499E12A2798600047A4B4 /* DepartmentCell.swift in Sources */,
 				AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */,
-				AFEC86962A37712A008C5781 /* TimeTableViewModel.swift in Sources */,
+				AFEC86962A37712A008C5781 /* TimetableViewModel.swift in Sources */,
 				AF3C07502A34BF7400806AEE /* TempViewModel.swift in Sources */,
 				AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */,
 				AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */,
