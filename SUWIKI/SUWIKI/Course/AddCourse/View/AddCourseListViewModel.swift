@@ -40,6 +40,8 @@ class AddCourseListViewModel: ObservableObject {
     
     func saveCourse() {
         // 이 이전에 시간표를 검증하는 로직이 필요함.
+        //       coreDataManager.saveTimetableCourse(course: course)
+        var isDuplicated = false
         guard let courseName = courseList[selectedIndex].courseName,
            let roomName = courseList[selectedIndex].roomName,
            let professor = courseList[selectedIndex].professor,
@@ -53,7 +55,20 @@ class AddCourseListViewModel: ObservableObject {
                                      courseDay: 1,
                                      startTime: startTime,
                                      endTime: endTime)
-       coreDataManager.saveTimetableCourse(course: course)
+        let timetableCourse = coreDataManager.getTimetableCourseFromCoreData()
+        for i in 0..<timetableCourse.count {
+            if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: course) {
+                isDuplicated = true
+                break
+            }
+        }
+        
+        if isDuplicated {
+            print("시간표가 중복되었습니다.")
+        } else {
+            print("시간표를 저장합니다.")
+        }
+        
     }
     
     func getTimetableCourse() {
@@ -68,24 +83,37 @@ class AddCourseListViewModel: ObservableObject {
     /// 2. endTime
     /// - 11:30 ~ 13:20 사이에 존재한다면 중복
     ///
-    func isCourseDuplicated(existingCourse: FirebaseCourseData, newCourse: FirebaseCourseData) {
+    /// true : 중복 / false : 노중복
+    func isCourseDuplicated(existingCourse: TimetableCourseData, newCourse: TimetableCourse) -> Bool{
         /// 데이터베이스에 저장된 시작 / 종료시간을 Int형으로 변환하여 중복확인을 위한 변수.
         /// - startTime,endTimeStr = "9:30" -> startTime, endTime = 930
         let existingCourseStartTimeStr = existingCourse.startTime?.filter { $0 != ":" }
         let existingCourseEndTimeStr = existingCourse.endTime?.filter { $0 != ":" }
-        let newCourseStartTimeStr = newCourse.startTime?.filter { $0 != ":" }
-        let newCourseEndTimeStr = newCourse.endTime?.filter { $0 != ":" }
+        let newCourseStartTimeStr = newCourse.startTime.filter { $0 != ":" }
+        let newCourseEndTimeStr = newCourse.endTime.filter { $0 != ":" }
         guard let existingCourseStartTime = Int(existingCourseStartTimeStr ?? "100"),
               let existingCourseEndTime = Int(existingCourseEndTimeStr ?? "100"),
-              let newCourseStartTime = Int(newCourseStartTimeStr ?? "100"),
-              let newCourseEndTime = Int(newCourseEndTimeStr ?? "100")
-        else { return }
-        
-        isTimeDuplicated(existingTime: existingCourseStartTime, newTime: newCourseStartTime)
-        isTimeDuplicated(existingTime: existingCourseEndTime, newTime: newCourseEndTime)
+              let newCourseStartTime = Int(newCourseStartTimeStr),
+              let newCourseEndTime = Int(newCourseEndTimeStr)
+        else { return true }
+        return isTimeDuplicated(existingStart: existingCourseStartTime,
+                                existingEnd: existingCourseEndTime,
+                                newStart: newCourseStartTime,
+                                newEnd: newCourseEndTime)
     }
     
-    func isTimeDuplicated(existingTime: Int, newTime: Int) -> Bool {
+    func isTimeDuplicated(existingStart: Int, existingEnd: Int, newStart: Int, newEnd: Int) -> Bool {
+        print("time - \(existingStart) - \(existingEnd), \(newStart) - \(newEnd)")
+//        if existingStart < newEnd {||
+//            (existingStart == newStart && existingEnd == newEnd) ||
+//            existingEnd > newStart ||
+//            (existingStart >= newStart && existingEnd <= newEnd) ||
+//            (existingStart <= newStart && existingEnd >= newEnd) {
+//            return false
+//        }
+        if existingStart > newEnd || existingEnd < newStart {
+            return false
+        }
         return true
     }
     
