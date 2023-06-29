@@ -42,6 +42,7 @@ class AddCourseListViewModel: ObservableObject {
     /// 1. 이러닝인가 ?
     ///  No
     /// 2. 미래521(수 3,4)인가(a) 미래521(화 3,4 화 5,6)의 형태(b)인가?
+    /// A와 B의 메소드를 분리해야 할듯
     /// a1. coredata에 저장된 같은 courseDay의 시간들과 겹치는가?
     /// a2. 겹치면 alert, 겹치지 않으면 시간표 추가 및 dismiss
     /// b1. 문자열 쪼개기
@@ -50,35 +51,39 @@ class AddCourseListViewModel: ObservableObject {
     func saveCourse() {
         // 이 이전에 시간표를 검증하는 로직이 필요함.
         //       coreDataManager.saveTimetableCourse(course: course)
-//        var isDuplicated = false
+        var isDuplicated = false
         guard let courseName = courseList[selectedIndex].courseName,
            let roomName = courseList[selectedIndex].roomName,
            let professor = courseList[selectedIndex].professor,
            let startTime = courseList[selectedIndex].startTime,
            let endTime = courseList[selectedIndex].endTime
         else { return }
-        let course = TimetableCourse(courseId: UUID().uuidString,
+        let course = TimetableCourse(courseId: UUID().uuidString, // 케이스 1의 시간표 일 경우
                                      courseName: courseName,
                                      roomName: roomName,
                                      professor: professor,
                                      courseDay: 1,
                                      startTime: startTime,
                                      endTime: endTime)
-        differentPlace(course: course)
         
-//        let timetableCourse = coreDataManager.getTimetableCourseFromCoreData()
-//        for i in 0..<timetableCourse.count {
-//            if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: course) {
-//                isDuplicated = true
-//                break
-//            }
-//        }
-//
-//        if isDuplicated {
-//            print("시간표가 중복되었습니다.")
-//        } else {
-//            print("시간표를 저장합니다.")
-//        }
+        let differentCourse = differentPlace(course: course) // 케이스 2의 시간표 일 경우
+
+        let timetableCourse = coreDataManager.getTimetableCourseFromCoreData() // courseDay가 동일한 시간표를 호출하는 메소드 필요
+        for i in 0..<timetableCourse.count {
+            for j in 0..<differentCourse.count {
+                print(differentCourse[j])
+                if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: differentCourse[j]) {
+                    isDuplicated = true
+                    break
+                }
+            }
+        }
+
+        if isDuplicated {
+            print("시간표가 중복되었습니다.")
+        } else {
+            print("시간표를 저장합니다.")
+        }
     }
     
     /// ),을 기준으로 쪼개야 함
@@ -87,6 +92,7 @@ class AddCourseListViewModel: ObservableObject {
     // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
     // 1 -> courseday = nextTo(, startTIme = nextToCourseDay, endTime = lastString - 1
     func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
+        var timeTableCourse: [TimetableCourse] = []
         
         let components = course.roomName.split(separator: "),")
         
@@ -95,33 +101,33 @@ class AddCourseListViewModel: ObservableObject {
             let dayIndex = components[i].index(after: firstIndex!)
             let startIndex = components[i].index(after: dayIndex)
             
-            let courseDay = String(components[i][dayIndex])
-            let startTime = String(components[i][startIndex])
-            var endTime = ""
+            let dayString = String(components[i][dayIndex])
+            let start = String(components[i][startIndex])
+            var end = ""
             
             if i == 0 { // lastString
                 if let lastString = components[i].last {
-                    endTime = String(lastString)
+                    end = String(lastString)
                 }
             } else { // lastString - 1
                 let endTimedropLastString = components[i].dropLast()
                 if let lastString = endTimedropLastString.last {
-                    endTime = String(lastString)
+                    end = String(lastString)
                 }
             }
-            
-            print(courseDay)
-            print(startTime)
-            print(endTime)
+            let courseDay = dayToInt(courseDay: dayString)
+            let startTime = startTimeToString(start: start)
+            let endTime = endTimeToString(end: end)
+            timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                                   courseName: course.courseName,
+                                                   roomName: course.roomName,
+                                                   professor: course.professor,
+                                                   courseDay: courseDay,
+                                                   startTime: startTime,
+                                                   endTime: endTime))
         }
         
-        return [TimetableCourse(courseId: UUID().uuidString,
-                                courseName: "courseName",
-                                roomName: "roomName",
-                                professor: "professor",
-                                courseDay: 1,
-                                startTime: "startTime",
-                                endTime: "endTime")]
+        return timeTableCourse
     }
     
     // 자연대112(월1,2 화3,4 수5,6) (월1 수5,6)
@@ -175,34 +181,73 @@ class AddCourseListViewModel: ObservableObject {
                                 newEnd: newCourseEndTime)
     }
     
-    
     /// func startTime & endTime To Int
     /// [930, 1030, 1130, 1230, 1330, 1430, 1530, 1630, 1730, 1830, 1930, 2030, 2130, 2230,  2330]
     /// [1020, 1120, 1220, 1320, 1420, 1520, 1620, 1720, 1820, 1920, 2020, 2120, 2220, 2320, 2420]
-    func timeToInt() {
-        
+    func startTimeToInt(start: String) -> Int {
+        let startTimeIntArray = [930, 1030, 1130, 1230, 1330, 1430, 1530, 1630, 1730, 1830, 1930, 2030, 2130, 2230, 2330]
+        if let index = Int(start) {
+            return startTimeIntArray[index]
+        }
+        // 그럴일이 없지만 숫자가 아닌게 넘어온다면 어떻게 처리해야할까
+        return startTimeIntArray[14]
+    }
+    
+    func endTimeToInt(end: String) -> Int {
+        let endTimeIntArray = [1020, 1120, 1220, 1320, 1420, 1520, 1620, 1720, 1820, 1920, 2020, 2120, 2220, 2320, 2420]
+        if let index = Int(end) {
+            return endTimeIntArray[index]
+        }
+        return endTimeIntArray[14]
     }
     
     /// func timeToString
     /// 930 -> "9:30"
-    func timeToString() {
-        
+    func startTimeToString(start: String) -> String {
+        let startTimeStringArray = ["9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30", "23:30"]
+        if let index = Int(start) {
+            return startTimeStringArray[index]
+        }
+        return startTimeStringArray[14]
+    }
+    
+    func endTimeToString(end: String) -> String {
+        let endTimeStringArray = ["10:20", "11:20", "12:20", "13:20", "14:20", "15:20", "16:20", "17:20", "18:20", "19:20", "20:20", "21:20", "22:20", "23:20", "24:20"]
+        if let index = Int(end) {
+            return endTimeStringArray[index]
+        }
+        return endTimeStringArray[14]
     }
     
     /// func dayToInt - 월 -> 1 화 -> 2 수 -> 목
-    func dayToInt() {
-        
+    func dayToInt(courseDay: String) -> Int {
+        var dayToString = 6
+        switch courseDay {
+        case "월":
+            dayToString = 1
+        case "화":
+            dayToString = 2
+        case "수":
+            dayToString = 3
+        case "목":
+            dayToString = 4
+        case "금":
+            dayToString = 5
+        default:
+            break
+        }
+        return dayToString
     }
     
+    //        if existingStart < newEnd {||
+    //            (existingStart == newStart && existingEnd == newEnd) ||
+    //            existingEnd > newStart ||
+    //            (existingStart >= newStart && existingEnd <= newEnd) ||
+    //            (existingStart <= newStart && existingEnd >= newEnd) {
+    //            return false
+    //        }
     func isTimeDuplicated(existingStart: Int, existingEnd: Int, newStart: Int, newEnd: Int) -> Bool {
         print("time - \(existingStart) - \(existingEnd), \(newStart) - \(newEnd)")
-//        if existingStart < newEnd {||
-//            (existingStart == newStart && existingEnd == newEnd) ||
-//            existingEnd > newStart ||
-//            (existingStart >= newStart && existingEnd <= newEnd) ||
-//            (existingStart <= newStart && existingEnd >= newEnd) {
-//            return false
-//        }
         if existingStart > newEnd || existingEnd < newStart {
             return false
         }
