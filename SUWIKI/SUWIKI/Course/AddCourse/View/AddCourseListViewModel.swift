@@ -38,10 +38,19 @@ class AddCourseListViewModel: ObservableObject {
         }
     }
     
+    /// 시간표 검증 절차
+    /// 1. 이러닝인가 ?
+    ///  No
+    /// 2. 미래521(수 3,4)인가(a) 미래521(화 3,4 화 5,6)의 형태(b)인가?
+    /// a1. coredata에 저장된 같은 courseDay의 시간들과 겹치는가?
+    /// a2. 겹치면 alert, 겹치지 않으면 시간표 추가 및 dismiss
+    /// b1. 문자열 쪼개기
+    /// b2. 쪼개진 요일들의 count 계산 (2 or 3)
+    /// b3. count만큼 a1의 과정을 거침
     func saveCourse() {
         // 이 이전에 시간표를 검증하는 로직이 필요함.
         //       coreDataManager.saveTimetableCourse(course: course)
-        var isDuplicated = false
+//        var isDuplicated = false
         guard let courseName = courseList[selectedIndex].courseName,
            let roomName = courseList[selectedIndex].roomName,
            let professor = courseList[selectedIndex].professor,
@@ -55,19 +64,83 @@ class AddCourseListViewModel: ObservableObject {
                                      courseDay: 1,
                                      startTime: startTime,
                                      endTime: endTime)
-        let timetableCourse = coreDataManager.getTimetableCourseFromCoreData()
-        for i in 0..<timetableCourse.count {
-            if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: course) {
-                isDuplicated = true
-                break
+        differentPlace(course: course)
+        
+//        let timetableCourse = coreDataManager.getTimetableCourseFromCoreData()
+//        for i in 0..<timetableCourse.count {
+//            if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: course) {
+//                isDuplicated = true
+//                break
+//            }
+//        }
+//
+//        if isDuplicated {
+//            print("시간표가 중복되었습니다.")
+//        } else {
+//            print("시간표를 저장합니다.")
+//        }
+    }
+    
+    /// ),을 기준으로 쪼개야 함
+    // 자연대501(월1),자연대503(수5,6) -> ["자연대501(월1", "자연대503(수5,6)"]
+    // 자연대501(월1,2),자연대503(수5,6) -> "자연대501(월1,2", "자연대503(수5,6)"
+    // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    // 1 -> courseday = nextTo(, startTIme = nextToCourseDay, endTime = lastString - 1
+    func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
+        
+        let components = course.roomName.split(separator: "),")
+        
+        for i in 0..<components.count {
+            let firstIndex = components[i].firstIndex(of: "(")
+            let dayIndex = components[i].index(after: firstIndex!)
+            let startIndex = components[i].index(after: dayIndex)
+            
+            let courseDay = String(components[i][dayIndex])
+            let startTime = String(components[i][startIndex])
+            var endTime = ""
+            
+            if i == 0 { // lastString
+                if let lastString = components[i].last {
+                    endTime = String(lastString)
+                }
+            } else { // lastString - 1
+                let endTimedropLastString = components[i].dropLast()
+                if let lastString = endTimedropLastString.last {
+                    endTime = String(lastString)
+                }
             }
+            
+            print(courseDay)
+            print(startTime)
+            print(endTime)
         }
         
-        if isDuplicated {
-            print("시간표가 중복되었습니다.")
-        } else {
-            print("시간표를 저장합니다.")
-        }
+        return [TimetableCourse(courseId: UUID().uuidString,
+                                courseName: "courseName",
+                                roomName: "roomName",
+                                professor: "professor",
+                                courseDay: 1,
+                                startTime: "startTime",
+                                endTime: "endTime")]
+    }
+    
+    // 자연대112(월1,2 화3,4 수5,6) (월1 수5,6)
+    // 공백으로 카운트
+    /// 0번째 이후의 로직은 같음
+    /// 2개인 경우
+    /// "자연대112(월1,2", "화3,4"
+    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
+    /// "자연대112(월1,2", "화3"
+    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
+    /// "자연대112(월1,2", "화3"
+    /// 3개인 경우
+    ///  "자연대112(월1,2", "화3,4", "수5"
+    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
+    /// 2 - courseDay = firstString, startTime = nextToCourseDay, endTIme = lastString
+    func differentTime() {
         
     }
     
@@ -75,8 +148,8 @@ class AddCourseListViewModel: ObservableObject {
         
     }
     
-    /// 같은 요일에 강의가 존재한다면,
-    /// 만약 11:30 - 13:30에 강의가 존재
+    /// func isCourseDuplicated: 강의 중복 확인, String -> Int로 형변환하여 대소비교
+    /// 만약 같은 요일에 강의가 존재하고, 11:30 - 13:30에 강의가 존재
     /// 1. startTime
     /// - 11:30 ~ 13:20 사이에 존재한다면 중복
     /// -
@@ -100,6 +173,25 @@ class AddCourseListViewModel: ObservableObject {
                                 existingEnd: existingCourseEndTime,
                                 newStart: newCourseStartTime,
                                 newEnd: newCourseEndTime)
+    }
+    
+    
+    /// func startTime & endTime To Int
+    /// [930, 1030, 1130, 1230, 1330, 1430, 1530, 1630, 1730, 1830, 1930, 2030, 2130, 2230,  2330]
+    /// [1020, 1120, 1220, 1320, 1420, 1520, 1620, 1720, 1820, 1920, 2020, 2120, 2220, 2320, 2420]
+    func timeToInt() {
+        
+    }
+    
+    /// func timeToString
+    /// 930 -> "9:30"
+    func timeToString() {
+        
+    }
+    
+    /// func dayToInt - 월 -> 1 화 -> 2 수 -> 목
+    func dayToInt() {
+        
     }
     
     func isTimeDuplicated(existingStart: Int, existingEnd: Int, newStart: Int, newEnd: Int) -> Bool {
@@ -152,6 +244,12 @@ class AddCourseListViewModel: ObservableObject {
         index != selectedRowIndex
     }
     
+}
+
+struct DifferentComponentsCourse {
+    let courseDay: Int
+    let startTime: String
+    let endTime: String
 }
 
 //        $selectedIndex
