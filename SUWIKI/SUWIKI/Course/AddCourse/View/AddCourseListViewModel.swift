@@ -94,6 +94,7 @@ class AddCourseListViewModel: ObservableObject {
     // 자연대501(월1,2),자연대503(수5,6) -> "자연대501(월1,2", "자연대503(수5,6)"
     // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
     // 1 -> courseday = nextTo(, startTIme = nextToCourseDay, endTime = lastString - 1
+    // "roomName": "체육105(수10),체육113(수8,9)"
     func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
         var timeTableCourse: [TimetableCourse] = []
         
@@ -156,13 +157,11 @@ class AddCourseListViewModel: ObservableObject {
         // index == 0
         let firstIndex = components[0].firstIndex(of: "(")
         let firstDayIndex = components[0].index(after: firstIndex!)
-        let firstStartIndex = components[0].index(after: firstDayIndex)
         let firstDay = String(components[0][firstDayIndex])
-        let firstStartTime = String(components[0][firstStartIndex])
-        var firstEndTime = ""
-        if let lastString = components[0].last {
-            firstEndTime = String(lastString)
-        }
+        let firstTime = components[0].split(separator: firstDay)[1].split(separator: ",")
+        let firstStartTime = String(firstTime[0])
+        let firstEndTime = String(firstTime[firstTime.count - 1])
+        
         print("day, start, end - \(firstDay), \(firstStartTime), \(firstEndTime)")
         timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                courseName: course.courseName,
@@ -177,12 +176,9 @@ class AddCourseListViewModel: ObservableObject {
             if let day = components[1].first {
                 secondDay = String(day)
             }
-            let secondStartIndex = components[1].index(components[1].startIndex, offsetBy: 1)
-            let secondStartTime = String(components[1][secondStartIndex])
-            var secondEndTime = ""
-            if let endTime = components[1].last {
-                secondEndTime = String(endTime)
-            }
+            let secondTime = components[1].dropFirst().split(separator: ",")
+            let secondStartTime = String(secondTime[0])
+            let secondEndTime = String(secondTime[secondTime.count - 1])
             timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                    courseName: course.courseName,
                                                    roomName: course.roomName,
@@ -197,10 +193,13 @@ class AddCourseListViewModel: ObservableObject {
         if let day = components[components.count - 1].first {
             lastDay = String(day)
         }
-        let lastStartIndex = components[components.count - 1].index(components[components.count - 1].startIndex, offsetBy: 1)
-        let lastStartTime = String(components[components.count - 1][lastStartIndex])
-        let lastEndIndex = components[components.count - 1].index(before: components[components.count - 1].endIndex)
-        let lastEndTime = String(components[components.count - 1][lastEndIndex])
+        // 목7,8)
+        let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
+        // "7","8)"
+        print(lastTime)
+        let lastStartTime = String(lastTime[0])
+        let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
+        
         print("day, start, end - \(lastDay), \(lastStartTime), \(lastEndTime)")
         timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                courseName: course.courseName,
