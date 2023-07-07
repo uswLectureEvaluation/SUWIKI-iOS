@@ -19,7 +19,9 @@ class AddCourseListViewModel: ObservableObject {
     }
     
     private var courseList: [FirebaseCourseData] {
-        return coreDataManager.getFirebaseCourseFromCoreData()
+//        print(coreDataManager.getFirebaseTemp())
+//        return coreDataManager.getFirebaseCourseFromCoreData()
+        return coreDataManager.getFirebaseTemp()
     }
     
     private var selectedRowIndex: Int?
@@ -66,13 +68,14 @@ class AddCourseListViewModel: ObservableObject {
                                      startTime: startTime,
                                      endTime: endTime)
         
-        let differentCourse = differentPlace(course: course) // 케이스 2의 시간표 일 경우
-
+//        let differentCourse = differentPlace(course: course) // 케이스 2의 시간표 일 경우
+        let differentTime = differentTime(course: course)
+        print(course)
         let timetableCourse = coreDataManager.getTimetableCourseFromCoreData() // courseDay가 동일한 시간표를 호출하는 메소드 필요
         for i in 0..<timetableCourse.count {
-            for j in 0..<differentCourse.count {
-                print(differentCourse[j])
-                if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: differentCourse[j]) {
+            for j in 0..<differentTime.count {
+                
+                if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: differentTime[j]) {
                     isDuplicated = true
                     break
                 }
@@ -134,20 +137,80 @@ class AddCourseListViewModel: ObservableObject {
     // 공백으로 카운트
     /// 0번째 이후의 로직은 같음
     /// 2개인 경우
-    /// "자연대112(월1,2", "화3,4"
+    /// "자연대112(월1,2", "화3,4)"
     /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
-    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
-    /// "자연대112(월1,2", "화3"
+    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString - 1
+    /// "자연대112(월1,2", "화3)"
     /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
     /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
     /// "자연대112(월1,2", "화3"
     /// 3개인 경우
-    ///  "자연대112(월1,2", "화3,4", "수5"
+    ///  "자연대112(월1,2", "화3,4", "수5)"
     /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
     /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
-    /// 2 - courseDay = firstString, startTime = nextToCourseDay, endTIme = lastString
-    func differentTime() {
+    /// 2 - courseDay = firstString, startTime = nextToCourseDay, endTIme = lastString - 1
+    func differentTime(course: TimetableCourse) -> [TimetableCourse] {
+        var timeTableCourse: [TimetableCourse] = []
+        let components = course.roomName.split(separator: " ")
         
+        // index == 0
+        let firstIndex = components[0].firstIndex(of: "(")
+        let firstDayIndex = components[0].index(after: firstIndex!)
+        let firstStartIndex = components[0].index(after: firstDayIndex)
+        let firstDay = String(components[0][firstDayIndex])
+        let firstStartTime = String(components[0][firstStartIndex])
+        var firstEndTime = ""
+        if let lastString = components[0].last {
+            firstEndTime = String(lastString)
+        }
+        print("day, start, end - \(firstDay), \(firstStartTime), \(firstEndTime)")
+        timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                               courseName: course.courseName,
+                                               roomName: course.roomName,
+                                               professor: course.professor,
+                                               courseDay: dayToInt(courseDay: firstDay),
+                                               startTime: startTimeToString(start: firstStartTime),
+                                               endTime: endTimeToString(end: firstEndTime)))
+        // if count == 3, index == 1
+        if components.count == 3 {
+            var secondDay = ""
+            if let day = components[1].first {
+                secondDay = String(day)
+            }
+            let secondStartIndex = components[1].index(components[1].startIndex, offsetBy: 1)
+            let secondStartTime = String(components[1][secondStartIndex])
+            var secondEndTime = ""
+            if let endTime = components[1].last {
+                secondEndTime = String(endTime)
+            }
+            timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                                   courseName: course.courseName,
+                                                   roomName: course.roomName,
+                                                   professor: course.professor,
+                                                   courseDay: dayToInt(courseDay: secondDay),
+                                                   startTime: startTimeToString(start: secondStartTime),
+                                                   endTime: endTimeToString(end: secondEndTime)))
+        }
+        
+        // lastIndex
+        var lastDay = ""
+        if let day = components[components.count - 1].first {
+            lastDay = String(day)
+        }
+        let lastStartIndex = components[components.count - 1].index(components[components.count - 1].startIndex, offsetBy: 1)
+        let lastStartTime = String(components[components.count - 1][lastStartIndex])
+        let lastEndIndex = components[components.count - 1].index(before: components[components.count - 1].endIndex)
+        let lastEndTime = String(components[components.count - 1][lastEndIndex])
+        print("day, start, end - \(lastDay), \(lastStartTime), \(lastEndTime)")
+        timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                               courseName: course.courseName,
+                                               roomName: course.roomName,
+                                               professor: course.professor,
+                                               courseDay: dayToInt(courseDay: lastDay),
+                                               startTime: startTimeToString(start: lastStartTime),
+                                               endTime: endTimeToString(end: lastEndTime)))
+        print(timeTableCourse)
+        return timeTableCourse
     }
     
     func getTimetableCourse() {
@@ -247,7 +310,7 @@ class AddCourseListViewModel: ObservableObject {
     //            return false
     //        }
     func isTimeDuplicated(existingStart: Int, existingEnd: Int, newStart: Int, newEnd: Int) -> Bool {
-        print("time - \(existingStart) - \(existingEnd), \(newStart) - \(newEnd)")
+//        print("time - \(existingStart) - \(existingEnd), \(newStart) - \(newEnd)")
         if existingStart > newEnd || existingEnd < newStart {
             return false
         }
