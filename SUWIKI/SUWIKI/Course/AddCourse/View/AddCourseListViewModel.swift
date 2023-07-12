@@ -53,35 +53,34 @@ class AddCourseListViewModel: ObservableObject {
     func saveCourse() {
         // 이 이전에 시간표를 검증하는 로직이 필요함.
         //       coreDataManager.saveTimetableCourse(course: course)
-        var isDuplicated = false
+        // 0. 음악109(화1,2)
+        
         guard let courseName = courseList[selectedIndex].courseName,
-           let roomName = courseList[selectedIndex].roomName,
-           let professor = courseList[selectedIndex].professor,
-           let startTime = courseList[selectedIndex].startTime,
-           let endTime = courseList[selectedIndex].endTime
+              let roomName = courseList[selectedIndex].roomName,
+              let professor = courseList[selectedIndex].professor,
+              let startTime = courseList[selectedIndex].startTime,
+              let endTime = courseList[selectedIndex].endTime,
+              let courseDay = courseList[selectedIndex].courseDay
         else { return }
-        let course = TimetableCourse(courseId: UUID().uuidString, // 케이스 1의 시간표 일 경우
+        let course = TimetableCourse(courseId: UUID().uuidString,
                                      courseName: courseName,
                                      roomName: roomName,
                                      professor: professor,
-                                     courseDay: 1,
+                                     courseDay: dayToInt(courseDay: courseDay),
                                      startTime: startTime,
                                      endTime: endTime)
         
-//        let differentCourse = differentPlace(course: course) // 케이스 2의 시간표 일 경우
-        let differentTime = differentTime(course: course)
-        print(course)
+        var isDuplicated = false
         let timetableCourse = coreDataManager.getTimetableCourseFromCoreData() // courseDay가 동일한 시간표를 호출하는 메소드 필요
-        for i in 0..<timetableCourse.count {
-            for j in 0..<differentTime.count {
-                
-                if isCourseDuplicated(existingCourse: timetableCourse[i], newCourse: differentTime[j]) {
-                    isDuplicated = true
-                    break
-                }
-            }
+        
+        if roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
+            isDuplicated = isDifferentTimeCourseDuplicated(existingCourse: timetableCourse, course: course)
+        } else if roomName.split(separator: "),").count > 1 { // 2. 음악109(화1,2),음악110(수1,2)
+            
+        } else {
+            isDuplicated = isCommonCourseDuplicated(existingCourse: timetableCourse, course: course)
         }
-
+ 
         if isDuplicated {
             print("시간표가 중복되었습니다.")
         } else {
@@ -89,49 +88,36 @@ class AddCourseListViewModel: ObservableObject {
         }
     }
     
-    /// ),을 기준으로 쪼개야 함
-    // 자연대501(월1),자연대503(수5,6) -> ["자연대501(월1", "자연대503(수5,6)"]
-    // 자연대501(월1,2),자연대503(수5,6) -> "자연대501(월1,2", "자연대503(수5,6)"
-    // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
-    // 1 -> courseday = nextTo(, startTIme = nextToCourseDay, endTime = lastString - 1
-    // "roomName": "체육105(수10),체육113(수8,9)"
-    func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
-        var timeTableCourse: [TimetableCourse] = []
-        
-        let components = course.roomName.split(separator: "),")
-        
-        for i in 0..<components.count {
-            let firstIndex = components[i].firstIndex(of: "(")
-            let dayIndex = components[i].index(after: firstIndex!)
-            let startIndex = components[i].index(after: dayIndex)
-            
-            let dayString = String(components[i][dayIndex])
-            let start = String(components[i][startIndex])
-            var end = ""
-            
-            if i == 0 { // lastString
-                if let lastString = components[i].last {
-                    end = String(lastString)
-                }
-            } else { // lastString - 1
-                let endTimedropLastString = components[i].dropLast()
-                if let lastString = endTimedropLastString.last {
-                    end = String(lastString)
+    /// func isCommonCourseDuplicated: 0번 케이스. 일반적인 시간표의 경우에서 시간표가 중복되는지 검증
+    /// parameter: existingCourse, course
+    /// return bool(isDuplicated)
+    func isCommonCourseDuplicated(existingCourse: [TimetableCourseData], course: TimetableCourse) -> Bool {
+        var isDuplicated = false
+        for i in 0..<existingCourse.count {
+            if isCourseDuplicated(existingCourse: existingCourse[i], newCourse: course) {
+                isDuplicated = true
+                break
+            }
+        }
+        return isDuplicated
+    }
+    
+    
+    /// func isDifferentTimeCourseDuplicated: 1번 케이스, 시간이 다른 경우에서 시간표가 중복되는지 검증
+    /// parameter: TimetableCourse
+    /// return: Bool(isDuplicated)
+    func isDifferentTimeCourseDuplicated(existingCourse: [TimetableCourseData], course: TimetableCourse) -> Bool {
+        var isDuplicated = false
+        let differentTimeCourse = differentTime(course: course)
+        for i in 0..<existingCourse.count {
+            for j in 0..<differentTimeCourse.count {
+                if isCourseDuplicated(existingCourse: existingCourse[i], newCourse: differentTimeCourse[j]) {
+                    isDuplicated = true
+                    break
                 }
             }
-            let courseDay = dayToInt(courseDay: dayString)
-            let startTime = startTimeToString(start: start)
-            let endTime = endTimeToString(end: end)
-            timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
-                                                   courseName: course.courseName,
-                                                   roomName: course.roomName,
-                                                   professor: course.professor,
-                                                   courseDay: courseDay,
-                                                   startTime: startTime,
-                                                   endTime: endTime))
         }
-        
-        return timeTableCourse
+        return isDuplicated
     }
     
     // 자연대112(월1,2 화3,4 수5,6) (월1 수5,6)
@@ -209,6 +195,59 @@ class AddCourseListViewModel: ObservableObject {
                                                startTime: startTimeToString(start: lastStartTime),
                                                endTime: endTimeToString(end: lastEndTime)))
         print(timeTableCourse)
+        return timeTableCourse
+    }
+    
+    /// func isDifferentPlaceCourseDuplicated: 2번 케이스. 장소가 다른 경우에서 시간표가 중복되는지 검증
+    /// parameter: TimetableCourse
+    /// return: Bool(isDuplicated)
+    func isDifferentPlaceCourseDuplicated(existingCourse: [TimetableCourseData], course: TimetableCourse) -> Bool {
+        var isDuplicated = false
+        return isDuplicated
+    }
+    
+    /// ),을 기준으로 쪼개야 함
+    // 자연대501(월1),자연대503(수5,6) -> ["자연대501(월1", "자연대503(수5,6)"]
+    // 자연대501(월1,2),자연대503(수5,6) -> "자연대501(월1,2", "자연대503(수5,6)"
+    // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    // 1 -> courseday = nextTo(, startTIme = nextToCourseDay, endTime = lastString - 1
+    // "roomName": "체육105(수10),체육113(수8,9)"
+    func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
+        var timeTableCourse: [TimetableCourse] = []
+        
+        let components = course.roomName.split(separator: "),")
+        
+        for i in 0..<components.count {
+            let firstIndex = components[i].firstIndex(of: "(")
+            let dayIndex = components[i].index(after: firstIndex!)
+            let startIndex = components[i].index(after: dayIndex)
+            
+            let dayString = String(components[i][dayIndex])
+            let start = String(components[i][startIndex])
+            var end = ""
+            
+            if i == 0 { // lastString
+                if let lastString = components[i].last {
+                    end = String(lastString)
+                }
+            } else { // lastString - 1
+                let endTimedropLastString = components[i].dropLast()
+                if let lastString = endTimedropLastString.last {
+                    end = String(lastString)
+                }
+            }
+            let courseDay = dayToInt(courseDay: dayString)
+            let startTime = startTimeToString(start: start)
+            let endTime = endTimeToString(end: end)
+            timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                                   courseName: course.courseName,
+                                                   roomName: course.roomName,
+                                                   professor: course.professor,
+                                                   courseDay: courseDay,
+                                                   startTime: startTime,
+                                                   endTime: endTime))
+        }
+        
         return timeTableCourse
     }
     
