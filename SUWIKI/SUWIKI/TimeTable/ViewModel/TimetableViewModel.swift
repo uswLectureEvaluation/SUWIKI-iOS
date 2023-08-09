@@ -7,43 +7,48 @@
 
 import Foundation
 
+import Combine
 import Elliotable
 
 final class TimetableViewModel {
     
     let coreDataManager = CoreDataManager.shared
     
-    func getTimeTableCourse() -> [TimetableCourse] {
-        let timetableCourseData = coreDataManager.getTimetableCourseFromCoreData()
-        var timetableCourse: [TimetableCourse] = []
-        for i in 0..<timetableCourseData.count {
-            let course = TimetableCourse(courseId: UUID().uuidString,
-                                         courseName: timetableCourseData[i].courseName ?? "",
-                                         roomName: timetableCourseData[i].roomName ?? "",
-                                         professor: timetableCourseData[i].professor ?? "",
-                                         courseDay: 1,
-                                         startTime: timetableCourseData[i].startTime ?? "",
-                                         endTime: timetableCourseData[i].endTime ?? "")
-            timetableCourse.append(course)
-        }
-        return timetableCourse
+    private var cancellables: Set<AnyCancellable> = []
+    
+    @Published var elliottEvent: [ElliottEvent] = []
+    
+    func bind() {
+        
     }
     
-    func getElliotEvent() -> [ElliottEvent] {
-        var elliotEvent: [ElliottEvent] = []
-        let timetableCourse = getTimeTableCourse()
-        for i in 0..<timetableCourse.count {
-            let course = ElliottEvent(courseId: timetableCourse[i].courseId,
-                                      courseName: timetableCourse[i].courseName,
-                                      roomName: timetableCourse[i].roomName,
-                                      professor: timetableCourse[i].professor,
-                                      courseDay: ElliotDay(rawValue: timetableCourse[i].courseDay)!,
-                                      startTime: timetableCourse[i].startTime,
-                                      endTime: timetableCourse[i].endTime,
-                                      backgroundColor: .black)
-            elliotEvent.append(course)
+    func tempIsFinished() {
+        let addController = AddCourseViewController()
+        addController.viewModel.$isFinished
+            .receive(on: DispatchQueue.main)
+            .sink { isFinished in
+                print("@Log sink - \(isFinished)")
+                self.getCourse()
+            }
+            .store(in: &addController.cancellable)
+    }
+    
+    
+    func getCourse() {
+        let course = coreDataManager.fetchCourse()
+        elliottEvent = []
+        for i in 0..<course.count {
+            let event = ElliottEvent(courseId: UUID().uuidString,
+                                     courseName: course[i].courseName ?? "",
+                                     roomName: course[i].roomName ?? "",
+                                     professor: course[i].professor ?? "",
+                                     courseDay: ElliotDay(rawValue: Int(course[i].courseDay)) ?? .monday,
+                                     startTime: course[i].startTime ?? "",
+                                     endTime: course[i].endTime ?? "",
+                                     backgroundColor: .lightGray)
+            elliottEvent.append(event)
         }
-        return elliotEvent
+        print("@Log - \(elliottEvent)")
     }
     
 }
