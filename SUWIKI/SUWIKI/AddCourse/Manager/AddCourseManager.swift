@@ -17,53 +17,64 @@ enum DuplicateCase {
 
 final class AddCourseManager {
     
-    func saveCourse(timeTableCourse: TimetableCourse) {
-        // 저장되있는 데이터 호출할 때, 요일을 끌고 와야함.
-    }
+    let coreDataManager = CoreDataManager.shared
     
-    
-    func isCourseDuplicated(existingCourse: [TimetableCourseData],
-                            course: TimetableCourse,
-                            courseCase: DuplicateCase) -> Bool {
+    func saveCourse(newCourse: TimetableCourse, duplicateCase: DuplicateCase) -> Bool {
         var isDuplicated = false
-        switch courseCase {
+        let timetableCourse = coreDataManager.fetchCourse()
+        
+        var course: [TimetableCourse] = []
+        
+        switch duplicateCase {
         case .normal:
-            for i in 0..<existingCourse.count {
-                if validateTimeStringToInt(existingCourse: existingCourse[i], newCourse: course) {
-                    isDuplicated = true
-                    break
-                }
-                    
-            }
+            course = [newCourse]
+            isDuplicated = isCourseDuplicated(existingCourse: timetableCourse, course: course)
         case .differentTime:
-            let differentTime = differentTime(course: course)
-            for i in 0..<existingCourse.count {
-                for j in 0..<differentTime.count {
-                    if validateTimeStringToInt(existingCourse: existingCourse[i], newCourse: differentTime[j]) {
-                        isDuplicated = true
-                        break
-                    }
-                }
-            }
+            course = differentTime(course: newCourse)
+            isDuplicated = isCourseDuplicated(existingCourse: timetableCourse, course: course)
         case .differentPlace:
-            let differentPlace = differentPlace(course: course)
-            for i in 0..<existingCourse.count {
-                for j in 0..<differentPlace.count {
-                    if validateTimeStringToInt(existingCourse: existingCourse[i], newCourse: differentPlace[j]) {
-                        isDuplicated = true
-                        break
-                    }
-                }
-            }
+            course = differentPlace(course: newCourse)
+            isDuplicated = isCourseDuplicated(existingCourse: timetableCourse, course: course)
         }
         
+        if !isDuplicated {
+            for i in 0..<course.count {
+                print("@Log - \(course[i])")
+                coreDataManager.saveTimetableCourse(course: course[i])
+            }
+        }
+        print("@Log - \(isDuplicated)")
         return isDuplicated
     }
     
+    func isCourseDuplicated(existingCourse: [Course],
+                            course: [TimetableCourse]) -> Bool {
+        var isDuplicated = false
+        for i in 0..<existingCourse.count {
+            for j in 0..<course.count {
+                if isTimeDuplicated(existingCourse: existingCourse[i], newCourse: course[j]) {
+                    isDuplicated = true
+                    break
+                }
+            }
+        }
     
+        return isDuplicated
+    }
     
-    
-    
+    /// 2개인 경우
+    /// "자연대112(월1,2", "화3,4)"
+    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString - 1
+    /// "자연대112(월1,2", "화3)"
+    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
+    /// "자연대112(월1,2", "화3"
+    /// 3개인 경우
+    ///  "자연대112(월1,2", "화3,4", "수5)"
+    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
+    /// 2 - courseDay = firstString, startTime = nextToCourseDay, endTIme = lastString - 1
     func differentTime(course: TimetableCourse) -> [TimetableCourse] {
         var timeTableCourse: [TimetableCourse] = []
         let components = course.roomName.split(separator: " ")
@@ -126,6 +137,11 @@ final class AddCourseManager {
         return timeTableCourse
     }
     
+    // 자연대501(월1),자연대503(수5,6) -> ["자연대501(월1", "자연대503(수5,6)"]
+    // 자연대501(월1,2),자연대503(수5,6) -> "자연대501(월1,2", "자연대503(수5,6)"
+    // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
+    // 1 -> courseday = nextTo(, startTIme = nextToCourseDay, endTime = lastString - 1
+    // "roomName": "체육105(수10),체육113(수8,9)"
     func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
         var timeTableCourse: [TimetableCourse] = []
         
@@ -166,7 +182,7 @@ final class AddCourseManager {
     }
     
     
-    func validateTimeStringToInt(existingCourse: TimetableCourseData, newCourse: TimetableCourse) -> Bool{
+    func isTimeDuplicated(existingCourse: Course, newCourse: TimetableCourse) -> Bool {
         /// 데이터베이스에 저장된 시작 / 종료시간을 Int형으로 변환하여 중복확인을 위한 변수.
         /// - startTime,endTimeStr = "9:30" -> startTime, endTime = 930
         let existingCourseStartTimeStr = existingCourse.startTime?.filter { $0 != ":" }
@@ -178,17 +194,11 @@ final class AddCourseManager {
               let newCourseStartTime = Int(newCourseStartTimeStr),
               let newCourseEndTime = Int(newCourseEndTimeStr)
         else { return true }
-        return isTimeDuplicated(existingStart: existingCourseStartTime,
-                                existingEnd: existingCourseEndTime,
-                                newStart: newCourseStartTime,
-                                newEnd: newCourseEndTime)
-    }
-    
-    func isTimeDuplicated(existingStart: Int, existingEnd: Int, newStart: Int, newEnd: Int) -> Bool {
-        if existingStart > newEnd || existingEnd < newStart {
+        if existingCourse.courseDay == newCourse.courseDay {
+            return !(existingCourseStartTime > newCourseEndTime || existingCourseEndTime < newCourseStartTime)
+        } else {
             return false
         }
-        return true
     }
     
     func startTimeToInt(start: String) -> Int {
