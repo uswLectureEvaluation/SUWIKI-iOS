@@ -10,9 +10,9 @@ import Foundation
 final class AddCourseViewModel {
     
     let coreDataManager = CoreDataManager.shared
-    var course: FirebaseCourseData
+    var course: FirebaseCourse
     
-    init(course: FirebaseCourseData) {
+    init(course: FirebaseCourse) {
         self.course = course
     }
     
