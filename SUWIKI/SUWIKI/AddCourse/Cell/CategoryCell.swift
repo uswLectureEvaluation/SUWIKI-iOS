@@ -19,7 +19,7 @@ class CategoryCell: UITableViewCell, Reusable {
     let selectedLabel = UILabel().then {
         $0.textColor = .gray
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(categoryNameLabel)
@@ -47,5 +47,6 @@ class CategoryCell: UITableViewCell, Reusable {
 
         // Configure the view for the selected state
     }
+    
 
 }

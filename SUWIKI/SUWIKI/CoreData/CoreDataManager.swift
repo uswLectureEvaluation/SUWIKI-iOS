@@ -8,8 +8,6 @@
 import UIKit
 import CoreData
 
-//MARK: - To do 관리하는 매니저 (코어데이터 관리)
-
 final class CoreDataManager {
     
     // 싱글톤으로 만들기
@@ -23,14 +21,28 @@ final class CoreDataManager {
     lazy var context = appDelegate?.persistentContainer.viewContext
     
     // 엔터티 이름 (코어데이터에 저장된 객체)
-    let modelName: String = "Course"
+    let modelName: String = "SuwikiTimetable"
     
     // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
-    func getCourseFromCoreData() -> [Course] {
-        var course: [Course] = []
+    func getFirebaseCourseFromCoreData() -> [FirebaseCourse] {
+        var course: [FirebaseCourse] = []
         if let context = context {
             do {
-                course = try context.fetch(Course.fetchRequest())
+                course = try context.fetch(FirebaseCourse.fetchRequest())
+            } catch {
+                print("@Log getFirebaseCourseFromCoreData - \(error.localizedDescription)")
+            }
+        }
+        return course
+    }
+    
+    func getFirebaseTemp() -> [FirebaseCourse] {
+        var course: [FirebaseCourse] = []
+        if let context = context {
+            do {
+                let fetchRequest = FirebaseCourse.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "courseName == %@", "관악/현악합주1")
+                course = try context.fetch(fetchRequest)
             } catch {
                 print(error.localizedDescription)
             }
@@ -38,30 +50,22 @@ final class CoreDataManager {
         return course
     }
     
-    // MARK: - [Create] 코어데이터에 데이터 생성하기
-    func saveCourseData(course: [FirebaseCourse]) {
-        if context != nil {
-            guard let entity = NSEntityDescription.entity(forEntityName: "Course", in: context!) else {
-                return
-            }
-            for i in 0..<course.count {
-                // 외부에서 객체를 초기화할 경우 동일한 객체를 가리키기 때문에 하나만 저장이 됨.
-                let courseEntity = NSManagedObject(entity: entity, insertInto: context)
-                courseEntity.setValue(course[i].classNum, forKey: "classNum")
-                courseEntity.setValue(course[i].classification, forKey: "classification")
-                courseEntity.setValue(course[i].courseDay, forKey: "courseDay")
-                courseEntity.setValue(course[i].courseName, forKey: "courseName")
-                courseEntity.setValue(course[i].credit, forKey: "credit")
-                courseEntity.setValue(course[i].startTime, forKey: "startTime")
-                courseEntity.setValue(course[i].endTime, forKey: "endTime")
-                courseEntity.setValue(course[i].major, forKey: "major")
-                courseEntity.setValue(course[i].num, forKey: "num")
-                courseEntity.setValue(course[i].professor, forKey: "professor")
-                courseEntity.setValue(course[i].roomName, forKey: "roomName")
-                try? context?.save()
+    /// func fetchCourse: Core Data에 저장된 Course를 fetch합니다.
+    func fetchCourse() -> [Course] {
+        var course: [Course] = []
+        if let context = context {
+            do {
+                course = try context.fetch(Course.fetchRequest())
+            } catch {
+                print("@Log - \(error.localizedDescription)")
             }
         }
+        return course
     }
+    
+    
+    
+//    func save
 //    func saveToDoData(toDoText: String?, colorInt: Int64, completion: @escaping () -> Void) {
 //        // 임시저장소 있는지 확인
 //        if let context = context {
@@ -178,5 +182,6 @@ final class CoreDataManager {
 //            }
 //        }
 //    }
+
 }
 

@@ -15,7 +15,8 @@ import Then
 class AddCourseViewController: UIViewController {
     
     var cancellable = Set<AnyCancellable>()
-    var viewModel = DepartmentCategoryViewModel()
+    var viewModel = AddCourseListViewModel()
+    var isFinished = PassthroughSubject<Void, Never>()
     
     private let categoryTableView = UITableView(frame: .zero, style: .insetGrouped).then {
         $0.isScrollEnabled = false
@@ -23,6 +24,7 @@ class AddCourseViewController: UIViewController {
     }
     
     private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
+        $0.backgroundColor = .blue
         $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CourseCell.self)
     }
@@ -32,11 +34,13 @@ class AddCourseViewController: UIViewController {
         navigationSetUp()
         addSubView()
         setUpTableView()
+//        viewModel.getCourse()
     }
 
     func navigationSetUp() {
         self.title = "시간표 추가"
         let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightButtonTapped))
+            
         let leftButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftButtonTapped))
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.leftBarButtonItem = leftButton
@@ -52,7 +56,7 @@ class AddCourseViewController: UIViewController {
             $0.top.equalTo(additionalSafeAreaInsets.top)
             $0.trailing.equalToSuperview()
             $0.leading.equalToSuperview()
-            $0.height.equalTo(244)
+            $0.height.equalTo(200)
         }
         self.courseTableView.snp.makeConstraints {
             $0.top.equalTo(categoryTableView.snp.bottom)
@@ -69,11 +73,23 @@ class AddCourseViewController: UIViewController {
     }
     
     @objc func rightButtonTapped() {
-        print("Right")
+        
+        let isDuplicated = viewModel.saveCourse()
+        if isDuplicated {
+            print("@Log isDuplicated")
+        } else {
+            isFinished.send()
+            dismiss(animated: true)
+        }
+//
+//        viewModel
+//            .$isFinished
+//            .receive(on: DispatchQueue.main)
+//            .assign(to: \., on: <#T##Root#>)
     }
     
     @objc func leftButtonTapped() {
-        print("Left")
+        viewModel.tempStringToDate()
     }
 
 }
@@ -91,7 +107,14 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
         if tableView == categoryTableView {
             return 2
         }
-        return 50 // 시간표 갯수
+        return viewModel.numbersOfRowsInSection // 시간표 갯수 viewModel.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectCourse(indexPath.row)
+        if viewModel.selectedIndex == -1 {
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,21 +133,32 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath) as CourseCell
-            cell.courseName.text = "데이터베이스설계및관리"
-            cell.classification.text = "전핵"
-            cell.major.text = "정보보호⎪"
-            cell.professor.text = "김명숙⎪"
-            cell.grade.text = "3학년"
-            cell.courseTime.text = "IT306(수6,7,8)"
+            let addCourseViewModel = viewModel.courseViewModelAtIndex(indexPath.row)
+            cell.viewModel = addCourseViewModel
             return cell
         }
     }
-//
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if tableView == courseTableView {
+            return .delete
+        }
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if tableView == courseTableView {
+            if editingStyle == .delete {
+                print("@Log delete")
+            }
+        }
+   }
 
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let courseViewController = CourseViewController()
 //        self.navigationController?.pushViewController(courseViewController, animated: true)
 //    }
+        
 }
 
 

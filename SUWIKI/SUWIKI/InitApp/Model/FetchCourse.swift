@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FirebaseCourse {
+struct FetchCourse {
     var classNum: Int
     var classification: String
     var courseDay: String
