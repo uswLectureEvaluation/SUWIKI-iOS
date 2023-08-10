@@ -10,17 +10,17 @@ import CoreData
 
 extension CoreDataManager {
     
-    func deleteTimetable() {
-//        _ completion: @escaping () -> Void
+    func deleteCourse(uuid: String) {
         if let context = context {
-//            let delete = context.deletedObjects
             do {
-                let course = try context.fetch(Course.fetchRequest())
-                for item in course {
-                    context.delete(item)
+                let fetchRequest = Course.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "courseId == %@", uuid)
+                let deleteCourse = try context.fetch(fetchRequest)
+                print(deleteCourse)
+                if let deleteCourse = deleteCourse.first {
+                    context.delete(deleteCourse)
+                    try context.save()
                 }
-                try context.save()
-                print("@Log delete - \(course)")
             } catch {
                 print(error.localizedDescription)
             }
