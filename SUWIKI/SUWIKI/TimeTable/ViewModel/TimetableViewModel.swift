@@ -38,17 +38,22 @@ final class TimetableViewModel {
         let course = coreDataManager.fetchCourse()
         elliottEvent = []
         for i in 0..<course.count {
-            let event = ElliottEvent(courseId: UUID().uuidString,
+            let event = ElliottEvent(courseId: course[i].courseId ?? "",
                                      courseName: course[i].courseName ?? "",
                                      roomName: course[i].roomName ?? "",
                                      professor: course[i].professor ?? "",
                                      courseDay: ElliotDay(rawValue: Int(course[i].courseDay)) ?? .monday,
                                      startTime: course[i].startTime ?? "",
                                      endTime: course[i].endTime ?? "",
-                                     backgroundColor: .lightGray)
+                                     backgroundColor: UIColor.timetableColors[i])
             elliottEvent.append(event)
         }
-        print("@Log - \(elliottEvent)")
+    }
+    
+    func deleteCourse(uuid: String) {
+        guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }) else { return }
+        elliottEvent.remove(at: index)
+        coreDataManager.deleteCourse(uuid: uuid)
     }
     
 }
