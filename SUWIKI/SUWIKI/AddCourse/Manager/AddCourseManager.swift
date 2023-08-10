@@ -39,7 +39,7 @@ final class AddCourseManager {
         
         if !isDuplicated {
             for i in 0..<course.count {
-                print("@Log - \(course[i])")
+//                print("@Log - \(course[i])")
                 coreDataManager.saveTimetableCourse(course: course[i])
             }
         }
@@ -121,8 +121,9 @@ final class AddCourseManager {
         // 목7,8)
         let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
         // "7","8)"
+        // 7)
         print(lastTime)
-        let lastStartTime = String(lastTime[0])
+        let lastStartTime = String(lastTime[0].first ?? "1")
         let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
         
         print("day, start, end - \(lastDay), \(lastStartTime), \(lastEndTime)")
@@ -250,6 +251,8 @@ final class AddCourseManager {
             dayToString = 4
         case "금":
             dayToString = 5
+        case "토":
+            dayToString = 6
         default:
             break
         }
