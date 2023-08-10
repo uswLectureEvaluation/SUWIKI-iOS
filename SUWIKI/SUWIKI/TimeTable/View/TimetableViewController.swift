@@ -16,15 +16,40 @@ class TimetableViewController: UIViewController {
     
     @IBOutlet weak var timetable: Elliotable!
     
+    
+    private let navigationTitle = UILabel().then {
+        $0.text = "SUWIKI"
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+    }
+    
+    private let timetableTitleBackground = UIView().then {
+        $0.layer.cornerRadius = 12.0
+        $0.frame = CGRect(x: 0, y: 0, width: 0, height: 60)
+        $0.backgroundColor = .white
+    }
+    
+    private let timetableTitle = UILabel().then {
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        $0.layer.masksToBounds = true
+        $0.layer.cornerRadius = 12.0
+        $0.backgroundColor = .white
+        $0.text = "2023년 말까지 업데이트..2023년 말까지 업데이트..2023년 말까지 업데이트.."
+        $0.textAlignment = .center
+        $0.textColor = .black
+        
+        print(UIFont.systemFont(ofSize: 20).lineHeight)
+    }
+    
 //    var addCourseController: AddCourseViewController?
     var addCourseController = AddCourseViewController()
-    let dayString: [String] = ["월", "화", "수", "목", "금"]
+    let dayString: [String] = ["월", "화", "수", "목", "금", "이러닝"]
     var viewModel = TimetableViewModel()
     var viewModel1 = InitAppViewModel()
     private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewModel.getCourse()
         navigationSetUp()
         initTimetable()
@@ -35,25 +60,45 @@ class TimetableViewController: UIViewController {
         addCourseController.isFinished
             .receive(on: DispatchQueue.main)
             .sink { _ in
-                print("@B 완료됨!")
                 self.viewModel.getCourse()
-                self.updateTimetable()
+                self.timetable.reloadData()
             }
             .store(in: &cancellables)
     }
 
     
     func navigationSetUp() {
-        self.title = "시간표 추가시간표 추가시간표 추가시간표 추가"
+//        self.title = "시간표 추가시간표 추가시간표 추가시간표 추가"
+        self.navigationController?.navigationBar.tintColor = UIColor.primaryColor
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
         let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonTapped))
-        let leftButton = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(tempMethod))
+        let title = UIBarButtonItem(customView: navigationTitle)
+
         self.navigationItem.rightBarButtonItem = rightButton
-        self.navigationItem.leftBarButtonItem = leftButton
+        self.navigationItem.leftBarButtonItem = title
+
+        self.view.addSubview(timetableTitleBackground)
+        timetableTitleBackground.addSubview(timetableTitle)
+
+        self.timetableTitleBackground.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalToSuperview().offset(15)
+            $0.trailing.equalToSuperview().offset(-15)
+            $0.height.equalTo(60)
+        }
+
+        self.timetableTitle.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(timetableTitleBackground.snp.leading).offset(10)
+            $0.trailing.equalTo(timetableTitleBackground.snp.trailing).offset(-10)
+        }
     }
     
     @objc
     func tempMethod() {
-        CoreDataManager.shared.deleteTimetable()
+        
 //        viewModel.getCourse()
 //        viewModel1.fetchFirebaseCourse { course in
 //            if let course = course {
@@ -77,8 +122,8 @@ class TimetableViewController: UIViewController {
         timetable.delegate = self
         timetable.dataSource = self
 
-        timetable.elliotBackgroundColor = UIColor.white
-        timetable.borderWidth = 1
+        timetable.elliotBackgroundColor = UIColor.secondarySystemGroupedBackground
+        timetable.borderWidth = 0.5
         timetable.borderColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
 
         timetable.textEdgeInsets = UIEdgeInsets(top: 2, left: 3, bottom: 2, right: 10)
@@ -89,12 +134,15 @@ class TimetableViewController: UIViewController {
         timetable.borderCornerRadius = 24
         timetable.roomNameFontSize = 8
 
-        timetable.courseItemHeight = 70.0
+        timetable.courseItemHeight = 75.0
         timetable.symbolFontSize = 14
         timetable.symbolTimeFontSize = 12
         timetable.symbolFontColor = UIColor(displayP3Red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
         timetable.symbolTimeFontColor = UIColor(displayP3Red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
-
+        
+        timetable.layer.cornerRadius = 12.0
+        timetable.layer.masksToBounds = true
+        
         timetable.reloadData()
     }
     
@@ -107,6 +155,26 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource {
     }
     
     func elliotable(elliotable: Elliotable, didSelectCourse selectedCourse: ElliottEvent) {
+        let actionSheet = UIAlertController(
+            title: "\(selectedCourse.courseName) | \(selectedCourse.professor)",
+            message: selectedCourse.roomName,
+            preferredStyle: .actionSheet
+        )
+        actionSheet.addAction(
+            UIAlertAction(title: "수정", style: .default) { _ in
+                print("@Log - 수정")
+            }
+        )
+        actionSheet.addAction(
+            UIAlertAction(title: "삭제", style: .destructive) { [weak self] alert in
+                guard let self = self else { return }
+                self.viewModel.deleteCourse(uuid: selectedCourse.courseId)
+                self.updateTimetable()
+            }
+        )
+        actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel))
+        
+        self.present(actionSheet, animated: true)
         print("@Log select")
     }
     
