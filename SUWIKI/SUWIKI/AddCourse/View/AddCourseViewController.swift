@@ -18,58 +18,66 @@ class AddCourseViewController: UIViewController {
     var viewModel = AddCourseListViewModel()
     var isFinished = PassthroughSubject<Void, Never>()
     
+//    var searchController: UISearchController!/
+    
+    private let searchBar = UISearchBar().then {
+//        $0.barTintColor = .white
+//        $0.tintColor = .white
+//        $0.color
+//        $0.searchTextField.tintColor = .white
+//        $0.searchTextField.backgroundColor = .white
+        $0.searchBarStyle = .minimal
+        $0.backgroundColor = UIColor.systemGray6
+//        $0.setTextFieldColor(.white)
+        $0.placeholder = "시간표 검색"
+    }
+    
+//    private let searchBar = UILabel().then {
+//        $0.text = "Hi"
+//    }
+    
+//    tableView.contentInsetAdjustmentBehavior = .never
+//    tableView.insetsContentViewsToSafeArea = false
+//    tableView.insetsLayoutMarginsFromSafeArea = false
+//    tableView.preservesSuperviewLayoutMargins = false
+    
     private let categoryTableView = UITableView(frame: .zero, style: .insetGrouped).then {
+//        $0.preservesSuperviewLayoutMargins = false
+//        $0.insetsLayoutMarginsFromSafeArea = false
+//        $0.insetsContentViewsToSafeArea = false
+//        $0.contentInsetAdjustmentBehavior = .never
         $0.isScrollEnabled = false
+        $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CategoryCell.self)
     }
     
     private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
-        $0.backgroundColor = .blue
         $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CourseCell.self)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationSetUp()
+        self.view.backgroundColor = .systemGray6
         addSubView()
         setUpTableView()
-//        viewModel.getCourse()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationSetUp()
+    }
+    //        searchControllerSetting()
+//        viewModel.getCourse()
 
     func navigationSetUp() {
         self.title = "시간표 추가"
+//        navigationcon
+        navigationController?.navigationBar.backgroundColor = .systemGray6
         let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightButtonTapped))
             
         let leftButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftButtonTapped))
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.leftBarButtonItem = leftButton
-    }
-
-    func addSubView() {
-        self.view.addSubview(self.categoryTableView)
-        self.view.addSubview(self.courseTableView)
-    }
-
-    func setUpTableView() {
-        self.categoryTableView.snp.makeConstraints {
-            $0.top.equalTo(additionalSafeAreaInsets.top)
-            $0.trailing.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.height.equalTo(200)
-        }
-        self.courseTableView.snp.makeConstraints {
-            $0.top.equalTo(categoryTableView.snp.bottom)
-            $0.bottom.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-        }
-        categoryTableView.delegate = self
-        categoryTableView.dataSource = self
-        categoryTableView.reloadData()
-        courseTableView.delegate = self
-        courseTableView.dataSource = self
-        courseTableView.reloadData()
     }
     
     @objc func rightButtonTapped() {
@@ -89,12 +97,55 @@ class AddCourseViewController: UIViewController {
     }
     
     @objc func leftButtonTapped() {
-        viewModel.tempStringToDate()
+//        viewModel.tempStringToDate()
     }
 
 }
 
+//MARK: SearchController
+extension AddCourseViewController {
+    func searchControllerSetting() {
+
+    }
+}
+
+//MARK: TableView
 extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func addSubView() {
+        self.view.addSubview(self.searchBar)
+        self.view.addSubview(self.categoryTableView)
+        self.view.addSubview(self.courseTableView)
+    }
+
+    //            $0.top.equalTo(additionalSafeAreaInsets.top)
+    func setUpTableView() {
+        self.searchBar.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.equalToSuperview().offset(12)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.height.equalTo(44)
+        }
+        self.categoryTableView.snp.makeConstraints {
+//            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(searchBar.snp.bottom).offset(20)
+            $0.trailing.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.height.equalTo(88)
+        }
+        self.courseTableView.snp.makeConstraints {
+            $0.top.equalTo(categoryTableView.snp.bottom).offset(24)
+            $0.bottom.equalToSuperview()
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+        }
+        categoryTableView.delegate = self
+        categoryTableView.dataSource = self
+        categoryTableView.reloadData()
+        courseTableView.delegate = self
+        courseTableView.dataSource = self
+        courseTableView.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == categoryTableView {
@@ -130,6 +181,7 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
             default:
                 print("Hi")
             }
+            cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath) as CourseCell
