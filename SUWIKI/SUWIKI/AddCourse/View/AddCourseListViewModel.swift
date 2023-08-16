@@ -26,17 +26,24 @@ class AddCourseListViewModel: ObservableObject {
         }
     }
     
-    private var courseList: [FirebaseCourse] {
+    var courseList: [FirebaseCourse] {
         //        print(coreDataManager.getFirebaseTemp())
         //        return coreDataManager.getFirebaseCourseFromCoreData()
         return coreDataManager.getFirebaseCourseFromCoreData()
     }
     
+    var filteredCourseList: [FirebaseCourse] = []
+    
     private var selectedRowIndex: Int?
     
-    var numbersOfRowsInSection: Int {
+    var courseNumbersOfRowsInSection: Int {
         return self.courseList.count
     }
+    
+    var filteredCourseNumbersOfRowsInSection: Int {
+        return self.filteredCourseList.count
+    }
+    
     
     func selectCourse(_ index: Int) {
         if index == selectedIndex {
@@ -45,6 +52,20 @@ class AddCourseListViewModel: ObservableObject {
             selectedIndex = index
         }
     }
+    
+    func courseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
+        var course: FirebaseCourse = self.courseList[index]
+        if !filteredCourseList.isEmpty { // 왜 인덱스가 하나 더 오지? 아.. 카운트맞다
+            print(self.filteredCourseList[index].courseName)
+            course = self.filteredCourseList[index]
+        }
+        return AddCourseViewModel(course: course)
+    }
+    
+//    func filteredCourseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
+//        let course = self.filteredCourseList[index]
+//        return AddCourseViewModel(course: course)
+//    }
     
     /// 시간표 검증 절차
     /// 1. 이러닝인가 ?
@@ -103,11 +124,6 @@ class AddCourseListViewModel: ObservableObject {
         return dayToString
     }
     
-    func courseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
-        let course = self.courseList[index]
-        return AddCourseViewModel(course: course)
-    }
-    
     func courseSelected(_ index: Int) {
     }
     
@@ -116,10 +132,4 @@ class AddCourseListViewModel: ObservableObject {
         index != selectedRowIndex
     }
     
-}
-
-struct DifferentComponentsCourse {
-    let courseDay: Int
-    let startTime: String
-    let endTime: String
 }
