@@ -21,31 +21,12 @@ class AddCourseViewController: UIViewController {
 //    var searchController: UISearchController!/
     
     private let searchBar = UISearchBar().then {
-//        $0.barTintColor = .white
-//        $0.tintColor = .white
-//        $0.color
-//        $0.searchTextField.tintColor = .white
-//        $0.searchTextField.backgroundColor = .white
         $0.searchBarStyle = .minimal
         $0.backgroundColor = UIColor.systemGray6
-//        $0.setTextFieldColor(.white)
         $0.placeholder = "시간표 검색"
     }
     
-//    private let searchBar = UILabel().then {
-//        $0.text = "Hi"
-//    }
-    
-//    tableView.contentInsetAdjustmentBehavior = .never
-//    tableView.insetsContentViewsToSafeArea = false
-//    tableView.insetsLayoutMarginsFromSafeArea = false
-//    tableView.preservesSuperviewLayoutMargins = false
-    
     private let categoryTableView = UITableView(frame: .zero, style: .insetGrouped).then {
-//        $0.preservesSuperviewLayoutMargins = false
-//        $0.insetsLayoutMarginsFromSafeArea = false
-//        $0.insetsContentViewsToSafeArea = false
-//        $0.contentInsetAdjustmentBehavior = .never
         $0.isScrollEnabled = false
         $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CategoryCell.self)
@@ -59,29 +40,27 @@ class AddCourseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
+        navigationSetUp()
         addSubView()
+        setUpSearchBar()
         setUpTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationSetUp()
+        
     }
-    //        searchControllerSetting()
-//        viewModel.getCourse()
-
+    
     func navigationSetUp() {
         self.title = "시간표 추가"
-//        navigationcon
         navigationController?.navigationBar.backgroundColor = .systemGray6
         let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightButtonTapped))
-            
+
         let leftButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(leftButtonTapped))
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.leftBarButtonItem = leftButton
     }
     
     @objc func rightButtonTapped() {
-        
         let isDuplicated = viewModel.saveCourse()
         if isDuplicated {
             print("@Log isDuplicated")
@@ -89,23 +68,21 @@ class AddCourseViewController: UIViewController {
             isFinished.send()
             dismiss(animated: true)
         }
-//
-//        viewModel
-//            .$isFinished
-//            .receive(on: DispatchQueue.main)
-//            .assign(to: \., on: <#T##Root#>)
     }
     
     @objc func leftButtonTapped() {
-//        viewModel.tempStringToDate()
     }
 
 }
 
 //MARK: SearchController
-extension AddCourseViewController {
-    func searchControllerSetting() {
+extension AddCourseViewController: UISearchBarDelegate {
 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.filteredCourseList = viewModel.courseList.filter { $0.courseName?.lowercased().contains(searchText.lowercased()) ?? false }
+        print("@Log filter - \(viewModel.courseList.filter { $0.courseName?.localizedCaseInsensitiveContains(searchText) ?? false}.count)")
+        print("@Log filterList - \(viewModel.filteredCourseList)")
+        courseTableView.reloadData()
     }
 }
 
@@ -116,18 +93,20 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
         self.view.addSubview(self.searchBar)
         self.view.addSubview(self.categoryTableView)
         self.view.addSubview(self.courseTableView)
+        searchBar.delegate = self
     }
 
-    //            $0.top.equalTo(additionalSafeAreaInsets.top)
-    func setUpTableView() {
+    func setUpSearchBar() {
         self.searchBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.equalToSuperview().offset(12)
             $0.trailing.equalToSuperview().offset(-10)
             $0.height.equalTo(44)
         }
+    }
+    
+    func setUpTableView() {
         self.categoryTableView.snp.makeConstraints {
-//            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.top.equalTo(searchBar.snp.bottom).offset(20)
             $0.trailing.equalToSuperview()
             $0.leading.equalToSuperview()
@@ -139,11 +118,13 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
+        
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
-        categoryTableView.reloadData()
         courseTableView.delegate = self
         courseTableView.dataSource = self
+        
+        categoryTableView.reloadData()
         courseTableView.reloadData()
     }
 
@@ -157,8 +138,14 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == categoryTableView {
             return 2
+        } else {
+            if viewModel.filteredCourseList.isEmpty {
+                return viewModel.courseNumbersOfRowsInSection // 시간표 갯수 viewModel.count
+            } else {
+                return viewModel.filteredCourseNumbersOfRowsInSection
+            }
         }
-        return viewModel.numbersOfRowsInSection // 시간표 갯수 viewModel.count
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -185,8 +172,15 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(for: indexPath) as CourseCell
+            print(indexPath.row)
             let addCourseViewModel = viewModel.courseViewModelAtIndex(indexPath.row)
             cell.viewModel = addCourseViewModel
+//            if viewModel.filteredCourseList.isEmpty {
+//                
+//            } else {
+//                let addCourseViewModel = viewModel.filteredCourseViewModelAtIndex(indexPath.row)
+//                cell.viewModel = addCourseViewModel
+//            }
             return cell
         }
     }
