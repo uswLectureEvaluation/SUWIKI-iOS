@@ -20,6 +20,8 @@ class AddCourseListViewModel: ObservableObject {
     @Published var isSelected: Bool = false
     @Published var isFinished: Bool = false
     
+    var searchText = ""
+    
     var selectedIndex: Int = -1 {
         didSet {
             isSelected = selectedIndex != -1
@@ -32,7 +34,7 @@ class AddCourseListViewModel: ObservableObject {
         return coreDataManager.getFirebaseCourseFromCoreData()
     }
     
-    var filteredCourseList: [FirebaseCourse] = []
+    var searchedCourseList: [FirebaseCourse] = []
     
     private var selectedRowIndex: Int?
     
@@ -40,10 +42,9 @@ class AddCourseListViewModel: ObservableObject {
         return self.courseList.count
     }
     
-    var filteredCourseNumbersOfRowsInSection: Int {
-        return self.filteredCourseList.count
+    var searchedCourseNumbersOfRowsInSection: Int {
+        return self.searchedCourseList.count
     }
-    
     
     func selectCourse(_ index: Int) {
         if index == selectedIndex {
@@ -54,13 +55,35 @@ class AddCourseListViewModel: ObservableObject {
     }
     
     func courseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
-        var course: FirebaseCourse = self.courseList[index]
-        if !filteredCourseList.isEmpty { // 왜 인덱스가 하나 더 오지? 아.. 카운트맞다
-            print(self.filteredCourseList[index].courseName)
-            course = self.filteredCourseList[index]
+        var course = self.courseList[index]
+        if !searchText.isEmpty {
+            course = self.searchedCourseList[index]
         }
         return AddCourseViewModel(course: course)
     }
+    
+//    func searchCourseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
+//        let course = self.searchedCourseList[index]
+//        return AddCourseViewModel(course: course)
+//    }
+    
+//    func handleNextVC(_ index: Int? = nil, fromCurrentVC: UIViewController, animated: Bool) {
+//        // 기존의 멤버가 있을때
+//        if let index = index {
+//            let memberVM = memberViewModelAtIndex(index)
+//            goToNextVC(with: memberVM, fromCurrentVC: fromCurrentVC, animated: animated)
+//        // 새로운 멤버 생성시
+//        } else {
+//            let newVM = MemberViewModel(dataManager: self.dataManager, with: nil, index: nil)
+//            goToNextVC(with: newVM, fromCurrentVC: fromCurrentVC, animated: animated)
+//        }
+//    }
+//
+//    private func goToNextVC(with memberVM: MemberViewModel, fromCurrentVC: UIViewController, animated: Bool) {
+//        let navVC = fromCurrentVC.navigationController
+//        let detailVC = DetailViewController(viewModel: memberVM)
+//        navVC?.pushViewController(detailVC, animated: animated)
+//    }
     
 //    func filteredCourseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
 //        let course = self.filteredCourseList[index]
