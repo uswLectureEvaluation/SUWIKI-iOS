@@ -13,9 +13,7 @@ import SnapKit
 import Then
 // 32
 class AddCourseViewController: UIViewController {
-    
-    
-    
+
     var cancellable = Set<AnyCancellable>()
     var viewModel = AddCourseListViewModel()
     var isFinished = PassthroughSubject<Void, Never>()
@@ -45,7 +43,6 @@ class AddCourseViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
         addSubView()
-//        setUpSearchBar()
         setUpTableView()
     }
     
@@ -53,22 +50,14 @@ class AddCourseViewController: UIViewController {
         navigationSetUp()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        view.layoutIfNeeded()
-//        print(categoryTableView.frame.maxY) // + 24
-        print(UIScreen.main.bounds.height - categoryTableView.frame.maxY) //
-//        print(categoryTableView.frame.minY)
-    }
-    
     func navigationSetUp() {
-//        self.title = "시간표 추가"
         self.navigationItem.title = "컴퓨터SW"
-//        self.searchController = searchController
         searchController.searchBar.placeholder = "강의를 검색하세요!"
         searchController.searchBar.delegate = self
 //        searchController.hidesNavigationBarDuringPresentation = false
         self.navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .systemGray6
         let rightButton = UIBarButtonItem(image: UIImage(systemName: "x.circle.fill"), style: .plain, target: self, action: #selector(rightButtonTapped))
@@ -132,12 +121,9 @@ extension AddCourseViewController: UISearchBarDelegate {
 extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
     
     func addSubView() {
-//        self.view.addSubview(self.searchController)
         let searchBar = UISearchBar()
         self.view.addSubview(searchBar)
-//        self.view.addSubview(self.categoryTableView)
         self.view.addSubview(self.courseTableView)
-//        searchBar.delegate = self
     }
 
 //    func setUpSearchBar() {
