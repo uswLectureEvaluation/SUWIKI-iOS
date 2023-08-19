@@ -28,15 +28,13 @@ class AddCourseListViewModel: ObservableObject {
         }
     }
     
-    var courseList: [FirebaseCourse] {
-        //        print(coreDataManager.getFirebaseTemp())
-        //        return coreDataManager.getFirebaseCourseFromCoreData()
-        return coreDataManager.getFirebaseCourseFromCoreData()
-    }
+    var courseList: [FirebaseCourse] = CoreDataManager.shared.getFirebaseCourseFromCoreData()
     
     var searchedCourseList: [FirebaseCourse] = []
     
     private var selectedRowIndex: Int?
+    
+    // courseList를 계속 접근하기에, getFirebaseCourseFromCoreData() 메소드가 계속 호출됨.
     
     var courseNumbersOfRowsInSection: Int {
         return self.courseList.count
