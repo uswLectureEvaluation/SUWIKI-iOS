@@ -17,6 +17,7 @@ class AddCourseViewController: UIViewController {
     var cancellable = Set<AnyCancellable>()
     var viewModel = AddCourseListViewModel()
     var isFinished = PassthroughSubject<Void, Never>()
+    let searchEmptyView = SearchCourseEmptyView()
     
 //    var searchController: UISearchController!/
     
@@ -35,6 +36,7 @@ class AddCourseViewController: UIViewController {
     }
     
     private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
+        $0.backgroundView = UIImageView(image: UIImage(systemName: "x.mark"))
         $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CourseCell.self)
     }
@@ -80,6 +82,8 @@ class AddCourseViewController: UIViewController {
 
 }
 
+// searchText를 검색으로 넘어갈 때는 spacing을 지워서 검색하도록 기능 구현(로직상)
+
 //MARK: SearchController
 extension AddCourseViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -104,6 +108,12 @@ extension AddCourseViewController: UISearchBarDelegate {
         viewModel.searchText = searchText
         viewModel.searchedCourseList = viewModel.courseList.filter {
             $0.courseName?.lowercased().contains(searchText.lowercased()) ?? false }
+        if viewModel.searchedCourseList.isEmpty {
+            searchEmptyView.updateUI(searchText: "'\(searchText)'")
+            courseTableView.backgroundView?.isHidden = false
+        } else {
+            courseTableView.backgroundView?.isHidden = true
+        }
         courseTableView.reloadData()
         searchBar.searchTextField.resignFirstResponder()
     }
@@ -157,6 +167,7 @@ extension AddCourseViewController: UITableViewDelegate, UITableViewDataSource {
         categoryTableView.dataSource = self
         courseTableView.delegate = self
         courseTableView.dataSource = self
+        courseTableView.backgroundView = searchEmptyView
         
         categoryTableView.reloadData()
         courseTableView.reloadData()
