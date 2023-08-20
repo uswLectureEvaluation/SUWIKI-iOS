@@ -24,6 +24,8 @@ final class CoreDataManager {
     let modelName: String = "SuwikiTimetable"
     
     // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
+    /// func getFirebaseCourseFromCoreData: 파이어베이스에서 로컬로 저장한 데이터를 불러옵니다.
+    /// return: [FirebaseCourse]
     func getFirebaseCourseFromCoreData() -> [FirebaseCourse] {
         var course: [FirebaseCourse] = []
         if let context = context {
@@ -33,8 +35,21 @@ final class CoreDataManager {
                 print("@Log getFirebaseCourseFromCoreData - \(error.localizedDescription)")
             }
         }
-        return course
+        let sortedCourse = course.sorted {
+            $0.courseName! < $1.courseName!
+        }
+//        print("@Log sorted - \(sortedCourse)")
+//        let tempMajor: [String] = course.filter({ $0.major != nil }).map {$0.major!}
+//        let major = Set(tempMajor).sorted { $0 < $1 }
+//        print(major)
+        
+        return sortedCourse
     }
+    
+    /// func getMajorFromCoreData: 학과 선택에 필요한
+//    func getMajorFromCoreData() -> [String] {
+//        var course: [FirebaseCourse]
+//    }
     
     func getFirebaseTemp() -> [FirebaseCourse] {
         var course: [FirebaseCourse] = []
@@ -43,6 +58,7 @@ final class CoreDataManager {
                 let fetchRequest = FirebaseCourse.fetchRequest()
                 fetchRequest.predicate = NSPredicate(format: "courseName == %@", "관악/현악합주1")
                 course = try context.fetch(fetchRequest)
+                
             } catch {
                 print(error.localizedDescription)
             }
@@ -61,6 +77,22 @@ final class CoreDataManager {
             }
         }
         return course
+    }
+    
+    func fetchCourseCount(major: String) -> Int {
+        var count = 0
+        if let context = context {
+            do {
+                let fetchRequest = FirebaseCourse.fetchRequest()
+                if major != "전체" {
+                    fetchRequest.predicate = NSPredicate(format: "major == %@", major)
+                }
+                count = try context.count(for: fetchRequest)
+            } catch {
+                print("@Log - \(error.localizedDescription)")
+            }
+        }
+        return count
     }
     
     
