@@ -17,7 +17,6 @@
 		AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */; };
 		AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDD2A85412700923A61 /* UIColor+.swift */; };
 		AF2AADE02A89440900923A61 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDF2A89440900923A61 /* UISearchBar+.swift */; };
-		AF2AADE22A8CF67C00923A61 /* SearchCourseIsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADE12A8CF67C00923A61 /* SearchCourseIsEmptyView.swift */; };
 		AF3C07482A349A3A00806AEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */; };
 		AF3C074B2A349A9700806AEE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF3C074A2A349A9700806AEE /* FirebaseAnalytics */; };
 		AF3C07502A34BF7400806AEE /* TempViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C074F2A34BF7400806AEE /* TempViewModel.swift */; };
@@ -31,16 +30,18 @@
 		AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC335302A4DD20900D22DEC /* AddCourseManager.swift */; };
 		AFD5CC0C2A39923B008F95B7 /* InitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */; };
 		AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */; };
-		AFD5CC122A404338008F95B7 /* AddCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC112A404338008F95B7 /* AddCourseViewModel.swift */; };
-		AFD5CC142A405BFE008F95B7 /* AddCourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC132A405BFE008F95B7 /* AddCourseListViewModel.swift */; };
+		AFD5CC122A404338008F95B7 /* SelectCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */; };
+		AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */; };
 		AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */; };
 		AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */; };
-		AFE18EF92A1C8ABF009D4D58 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF82A1C8ABF009D4D58 /* AddCourseViewController.swift */; };
+		AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF82A1C8ABF009D4D58 /* SelectCourseViewController.swift */; };
 		AFE18F012A1C8AC1009D4D58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */; };
 		AFE18F042A1C8AC1009D4D58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F022A1C8AC1009D4D58 /* LaunchScreen.storyboard */; };
 		AFE18F1A2A271755009D4D58 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18F192A271755009D4D58 /* Major.swift */; };
 		AFEC86962A37712A008C5781 /* TimetableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86952A37712A008C5781 /* TimetableViewModel.swift */; };
 		AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86982A3771C6008C5781 /* CoreDataManager.swift */; };
+		AFF785C52A93332E00B6D531 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF785C42A93332E00B6D531 /* AddCourseViewController.swift */; };
+		AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF785C62A93513F00B6D531 /* AddCourseView.swift */; };
 		AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */; };
 		AFF9DE902A34821800CCB1D2 /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */; };
 		AFF9DE922A34841D00CCB1D2 /* TimetableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */; };
@@ -71,7 +72,6 @@
 		AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trashCodeStorage.swift; sourceTree = "<group>"; };
 		AF2AADDD2A85412700923A61 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AF2AADDF2A89440900923A61 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+.swift"; sourceTree = "<group>"; };
-		AF2AADE12A8CF67C00923A61 /* SearchCourseIsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseIsEmptyView.swift; sourceTree = "<group>"; };
 		AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF3C074F2A34BF7400806AEE /* TempViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewModel.swift; sourceTree = "<group>"; };
 		AF4E41EF2A7FEF4500954710 /* SuwikiTimetable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuwikiTimetable.xcdatamodel; sourceTree = "<group>"; };
@@ -83,18 +83,20 @@
 		AFC335302A4DD20900D22DEC /* AddCourseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseManager.swift; sourceTree = "<group>"; };
 		AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAppViewModel.swift; sourceTree = "<group>"; };
 		AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCourse.swift; sourceTree = "<group>"; };
-		AFD5CC112A404338008F95B7 /* AddCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewModel.swift; sourceTree = "<group>"; };
-		AFD5CC132A405BFE008F95B7 /* AddCourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseListViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseViewModel.swift; sourceTree = "<group>"; };
+		AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseListViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		AFE18EF12A1C8ABF009D4D58 /* SUWIKI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUWIKI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AFE18EF82A1C8ABF009D4D58 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
+		AFE18EF82A1C8ABF009D4D58 /* SelectCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseViewController.swift; sourceTree = "<group>"; };
 		AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFE18F032A1C8AC1009D4D58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFE18F052A1C8AC1009D4D58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFE18F192A271755009D4D58 /* Major.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
 		AFEC86952A37712A008C5781 /* TimetableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewModel.swift; sourceTree = "<group>"; };
 		AFEC86982A3771C6008C5781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		AFF785C42A93332E00B6D531 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
+		AFF785C62A93513F00B6D531 /* AddCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCourse.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
@@ -155,11 +157,6 @@
 		AF60C2792A29C15500AE0126 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AFE18EF82A1C8ABF009D4D58 /* AddCourseViewController.swift */,
-				AFD5CC132A405BFE008F95B7 /* AddCourseListViewModel.swift */,
-				AFD5CC112A404338008F95B7 /* AddCourseViewModel.swift */,
-				AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */,
-				AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,9 +171,6 @@
 		AF60C27B2A29C16400AE0126 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */,
-				AF60C27E2A29C5B000AE0126 /* CourseCell.swift */,
-				AF2AADE12A8CF67C00923A61 /* SearchCourseIsEmptyView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -184,7 +178,6 @@
 		AFA499DD2A2794EF0047A4B4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				AFA499E02A2798600047A4B4 /* MajorCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -192,8 +185,6 @@
 		AFA499DE2A2794F60047A4B4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */,
-				AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,7 +210,6 @@
 		AFC3352F2A4DD1FF00D22DEC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				AFC335302A4DD20900D22DEC /* AddCourseManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -228,7 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				AF3C074F2A34BF7400806AEE /* TempViewModel.swift */,
-				AFEC86952A37712A008C5781 /* TimetableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -245,7 +234,6 @@
 		AFD5CC0D2A39923E008F95B7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -278,9 +266,13 @@
 		AFE18EF32A1C8ABF009D4D58 /* SUWIKI */ = {
 			isa = PBXGroup;
 			children = (
-				AF2586CC2A909AF800A61F8E /* Model */,
+				AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */,
 				AF2AADDC2A85411C00923A61 /* Extension */,
+				AFF785BB2A932BE700B6D531 /* Manager */,
 				AFEC86972A3771B4008C5781 /* CoreData */,
+				AF2586CC2A909AF800A61F8E /* Model */,
+				AFF785BD2A932C0400B6D531 /* View */,
+				AFF785BE2A932C0A00B6D531 /* ViewModel */,
 				AFD5CC0A2A39920C008F95B7 /* InitApp */,
 				AFF9DE892A34817F00CCB1D2 /* TimeTable */,
 				AFA499E82A2884F40047A4B4 /* AddCourse */,
@@ -334,6 +326,83 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		AFF785BB2A932BE700B6D531 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				AFC335302A4DD20900D22DEC /* AddCourseManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		AFF785BD2A932C0400B6D531 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AFF785C02A9331E200B6D531 /* Timetable */,
+				AFF785BF2A9331DC00B6D531 /* AddCourse */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AFF785BE2A932C0A00B6D531 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */,
+				AFF785C32A93322E00B6D531 /* AddCourse */,
+				AFF785C22A93322400B6D531 /* Timetable */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AFF785BF2A9331DC00B6D531 /* AddCourse */ = {
+			isa = PBXGroup;
+			children = (
+				AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */,
+				AFE18EF82A1C8ABF009D4D58 /* SelectCourseViewController.swift */,
+				AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */,
+				AFF785C42A93332E00B6D531 /* AddCourseViewController.swift */,
+				AFF785C62A93513F00B6D531 /* AddCourseView.swift */,
+				AFF785C12A9331FB00B6D531 /* Cell */,
+			);
+			path = AddCourse;
+			sourceTree = "<group>";
+		};
+		AFF785C02A9331E200B6D531 /* Timetable */ = {
+			isa = PBXGroup;
+			children = (
+				AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */,
+				AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */,
+			);
+			path = Timetable;
+			sourceTree = "<group>";
+		};
+		AFF785C12A9331FB00B6D531 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */,
+				AF60C27E2A29C5B000AE0126 /* CourseCell.swift */,
+				AFA499E02A2798600047A4B4 /* MajorCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AFF785C22A93322400B6D531 /* Timetable */ = {
+			isa = PBXGroup;
+			children = (
+				AFEC86952A37712A008C5781 /* TimetableViewModel.swift */,
+			);
+			path = Timetable;
+			sourceTree = "<group>";
+		};
+		AFF785C32A93322E00B6D531 /* AddCourse */ = {
+			isa = PBXGroup;
+			children = (
+				AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */,
+				AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */,
+				AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */,
+			);
+			path = AddCourse;
+			sourceTree = "<group>";
+		};
 		AFF9DE892A34817F00CCB1D2 /* TimeTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,8 +416,6 @@
 		AFF9DE8A2A3481A800CCB1D2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */,
-				AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -485,17 +552,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF057A162A77F365004577E7 /* CoreDataManager+Read.swift in Sources */,
-				AFE18EF92A1C8ABF009D4D58 /* AddCourseViewController.swift in Sources */,
+				AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */,
 				AF057A1A2A77F375004577E7 /* CoreDataManager+Delete.swift in Sources */,
-				AF2AADE22A8CF67C00923A61 /* SearchCourseIsEmptyView.swift in Sources */,
+				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
 				AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */,
 				AFD5CC0C2A39923B008F95B7 /* InitAppViewModel.swift in Sources */,
 				AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */,
 				AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */,
+				AFF785C52A93332E00B6D531 /* AddCourseViewController.swift in Sources */,
 				AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */,
 				AFE18F1A2A271755009D4D58 /* Major.swift in Sources */,
 				AF4E41F02A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld in Sources */,
-				AFD5CC142A405BFE008F95B7 /* AddCourseListViewModel.swift in Sources */,
+				AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */,
 				AFF9DE902A34821800CCB1D2 /* TimetableCourse.swift in Sources */,
 				AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */,
 				AFA499E12A2798600047A4B4 /* MajorCell.swift in Sources */,
@@ -512,7 +580,7 @@
 				AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */,
 				AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */,
 				AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */,
-				AFD5CC122A404338008F95B7 /* AddCourseViewModel.swift in Sources */,
+				AFD5CC122A404338008F95B7 /* SelectCourseViewModel.swift in Sources */,
 				AF057A182A77F36E004577E7 /* CoreDataManager+Update.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
