@@ -12,7 +12,7 @@ import Combine
 // 하나의 메소드에서 분기처리하여 체크할 수 없을까?
 
 
-class AddCourseListViewModel: ObservableObject {
+class SelectCourseListViewModel: ObservableObject {
     //    var bag = Set<AnyCancellable>()
     let coreDataManager = CoreDataManager.shared
     let addCourseManager = AddCourseManager()
@@ -28,12 +28,18 @@ class AddCourseListViewModel: ObservableObject {
         }
     }
     
-    var courseList: [FirebaseCourse] = CoreDataManager.shared.getFirebaseCourseFromCoreData()
+    var major: String
+    var courseList: [FirebaseCourse]
     
     var searchedCourseList: [FirebaseCourse] = []
     
     private var selectedRowIndex: Int?
     
+    init(major: String) {
+        self.major = major
+        self.courseList = CoreDataManager.shared.fetchFirebaseCourse(major: major)
+        print(self.courseList[0].courseName)
+    }
     // courseList를 계속 접근하기에, getFirebaseCourseFromCoreData() 메소드가 계속 호출됨.
     
     var courseNumbersOfRowsInSection: Int {
@@ -44,6 +50,7 @@ class AddCourseListViewModel: ObservableObject {
         return self.searchedCourseList.count
     }
     
+    
     func selectCourse(_ index: Int) {
         if index == selectedIndex {
             selectedIndex = -1
@@ -52,12 +59,18 @@ class AddCourseListViewModel: ObservableObject {
         }
     }
     
-    func courseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
+    func courseViewModelAtIndex(_ index: Int) -> SelectCourseViewModel {
         var course = self.courseList[index]
         if !searchText.isEmpty {
             course = self.searchedCourseList[index]
         }
-        return AddCourseViewModel(course: course)
+        return SelectCourseViewModel(course: course)
+    }
+    
+    ///func removeSpacingFromSearchText
+    func removeSpacingFromSearchText() {
+        let removeSpacingSearchText = searchText.replacingOccurrences(of: " ", with: "")
+        searchText = removeSpacingSearchText
     }
     
 //    func searchCourseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {

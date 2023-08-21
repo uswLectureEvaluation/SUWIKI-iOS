@@ -22,16 +22,16 @@ final class TimetableViewModel {
         
     }
     
-    func tempIsFinished() {
-        let addController = AddCourseViewController()
-        addController.viewModel.$isFinished
-            .receive(on: DispatchQueue.main)
-            .sink { isFinished in
-                print("@Log sink - \(isFinished)")
-                self.getCourse()
-            }
-            .store(in: &addController.cancellable)
-    }
+//    func tempIsFinished() {
+//        let addController = AddCourseViewController()
+//        addController.viewModel.$isFinished
+//            .receive(on: DispatchQueue.main)
+//            .sink { isFinished in
+//                print("@Log sink - \(isFinished)")
+//                self.getCourse()
+//            }
+//            .store(in: &addController.cancellable)
+//    }
     
     
     func getCourse() {
