@@ -13,7 +13,7 @@ import Then
 
 class CourseCell: UITableViewCell, Reusable {
     
-    var viewModel: AddCourseViewModel! {
+    var viewModel: SelectCourseViewModel! {
         didSet {
             configureUI()
         }

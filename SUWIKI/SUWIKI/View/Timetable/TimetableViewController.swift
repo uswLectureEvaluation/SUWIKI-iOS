@@ -41,7 +41,7 @@ class TimetableViewController: UIViewController {
     }
     
 //    var addCourseController: AddCourseViewController?
-    var addCourseController = AddCourseViewController()
+//    var addCourseController = AddCourseViewController
     let dayString: [String] = ["월", "화", "수", "목", "금", "이러닝"]
     var viewModel = TimetableViewModel()
     var viewModel1 = InitAppViewModel()
@@ -53,18 +53,20 @@ class TimetableViewController: UIViewController {
         viewModel.getCourse()
         navigationSetUp()
         initTimetable()
-        bind()
+//        bind()
     }
     
-    func bind() {
-        addCourseController.isFinished
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                self.viewModel.getCourse()
-                self.timetable.reloadData()
-            }
-            .store(in: &cancellables)
-    }
+    ///MARK: Todo
+    ///이후 수정될 AddCourse와 연결해야 함.
+//    func bind() {
+//        addCourseController.isFinished
+//            .receive(on: DispatchQueue.main)
+//            .sink { _ in
+//                self.viewModel.getCourse()
+//                self.timetable.reloadData()
+//            }
+//            .store(in: &cancellables)
+//    }
 
     
     func navigationSetUp() {
@@ -114,8 +116,16 @@ class TimetableViewController: UIViewController {
     
     @objc
     func addButtonTapped() {
-        let addCourseVC = UINavigationController(rootViewController: addCourseController)
-        self.present(addCourseVC, animated: true)
+        let majorVC = UINavigationController(rootViewController: SelectMajorViewController())
+        
+//        majorVC.navigationItem.largeTitleDisplayMode = .never
+        
+        if let sheet = majorVC.sheetPresentationController {
+            sheet.prefersGrabberVisible = true
+        }
+        self.present(majorVC, animated: true)
+//        let addCourseVC = UINavigationController(rootViewController: addCourseController)
+//        self.present(addCourseVC, animated: true)
     }
     
     func initTimetable() {
