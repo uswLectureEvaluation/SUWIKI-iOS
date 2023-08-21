@@ -43,7 +43,7 @@ final class AddCourseManager {
                 coreDataManager.saveTimetableCourse(course: course[i])
             }
         }
-        print("@Log - \(isDuplicated)")
+//        print("@Log - \(isDuplicated)")
         return isDuplicated
     }
     
