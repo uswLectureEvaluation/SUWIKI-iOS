@@ -42,6 +42,7 @@
 		AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86982A3771C6008C5781 /* CoreDataManager.swift */; };
 		AFF785C52A93332E00B6D531 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF785C42A93332E00B6D531 /* AddCourseViewController.swift */; };
 		AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF785C62A93513F00B6D531 /* AddCourseView.swift */; };
+		AFF785C92A949C5700B6D531 /* AddCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF785C82A949C5700B6D531 /* AddCourseViewModel.swift */; };
 		AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */; };
 		AFF9DE902A34821800CCB1D2 /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */; };
 		AFF9DE922A34841D00CCB1D2 /* TimetableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */; };
@@ -97,6 +98,7 @@
 		AFEC86982A3771C6008C5781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AFF785C42A93332E00B6D531 /* AddCourseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
 		AFF785C62A93513F00B6D531 /* AddCourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
+		AFF785C82A949C5700B6D531 /* AddCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewModel.swift; sourceTree = "<group>"; };
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCourse.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
@@ -347,8 +349,8 @@
 			isa = PBXGroup;
 			children = (
 				AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */,
-				AFF785C32A93322E00B6D531 /* AddCourse */,
 				AFF785C22A93322400B6D531 /* Timetable */,
+				AFF785C32A93322E00B6D531 /* AddCourse */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -399,6 +401,7 @@
 				AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */,
 				AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */,
 				AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */,
+				AFF785C82A949C5700B6D531 /* AddCourseViewModel.swift */,
 			);
 			path = AddCourse;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */,
 				AFA499E72A2881BF0047A4B4 /* SelectMajorViewModel.swift in Sources */,
 				AF057A142A77F35C004577E7 /* CoreDataManager+Create.swift in Sources */,
+				AFF785C92A949C5700B6D531 /* AddCourseViewModel.swift in Sources */,
 				AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */,
 				AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */,
 				AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */,
