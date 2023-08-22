@@ -47,6 +47,7 @@ class SelectCourseViewController: UIViewController {
         self.view.backgroundColor = .systemGray6
         addSubView()
         setUpTableView()
+        print(UIColor.timetableColors.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -191,8 +192,11 @@ extension SelectCourseViewController: UITableViewDelegate, UITableViewDataSource
 //            tableView.deselectRow(at: indexPath, animated: false)
 //        }
 //        tableView.reloadData()
-        let nextVC = AddCourseViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+//        let nextVC = AddCourseViewController()
+//        self.navigationController?.pushViewController(nextVC, animated: true)
+        viewModel.pushVC(firebaseCourse: viewModel.courseList[indexPath.row],
+                         currentVC: self,
+                         animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
