@@ -15,4 +15,5 @@ struct TimetableCourse {
     var courseDay: Int
     var startTime: String
     var endTime: String
+    var timetableColor: Int
 }
