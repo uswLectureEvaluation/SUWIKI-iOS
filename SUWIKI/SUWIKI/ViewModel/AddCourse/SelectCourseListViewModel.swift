@@ -5,12 +5,11 @@
 //  Created by 한지석 on 2023/06/19.
 //
 
-import Foundation
+import UIKit
 import Combine
 
 // 0번 ~ 2번 케이스마다 메소드를 분리해서 따로따로 체크를 하는게 좋은 방법인지
 // 하나의 메소드에서 분기처리하여 체크할 수 없을까?
-
 
 class SelectCourseListViewModel: ObservableObject {
     //    var bag = Set<AnyCancellable>()
@@ -73,6 +72,12 @@ class SelectCourseListViewModel: ObservableObject {
         searchText = removeSpacingSearchText
     }
     
+    func pushVC(firebaseCourse: FirebaseCourse, currentVC: UIViewController, animated: Bool) {
+        let navigationVC = currentVC.navigationController
+        let addCourseVC = AddCourseViewController(viewModel: AddCourseViewModel(firebaseCourse: firebaseCourse))
+        navigationVC?.pushViewController(addCourseVC, animated: animated)
+    }
+    
 //    func searchCourseViewModelAtIndex(_ index: Int) -> AddCourseViewModel {
 //        let course = self.searchedCourseList[index]
 //        return AddCourseViewModel(course: course)
@@ -111,33 +116,33 @@ class SelectCourseListViewModel: ObservableObject {
     /// b1. 문자열 쪼개기
     /// b2. 쪼개진 요일들의 count 계산 (2 or 3)
     /// b3. count만큼 a1의 과정을 거침
-    func saveCourse() -> Bool {
-        var isDuplicated = false
-        guard let courseName = courseList[selectedIndex].courseName,
-              let roomName = courseList[selectedIndex].roomName,
-              let professor = courseList[selectedIndex].professor,
-              let startTime = courseList[selectedIndex].startTime,
-              let endTime = courseList[selectedIndex].endTime,
-              let courseDay = courseList[selectedIndex].courseDay
-        else { return true }
-        let course = TimetableCourse(courseId: UUID().uuidString,
-                                     courseName: courseName,
-                                     roomName: roomName,
-                                     professor: professor,
-                                     courseDay: dayToInt(courseDay: courseDay),
-                                     startTime: startTime,
-                                     endTime: endTime)
-        
-        if roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
-            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentTime)
-        } else if roomName.split(separator: "),").count > 1 { // 2. 음악109(화1,2),음악110(수1,2)
-            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentPlace)
-        } else {
-            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .normal)
-        }
-        
-        return isDuplicated
-    }
+//    func saveCourse() -> Bool {
+//        var isDuplicated = false
+//        guard let courseName = courseList[selectedIndex].courseName,
+//              let roomName = courseList[selectedIndex].roomName,
+//              let professor = courseList[selectedIndex].professor,
+//              let startTime = courseList[selectedIndex].startTime,
+//              let endTime = courseList[selectedIndex].endTime,
+//              let courseDay = courseList[selectedIndex].courseDay
+//        else { return true }
+//        let course = TimetableCourse(courseId: UUID().uuidString,
+//                                     courseName: courseName,
+//                                     roomName: roomName,
+//                                     professor: professor,
+//                                     courseDay: dayToInt(courseDay: courseDay),
+//                                     startTime: startTime,
+//                                     endTime: endTime)
+//        
+//        if roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
+//            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentTime)
+//        } else if roomName.split(separator: "),").count > 1 { // 2. 음악109(화1,2),음악110(수1,2)
+//            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentPlace)
+//        } else {
+//            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .normal)
+//        }
+//        
+//        return isDuplicated
+//    }
     
     func dayToInt(courseDay: String) -> Int {
         var dayToString = 0
