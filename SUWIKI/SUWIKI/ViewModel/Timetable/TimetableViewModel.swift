@@ -45,7 +45,7 @@ final class TimetableViewModel {
                                      courseDay: ElliotDay(rawValue: Int(course[i].courseDay)) ?? .monday,
                                      startTime: course[i].startTime ?? "",
                                      endTime: course[i].endTime ?? "",
-                                     backgroundColor: UIColor.timetableColors[i])
+                                     backgroundColor: .timetableColors[Int(course[i].timetableColor)])
             elliottEvent.append(event)
         }
     }
