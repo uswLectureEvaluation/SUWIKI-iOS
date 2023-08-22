@@ -94,7 +94,8 @@ final class AddCourseManager {
                                                professor: course.professor,
                                                courseDay: dayToInt(courseDay: firstDay),
                                                startTime: startTimeToString(start: firstStartTime),
-                                               endTime: endTimeToString(end: firstEndTime)))
+                                               endTime: endTimeToString(end: firstEndTime),
+                                               timetableColor: course.timetableColor))
         // if count == 3, index == 1
         if components.count == 3 {
             var secondDay = ""
@@ -110,7 +111,8 @@ final class AddCourseManager {
                                                    professor: course.professor,
                                                    courseDay: dayToInt(courseDay: secondDay),
                                                    startTime: startTimeToString(start: secondStartTime),
-                                                   endTime: endTimeToString(end: secondEndTime)))
+                                                   endTime: endTimeToString(end: secondEndTime),
+                                                   timetableColor: course.timetableColor))
         }
         
         // lastIndex
@@ -133,7 +135,8 @@ final class AddCourseManager {
                                                professor: course.professor,
                                                courseDay: dayToInt(courseDay: lastDay),
                                                startTime: startTimeToString(start: lastStartTime),
-                                               endTime: endTimeToString(end: lastEndTime)))
+                                               endTime: endTimeToString(end: lastEndTime),
+                                               timetableColor: course.timetableColor))
         print(timeTableCourse)
         return timeTableCourse
     }
@@ -176,7 +179,8 @@ final class AddCourseManager {
                                                    professor: course.professor,
                                                    courseDay: courseDay,
                                                    startTime: startTime,
-                                                   endTime: endTime))
+                                                   endTime: endTime,
+                                                   timetableColor: course.timetableColor))
         }
         
         return timeTableCourse
