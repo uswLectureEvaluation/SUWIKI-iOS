@@ -6,19 +6,23 @@
 //
 
 import UIKit
+import Combine
 
 import Then
 import SnapKit
 
 class AddCourseViewController: UIViewController {
 
+    //MARK: UI
+    
     let addCourseView = AddCourseView()
     
     let changeColorButton = UIButton().then {
+        $0.titleShadowColor(for: .highlighted)
+        $0.backgroundColor = .white
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         $0.layer.cornerRadius = 12
-        $0.backgroundColor = .timetableColors[0]
-        $0.tintColor = .white
+        $0.setTitleColor(.primaryColor, for: .normal)
         $0.setTitle("시간표 색상 변경", for: .normal)
     }
     
@@ -30,10 +34,24 @@ class AddCourseViewController: UIViewController {
         $0.setTitle("추가", for: .normal)
     }
     
+    //MARK: Properties
+    
+    let viewModel: AddCourseViewModel
+    
+    init(viewModel: AddCourseViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setConstratints()
+        setAddCourseView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,14 +79,32 @@ class AddCourseViewController: UIViewController {
     
     private func setUI() {
         self.view.backgroundColor = .systemGray6
-        addCourseView.layer.cornerRadius = 12
         self.view.addSubview(addCourseView)
         self.view.addSubview(changeColorButton)
         self.view.addSubview(addButton)
+        addCourseView.layer.cornerRadius = 12
+    }
+    
+    private func setAddCourseView() {
+        addCourseView.classficationLabel.text = viewModel.firebaseCourse.classification
+        addCourseView.courseNameLabel.text = viewModel.firebaseCourse.courseName
+        addCourseView.gradeLabel.text = "\(viewModel.firebaseCourse.year)학년"
+        addCourseView.creditLabel.text = "\(viewModel.firebaseCourse.credit)학점"
+        addCourseView.majorLabel.text = viewModel.firebaseCourse.major
+        addCourseView.professorLabel.text = viewModel.firebaseCourse.professor
+        addCourseView.roomNameLabel.text = viewModel.firebaseCourse.roomName
+//        changeColorButton.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
+        addCourseView.bottomBackground.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
+        addCourseView.classficationLabel.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
+        changeColorButton.addTarget(self, action: #selector(changeTimetableColorButtonTouchUpInside), for: .touchUpInside)
+        changeColorButton.addTarget(self, action: #selector(changeTimetableColorButtonTouchCancel), for: .touchCancel)
+        changeColorButton.addTarget(self, action: #selector(changeTimetableColorButtonTouchDown), for: .touchDown)
+        addButton.addTarget(self, action: #selector(addButtonTouchUpInside), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(addButtonTouchCancel), for: .touchCancel)
+        addButton.addTarget(self, action: #selector(addButtonTouchDown), for: .touchDown)
     }
     
     private func setConstratints() {
-        
         addCourseView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
@@ -77,7 +113,7 @@ class AddCourseViewController: UIViewController {
         }
         
         changeColorButton.snp.makeConstraints {
-            $0.top.equalTo(addCourseView.snp.bottom).offset(20)
+            $0.bottom.equalTo(addButton.snp.top).offset(-12)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
             $0.height.equalTo(60)
@@ -89,12 +125,59 @@ class AddCourseViewController: UIViewController {
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
             $0.height.equalTo(60)
         }
-        
     }
+    
+    @objc
+    private func changeTimetableColorButtonTouchUpInside(_ sender: UIButton) {
+        print(#function)
+        sender.backgroundColor = .white
+        viewModel.changeTimetableColor()
+        addCourseView.bottomBackground.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
+        addCourseView.classficationLabel.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
+    }
+    
+    ///func changeTimetableColorButtonTouchCancel: 버튼에서 버튼 밖으로 드래그할 경우 메소드 호출
+    @objc
+    func changeTimetableColorButtonTouchCancel(_ sender: UIButton) {
+        print(#function)
+        sender.backgroundColor = .white
+    }
+    
+    @objc
+    func changeTimetableColorButtonTouchDown(_ sender: UIButton) {
+        print(#function)
+        sender.backgroundColor = .lightGray
+    }
+    
+    @objc
+    func addButtonTouchUpInside(_ sender: UIButton) {
+        let isDuplicated = viewModel.saveCourse()
+        if isDuplicated {
+            print("@Log isDuplicated")
+        } else {
+            NotificationCenter.default.post(name: Notification.Name("addCourse"),
+                                            object: nil)
+            dismiss(animated: true)
+        }
+    }
+    
+    @objc
+    func addButtonTouchCancel(_ sender: UIButton) {
+        sender.backgroundColor = .primaryColor
+    }
+    
+    @objc
+    func addButtonTouchDown(_ sender: UIButton) {
+        sender.backgroundColor = .link
+    }
+    
     
     @objc func rightButtonTapped() {
         dismiss(animated: true)
     }
     
+}
 
+protocol AddCourseDelegate {
+    func addCourse(_ viewController: UIViewController)
 }
