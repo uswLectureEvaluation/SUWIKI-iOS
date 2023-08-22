@@ -16,7 +16,6 @@ class TimetableViewController: UIViewController {
     
     @IBOutlet weak var timetable: Elliotable!
     
-    
     private let navigationTitle = UILabel().then {
         $0.text = "SUWIKI"
         $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -36,12 +35,9 @@ class TimetableViewController: UIViewController {
         $0.text = "2023년 말까지 업데이트..2023년 말까지 업데이트..2023년 말까지 업데이트.."
         $0.textAlignment = .center
         $0.textColor = .black
-        
-        print(UIFont.systemFont(ofSize: 20).lineHeight)
     }
     
 //    var addCourseController: AddCourseViewController?
-//    var addCourseController = AddCourseViewController
     let dayString: [String] = ["월", "화", "수", "목", "금", "이러닝"]
     var viewModel = TimetableViewModel()
     var viewModel1 = InitAppViewModel()
@@ -49,25 +45,18 @@ class TimetableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel.getCourse()
         navigationSetUp()
         initTimetable()
-//        bind()
+        setObserver()
     }
     
-    ///MARK: Todo
-    ///이후 수정될 AddCourse와 연결해야 함.
-//    func bind() {
-//        addCourseController.isFinished
-//            .receive(on: DispatchQueue.main)
-//            .sink { _ in
-//                self.viewModel.getCourse()
-//                self.timetable.reloadData()
-//            }
-//            .store(in: &cancellables)
-//    }
-
+    func setObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadCourse),
+                                               name: Notification.Name("addCourse"),
+                                               object: nil)
+    }
     
     func navigationSetUp() {
 //        self.title = "시간표 추가시간표 추가시간표 추가시간표 추가"
@@ -115,6 +104,12 @@ class TimetableViewController: UIViewController {
     }
     
     @objc
+    func reloadCourse() {
+        viewModel.getCourse()
+        timetable.reloadData()
+    }
+    
+    @objc
     func addButtonTapped() {
         let majorVC = UINavigationController(rootViewController: SelectMajorViewController())
         
@@ -132,21 +127,21 @@ class TimetableViewController: UIViewController {
         timetable.delegate = self
         timetable.dataSource = self
 
-        timetable.elliotBackgroundColor = UIColor.secondarySystemGroupedBackground
-        timetable.borderWidth = 0.5
-        timetable.borderColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
-
-        timetable.textEdgeInsets = UIEdgeInsets(top: 2, left: 3, bottom: 2, right: 10)
+        timetable.elliotBackgroundColor = UIColor.white
+        timetable.borderWidth = 1.0
+        timetable.borderColor = .systemGray6
+//        UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+        timetable.textEdgeInsets = UIEdgeInsets(top: 10, left: 4, bottom: 2, right: 4)
         timetable.courseItemMaxNameLength = 18
-        timetable.courseItemTextSize = 12.5
+        timetable.courseItemTextSize = 13
         timetable.courseTextAlignment = .left
-
-        timetable.borderCornerRadius = 24
+        timetable.roundCorner = .all
+        timetable.borderCornerRadius = 12
         timetable.roomNameFontSize = 8
 
-        timetable.courseItemHeight = 75.0
-        timetable.symbolFontSize = 14
-        timetable.symbolTimeFontSize = 12
+        timetable.courseItemHeight = 60
+        timetable.symbolFontSize = 13
+        timetable.symbolTimeFontSize = 13
         timetable.symbolFontColor = UIColor(displayP3Red: 0.1, green: 0.1, blue: 0.1, alpha: 1.0)
         timetable.symbolTimeFontColor = UIColor(displayP3Red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
         
@@ -207,3 +202,14 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource {
 }
 
 
+///MARK: Todo
+///이후 수정될 AddCourse와 연결해야 함.
+//    func bind() {
+//        addCourseController.isFinished
+//            .receive(on: DispatchQueue.main)
+//            .sink { _ in
+//                self.viewModel.getCourse()
+//                self.timetable.reloadData()
+//            }
+//            .store(in: &cancellables)
+//    }
