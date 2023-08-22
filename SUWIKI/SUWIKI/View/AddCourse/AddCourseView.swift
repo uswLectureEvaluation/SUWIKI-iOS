@@ -18,7 +18,6 @@ class AddCourseView: UIView {
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 16
         $0.textAlignment = .center
-        $0.backgroundColor = .timetableColors[0]
         $0.textColor = .white
         $0.text = "전선"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .bold)
@@ -35,8 +34,19 @@ class AddCourseView: UIView {
         $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
     }
     
-    let gradeAndCreditLabel = UILabel().then {
+    let gradeLabel = UILabel().then {
         $0.text = "2학년 | 3학점"
+        $0.textColor = .gray
+        $0.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+    }
+    
+    let barImage = UIImageView().then {
+        $0.tintColor = .gray
+        $0.image = UIImage(named: "bar")
+    }
+    
+    let creditLabel = UILabel().then {
+        $0.text = "3학점"
         $0.textColor = .gray
         $0.font = UIFont.systemFont(ofSize: 20, weight: .regular)
     }
@@ -72,7 +82,6 @@ class AddCourseView: UIView {
     let bottomBackground = UIView().then {
         $0.layer.maskedCorners = [CACornerMask.layerMinXMaxYCorner, CACornerMask.layerMaxXMaxYCorner]
         $0.layer.cornerRadius = 12
-        $0.backgroundColor = .timetableColors[0]
     }
     
     override init(frame: CGRect) {
@@ -91,7 +100,9 @@ class AddCourseView: UIView {
         addSubview(classficationLabel)
         addSubview(courseTitleLabel)
         addSubview(courseNameLabel)
-        addSubview(gradeAndCreditLabel)
+        addSubview(gradeLabel)
+        addSubview(barImage)
+        addSubview(creditLabel)
         addSubview(majorTitleLabel)
         addSubview(majorLabel)
         addSubview(professorTitleLabel)
@@ -117,17 +128,30 @@ class AddCourseView: UIView {
         courseNameLabel.snp.makeConstraints {
             $0.top.equalTo(courseTitleLabel.snp.bottom).offset(4)
             $0.leading.equalTo(self.snp.leading).offset(16)
+            $0.trailing.equalTo(self.snp.trailing).offset(-12)
             $0.height.equalTo(35)
         }
         
-        gradeAndCreditLabel.snp.makeConstraints {
+        gradeLabel.snp.makeConstraints {
             $0.top.equalTo(courseNameLabel.snp.bottom).offset(4)
             $0.leading.equalTo(self.snp.leading).offset(16)
             $0.height.equalTo(22)
         }
         
+        barImage.snp.makeConstraints {
+            $0.top.equalTo(courseNameLabel.snp.bottom).offset(6)
+            $0.leading.equalTo(gradeLabel.snp.trailing).offset(6)
+            $0.height.equalTo(17)
+        }
+        
+        creditLabel.snp.makeConstraints {
+            $0.top.equalTo(courseNameLabel.snp.bottom).offset(4)
+            $0.leading.equalTo(barImage.snp.trailing).offset(6)
+            $0.height.equalTo(22)
+        }
+        
         majorTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(gradeAndCreditLabel.snp.bottom).offset(16)
+            $0.top.equalTo(gradeLabel.snp.bottom).offset(16)
             $0.leading.equalTo(self.snp.leading).offset(16)
             $0.height.equalTo(16)
         }
