@@ -78,17 +78,6 @@ class SelectMajorViewController: UIViewController {
 }
 
 extension SelectMajorViewController: UITableViewDelegate, UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return viewModel.major.section.count
-//    }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return viewModel.department.section[section]
-//    }
-
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return viewModel.department.name[section].count
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.majorNumberOfRowsInSection
@@ -116,8 +105,5 @@ extension SelectMajorViewController: UITableViewDelegate, UITableViewDataSource 
                          currentVC: self,
                          animated: true)
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let courseViewController = CourseViewController()
-//        self.navigationController?.pushViewController(courseViewController, animated: true)
-//    }
+
 }
