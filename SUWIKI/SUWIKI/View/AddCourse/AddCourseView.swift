@@ -19,23 +19,22 @@ class AddCourseView: UIView {
         $0.layer.cornerRadius = 16
         $0.textAlignment = .center
         $0.textColor = .white
-        $0.text = "전선"
         $0.font = UIFont.systemFont(ofSize: 17, weight: .bold)
     }
     
     let courseTitleLabel = UILabel().then {
-        $0.text = "수업명"
         $0.textColor = .gray
         $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
     }
     
     let courseNameLabel = UILabel().then {
-        $0.text = "데이터베이스"
+        $0.numberOfLines = 1
+        $0.adjustsFontSizeToFitWidth = true
+        $0.minimumScaleFactor = 0.5
         $0.font = UIFont.systemFont(ofSize: 34, weight: .bold)
     }
     
     let gradeLabel = UILabel().then {
-        $0.text = "2학년 | 3학점"
         $0.textColor = .gray
         $0.font = UIFont.systemFont(ofSize: 20, weight: .regular)
     }
@@ -128,7 +127,7 @@ class AddCourseView: UIView {
         courseNameLabel.snp.makeConstraints {
             $0.top.equalTo(courseTitleLabel.snp.bottom).offset(4)
             $0.leading.equalTo(self.snp.leading).offset(16)
-            $0.trailing.equalTo(self.snp.trailing).offset(-12)
+            $0.trailing.equalTo(self.snp.trailing).offset(-16)
             $0.height.equalTo(35)
         }
         
