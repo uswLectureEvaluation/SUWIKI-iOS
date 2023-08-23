@@ -30,14 +30,7 @@ class SelectCourseViewController: UIViewController {
     
     private let searchController = UISearchController()
     
-    private let categoryTableView = UITableView(frame: .zero, style: .insetGrouped).then {
-        $0.isScrollEnabled = false
-        $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
-        $0.register(cellType: CategoryCell.self)
-    }
-    
     private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
-        $0.backgroundView = UIImageView(image: UIImage(systemName: "x.mark"))
         $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: CourseCell.self)
     }
@@ -47,7 +40,6 @@ class SelectCourseViewController: UIViewController {
         self.view.backgroundColor = .systemGray6
         addSubView()
         setUpTableView()
-        print(UIColor.timetableColors.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +59,7 @@ class SelectCourseViewController: UIViewController {
         
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
-        button.addTarget(self, action: #selector(rightButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
         button.tintColor = .gray
             
         let rightButton = UIBarButtonItem(customView: button)
@@ -78,23 +70,11 @@ class SelectCourseViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
     }
     
-    @objc func rightButtonTapped() {
-//        let isDuplicated = viewModel.saveCourse()
-//        if isDuplicated {
-//            print("@Log isDuplicated")
-//        } else {
-//            isFinished.send()
-//            dismiss(animated: true)
-//        }
+    @objc func closeButtonTapped() {
         dismiss(animated: true)
-    }
-    
-    @objc func leftButtonTapped() {
     }
 
 }
-
-// searchText를 검색으로 넘어갈 때는 spacing을 지워서 검색하도록 기능 구현(로직상)
 
 //MARK: SearchController
 extension SelectCourseViewController: UISearchResultsUpdating {
@@ -126,167 +106,61 @@ extension SelectCourseViewController: UISearchBarDelegate {
         courseTableView.reloadData()
         searchBar.searchTextField.resignFirstResponder()
     }
-
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        viewModel.filteredCourseList = viewModel.courseList.filter {
-//            $0.courseName?.lowercased().contains(searchText.lowercased()) ?? false }
-//        print("@Log filter - \(viewModel.courseList.filter { $0.courseName?.localizedCaseInsensitiveContains(searchText) ?? false}.count)")
-//        print("@Log filterList - \(viewModel.filteredCourseList)")
-//        courseTableView.reloadData()
-//    }
+    
 }
 
 //MARK: TableView
 extension SelectCourseViewController: UITableViewDelegate, UITableViewDataSource {
     
     func addSubView() {
+        //MARK: searchBar를 addSubview하지 않으면 searchController가 출력되지 않는 버그 존재
         let searchBar = UISearchBar()
         self.view.addSubview(searchBar)
         self.view.addSubview(self.courseTableView)
     }
     
     func setUpTableView() {
-
         self.courseTableView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
             $0.bottom.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
         }
-        
-        categoryTableView.delegate = self
-        categoryTableView.dataSource = self
         courseTableView.delegate = self
         courseTableView.dataSource = self
         courseTableView.backgroundView = searchEmptyView
-        
-        categoryTableView.reloadData()
         courseTableView.reloadData()
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == categoryTableView {
-            return 44
-        } else {
-            return 90
-        }
-        
+        return 90
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == categoryTableView {
-            return 2
+        if viewModel.searchText.isEmpty {
+            return viewModel.courseNumbersOfRowsInSection // 시간표 갯수 viewModel.count
         } else {
-            if viewModel.searchText.isEmpty {
-                return viewModel.courseNumbersOfRowsInSection // 시간표 갯수 viewModel.count
-            } else {
-                return viewModel.searchedCourseNumbersOfRowsInSection
-            }
+            return viewModel.searchedCourseNumbersOfRowsInSection
         }
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel.selectCourse(indexPath.row)
-//        if viewModel.selectedIndex == -1 {
-//            tableView.deselectRow(at: indexPath, animated: false)
-//        }
-//        tableView.reloadData()
-//        let nextVC = AddCourseViewController()
-//        self.navigationController?.pushViewController(nextVC, animated: true)
-        viewModel.pushVC(firebaseCourse: viewModel.courseList[indexPath.row],
+        var firebaseCourse: FirebaseCourse
+        if viewModel.searchText.isEmpty {
+            firebaseCourse = viewModel.courseList[indexPath.row]
+        } else {
+            firebaseCourse = viewModel.searchedCourseList[indexPath.row]
+        }
+        viewModel.pushVC(firebaseCourse: firebaseCourse,
                          currentVC: self,
                          animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == categoryTableView {
-            let cell = tableView.dequeueReusableCell(for: indexPath) as CategoryCell
-            switch indexPath {
-            case [0, 0]:
-                cell.categoryNameLabel.text = "학과"
-                cell.selectedLabel.text = "컴퓨터공학과"
-            case [0, 1]:
-                cell.categoryNameLabel.text = "학년"
-                cell.selectedLabel.text = "4학년"
-            default:
-                print("Hi")
-            }
-            cell.selectionStyle = .none
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(for: indexPath) as CourseCell
-            let selectCourseViewModel = viewModel.courseViewModelAtIndex(indexPath.row)
-            cell.viewModel = selectCourseViewModel
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(for: indexPath) as CourseCell
+        let selectCourseViewModel = viewModel.courseViewModelAtIndex(indexPath.row)
+        cell.viewModel = selectCourseViewModel
+        return cell
     }
-
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if tableView == courseTableView {
-            return .delete
-        }
-        return .none
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if tableView == courseTableView {
-            if editingStyle == .delete {
-                print("@Log delete")
-            }
-        }
-   }
-
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let courseViewController = CourseViewController()
-//        self.navigationController?.pushViewController(courseViewController, animated: true)
-//    }
         
 }
-
-
-
-
-
-//    func setUpDataSource() {
-//        dataSource = RxTableViewSectionedReloadDataSource<DepartmentSection> { _, tableView, indexPath, item in
-//            let cell = tableView.dequeueReusableCell(for: indexPath) as DepartmentCell
-//            cell.justLabel.text = "\(item.name)"
-//            return cell
-//        }
-//        dataSource?.titleForHeaderInSection = { dataSource, index in
-//            return dataSource.sectionModels[index].header
-//        }
-//    }
-//
-//    func bind() {
-//        Observable.just(departmentSection())
-//            .bind(to: tableView.rx.items(dataSource: dataSource))
-//            .disposed(by: disposeBag)
-//
-//        tableView.rx
-//            .itemSelected
-//            .subscribe { [weak self] indexPath in
-//                guard let self = self else { return }
-//                let vc = CourseView()
-//                self.navigationController?.pushViewController(CourseView, animated: true)
-//                self.viewModel.selectedMajor(major: dataSource[indexPath].name)
-//            }
-//            .disposed(by: disposeBag)
-//    }
-//
-//    func departmentSection() -> [DepartmentSection] {
-//        [
-//            DepartmentSection(items: ["간호학과", "건설환경공학", "건축학과", "경영학과", "경제금융학과", "공예디자인학과", "관현악과", "국악과", "국어국문학", "국제개발협력학과", "기계공학과"].map { Department(name: $0) }, header: "ㄱ"),
-//            DepartmentSection(items: [Department(name: "도시부동산학과")], header: "ㄷ"),
-//            DepartmentSection(items: ["러시아어문학", "레저스포츠학과"].map { Department(name: $0) }, header: "ㄹ"),
-//            DepartmentSection(items: ["문화컨텐츠테크놀러지학과", "미디어SW학과"].map { Department(name: $0) }, header: "ㅁ"),
-//            DepartmentSection(items: ["사학", "산업공학과", "성악과", "소방행정학과(야)", "시스템반도체융복합학과", "식품영양학과", "신소재공학과"].map { Department(name: $0) }, header: "ㅅ"),
-//            DepartmentSection(items: ["아동가족복지학과", "연극과", "영어영문학", "영화영상과", "외식경영학과", "운동건강관리학과", "융합화학산업", "의류학과", "일어일문학"].map { Department(name: $0) }, header: "ㅇ"),
-//            DepartmentSection(items: ["작곡과", "전기공학과", "전자공학과", "전자재료공학", "정보보호학과", "정보통신공학과", "조소과", "중어중문학"].map { Department(name: $0) }, header: "ㅈ"),
-//            DepartmentSection(items: [Department(name: "체육학과")], header: "ㅊ"),
-//            DepartmentSection(items: ["커뮤니케이션디자인학과", "컴퓨터SW학과", "클라우드융복합학과"].map { Department(name: $0) }, header: "ㅋ"),
-//            DepartmentSection(items: ["패션디자인학과", "피아노과"].map { Department(name: $0) }, header: "ㅌ"),
-//            DepartmentSection(items: ["행정학", "호텔경영학과", "화학공학과", "환경에너지공학", "회계학과", "회화과"].map { Department(name: $0) }, header: "ㅎ")
-//        ]
-//    }
