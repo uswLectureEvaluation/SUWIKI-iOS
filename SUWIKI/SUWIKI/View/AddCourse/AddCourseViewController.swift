@@ -19,7 +19,7 @@ class AddCourseViewController: UIViewController {
     
     let changeColorButton = UIButton().then {
         $0.titleShadowColor(for: .highlighted)
-        $0.backgroundColor = .white
+        $0.backgroundColor = .systemGray5
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         $0.layer.cornerRadius = 12
         $0.setTitleColor(.primaryColor, for: .normal)
@@ -93,7 +93,6 @@ class AddCourseViewController: UIViewController {
         addCourseView.majorLabel.text = viewModel.firebaseCourse.major
         addCourseView.professorLabel.text = viewModel.firebaseCourse.professor
         addCourseView.roomNameLabel.text = viewModel.firebaseCourse.roomName
-//        changeColorButton.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
         addCourseView.bottomBackground.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
         addCourseView.classficationLabel.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
         changeColorButton.addTarget(self, action: #selector(changeTimetableColorButtonTouchUpInside), for: .touchUpInside)
@@ -113,10 +112,10 @@ class AddCourseViewController: UIViewController {
         }
         
         changeColorButton.snp.makeConstraints {
-            $0.bottom.equalTo(addButton.snp.top).offset(-12)
+            $0.top.equalTo(addCourseView.snp.bottom).offset(12)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
-            $0.height.equalTo(60)
+            $0.height.equalTo(52)
         }
         
         addButton.snp.makeConstraints {
@@ -130,7 +129,7 @@ class AddCourseViewController: UIViewController {
     @objc
     private func changeTimetableColorButtonTouchUpInside(_ sender: UIButton) {
         print(#function)
-        sender.backgroundColor = .white
+        sender.backgroundColor = .systemGray5
         viewModel.changeTimetableColor()
         addCourseView.bottomBackground.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
         addCourseView.classficationLabel.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
@@ -140,7 +139,7 @@ class AddCourseViewController: UIViewController {
     @objc
     func changeTimetableColorButtonTouchCancel(_ sender: UIButton) {
         print(#function)
-        sender.backgroundColor = .white
+        sender.backgroundColor = .systemGray5
     }
     
     @objc
@@ -151,9 +150,12 @@ class AddCourseViewController: UIViewController {
     
     @objc
     func addButtonTouchUpInside(_ sender: UIButton) {
+        sender.setTitleColor(UIColor.white, for: .normal)
+        sender.backgroundColor = .primaryColor
         let isDuplicated = viewModel.saveCourse()
         if isDuplicated {
             print("@Log isDuplicated")
+            customAlert()
         } else {
             NotificationCenter.default.post(name: Notification.Name("addCourse"),
                                             object: nil)
@@ -163,17 +165,30 @@ class AddCourseViewController: UIViewController {
     
     @objc
     func addButtonTouchCancel(_ sender: UIButton) {
+        sender.setTitleColor(UIColor.white, for: .normal)
         sender.backgroundColor = .primaryColor
     }
     
     @objc
     func addButtonTouchDown(_ sender: UIButton) {
-        sender.backgroundColor = .link
+        sender.setTitleColor(UIColor.primaryColor, for: .normal)
+        sender.backgroundColor = .systemGray2
     }
     
     
     @objc func rightButtonTapped() {
         dismiss(animated: true)
+    }
+    
+    private func customAlert() {
+        let alertController = UIAlertController(
+            title: "중복되는 강의가 있어요",
+            message: "선택한 시간에 이미 다른 강의가 있어요.\n강의 시간을 확인해주세요!",
+            preferredStyle: .alert
+        )
+        let confirmAction = UIAlertAction(title: "확인", style: .default)
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
     }
     
 }
