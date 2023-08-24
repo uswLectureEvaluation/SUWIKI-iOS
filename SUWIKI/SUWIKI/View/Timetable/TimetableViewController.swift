@@ -32,8 +32,8 @@ class TimetableViewController: UIViewController {
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 12.0
         $0.backgroundColor = .white
-        $0.text = "2023년 말까지 업데이트..2023년 말까지 업데이트..2023년 말까지 업데이트.."
-        $0.textAlignment = .center
+        $0.text = "2023.12 대규모 업데이트"
+        $0.textAlignment = .left
         $0.textColor = .black
     }
     
@@ -64,7 +64,7 @@ class TimetableViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         
-        let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonTapped))
+        let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addButtonTapped))
         let title = UIBarButtonItem(customView: navigationTitle)
 
         self.navigationItem.rightBarButtonItem = rightButton
