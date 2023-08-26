@@ -22,33 +22,38 @@ final class TimetableViewModel {
         
     }
     
-    func tempIsFinished() {
-        let addController = AddCourseViewController()
-        addController.viewModel.$isFinished
-            .receive(on: DispatchQueue.main)
-            .sink { isFinished in
-                print("@Log sink - \(isFinished)")
-                self.getCourse()
-            }
-            .store(in: &addController.cancellable)
-    }
+//    func tempIsFinished() {
+//        let addController = AddCourseViewController()
+//        addController.viewModel.$isFinished
+//            .receive(on: DispatchQueue.main)
+//            .sink { isFinished in
+//                print("@Log sink - \(isFinished)")
+//                self.getCourse()
+//            }
+//            .store(in: &addController.cancellable)
+//    }
     
     
     func getCourse() {
         let course = coreDataManager.fetchCourse()
         elliottEvent = []
         for i in 0..<course.count {
-            let event = ElliottEvent(courseId: UUID().uuidString,
+            let event = ElliottEvent(courseId: course[i].courseId ?? "",
                                      courseName: course[i].courseName ?? "",
                                      roomName: course[i].roomName ?? "",
                                      professor: course[i].professor ?? "",
                                      courseDay: ElliotDay(rawValue: Int(course[i].courseDay)) ?? .monday,
                                      startTime: course[i].startTime ?? "",
                                      endTime: course[i].endTime ?? "",
-                                     backgroundColor: .lightGray)
+                                     backgroundColor: .timetableColors[Int(course[i].timetableColor)])
             elliottEvent.append(event)
         }
-        print("@Log - \(elliottEvent)")
+    }
+    
+    func deleteCourse(uuid: String) {
+        guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }) else { return }
+        elliottEvent.remove(at: index)
+        coreDataManager.deleteCourse(uuid: uuid)
     }
     
 }

@@ -28,7 +28,7 @@ class InitAppViewModel {
                 let course = FetchCourse(classNum: value["classNum"] as? Int ?? 0,
                                          classification: value["classification"] as? String ?? "",
                                          courseDay: value["courseDay"] as? String ?? "",
-                                         courseName: value["courseName"] as? String ?? "",
+                                         courseName: value["courseName"] as? String ?? "무제",
                                          credit: value["credit"] as? Int ?? 0,
                                          startTime: value["startTime"] as? String ?? "",
                                          endTime: value["endTime"] as? String ?? "",

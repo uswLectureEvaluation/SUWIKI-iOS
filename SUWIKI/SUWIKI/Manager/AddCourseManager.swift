@@ -39,11 +39,11 @@ final class AddCourseManager {
         
         if !isDuplicated {
             for i in 0..<course.count {
-                print("@Log - \(course[i])")
+//                print("@Log - \(course[i])")
                 coreDataManager.saveTimetableCourse(course: course[i])
             }
         }
-        print("@Log - \(isDuplicated)")
+//        print("@Log - \(isDuplicated)")
         return isDuplicated
     }
     
@@ -94,7 +94,8 @@ final class AddCourseManager {
                                                professor: course.professor,
                                                courseDay: dayToInt(courseDay: firstDay),
                                                startTime: startTimeToString(start: firstStartTime),
-                                               endTime: endTimeToString(end: firstEndTime)))
+                                               endTime: endTimeToString(end: firstEndTime),
+                                               timetableColor: course.timetableColor))
         // if count == 3, index == 1
         if components.count == 3 {
             var secondDay = ""
@@ -110,7 +111,8 @@ final class AddCourseManager {
                                                    professor: course.professor,
                                                    courseDay: dayToInt(courseDay: secondDay),
                                                    startTime: startTimeToString(start: secondStartTime),
-                                                   endTime: endTimeToString(end: secondEndTime)))
+                                                   endTime: endTimeToString(end: secondEndTime),
+                                                   timetableColor: course.timetableColor))
         }
         
         // lastIndex
@@ -121,8 +123,9 @@ final class AddCourseManager {
         // 목7,8)
         let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
         // "7","8)"
+        // 7)
         print(lastTime)
-        let lastStartTime = String(lastTime[0])
+        let lastStartTime = String(lastTime[0].first ?? "1")
         let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
         
         print("day, start, end - \(lastDay), \(lastStartTime), \(lastEndTime)")
@@ -132,7 +135,8 @@ final class AddCourseManager {
                                                professor: course.professor,
                                                courseDay: dayToInt(courseDay: lastDay),
                                                startTime: startTimeToString(start: lastStartTime),
-                                               endTime: endTimeToString(end: lastEndTime)))
+                                               endTime: endTimeToString(end: lastEndTime),
+                                               timetableColor: course.timetableColor))
         print(timeTableCourse)
         return timeTableCourse
     }
@@ -175,7 +179,8 @@ final class AddCourseManager {
                                                    professor: course.professor,
                                                    courseDay: courseDay,
                                                    startTime: startTime,
-                                                   endTime: endTime))
+                                                   endTime: endTime,
+                                                   timetableColor: course.timetableColor))
         }
         
         return timeTableCourse
@@ -250,6 +255,8 @@ final class AddCourseManager {
             dayToString = 4
         case "금":
             dayToString = 5
+        case "토":
+            dayToString = 6
         default:
             break
         }

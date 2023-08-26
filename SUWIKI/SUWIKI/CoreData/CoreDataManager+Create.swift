@@ -48,6 +48,7 @@ extension CoreDataManager {
             courseEntity.setValue(course.courseDay, forKey: "courseDay")
             courseEntity.setValue(course.startTime, forKey: "startTime")
             courseEntity.setValue(course.endTime, forKey: "endTime")
+            courseEntity.setValue(course.timetableColor, forKey: "timetableColor")
             try? context?.save()
         }
     }

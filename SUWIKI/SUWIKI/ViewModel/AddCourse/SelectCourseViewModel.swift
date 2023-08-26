@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class AddCourseViewModel {
+final class SelectCourseViewModel {
     
     let coreDataManager = CoreDataManager.shared
     var course: FirebaseCourse
@@ -49,7 +49,7 @@ final class AddCourseViewModel {
     var credit: String {
         "\(course.credit)학점"
     }
-    
+     
     var roomName: String {
         course.roomName ?? ""
     } 
