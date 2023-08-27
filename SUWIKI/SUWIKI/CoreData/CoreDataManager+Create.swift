@@ -26,7 +26,7 @@ extension CoreDataManager {
     }
     
     // MARK: - [Create] 코어데이터에 데이터 생성하기
-    func saveFirebaseCourse(course: [FetchCourse]) async throws {
+    func saveFirebaseCourse(course: [FetchCourse]) throws {
         guard let context = context else {
             throw CoreDataError.contextError
         }
