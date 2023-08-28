@@ -7,8 +7,6 @@
 
 import Foundation
 
-// AddCourseViewModel에서 시간표 중복을 검사하는 로직을 manager에서 관리할 예정
-
 enum DuplicateCase {
     case normal
     case differentTime
@@ -19,10 +17,11 @@ final class AddCourseManager {
     
     let coreDataManager = CoreDataManager.shared
     
-    func saveCourse(newCourse: TimetableCourse, duplicateCase: DuplicateCase) -> Bool {
+    func saveCourse(newCourse: TimetableCourse,
+                    duplicateCase: DuplicateCase) -> Bool {
+        guard let id = UserDefaults.standard.value(forKey: "id") as? String else { return false }
         var isDuplicated = false
-        let timetableCourse = coreDataManager.fetchCourse()
-        
+        let timetableCourse = coreDataManager.fetchCourse(id: id) // userdefault.get
         var course: [TimetableCourse] = []
         
         switch duplicateCase {
@@ -38,12 +37,14 @@ final class AddCourseManager {
         }
         
         if !isDuplicated {
-            for i in 0..<course.count {
-//                print("@Log - \(course[i])")
-                coreDataManager.saveTimetableCourse(course: course[i])
+            do {
+                for i in 0..<course.count {
+                    try coreDataManager.saveCourse(id: id, course: course[i])
+                }
+            } catch {
+                coreDataManager.handleCoreDataError(error)
             }
         }
-//        print("@Log - \(isDuplicated)")
         return isDuplicated
     }
     
@@ -58,7 +59,6 @@ final class AddCourseManager {
                 }
             }
         }
-    
         return isDuplicated
     }
     
@@ -86,8 +86,6 @@ final class AddCourseManager {
         let firstTime = components[0].split(separator: firstDay)[1].split(separator: ",")
         let firstStartTime = String(firstTime[0])
         let firstEndTime = String(firstTime[firstTime.count - 1])
-        
-        print("day, start, end - \(firstDay), \(firstStartTime), \(firstEndTime)")
         timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                courseName: course.courseName,
                                                roomName: course.roomName,
@@ -96,6 +94,7 @@ final class AddCourseManager {
                                                startTime: startTimeToString(start: firstStartTime),
                                                endTime: endTimeToString(end: firstEndTime),
                                                timetableColor: course.timetableColor))
+        
         // if count == 3, index == 1
         if components.count == 3 {
             var secondDay = ""
@@ -104,7 +103,9 @@ final class AddCourseManager {
             }
             let secondTime = components[1].dropFirst().split(separator: ",")
             let secondStartTime = String(secondTime[0])
+    
             let secondEndTime = String(secondTime[secondTime.count - 1])
+            
             timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                    courseName: course.courseName,
                                                    roomName: course.roomName,
@@ -124,11 +125,18 @@ final class AddCourseManager {
         let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
         // "7","8)"
         // 7)
-        print(lastTime)
-        let lastStartTime = String(lastTime[0].first ?? "1")
-        let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
+        // 1)
+        var lastStartTime = ""
         
-        print("day, start, end - \(lastDay), \(lastStartTime), \(lastEndTime)")
+        if String(lastTime[0]).contains(")") {
+            // MARK: 11) or 1) 일 경우
+            lastStartTime = String(lastTime[0].dropLast())
+        } else {
+            // MARK: 11 or 14
+            lastStartTime = String(lastTime[0])
+        }
+        
+        let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
         timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                courseName: course.courseName,
                                                roomName: course.roomName,
@@ -137,7 +145,6 @@ final class AddCourseManager {
                                                startTime: startTimeToString(start: lastStartTime),
                                                endTime: endTimeToString(end: lastEndTime),
                                                timetableColor: course.timetableColor))
-        print(timeTableCourse)
         return timeTableCourse
     }
     
@@ -187,7 +194,8 @@ final class AddCourseManager {
     }
     
     
-    func isTimeDuplicated(existingCourse: Course, newCourse: TimetableCourse) -> Bool {
+    func isTimeDuplicated(existingCourse: Course,
+                          newCourse: TimetableCourse) -> Bool {
         /// 데이터베이스에 저장된 시작 / 종료시간을 Int형으로 변환하여 중복확인을 위한 변수.
         /// - startTime,endTimeStr = "9:30" -> startTime, endTime = 930
         let existingCourseStartTimeStr = existingCourse.startTime?.filter { $0 != ":" }
@@ -206,29 +214,12 @@ final class AddCourseManager {
         }
     }
     
-    func startTimeToInt(start: String) -> Int {
-        let startTimeIntArray = [930, 1030, 1130, 1230, 1330, 1430, 1530, 1630, 1730, 1830, 1930, 2030, 2130, 2230, 2330]
-        if let index = Int(start) {
-            return startTimeIntArray[index]
-        }
-        // 그럴일이 없지만 숫자가 아닌게 넘어온다면 어떻게 처리해야할까
-        return startTimeIntArray[14]
-    }
-    
-    func endTimeToInt(end: String) -> Int {
-        let endTimeIntArray = [1020, 1120, 1220, 1320, 1420, 1520, 1620, 1720, 1820, 1920, 2020, 2120, 2220, 2320, 2420]
-        if let index = Int(end) {
-            return endTimeIntArray[index]
-        }
-        return endTimeIntArray[14]
-    }
-    
     /// func timeToString
     /// 930 -> "9:30"
     func startTimeToString(start: String) -> String {
         let startTimeStringArray = ["9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30", "23:30"]
         if let index = Int(start) {
-            return startTimeStringArray[index]
+            return startTimeStringArray[index - 1]
         }
         return startTimeStringArray[14]
     }
@@ -236,7 +227,7 @@ final class AddCourseManager {
     func endTimeToString(end: String) -> String {
         let endTimeStringArray = ["10:20", "11:20", "12:20", "13:20", "14:20", "15:20", "16:20", "17:20", "18:20", "19:20", "20:20", "21:20", "22:20", "23:20", "24:20"]
         if let index = Int(end) {
-            return endTimeStringArray[index]
+            return endTimeStringArray[index - 1]
         }
         return endTimeStringArray[14]
     }
