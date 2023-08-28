@@ -35,7 +35,10 @@ final class TimetableViewModel {
     
     
     func getCourse() {
-        let course = coreDataManager.fetchCourse()
+        guard let id = UserDefaults.standard.value(forKey: "id") as? String else {
+            return
+        }
+        let course = coreDataManager.fetchCourse(id: id) // userdefault.get
         elliottEvent = []
         for i in 0..<course.count {
             let event = ElliottEvent(courseId: course[i].courseId ?? "",
@@ -51,9 +54,11 @@ final class TimetableViewModel {
     }
     
     func deleteCourse(uuid: String) {
-        guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }) else { return }
+        guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }),
+              let id = UserDefaults.standard.value(forKey: "id") as? String
+        else { return }
         elliottEvent.remove(at: index)
-        coreDataManager.deleteCourse(uuid: uuid)
+        coreDataManager.deleteCourse(id: id, courseId: uuid)
     }
     
 }
