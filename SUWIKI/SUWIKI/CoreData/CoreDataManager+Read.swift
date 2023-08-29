@@ -10,12 +10,27 @@ import CoreData
 
 extension CoreDataManager {
     
+    func fetchTimetable() {
+        if let context = context {
+            do {
+                let result = try context.fetch(Timetable.fetchRequest())                
+            } catch {
+                print("@Log - \(error.localizedDescription)")
+            }
+        }
+    }
+    
     /// func fetchCourse: Core Data에 저장된 Course를 fetch합니다.
-    func fetchCourse() -> [Course] {
+    func fetchCourse(id: String) -> [Course] {
         var course: [Course] = []
         if let context = context {
             do {
-                course = try context.fetch(Course.fetchRequest())
+                let fetchRequest = Timetable.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+                let timetable = try context.fetch(fetchRequest)
+                if let timetableCourses = timetable.first?.courses as? Set<Course> {
+                    course = Array(timetableCourses)
+                }
             } catch {
                 print("@Log - \(error.localizedDescription)")
             }
@@ -24,7 +39,8 @@ extension CoreDataManager {
     }
     
     /// func fetchFirebaseCourse: 학과 선택 시, 과목을 선택하는 화면에서 firebaseCourse를 내려받습니다.(강의 원본)
-    /// return: [FirebaseCourse]
+    /// - Parameter : major(학과, String)
+    /// - return : [FireabaseCourse]
     func fetchFirebaseCourse(major: String) -> [FirebaseCourse] {
         var course: [FirebaseCourse] = []
         if let context = context {
@@ -41,11 +57,9 @@ extension CoreDataManager {
         let sortedCourse = course.sorted {
             $0.courseName! < $1.courseName!
         }
-//        for i in 0..<sortedCourse.count {
-//            print(sortedCourse[i].)
-//        }
         return sortedCourse
     }
+
     
     /// func fetchCourseCount: 학과 선택 화면에서, 미리 보여줄 강의의 갯수들을 가져옵니다.
     /// return: 강의 Count(Int)
