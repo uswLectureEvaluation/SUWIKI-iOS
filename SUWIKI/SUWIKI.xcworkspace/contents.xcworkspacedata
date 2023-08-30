@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Timetable+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Timetable+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:Course+CoreDataClass.swift">
    </FileRef>
    <FileRef
