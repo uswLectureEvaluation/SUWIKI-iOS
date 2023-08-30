@@ -10,20 +10,22 @@ import CoreData
 
 extension CoreDataManager {
     
-    func deleteCourse(uuid: String) {
-        if let context = context {
-            do {
-                let fetchRequest = Course.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "courseId == %@", uuid)
-                let deleteCourse = try context.fetch(fetchRequest)
-                print(deleteCourse)
-                if let deleteCourse = deleteCourse.first {
-                    context.delete(deleteCourse)
-                    try context.save()
-                }
-            } catch {
-                print(error.localizedDescription)
+    func deleteCourse(id: String, courseId: String) {
+        guard let context = context else { return }
+        let fetchRequest = Timetable.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            let timetable = try context.fetch(fetchRequest)
+            guard let courses = timetable[0].courses as? Set<Course>,
+                  let removeCourse = courses.first(where: { $0.courseId == courseId})
+            else {
+                return
             }
+            timetable[0].removeFromCourses(removeCourse)
+            context.delete(removeCourse)
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
