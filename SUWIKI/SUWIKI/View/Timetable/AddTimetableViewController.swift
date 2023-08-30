@@ -13,8 +13,6 @@ import Then
 
 
 class AddTimetableViewController: UIViewController {
-
-    //MARK: UI
     
     private let timetableNameTextField = UITextField().then {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 0))
@@ -34,8 +32,10 @@ class AddTimetableViewController: UIViewController {
     }
     
     private let addButton = UIButton().then {
+        $0.layer.cornerRadius = 12
         $0.backgroundColor = .lightGray
         $0.setTitle("추가", for: UIControl.State())
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
     }
     
     private var cancellables: Set<AnyCancellable> = []
@@ -55,6 +55,7 @@ class AddTimetableViewController: UIViewController {
         setupUI()
         setupConstraints()
         binding()
+        setupObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +101,13 @@ class AddTimetableViewController: UIViewController {
         rightButton.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
         self.navigationItem.rightBarButtonItem = rightButton
     }
+    
+    func setupObserver() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillAppear),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+    }
 
     private func setupUI() {
         self.view.backgroundColor = .systemGray6
@@ -109,6 +117,9 @@ class AddTimetableViewController: UIViewController {
         semesterPickerView.delegate = self
         semesterPickerView.dataSource = self
         semesterPickerView.selectRow(1, inComponent: 0, animated: false)
+        timetableNameTextField.becomeFirstResponder()
+        addButton.addAction(UIAction { _ in self.addButtonTapped() },
+                            for: .touchUpInside)
     }
     
     private func setupConstraints() {
@@ -119,16 +130,33 @@ class AddTimetableViewController: UIViewController {
             $0.height.equalTo(48)
         }
         self.semesterPickerView.snp.makeConstraints {
-            $0.top.equalTo(timetableNameTextField.snp.bottom).offset(24)
+            $0.top.equalTo(timetableNameTextField.snp.bottom).offset(20)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
             $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
-            $0.height.equalTo(132)
+            $0.height.equalTo(120)
         }
-        self.addButton.snp.makeConstraints {
-            $0.top.equalTo(semesterPickerView.snp.bottom).offset(10)
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
-            $0.height.equalTo(52)
+    }
+    
+}
+
+extension AddTimetableViewController {
+    
+    func addButtonTapped() {
+        viewModel.saveTimetable()
+        dismiss(animated: true)
+    }
+    
+    @objc func keyboardWillAppear(_ notification: Notification) {
+        if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            // 키보드 높이만큼 버튼 위치 조정
+            self.addButton.snp.makeConstraints {
+                $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
+                $0.height.equalTo(48)
+                $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-keyboardFrame.height)
+            }
+            print(keyboardFrame.height)
         }
     }
 
@@ -159,4 +187,5 @@ extension AddTimetableViewController: UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         viewModel.updateSelectedSemester(with: viewModel.semester[row])
     }
+    
 }
