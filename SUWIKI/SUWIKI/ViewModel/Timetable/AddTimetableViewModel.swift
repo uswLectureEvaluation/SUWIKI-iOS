@@ -10,9 +10,11 @@ import Combine
 
 final class AddTimetableViewModel {
     
-    @Published var name = ""
+    let coreDataManager = CoreDataManager.shared
+    
     var semester: [String] = []
     var selectedSemester = ""
+    @Published var name = ""
     
     private(set) lazy var addTimetableIsVaild = $name.map { $0.count > 0 }.eraseToAnyPublisher()
     
@@ -21,25 +23,25 @@ final class AddTimetableViewModel {
         self.selectedSemester = semester[1]
     }
     
-    //TODO: 학기 계산 알고리즘
-//    func addTimetableIsVaild() {
-//
-//    }
-    
     func calculateSemester() -> [String] {
         let currentYear = Calendar.current.component(.year, from: Date())
         let currentMonth = Calendar.current.component(.month, from: Date())
         var semester: [String] = []
         if currentMonth <= 6 {
-            semester = ["\(currentYear) 여름학기", "\(currentYear) 1학기", "\(currentYear - 1) 겨울학기"]
+            semester = ["\(currentYear)년 여름학기", "\(currentYear)년 1학기", "\(currentYear - 1)년 겨울학기"]
         } else {
-            semester = ["\(currentYear) 겨울학기", "\(currentYear) 2학기", "\(currentYear) 여름학기"]
+            semester = ["\(currentYear)년 겨울학기", "\(currentYear)년 2학기", "\(currentYear)년 여름학기"]
         }
         return semester
     }
     
     func updateSelectedSemester(with semester: String) {
         self.selectedSemester = semester
+    }
+    
+    func saveTimetable() {
+        coreDataManager.saveTimetable(name: name,
+                                      semester: selectedSemester)
     }
     
 }
