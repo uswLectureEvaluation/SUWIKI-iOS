@@ -14,22 +14,27 @@ class SelectMajorViewController: UIViewController {
 
     var viewModel = SelectMajorViewModel()
     
+    private let emptyLabel = UILabel().then {
+        $0.text = ""
+    }
+    
     private let tableView = UITableView(frame: .zero, style: .insetGrouped).then {
+        $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
         $0.register(cellType: MajorCell.self)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
-        addSubView()
-        setUpTableView()
+        setupUI()
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationSetUp()
+        setupNavigationBar()
     }
     
-    func navigationSetUp() {
+    private func setupNavigationBar() {
         self.navigationItem.title = "학과 선택"
         self.navigationController?.navigationBar.backgroundColor = .systemGray6
         self.navigationItem.largeTitleDisplayMode = .always
@@ -47,17 +52,26 @@ class SelectMajorViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
     }
     
-    func addSubView() {
+    func setupUI() {
+        self.view.addSubview(self.emptyLabel)
         self.view.addSubview(self.tableView)
     }
 
-    func setUpTableView() {
-        self.tableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
-            $0.bottom.equalToSuperview()
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
+    func setupTableView() {
+        self.emptyLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(0)
         }
+        
+        self.tableView.snp.makeConstraints {
+            $0.top.equalTo(self.emptyLabel.snp.bottom).offset(16)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
