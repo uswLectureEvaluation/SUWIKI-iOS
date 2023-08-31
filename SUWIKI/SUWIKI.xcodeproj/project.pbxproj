@@ -16,6 +16,8 @@
 		AF08A8D82A9F0736005C3D00 /* AddTimetableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8D72A9F0736005C3D00 /* AddTimetableViewModel.swift */; };
 		AF08A8DA2A9F2BF6005C3D00 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8D92A9F2BF6005C3D00 /* UITextField+.swift */; };
 		AF08A8DC2A9F6C5E005C3D00 /* TimetableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8DB2A9F6C5D005C3D00 /* TimetableListViewController.swift */; };
+		AF08A8DF2A9F6D15005C3D00 /* TimetableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8DE2A9F6D15005C3D00 /* TimetableListCell.swift */; };
+		AF08A8E12A9F6E63005C3D00 /* TimetableListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8E02A9F6E63005C3D00 /* TimetableListViewModel.swift */; };
 		AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */; };
 		AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2586CA2A8F628E00A61F8E /* UIImage+.swift */; };
 		AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */; };
@@ -75,6 +77,8 @@
 		AF08A8D72A9F0736005C3D00 /* AddTimetableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimetableViewModel.swift; sourceTree = "<group>"; };
 		AF08A8D92A9F2BF6005C3D00 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		AF08A8DB2A9F6C5D005C3D00 /* TimetableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableListViewController.swift; sourceTree = "<group>"; };
+		AF08A8DE2A9F6D15005C3D00 /* TimetableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableListCell.swift; sourceTree = "<group>"; };
+		AF08A8E02A9F6E63005C3D00 /* TimetableListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableListViewModel.swift; sourceTree = "<group>"; };
 		AF134A9FE8BDA7A46433D3B7 /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
 		AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseEmptyView.swift; sourceTree = "<group>"; };
 		AF2586CA2A8F628E00A61F8E /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
@@ -142,6 +146,14 @@
 				BE7E63F687FFE57937A7F6FC /* Pods_SUWIKI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF08A8DD2A9F6CD2005C3D00 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF08A8DE2A9F6D15005C3D00 /* TimetableListCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		AF2586CC2A909AF800A61F8E /* Model */ = {
@@ -304,6 +316,7 @@
 				AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */,
 				AF08A8D52A9DE1EE005C3D00 /* AddTimetableViewController.swift */,
 				AF08A8DB2A9F6C5D005C3D00 /* TimetableListViewController.swift */,
+				AF08A8DD2A9F6CD2005C3D00 /* Cell */,
 			);
 			path = Timetable;
 			sourceTree = "<group>";
@@ -323,6 +336,7 @@
 			children = (
 				AFEC86952A37712A008C5781 /* TimetableViewModel.swift */,
 				AF08A8D72A9F0736005C3D00 /* AddTimetableViewModel.swift */,
+				AF08A8E02A9F6E63005C3D00 /* TimetableListViewModel.swift */,
 			);
 			path = Timetable;
 			sourceTree = "<group>";
@@ -490,6 +504,7 @@
 				AF057A162A77F365004577E7 /* CoreDataManager+Read.swift in Sources */,
 				AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */,
 				AF057A1A2A77F375004577E7 /* CoreDataManager+Delete.swift in Sources */,
+				AF08A8E12A9F6E63005C3D00 /* TimetableListViewModel.swift in Sources */,
 				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
 				AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */,
 				AF08A8DC2A9F6C5E005C3D00 /* TimetableListViewController.swift in Sources */,
@@ -501,6 +516,7 @@
 				AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */,
 				AFE18F1A2A271755009D4D58 /* Major.swift in Sources */,
 				AF4E41F02A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld in Sources */,
+				AF08A8DF2A9F6D15005C3D00 /* TimetableListCell.swift in Sources */,
 				AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */,
 				AFF9DE902A34821800CCB1D2 /* TimetableCourse.swift in Sources */,
 				AF08A8DA2A9F2BF6005C3D00 /* UITextField+.swift in Sources */,
