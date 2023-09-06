@@ -10,13 +10,35 @@ import CoreData
 
 extension CoreDataManager {
     
-    func fetchTimetable() {
+    /// func fetchTimetableList: Core Data에 저장된 Timetable List를 fetch합니다.
+    func fetchTimetableList() -> [Timetable] {
+        var timetable: [Timetable] = []
         if let context = context {
             do {
-                let result = try context.fetch(Timetable.fetchRequest())                
+                timetable = try context.fetch(Timetable.fetchRequest())
             } catch {
                 print("@Log - \(error.localizedDescription)")
             }
+        }
+        return timetable
+    }
+    
+    /// func fetchTimetable: Core Data에 저장된 Timetable을 fetch합니다.
+    func fetchTimetable(id: String) -> Timetable? {
+        var timetable: [Timetable] = []
+        if let context = context {
+            do {
+                let fetehRequest = Timetable.fetchRequest()
+                fetehRequest.predicate = NSPredicate(format: "id == %@", id)
+                timetable = try context.fetch(Timetable.fetchRequest())
+            } catch {
+                print("@Log - \(error.localizedDescription)")
+            }
+        }
+        if timetable.count > 0 {
+            return timetable[0]
+        } else {
+            return nil
         }
     }
     
