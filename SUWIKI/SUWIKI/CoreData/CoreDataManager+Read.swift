@@ -26,15 +26,22 @@ extension CoreDataManager {
     /// func fetchTimetable: Core Data에 저장된 Timetable을 fetch합니다.
     func fetchTimetable(id: String) -> Timetable? {
         var timetable: [Timetable] = []
+        print("@Log id - \(id)")
         if let context = context {
             do {
                 let fetehRequest = Timetable.fetchRequest()
                 fetehRequest.predicate = NSPredicate(format: "id == %@", id)
-                timetable = try context.fetch(Timetable.fetchRequest())
+                timetable = try context.fetch(fetehRequest)
+                
             } catch {
                 print("@Log - \(error.localizedDescription)")
             }
         }
+        for i in 0..<timetable.count {
+            print("@Log fetch - \(timetable[i].id) - \(timetable[i].name)")
+        }
+        
+        
         if timetable.count > 0 {
             return timetable[0]
         } else {
