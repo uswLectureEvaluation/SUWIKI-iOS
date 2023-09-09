@@ -21,6 +21,7 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
         $0.register(cellType: TimetableListCell.self)
     }
     
+    weak var delegate: TimetableDelegate?
     
     let viewModel = TimetableListViewModel()
     
@@ -108,6 +109,12 @@ extension TimetableListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.updateTimetable(index: indexPath.row)
+        self.dismiss(animated: true)
+        delegate?.updateTimetable()
     }
     
 }
