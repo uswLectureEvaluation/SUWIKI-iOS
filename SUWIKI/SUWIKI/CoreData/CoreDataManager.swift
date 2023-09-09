@@ -35,49 +35,23 @@ final class CoreDataManager {
     func handleCoreDataError(_ error: Error) {
         switch error {
         case CoreDataError.batchInsertError:
-            print("@Log - BatchInsert Error")
+            print("@Log - Core Data BatchInsert Error")
         case CoreDataError.entityError:
-            print("@Log - Entity Error")
+            print("@Log - Core Data Entity Error")
         case CoreDataError.contextError:
-            print("@Log - Context Error")
+            print("@Log - Core Data Context Error")
         case CoreDataError.fetchError:
-            print("@Log - Fetch Error")
+            print("@Log - Core Data Fetch Error")
         case CoreDataError.saveError:
-            print("@Log - Save Error")
+            print("@Log - Core Data Save Error")
         case CoreDataError.deleteError:
-            print("@Log - Delete Error")
+            print("@Log - Core Data Delete Error")
         default:
             print("@Log - Other Error: \(error)")
         }
     }
     
     // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
-    /// func getFirebaseCourseFromCoreData: 파이어베이스에서 로컬로 저장한 데이터를 불러옵니다.
-    /// return: [FirebaseCourse]
-    func getFirebaseCourseFromCoreData() -> [FirebaseCourse] {
-        var course: [FirebaseCourse] = []
-        if let context = context {
-            do {
-                course = try context.fetch(FirebaseCourse.fetchRequest())
-            } catch {
-                print("@Log getFirebaseCourseFromCoreData - \(error.localizedDescription)")
-            }
-        }
-        let sortedCourse = course.sorted {
-            $0.courseName! < $1.courseName!
-        }
-//        print("@Log sorted - \(sortedCourse)")
-//        let tempMajor: [String] = course.filter({ $0.major != nil }).map {$0.major!}
-//        let major = Set(tempMajor).sorted { $0 < $1 }
-//        print(major)
-        
-        return sortedCourse
-    }
-    
-    /// func getMajorFromCoreData: 학과 선택에 필요한
-//    func getMajorFromCoreData() -> [String] {
-//        var course: [FirebaseCourse]
-//    }
     
     func getFirebaseTemp() -> [FirebaseCourse] {
         var course: [FirebaseCourse] = []
