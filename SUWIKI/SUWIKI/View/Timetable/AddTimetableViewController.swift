@@ -124,7 +124,7 @@ class AddTimetableViewController: UIViewController {
         semesterPickerView.dataSource = self
         semesterPickerView.selectRow(1, inComponent: 0, animated: false)
         timetableNameTextField.becomeFirstResponder()
-        addButton.addAction(UIAction { _ in self.addButtonTapped() },
+        addButton.addAction(UIAction { [weak self] _ in self?.addButtonTapped() },
                             for: .touchUpInside)
     }
     
@@ -155,7 +155,7 @@ class AddTimetableViewController: UIViewController {
 extension AddTimetableViewController {
     
     func addButtonTapped() {
-        viewModel.saveTimetable()
+        viewModel.addTimetable()
         dismiss(animated: true)
     }
     
