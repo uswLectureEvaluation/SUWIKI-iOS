@@ -12,7 +12,7 @@ import Elliotable
 import SnapKit
 import Then
 
-class TimetableViewController: UIViewController {
+class TimetableViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var timetable: Elliotable!
     
@@ -32,12 +32,12 @@ class TimetableViewController: UIViewController {
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 12.0
         $0.backgroundColor = .white
-        $0.text = "2023.12 대규모 업데이트"
         $0.textAlignment = .left
         $0.textColor = .black
     }
     
-//    var addCourseController: AddCourseViewController?
+    let timetableEmptyView = TimetableEmptyView()
+    
     let dayString: [String] = ["월", "화", "수", "목", "금", "이러닝"]
     var viewModel = TimetableViewModel()
     var viewModel1 = InitAppViewModel()
@@ -45,11 +45,29 @@ class TimetableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getCourse()
-        setupNavigationBar()
+        viewModel.updateCourse()
+        viewModel.updateTimetable()
+        binding()
         initTimetable()
+        setupNavigationBar()
         setObserver()
-
+        setupUI()
+    }
+    
+    private func binding() {
+        viewModel.$timetableTitle
+            .receive(on: RunLoop.main)
+            .sink { title in
+                self.timetableTitle.text = title
+            }
+            .store(in: &cancellables)
+        viewModel.$timetableIsEmpty
+            .receive(on: RunLoop.main)
+            .sink { isEmpty in
+                self.timetableEmptyView.isHidden = !isEmpty
+                self.timetable.isHidden = isEmpty
+            }
+            .store(in: &cancellables)
     }
     
     func setObserver() {
@@ -57,10 +75,43 @@ class TimetableViewController: UIViewController {
                                                selector: #selector(reloadCourse),
                                                name: Notification.Name("addCourse"),
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(dismissObserver),
+                                               name: Notification.Name(rawValue: "timetableListDismiss")
+                                               , object: nil)
+    }
+    
+    private func setupUI() {
+        self.view.addSubview(timetableEmptyView)
+        self.timetableEmptyView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(100)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-80)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-15)
+        }
+        self.timetableEmptyView.addButton.addAction(UIAction { [weak self] _ in self?.viewModel.addTimetable() },
+                                                    for: .touchUpInside)
+        
+        self.view.addSubview(timetableTitleBackground)
+        self.timetableTitleBackground.addSubview(timetableTitle)
+        
+        self.timetableTitleBackground.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            $0.leading.equalToSuperview().offset(15)
+            $0.trailing.equalToSuperview().offset(-15)
+            $0.height.equalTo(60)
+        }
+
+        self.timetableTitle.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(timetableTitleBackground.snp.leading).offset(10)
+            $0.trailing.equalTo(timetableTitleBackground.snp.trailing).offset(-10)
+        }
+        
+        self.timetableTitle.text = viewModel.timetableTitle
     }
     
     private func setupNavigationBar() {
-//        self.title = "시간표 추가시간표 추가시간표 추가시간표 추가"
         self.navigationController?.navigationBar.tintColor = UIColor.primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -88,26 +139,12 @@ class TimetableViewController: UIViewController {
 //        self.navigationItem.leftBarButtonItem = title
         self.navigationItem.leftBarButtonItem = testButton
 
-        self.view.addSubview(timetableTitleBackground)
-        timetableTitleBackground.addSubview(timetableTitle)
-        
-        self.timetableTitleBackground.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
-            $0.leading.equalToSuperview().offset(15)
-            $0.trailing.equalToSuperview().offset(-15)
-            $0.height.equalTo(60)
-        }
 
-        self.timetableTitle.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(timetableTitleBackground.snp.leading).offset(10)
-            $0.trailing.equalTo(timetableTitleBackground.snp.trailing).offset(-10)
-        }
     }
     
     @objc
     func testMethod() {
-        viewModel.coreDataManager.fetchTimetable()
+//        viewModel.coreDataManager.fetchTimetable()
     }
     
     @objc
@@ -157,8 +194,13 @@ class TimetableViewController: UIViewController {
     }
     
     @objc
+    func dismissObserver() {
+        print("@Log dismiss")
+    }
+    
+    @objc
     func reloadCourse() {
-        viewModel.getCourse()
+        viewModel.updateCourse()
         timetable.reloadData()
     }
     
@@ -172,11 +214,15 @@ class TimetableViewController: UIViewController {
     }
     
     func listButtonTapped() {
-        let listVC = UINavigationController(rootViewController: TimetableListViewController())
-        if let sheet = listVC.sheetPresentationController {
+        let listVC = TimetableListViewController()
+        listVC.delegate = self
+        
+        let listNC = UINavigationController(rootViewController: listVC)
+        if let sheet = listNC.sheetPresentationController {
             sheet.prefersGrabberVisible = true
         }
-        self.present(listVC, animated: true)
+        
+        self.present(listNC, animated: true)
     }
     
     func initTimetable() {
@@ -209,9 +255,12 @@ class TimetableViewController: UIViewController {
     
 }
 
-extension TimetableViewController: ElliotableDelegate, ElliotableDataSource {
+extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, TimetableDelegate {
     
     func updateTimetable() {
+        print("@Log - Update")
+        viewModel.updateCourse()
+        viewModel.updateTimetable()
         timetable.reloadData()
     }
     
@@ -257,15 +306,6 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource {
 
 }
 
-
-///MARK: Todo
-///이후 수정될 AddCourse와 연결해야 함.
-//    func bind() {
-//        addCourseController.isFinished
-//            .receive(on: DispatchQueue.main)
-//            .sink { _ in
-//                self.viewModel.getCourse()
-//                self.timetable.reloadData()
-//            }
-//            .store(in: &cancellables)
-//    }
+protocol TimetableDelegate: AnyObject {
+    func updateTimetable()
+}
