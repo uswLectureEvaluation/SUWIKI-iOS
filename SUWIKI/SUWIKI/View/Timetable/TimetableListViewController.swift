@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 import Then
@@ -22,18 +23,37 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
     }
     
     weak var delegate: TimetableDelegate?
-    
     let viewModel = TimetableListViewModel()
+    private var cancellables: Set<AnyCancellable> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
+        binding()
         setupUI()
         setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "timetableListDismiss"),
+                                        object: nil)
+//        NotificationCenter.default.post(name: Notification.Name("addCourse"),
+//                                        object: nil)
+    }
+    
+    func binding() {
+        viewModel.$timetable
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                print("@Log binding")
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     private func setupNavigationBar() {
@@ -90,6 +110,21 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
         let addVC = AddTimetableViewController(viewModel: AddTimetableViewModel())
         self.navigationController?.pushViewController(addVC, animated: true)
     }
+    
+    private func customAlert(index: Int) {
+        let alertController = UIAlertController(
+            title: "시간표를 삭제하시겠어요?",
+            message: "",
+            preferredStyle: .alert
+        )
+        let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] _ in
+            self?.viewModel.deleteTimetable(index: index)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
 
 }
 
@@ -104,6 +139,8 @@ extension TimetableListViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(for: indexPath) as TimetableListCell
         cell.semesterLabel.text = viewModel.timetable[indexPath.row].semester
         cell.titleLabel.text = viewModel.timetable[indexPath.row].name
+        cell.removeButton.addAction(UIAction { [weak self] _ in self?.customAlert(index: indexPath.row)},
+                                    for: .touchUpInside)
         return cell
     }
     
