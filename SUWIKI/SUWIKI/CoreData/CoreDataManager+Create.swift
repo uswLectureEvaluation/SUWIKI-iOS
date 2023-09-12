@@ -10,10 +10,10 @@ import CoreData
 
 extension CoreDataManager {
     
-    /// func saveTimetable : 새로운 시간표를 생성합니다.
+    /// func addTimetable : 새로운 시간표를 생성합니다.
     /// - Parameter name : 시간표 명
     /// - Parameter semester : 학기
-    func saveTimetable(name: String, semester: String) {
+    func addTimeTable(name: String, semester: String) {
         guard let context = context else { return }
         guard let entity = NSEntityDescription.entity(forEntityName: "Timetable", in: context) else { return }
         let timetableEntity = NSManagedObject(entity: entity, insertInto: context)
