@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xgE-Xq-gfn">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -14,15 +14,15 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="TimetableViewController" customModule="SUWIKI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oXf-ad-Lh2" customClass="Elliotable" customModule="Elliotable">
-                                <rect key="frame" x="15" y="193" width="363" height="545"/>
+                                <rect key="frame" x="15" y="194" width="345" height="504"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Wt-Ae-aM4">
-                                <rect key="frame" x="15" y="192" width="363" height="1"/>
+                                <rect key="frame" x="15" y="193" width="345" height="1"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="xOZ-5B-yGy"/>
@@ -37,7 +37,7 @@
                             <constraint firstItem="9Wt-Ae-aM4" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="15" id="BgY-SF-UXT"/>
                             <constraint firstItem="oXf-ad-Lh2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="Q83-FA-gQD"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="oXf-ad-Lh2" secondAttribute="bottom" constant="80" id="iD2-4h-pie"/>
-                            <constraint firstItem="oXf-ad-Lh2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="90" id="nXB-RH-Mtn"/>
+                            <constraint firstItem="oXf-ad-Lh2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="100" id="nXB-RH-Mtn"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oXf-ad-Lh2" secondAttribute="trailing" constant="15" id="pWS-uw-J1M"/>
                         </constraints>
                     </view>
@@ -56,7 +56,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xgE-Xq-gfn" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="73n-ha-snj">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <rect key="frame" x="0.0" y="50" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
