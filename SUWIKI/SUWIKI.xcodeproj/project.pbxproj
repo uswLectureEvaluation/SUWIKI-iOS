@@ -25,9 +25,9 @@
 		AF2AADE02A89440900923A61 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDF2A89440900923A61 /* UISearchBar+.swift */; };
 		AF3C07482A349A3A00806AEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */; };
 		AF3C074B2A349A9700806AEE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF3C074A2A349A9700806AEE /* FirebaseAnalytics */; };
-		AF3C07502A34BF7400806AEE /* TempViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C074F2A34BF7400806AEE /* TempViewModel.swift */; };
 		AF3C07522A34C18D00806AEE /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AF3C07512A34C18D00806AEE /* FirebaseDatabase */; };
 		AF4E41F02A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF4E41EE2A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld */; };
+		AF5E2A9C2AAF6B8D006DEE02 /* TimetableEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */; };
 		AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */; };
 		AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */; };
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
@@ -86,8 +86,8 @@
 		AF2AADDD2A85412700923A61 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AF2AADDF2A89440900923A61 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+.swift"; sourceTree = "<group>"; };
 		AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		AF3C074F2A34BF7400806AEE /* TempViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempViewModel.swift; sourceTree = "<group>"; };
 		AF4E41EF2A7FEF4500954710 /* SuwikiTimetable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuwikiTimetable.xcdatamodel; sourceTree = "<group>"; };
+		AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableEmptyView.swift; sourceTree = "<group>"; };
 		AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewController.swift; sourceTree = "<group>"; };
 		AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
@@ -177,14 +177,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		AFD5CC082A3991E4008F95B7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				AF3C074F2A34BF7400806AEE /* TempViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		AFD5CC0A2A39920C008F95B7 /* InitApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +229,6 @@
 				AFF785BD2A932C0400B6D531 /* View */,
 				AFF785BE2A932C0A00B6D531 /* ViewModel */,
 				AFD5CC0A2A39920C008F95B7 /* InitApp */,
-				AFF9DE892A34817F00CCB1D2 /* TimeTable */,
 				AFEC86942A377067008C5781 /* Resources */,
 				AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */,
 				AFE18F052A1C8AC1009D4D58 /* Info.plist */,
@@ -312,6 +303,7 @@
 		AFF785C02A9331E200B6D531 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */,
 				AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */,
 				AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */,
 				AF08A8D52A9DE1EE005C3D00 /* AddTimetableViewController.swift */,
@@ -350,30 +342,6 @@
 				AFF785C82A949C5700B6D531 /* AddCourseViewModel.swift */,
 			);
 			path = AddCourse;
-			sourceTree = "<group>";
-		};
-		AFF9DE892A34817F00CCB1D2 /* TimeTable */ = {
-			isa = PBXGroup;
-			children = (
-				AFD5CC082A3991E4008F95B7 /* ViewModel */,
-				AFF9DE8B2A3481BB00CCB1D2 /* Model */,
-				AFF9DE8A2A3481A800CCB1D2 /* View */,
-			);
-			path = TimeTable;
-			sourceTree = "<group>";
-		};
-		AFF9DE8A2A3481A800CCB1D2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AFF9DE8B2A3481BB00CCB1D2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -525,7 +493,6 @@
 				AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */,
 				AFEC86962A37712A008C5781 /* TimetableViewModel.swift in Sources */,
 				AF2AADE02A89440900923A61 /* UISearchBar+.swift in Sources */,
-				AF3C07502A34BF7400806AEE /* TempViewModel.swift in Sources */,
 				AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */,
 				AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */,
 				AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */,
@@ -533,6 +500,7 @@
 				AF057A142A77F35C004577E7 /* CoreDataManager+Create.swift in Sources */,
 				AFF785C92A949C5700B6D531 /* AddCourseViewModel.swift in Sources */,
 				AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */,
+				AF5E2A9C2AAF6B8D006DEE02 /* TimetableEmptyView.swift in Sources */,
 				AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */,
 				AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */,
 				AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */,
