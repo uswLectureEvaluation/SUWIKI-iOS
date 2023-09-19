@@ -36,6 +36,9 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         $0.textColor = .black
     }
     
+    private var addButton = UIBarButtonItem()
+    private var listButton = UIBarButtonItem()
+    
     let timetableEmptyView = TimetableEmptyView()
     
     let dayString: [String] = ["월", "화", "수", "목", "금", "이러닝"]
@@ -45,7 +48,6 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.updateCourse()
         viewModel.updateTimetable()
         binding()
         initTimetable()
@@ -66,6 +68,11 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
             .sink { isEmpty in
                 self.timetableEmptyView.isHidden = !isEmpty
                 self.timetable.isHidden = isEmpty
+                if isEmpty {
+                    self.navigationItem.rightBarButtonItems = []
+                } else {
+                    self.navigationItem.rightBarButtonItems = [self.addButton, self.listButton]
+                }
             }
             .store(in: &cancellables)
     }
@@ -76,9 +83,9 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
                                                name: Notification.Name("addCourse"),
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(dismissObserver),
-                                               name: Notification.Name(rawValue: "timetableListDismiss")
-                                               , object: nil)
+                                               selector: #selector(timetableIsEmpty),
+                                               name: Notification.Name("timetableIsEmpty"),
+                                               object: nil)
     }
     
     private func setupUI() {
@@ -116,26 +123,15 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         let title = UIBarButtonItem(customView: navigationTitle)
-        let listButton = UIBarButtonItem(systemItem: .organize,
-                                         primaryAction: UIAction { [weak self] _ in self?.listButtonTapped()})
-        let addButton = UIBarButtonItem(systemItem: .add,
-                                        primaryAction: UIAction { [weak self] _ in self?.addButtonTapped() })
-//        let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"),
-//                                          style: .plain,
-//                                          target: self,
-//                                          action: #selector(addButtonTapped))
-//        let listButton = UIBarButtonItem(image: UIImage(systemName: "list.dash"),
-//                                         style: .plain,
-//                                         target: self,
-//                                         action: #selector(<#T##@objc method#>))
-//        let tempbutt =
+        listButton = UIBarButtonItem(systemItem: .organize,
+                                     primaryAction: UIAction { [weak self] _ in self?.listButtonTapped()})
+        addButton = UIBarButtonItem(systemItem: .add,
+                                    primaryAction: UIAction { [weak self] _ in self?.addButtonTapped() })
         
         let testButton = UIBarButtonItem(title: "test",
                                          style: .plain,
                                          target: self,
                                          action: #selector(tempMethod))
-        
-        self.navigationItem.rightBarButtonItems = [addButton, listButton]
 //        self.navigationItem.leftBarButtonItem = title
         self.navigationItem.leftBarButtonItem = testButton
 
@@ -194,8 +190,8 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
     }
     
     @objc
-    func dismissObserver() {
-        print("@Log dismiss")
+    func timetableIsEmpty() {
+        viewModel.timetableIsEmpty = true
     }
     
     @objc
