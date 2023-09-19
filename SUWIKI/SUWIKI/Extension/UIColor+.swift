@@ -33,4 +33,5 @@ extension UIColor {
         UIColor(red: 178/255, green: 190/255, blue: 195/255, alpha: 1.0), /* #b2bec3 */
         UIColor(red: 45/255, green: 52/255, blue: 54/255, alpha: 1.0) /* #2d3436 */
     ]
+    static let listTitleColor = UIColor(red: 51, green: 51, blue: 51, alpha: 1)
 }
