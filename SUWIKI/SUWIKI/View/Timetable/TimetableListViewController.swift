@@ -38,14 +38,6 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
         setupNavigationBar()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "timetableListDismiss"),
-                                        object: nil)
-//        NotificationCenter.default.post(name: Notification.Name("addCourse"),
-//                                        object: nil)
-    }
-    
     func binding() {
         viewModel.$timetable
             .receive(on: RunLoop.main)
@@ -118,7 +110,8 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
             preferredStyle: .alert
         )
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] _ in
-            self?.viewModel.deleteTimetable(index: index)
+            guard let self = self else { return }
+            self.viewModel.deleteTimetable(index: index, currentVC: self)
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         alertController.addAction(deleteAction)
