@@ -9,11 +9,16 @@ import Foundation
 
 import Firebase
 import CoreData
+import FirebaseDatabase
 
 class InitAppViewModel {
     
     let coreDataManager = CoreDataManager.shared
     private let ref = Database.database().reference()
+    
+    func courseUpdateCheck() {
+        
+    }
     
     func fetchFirebaseCourse() async {
         do {

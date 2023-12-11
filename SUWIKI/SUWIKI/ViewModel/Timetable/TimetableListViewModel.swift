@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 final class TimetableListViewModel {
     
     let coreDataManager = CoreDataManager.shared
     @Published var timetable: [Timetable] = CoreDataManager.shared.fetchTimetableList().reversed()
+    
     var timetableNumberOfRowsInSection: Int {
         return self.timetable.count
     }
@@ -27,8 +29,9 @@ final class TimetableListViewModel {
     /// 2. 배열 카운트 0 -> dismiss()
     /// 3. CoreData 삭제
     /// 4. if id == timetable.id라면 id 수정
+    /// 5. timetable = [] 면 id 없애고 아니면 first로 id 수정
     
-    func deleteTimetable(index: Int) {
+    func deleteTimetable(index: Int, currentVC: UIViewController) {
         let setId = UserDefaults.standard.value(forKey: "id") as? String
         let deleteId = timetable[index].id
         do {
@@ -40,9 +43,11 @@ final class TimetableListViewModel {
         if timetable.count == 0 {
             // dismiss()
             UserDefaults.standard.removeObject(forKey: "id")
+            NotificationCenter.default.post(name: Notification.Name("timetableIsEmpty"),
+                                            object: nil)
+            currentVC.dismiss(animated: true)
         } else if setId == deleteId {
             UserDefaults.standard.set(self.timetable.first?.id, forKey: "id")
         }
     }
-    
 }

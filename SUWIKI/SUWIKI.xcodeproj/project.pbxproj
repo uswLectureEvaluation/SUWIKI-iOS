@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A611AD5EF9CE19A401B24552 /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7E63F687FFE57937A7F6FC /* Pods_SUWIKI.framework */; };
+		4BFED44B0C7CFC818559A717 /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB09C8B7FFBECDB121894E8A /* Pods_SUWIKI.framework */; };
 		AF057A142A77F35C004577E7 /* CoreDataManager+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */; };
 		AF057A162A77F365004577E7 /* CoreDataManager+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A152A77F365004577E7 /* CoreDataManager+Read.swift */; };
 		AF057A182A77F36E004577E7 /* CoreDataManager+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A172A77F36E004577E7 /* CoreDataManager+Update.swift */; };
@@ -24,8 +24,6 @@
 		AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDD2A85412700923A61 /* UIColor+.swift */; };
 		AF2AADE02A89440900923A61 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDF2A89440900923A61 /* UISearchBar+.swift */; };
 		AF3C07482A349A3A00806AEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */; };
-		AF3C074B2A349A9700806AEE /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AF3C074A2A349A9700806AEE /* FirebaseAnalytics */; };
-		AF3C07522A34C18D00806AEE /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AF3C07512A34C18D00806AEE /* FirebaseDatabase */; };
 		AF4E41F02A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF4E41EE2A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld */; };
 		AF5E2A9C2AAF6B8D006DEE02 /* TimetableEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */; };
 		AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */; };
@@ -68,7 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0BB131572D389638FAF026DB /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
+		0D53A0FAC7E169AF0C711FE6 /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
 		AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Create.swift"; sourceTree = "<group>"; };
 		AF057A152A77F365004577E7 /* CoreDataManager+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Read.swift"; sourceTree = "<group>"; };
 		AF057A172A77F36E004577E7 /* CoreDataManager+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Update.swift"; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		AF08A8DB2A9F6C5D005C3D00 /* TimetableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableListViewController.swift; sourceTree = "<group>"; };
 		AF08A8DE2A9F6D15005C3D00 /* TimetableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableListCell.swift; sourceTree = "<group>"; };
 		AF08A8E02A9F6E63005C3D00 /* TimetableListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableListViewModel.swift; sourceTree = "<group>"; };
-		AF134A9FE8BDA7A46433D3B7 /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
 		AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseEmptyView.swift; sourceTree = "<group>"; };
 		AF2586CA2A8F628E00A61F8E /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trashCodeStorage.swift; sourceTree = "<group>"; };
@@ -114,7 +111,8 @@
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCourse.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
-		BE7E63F687FFE57937A7F6FC /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDAFBF000B1F7B7D1C719096 /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
+		FB09C8B7FFBECDB121894E8A /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,9 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF3C07522A34C18D00806AEE /* FirebaseDatabase in Frameworks */,
-				AF3C074B2A349A9700806AEE /* FirebaseAnalytics in Frameworks */,
-				A611AD5EF9CE19A401B24552 /* Pods_SUWIKI.framework in Frameworks */,
+				4BFED44B0C7CFC818559A717 /* Pods_SUWIKI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,18 +130,10 @@
 		63B3105FE151B90524E772B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AF134A9FE8BDA7A46433D3B7 /* Pods-SUWIKI.debug.xcconfig */,
-				0BB131572D389638FAF026DB /* Pods-SUWIKI.release.xcconfig */,
+				CDAFBF000B1F7B7D1C719096 /* Pods-SUWIKI.debug.xcconfig */,
+				0D53A0FAC7E169AF0C711FE6 /* Pods-SUWIKI.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		82A5703286A49A8C319DE438 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BE7E63F687FFE57937A7F6FC /* Pods_SUWIKI.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AF08A8DD2A9F6CD2005C3D00 /* Cell */ = {
@@ -206,7 +194,7 @@
 				AFE18EF32A1C8ABF009D4D58 /* SUWIKI */,
 				AFE18EF22A1C8ABF009D4D58 /* Products */,
 				63B3105FE151B90524E772B5 /* Pods */,
-				82A5703286A49A8C319DE438 /* Frameworks */,
+				BE6B61D4B333D72D1DFF9205 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -344,6 +332,14 @@
 			path = AddCourse;
 			sourceTree = "<group>";
 		};
+		BE6B61D4B333D72D1DFF9205 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB09C8B7FFBECDB121894E8A /* Pods_SUWIKI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,12 +347,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFE18F082A1C8AC1009D4D58 /* Build configuration list for PBXNativeTarget "SUWIKI" */;
 			buildPhases = (
-				BC056127E6816DB584C7F3F0 /* [CP] Check Pods Manifest.lock */,
+				838077A8F1EF757C2DC0747B /* [CP] Check Pods Manifest.lock */,
 				AFE18EED2A1C8ABF009D4D58 /* Sources */,
 				AFE18EEE2A1C8ABF009D4D58 /* Frameworks */,
 				AFE18EEF2A1C8ABF009D4D58 /* Resources */,
 				AFE18F272A271C69009D4D58 /* Embed Frameworks */,
-				01180C0C147BC9978AAB9B1C /* [CP] Embed Pods Frameworks */,
+				F28B94035E33B1982E5257FC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,8 +360,6 @@
 			);
 			name = SUWIKI;
 			packageProductDependencies = (
-				AF3C074A2A349A9700806AEE /* FirebaseAnalytics */,
-				AF3C07512A34C18D00806AEE /* FirebaseDatabase */,
 			);
 			productName = SUWIKI;
 			productReference = AFE18EF12A1C8ABF009D4D58 /* SUWIKI.app */;
@@ -422,24 +416,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01180C0C147BC9978AAB9B1C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BC056127E6816DB584C7F3F0 /* [CP] Check Pods Manifest.lock */ = {
+		838077A8F1EF757C2DC0747B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -459,6 +436,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F28B94035E33B1982E5257FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -639,7 +633,7 @@
 		};
 		AFE18F092A1C8AC1009D4D58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF134A9FE8BDA7A46433D3B7 /* Pods-SUWIKI.debug.xcconfig */;
+			baseConfigurationReference = CDAFBF000B1F7B7D1C719096 /* Pods-SUWIKI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -670,7 +664,7 @@
 		};
 		AFE18F0A2A1C8AC1009D4D58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BB131572D389638FAF026DB /* Pods-SUWIKI.release.xcconfig */;
+			baseConfigurationReference = 0D53A0FAC7E169AF0C711FE6 /* Pods-SUWIKI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -732,19 +726,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		AF3C074A2A349A9700806AEE /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3C07492A349A9600806AEE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		AF3C07512A34C18D00806AEE /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AF3C07492A349A9600806AEE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AF4E41EE2A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld */ = {

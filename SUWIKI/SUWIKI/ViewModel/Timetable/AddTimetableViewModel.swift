@@ -39,8 +39,8 @@ final class AddTimetableViewModel {
         self.selectedSemester = semester
     }
     
-    func saveTimetable() {
-        coreDataManager.saveTimetable(name: name,
+    func addTimetable() {
+        coreDataManager.addTimeTable(name: name,
                                       semester: selectedSemester)
     }
     

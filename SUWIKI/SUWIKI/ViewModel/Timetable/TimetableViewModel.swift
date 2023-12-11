@@ -26,19 +26,21 @@ final class TimetableViewModel {
 
     func fetchTimetable() {
         let timetable = coreDataManager.fetchTimetableList()
+        updateCourse()
         self.timetableIsEmpty = timetable.isEmpty
     }
     
     func addTimetable() {
         coreDataManager.addTimeTable(name: "시간표", semester: calculateSemester())
         updateTimetable()
-        self.timetableIsEmpty = false
+        updateCourse()
     }
     
     func updateTimetable() {
         guard let id = UserDefaults.standard.value(forKey: "id") as? String,
               let title = coreDataManager.fetchTimetable(id: id)?.name else {
             self.timetableTitle = "시간표"
+            self.timetableIsEmpty = true
             return
         }
         self.timetableTitle = title
@@ -46,6 +48,7 @@ final class TimetableViewModel {
     
     func updateCourse() {
         guard let id = UserDefaults.standard.value(forKey: "id") as? String else {
+            self.timetableIsEmpty = true
             return
         }
         let course = coreDataManager.fetchCourse(id: id) // userdefault.get
@@ -61,6 +64,7 @@ final class TimetableViewModel {
                                      backgroundColor: .timetableColors[Int(course[i].timetableColor)])
             elliottEvent.append(event)
         }
+        self.timetableIsEmpty = false
     }
     
     func deleteCourse(uuid: String) {
