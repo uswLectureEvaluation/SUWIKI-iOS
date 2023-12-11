@@ -12,7 +12,7 @@ import Elliotable
 import SnapKit
 import Then
 
-class TimetableViewController: UIViewController {
+class TimetableViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var timetable: Elliotable!
     
@@ -32,12 +32,15 @@ class TimetableViewController: UIViewController {
         $0.layer.masksToBounds = true
         $0.layer.cornerRadius = 12.0
         $0.backgroundColor = .white
-        $0.text = "2023.12 대규모 업데이트"
         $0.textAlignment = .left
         $0.textColor = .black
     }
     
-//    var addCourseController: AddCourseViewController?
+    private var addButton = UIBarButtonItem()
+    private var listButton = UIBarButtonItem()
+    
+    let timetableEmptyView = TimetableEmptyView()
+    
     let dayString: [String] = ["월", "화", "수", "목", "금", "이러닝"]
     var viewModel = TimetableViewModel()
     var viewModel1 = InitAppViewModel()
@@ -45,10 +48,33 @@ class TimetableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getCourse()
-        navigationSetUp()
+        viewModel.updateTimetable()
+        binding()
         initTimetable()
+        setupNavigationBar()
         setObserver()
+        setupUI()
+    }
+    
+    private func binding() {
+        viewModel.$timetableTitle
+            .receive(on: RunLoop.main)
+            .sink { title in
+                self.timetableTitle.text = title
+            }
+            .store(in: &cancellables)
+        viewModel.$timetableIsEmpty
+            .receive(on: RunLoop.main)
+            .sink { isEmpty in
+                self.timetableEmptyView.isHidden = !isEmpty
+                self.timetable.isHidden = isEmpty
+                if isEmpty {
+                    self.navigationItem.rightBarButtonItems = []
+                } else {
+                    self.navigationItem.rightBarButtonItems = [self.addButton, self.listButton]
+                }
+            }
+            .store(in: &cancellables)
     }
     
     func setObserver() {
@@ -56,23 +82,26 @@ class TimetableViewController: UIViewController {
                                                selector: #selector(reloadCourse),
                                                name: Notification.Name("addCourse"),
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(timetableIsEmpty),
+                                               name: Notification.Name("timetableIsEmpty"),
+                                               object: nil)
     }
     
-    func navigationSetUp() {
-//        self.title = "시간표 추가시간표 추가시간표 추가시간표 추가"
-        self.navigationController?.navigationBar.tintColor = UIColor.primaryColor
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    private func setupUI() {
+        self.view.addSubview(timetableEmptyView)
+        self.timetableEmptyView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(100)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-80)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(15)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-15)
+        }
+        self.timetableEmptyView.addButton.addAction(UIAction { [weak self] _ in self?.viewModel.addTimetable() },
+                                                    for: .touchUpInside)
         
-        let rightButton = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addButtonTapped))
-        let title = UIBarButtonItem(customView: navigationTitle)
-
-        self.navigationItem.rightBarButtonItem = rightButton
-        self.navigationItem.leftBarButtonItem = title
-
         self.view.addSubview(timetableTitleBackground)
-        timetableTitleBackground.addSubview(timetableTitle)
-
+        self.timetableTitleBackground.addSubview(timetableTitle)
+        
         self.timetableTitleBackground.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.leading.equalToSuperview().offset(15)
@@ -85,42 +114,111 @@ class TimetableViewController: UIViewController {
             $0.leading.equalTo(timetableTitleBackground.snp.leading).offset(10)
             $0.trailing.equalTo(timetableTitleBackground.snp.trailing).offset(-10)
         }
+        
+        self.timetableTitle.text = viewModel.timetableTitle
+    }
+    
+    private func setupNavigationBar() {
+        self.navigationController?.navigationBar.tintColor = UIColor.primaryColor
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        let title = UIBarButtonItem(customView: navigationTitle)
+        listButton = UIBarButtonItem(systemItem: .organize,
+                                     primaryAction: UIAction { [weak self] _ in self?.listButtonTapped()})
+        addButton = UIBarButtonItem(systemItem: .add,
+                                    primaryAction: UIAction { [weak self] _ in self?.addButtonTapped() })
+        
+        let testButton = UIBarButtonItem(title: "test",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(tempMethod))
+//        self.navigationItem.leftBarButtonItem = title
+        self.navigationItem.leftBarButtonItem = testButton
+
+
+    }
+    
+    @objc
+    func testMethod() {
+//        viewModel.coreDataManager.fetchTimetable()
     }
     
     @objc
     func tempMethod() {
-        
-//        viewModel.getCourse()
-//        viewModel1.fetchFirebaseCourse { course in
-//            if let course = course {
-//                self.viewModel1.saveCourseToCoreData(course: course)
-//            }
+//        await viewModel1.saveCourseToCoreData(course: viewModel1.fetchFirebaseCourse() ?? [])
+//        viewModel.coreDataManager.saveTimetable(name: "새로운 시간표", semester: "2023-1")
+        Task {
+            await tempFetch()
+        }
+//        do {
+//            viewModel1.fetchFirebaseCourse()
+//        } catch {
 //
 //        }
+//        viewModel1.fetchFirebaseCourse { course in
+//            if let course = course {
+//                await self.viewModel1.saveCourseToCoreData(course: course)
+//            }
+//        }
+    }
+    
+    func tempFetch() async {
+        await viewModel1.fetchFirebaseCourse()
+    }
+    
+    func tempAlert() {
+        let alertController = UIAlertController(title: "텍스트 입력", message: nil, preferredStyle: .alert)
         
-//        viewModel.check1()
-//        viewModel1.checkCoreDataCount()
-//        elliottEvent = viewModel.getCourse()
+        alertController.addTextField { (textField) in
+            textField.placeholder = "텍스트를 입력하세요"
+        }
+        
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            if let textField = alertController.textFields?.first {
+                if let userInput = textField.text {
+                    // 입력된 텍스트 사용 (userInput)
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc
+    func timetableIsEmpty() {
+        viewModel.timetableIsEmpty = true
     }
     
     @objc
     func reloadCourse() {
-        viewModel.getCourse()
+        viewModel.updateCourse()
         timetable.reloadData()
     }
     
-    @objc
+    
     func addButtonTapped() {
         let majorVC = UINavigationController(rootViewController: SelectMajorViewController())
-        
-//        majorVC.navigationItem.largeTitleDisplayMode = .never
-        
         if let sheet = majorVC.sheetPresentationController {
             sheet.prefersGrabberVisible = true
         }
         self.present(majorVC, animated: true)
-//        let addCourseVC = UINavigationController(rootViewController: addCourseController)
-//        self.present(addCourseVC, animated: true)
+    }
+    
+    func listButtonTapped() {
+        let listVC = TimetableListViewController()
+        listVC.delegate = self
+        
+        let listNC = UINavigationController(rootViewController: listVC)
+        if let sheet = listNC.sheetPresentationController {
+            sheet.prefersGrabberVisible = true
+        }
+        
+        self.present(listNC, animated: true)
     }
     
     func initTimetable() {
@@ -153,9 +251,12 @@ class TimetableViewController: UIViewController {
     
 }
 
-extension TimetableViewController: ElliotableDelegate, ElliotableDataSource {
+extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, TimetableDelegate {
     
     func updateTimetable() {
+        print("@Log - Update")
+        viewModel.updateCourse()
+        viewModel.updateTimetable()
         timetable.reloadData()
     }
     
@@ -201,15 +302,6 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource {
 
 }
 
-
-///MARK: Todo
-///이후 수정될 AddCourse와 연결해야 함.
-//    func bind() {
-//        addCourseController.isFinished
-//            .receive(on: DispatchQueue.main)
-//            .sink { _ in
-//                self.viewModel.getCourse()
-//                self.timetable.reloadData()
-//            }
-//            .store(in: &cancellables)
-//    }
+protocol TimetableDelegate: AnyObject {
+    func updateTimetable()
+}

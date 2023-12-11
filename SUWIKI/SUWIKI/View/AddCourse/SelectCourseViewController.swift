@@ -38,15 +38,15 @@ class SelectCourseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
-        addSubView()
-        setUpTableView()
+        setupUI()
+        setupTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationSetUp()
+        setupNavigationBar()
     }
     
-    func navigationSetUp() {
+    private func setupNavigationBar() {
         self.navigationItem.title = viewModel.major
         
         searchController.searchBar.placeholder = "강의를 검색하세요!"
@@ -112,14 +112,14 @@ extension SelectCourseViewController: UISearchBarDelegate {
 //MARK: TableView
 extension SelectCourseViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func addSubView() {
+    func setupUI() {
         //MARK: searchBar를 addSubview하지 않으면 searchController가 출력되지 않는 버그 존재
         let searchBar = UISearchBar()
         self.view.addSubview(searchBar)
         self.view.addSubview(self.courseTableView)
     }
     
-    func setUpTableView() {
+    func setupTableView() {
         self.courseTableView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
             $0.bottom.equalToSuperview()

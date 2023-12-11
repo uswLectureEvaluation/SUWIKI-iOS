@@ -8,6 +8,15 @@
 import UIKit
 import CoreData
 
+enum CoreDataError: Error {
+    case batchInsertError
+    case entityError
+    case contextError
+    case saveError
+    case fetchError
+    case deleteError
+}
+
 final class CoreDataManager {
     
     // 싱글톤으로 만들기
@@ -23,33 +32,26 @@ final class CoreDataManager {
     // 엔터티 이름 (코어데이터에 저장된 객체)
     let modelName: String = "SuwikiTimetable"
     
-    // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
-    /// func getFirebaseCourseFromCoreData: 파이어베이스에서 로컬로 저장한 데이터를 불러옵니다.
-    /// return: [FirebaseCourse]
-    func getFirebaseCourseFromCoreData() -> [FirebaseCourse] {
-        var course: [FirebaseCourse] = []
-        if let context = context {
-            do {
-                course = try context.fetch(FirebaseCourse.fetchRequest())
-            } catch {
-                print("@Log getFirebaseCourseFromCoreData - \(error.localizedDescription)")
-            }
+    func handleCoreDataError(_ error: Error) {
+        switch error {
+        case CoreDataError.batchInsertError:
+            print("@Log - Core Data BatchInsert Error")
+        case CoreDataError.entityError:
+            print("@Log - Core Data Entity Error")
+        case CoreDataError.contextError:
+            print("@Log - Core Data Context Error")
+        case CoreDataError.fetchError:
+            print("@Log - Core Data Fetch Error")
+        case CoreDataError.saveError:
+            print("@Log - Core Data Save Error")
+        case CoreDataError.deleteError:
+            print("@Log - Core Data Delete Error")
+        default:
+            print("@Log - Other Error: \(error)")
         }
-        let sortedCourse = course.sorted {
-            $0.courseName! < $1.courseName!
-        }
-//        print("@Log sorted - \(sortedCourse)")
-//        let tempMajor: [String] = course.filter({ $0.major != nil }).map {$0.major!}
-//        let major = Set(tempMajor).sorted { $0 < $1 }
-//        print(major)
-        
-        return sortedCourse
     }
     
-    /// func getMajorFromCoreData: 학과 선택에 필요한
-//    func getMajorFromCoreData() -> [String] {
-//        var course: [FirebaseCourse]
-//    }
+    // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
     
     func getFirebaseTemp() -> [FirebaseCourse] {
         var course: [FirebaseCourse] = []
@@ -66,34 +68,7 @@ final class CoreDataManager {
         return course
     }
     
-    /// func fetchCourse: Core Data에 저장된 Course를 fetch합니다.
-    func fetchCourse() -> [Course] {
-        var course: [Course] = []
-        if let context = context {
-            do {
-                course = try context.fetch(Course.fetchRequest())
-            } catch {
-                print("@Log - \(error.localizedDescription)")
-            }
-        }
-        return course
-    }
-    
-    func fetchCourseCount(major: String) -> Int {
-        var count = 0
-        if let context = context {
-            do {
-                let fetchRequest = FirebaseCourse.fetchRequest()
-                if major != "전체" {
-                    fetchRequest.predicate = NSPredicate(format: "major == %@", major)
-                }
-                count = try context.count(for: fetchRequest)
-            } catch {
-                print("@Log - \(error.localizedDescription)")
-            }
-        }
-        return count
-    }
+
     
     
     

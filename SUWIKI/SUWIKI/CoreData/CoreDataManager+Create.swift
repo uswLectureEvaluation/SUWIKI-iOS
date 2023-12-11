@@ -9,47 +9,81 @@ import Foundation
 import CoreData
 
 extension CoreDataManager {
-    // MARK: - [Create] 코어데이터에 데이터 생성하기
-    func saveFirebaseCourse(course: [FetchCourse]) {
-        if context != nil {
-            guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", in: context!) else {
-                return
-            }
-            for i in 0..<course.count {
-                // 외부에서 객체를 초기화할 경우 동일한 객체를 가리키기 때문에 하나만 저장이 됨.
-                let courseEntity = NSManagedObject(entity: entity, insertInto: context)
-                courseEntity.setValue(course[i].classNum, forKey: "classNum")
-                courseEntity.setValue(course[i].classification, forKey: "classification")
-                courseEntity.setValue(course[i].courseDay, forKey: "courseDay")
-                courseEntity.setValue(course[i].courseName, forKey: "courseName")
-                courseEntity.setValue(course[i].credit, forKey: "credit")
-                courseEntity.setValue(course[i].startTime, forKey: "startTime")
-                courseEntity.setValue(course[i].endTime, forKey: "endTime")
-                courseEntity.setValue(course[i].major, forKey: "major")
-                courseEntity.setValue(course[i].num, forKey: "year")
-                courseEntity.setValue(course[i].professor, forKey: "professor")
-                courseEntity.setValue(course[i].roomName, forKey: "roomName")
-                try? context?.save()
-            }
+    
+    /// func addTimetable : 새로운 시간표를 생성합니다.
+    /// - Parameter name : 시간표 명
+    /// - Parameter semester : 학기
+    func addTimeTable(name: String, semester: String) {
+        guard let context = context else { return }
+        guard let entity = NSEntityDescription.entity(forEntityName: "Timetable", in: context) else { return }
+        let timetableEntity = NSManagedObject(entity: entity, insertInto: context)
+        let id = UUID().uuidString
+        timetableEntity.setValue(id,  forKey: "id")
+        timetableEntity.setValue(name, forKey: "name")
+        timetableEntity.setValue(semester, forKey: "semester")
+        UserDefaults.standard.set(id, forKey: "id")
+        do {
+            try context.save()
+        } catch {
+            print("@Log - \(error.localizedDescription)")
         }
+        
     }
     
-    func saveTimetableCourse(course: TimetableCourse) {
-        print("@Log saveTimetableCourse")
-        if context != nil {
-            guard let entity = NSEntityDescription.entity(forEntityName: "Course", in: context!) else {
-                return
+    /// func saveFirebaseCourse: 파이어베이스에 저장된 데이터를 코어데이터에 저장합니다.
+    /// - Parameter course : [[String: Any]]
+    /// NSBatchInsertRequest Objects
+    func saveFirebaseCourse(course: [[String: Any]]) throws {
+        //    course: [[String: Any]]
+        guard let context = context else {
+            throw CoreDataError.contextError
+        }
+        guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", in: context) else {
+            throw CoreDataError.entityError
+        }
+
+        let batchInsertRequest = NSBatchInsertRequest(entity: entity, objects: course)
+        if let fetchResult = try? context.execute(batchInsertRequest),
+           let batchInsertResult = fetchResult as? NSBatchInsertResult,
+           let success = batchInsertResult.result as? Bool, success {
+            print("저장 성공!")
+            return
+        }
+        print("Batch Insert Error")
+        throw CoreDataError.batchInsertError
+    }
+    
+    /// func saveTimetableCourse: 선택된 시간표에 강의를 저장합니다.
+    /// - Parameter id : timetable id
+    /// - Parameter course : 추가할 강의
+    func saveCourse(id: String, course: TimetableCourse) throws {
+        guard let context = context else {
+            throw CoreDataError.contextError
+        }
+        
+        let fetchRequest = Timetable.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        
+        do {
+            guard let timetable = try context.fetch(fetchRequest).first else {
+                throw CoreDataError.fetchError
             }
-            let courseEntity = NSManagedObject(entity: entity, insertInto: context)
-            courseEntity.setValue(course.courseId, forKey: "courseId")
-            courseEntity.setValue(course.courseName, forKey: "courseName")
-            courseEntity.setValue(course.roomName, forKey: "roomName")
-            courseEntity.setValue(course.professor, forKey: "professor")
-            courseEntity.setValue(course.courseDay, forKey: "courseDay")
-            courseEntity.setValue(course.startTime, forKey: "startTime")
-            courseEntity.setValue(course.endTime, forKey: "endTime")
-            courseEntity.setValue(course.timetableColor, forKey: "timetableColor")
-            try? context?.save()
+            
+            let courseEntity = Course(context: context)
+            courseEntity.courseId = course.courseId
+            courseEntity.courseName = course.courseName
+            courseEntity.roomName = course.roomName
+            courseEntity.courseDay = Int16(course.courseDay)
+            courseEntity.startTime = course.startTime
+            courseEntity.endTime = course.endTime
+            courseEntity.timetableColor = Int16(course.timetableColor)
+            timetable.addToCourses(courseEntity)
+            
+            try context.save()
+        } catch {
+            context.rollback()
+            throw CoreDataError.saveError
         }
     }
+
 }

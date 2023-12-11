@@ -49,16 +49,16 @@ class AddCourseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        setConstratints()
+        setupUI()
+        setupConstraints()
         setAddCourseView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setNavigationBar()
+        setupNavigationBar()
     }
     
-    func setNavigationBar() {
+    private func setupNavigationBar() {
         self.title = "강의 정보"
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -77,7 +77,7 @@ class AddCourseViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
     }
     
-    private func setUI() {
+    private func setupUI() {
         self.view.backgroundColor = .systemGray6
         self.view.addSubview(addCourseView)
         self.view.addSubview(changeColorButton)
@@ -88,7 +88,7 @@ class AddCourseViewController: UIViewController {
     private func setAddCourseView() {
         addCourseView.classficationLabel.text = viewModel.firebaseCourse.classification
         addCourseView.courseNameLabel.text = viewModel.firebaseCourse.courseName
-        addCourseView.gradeLabel.text = "\(viewModel.firebaseCourse.year)학년"
+        addCourseView.gradeLabel.text = "\(viewModel.firebaseCourse.num)학년"
         addCourseView.creditLabel.text = "\(viewModel.firebaseCourse.credit)학점"
         addCourseView.majorLabel.text = viewModel.firebaseCourse.major
         addCourseView.professorLabel.text = viewModel.firebaseCourse.professor
@@ -103,7 +103,7 @@ class AddCourseViewController: UIViewController {
         addButton.addTarget(self, action: #selector(addButtonTouchDown), for: .touchDown)
     }
     
-    private func setConstratints() {
+    private func setupConstraints() {
         addCourseView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)

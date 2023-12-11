@@ -13,8 +13,8 @@ import Combine
 
 class SelectCourseListViewModel: ObservableObject {
     
-    let coreDataManager = CoreDataManager.shared
-    let addCourseManager = AddCourseManager()
+    private let coreDataManager = CoreDataManager.shared
+    private let addCourseManager = AddCourseManager()
 //    @Published var isSelected: Bool = false
 //    @Published var isFinished: Bool = false
     

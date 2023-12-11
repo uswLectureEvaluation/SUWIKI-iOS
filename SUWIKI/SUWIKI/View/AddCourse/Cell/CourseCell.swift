@@ -62,8 +62,7 @@ class CourseCell: UITableViewCell, Reusable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addLabels()
-        setUpLabels()
+        setupLabels()
     }
     
     required init?(coder: NSCoder) {
@@ -74,16 +73,11 @@ class CourseCell: UITableViewCell, Reusable {
         super.setSelected(selected, animated: animated)
     }
     
-    func addLabels() {
-        contentView.addSubview(courseName)
-        contentView.addSubview(classification)
-        contentView.addSubview(major)
-        contentView.addSubview(professor)
-        contentView.addSubview(roomName)
-        contentView.addSubview(credit)
-    }
-    
-    func setUpLabels() {
+    func setupLabels() {
+        [courseName, classification, major, professor, roomName, credit].forEach {
+            contentView.addSubview($0)
+        }
+        
         classification.snp.makeConstraints {
             $0.trailing.equalTo(contentView.snp.trailing).offset(-10)
             $0.top.equalToSuperview().offset(15)

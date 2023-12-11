@@ -85,8 +85,8 @@ class AddCourseView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setUI()
-        setConstraints()
+        setupUI()
+        setupConstraints()
         self.backgroundColor = .white
     }
 
@@ -94,7 +94,7 @@ class AddCourseView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setUI() {
+    private func setupUI() {
         addSubview(bottomBackground)
         addSubview(classficationLabel)
         addSubview(courseTitleLabel)
@@ -109,7 +109,7 @@ class AddCourseView: UIView {
         addSubview(roomNameLabel)
     }
     
-    private func setConstraints() {
+    private func setupConstraints() {
         
         classficationLabel.snp.makeConstraints {
             $0.top.equalTo(self.snp.top).offset(12)
