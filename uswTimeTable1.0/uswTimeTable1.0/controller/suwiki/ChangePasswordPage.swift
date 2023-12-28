@@ -109,7 +109,7 @@ class ChangePasswordPage: UIViewController, UITextFieldDelegate {
     //MARK: - API Function
     
     private func resetPassword(prePassword: String, newPassword: String) {
-        let url = "https://api.suwiki.kr/user/reset-pw"
+        let url = "https://api.kr"
         
         let parameters = [
             "prePassword" : prePassword,

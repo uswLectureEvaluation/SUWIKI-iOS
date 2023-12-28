@@ -389,8 +389,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func getDetailPage(){
         
-        let url = "https://api.suwiki.kr/lecture/?lectureId=\(lectureId)"
-        
+        let url = "https://api.kr"
+
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -449,8 +449,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     // #MARK: 무한스크롤 구현 필요
     func getDetailEvaluation(lectureId: Int, evalPage: Int){
 
-        let url = "https://api.suwiki.kr/evaluate-posts/"
-        
+        let url = "https://api.kr"
+
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -519,8 +519,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func getDetailExam(lectureId: Int, examPage: Int){
         
-        let url = "https://api.suwiki.kr/exam-posts/"
-        
+        let url = "https://api.kr"
+
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -592,8 +592,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func evalReport(evaluateIdx: Int){
         
-        let url = "https://api.suwiki.kr/user/report/evaluate"
-        
+        let url = "https://api.kr"
+
         let parameters: Parameters = [
             "evaluateIdx" : evaluateIdx,
             "content" : ""
@@ -642,8 +642,8 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
     
     func examReport(examIdx: Int){
         
-        let url = "https://api.suwiki.kr/user/report/exam"
-        
+        let url = "https://api.kr"
+
         let parameters: Parameters = [
             "evaluateIdx" : examIdx,
             "content" : ""
@@ -679,7 +679,7 @@ class lectureDetailedInformationPage: UIViewController, UITableViewDelegate, UIT
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
         
-        let url = "https://api.suwiki.kr/exam-posts/purchase/?lectureId=\(lectureId)"
+        let url = "https://api.kr"
         
         AF.request(url, method: .post, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             let data = response.response?.statusCode

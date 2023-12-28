@@ -68,7 +68,7 @@ class RestrictedPage: UIViewController {
         
         tableViewUpdateData.removeAll()
         
-        let url = "https://api.suwiki.kr/user/restricted-reason"
+        let url = "https://api.kr"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken")!)
         ]
@@ -114,7 +114,7 @@ class RestrictedPage: UIViewController {
         
         tableViewUpdateData.removeAll()
         
-        let url = "https://api.suwiki.kr/user/blacklist-reason"
+        let url = "https://api.kr"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken")!)
         ]

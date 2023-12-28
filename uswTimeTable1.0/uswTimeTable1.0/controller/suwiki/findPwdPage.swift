@@ -31,7 +31,7 @@ class findPwdPage: UIViewController {
 
 
     @IBAction func sendBtnClicked(_ sender: Any) {
-        let url = "https://api.suwiki.kr/user/find-pw"
+        let url = "https://api.kr"
         let parameters = [
             "loginId" : "\(idTextField.text!)",
             "email" : "\(emailTextField.text!)@suwon.ac.kr"

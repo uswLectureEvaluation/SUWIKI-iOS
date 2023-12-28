@@ -153,7 +153,7 @@ class myInfoPage: UIViewController, MFMailComposeViewControllerDelegate {
     func getInfoData(){
         if let accessToken = keychain.get("AccessToken"){
             
-            let url = "https://api.suwiki.kr/user/my-page"
+            let url = "https://api.kr"
             
             let headers: HTTPHeaders = [
                 "Authorization" : String(accessToken)

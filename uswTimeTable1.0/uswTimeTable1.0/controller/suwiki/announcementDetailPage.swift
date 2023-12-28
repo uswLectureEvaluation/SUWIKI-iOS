@@ -49,7 +49,7 @@ class announcementDetailPage: UIViewController {
     }
     func getAnnouncementDetailPage() {
         
-        let url = "https://api.suwiki.kr/notice/?noticeId=\(noticeId)"
+        let url = "https://api.kr"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")

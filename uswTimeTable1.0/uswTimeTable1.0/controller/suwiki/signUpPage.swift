@@ -149,7 +149,7 @@ class signUpPage: UIViewController {
 
         
         if loginModel.isValidId(id: id){ // 형식 통과 시 api로 확인 후 alert 띄워주기
-            let url = "https://api.suwiki.kr/user/check-id"
+            let url = "https://api.kr"
             let parameters = [
                 "loginId" : id
             ]

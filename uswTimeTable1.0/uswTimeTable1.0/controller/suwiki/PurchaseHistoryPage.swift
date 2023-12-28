@@ -81,7 +81,7 @@ class PurchaseHistoryPage: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func getPurchaseHistoryData() {
-        let url = "https://api.suwiki.kr/exam-posts/purchase"
+        let url = "https://api.kr"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
