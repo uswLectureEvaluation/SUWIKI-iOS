@@ -13,28 +13,11 @@ import FirebaseRemoteConfig
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+//    let initApp = InitAppViewModel()
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        
-        let remoteConfig = RemoteConfig.remoteConfig()
-        let settings = RemoteConfigSettings()
-        
-        settings.minimumFetchInterval = 0
-        remoteConfig.configSettings = settings
-        
-        remoteConfig.fetch { status, error in
-            if status == .success {
-                remoteConfig.activate { changed, error in
-                    print("@Log - \(changed), \(error)")
-                    let resultValue = remoteConfig["latest_version"].stringValue
-                    print("resultValue = \(resultValue)")
-                }
-            } else {
-                print("Error: \(error?.localizedDescription ?? "No error available.")")
-            }
-        }
-        
         return true
     }
 
@@ -98,4 +81,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
