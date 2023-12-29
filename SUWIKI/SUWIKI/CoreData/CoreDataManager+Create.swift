@@ -34,7 +34,6 @@ extension CoreDataManager {
     /// - Parameter course : [[String: Any]]
     /// NSBatchInsertRequest Objects
     func saveFirebaseCourse(course: [[String: Any]]) throws {
-        //    course: [[String: Any]]
         guard let context = context else {
             throw CoreDataError.contextError
         }
