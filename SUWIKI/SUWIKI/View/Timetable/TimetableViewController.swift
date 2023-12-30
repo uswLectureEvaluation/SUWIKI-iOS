@@ -235,11 +235,6 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, Tim
             preferredStyle: .actionSheet
         )
         actionSheet.addAction(
-            UIAlertAction(title: "수정", style: .default) { _ in
-                print("@Log - 수정")
-            }
-        )
-        actionSheet.addAction(
             UIAlertAction(title: "삭제", style: .destructive) { [weak self] alert in
                 guard let self = self else { return }
                 self.viewModel.deleteCourse(uuid: selectedCourse.courseId)
@@ -247,9 +242,7 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, Tim
             }
         )
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel))
-
         self.present(actionSheet, animated: true)
-        print("@Log select")
     }
 
     func elliotable(elliotable: Elliotable, didLongSelectCourse longSelectedCourse: ElliottEvent) {
