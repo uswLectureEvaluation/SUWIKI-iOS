@@ -13,7 +13,7 @@ import FirebaseDatabase
 
 class FirebaseManager {
 
-    let shared = FirebaseManager()
+    static let shared = FirebaseManager()
     let coreDataManager = CoreDataManager.shared
     private let ref = Database.database().reference()
 
@@ -28,6 +28,7 @@ class FirebaseManager {
             let data = try await ref.getData()
             let course = snapshotToDictionary(snapshot: data)
             try coreDataManager.saveFirebaseCourse(course: course)
+            print("저장 완료!!")
         } catch {
             print(error.localizedDescription)
         }
