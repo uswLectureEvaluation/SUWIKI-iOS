@@ -14,19 +14,28 @@ enum DuplicateCase {
 }
 
 final class AddCourseManager {
-    
+
     let coreDataManager = CoreDataManager.shared
-    
+
     func saveCourse(newCourse: TimetableCourse,
                     duplicateCase: DuplicateCase) -> Bool {
         guard let id = UserDefaults.standard.value(forKey: "id") as? String else { return false }
         var isDuplicated = false
         let timetableCourse = coreDataManager.fetchCourse(id: id) // userdefault.get
         var course: [TimetableCourse] = []
-        
+        print(newCourse.professor)
         switch duplicateCase {
         case .normal:
-            course = [newCourse]
+            let roomName = newCourse.roomName.split(separator: "(")
+                .map { String($0) }[0]
+            course.append(TimetableCourse(courseId: UUID().uuidString,
+                                          courseName: newCourse.courseName,
+                                          roomName: roomName,
+                                          professor: newCourse.professor,
+                                          courseDay: newCourse.courseDay,
+                                          startTime: newCourse.startTime,
+                                          endTime: newCourse.endTime,
+                                          timetableColor: newCourse.timetableColor))
             isDuplicated = isCourseDuplicated(existingCourse: timetableCourse, course: course)
         case .differentTime:
             course = differentTime(course: newCourse)
@@ -35,7 +44,7 @@ final class AddCourseManager {
             course = differentPlace(course: newCourse)
             isDuplicated = isCourseDuplicated(existingCourse: timetableCourse, course: course)
         }
-        
+
         if !isDuplicated {
             do {
                 for i in 0..<course.count {
@@ -47,7 +56,7 @@ final class AddCourseManager {
         }
         return isDuplicated
     }
-    
+
     func isCourseDuplicated(existingCourse: [Course],
                             course: [TimetableCourse]) -> Bool {
         var isDuplicated = false
@@ -61,7 +70,7 @@ final class AddCourseManager {
         }
         return isDuplicated
     }
-    
+
     /// 2개인 경우
     /// "자연대112(월1,2", "화3,4)"
     /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
@@ -78,76 +87,89 @@ final class AddCourseManager {
     func differentTime(course: TimetableCourse) -> [TimetableCourse] {
         var timeTableCourse: [TimetableCourse] = []
         let components = course.roomName.split(separator: " ")
-        
-        // index == 0
-        let firstIndex = components[0].firstIndex(of: "(")
-        let firstDayIndex = components[0].index(after: firstIndex!)
-        let firstDay = String(components[0][firstDayIndex])
-        let firstTime = components[0].split(separator: firstDay)[1].split(separator: ",")
-        let firstStartTime = String(firstTime[0])
-        let firstEndTime = String(firstTime[firstTime.count - 1])
-        timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
-                                               courseName: course.courseName,
-                                               roomName: course.roomName,
-                                               professor: course.professor,
-                                               courseDay: dayToInt(courseDay: firstDay),
-                                               startTime: startTimeToString(start: firstStartTime),
-                                               endTime: endTimeToString(end: firstEndTime),
-                                               timetableColor: course.timetableColor))
-        
-        // if count == 3, index == 1
-        if components.count == 3 {
-            var secondDay = ""
-            if let day = components[1].first {
-                secondDay = String(day)
-            }
-            let secondTime = components[1].dropFirst().split(separator: ",")
-            let secondStartTime = String(secondTime[0])
-    
-            let secondEndTime = String(secondTime[secondTime.count - 1])
-            
+        let roomName = course.roomName.split(separator: "(").map { String($0)} [0]
+        let componentsToString = components.map { String($0) }
+        let eLearning = componentsToString.last?.contains("토") ?? false
+        if eLearning {
             timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                    courseName: course.courseName,
-                                                   roomName: course.roomName,
+                                                   roomName: roomName,
                                                    professor: course.professor,
-                                                   courseDay: dayToInt(courseDay: secondDay),
-                                                   startTime: startTimeToString(start: secondStartTime),
-                                                   endTime: endTimeToString(end: secondEndTime),
+                                                   courseDay: 6,
+                                                   startTime: "9:30",
+                                                   endTime: "12:20",
+                                                   timetableColor: course.timetableColor))
+        } else {
+            // index == 0
+            let firstIndex = components[0].firstIndex(of: "(")
+            let firstDayIndex = components[0].index(after: firstIndex!)
+            let firstDay = String(components[0][firstDayIndex])
+            let firstTime = components[0].split(separator: firstDay)[1].split(separator: ",")
+            let firstStartTime = String(firstTime[0])
+            let firstEndTime = String(firstTime[firstTime.count - 1])
+            timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                                   courseName: course.courseName,
+                                                   roomName: roomName,
+                                                   professor: course.professor,
+                                                   courseDay: dayToInt(courseDay: firstDay),
+                                                   startTime: startTimeToString(start: firstStartTime),
+                                                   endTime: endTimeToString(end: firstEndTime),
+                                                   timetableColor: course.timetableColor))
+
+            // if count == 3, index == 1
+            if components.count == 3 {
+                var secondDay = ""
+                if let day = components[1].first {
+                    secondDay = String(day)
+                }
+                let secondTime = components[1].dropFirst().split(separator: ",")
+                let secondStartTime = String(secondTime[0])
+
+                let secondEndTime = String(secondTime[secondTime.count - 1])
+
+                timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                                       courseName: course.courseName,
+                                                       roomName: roomName,
+                                                       professor: course.professor,
+                                                       courseDay: dayToInt(courseDay: secondDay),
+                                                       startTime: startTimeToString(start: secondStartTime),
+                                                       endTime: endTimeToString(end: secondEndTime),
+                                                       timetableColor: course.timetableColor))
+            }
+
+            // lastIndex
+            var lastDay = ""
+            if let day = components[components.count - 1].first {
+                lastDay = String(day)
+            }
+            // 목7,8)
+            let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
+            // "7","8)"
+            // 7)
+            // 1)
+            var lastStartTime = ""
+
+            if String(lastTime[0]).contains(")") {
+                // MARK: 11) or 1) 일 경우
+                lastStartTime = String(lastTime[0].dropLast())
+            } else {
+                // MARK: 11 or 14
+                lastStartTime = String(lastTime[0])
+            }
+
+            let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
+            timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
+                                                   courseName: course.courseName,
+                                                   roomName: roomName,
+                                                   professor: course.professor,
+                                                   courseDay: dayToInt(courseDay: lastDay),
+                                                   startTime: startTimeToString(start: lastStartTime),
+                                                   endTime: endTimeToString(end: lastEndTime),
                                                    timetableColor: course.timetableColor))
         }
-        
-        // lastIndex
-        var lastDay = ""
-        if let day = components[components.count - 1].first {
-            lastDay = String(day)
-        }
-        // 목7,8)
-        let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
-        // "7","8)"
-        // 7)
-        // 1)
-        var lastStartTime = ""
-        
-        if String(lastTime[0]).contains(")") {
-            // MARK: 11) or 1) 일 경우
-            lastStartTime = String(lastTime[0].dropLast())
-        } else {
-            // MARK: 11 or 14
-            lastStartTime = String(lastTime[0])
-        }
-        
-        let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
-        timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
-                                               courseName: course.courseName,
-                                               roomName: course.roomName,
-                                               professor: course.professor,
-                                               courseDay: dayToInt(courseDay: lastDay),
-                                               startTime: startTimeToString(start: lastStartTime),
-                                               endTime: endTimeToString(end: lastEndTime),
-                                               timetableColor: course.timetableColor))
         return timeTableCourse
     }
-    
+
     // 자연대501(월1),자연대503(수5,6) -> ["자연대501(월1", "자연대503(수5,6)"]
     // 자연대501(월1,2),자연대503(수5,6) -> "자연대501(월1,2", "자연대503(수5,6)"
     // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
@@ -155,18 +177,20 @@ final class AddCourseManager {
     // "roomName": "체육105(수10),체육113(수8,9)"
     func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
         var timeTableCourse: [TimetableCourse] = []
-        
+
         let components = course.roomName.split(separator: "),")
-        
+
         for i in 0..<components.count {
+            let roomName = course.roomName.split(separator: "(")
+                .map { String($0) }[0]
             let firstIndex = components[i].firstIndex(of: "(")
             let dayIndex = components[i].index(after: firstIndex!)
             let startIndex = components[i].index(after: dayIndex)
-            
+
             let dayString = String(components[i][dayIndex])
             let start = String(components[i][startIndex])
             var end = ""
-            
+
             if i == 0 { // lastString
                 if let lastString = components[i].last {
                     end = String(lastString)
@@ -182,18 +206,18 @@ final class AddCourseManager {
             let endTime = endTimeToString(end: end)
             timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                    courseName: course.courseName,
-                                                   roomName: course.roomName,
+                                                   roomName: roomName,
                                                    professor: course.professor,
                                                    courseDay: courseDay,
                                                    startTime: startTime,
                                                    endTime: endTime,
                                                    timetableColor: course.timetableColor))
         }
-        
+
         return timeTableCourse
     }
-    
-    
+
+    //MARK: 당근
     func isTimeDuplicated(existingCourse: Course,
                           newCourse: TimetableCourse) -> Bool {
         /// 데이터베이스에 저장된 시작 / 종료시간을 Int형으로 변환하여 중복확인을 위한 변수.
@@ -213,7 +237,7 @@ final class AddCourseManager {
             return false
         }
     }
-    
+
     /// func timeToString
     /// 930 -> "9:30"
     func startTimeToString(start: String) -> String {
@@ -223,7 +247,7 @@ final class AddCourseManager {
         }
         return startTimeStringArray[14]
     }
-    
+
     func endTimeToString(end: String) -> String {
         let endTimeStringArray = ["10:20", "11:20", "12:20", "13:20", "14:20", "15:20", "16:20", "17:20", "18:20", "19:20", "20:20", "21:20", "22:20", "23:20", "24:20"]
         if let index = Int(end) {
@@ -231,7 +255,7 @@ final class AddCourseManager {
         }
         return endTimeStringArray[14]
     }
-    
+
     /// func dayToInt - 월 -> 1 화 -> 2 수 -> 목
     func dayToInt(courseDay: String) -> Int {
         var dayToString = 0
@@ -253,5 +277,5 @@ final class AddCourseManager {
         }
         return dayToString
     }
-    
+
 }
