@@ -9,6 +9,7 @@ import Foundation
 
 import Combine
 import Elliotable
+import FirebaseRemoteConfig
 
 final class TimetableViewModel {
     
@@ -19,9 +20,11 @@ final class TimetableViewModel {
     @Published var elliottEvent: [ElliottEvent] = []
     @Published var timetableTitle: String = ""
     @Published var timetableIsEmpty: Bool = false
-    
+    @Published var versionChecked: Bool = false
+
     init() {
         fetchTimetable()
+        fetchRemoteConfig()
     }
 
     func fetchTimetable() {
@@ -88,16 +91,31 @@ final class TimetableViewModel {
             return "\(currentYear)년 2학기"
         }
     }
-    
-}
 
-//    func tempIsFinished() {
-//        let addController = AddCourseViewController()
-//        addController.viewModel.$isFinished
-//            .receive(on: DispatchQueue.main)
-//            .sink { isFinished in
-//                print("@Log sink - \(isFinished)")
-//                self.getCourse()
-//            }
-//            .store(in: &addController.cancellable)
-//    }
+    func fetchRemoteConfig() {
+        let remoteConfig = RemoteConfig.remoteConfig()
+        let settings = RemoteConfigSettings()
+        settings.minimumFetchInterval = 0
+        remoteConfig.configSettings = settings
+        remoteConfig.fetch { (status, error) -> Void in
+            if status == .success {
+                remoteConfig.activate { changed, error in
+                    if changed {
+                        Task {
+                            await FirebaseManager.shared.fetchFirebaseCourse()
+                            self.versionChecked = true
+                            print("@Log - 시간표 최초 업데이트 ~")
+                        }
+
+                    } else {
+                        self.versionChecked = true
+                        print("@Log - 기존 시간표로 출력 ~")
+                    }
+                }
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+
+}
