@@ -31,7 +31,6 @@
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
 		AFA499E12A2798600047A4B4 /* MajorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA499E02A2798600047A4B4 /* MajorCell.swift */; };
 		AFA499E72A2881BF0047A4B4 /* SelectMajorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */; };
-		AFAA2EFF2B343B3800899E98 /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA2EFE2B343B3800899E98 /* InitViewController.swift */; };
 		AFAA2F012B343BC000899E98 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA2F002B343BC000899E98 /* FirebaseManager.swift */; };
 		AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC335302A4DD20900D22DEC /* AddCourseManager.swift */; };
 		AFD5CC0C2A39923B008F95B7 /* InitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */; };
@@ -93,7 +92,6 @@
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		AFA499E02A2798600047A4B4 /* MajorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCell.swift; sourceTree = "<group>"; };
 		AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewModel.swift; sourceTree = "<group>"; };
-		AFAA2EFE2B343B3800899E98 /* InitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewController.swift; sourceTree = "<group>"; };
 		AFAA2F002B343BC000899E98 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		AFC335302A4DD20900D22DEC /* AddCourseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseManager.swift; sourceTree = "<group>"; };
 		AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAppViewModel.swift; sourceTree = "<group>"; };
@@ -171,38 +169,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		AFAA2EFD2B343B1C00899E98 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AFAA2EFE2B343B3800899E98 /* InitViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		AFD5CC0A2A39920C008F95B7 /* InitApp */ = {
-			isa = PBXGroup;
-			children = (
-				AFAA2EFD2B343B1C00899E98 /* View */,
-				AFD5CC0E2A399395008F95B7 /* Model */,
-				AFD5CC0D2A39923E008F95B7 /* ViewModel */,
-			);
-			path = InitApp;
-			sourceTree = "<group>";
-		};
-		AFD5CC0D2A39923E008F95B7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		AFD5CC0E2A399395008F95B7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		AFE18EE82A1C8ABF009D4D58 = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +197,6 @@
 				AF2586CC2A909AF800A61F8E /* Model */,
 				AFF785BD2A932C0400B6D531 /* View */,
 				AFF785BE2A932C0A00B6D531 /* ViewModel */,
-				AFD5CC0A2A39920C008F95B7 /* InitApp */,
 				AFEC86942A377067008C5781 /* Resources */,
 				AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */,
 				AFE18F052A1C8AC1009D4D58 /* Info.plist */,
@@ -484,7 +449,6 @@
 				AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */,
 				AF057A1A2A77F375004577E7 /* CoreDataManager+Delete.swift in Sources */,
 				AF08A8E12A9F6E63005C3D00 /* TimetableListViewModel.swift in Sources */,
-				AFAA2EFF2B343B3800899E98 /* InitViewController.swift in Sources */,
 				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
 				AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */,
 				AF08A8DC2A9F6C5E005C3D00 /* TimetableListViewController.swift in Sources */,
