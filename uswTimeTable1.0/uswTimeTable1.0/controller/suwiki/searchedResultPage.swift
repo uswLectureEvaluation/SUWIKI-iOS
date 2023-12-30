@@ -219,7 +219,7 @@ class searchedResultPage: UIViewController, UITableViewDataSource, UITableViewDe
     
     func getLectureData(searchValue: String, option: String, page: Int, majorType: String){ // 최근
 
-        let url = "https://api.suwiki.kr/lecture/search/"
+        let url = "https://api.kr"
         
         let parameter: Parameters = [
             "searchValue" : searchValue,

@@ -183,8 +183,8 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if keychain.get("AccessToken") != nil{
-            let url = "https://api.suwiki.kr/lecture/?lectureId=\(tableViewUpdateData[indexPath.row].id)"
-            
+            let url = "https://api.kr"
+
             let headers: HTTPHeaders = [
                 "Authorization" : String(keychain.get("AccessToken") ?? "")
             ]
@@ -263,7 +263,7 @@ class suwikiHomePage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // #MARK: 강의 데이터 불러오는 함수, 추후에 majorType 매개변수 추가, 파라미터 추가
     func getLectureData(option: String, majorType: String){
-        let url = "https://api.suwiki.kr/lecture/all"
+        let url = "https://api.kr"
         
         print(option)
         let parameter: Parameters = [

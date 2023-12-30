@@ -41,7 +41,6 @@ final class TimetableListViewModel {
         }
         self.timetable.remove(at: index)
         if timetable.count == 0 {
-            // dismiss()
             UserDefaults.standard.removeObject(forKey: "id")
             NotificationCenter.default.post(name: Notification.Name("timetableIsEmpty"),
                                             object: nil)

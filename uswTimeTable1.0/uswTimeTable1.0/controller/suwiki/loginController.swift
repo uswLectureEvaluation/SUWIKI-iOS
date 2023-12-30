@@ -158,7 +158,7 @@ class loginController: UIViewController, UITextFieldDelegate {
     
     func loginCheck(id: String, pwd: String){
 
-        let url = "https://api.suwiki.kr/user/login"
+        let url = "https://api.kr"
         let parameters = [
             "loginId" : id,
             "password" : pwd

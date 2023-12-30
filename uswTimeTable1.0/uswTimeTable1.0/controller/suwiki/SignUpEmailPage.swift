@@ -37,7 +37,7 @@ class SignUpEmailPage: UIViewController {
     @IBAction func singUpBtnClicked(_ sender: Any) {
         let email = emailTextField.text ?? ""
         
-        let url = "https://api.suwiki.kr/user/check-email"
+        let url = "https://api.kr"
         
         let parameters = [
             "email" : "\(email)@suwon.ac.kr"
@@ -63,7 +63,7 @@ class SignUpEmailPage: UIViewController {
     }
     
     func requestJoin(id: String, pwd: String, email: String){
-        let url = "https://api.suwiki.kr/user/join"
+        let url = "https://api.kr"
         let parameters = [
             "loginId" : id,
             "password" : pwd,

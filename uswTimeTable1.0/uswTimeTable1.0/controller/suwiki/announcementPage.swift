@@ -79,8 +79,8 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // 다음페이지 띄워주기(공지사항 자세히 보기
         
-        let url = "https://api.suwiki.kr/notice/?noticeId=\(announcementViewData[indexPath.row].id)"
-        
+        let url = "https://api.kr"
+
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -109,7 +109,7 @@ class announcementPage: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     
     func getAnnouncementPage() {
-        let url = "https://api.suwiki.kr/notice/all?page=1"
+        let url = "https://api.kr"
         
         AF.request(url, method: .get, encoding: URLEncoding.default).responseJSON { (response) in
             let data = response.data

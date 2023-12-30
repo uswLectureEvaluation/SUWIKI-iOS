@@ -34,7 +34,6 @@ extension CoreDataManager {
     /// - Parameter course : [[String: Any]]
     /// NSBatchInsertRequest Objects
     func saveFirebaseCourse(course: [[String: Any]]) throws {
-        //    course: [[String: Any]]
         guard let context = context else {
             throw CoreDataError.contextError
         }
@@ -74,11 +73,11 @@ extension CoreDataManager {
             courseEntity.courseName = course.courseName
             courseEntity.roomName = course.roomName
             courseEntity.courseDay = Int16(course.courseDay)
+            courseEntity.professor = course.professor
             courseEntity.startTime = course.startTime
             courseEntity.endTime = course.endTime
             courseEntity.timetableColor = Int16(course.timetableColor)
             timetable.addToCourses(courseEntity)
-            
             try context.save()
         } catch {
             context.rollback()

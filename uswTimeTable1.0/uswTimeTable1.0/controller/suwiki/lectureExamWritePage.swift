@@ -259,7 +259,7 @@ class lectureExamWritePage: UIViewController, UITextViewDelegate{
     
     func writeExam() {
         let examInfo: String = examTypeArray.joined(separator: ", ")
-        let url = "https://api.suwiki.kr/exam-posts/?lectureId=\(lectureId)"
+        let url = "https://api.kr"
         //
         let parameters: Parameters = [
             "lectureName" : lectureName, //과목 이름
@@ -307,7 +307,7 @@ class lectureExamWritePage: UIViewController, UITextViewDelegate{
     
     func writeAdjustExam(){
         let examInfo: String = examTypeArray.joined(separator: ", ")
-        let url = "https://api.suwiki.kr/exam-posts/?examIdx=\(examIdx)"
+        let url = "https://api.kr"
         
         let parameters: Parameters = [
             "selectedSemester" : semesterTextField.text!, //  semesterTextField.text!, //학기 (ex) 2022-1)

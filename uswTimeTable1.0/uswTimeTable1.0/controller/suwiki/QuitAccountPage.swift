@@ -76,7 +76,7 @@ class QuitAccountPage: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             return }
         
-        let url = "https://api.suwiki.kr/user/quit"
+        let url = "https://api.kr"
         
         let parameters = [
             "loginId" : id,

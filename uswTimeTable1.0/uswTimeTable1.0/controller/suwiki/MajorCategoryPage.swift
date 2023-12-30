@@ -315,8 +315,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func getMajorType(){
-        let url = "https://api.suwiki.kr/suwiki/majorType"
-        
+        let url = "https://api.kr"
+
         let parameter: Parameters = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -354,8 +354,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func getFavorite(){
         favoritesMajorData.removeAll()
-        let url = "https://api.suwiki.kr/user/favorite-major"
-        
+        let url = "https://api.kr"
+
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? ""),
             
@@ -385,7 +385,7 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
 
     // 전공 즐겨찾기 하기
     func favoriteAdd(majorType: String){
-        let url = "https://api.suwiki.kr/user/favorite-major"
+        let url = "https://api.kr"
         
         let parameters: Parameters = [
             "majorType" : majorType
@@ -414,8 +414,8 @@ class MajorCategoryPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func favoriteRemove(majorType: String){
-        let url = "https://api.suwiki.kr/user/favorite-major"
-        
+        let url = "https://api.kr"
+
         let parameters: Parameters = [
             "majorType" : majorType
         ]

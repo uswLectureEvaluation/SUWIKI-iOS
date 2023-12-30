@@ -195,7 +195,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
     
     func writeEvaluation() {
         
-        let url = "https://api.suwiki.kr/evaluate-posts/?lectureId=\(lectureId)"
+        let url = "https://api.kr"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -242,7 +242,7 @@ class lectureEvaluationWritePage: UIViewController, UITextViewDelegate {
     }
     
     func writeAdjustEvaluation() {
-        let url = "https://api.suwiki.kr/evaluate-posts/?evaluateIdx=\(evaluateIdx)"
+        let url = "https://api.kr"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")

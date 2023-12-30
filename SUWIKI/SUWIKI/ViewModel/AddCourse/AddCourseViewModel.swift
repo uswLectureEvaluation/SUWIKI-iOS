@@ -13,7 +13,6 @@ final class AddCourseViewModel {
     var timetableColorNumber = Int.random(in: 0...20)
     var firebaseCourse: FirebaseCourse
     
-    
     init(firebaseCourse: FirebaseCourse) {
         self.firebaseCourse = firebaseCourse
     }

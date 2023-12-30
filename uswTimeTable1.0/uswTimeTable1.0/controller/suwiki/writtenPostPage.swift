@@ -245,7 +245,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func getWrittenEvalData(page: Int) {
-        let url = "https://api.suwiki.kr/evaluate-posts/written/"
+        let url = "https://api.kr"
         let parameters: Parameters = [
             "page" : page
         ]
@@ -313,8 +313,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     func getWrittenExamData(page: Int) {
-        let url = "https://api.suwiki.kr/exam-posts/written/"
-        
+        let url = "https://api.kr"
+
         let parameters: Parameters = [
             "page" : page
         ]
@@ -436,8 +436,8 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func removeEvaluation(id: Int) {
-        let url = "https://api.suwiki.kr/evaluate-posts/?evaluateIdx=\(id)"
-        
+        let url = "https://api.kr"
+
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")
         ]
@@ -525,7 +525,7 @@ class writtenPostPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func removeExam(id: Int){
-        let url = "https://api.suwiki.kr/exam-posts/?examIdx=\(id)"
+        let url = "https://api.kr"
         
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("AccessToken") ?? "")

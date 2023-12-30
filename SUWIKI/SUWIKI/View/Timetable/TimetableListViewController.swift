@@ -53,11 +53,9 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.backgroundColor = .systemGray6
-//        let temp = UIBarButtonItem(title: "추가", primaryAction: UIAction { [weak self] _ in self?.addButtonTapped() })
         let addButton = UIBarButtonItem(title: "추가", primaryAction: UIAction { [weak self] _ in self?.addButtonTapped() })
         let flexibleSpaceItem = UIBarButtonItem(systemItem: .flexibleSpace)
         self.navigationController?.isToolbarHidden = false
-//        navigationController?.setToolbarItems(, animated: false)
         setToolbarItems([flexibleSpaceItem, addButton], animated: true)
         
         let button = UIButton(type: .system)
@@ -65,13 +63,12 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
         button.addAction(UIAction { [weak self] _ in self?.dismiss(animated: true) },
                          for: .touchUpInside)
         button.tintColor = .gray
-            
+        
         let rightButton = UIBarButtonItem(customView: button)
         rightButton.customView?.translatesAutoresizingMaskIntoConstraints = false
         rightButton.customView?.heightAnchor.constraint(equalToConstant: 24).isActive = true
         rightButton.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
         self.navigationItem.rightBarButtonItem = rightButton
-        
     }
     
     private func setupUI() {

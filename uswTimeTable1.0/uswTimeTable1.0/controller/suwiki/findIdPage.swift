@@ -28,7 +28,7 @@ class findIdPage: UIViewController {
     
     
     @IBAction func sendBtnClicked(_ sender: Any) {
-        let url = "https://api.suwiki.kr/user/find-id"
+        let url = "https://api.kr"
         
         
         let parameters = [

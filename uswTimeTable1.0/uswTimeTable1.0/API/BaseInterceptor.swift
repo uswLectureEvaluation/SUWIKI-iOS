@@ -16,7 +16,7 @@ class BaseInterceptor: RequestInterceptor{
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
         
-            guard urlRequest.url?.absoluteString.hasPrefix("https://api.suwiki.kr/") == true,
+            guard urlRequest.url?.absoluteString.hasPrefix("https://api.kr/") == true,
                   let accessToken = keychain.get("AccessToken") else {
                       completion(.success(urlRequest))
                       return
@@ -40,7 +40,7 @@ class BaseInterceptor: RequestInterceptor{
             return
         }
         print("retry")
-        let url = "https://api.suwiki.kr/user/refresh"
+        let url = "https://api.kr"
         let headers: HTTPHeaders = [
             "Authorization" : String(keychain.get("RefreshToken") ?? "")
         ]
