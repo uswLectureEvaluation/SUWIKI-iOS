@@ -37,10 +37,6 @@ extension CoreDataManager {
                 print("@Log - \(error.localizedDescription)")
             }
         }
-        for i in 0..<timetable.count {
-            print("@Log fetch - \(timetable[i].id) - \(timetable[i].name)")
-        }
-        
         
         if timetable.count > 0 {
             return timetable[0]
