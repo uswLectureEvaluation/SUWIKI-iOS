@@ -200,7 +200,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         timetable.elliotBackgroundColor = UIColor.white
         timetable.borderWidth = 1.0
         timetable.borderColor = .systemGray6
-        timetable.textEdgeInsets = UIEdgeInsets(top: 10, left: 4, bottom: 2, right: 4)
+        timetable.textEdgeInsets = UIEdgeInsets(top: 10, left: 4, bottom: 2, right: 2)
         timetable.courseItemMaxNameLength = 18
         timetable.courseItemTextSize = 11 // 과목
         timetable.courseTextAlignment = .left

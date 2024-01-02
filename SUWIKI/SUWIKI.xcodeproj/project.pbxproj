@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4BFED44B0C7CFC818559A717 /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB09C8B7FFBECDB121894E8A /* Pods_SUWIKI.framework */; };
 		AF057A142A77F35C004577E7 /* CoreDataManager+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */; };
 		AF057A162A77F365004577E7 /* CoreDataManager+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A152A77F365004577E7 /* CoreDataManager+Read.swift */; };
 		AF057A182A77F36E004577E7 /* CoreDataManager+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A172A77F36E004577E7 /* CoreDataManager+Update.swift */; };
@@ -52,6 +51,7 @@
 		AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */; };
 		AFF9DE902A34821800CCB1D2 /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */; };
 		AFF9DE922A34841D00CCB1D2 /* TimetableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */; };
+		C4CE3F240D6E49BF16078DEA /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDCB09292C279BAEFE5739 /* Pods_SUWIKI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,7 +68,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0D53A0FAC7E169AF0C711FE6 /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
+		0E882CEC831A9F2BFFD51F1C /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
+		4DBDCB09292C279BAEFE5739 /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Create.swift"; sourceTree = "<group>"; };
 		AF057A152A77F365004577E7 /* CoreDataManager+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Read.swift"; sourceTree = "<group>"; };
 		AF057A172A77F36E004577E7 /* CoreDataManager+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Update.swift"; sourceTree = "<group>"; };
@@ -115,8 +116,7 @@
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCourse.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
-		CDAFBF000B1F7B7D1C719096 /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
-		FB09C8B7FFBECDB121894E8A /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE344B51626DEFCDF195B556 /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,18 +124,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BFED44B0C7CFC818559A717 /* Pods_SUWIKI.framework in Frameworks */,
+				C4CE3F240D6E49BF16078DEA /* Pods_SUWIKI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C336A60AC1966203879B6A3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DBDCB09292C279BAEFE5739 /* Pods_SUWIKI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		63B3105FE151B90524E772B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CDAFBF000B1F7B7D1C719096 /* Pods-SUWIKI.debug.xcconfig */,
-				0D53A0FAC7E169AF0C711FE6 /* Pods-SUWIKI.release.xcconfig */,
+				0E882CEC831A9F2BFFD51F1C /* Pods-SUWIKI.debug.xcconfig */,
+				FE344B51626DEFCDF195B556 /* Pods-SUWIKI.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -175,7 +183,7 @@
 				AFE18EF32A1C8ABF009D4D58 /* SUWIKI */,
 				AFE18EF22A1C8ABF009D4D58 /* Products */,
 				63B3105FE151B90524E772B5 /* Pods */,
-				BE6B61D4B333D72D1DFF9205 /* Frameworks */,
+				1C336A60AC1966203879B6A3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -314,14 +322,6 @@
 			path = AddCourse;
 			sourceTree = "<group>";
 		};
-		BE6B61D4B333D72D1DFF9205 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FB09C8B7FFBECDB121894E8A /* Pods_SUWIKI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -329,20 +329,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFE18F082A1C8AC1009D4D58 /* Build configuration list for PBXNativeTarget "SUWIKI" */;
 			buildPhases = (
-				838077A8F1EF757C2DC0747B /* [CP] Check Pods Manifest.lock */,
+				D796E9A8644C4F0FC590146B /* [CP] Check Pods Manifest.lock */,
 				AFE18EED2A1C8ABF009D4D58 /* Sources */,
 				AFE18EEE2A1C8ABF009D4D58 /* Frameworks */,
 				AFE18EEF2A1C8ABF009D4D58 /* Resources */,
 				AFE18F272A271C69009D4D58 /* Embed Frameworks */,
-				F28B94035E33B1982E5257FC /* [CP] Embed Pods Frameworks */,
+				AE8BE050CDD12AC165D65B09 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SUWIKI;
-			packageProductDependencies = (
-			);
 			productName = SUWIKI;
 			productReference = AFE18EF12A1C8ABF009D4D58 /* SUWIKI.app */;
 			productType = "com.apple.product-type.application";
@@ -398,7 +396,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		838077A8F1EF757C2DC0747B /* [CP] Check Pods Manifest.lock */ = {
+		AE8BE050CDD12AC165D65B09 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D796E9A8644C4F0FC590146B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -418,23 +433,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F28B94035E33B1982E5257FC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -617,7 +615,7 @@
 		};
 		AFE18F092A1C8AC1009D4D58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDAFBF000B1F7B7D1C719096 /* Pods-SUWIKI.debug.xcconfig */;
+			baseConfigurationReference = 0E882CEC831A9F2BFFD51F1C /* Pods-SUWIKI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -653,7 +651,7 @@
 		};
 		AFE18F0A2A1C8AC1009D4D58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D53A0FAC7E169AF0C711FE6 /* Pods-SUWIKI.release.xcconfig */;
+			baseConfigurationReference = FE344B51626DEFCDF195B556 /* Pods-SUWIKI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
