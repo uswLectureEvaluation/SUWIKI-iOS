@@ -154,7 +154,6 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         self.navigationController?.navigationBar.tintColor = UIColor.primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        let title = UIBarButtonItem(customView: navigationTitle)
         listButton = UIBarButtonItem(systemItem: .organize,
                                      primaryAction: UIAction { [weak self] _ in self?.listButtonTapped()})
         addButton = UIBarButtonItem(systemItem: .add,
