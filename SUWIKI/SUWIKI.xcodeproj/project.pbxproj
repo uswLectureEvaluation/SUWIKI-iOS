@@ -32,7 +32,6 @@
 		AFA499E72A2881BF0047A4B4 /* SelectMajorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */; };
 		AFAA2F012B343BC000899E98 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFAA2F002B343BC000899E98 /* FirebaseManager.swift */; };
 		AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC335302A4DD20900D22DEC /* AddCourseManager.swift */; };
-		AFD5CC0C2A39923B008F95B7 /* InitAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */; };
 		AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */; };
 		AFD5CC122A404338008F95B7 /* SelectCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */; };
 		AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */; };
@@ -95,7 +94,6 @@
 		AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewModel.swift; sourceTree = "<group>"; };
 		AFAA2F002B343BC000899E98 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		AFC335302A4DD20900D22DEC /* AddCourseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseManager.swift; sourceTree = "<group>"; };
-		AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitAppViewModel.swift; sourceTree = "<group>"; };
 		AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCourse.swift; sourceTree = "<group>"; };
 		AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseViewModel.swift; sourceTree = "<group>"; };
 		AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseListViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -257,7 +255,6 @@
 		AFF785BE2A932C0A00B6D531 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AFD5CC0B2A39923B008F95B7 /* InitAppViewModel.swift */,
 				AFF785C22A93322400B6D531 /* Timetable */,
 				AFF785C32A93322E00B6D531 /* AddCourse */,
 			);
@@ -450,7 +447,6 @@
 				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
 				AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */,
 				AF08A8DC2A9F6C5E005C3D00 /* TimetableListViewController.swift in Sources */,
-				AFD5CC0C2A39923B008F95B7 /* InitAppViewModel.swift in Sources */,
 				AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */,
 				AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */,
 				AFAA2F012B343BC000899E98 /* FirebaseManager.swift in Sources */,
