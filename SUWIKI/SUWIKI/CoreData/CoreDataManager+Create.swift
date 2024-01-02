@@ -34,13 +34,14 @@ extension CoreDataManager {
     /// - Parameter course : [[String: Any]]
     /// NSBatchInsertRequest Objects
     func saveFirebaseCourse(course: [[String: Any]]) throws {
+        /// 새로운 학기의 강의를 업데이트할 경우 기존의 로컬에 있는 강의는 삭제하고 진행해야 함.
+        try deleteFirebaseCourse()
         guard let context = context else {
             throw CoreDataError.contextError
         }
         guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", in: context) else {
             throw CoreDataError.entityError
         }
-
         let batchInsertRequest = NSBatchInsertRequest(entity: entity, objects: course)
         if let fetchResult = try? context.execute(batchInsertRequest),
            let batchInsertResult = fetchResult as? NSBatchInsertResult,

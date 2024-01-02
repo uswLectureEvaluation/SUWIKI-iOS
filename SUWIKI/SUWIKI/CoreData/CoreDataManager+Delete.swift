@@ -41,5 +41,19 @@ extension CoreDataManager {
             throw CoreDataError.deleteError
         }
     }
-    
+
+    func deleteFirebaseCourse() throws {
+        guard let context = context else {
+            throw CoreDataError.contextError
+        }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FirebaseCourse")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            throw CoreDataError.deleteError
+        }
+    }
+
 }
