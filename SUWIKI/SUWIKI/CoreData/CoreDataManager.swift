@@ -22,15 +22,33 @@ final class CoreDataManager {
     // 싱글톤으로 만들기
     static let shared = CoreDataManager()
     private init() {}
-    
+
+    private let appGroup = "group.sozohoy.suwiki"
+
+    lazy var persistentContainer: NSPersistentContainer = {
+        guard let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup) else {
+            fatalError("Shared file container could not be created.")
+        }
+
+        let storeURL = url.appending(path: "SuwikiTimetable.sqlite")
+        let storeDescription = NSPersistentStoreDescription(url: storeURL)
+        let container = NSPersistentContainer(name: "SuwikiTimetable")
+        container.persistentStoreDescriptions = [storeDescription]
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
+
     // 앱 델리게이트
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     // 임시저장소
-    lazy var context = appDelegate?.persistentContainer.viewContext
+    lazy var context = persistentContainer.viewContext
     
     // 엔터티 이름 (코어데이터에 저장된 객체)
-    let modelName: String = "SuwikiTimetable"
+//    let modelName: String = "SuwikiTimetable"
     
     func handleCoreDataError(_ error: Error) {
         switch error {
@@ -52,21 +70,6 @@ final class CoreDataManager {
     }
     
     // MARK: - [Read] 코어데이터에 저장된 데이터 모두 읽어오기
-    
-    func getFirebaseTemp() -> [FirebaseCourse] {
-        var course: [FirebaseCourse] = []
-        if let context = context {
-            do {
-                let fetchRequest = FirebaseCourse.fetchRequest()
-                fetchRequest.predicate = NSPredicate(format: "courseName == %@", "관악/현악합주1")
-                course = try context.fetch(fetchRequest)
-                
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return course
-    }
     
 
     
