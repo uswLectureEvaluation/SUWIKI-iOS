@@ -24,7 +24,6 @@ class FirebaseManager {
             let data = try await ref.getData()
             let course = snapshotToDictionary(snapshot: data)
             try coreDataManager.saveFirebaseCourse(course: course)
-            print("저장 완료!!")
         } catch {
             print(error.localizedDescription)
         }
