@@ -7,8 +7,8 @@
 
 import Foundation
 
-import Firebase
 import CoreData
+import Firebase
 import FirebaseDatabase
 
 class FirebaseManager {
