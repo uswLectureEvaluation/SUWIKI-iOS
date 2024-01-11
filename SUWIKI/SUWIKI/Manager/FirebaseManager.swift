@@ -19,10 +19,6 @@ class FirebaseManager {
 
     init () { }
 
-    func courseUpdateCheck() {
-
-    }
-
     func fetchFirebaseCourse() async {
         do {
             let data = try await ref.getData()
@@ -58,16 +54,6 @@ class FirebaseManager {
         }
 
         return dictionaries
-    }
-
-    func checkCoreDataCount() { // 저장된 데이터 불러오기 - 시간표 추가 시 필요할듯한데..
-        var temp: [FirebaseCourse] = []
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        if let loadCourse = try? context.fetch(FirebaseCourse.fetchRequest()) {
-            temp = loadCourse
-            print(temp.count)
-        }
     }
 
 }
