@@ -23,7 +23,6 @@ final class AddCourseManager {
         var isDuplicated = false
         let timetableCourse = coreDataManager.fetchCourse(id: id) // userdefault.get
         var course: [TimetableCourse] = []
-        print(newCourse.professor)
         switch duplicateCase {
         case .normal:
             let roomName = newCourse.roomName.split(separator: "(")
@@ -71,19 +70,6 @@ final class AddCourseManager {
         return isDuplicated
     }
 
-    /// 2개인 경우
-    /// "자연대112(월1,2", "화3,4)"
-    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
-    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString - 1
-    /// "자연대112(월1,2", "화3)"
-    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
-    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
-    /// "자연대112(월1,2", "화3"
-    /// 3개인 경우
-    ///  "자연대112(월1,2", "화3,4", "수5)"
-    /// 0 - courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
-    /// 1 - courseDay = firstString, startTime = nextToCourseDay, endTime = lastString
-    /// 2 - courseDay = firstString, startTime = nextToCourseDay, endTIme = lastString - 1
     func differentTime(course: TimetableCourse) -> [TimetableCourse] {
         var timeTableCourse: [TimetableCourse] = []
         let components = course.roomName.split(separator: " ")
@@ -100,7 +86,6 @@ final class AddCourseManager {
                                                    endTime: "12:20",
                                                    timetableColor: course.timetableColor))
         } else {
-            // index == 0
             let firstIndex = components[0].firstIndex(of: "(")
             let firstDayIndex = components[0].index(after: firstIndex!)
             let firstDay = String(components[0][firstDayIndex])
@@ -115,8 +100,6 @@ final class AddCourseManager {
                                                    startTime: startTimeToString(start: firstStartTime),
                                                    endTime: endTimeToString(end: firstEndTime),
                                                    timetableColor: course.timetableColor))
-
-            // if count == 3, index == 1
             if components.count == 3 {
                 var secondDay = ""
                 if let day = components[1].first {
@@ -124,9 +107,7 @@ final class AddCourseManager {
                 }
                 let secondTime = components[1].dropFirst().split(separator: ",")
                 let secondStartTime = String(secondTime[0])
-
                 let secondEndTime = String(secondTime[secondTime.count - 1])
-
                 timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                        courseName: course.courseName,
                                                        roomName: roomName,
@@ -137,23 +118,16 @@ final class AddCourseManager {
                                                        timetableColor: course.timetableColor))
             }
 
-            // lastIndex
             var lastDay = ""
             if let day = components[components.count - 1].first {
                 lastDay = String(day)
             }
-            // 목7,8)
             let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
-            // "7","8)"
-            // 7)
-            // 1)
             var lastStartTime = ""
 
             if String(lastTime[0]).contains(")") {
-                // MARK: 11) or 1) 일 경우
                 lastStartTime = String(lastTime[0].dropLast())
             } else {
-                // MARK: 11 or 14
                 lastStartTime = String(lastTime[0])
             }
 
@@ -170,37 +144,31 @@ final class AddCourseManager {
         return timeTableCourse
     }
 
-    // 자연대501(월1),자연대503(수5,6) -> ["자연대501(월1", "자연대503(수5,6)"]
-    // 자연대501(월1,2),자연대503(수5,6) -> "자연대501(월1,2", "자연대503(수5,6)"
-    // 0 -> courseDay = nextTo(, startTime = nextToCourseDay, endTime = lastString
-    // 1 -> courseday = nextTo(, startTIme = nextToCourseDay, endTime = lastString - 1
-    // "roomName": "체육105(수10),체육113(수8,9)"
     func differentPlace(course: TimetableCourse) -> [TimetableCourse] {
         var timeTableCourse: [TimetableCourse] = []
-
         let components = course.roomName.split(separator: "),")
-
+        
         for i in 0..<components.count {
             let roomName = course.roomName.split(separator: "(")
                 .map { String($0) }[0]
             let firstIndex = components[i].firstIndex(of: "(")
             let dayIndex = components[i].index(after: firstIndex!)
             let startIndex = components[i].index(after: dayIndex)
-
             let dayString = String(components[i][dayIndex])
             let start = String(components[i][startIndex])
             var end = ""
-
-            if i == 0 { // lastString
+            
+            if i == 0 { 
                 if let lastString = components[i].last {
                     end = String(lastString)
                 }
-            } else { // lastString - 1
+            } else { 
                 let endTimedropLastString = components[i].dropLast()
                 if let lastString = endTimedropLastString.last {
                     end = String(lastString)
                 }
             }
+            
             let courseDay = dayToInt(courseDay: dayString)
             let startTime = startTimeToString(start: start)
             let endTime = endTimeToString(end: end)
@@ -217,11 +185,8 @@ final class AddCourseManager {
         return timeTableCourse
     }
 
-    //MARK: 당근
     func isTimeDuplicated(existingCourse: Course,
                           newCourse: TimetableCourse) -> Bool {
-        /// 데이터베이스에 저장된 시작 / 종료시간을 Int형으로 변환하여 중복확인을 위한 변수.
-        /// - startTime,endTimeStr = "9:30" -> startTime, endTime = 930
         let existingCourseStartTimeStr = existingCourse.startTime?.filter { $0 != ":" }
         let existingCourseEndTimeStr = existingCourse.endTime?.filter { $0 != ":" }
         let newCourseStartTimeStr = newCourse.startTime.filter { $0 != ":" }
@@ -237,9 +202,7 @@ final class AddCourseManager {
             return false
         }
     }
-
-    /// func timeToString
-    /// 930 -> "9:30"
+    
     func startTimeToString(start: String) -> String {
         let startTimeStringArray = ["9:30", "10:30", "11:30", "12:30", "13:30", "14:30", "15:30", "16:30", "17:30", "18:30", "19:30", "20:30", "21:30", "22:30", "23:30"]
         if let index = Int(start) {
@@ -256,7 +219,6 @@ final class AddCourseManager {
         return endTimeStringArray[14]
     }
 
-    /// func dayToInt - 월 -> 1 화 -> 2 수 -> 목
     func dayToInt(courseDay: String) -> Int {
         var dayToString = 0
         switch courseDay {
