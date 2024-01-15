@@ -23,11 +23,9 @@ final class AddCourseManager {
         var isDuplicated = false
         let timetableCourse = coreDataManager.fetchCourse(id: id) // userdefault.get
         var course: [TimetableCourse] = []
-        print(newCourse.professor)
         switch duplicateCase {
         case .normal:
-            let roomName = newCourse.roomName.split(separator: "(")
-                .map { String($0) }[0]
+            let roomName = newCourse.roomName.split(separator: "(").map { String($0) }[0]
             course.append(TimetableCourse(courseId: UUID().uuidString,
                                           courseName: newCourse.courseName,
                                           roomName: roomName,
