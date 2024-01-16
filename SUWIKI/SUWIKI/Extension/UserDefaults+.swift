@@ -12,9 +12,4 @@ extension UserDefaults {
         let appGroupId = "group.sozohoy.suwiki"
         return UserDefaults(suiteName: appGroupId)!
     }
-
-    static var timetableId: String {
-        let id = UserDefaults.standard.value(forKey: "id") as? String ?? ""
-        return id
-    }
 }
