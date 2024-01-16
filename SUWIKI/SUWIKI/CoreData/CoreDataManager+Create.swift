@@ -20,7 +20,7 @@ extension CoreDataManager {
         timetableEntity.setValue(id,  forKey: "id")
         timetableEntity.setValue(name, forKey: "name")
         timetableEntity.setValue(semester, forKey: "semester")
-        UserDefaults.standard.set(id, forKey: "id")
+        UserDefaults.shared.set(id, forKey: "id")
         do {
             try context.save()
         } catch {

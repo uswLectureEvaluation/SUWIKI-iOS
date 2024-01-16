@@ -19,7 +19,7 @@ final class AddCourseManager {
 
     func saveCourse(newCourse: TimetableCourse,
                     duplicateCase: DuplicateCase) -> Bool {
-        guard let id = UserDefaults.standard.value(forKey: "id") as? String else { return false }
+        guard let id = UserDefaults.shared.value(forKey: "id") as? String else { return false }
         var isDuplicated = false
         let timetableCourse = coreDataManager.fetchCourse(id: id) // userdefault.get
         var course: [TimetableCourse] = []
