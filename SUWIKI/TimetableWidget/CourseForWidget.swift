@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct CourseForWidget: Codable {
+struct CourseForWidget: Identifiable, Codable {
     let id: UUID
     let professor: String
     let roomName: String
     let courseName: String
-    let courseDay: String
+    let courseDay: Int
     let startTime: String
     let endTime: String
 }
