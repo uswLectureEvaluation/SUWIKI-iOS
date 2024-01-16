@@ -45,8 +45,8 @@ struct TimetableWidgetEntryView: View {
 
     var body: some View {
         switch widgetFamily {
-        case .systemSmall:
-            Text("Hi")
+//        case .systemSmall:
+//            Text("Hi")
         case .systemMedium:
             TimetableWidgetMedium()
         default:
@@ -69,9 +69,9 @@ struct TimetableWidget: Widget {
                     .background()
             }
         }
-        .supportedFamilies([.systemMedium, .systemSmall])
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .supportedFamilies([.systemMedium])
+        .configurationDisplayName("오늘의 강의")
+        .description("오늘 있는 강의와 이러닝을 볼 수 있어요.")
     }
 }
 
