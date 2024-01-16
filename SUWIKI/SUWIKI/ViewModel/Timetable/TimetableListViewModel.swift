@@ -21,7 +21,7 @@ final class TimetableListViewModel {
     }
     
     func updateTimetable(index: Int) {
-        UserDefaults.standard.set(self.timetable[index].id, forKey: "id")
+        UserDefaults.shared.set(self.timetable[index].id, forKey: "id")
     }
     
     /// TODO
@@ -32,7 +32,7 @@ final class TimetableListViewModel {
     /// 5. timetable = [] 면 id 없애고 아니면 first로 id 수정
     
     func deleteTimetable(index: Int, currentVC: UIViewController) {
-        let setId = UserDefaults.standard.value(forKey: "id") as? String
+        let setId = UserDefaults.shared.value(forKey: "id") as? String
         let deleteId = timetable[index].id
         do {
             try coreDataManager.deleteTimetable(id: deleteId ?? "")
@@ -41,12 +41,12 @@ final class TimetableListViewModel {
         }
         self.timetable.remove(at: index)
         if timetable.count == 0 {
-            UserDefaults.standard.removeObject(forKey: "id")
+            UserDefaults.shared.removeObject(forKey: "id")
             NotificationCenter.default.post(name: Notification.Name("timetableIsEmpty"),
                                             object: nil)
             currentVC.dismiss(animated: true)
         } else if setId == deleteId {
-            UserDefaults.standard.set(self.timetable.first?.id, forKey: "id")
+            UserDefaults.shared.set(self.timetable.first?.id, forKey: "id")
         }
     }
 }
