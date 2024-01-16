@@ -15,4 +15,5 @@ struct CourseForWidget: Identifiable, Codable {
     let courseDay: Int
     let startTime: String
     let endTime: String
+    let color: Int
 }

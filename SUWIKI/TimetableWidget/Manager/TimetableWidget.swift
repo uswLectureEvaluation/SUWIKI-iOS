@@ -39,16 +39,18 @@ struct SimpleEntry: TimelineEntry {
     let emoji: String
 }
 
-struct TimetableWidgetEntryView : View {
+struct TimetableWidgetEntryView: View {
+    @Environment(\.widgetFamily) private var widgetFamily
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+        switch widgetFamily {
+        case .systemSmall:
+            Text("Hi")
+        case .systemMedium:
+            TimetableWidgetMedium()
+        default:
+            Text("메일로 문의 바랍니다.")
         }
     }
 }
@@ -67,6 +69,7 @@ struct TimetableWidget: Widget {
                     .background()
             }
         }
+        .supportedFamilies([.systemMedium, .systemSmall])
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
     }
