@@ -11,7 +11,6 @@ import CoreData
 extension CoreDataManager {
     
     func deleteCourse(id: String, courseId: String) throws {
-        guard let context = context else { throw CoreDataError.contextError }
         let fetchRequest = Timetable.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {
@@ -30,7 +29,6 @@ extension CoreDataManager {
     }
     
     func deleteTimetable(id: String) throws {
-        guard let context = context else { throw CoreDataError.contextError }
         let fetchRequest = Timetable.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {
@@ -43,9 +41,6 @@ extension CoreDataManager {
     }
 
     func deleteFirebaseCourse() throws {
-        guard let context = context else {
-            throw CoreDataError.contextError
-        }
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FirebaseCourse")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {

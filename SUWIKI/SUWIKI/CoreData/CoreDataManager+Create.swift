@@ -14,14 +14,13 @@ extension CoreDataManager {
     /// - Parameter name : 시간표 명
     /// - Parameter semester : 학기
     func addTimeTable(name: String, semester: String) {
-        guard let context = context else { return }
         guard let entity = NSEntityDescription.entity(forEntityName: "Timetable", in: context) else { return }
         let timetableEntity = NSManagedObject(entity: entity, insertInto: context)
         let id = UUID().uuidString
         timetableEntity.setValue(id,  forKey: "id")
         timetableEntity.setValue(name, forKey: "name")
         timetableEntity.setValue(semester, forKey: "semester")
-        UserDefaults.standard.set(id, forKey: "id")
+        UserDefaults.shared.set(id, forKey: "id")
         do {
             try context.save()
         } catch {
@@ -33,12 +32,10 @@ extension CoreDataManager {
     /// func saveFirebaseCourse: 파이어베이스에 저장된 데이터를 코어데이터에 저장합니다.
     /// - Parameter course : [[String: Any]]
     /// NSBatchInsertRequest Objects
+    /// /// 새로운 학기의 강의를 업데이트할 경우 기존의 로컬에 있는 강의는 삭제하고 진행해야 함.
+
     func saveFirebaseCourse(course: [[String: Any]]) throws {
-        /// 새로운 학기의 강의를 업데이트할 경우 기존의 로컬에 있는 강의는 삭제하고 진행해야 함.
         try deleteFirebaseCourse()
-        guard let context = context else {
-            throw CoreDataError.contextError
-        }
         guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", in: context) else {
             throw CoreDataError.entityError
         }
@@ -49,26 +46,19 @@ extension CoreDataManager {
             print("저장 성공!")
             return
         }
-        print("Batch Insert Error")
-        throw CoreDataError.batchInsertError
+        print(CoreDataError.batchInsertError.localizedDescription)
     }
     
     /// func saveTimetableCourse: 선택된 시간표에 강의를 저장합니다.
     /// - Parameter id : timetable id
     /// - Parameter course : 추가할 강의
     func saveCourse(id: String, course: TimetableCourse) throws {
-        guard let context = context else {
-            throw CoreDataError.contextError
-        }
-        
         let fetchRequest = Timetable.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-        
         do {
             guard let timetable = try context.fetch(fetchRequest).first else {
                 throw CoreDataError.fetchError
             }
-            
             let courseEntity = Course(context: context)
             courseEntity.courseId = course.courseId
             courseEntity.courseName = course.courseName

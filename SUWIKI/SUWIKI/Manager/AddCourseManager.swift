@@ -19,14 +19,13 @@ final class AddCourseManager {
 
     func saveCourse(newCourse: TimetableCourse,
                     duplicateCase: DuplicateCase) -> Bool {
-        guard let id = UserDefaults.standard.value(forKey: "id") as? String else { return false }
+        guard let id = UserDefaults.shared.value(forKey: "id") as? String else { return false }
         var isDuplicated = false
         let timetableCourse = coreDataManager.fetchCourse(id: id) // userdefault.get
         var course: [TimetableCourse] = []
         switch duplicateCase {
         case .normal:
-            let roomName = newCourse.roomName.split(separator: "(")
-                .map { String($0) }[0]
+            let roomName = newCourse.roomName.split(separator: "(").map { String($0) }[0]
             course.append(TimetableCourse(courseId: UUID().uuidString,
                                           courseName: newCourse.courseName,
                                           roomName: roomName,

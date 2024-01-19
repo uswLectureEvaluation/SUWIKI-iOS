@@ -31,11 +31,11 @@ final class SelectMajorViewModel {
     }
     
     func updateBookmark() {
-        UserDefaults.standard.set(bookmark, forKey: "bookmark")
+        UserDefaults.shared.set(bookmark, forKey: "bookmark")
     }
     
     func fetchBookmark() {
-        if let bookmark = UserDefaults.standard.array(forKey: "bookmark") as? [String] {
+        if let bookmark = UserDefaults.shared.array(forKey: "bookmark") as? [String] {
             self.bookmark = bookmark
         }
         descendingMajorBookmark()

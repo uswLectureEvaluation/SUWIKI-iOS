@@ -40,7 +40,7 @@ final class TimetableViewModel {
     }
     
     func updateTimetable() {
-        guard let id = UserDefaults.standard.value(forKey: "id") as? String,
+        guard let id = UserDefaults.shared.value(forKey: "id") as? String,
               let title = coreDataManager.fetchTimetable(id: id)?.name else {
             self.timetableTitle = "시간표"
             self.timetableIsEmpty = true
@@ -50,7 +50,7 @@ final class TimetableViewModel {
     }
     
     func updateCourse() {
-        guard let id = UserDefaults.standard.value(forKey: "id") as? String else {
+        guard let id = UserDefaults.shared.value(forKey: "id") as? String else {
             self.timetableIsEmpty = true
             return
         }
@@ -72,7 +72,7 @@ final class TimetableViewModel {
     
     func deleteCourse(uuid: String) {
         guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }),
-              let id = UserDefaults.standard.value(forKey: "id") as? String
+              let id = UserDefaults.shared.value(forKey: "id") as? String
         else { return }
         elliottEvent.remove(at: index)
         do {
@@ -106,7 +106,6 @@ final class TimetableViewModel {
                             self.versionChecked = true
                             print("@Log - 시간표 최초 업데이트 ~")
                         }
-
                     } else {
                         self.versionChecked = true
                         print("@Log - 기존 시간표로 출력 ~")
