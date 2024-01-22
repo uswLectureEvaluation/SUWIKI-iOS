@@ -2,22 +2,22 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Course+CoreDataClass.swift">
+      location = "group:SUWIKI/Core/CoreData/NSManagedObjects/Course+CoreDataClass.swift">
    </FileRef>
    <FileRef
-      location = "group:Course+CoreDataProperties.swift">
+      location = "group:SUWIKI/Core/CoreData/NSManagedObjects/Course+CoreDataProperties.swift">
    </FileRef>
    <FileRef
-      location = "group:Timetable+CoreDataClass.swift">
+      location = "group:SUWIKI/Core/CoreData/NSManagedObjects/FirebaseCourse+CoreDataClass.swift">
    </FileRef>
    <FileRef
-      location = "group:Timetable+CoreDataProperties.swift">
+      location = "group:SUWIKI/Core/CoreData/NSManagedObjects/FirebaseCourse+CoreDataProperties.swift">
    </FileRef>
    <FileRef
-      location = "group:FirebaseCourse+CoreDataClass.swift">
+      location = "group:SUWIKI/Core/CoreData/NSManagedObjects/Timetable+CoreDataClass.swift">
    </FileRef>
    <FileRef
-      location = "group:FirebaseCourse+CoreDataProperties.swift">
+      location = "group:SUWIKI/Core/CoreData/NSManagedObjects/Timetable+CoreDataProperties.swift">
    </FileRef>
    <FileRef
       location = "group:SUWIKI.xcodeproj">
