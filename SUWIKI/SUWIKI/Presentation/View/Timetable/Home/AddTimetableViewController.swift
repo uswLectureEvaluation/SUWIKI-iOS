@@ -11,7 +11,6 @@ import Combine
 import SnapKit
 import Then
 
-
 class AddTimetableViewController: UIViewController {
     
     private let timetableNameTextField = UITextField().then {
