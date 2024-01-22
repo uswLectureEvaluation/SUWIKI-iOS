@@ -235,14 +235,112 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		AF2586CC2A909AF800A61F8E /* Model */ = {
+		AF0ECA082B5E99FC0012CC44 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AF0ECA092B5E9A0B0012CC44 /* Firebase */,
+				AFEC86972A3771B4008C5781 /* CoreData */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AF0ECA092B5E9A0B0012CC44 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				AFAA2F002B343BC000899E98 /* FirebaseManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		AF0ECA0A2B5E9A200012CC44 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AFEC5B0E2B3C9619004FEC90 /* InitView.swift */,
+				AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */,
+				AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */,
+				AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */,
+				AF08A8D52A9DE1EE005C3D00 /* AddTimetableViewController.swift */,
+				AF08A8DB2A9F6C5D005C3D00 /* TimetableListViewController.swift */,
+				AF08A8DD2A9F6CD2005C3D00 /* Cell */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AF0ECA0B2B5E9A7B0012CC44 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AFEC86952A37712A008C5781 /* TimetableViewModel.swift */,
+				AF08A8D72A9F0736005C3D00 /* AddTimetableViewModel.swift */,
+				AF08A8E02A9F6E63005C3D00 /* TimetableListViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AF0ECA0C2B5E9A8E0012CC44 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
 				AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */,
 				AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */,
 				AFE18F192A271755009D4D58 /* Major.swift */,
 			);
-			path = Model;
+			path = Timetable;
+			sourceTree = "<group>";
+		};
+		AF0ECA0D2B5E9AF00012CC44 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				AFF785BD2A932C0400B6D531 /* View */,
+				AFF785BE2A932C0A00B6D531 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		AF0ECA0E2B5E9AF60012CC44 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AF2586CC2A909AF800A61F8E /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AF0ECA0F2B5E9AFF0012CC44 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AF0ECA102B5E9B230012CC44 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AF2AADDC2A85411C00923A61 /* Extension */,
+				AFC335302A4DD20900D22DEC /* AddCourseManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AF0ECA112B5E9B920012CC44 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */,
+				AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		AF0ECA142B5E9BFB0012CC44 /* NSManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NSManagedObjects;
+			sourceTree = "<group>";
+		};
+		AF2586CC2A909AF800A61F8E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				AF0ECA0C2B5E9A8E0012CC44 /* Timetable */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		AF2AADDC2A85411C00923A61 /* Extension */ = {
@@ -329,19 +427,15 @@
 		AFE18EF32A1C8ABF009D4D58 /* SUWIKI */ = {
 			isa = PBXGroup;
 			children = (
-				AF86F18A2B4AEAB20001904A /* SUWIKI.entitlements */,
 				AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */,
-				AF2AADDC2A85411C00923A61 /* Extension */,
-				AFF785BB2A932BE700B6D531 /* Manager */,
-				AFEC86972A3771B4008C5781 /* CoreData */,
-				AF2586CC2A909AF800A61F8E /* Model */,
-				AFF785BD2A932C0400B6D531 /* View */,
-				AFF785BE2A932C0A00B6D531 /* ViewModel */,
+				AF86F18A2B4AEAB20001904A /* SUWIKI.entitlements */,
+				AF0ECA112B5E9B920012CC44 /* Application */,
+				AF0ECA102B5E9B230012CC44 /* Utils */,
+				AF0ECA0F2B5E9AFF0012CC44 /* Data */,
+				AF0ECA0E2B5E9AF60012CC44 /* Domain */,
+				AF0ECA0D2B5E9AF00012CC44 /* Presentation */,
+				AF0ECA082B5E99FC0012CC44 /* Core */,
 				AFEC86942A377067008C5781 /* Resources */,
-				AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */,
-				AFE18F052A1C8AC1009D4D58 /* Info.plist */,
-				AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */,
-				AF4E41EE2A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld */,
 			);
 			path = SUWIKI;
 			sourceTree = "<group>";
@@ -349,6 +443,7 @@
 		AFEC86942A377067008C5781 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AFE18F052A1C8AC1009D4D58 /* Info.plist */,
 				AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */,
 				AFE18F022A1C8AC1009D4D58 /* LaunchScreen.storyboard */,
 				AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */,
@@ -359,6 +454,8 @@
 		AFEC86972A3771B4008C5781 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				AF0ECA142B5E9BFB0012CC44 /* NSManagedObjects */,
+				AF4E41EE2A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld */,
 				AFEC86982A3771C6008C5781 /* CoreDataManager.swift */,
 				AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */,
 				AF057A152A77F365004577E7 /* CoreDataManager+Read.swift */,
@@ -368,20 +465,10 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		AFF785BB2A932BE700B6D531 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				AFC335302A4DD20900D22DEC /* AddCourseManager.swift */,
-				AFAA2F002B343BC000899E98 /* FirebaseManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		AFF785BD2A932C0400B6D531 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				AFF785C02A9331E200B6D531 /* Timetable */,
-				AFF785BF2A9331DC00B6D531 /* AddCourse */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -390,7 +477,6 @@
 			isa = PBXGroup;
 			children = (
 				AFF785C22A93322400B6D531 /* Timetable */,
-				AFF785C32A93322E00B6D531 /* AddCourse */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -411,13 +497,8 @@
 		AFF785C02A9331E200B6D531 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
-				AFEC5B0E2B3C9619004FEC90 /* InitView.swift */,
-				AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */,
-				AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */,
-				AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */,
-				AF08A8D52A9DE1EE005C3D00 /* AddTimetableViewController.swift */,
-				AF08A8DB2A9F6C5D005C3D00 /* TimetableListViewController.swift */,
-				AF08A8DD2A9F6CD2005C3D00 /* Cell */,
+				AFF785BF2A9331DC00B6D531 /* AddCourse */,
+				AF0ECA0A2B5E9A200012CC44 /* Home */,
 			);
 			path = Timetable;
 			sourceTree = "<group>";
@@ -435,9 +516,8 @@
 		AFF785C22A93322400B6D531 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
-				AFEC86952A37712A008C5781 /* TimetableViewModel.swift */,
-				AF08A8D72A9F0736005C3D00 /* AddTimetableViewModel.swift */,
-				AF08A8E02A9F6E63005C3D00 /* TimetableListViewModel.swift */,
+				AFF785C32A93322E00B6D531 /* AddCourse */,
+				AF0ECA0B2B5E9A7B0012CC44 /* Home */,
 			);
 			path = Timetable;
 			sourceTree = "<group>";
@@ -916,7 +996,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R3N359429;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SUWIKI/Info.plist;
+				INFOPLIST_FILE = SUWIKI/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SUWIKI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -954,7 +1034,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8R3N359429;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = SUWIKI/Info.plist;
+				INFOPLIST_FILE = SUWIKI/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SUWIKI;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
