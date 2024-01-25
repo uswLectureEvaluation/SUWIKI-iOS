@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct AllLectureRequest: Encodable {
+        /// 필터링 옵션
+        let option: LectureOption
+        /// Fetch Page
+        let page: Int
+        /// 학과 필터링, 이후 학과 fetch 기능 구현 후 붙힐 예정
+        let majorType: String?
+    }
+}
+
+enum LectureOption: String, Encodable {
+    case modifiedDate = "modifiedDate"
+    case lectureSatisfactionAvg = "lectureSatisfactionAvg"
+    case lectureHoneyAvg = "lectureHoneyAvg"
+    case lectureLearningAvg = "lectureLearningAvg"
+    case lectureTotalAvg = "lectureTotalAvg"
+}
