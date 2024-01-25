@@ -23,12 +23,25 @@ extension DTO {
         let lectureName: String
 
         /// 강의 평가 지수 평균
-        let lectureTotalAvg: Double
+        let lectureTotalAvg: Float
         /// 강의 평가 만족도 지수 평균
-        let lectureSatisfactionAvg: Double
+        let lectureSatisfactionAvg: Float
         /// 강의 평가 꿀강 지수 평균
-        let lectureHoneyAvg: Double
+        let lectureHoneyAvg: Float
         /// 강의 평가 배움 지수 평균
-        let lectureLearningAvg: Double
+        let lectureLearningAvg: Float
     }
 }
+
+extension DTO.LectureResponse {
+    var entity: Lecture {
+        Lecture(id: id,
+                name: lectureName,
+                major: majorType,
+                professor: professor,
+                lectureType: lectureType,
+                lectureTotalAvg: Double(lectureTotalAvg))
+    }
+}
+
+
