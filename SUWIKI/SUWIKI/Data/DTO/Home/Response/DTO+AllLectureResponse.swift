@@ -13,5 +13,10 @@ extension DTO {
         let lecture: [DTO.LectureResponse]
         /// 강의 데이터 갯수 - 불필요할 수 있음.
         let count: Int
+
+        enum CodingKeys: String, CodingKey {
+            case lecture = "data"
+            case count
+        }
     }
 }
