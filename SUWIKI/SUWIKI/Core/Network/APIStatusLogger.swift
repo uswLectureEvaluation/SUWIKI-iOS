@@ -9,7 +9,7 @@ import Foundation
 
 import Alamofire
 
-final class CustomLogger: EventMonitor {
+final class APIStatusLogger: EventMonitor {
 
     func requestDidFinish(_ request: Request) {
         print("======================= @Log requestDidFinish =======================")

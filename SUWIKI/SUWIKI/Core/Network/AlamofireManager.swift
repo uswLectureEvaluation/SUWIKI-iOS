@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+import Alamofire
+
+/// 인터셉터 추가 예정
+final class AlamofireManager {
+    static let shared = AlamofireManager()
+
+    let loggers = [APIStatusLogger()] as [EventMonitor]
+    var session: Session
+
+    private init() {
+        self.session = Session(eventMonitors: loggers)
+    }
+}
