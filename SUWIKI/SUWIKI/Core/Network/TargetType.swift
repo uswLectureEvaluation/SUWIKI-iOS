@@ -28,7 +28,6 @@ public extension TargetType {
 extension TargetType {
     public func addParameters(_ request: URLRequest) throws -> URLRequest {
         var request = request
-
         switch parameters {
         case .plain:
             break
@@ -47,12 +46,13 @@ extension TargetType {
     }
 
     public func asURLRequest() throws -> URLRequest {
-        let url = try baseURL.appending(path: path).asURL()
+        let url = try targetURL.appending(path: path).asURL()
         var urlRequest = try URLRequest(url: url,
                                         method: method)
         if let headers = headers {
             urlRequest.headers = HTTPHeaders(headers)
         }
+        urlRequest = try addParameters(urlRequest)
         return urlRequest
     }
 }
