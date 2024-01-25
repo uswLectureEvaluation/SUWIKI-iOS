@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+public enum APITarget { 
+    static let baseURL = "https://api.suwiki.kr/"
+}
