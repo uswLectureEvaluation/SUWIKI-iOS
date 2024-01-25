@@ -8,9 +8,9 @@
 import Foundation
 
 extension DTO {
-    struct HomeResponse: Codable {
+    struct AllLectureResponse: Codable {
         /// 강의 데이터
-        let lecture: [DTO.Lecture]
+        let lecture: [DTO.LectureResponse]
         /// 강의 데이터 갯수 - 불필요할 수 있음.
         let count: Int
     }

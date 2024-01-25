@@ -8,7 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct Lecture: Codable, Identifiable {
+    struct LectureResponse: Codable, Identifiable {
         /// 강의 ID
         let id: Int
         /// 강의년도 + 학기 "2021-1, 2022-1"
@@ -32,5 +32,3 @@ extension DTO {
         let lectureLearningAvg: Double
     }
 }
-
-
