@@ -6,19 +6,21 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let _ = AppEnvironment()
         guard (scene is UIWindowScene) else { return }
 //        window = UIWindow(windowScene: windowScene) // SceneDelegate의 프로퍼티에 설정해줌
-//        let mainViewController = UINavigationController(rootViewController: AddCourseViewController()) // 맨 처음 보여줄 ViewController
-//
-//        window?.rootViewController = mainViewController
-//        window?.makeKeyAndVisible()
+        let mainViewController = UIHostingController(rootView: LectureEvaluationHomeView())
+//        UINavigationController(rootViewController: AddCourseViewController())  맨 처음 보여줄 ViewController
+
+        window?.rootViewController = mainViewController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
