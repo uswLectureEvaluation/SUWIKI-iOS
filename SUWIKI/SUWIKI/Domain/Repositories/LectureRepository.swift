@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LectureRepository {
-    func load(
+    func fetch(
         option: LectureOption,
         page: Int,
         major: String?

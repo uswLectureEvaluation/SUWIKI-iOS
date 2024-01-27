@@ -11,7 +11,7 @@ import Alamofire
 
 final class DefaultLectureRepository: LectureRepository {
 
-    func load(
+    func fetch(
         option: LectureOption,
         page: Int,
         major: String?
