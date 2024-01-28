@@ -26,14 +26,12 @@ extension CoreDataManager {
         } catch {
             print("@Log - \(error.localizedDescription)")
         }
-        
     }
     
     /// func saveFirebaseCourse: 파이어베이스에 저장된 데이터를 코어데이터에 저장합니다.
     /// - Parameter course : [[String: Any]]
     /// NSBatchInsertRequest Objects
     /// /// 새로운 학기의 강의를 업데이트할 경우 기존의 로컬에 있는 강의는 삭제하고 진행해야 함.
-
     func saveFirebaseCourse(course: [[String: Any]]) throws {
         try deleteFirebaseCourse()
         guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", in: context) else {
@@ -75,5 +73,4 @@ extension CoreDataManager {
             throw CoreDataError.saveError
         }
     }
-
 }
