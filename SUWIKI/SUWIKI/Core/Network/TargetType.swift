@@ -39,7 +39,7 @@ extension TargetType {
             request = try JSONEncoding.default.encode(request, with: json.toDictionary())
 
         case let .both(query, json):
-            request = try URLEncoding.queryString.encode(request,with: query.toDictionary())
+            request = try URLEncoding.queryString.encode(request, with: query.toDictionary())
             request = try JSONEncoding.default.encode(request, with: json.toDictionary())
         }
         return request
