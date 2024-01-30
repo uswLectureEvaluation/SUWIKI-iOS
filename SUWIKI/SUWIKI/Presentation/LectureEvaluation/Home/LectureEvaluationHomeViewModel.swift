@@ -7,6 +7,14 @@
 
 import Foundation
 
+//"modifiedDate",
+//"lectureSatisfactionAvg",
+//"lectureHoneyAvg",
+//"lectureLearningAvg",
+//"lectureTotalAvg"
+//@StateObject var viewModel = LectureEvaluationHomeViewModel()
+//@State var index: Int = 0
+
 final class LectureEvaluationHomeViewModel: ObservableObject {
 
     var useCase: FetchLectureUseCase = DIContainer.shared.resolve(type: FetchLectureUseCase.self)
@@ -22,9 +30,6 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
         }
     }
 
-    func bind()  {
-    }
-
     func fetch() async throws {
         do {
             let fetchLecture = try await useCase.fetch(option: option,
@@ -38,29 +43,3 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
         }
     }
 }
-
-//$option
-//    .receive(on: DispatchQueue.main)
-//    .sink { [weak self] data in
-//        print("@LOGG - \(data)")
-//        self?.page = 1
-//        Task { [weak self] in
-//            try await self?.fetch()
-//        }
-//    }
-//    .store(in: &cancellables)
-//        $option
-//            .flatMap { [weak self] _ in
-//                Future<Void, Never> { promise in
-//                    Task { [weak self] in
-//                        self?.page = 1
-//                        try await self?.fetch()
-//                        promise(.success(()))
-//                    }
-//                }
-//            }
-//            .receive(on: DispatchQueue.main)
-//            .sink { completion in
-//                print("@Log Completion- \(completion)")
-//            }
-//            .store(in: &cancellables)
