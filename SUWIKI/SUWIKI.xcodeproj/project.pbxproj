@@ -31,7 +31,6 @@
 		AF0ABE4A2B624BFF00AA93EE /* DefaultLectureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0ABE492B624BFF00AA93EE /* DefaultLectureRepository.swift */; };
 		AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */; };
 		AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2586CA2A8F628E00A61F8E /* UIImage+.swift */; };
-		AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */; };
 		AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDD2A85412700923A61 /* UIColor+.swift */; };
 		AF2AADE02A89440900923A61 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDF2A89440900923A61 /* UISearchBar+.swift */; };
 		AF37C9A22B5539A300D4949D /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */; };
@@ -167,7 +166,6 @@
 		AF0ABE492B624BFF00AA93EE /* DefaultLectureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLectureRepository.swift; sourceTree = "<group>"; };
 		AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseEmptyView.swift; sourceTree = "<group>"; };
 		AF2586CA2A8F628E00A61F8E /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
-		AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trashCodeStorage.swift; sourceTree = "<group>"; };
 		AF2AADDD2A85412700923A61 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AF2AADDF2A89440900923A61 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+.swift"; sourceTree = "<group>"; };
 		AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -632,7 +630,6 @@
 		AFE18EF32A1C8ABF009D4D58 /* SUWIKI */ = {
 			isa = PBXGroup;
 			children = (
-				AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */,
 				AF86F18A2B4AEAB20001904A /* SUWIKI.entitlements */,
 				AF0ECA112B5E9B920012CC44 /* Application */,
 				AF0ECA102B5E9B230012CC44 /* Utils */,
@@ -993,7 +990,6 @@
 				AF86F18D2B4AF0110001904A /* UserDefaults+.swift in Sources */,
 				AF37C9A32B5539A300D4949D /* TimetableCourse.swift in Sources */,
 				AF5E2A9C2AAF6B8D006DEE02 /* TimetableEmptyView.swift in Sources */,
-				AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */,
 				AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */,
 				AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */,
 				AF7DF1EA2B64EDE800C2CF4E /* Inject.swift in Sources */,
