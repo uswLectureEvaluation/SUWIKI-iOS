@@ -44,6 +44,8 @@
 		AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */; };
 		AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */; };
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
+		AF6A8AC62B6C0A3F00DD58EF /* SearchLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AC52B6C0A3F00DD58EF /* SearchLectureUseCase.swift */; };
+		AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */; };
 		AF7DF1E42B64EA8D00C2CF4E /* FetchLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E32B64EA8D00C2CF4E /* FetchLectureUseCase.swift */; };
 		AF7DF1E82B64EDB400C2CF4E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E72B64EDB400C2CF4E /* DIContainer.swift */; };
 		AF7DF1EA2B64EDE800C2CF4E /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E92B64EDE800C2CF4E /* Inject.swift */; };
@@ -174,6 +176,8 @@
 		AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewController.swift; sourceTree = "<group>"; };
 		AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
+		AF6A8AC52B6C0A3F00DD58EF /* SearchLectureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLectureUseCase.swift; sourceTree = "<group>"; };
+		AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+SearchLectureRequest.swift"; sourceTree = "<group>"; };
 		AF7DF1E32B64EA8D00C2CF4E /* FetchLectureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLectureUseCase.swift; sourceTree = "<group>"; };
 		AF7DF1E72B64EDB400C2CF4E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		AF7DF1E92B64EDE800C2CF4E /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				AF0ABE362B62407200AA93EE /* DTO+AllLectureRequest.swift */,
+				AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				AF7DF1E32B64EA8D00C2CF4E /* FetchLectureUseCase.swift */,
+				AF6A8AC52B6C0A3F00DD58EF /* SearchLectureUseCase.swift */,
 			);
 			path = Lecture;
 			sourceTree = "<group>";
@@ -939,6 +945,7 @@
 				AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */,
 				AF9907D42B5670F100EF0D91 /* TimetableWidgetCell.swift in Sources */,
 				AF057A1A2A77F375004577E7 /* CoreDataManager+Delete.swift in Sources */,
+				AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */,
 				AFC90FC72B6799A90007DA1B /* LectureCell.swift in Sources */,
 				AF08A8E12A9F6E63005C3D00 /* TimetableListViewModel.swift in Sources */,
 				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
@@ -947,6 +954,7 @@
 				AF08A8DC2A9F6C5E005C3D00 /* TimetableListViewController.swift in Sources */,
 				AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */,
 				AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */,
+				AF6A8AC62B6C0A3F00DD58EF /* SearchLectureUseCase.swift in Sources */,
 				AF9907C72B56542400EF0D91 /* CourseForWidget.swift in Sources */,
 				AF0ABE252B6227E500AA93EE /* APIStatusLogger.swift in Sources */,
 				AF7DF1EE2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift in Sources */,
