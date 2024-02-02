@@ -33,5 +33,13 @@ extension UIColor {
         UIColor(red: 178/255, green: 190/255, blue: 195/255, alpha: 1.0), /* #b2bec3 */
         UIColor(red: 45/255, green: 52/255, blue: 54/255, alpha: 1.0) /* #2d3436 */
     ]
-    static let listTitleColor = UIColor(red: 51, green: 51, blue: 51, alpha: 1)
+    static let listTitleColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+    static let basicBlack = UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 1)
+    static let basicWhite = UIColor(red: 228/255, green: 228/255, blue: 233/255, alpha: 1)
+    static let grayFB = UIColor(red: 228/255, green: 228/255, blue: 228/255, alpha: 1)
+    static let grayF6 = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+    static let grayDA = UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1)
+    static let grayCB = UIColor(red: 203/255, green: 203/255, blue: 203/255, alpha: 1)
+    static let gray95 = UIColor(red: 149/255, green: 149/255, blue: 149/255, alpha: 1)
+    static let gray6A = UIColor(red: 106/255, green: 106/255, blue: 106/255, alpha: 1)
 }

@@ -42,7 +42,6 @@ final class AddCourseManager {
             course = differentPlace(course: newCourse)
             isDuplicated = isCourseDuplicated(existingCourse: timetableCourse, course: course)
         }
-
         if !isDuplicated {
             do {
                 for i in 0..<course.count {
@@ -123,13 +122,11 @@ final class AddCourseManager {
             }
             let lastTime = components[components.count - 1].dropFirst().split(separator: ",")
             var lastStartTime = ""
-
             if String(lastTime[0]).contains(")") {
                 lastStartTime = String(lastTime[0].dropLast())
             } else {
                 lastStartTime = String(lastTime[0])
             }
-
             let lastEndTime = String(lastTime[lastTime.count - 1].dropLast())
             timeTableCourse.append(TimetableCourse(courseId: UUID().uuidString,
                                                    courseName: course.courseName,
@@ -156,7 +153,6 @@ final class AddCourseManager {
             let dayString = String(components[i][dayIndex])
             let start = String(components[i][startIndex])
             var end = ""
-            
             if i == 0 { 
                 if let lastString = components[i].last {
                     end = String(lastString)
@@ -167,7 +163,6 @@ final class AddCourseManager {
                     end = String(lastString)
                 }
             }
-            
             let courseDay = dayToInt(courseDay: dayString)
             let startTime = startTimeToString(start: start)
             let endTime = endTimeToString(end: end)

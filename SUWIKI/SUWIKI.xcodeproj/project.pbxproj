@@ -31,7 +31,6 @@
 		AF0ABE4A2B624BFF00AA93EE /* DefaultLectureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF0ABE492B624BFF00AA93EE /* DefaultLectureRepository.swift */; };
 		AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */; };
 		AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2586CA2A8F628E00A61F8E /* UIImage+.swift */; };
-		AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */; };
 		AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDD2A85412700923A61 /* UIColor+.swift */; };
 		AF2AADE02A89440900923A61 /* UISearchBar+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AADDF2A89440900923A61 /* UISearchBar+.swift */; };
 		AF37C9A22B5539A300D4949D /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */; };
@@ -45,6 +44,8 @@
 		AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */; };
 		AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */; };
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
+		AF6A8AC62B6C0A3F00DD58EF /* SearchLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AC52B6C0A3F00DD58EF /* SearchLectureUseCase.swift */; };
+		AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */; };
 		AF7DF1E42B64EA8D00C2CF4E /* FetchLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E32B64EA8D00C2CF4E /* FetchLectureUseCase.swift */; };
 		AF7DF1E82B64EDB400C2CF4E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E72B64EDB400C2CF4E /* DIContainer.swift */; };
 		AF7DF1EA2B64EDE800C2CF4E /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E92B64EDE800C2CF4E /* Inject.swift */; };
@@ -80,6 +81,8 @@
 		AFBF51452B615863001B6EA1 /* DTO+LectureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF51442B615863001B6EA1 /* DTO+LectureResponse.swift */; };
 		AFBF51482B615C0C001B6EA1 /* DTO+AllLectureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF51472B615C0C001B6EA1 /* DTO+AllLectureResponse.swift */; };
 		AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC335302A4DD20900D22DEC /* AddCourseManager.swift */; };
+		AFC90FC72B6799A90007DA1B /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC90FC62B6799A90007DA1B /* LectureCell.swift */; };
+		AFC90FC92B679BD40007DA1B /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC90FC82B679BD40007DA1B /* Font+.swift */; };
 		AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */; };
 		AFD5CC122A404338008F95B7 /* SelectCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */; };
 		AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */; };
@@ -165,7 +168,6 @@
 		AF0ABE492B624BFF00AA93EE /* DefaultLectureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLectureRepository.swift; sourceTree = "<group>"; };
 		AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCourseEmptyView.swift; sourceTree = "<group>"; };
 		AF2586CA2A8F628E00A61F8E /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
-		AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trashCodeStorage.swift; sourceTree = "<group>"; };
 		AF2AADDD2A85412700923A61 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AF2AADDF2A89440900923A61 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+.swift"; sourceTree = "<group>"; };
 		AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -174,6 +176,8 @@
 		AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewController.swift; sourceTree = "<group>"; };
 		AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
+		AF6A8AC52B6C0A3F00DD58EF /* SearchLectureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLectureUseCase.swift; sourceTree = "<group>"; };
+		AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+SearchLectureRequest.swift"; sourceTree = "<group>"; };
 		AF7DF1E32B64EA8D00C2CF4E /* FetchLectureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLectureUseCase.swift; sourceTree = "<group>"; };
 		AF7DF1E72B64EDB400C2CF4E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		AF7DF1E92B64EDE800C2CF4E /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 		AFBF51442B615863001B6EA1 /* DTO+LectureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+LectureResponse.swift"; sourceTree = "<group>"; };
 		AFBF51472B615C0C001B6EA1 /* DTO+AllLectureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+AllLectureResponse.swift"; sourceTree = "<group>"; };
 		AFC335302A4DD20900D22DEC /* AddCourseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseManager.swift; sourceTree = "<group>"; };
+		AFC90FC62B6799A90007DA1B /* LectureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
+		AFC90FC82B679BD40007DA1B /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCourse.swift; sourceTree = "<group>"; };
 		AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseViewModel.swift; sourceTree = "<group>"; };
 		AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseListViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -309,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				AF0ABE362B62407200AA93EE /* DTO+AllLectureRequest.swift */,
+				AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -366,6 +373,7 @@
 			children = (
 				AF0ABE452B624B1400AA93EE /* LectureEvaluationHomeView.swift */,
 				AF7DF1ED2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift */,
+				AFC90FC62B6799A90007DA1B /* LectureCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -491,6 +499,7 @@
 		AF2AADDC2A85411C00923A61 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AFC90FC82B679BD40007DA1B /* Font+.swift */,
 				AF2AADDD2A85412700923A61 /* UIColor+.swift */,
 				AF2AADDF2A89440900923A61 /* UISearchBar+.swift */,
 				AF2586CA2A8F628E00A61F8E /* UIImage+.swift */,
@@ -504,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				AF7DF1E32B64EA8D00C2CF4E /* FetchLectureUseCase.swift */,
+				AF6A8AC52B6C0A3F00DD58EF /* SearchLectureUseCase.swift */,
 			);
 			path = Lecture;
 			sourceTree = "<group>";
@@ -626,7 +636,6 @@
 		AFE18EF32A1C8ABF009D4D58 /* SUWIKI */ = {
 			isa = PBXGroup;
 			children = (
-				AF2AADD72A836A4800923A61 /* trashCodeStorage.swift */,
 				AF86F18A2B4AEAB20001904A /* SUWIKI.entitlements */,
 				AF0ECA112B5E9B920012CC44 /* Application */,
 				AF0ECA102B5E9B230012CC44 /* Utils */,
@@ -936,6 +945,8 @@
 				AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */,
 				AF9907D42B5670F100EF0D91 /* TimetableWidgetCell.swift in Sources */,
 				AF057A1A2A77F375004577E7 /* CoreDataManager+Delete.swift in Sources */,
+				AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */,
+				AFC90FC72B6799A90007DA1B /* LectureCell.swift in Sources */,
 				AF08A8E12A9F6E63005C3D00 /* TimetableListViewModel.swift in Sources */,
 				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
 				AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */,
@@ -943,6 +954,7 @@
 				AF08A8DC2A9F6C5E005C3D00 /* TimetableListViewController.swift in Sources */,
 				AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */,
 				AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */,
+				AF6A8AC62B6C0A3F00DD58EF /* SearchLectureUseCase.swift in Sources */,
 				AF9907C72B56542400EF0D91 /* CourseForWidget.swift in Sources */,
 				AF0ABE252B6227E500AA93EE /* APIStatusLogger.swift in Sources */,
 				AF7DF1EE2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift in Sources */,
@@ -974,6 +986,7 @@
 				AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */,
 				AF0ABE3E2B62472200AA93EE /* Lecture.swift in Sources */,
 				AF0ABE292B622BE600AA93EE /* TargetType.swift in Sources */,
+				AFC90FC92B679BD40007DA1B /* Font+.swift in Sources */,
 				AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */,
 				AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */,
 				AFA499E72A2881BF0047A4B4 /* SelectMajorViewModel.swift in Sources */,
@@ -985,7 +998,6 @@
 				AF86F18D2B4AF0110001904A /* UserDefaults+.swift in Sources */,
 				AF37C9A32B5539A300D4949D /* TimetableCourse.swift in Sources */,
 				AF5E2A9C2AAF6B8D006DEE02 /* TimetableEmptyView.swift in Sources */,
-				AF2AADD82A836A4800923A61 /* trashCodeStorage.swift in Sources */,
 				AF2AADDE2A85412700923A61 /* UIColor+.swift in Sources */,
 				AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */,
 				AF7DF1EA2B64EDE800C2CF4E /* Inject.swift in Sources */,
