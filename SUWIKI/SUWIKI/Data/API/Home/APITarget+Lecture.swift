@@ -12,6 +12,7 @@ import Alamofire
 extension APITarget {
     enum Lecture: TargetType {
         case getHome(DTO.AllLectureRequest)
+        case search(DTO.SearchLectureRequest)
     }
 }
 
@@ -24,6 +25,8 @@ extension APITarget.Lecture {
         switch self {
         case .getHome:
             return .get
+        case .search:
+            return .get
         }
     }
 
@@ -31,6 +34,8 @@ extension APITarget.Lecture {
         switch self {
         case .getHome:
             "/all"
+        case .search:
+            "/search"
         }
     }
 
@@ -38,6 +43,8 @@ extension APITarget.Lecture {
         switch self {
         case let .getHome(allLectureRequest):
             return .query(allLectureRequest)
+        case let .search(searchLectureRequest):
+            return .query(searchLectureRequest)
         }
     }
 }
