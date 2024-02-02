@@ -7,26 +7,9 @@
 
 import SwiftUI
 
-struct FilteringOption: Identifiable {
-    let id: UUID
-    let name: String
-}
-
 struct LectureEvaluationHomeView: View {
 
-    @State var searchText: String = ""
-    @State var selection: String = "뭐임마"
-    let dummy: [Lecture] = [
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9),
-        Lecture(id: Int.random(in: 0...199), name: "데이터베이스", major: "정보보호학과", professor: "김명숙", lectureType: "전핵", lectureTotalAvg: 4.9)
-    ]
+    @StateObject var viewModel = LectureEvaluationHomeViewModel()
 
     var body: some View {
         NavigationView {
@@ -35,15 +18,25 @@ struct LectureEvaluationHomeView: View {
                     .ignoresSafeArea()
                 lectureList
             }
-            .navigationTitle("강의평가")
-            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
+            //TODO: 학과 필터링 뷰 구현 시 해당 데이터 들어와야 함. @Binding viewmodel.major
+            .navigationTitle("정보보호")
+            .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .onSubmit(of: .search) {
+                Task {
+                    try await viewModel.search()
+                }
+            }
             .toolbar {
-                Button {
-                    print("tap!")
+                Menu {
+                    optionMenu
+                    selectedMajor
                 } label: {
                     Image(systemName: "ellipsis.circle")
                         .tint(Color(uiColor: .primaryColor))
                 }
+            }
+            .sheet(isPresented: $viewModel.isMajorSelectSheetPresented) {
+                //TODO: 학과 필터링 뷰
             }
         }
     }
@@ -54,10 +47,16 @@ struct LectureEvaluationHomeView: View {
                 header
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                     .listRowSeparator(.hidden)
-                /// 더미데이터 교체 필요
-                ForEach(dummy) { lecture in
+                ForEach(viewModel.lecture, id: \.id) { lecture in
                     LectureCell(lecture: lecture)
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                        .onAppear {
+                            if viewModel.lecture.last == lecture {
+                                Task {
+                                    try await viewModel.update()
+                                }
+                            }
+                        }
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .background(Color(uiColor: .systemGray6))
@@ -74,14 +73,42 @@ struct LectureEvaluationHomeView: View {
 
     var header: some View {
         HStack {
-            /// Option
-            Text("최근 올라온 강의")
+            Text(viewModel.option.description)
                 .font(.h5)
                 .foregroundStyle(Color(uiColor: .gray6A))
             Spacer()
         }
         .background(Color(uiColor: .systemGray6))
     }
+
+    var optionMenu: some View {
+        Picker(selection: $viewModel.option) {
+            ForEach(LectureOption.allCases, id: \.self) { option in
+                Button {
+                    viewModel.option = option
+                } label: {
+                    Text("\(option.description)")
+                }
+                .tag(option)
+            }
+
+        } label: {
+            Text("다음으로 정렬")
+            Text("\(viewModel.option.description)")
+        }
+        .pickerStyle(.menu)
+    }
+
+    var selectedMajor: some View {
+        Button {
+            viewModel.isMajorSelectSheetPresented.toggle()
+        } label: {
+            Text("학과 선택하기")
+            Text("전체")
+        }
+    }
+
+    //TODO: EmptyView - 검색 데이터 없을 경우
 
 }
 
