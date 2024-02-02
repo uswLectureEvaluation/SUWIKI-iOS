@@ -13,4 +13,11 @@ protocol LectureRepository {
         page: Int,
         major: String?
     ) async throws -> [Lecture]
+
+    func search(
+        searchText: String,
+        option: LectureOption,
+        page: Int,
+        major: String?
+    ) async throws -> [Lecture]
 }
