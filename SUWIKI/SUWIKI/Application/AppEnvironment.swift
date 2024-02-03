@@ -20,10 +20,8 @@ struct AppEnvironment {
     }
 
     func registerUseCases() {
-        container.register(type: FetchLectureUseCase.self, 
-                           DefaultFetchLectureUseCase())
-        container.register(type: SearchLectureUseCase.self,
-                           DefaultSearchLectureUseCase())
+        container.register(type: LectureUseCase.self, 
+                           DefaultLectureUseCase())
     }
 
     func registerRepositories() {
