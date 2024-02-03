@@ -20,12 +20,17 @@ struct AppEnvironment {
     }
 
     func registerUseCases() {
-        container.register(type: LectureUseCase.self, 
-                           DefaultLectureUseCase())
+        container.register(type: FetchLectureUseCase.self, DefaultFetchLectureUseCase())
+        container.register(type: SearchLectureUseCase.self, DefaultSearchLectureUseCase())
+        container.register(type: signinuse, <#T##object: Service##Service#>)
     }
 
     func registerRepositories() {
         container.register(type: LectureRepository.self,
                            DefaultLectureRepository())
+        container.register(type: UserRepository.self,
+                           DefaultUserRepository())
+        container.register(type: KeychainRepository.self,
+                           DefaultKeychainRepository())
     }
 }
