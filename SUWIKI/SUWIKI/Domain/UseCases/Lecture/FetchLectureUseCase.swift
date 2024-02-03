@@ -6,3 +6,26 @@
 //
 
 import Foundation
+
+protocol FetchLectureUseCase {
+    func excute(
+        option: LectureOption,
+        page: Int,
+        major: String?
+    ) async throws -> [Lecture]
+}
+
+final class DefaultFetchLectureUseCase: FetchLectureUseCase {
+
+    @Inject var repository: LectureRepository
+
+    func excute(
+        option: LectureOption,
+        page: Int,
+        major: String?
+    ) async throws -> [Lecture] {
+        try await repository.fetch(option: option,
+                                   page: page,
+                                   major: major)
+    }
+}

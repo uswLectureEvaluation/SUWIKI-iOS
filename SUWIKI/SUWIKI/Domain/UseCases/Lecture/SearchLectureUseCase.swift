@@ -6,3 +6,29 @@
 //
 
 import Foundation
+
+protocol SearchLectureUseCase {
+    func excute(
+        searchText: String,
+        option: LectureOption,
+        page: Int,
+        major: String?
+    ) async throws -> [Lecture]
+}
+
+final class DefaultSearchLectureUseCase: SearchLectureUseCase {
+
+    @Inject var repository: LectureRepository
+
+    func excute(
+        searchText: String,
+        option: LectureOption, 
+        page: Int,
+        major: String?
+    ) async throws -> [Lecture] {
+        try await repository.search(searchText: searchText,
+                                    option: option,
+                                    page: page,
+                                    major: major)
+    }
+}
