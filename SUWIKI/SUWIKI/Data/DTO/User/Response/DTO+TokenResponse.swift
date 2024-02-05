@@ -15,3 +15,12 @@ extension DTO {
         let RefreshToken: String
     }
 }
+
+extension DTO.TokenResponse {
+    var entity: SignIn {
+        SignIn(
+            accessToken: AccessToken,
+            refreshToken: RefreshToken
+        )
+    }
+}
