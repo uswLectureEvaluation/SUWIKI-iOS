@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+class AppState: ObservableObject {
+    @Published var isLoggedIn: Bool
+
+    init() {
+        if KeychainManager.shared.read(token: .AccessToken) != nil &&
+            KeychainManager.shared.read(token: .RefreshToken) != nil {
+            self.isLoggedIn = true
+        } else {
+            self.isLoggedIn = false
+        }
+    }
+}
