@@ -11,9 +11,21 @@ protocol SignInUseCase {
     func excute(
         id: String,
         password: String
-    ) -> Bool
+    ) async throws -> SignIn
 }
 
 final class DefaultSignInUseCase: SignInUseCase {
+
+    @Inject var repository: UserRepository
+
+    func excute(
+        id: String,
+        password: String
+    ) async throws -> SignIn {
+        try await repository.login(
+            id: id,
+            password: password
+        )
+    }
 
 }
