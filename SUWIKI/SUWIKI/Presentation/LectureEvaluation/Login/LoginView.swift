@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
 
+    //TODO: FocusState 내려가면 isInvaild.toggle()
     @FocusState private var focusField: LoginViewInputType?
     @StateObject var viewModel = LoginViewModel()
 
@@ -43,29 +44,35 @@ struct LoginView: View {
             }
             if type == .id {
                 HStack {
-                    TextField("아이디를 입력하세요.",
-                              text: $viewModel.id)
-                    .focused($focusField,
-                             equals: .id)
-                    //TODO: Clear Button
-                    Button {
-                        print("tlqkf")
-                    } label: {
-                        Image(systemName: "person")
+                    TextField("아이디를 입력하세요.", text: $viewModel.id)
+                        .focused($focusField, equals: .id)
+                    if focusField == type {
+                        Button {
+                            viewModel.id = ""
+                        } label: {
+                            Image(systemName: "x.circle.fill")
+                                .foregroundStyle(Color(uiColor: .gray95))
+                                .frame(width: 18, height: 18)
+                        }
                     }
                 }
-
             } else {
                 HStack {
-                    SecureField("비밀번호를 입력하세요",
-                                text: $viewModel.password)
-                    .focused($focusField,
-                             equals: .password)
-                    //TODO: Visible Button
-                    Button {
-                        print("tlqkf")
-                    } label: {
-                        Image(systemName: "person")
+                    if viewModel.isPasswordVisible {
+                        TextField("비밀번호를 입력하세요.", text: $viewModel.password)
+                            .focused($focusField, equals: .password)
+                    } else {
+                        SecureField("비밀번호를 입력하세요",text: $viewModel.password)
+                            .focused($focusField, equals: .password)
+                    }
+                    if focusField == type {
+                        Button {
+                            viewModel.isPasswordVisible.toggle()
+                        } label: {
+                            Image(systemName: viewModel.isPasswordVisible ? "lock" : "lock.slash")
+                                .foregroundStyle(Color(uiColor: .gray95))
+                                .frame(width: 18, height: 18)
+                        }
                     }
                 }
             }
@@ -109,7 +116,9 @@ struct LoginView: View {
     var loginButton: some View {
         Button {
             /// Login API 붙히기
-            print("@LOG login")
+            Task {
+                try await viewModel.signIn()
+            }
         } label: {
             RoundedRectangle(cornerRadius: 15.0)
                 .frame(height: 50)
