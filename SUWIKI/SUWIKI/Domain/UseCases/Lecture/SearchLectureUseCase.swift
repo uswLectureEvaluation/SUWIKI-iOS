@@ -2,13 +2,13 @@
 //  SearchLectureUseCase.swift
 //  SUWIKI
 //
-//  Created by 한지석 on 2/2/24.
+//  Created by 한지석 on 2/4/24.
 //
 
 import Foundation
 
 protocol SearchLectureUseCase {
-    func search(
+    func excute(
         searchText: String,
         option: LectureOption,
         page: Int,
@@ -16,13 +16,13 @@ protocol SearchLectureUseCase {
     ) async throws -> [Lecture]
 }
 
-struct DefaultSearchLectureUseCase: SearchLectureUseCase {
+final class DefaultSearchLectureUseCase: SearchLectureUseCase {
 
     @Inject var repository: LectureRepository
 
-    func search(
+    func excute(
         searchText: String,
-        option: LectureOption,
+        option: LectureOption, 
         page: Int,
         major: String?
     ) async throws -> [Lecture] {

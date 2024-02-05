@@ -9,7 +9,9 @@ import SwiftUI
 
 struct LectureEvaluationHomeView: View {
 
+    @EnvironmentObject var appState: AppState
     @StateObject var viewModel = LectureEvaluationHomeViewModel()
+    @State var isLoginViewPresented = false
 
     var body: some View {
         NavigationView {
@@ -35,8 +37,14 @@ struct LectureEvaluationHomeView: View {
                         .tint(Color(uiColor: .primaryColor))
                 }
             }
+            .onAppear {
+                print("@Log - \(appState.isLoggedIn)")
+            }
             .sheet(isPresented: $viewModel.isMajorSelectSheetPresented) {
                 //TODO: 학과 필터링 뷰
+            }
+            .sheet(isPresented: $isLoginViewPresented) {
+                LoginView()
             }
         }
     }
@@ -55,6 +63,21 @@ struct LectureEvaluationHomeView: View {
                                 Task {
                                     try await viewModel.update()
                                 }
+                            }
+                        }
+                        .overlay {
+                            if appState.isLoggedIn {
+                                NavigationLink {
+                                    DetailLectureEvaluationView()
+                                } label: {
+                                    EmptyView()
+                                }
+                                .opacity(0.0)
+                            }
+                        }
+                        .onTapGesture {
+                            if !appState.isLoggedIn {
+                                isLoginViewPresented.toggle()
                             }
                         }
                 }
@@ -109,7 +132,6 @@ struct LectureEvaluationHomeView: View {
     }
 
     //TODO: EmptyView - 검색 데이터 없을 경우
-
 }
 
 #Preview {
