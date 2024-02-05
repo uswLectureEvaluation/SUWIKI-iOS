@@ -8,14 +8,23 @@
 import Foundation
 import Combine
 
-/// keychain 저장
-/// 로그인 유즈케이스
 final class LoginViewModel: ObservableObject {
     
-//    var useCase: AuthUseCase = DIContainer.shared.resolve(type: AuthUseCase.self)
-    @Published var id: String = ""
-    @Published var password: String = ""
+    var signInUseCase: SignInUseCase = DIContainer.shared.resolve(type: SignInUseCase.self)
+    var createTokenUseCase: CreateTokenUseCase = DIContainer.shared.resolve(type: CreateTokenUseCase.self)
+    @Published var id: String = "" {
+        didSet {
+            isInvalid = true
+        }
+    }
+    @Published var password: String = "" {
+        didSet {
+            isInvalid = true
+        }
+    }
     @Published var isButtonDisabled = true
+    @Published var isInvalid = false
+    @Published var isPasswordVisible = false
     var cancellables = Set<AnyCancellable>()
     lazy var vaildLoginButton: AnyPublisher<Bool, Never> = Publishers.CombineLatest($id, $password)
         .map {
@@ -30,9 +39,18 @@ final class LoginViewModel: ObservableObject {
             .sink { self.isButtonDisabled = $0 }
             .store(in: &cancellables)
     }
-    
+
+    /// func signIn: signIn Usecase를 실행한 후 리턴받은 토큰을 키체인에 저장합니다.
+    /// signInUseCase & createTokenUseCase를 실행합니다.
+    /// 로그인에 실패했을 경우 catch문을 통해 isInvalid 프로퍼티를 true, UI 피드백을 진행합니다.
+    func signIn() async throws {
+        do {
+            let signIn = try await signInUseCase.excute(id: self.id, password: self.password)
+            createTokenUseCase.excute(token: .AccessToken, value: signIn.accessToken)
+            createTokenUseCase.excute(token: .RefreshToken, value: signIn.refreshToken)
+        } catch {
+            isInvalid = true
+        }
+    }
+
 }
-
-//id == 6, 20
-//pwd == 8, 20 영, 숫, 특수문자
-
