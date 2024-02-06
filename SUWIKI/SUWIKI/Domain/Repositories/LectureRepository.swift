@@ -20,4 +20,8 @@ protocol LectureRepository {
         page: Int,
         major: String?
     ) async throws -> [Lecture]
+
+    func fetchDetail(
+        id: Int
+    ) async throws -> DetailLecture
 }

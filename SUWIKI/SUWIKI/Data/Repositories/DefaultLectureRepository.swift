@@ -50,4 +50,14 @@ final class DefaultLectureRepository: LectureRepository {
         )
         return dtoLecture.lecture.map { $0.entity }
     }
+
+    func fetchDetail(
+        id: Int
+    ) async throws -> DetailLecture {
+        let target = APITarget.Lecture.detail(
+            DTO.DetailLectureRequest(lectureId: id)
+        )
+        let dtoDetailLecture = try await APIProvider.request(DTO.DecodingDetailLectureResponse.self, target: target)
+        return dtoDetailLecture.detailLecture.entity
+    }
 }
