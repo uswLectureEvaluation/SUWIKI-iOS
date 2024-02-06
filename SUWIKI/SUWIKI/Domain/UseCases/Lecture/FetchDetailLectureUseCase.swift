@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+protocol FetchDetailLectureUseCase {
+    func excute(
+        id: Int
+    ) async throws -> DetailLecture
+}
+
+final class DefaultFetchDetailLectureUseCase: FetchDetailLectureUseCase {
+
+    @Inject var repository: LectureRepository
+
+    func excute(
+        id: Int
+    ) async throws -> DetailLecture {
+        try await repository.fetchDetail(id: id)
+    }
+}
