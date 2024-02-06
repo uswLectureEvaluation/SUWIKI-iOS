@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct DetailLectureRequest: Encodable {
+        /// 강의 ID
+        let lectureId: Int
+    }
+}
