@@ -8,8 +8,8 @@
 import Foundation
 
 final class LectureEvaluationHomeViewModel: ObservableObject {
-    
-    var useCase: FetchLectureUseCase = DIContainer.shared.resolve(type: FetchLectureUseCase.self)
+
+    var fetchUseCase: FetchLectureUseCase = DIContainer.shared.resolve(type: FetchLectureUseCase.self)
     var searchUseCase: SearchLectureUseCase = DIContainer.shared.resolve(type: SearchLectureUseCase.self)
     var fetchLecture: [Lecture] = []
     var searchLecture: [Lecture] = []
@@ -36,6 +36,7 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
         }
     }
     @Published var isMajorSelectSheetPresented: Bool = false
+    @Published var isLoggedOut = false
 
     init() {
         Task {
@@ -51,16 +52,18 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
         searchText.isEmpty ? try await fetch() : try await search()
     }
     
+    /// func fetch: 강의평가를 서버에서 내려받습니다.
+    /// 무한스크롤 기능을 위해 페이지가 1일 경우 fetch 데이터로 초기화, 아닐 경우 append 합니다.
     @MainActor
     func fetch() async throws {
         do {
             if self.fetchPage == 1 {
-                fetchLecture = try await useCase.fetch(option: option,
+                fetchLecture = try await fetchUseCase.excute(option: option,
                                                        page: fetchPage,
                                                        major: major)
                 self.lecture = fetchLecture
             } else {
-                let fetchData = try await useCase.fetch(option: option,
+                let fetchData = try await fetchUseCase.excute(option: option,
                                                         page: fetchPage,
                                                         major: major)
                 fetchLecture.append(contentsOf: fetchData)
@@ -71,19 +74,20 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
         }
     }
     
+    /// func search: 강의평가를 검색한 후, 검색 데이터를 서버에서 내려받습니다.
+    /// 무한스크롤 기능을 위해 페이지가 1일 경우 search 데이터로 초기화, 아닐 경우 append 합니다.
     @MainActor
     func search() async throws {
         guard !searchText.isEmpty else { return }
-        
         do {
             if self.searchPage == 1 {
-                searchLecture = try await searchUseCase.search(searchText: searchText,
+                searchLecture = try await searchUseCase.excute(searchText: searchText,
                                                                option: option,
                                                                page: searchPage,
                                                                major: major)
                 lecture = searchLecture
             } else {
-                let searchData = try await searchUseCase.search(searchText: searchText,
+                let searchData = try await searchUseCase.excute(searchText: searchText,
                                                                 option: option,
                                                                 page: searchPage,
                                                                 major: major)
