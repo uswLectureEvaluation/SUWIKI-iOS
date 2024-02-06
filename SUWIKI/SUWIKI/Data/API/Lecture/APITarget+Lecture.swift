@@ -13,6 +13,7 @@ extension APITarget {
     enum Lecture: TargetType {
         case getHome(DTO.AllLectureRequest)
         case search(DTO.SearchLectureRequest)
+        case detail(DTO.DetailLectureRequest)
     }
 }
 
@@ -27,6 +28,8 @@ extension APITarget.Lecture {
             return .get
         case .search:
             return .get
+        case .detail:
+            return .get
         }
     }
 
@@ -36,6 +39,8 @@ extension APITarget.Lecture {
             "/all"
         case .search:
             "/search"
+        case .detail:
+            ""
         }
     }
 
@@ -45,6 +50,8 @@ extension APITarget.Lecture {
             return .query(allLectureRequest)
         case let .search(searchLectureRequest):
             return .query(searchLectureRequest)
+        case let .detail(detailLectureRequest):
+            return .query(detailLectureRequest)
         }
     }
 }
