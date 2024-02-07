@@ -32,9 +32,9 @@ final class APIStatusLogger: EventMonitor {
         guard let statusCode = request.response?.statusCode else { return }
         switch response.result {
         case .success:
-            print("@Log ✅ .success, statusCode : \(response.response?.statusCode ?? 0)")
+            print("@Log ✅ .success, statusCode : \(statusCode)")
         case .failure:
-            print("@Log ❎ .failure, statusCode : \(response.response?.statusCode ?? 0)")
+            print("@Log ❎ .failure, statusCode : \(statusCode)")
         }
 
         if let statusCode = response.response?.statusCode {
