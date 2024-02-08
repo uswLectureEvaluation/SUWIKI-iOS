@@ -9,7 +9,7 @@ import Foundation
 
 extension DTO {
     struct JoinRequest: Encodable {
-        /// 아이디
+        /// 유저 아이디
         let loginId: String
         /// 패스워드
         let password: String
