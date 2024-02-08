@@ -6,3 +6,26 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct FetchEvaluatePostsResponse: Decodable {
+        /// 글 ID
+        let id: Int
+        /// 수강 학기
+        let selectedSemester: String
+        /// 총 평균
+        let totalAvg: Float
+        /// 만족도
+        let satisfaction: Float
+        /// 배움지수
+        let learning: Float
+        /// 조별모임 유무(없음 == 0, 있음 == 1)
+        let team: Int
+        /// 학점 잘주는가?(잘줌 == 0, 보통 == 1, 까다로움 == 2)
+        let difficulty: Int
+        /// 과제양(없음 == 0, 보통 == 1, 많음 == 2)
+        let homework: Int
+        /// 작성글
+        let content: String
+    }
+}
