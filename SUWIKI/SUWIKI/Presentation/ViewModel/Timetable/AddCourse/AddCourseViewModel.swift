@@ -42,8 +42,9 @@ final class AddCourseViewModel {
                                      startTime: startTime,
                                      endTime: endTime,
                                      timetableColor: timetableColorNumber)
-        
-        if roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
+        if courseName.contains("이러닝") || courseName.contains("온라인") {
+            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .eLearning)
+        } else if roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
             isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentTime)
         } else if roomName.split(separator: "),").count > 1 { // 2. 음악109(화1,2),음악110(수1,2)
             isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentPlace)
@@ -72,6 +73,4 @@ final class AddCourseViewModel {
         }
         return dayToString
     }
-    
-    
 }

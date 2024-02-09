@@ -11,19 +11,13 @@ import Combine
 // 0번 ~ 2번 케이스마다 메소드를 분리해서 따로따로 체크를 하는게 좋은 방법인지
 // 하나의 메소드에서 분기처리하여 체크할 수 없을까?
 
-class SelectCourseListViewModel: ObservableObject {
-    
+final class SelectCourseListViewModel {
+
     private let coreDataManager = CoreDataManager.shared
     private let addCourseManager = AddCourseManager()
-//    @Published var isSelected: Bool = false
-//    @Published var isFinished: Bool = false
-    
-    var searchText = ""
-    
-    // courseList를 계속 접근하기에, getFirebaseCourseFromCoreData() 메소드가 계속 호출됨.
-    var searchedCourseList: [FirebaseCourse] = []
-    
     var major: String
+    var searchText = ""
+    var searchedCourseList: [FirebaseCourse] = []
     var courseList: [FirebaseCourse]
     
     init(major: String) {
