@@ -160,7 +160,6 @@ extension AddTimetableViewController {
     
     @objc func keyboardWillAppear(_ notification: Notification) {
         if let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            // 키보드 높이만큼 버튼 위치 조정
             //MARK: 아이폰 X 이상 모델
             var responseHeight: CGFloat = 0
             if view.bounds.height > 700 {
@@ -174,9 +173,6 @@ extension AddTimetableViewController {
                 $0.height.equalTo(48)
                 $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(responseHeight)
             }
-
-            print(view.bounds.height)
-            print(keyboardFrame.height)
         }
     }
 
