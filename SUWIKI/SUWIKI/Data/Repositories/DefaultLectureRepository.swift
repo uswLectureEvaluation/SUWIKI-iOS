@@ -57,7 +57,10 @@ final class DefaultLectureRepository: LectureRepository {
         let target = APITarget.Lecture.detail(
             DTO.DetailLectureRequest(lectureId: id)
         )
-        let dtoDetailLecture = try await APIProvider.request(DTO.DecodingDetailLectureResponse.self, target: target)
+        let dtoDetailLecture = try await APIProvider.request(
+            DTO.DecodingDetailLectureResponse.self,
+            target: target
+        )
         return dtoDetailLecture.detailLecture.entity
     }
 }
