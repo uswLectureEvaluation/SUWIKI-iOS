@@ -54,19 +54,4 @@ final class SelectCourseViewModel {
         course.roomName ?? ""
     } 
     
-    func getCourse() {
-//        course = coreDataManager.getCourseFromCoreData()
-//        print("count - \(course.count)")
-//        for i in 0..<100 {
-//            print(course[i].classification)
-//            print(course[i].courseDay)
-//            print(course[i].courseName)
-//            print(course[i].startTime)
-//            print(course[i].endTime)
-//            print(course[i].major)
-//            print(course[i].roomName)
-//            print(course[i].professor)
-//        }
-    }
-    
 }
