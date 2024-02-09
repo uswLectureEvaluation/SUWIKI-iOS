@@ -62,6 +62,8 @@
 		AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */; };
 		AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */; };
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
+		AF67E6F42B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */; };
+		AF67E6F62B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */; };
 		AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */; };
 		AF6A8ACE2B6CEE6500DD58EF /* DTO+LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8ACD2B6CEE6500DD58EF /* DTO+LoginRequest.swift */; };
 		AF6A8AD12B6CEEB800DD58EF /* APITarget+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AD02B6CEEB800DD58EF /* APITarget+User.swift */; };
@@ -225,6 +227,8 @@
 		AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewController.swift; sourceTree = "<group>"; };
 		AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
+		AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchEvaluatePostsRequest.swift"; sourceTree = "<group>"; };
+		AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchEvaluatePostsResponse.swift"; sourceTree = "<group>"; };
 		AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+SearchLectureRequest.swift"; sourceTree = "<group>"; };
 		AF6A8ACD2B6CEE6500DD58EF /* DTO+LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+LoginRequest.swift"; sourceTree = "<group>"; };
 		AF6A8AD02B6CEEB800DD58EF /* APITarget+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+User.swift"; sourceTree = "<group>"; };
@@ -586,6 +590,31 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		AF67E6F02B74BA9F006CF9FC /* EvaluatePost */ = {
+			isa = PBXGroup;
+			children = (
+				AF67E6F22B74BAE2006CF9FC /* Response */,
+				AF67E6F12B74BADF006CF9FC /* Request */,
+			);
+			path = EvaluatePost;
+			sourceTree = "<group>";
+		};
+		AF67E6F12B74BADF006CF9FC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		AF67E6F22B74BAE2006CF9FC /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		AF6A8AC92B6CED6300DD58EF /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,6 +771,7 @@
 		AFBF51412B6156D8001B6EA1 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				AF67E6F02B74BA9F006CF9FC /* EvaluatePost */,
 				AFBF51422B6156EA001B6EA1 /* DTO+Namespace.swift */,
 				AF6A8ACA2B6CEE3D00DD58EF /* User */,
 				AFBF51462B615BDC001B6EA1 /* Lecture */,
@@ -1132,6 +1162,7 @@
 				AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */,
 				AF065E0F2B6EAB0D00676752 /* CreateTokenUseCase.swift in Sources */,
 				AFE18F1A2A271755009D4D58 /* Major.swift in Sources */,
+				AF67E6F62B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift in Sources */,
 				AF0ABE372B62407200AA93EE /* DTO+AllLectureRequest.swift in Sources */,
 				AF065E2F2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift in Sources */,
 				AF6A8AD32B6CEFA000DD58EF /* DTO+TokenResponse.swift in Sources */,
@@ -1167,6 +1198,7 @@
 				AF0ABE292B622BE600AA93EE /* TargetType.swift in Sources */,
 				AFC90FC92B679BD40007DA1B /* Font+.swift in Sources */,
 				AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */,
+				AF67E6F42B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift in Sources */,
 				AF065E132B6EAB3000676752 /* DeleteTokenUseCase.swift in Sources */,
 				AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */,
 				AFA499E72A2881BF0047A4B4 /* SelectMajorViewModel.swift in Sources */,
