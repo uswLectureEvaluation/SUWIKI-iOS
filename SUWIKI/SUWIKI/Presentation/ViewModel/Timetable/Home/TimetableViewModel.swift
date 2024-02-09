@@ -34,7 +34,9 @@ final class TimetableViewModel {
     }
     
     func addTimetable() {
-        coreDataManager.addTimeTable(name: "시간표", semester: calculateSemester())
+        let calculateSemester = calculateSemester()
+        coreDataManager.addTimeTable(name: calculateSemester.0,
+                                     semester: calculateSemester.1)
         updateTimetable()
         updateCourse()
     }
@@ -82,13 +84,13 @@ final class TimetableViewModel {
         }
     }
     
-    func calculateSemester() -> String {
+    func calculateSemester() -> (String, String) {
         let currentYear = Calendar.current.component(.year, from: Date())
         let currentMonth = Calendar.current.component(.month, from: Date())
         if currentMonth <= 6 {
-            return "\(currentYear)년 1학기"
+            return ("\(currentYear) - 1", "\(currentYear)년 1학기")
         } else {
-            return "\(currentYear)년 2학기"
+            return ("\(currentYear) - 2", "\(currentYear)년 2학기")
         }
     }
 
@@ -116,5 +118,4 @@ final class TimetableViewModel {
             }
         }
     }
-
 }
