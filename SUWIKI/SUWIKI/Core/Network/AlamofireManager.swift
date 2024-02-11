@@ -13,10 +13,14 @@ import Alamofire
 final class AlamofireManager {
     static let shared = AlamofireManager()
 
+    let interceptor = BaseInterceptor()
     let loggers = [APIStatusLogger()] as [EventMonitor]
     var session: Session
 
     private init() {
-        self.session = Session(eventMonitors: loggers)
+        self.session = Session(
+            interceptor: interceptor,
+            eventMonitors: loggers
+        )
     }
 }

@@ -21,6 +21,13 @@
 		AF065E182B70B59C00676752 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E172B70B59C00676752 /* SignIn.swift */; };
 		AF065E1A2B70C24C00676752 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E192B70C24C00676752 /* AppState.swift */; };
 		AF065E212B70D46800676752 /* LectureEvaluationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E202B70D46800676752 /* LectureEvaluationDetailView.swift */; };
+		AF065E232B70DA9400676752 /* DetailLecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E222B70DA9400676752 /* DetailLecture.swift */; };
+		AF065E252B70DC5400676752 /* DTO+DetailLectureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E242B70DC5400676752 /* DTO+DetailLectureRequest.swift */; };
+		AF065E272B70DD9500676752 /* DTO+DetailLectureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E262B70DD9500676752 /* DTO+DetailLectureResponse.swift */; };
+		AF065E292B70E27E00676752 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E282B70E27E00676752 /* Interceptor.swift */; };
+		AF065E2B2B70E59C00676752 /* FetchDetailLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E2A2B70E59C00676752 /* FetchDetailLectureUseCase.swift */; };
+		AF065E2D2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E2C2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift */; };
+		AF065E2F2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E2E2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift */; };
 		AF08A8D62A9DE1EE005C3D00 /* AddTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8D52A9DE1EE005C3D00 /* AddTimetableViewController.swift */; };
 		AF08A8D82A9F0736005C3D00 /* AddTimetableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8D72A9F0736005C3D00 /* AddTimetableViewModel.swift */; };
 		AF08A8DA2A9F2BF6005C3D00 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF08A8D92A9F2BF6005C3D00 /* UITextField+.swift */; };
@@ -55,6 +62,8 @@
 		AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */; };
 		AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */; };
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
+		AF67E6F42B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */; };
+		AF67E6F62B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */; };
 		AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */; };
 		AF6A8ACE2B6CEE6500DD58EF /* DTO+LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8ACD2B6CEE6500DD58EF /* DTO+LoginRequest.swift */; };
 		AF6A8AD12B6CEEB800DD58EF /* APITarget+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AD02B6CEEB800DD58EF /* APITarget+User.swift */; };
@@ -182,6 +191,13 @@
 		AF065E172B70B59C00676752 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		AF065E192B70C24C00676752 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		AF065E202B70D46800676752 /* LectureEvaluationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureEvaluationDetailView.swift; sourceTree = "<group>"; };
+		AF065E222B70DA9400676752 /* DetailLecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLecture.swift; sourceTree = "<group>"; };
+		AF065E242B70DC5400676752 /* DTO+DetailLectureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+DetailLectureRequest.swift"; sourceTree = "<group>"; };
+		AF065E262B70DD9500676752 /* DTO+DetailLectureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+DetailLectureResponse.swift"; sourceTree = "<group>"; };
+		AF065E282B70E27E00676752 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
+		AF065E2A2B70E59C00676752 /* FetchDetailLectureUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailLectureUseCase.swift; sourceTree = "<group>"; };
+		AF065E2C2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureEvaluationDetailViewModel.swift; sourceTree = "<group>"; };
+		AF065E2E2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+DecodingDetailLectureResponse.swift"; sourceTree = "<group>"; };
 		AF08A8D52A9DE1EE005C3D00 /* AddTimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimetableViewController.swift; sourceTree = "<group>"; };
 		AF08A8D72A9F0736005C3D00 /* AddTimetableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimetableViewModel.swift; sourceTree = "<group>"; };
 		AF08A8D92A9F2BF6005C3D00 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
@@ -211,6 +227,8 @@
 		AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewController.swift; sourceTree = "<group>"; };
 		AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
+		AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchEvaluatePostsRequest.swift"; sourceTree = "<group>"; };
+		AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchEvaluatePostsResponse.swift"; sourceTree = "<group>"; };
 		AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+SearchLectureRequest.swift"; sourceTree = "<group>"; };
 		AF6A8ACD2B6CEE6500DD58EF /* DTO+LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+LoginRequest.swift"; sourceTree = "<group>"; };
 		AF6A8AD02B6CEEB800DD58EF /* APITarget+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+User.swift"; sourceTree = "<group>"; };
@@ -347,16 +365,17 @@
 				AF0ABE2A2B6232C400AA93EE /* RequestParameter.swift */,
 				AF0ABE2C2B6232F500AA93EE /* Encodable+.swift */,
 				AF0ABE382B62458900AA93EE /* APIProvider.swift */,
+				AF065E282B70E27E00676752 /* Interceptor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		AF0ABE312B623E5500AA93EE /* Home */ = {
+		AF0ABE312B623E5500AA93EE /* Lecture */ = {
 			isa = PBXGroup;
 			children = (
 				AF0ABE332B623E6A00AA93EE /* APITarget+Lecture.swift */,
 			);
-			path = Home;
+			path = Lecture;
 			sourceTree = "<group>";
 		};
 		AF0ABE352B62400000AA93EE /* Request */ = {
@@ -364,6 +383,7 @@
 			children = (
 				AF0ABE362B62407200AA93EE /* DTO+AllLectureRequest.swift */,
 				AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */,
+				AF065E242B70DC5400676752 /* DTO+DetailLectureRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -392,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				AF0ABE3D2B62472200AA93EE /* Lecture.swift */,
+				AF065E222B70DA9400676752 /* DetailLecture.swift */,
 			);
 			path = Lecture;
 			sourceTree = "<group>";
@@ -431,6 +452,7 @@
 				AF7DF1ED2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift */,
 				AFC90FC62B6799A90007DA1B /* LectureCell.swift */,
 				AF065E202B70D46800676752 /* LectureEvaluationDetailView.swift */,
+				AF065E2C2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -568,6 +590,31 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		AF67E6F02B74BA9F006CF9FC /* EvaluatePost */ = {
+			isa = PBXGroup;
+			children = (
+				AF67E6F22B74BAE2006CF9FC /* Response */,
+				AF67E6F12B74BADF006CF9FC /* Request */,
+			);
+			path = EvaluatePost;
+			sourceTree = "<group>";
+		};
+		AF67E6F12B74BADF006CF9FC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		AF67E6F22B74BAE2006CF9FC /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		AF6A8AC92B6CED6300DD58EF /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +696,7 @@
 			children = (
 				AF065E082B6EA8F200676752 /* FetchLectureUseCase.swift */,
 				AF065E0A2B6EA8FB00676752 /* SearchLectureUseCase.swift */,
+				AF065E2A2B70E59C00676752 /* FetchDetailLectureUseCase.swift */,
 			);
 			path = Lecture;
 			sourceTree = "<group>";
@@ -714,7 +762,7 @@
 			isa = PBXGroup;
 			children = (
 				AF6A8ACF2B6CEEA300DD58EF /* User */,
-				AF0ABE312B623E5500AA93EE /* Home */,
+				AF0ABE312B623E5500AA93EE /* Lecture */,
 				AF0ABE2F2B623AA700AA93EE /* APITarget.swift */,
 			);
 			path = API;
@@ -723,20 +771,21 @@
 		AFBF51412B6156D8001B6EA1 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				AF67E6F02B74BA9F006CF9FC /* EvaluatePost */,
 				AFBF51422B6156EA001B6EA1 /* DTO+Namespace.swift */,
 				AF6A8ACA2B6CEE3D00DD58EF /* User */,
-				AFBF51462B615BDC001B6EA1 /* Home */,
+				AFBF51462B615BDC001B6EA1 /* Lecture */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
 		};
-		AFBF51462B615BDC001B6EA1 /* Home */ = {
+		AFBF51462B615BDC001B6EA1 /* Lecture */ = {
 			isa = PBXGroup;
 			children = (
 				AF0ABE352B62400000AA93EE /* Request */,
 				AFBF51492B615C15001B6EA1 /* Response */,
 			);
-			path = Home;
+			path = Lecture;
 			sourceTree = "<group>";
 		};
 		AFBF51492B615C15001B6EA1 /* Response */ = {
@@ -744,6 +793,8 @@
 			children = (
 				AFBF51442B615863001B6EA1 /* DTO+LectureResponse.swift */,
 				AFBF51472B615C0C001B6EA1 /* DTO+AllLectureResponse.swift */,
+				AF065E262B70DD9500676752 /* DTO+DetailLectureResponse.swift */,
+				AF065E2E2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1075,6 +1126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF065E232B70DA9400676752 /* DetailLecture.swift in Sources */,
 				AFBF51432B6156EA001B6EA1 /* DTO+Namespace.swift in Sources */,
 				AF6A8ADA2B6E2E7A00DD58EF /* TokenType.swift in Sources */,
 				AF6A8AE02B6E319A00DD58EF /* DTO+CheckIdRequest.swift in Sources */,
@@ -1110,7 +1162,9 @@
 				AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */,
 				AF065E0F2B6EAB0D00676752 /* CreateTokenUseCase.swift in Sources */,
 				AFE18F1A2A271755009D4D58 /* Major.swift in Sources */,
+				AF67E6F62B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift in Sources */,
 				AF0ABE372B62407200AA93EE /* DTO+AllLectureRequest.swift in Sources */,
+				AF065E2F2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift in Sources */,
 				AF6A8AD32B6CEFA000DD58EF /* DTO+TokenResponse.swift in Sources */,
 				AF065E0B2B6EA8FB00676752 /* SearchLectureUseCase.swift in Sources */,
 				AF0ABE392B62458900AA93EE /* APIProvider.swift in Sources */,
@@ -1127,6 +1181,7 @@
 				AF065E092B6EA8F200676752 /* FetchLectureUseCase.swift in Sources */,
 				AF7DF1E82B64EDB400C2CF4E /* DIContainer.swift in Sources */,
 				AF065E112B6EAB2700676752 /* ReadTokenUseCase.swift in Sources */,
+				AF065E252B70DC5400676752 /* DTO+DetailLectureRequest.swift in Sources */,
 				AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */,
 				AFA499E12A2798600047A4B4 /* MajorCell.swift in Sources */,
 				AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */,
@@ -1143,12 +1198,14 @@
 				AF0ABE292B622BE600AA93EE /* TargetType.swift in Sources */,
 				AFC90FC92B679BD40007DA1B /* Font+.swift in Sources */,
 				AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */,
+				AF67E6F42B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift in Sources */,
 				AF065E132B6EAB3000676752 /* DeleteTokenUseCase.swift in Sources */,
 				AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */,
 				AFA499E72A2881BF0047A4B4 /* SelectMajorViewModel.swift in Sources */,
 				AF9907BE2B554FCF00EF0D91 /* CoreDataManager+Create.swift in Sources */,
 				AFF785C92A949C5700B6D531 /* AddCourseViewModel.swift in Sources */,
 				AF0ABE2B2B6232C400AA93EE /* RequestParameter.swift in Sources */,
+				AF065E2B2B70E59C00676752 /* FetchDetailLectureUseCase.swift in Sources */,
 				AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */,
 				AF065E0D2B6EAB0500676752 /* SignInUseCase.swift in Sources */,
 				AFBF51452B615863001B6EA1 /* DTO+LectureResponse.swift in Sources */,
@@ -1159,11 +1216,14 @@
 				AF2586CB2A8F628E00A61F8E /* UIImage+.swift in Sources */,
 				AF6A8ACE2B6CEE6500DD58EF /* DTO+LoginRequest.swift in Sources */,
 				AF065E182B70B59C00676752 /* SignIn.swift in Sources */,
+				AF065E272B70DD9500676752 /* DTO+DetailLectureResponse.swift in Sources */,
 				AF7DF1EA2B64EDE800C2CF4E /* Inject.swift in Sources */,
 				AFEC5B0F2B3C9619004FEC90 /* InitView.swift in Sources */,
 				AFD5CC122A404338008F95B7 /* SelectCourseViewModel.swift in Sources */,
 				AF6A8ADC2B6E2EAE00DD58EF /* KeychainRepository.swift in Sources */,
+				AF065E292B70E27E00676752 /* Interceptor.swift in Sources */,
 				AF0ABE342B623E6A00AA93EE /* APITarget+Lecture.swift in Sources */,
+				AF065E2D2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift in Sources */,
 				AF0ABE2D2B6232F600AA93EE /* Encodable+.swift in Sources */,
 				AF0ABE272B6227F800AA93EE /* AlamofireManager.swift in Sources */,
 				AF057A182A77F36E004577E7 /* CoreDataManager+Update.swift in Sources */,
@@ -1401,7 +1461,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1439,7 +1499,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.0;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

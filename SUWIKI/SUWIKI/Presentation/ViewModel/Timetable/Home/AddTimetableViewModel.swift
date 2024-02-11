@@ -43,5 +43,4 @@ final class AddTimetableViewModel {
         coreDataManager.addTimeTable(name: name,
                                       semester: selectedSemester)
     }
-    
 }

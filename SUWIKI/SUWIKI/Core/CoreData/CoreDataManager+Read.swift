@@ -55,6 +55,27 @@ extension CoreDataManager {
         return course
     }
 
+    /// func fetchELearningCourse: Core Data에 저장된 강의 중 이러닝을 Fetch합니다.
+    /// - Parameter : id(시간표 ID), courseDay(강의 요일)
+    func fetchELearningCourse(
+        id: String,
+        courseDay: Int = 6
+    ) -> [Course] {
+        var course: [Course] = []
+        do {
+            let fetchRequest = Timetable.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+            let timetable = try context.fetch(fetchRequest)[0]
+            if let timetableCourses = timetable.courses as? Set<Course> {
+                let filteredCourses = Array(timetableCourses).filter { $0.courseDay == courseDay }
+                course = filteredCourses
+            }
+        } catch {
+            fatalError(CoreDataError.fetchError.localizedDescription)
+        }
+        return course
+    }
+
     /// func fetchFirebaseCourse: 학과 선택 시, 과목을 선택하는 화면에서 firebaseCourse를 내려받습니다.(강의 원본)
     /// - Parameter : major(학과, String)
     /// - return : [FireabaseCourse]

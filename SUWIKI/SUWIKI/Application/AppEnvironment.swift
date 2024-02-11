@@ -34,5 +34,6 @@ struct AppEnvironment {
         container.register(type: SignInUseCase.self, DefaultSignInUseCase())
         container.register(type: CreateTokenUseCase.self, DefaultCreateTokenUseCase())
         container.register(type: ReadTokenUseCase.self, DefaultReadTokenUseCase())
+        container.register(type: FetchDetailLectureUseCase.self, DefaultFetchDetailLectureUseCase())
     }
 }
