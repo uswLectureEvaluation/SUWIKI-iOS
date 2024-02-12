@@ -96,6 +96,19 @@ extension CoreDataManager {
         return sortedCourse
     }
 
+    /// func fetchMajors: 학과를 받아옵니다.
+    /// 중복되는 형태를 없애도록 Set으로 구현했습니다.
+    func fetchMajors() -> [String] {
+        var courses: [FirebaseCourse] = []
+        do {
+            let fetchRequest = FirebaseCourse.fetchRequest()
+            courses = try context.fetch(fetchRequest)
+            let majors = Array(Set(courses.compactMap { $0.major })).sorted { $0 < $1 }
+            return majors
+        } catch {
+            fatalError(CoreDataError.fetchError.localizedDescription)
+        }
+    }
 
     /// func fetchCourseCount: 학과 선택 화면에서, 미리 보여줄 강의의 갯수들을 가져옵니다.
     /// return: 강의 Count(Int)
