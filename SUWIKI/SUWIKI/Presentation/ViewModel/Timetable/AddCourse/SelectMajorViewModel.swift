@@ -9,13 +9,15 @@ import UIKit
 
 final class SelectMajorViewModel {
     
-    var major: [Major] = MajorNames.list.map { Major(name: $0) }
+    var major: [Major] = [Major(name: "전체")]
     var bookmark: [String] = []
     var majorNumberOfRowsInSection: Int {
         return self.major.count
     }
     
     init() {
+        let majors = CoreDataManager.shared.fetchMajors()
+        majors.forEach { major.append(Major(name: $0)) }
         fetchBookmark()
     }
     
