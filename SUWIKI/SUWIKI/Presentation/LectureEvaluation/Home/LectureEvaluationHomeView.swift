@@ -68,7 +68,7 @@ struct LectureEvaluationHomeView: View {
                         .overlay {
                             if appState.isLoggedIn {
                                 NavigationLink {
-                                    DetailLectureEvaluationView()
+                                    LectureEvaluationDetailView()
                                 } label: {
                                     EmptyView()
                                 }
