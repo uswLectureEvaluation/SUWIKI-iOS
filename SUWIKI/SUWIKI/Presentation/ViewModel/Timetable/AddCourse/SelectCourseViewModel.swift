@@ -47,11 +47,14 @@ final class SelectCourseViewModel {
     }
     
     var credit: String {
-        "\(course.credit)학점"
+        "⎪\(course.credit)학점"
     }
      
     var roomName: String {
         course.roomName ?? ""
     } 
-    
+
+    var grade: String {
+        "\(course.num)학년"
+    }
 }
