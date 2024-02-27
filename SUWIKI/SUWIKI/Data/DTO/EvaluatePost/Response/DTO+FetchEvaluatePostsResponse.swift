@@ -8,7 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct FetchEvaluatePostsResponse: Decodable {
+    struct EvaluatePostResponse: Decodable {
         /// 글 ID
         let id: Int
         /// 수강 학기
@@ -27,5 +27,16 @@ extension DTO {
         let homework: Int
         /// 작성글
         let content: String
+    }
+}
+
+extension DTO.EvaluatePostResponse {
+    var entity: EvaluatePost {
+        EvaluatePost(
+            id: id,
+            selectedSemester: selectedSemester,
+            totalAvarage: Double(totalAvg),
+            content: content
+        )
     }
 }
