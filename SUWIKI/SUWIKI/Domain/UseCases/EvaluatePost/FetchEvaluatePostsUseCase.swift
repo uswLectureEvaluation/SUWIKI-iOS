@@ -6,3 +6,23 @@
 //
 
 import Foundation
+
+protocol FetchEvaluatePostsUseCase {
+    func execute(
+        lectureId: Int,
+        page: Int
+    ) async throws -> [EvaluatePost]
+}
+
+final class DefaultFetchEvaluatePostsUseCase: FetchEvaluatePostsUseCase {
+
+    @Inject var repository: EvaluatePostRepository
+
+    func execute(
+        lectureId: Int,
+        page: Int
+    ) async throws -> [EvaluatePost] {
+        try await repository.fetch(lectureId: lectureId, page: page)
+    }
+
+}
