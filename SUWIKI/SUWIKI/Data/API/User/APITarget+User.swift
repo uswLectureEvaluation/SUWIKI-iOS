@@ -15,6 +15,7 @@ extension APITarget {
         case join(DTO.JoinRequest)
         case checkId(DTO.CheckIdRequest)
         case checkEmail(DTO.CheckEmailRequest)
+        case refresh(DTO.RefreshRequest)
     }
 }
 
@@ -33,6 +34,8 @@ extension APITarget.User {
             return .post
         case .checkEmail:
             return .post
+        case .refresh:
+            return .post
         }
     }
 
@@ -46,6 +49,8 @@ extension APITarget.User {
             return "/check-id"
         case .checkEmail:
             return "/check-email"
+        case .refresh:
+            return "/refresh"
         }
     }
 
@@ -59,6 +64,8 @@ extension APITarget.User {
             return .body(checkIdRequest)
         case let .checkEmail(checkEmailRequest):
             return .body(checkEmailRequest)
+        case let .refresh(refreshRequest):
+            return .body(refreshRequest)
         }
     }
 }
