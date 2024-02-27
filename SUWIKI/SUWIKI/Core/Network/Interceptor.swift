@@ -25,7 +25,27 @@ final class BaseInterceptor: RequestInterceptor {
             completion(.success(request))
         }
 
-//    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
-//        <#code#>
-//    }
+    func retry(
+        _ request: Request,
+        for session: Session,
+        dueTo error: Error,
+        completion: @escaping (RetryResult) -> Void) {
+            guard let accessToken = keychainManager.read(token: .AccessToken)
+            else {
+                completion(.doNotRetry)
+                return
+            }
+            let target = APITarget.User.refresh(DTO.RefreshRequest(authorization: accessToken))
+            Task {
+                do {
+                    let tokens = try await APIProvider.request(DTO.RefreshResponse.self,
+                                                               target: target)
+                    keychainManager.create(token: .AccessToken, value: tokens.accessToken)
+                    keychainManager.create(token: .RefreshToken, value: tokens.refreshToken)
+                    completion(.retry)
+                } catch {
+                    completion(.doNotRetry)
+                }
+            }
+        }
 }
