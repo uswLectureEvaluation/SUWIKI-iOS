@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+protocol EvaluatePostRepository {
+    func fetch(
+        lectureId: Int,
+        page: Int
+    ) async throws -> [EvaluatePost]
+}
