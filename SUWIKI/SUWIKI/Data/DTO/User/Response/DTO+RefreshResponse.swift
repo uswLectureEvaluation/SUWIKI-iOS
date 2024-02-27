@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct RefreshResponse: Decodable {
+        let refreshToken: String
+        let accessToken: String
+    }
+}

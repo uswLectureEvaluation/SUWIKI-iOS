@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct RefreshRequest: Encodable {
+        let authorization: String
+    }
+}
