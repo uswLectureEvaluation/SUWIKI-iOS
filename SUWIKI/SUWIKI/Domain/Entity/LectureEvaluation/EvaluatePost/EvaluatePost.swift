@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct EvaluatePost {
+    let id: Int
+    let selectedSemester: String
+    let totalAvarage: Double
+    let content: String
+}
