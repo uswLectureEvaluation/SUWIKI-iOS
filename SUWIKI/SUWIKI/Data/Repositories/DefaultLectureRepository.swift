@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Alamofire
-
 final class DefaultLectureRepository: LectureRepository {
 
     func fetch(

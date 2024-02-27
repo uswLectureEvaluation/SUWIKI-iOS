@@ -26,9 +26,6 @@ final class DefaultSearchLectureUseCase: SearchLectureUseCase {
         page: Int,
         major: String?
     ) async throws -> [Lecture] {
-        try await repository.search(searchText: searchText,
-                                    option: option,
-                                    page: page,
-                                    major: major)
+        try await repository.search(searchText: searchText, option: option, page: page, major: major)
     }
 }

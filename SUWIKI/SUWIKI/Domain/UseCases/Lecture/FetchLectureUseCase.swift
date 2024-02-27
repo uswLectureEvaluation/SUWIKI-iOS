@@ -24,8 +24,6 @@ final class DefaultFetchLectureUseCase: FetchLectureUseCase {
         page: Int,
         major: String?
     ) async throws -> [Lecture] {
-        try await repository.fetch(option: option,
-                                   page: page,
-                                   major: major)
+        try await repository.fetch(option: option, page: page, major: major)
     }
 }

@@ -22,10 +22,7 @@ final class DefaultSignInUseCase: SignInUseCase {
         id: String,
         password: String
     ) async throws -> SignIn {
-        try await repository.login(
-            id: id,
-            password: password
-        )
+        try await repository.login(id: id, password: password)
     }
 
 }
