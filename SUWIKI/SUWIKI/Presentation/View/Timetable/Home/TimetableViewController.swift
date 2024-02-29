@@ -58,6 +58,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
     }
 
     private func binding() {
+        
         viewModel.$timetableTitle
             .receive(on: RunLoop.main)
             .sink { title in
@@ -80,6 +81,12 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
                 } else {
                     self.navigationItem.rightBarButtonItems = []
                 }
+            }
+            .store(in: &cancellables)
+        viewModel.$elliottEvent
+            .receive(on: RunLoop.main)
+            .sink { _ in
+                self.timetable.reloadData()
             }
             .store(in: &cancellables)
     }
@@ -168,7 +175,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
     @objc
     func reloadCourse() {
         viewModel.updateCourse()
-        timetable.reloadData()
+//        timetable.reloadData()
     }
 
 
@@ -224,7 +231,7 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, Tim
         print("@Log - Update")
         viewModel.updateCourse()
         viewModel.updateTimetable()
-        timetable.reloadData()
+//        timetable.reloadData()
     }
 
     func elliotable(elliotable: Elliotable, didSelectCourse selectedCourse: ElliottEvent) {
