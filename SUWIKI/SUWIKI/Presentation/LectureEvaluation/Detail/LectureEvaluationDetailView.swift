@@ -13,16 +13,64 @@ struct LectureEvaluationDetailView: View {
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                lectureType
-                name
-                majorAndProfessor
-                difficultyAndHomeworkAndTeam
-                avarageBox
-                Spacer()
-    //            postList
+            ZStack {
+                Color(uiColor: .systemGray6)
+                    .ignoresSafeArea()
+                VStack(spacing: 0) {
+                    lectureType
+                    name
+                    majorAndProfessor
+                    difficultyAndHomeworkAndTeam
+                    avarageBox
+                        .padding(.bottom, 24)
+                    postTypeButtons
+                        .padding(.bottom, 12)
+                    postList
+                    Spacer()
+                }
             }
         }
+    }
+
+    var postTypeButtons: some View {
+        HStack(spacing: 0) {
+            Button {
+                viewModel.postType = .evaluate
+            } label: {
+                Text("강의평가")
+                    .font(.h6)
+                    .foregroundStyle(Color(uiColor: viewModel.postType == .evaluate ? .basicBlack : .gray95))
+            }
+            Button {
+                viewModel.postType = .exam
+            } label: {
+                Text("시험정보")
+                    .font(.h6)
+                    .foregroundStyle(Color(uiColor: viewModel.postType == .exam ? .basicBlack : .gray95))
+            }
+            .padding(.leading, 12)
+            Spacer()
+        }
+        .padding(.leading, 24)
+    }
+
+    var postList: some View {
+        List {
+            ForEach(viewModel.evaluatePosts, id: \.id) { post in
+                EvaluateCell(semester: post.selectedSemester,
+                             totalAvg: post.totalAvarage,
+                             content: post.content)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .background(Color(uiColor: .systemGray6))
+            .listRowSeparator(.hidden)
+        }
+        .background(Color(uiColor: .systemGray6))
+        .scrollIndicators(.hidden)
+        .listRowSpacing(10)
+        .listStyle(.plain)
+        .padding(.horizontal, 24)
     }
 
     var lectureType: some View {
@@ -72,7 +120,7 @@ struct LectureEvaluationDetailView: View {
     var avarageBox: some View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundStyle(.white)
-            .shadow(radius: 10, x: 4, y: 4)
+            .shadow(radius: 4, x: 0, y: 0)
             .frame(height: 86)
             .overlay(alignment: .leading) {
                 HStack {
@@ -87,6 +135,25 @@ struct LectureEvaluationDetailView: View {
             }
             .padding(.horizontal, 24)
             .padding(.top, 24)
+    }
+
+    var totalAvarage: some View {
+        VStack(spacing: 0) {
+            Text(avgToString(viewModel.detailLecture.lectureTotalAvg))
+                .font(.h1)
+                .foregroundStyle(Color(uiColor: .primaryColor))
+            Stars(avarage: viewModel.detailLecture.lectureTotalAvg,
+                  width: 15,
+                  height: 15)
+        }
+    }
+
+    var statistics: some View {
+        VStack {
+            averageSummary(averageType: .honey, ratio: viewModel.detailLecture.lectureHoneyAvg)
+            averageSummary(averageType: .learning, ratio: viewModel.detailLecture.lectureLearningAvg)
+            averageSummary(averageType: .satisfaction, ratio: viewModel.detailLecture.lectureSatisfactionAvg)
+        }
     }
 }
 
@@ -104,71 +171,6 @@ extension LectureEvaluationDetailView {
                     .font(.c1)
                     .foregroundStyle(type.fontColor)
             }
-    }
-
-    var totalAvarage: some View {
-        VStack(spacing: 0) {
-            Text(viewModel.detailLecture.lectureTotalAvg.description)
-                .font(.h1)
-                .foregroundStyle(Color(uiColor: .primaryColor))
-            stars
-        }
-    }
-
-    /// https://developer.apple.com/documentation/swiftui/view/mask(alignment:_:)
-    @ViewBuilder
-    var stars: some View {
-        HStack(spacing: 0) {
-            ForEach(0..<5) { index in
-                if viewModel.detailLecture.lectureTotalAvg > CGFloat(index) {
-                    /// 3.4일 경우 3과 4사이일 때
-                    if viewModel.detailLecture.lectureTotalAvg < CGFloat(index + 1) {
-                        drawingStarRatio(ratio:
-                                            Double(viewModel.detailLecture.lectureTotalAvg * 10).truncatingRemainder(dividingBy: 10) * 1.5
-                                         )
-                    } else {
-                        filledStar
-                    }
-                } else {
-                    unFilledStar
-                }
-            }
-        }
-    }
-
-    var statistics: some View {
-        VStack {
-            averageSummary(averageType: .honey, ratio: viewModel.detailLecture.lectureHoneyAvg)
-            averageSummary(averageType: .learning, ratio: viewModel.detailLecture.lectureLearningAvg)
-            averageSummary(averageType: .satisfaction, ratio: viewModel.detailLecture.lectureSatisfactionAvg)
-        }
-    }
-
-
-    var filledStar: some View {
-        Image(systemName: "star.fill")
-            .resizable()
-            .frame(width: 15, height: 15)
-            .foregroundStyle(Color(uiColor: .primaryColor))
-    }
-
-    var unFilledStar: some View {
-        Image(systemName: "star.fill")
-            .resizable()
-            .frame(width: 15, height: 15)
-            .foregroundStyle(Color(uiColor: .grayDA))
-    }
-
-    func drawingStarRatio(ratio: Double) -> some View {
-        ZStack {
-            unFilledStar
-            filledStar
-                .mask {
-                    Rectangle()
-                        .size(width: ratio,
-                              height: 15)
-                }
-        }
     }
 
     func drawingProgressBar(ratio: Double) -> some View {
@@ -197,10 +199,14 @@ extension LectureEvaluationDetailView {
                 .font(.c1)
         }
     }
+
+    func avgToString(_ avg: Double) -> String {
+        return String(format: "%.1f", avg)
+    }
 }
 
 #Preview {
-    LectureEvaluationDetailView()
+    LectureEvaluationDetailView(viewModel: LectureEvaluationDetailViewModel())
 }
 
 enum DetailLabelType {
