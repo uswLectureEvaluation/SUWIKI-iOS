@@ -7,28 +7,59 @@
 
 import SwiftUI
 
+enum PostType {
+    case evaluate
+    case exam
+}
+
 struct LectureEvaluationDetailView: View {
 
-    @StateObject var viewModel = LectureEvaluationDetailViewModel()
+    @StateObject var viewModel: LectureEvaluationDetailViewModel
+
+    init(id: Int) {
+        self._viewModel = StateObject(wrappedValue: LectureEvaluationDetailViewModel(id: id))
+    }
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(uiColor: .systemGray6)
-                    .ignoresSafeArea()
-                VStack(spacing: 0) {
-                    lectureType
-                    name
-                    majorAndProfessor
-                    difficultyAndHomeworkAndTeam
-                    avarageBox
-                        .padding(.bottom, 24)
-                    postTypeButtons
-                        .padding(.bottom, 12)
+        ZStack {
+            Color(uiColor: .systemGray6)
+                .ignoresSafeArea()
+            VStack(spacing: 0) {
+                lectureType
+                name
+                majorAndProfessor
+                difficultyAndHomeworkAndTeam
+                avarageBox
+                    .padding(.bottom, 24)
+                postTypeButtons
+                    .padding(.bottom, 12)
+                if viewModel.postType == .evaluate {
                     postList
-                    Spacer()
+                } else {
+                    examPostList
                 }
+                Spacer()
             }
+        }
+    }
+
+    func evaluatePost() {
+        if viewModel.evaluatePosts.isEmpty {
+            //TODO: 강의평가 없음, 강의평가 작성하기 출력
+        } else {
+            postList
+        }
+    }
+
+    func examPost() {
+        if viewModel.examPostInfo.isExamPostsExists {
+            if viewModel.examPostInfo.isPurchased {
+                //TODO: 시험정보 리스트 ㄱㄱ
+            } else {
+                //TODO: 구매 버튼 ㄱㄱㄱ
+            }
+        } else {
+            //TODO: 시험 정보 없음, 시험 정보 작성하기 버튼 출력
         }
     }
 
@@ -51,9 +82,31 @@ struct LectureEvaluationDetailView: View {
             .padding(.leading, 12)
             Spacer()
         }
-        .padding(.leading, 24)
+        .padding(.leading, 26)
     }
 
+    var examPostList: some View {
+        List {
+            ForEach(viewModel.examPosts, id: \.id) { post in
+                ExamCell(semester: post.semester,
+                         examType: post.examType,
+                         difficulty: post.difficulty,
+                         sourceOfExam: post.sourceOfExam,
+                         content: post.content)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .background(Color(uiColor: .systemGray6))
+            .listRowSeparator(.hidden)
+        }
+        .background(Color(uiColor: .systemGray6))
+        .scrollIndicators(.hidden)
+        .listRowSpacing(10)
+        .listStyle(.plain)
+        .padding(.horizontal, 24)
+    }
+
+    // 얘네 코드 줄이기
     var postList: some View {
         List {
             ForEach(viewModel.evaluatePosts, id: \.id) { post in
@@ -76,7 +129,8 @@ struct LectureEvaluationDetailView: View {
     var lectureType: some View {
         RoundedRectangle(cornerRadius: 10)
             .frame(width: 53, height: 21)
-            .foregroundStyle(Color(uiColor: .grayF6))
+            .foregroundStyle(Color(uiColor: .white))
+            .shadow(radius: 3)
             .overlay {
                 Text(viewModel.detailLecture.lectureType)
                     .font(.c4)
@@ -110,9 +164,9 @@ struct LectureEvaluationDetailView: View {
 
     var difficultyAndHomeworkAndTeam: some View {
         HStack(spacing: 12) {
-            averageLabel(type: .difficulty, average: viewModel.detailLecture.lectureDifficultyAvg.description)
-            averageLabel(type: .homework, average: viewModel.detailLecture.lectureHomeworkAvg.description)
-            averageLabel(type: .team, average: viewModel.detailLecture.lectureTeamAvg.description)
+            averageLabel(type: .difficulty, average: viewModel.detailLecture.lectureDifficultyAvg)
+            averageLabel(type: .homework, average: viewModel.detailLecture.lectureHomeworkAvg)
+            averageLabel(type: .team, average: viewModel.detailLecture.lectureTeamAvg)
         }
         .padding(.top, 14)
     }
@@ -161,13 +215,13 @@ extension LectureEvaluationDetailView {
 
     func averageLabel(
         type: DetailLabelType,
-        average: String
+        average: Int
     ) -> some View {
         RoundedRectangle(cornerRadius: 5)
             .frame(width: 66, height: 26)
             .foregroundStyle(type.backgroundColor)
             .overlay {
-                Text("\(type.title) \(average)")
+                Text("\(type.title) \(type.descriptions[average])")
                     .font(.c1)
                     .foregroundStyle(type.fontColor)
             }
@@ -205,10 +259,6 @@ extension LectureEvaluationDetailView {
     }
 }
 
-#Preview {
-    LectureEvaluationDetailView(viewModel: LectureEvaluationDetailViewModel())
-}
-
 enum DetailLabelType {
     case difficulty
     case homework
@@ -222,6 +272,17 @@ enum DetailLabelType {
             "과제"
         case .team:
             "팀플"
+        }
+    }
+
+    var descriptions: [String] {
+        switch self {
+        case .difficulty:
+            ["잘줌", "보통", "하드"]
+        case .homework:
+            ["없음", "보통", "많음"]
+        case .team:
+            ["없음", "있음"]
         }
     }
 
