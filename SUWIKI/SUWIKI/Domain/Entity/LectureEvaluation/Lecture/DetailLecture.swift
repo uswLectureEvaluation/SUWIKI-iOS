@@ -28,11 +28,11 @@ struct DetailLecture {
     /// 강의 평가 배움 지수
     let lectureLearningAvg: Double
     /// 학점 지수
-    let lectureDifficultyAvg: Double
+    let lectureDifficultyAvg: Int
     /// 팀플 지수
-    let lectureTeamAvg: Double
+    let lectureTeamAvg: Int
     /// 과제 지수
-    let lectureHomeworkAvg: Double
+    let lectureHomeworkAvg: Int
 }
 
 extension DetailLecture {
@@ -45,7 +45,7 @@ extension DetailLecture {
                                         lectureSatisfactionAvg: 0.0,
                                         lectureHoneyAvg: 0.0,
                                         lectureLearningAvg: 0.0,
-                                        lectureDifficultyAvg: 0.0,
-                                        lectureTeamAvg: 0.0,
-                                        lectureHomeworkAvg: 0.0)
+                                        lectureDifficultyAvg: 0,
+                                        lectureTeamAvg: 0,
+                                        lectureHomeworkAvg: 0)
 }
