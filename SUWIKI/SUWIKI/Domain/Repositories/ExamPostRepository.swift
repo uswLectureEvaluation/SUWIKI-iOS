@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+protocol ExamPostRepository {
+    func fetch(
+        id: Int,
+        page: Int
+    ) async throws -> ExamPostInfo
+}
