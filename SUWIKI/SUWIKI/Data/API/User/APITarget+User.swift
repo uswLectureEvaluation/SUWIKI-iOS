@@ -54,6 +54,18 @@ extension APITarget.User {
         }
     }
 
+//    var headers: [String: String]? {
+//        switch self {
+//        case let .refresh(refreshRequest):
+//            return [
+//                "Content-Type": "application/json",
+//                "Authorization": "\(refreshRequest.authorization)"
+//            ]
+//        default:
+//            return ["Content-Type": "application/json"]
+//        }
+//    }
+
     var parameters: RequestParameter {
         switch self {
         case let .login(loginRequest):
@@ -64,8 +76,8 @@ extension APITarget.User {
             return .body(checkIdRequest)
         case let .checkEmail(checkEmailRequest):
             return .body(checkEmailRequest)
-        case let .refresh(refreshRequest):
-            return .body(refreshRequest)
+        case .refresh:
+            return .plain
         }
     }
 }
