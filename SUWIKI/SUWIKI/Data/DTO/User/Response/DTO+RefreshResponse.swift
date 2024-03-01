@@ -8,8 +8,8 @@
 import Foundation
 
 extension DTO {
-    struct RefreshResponse: Decodable {
-        let refreshToken: String
-        let accessToken: String
+    struct RefreshResponse: Codable {
+        let RefreshToken: String
+        let AccessToken: String
     }
 }
