@@ -13,6 +13,8 @@ final class BaseInterceptor: RequestInterceptor {
 
     let keychainManager = KeychainManager.shared
 
+
+    /// 변수에 urlRequest를 복사하지 말고 refresh 토큰일경우 그대로 한번 보내보자
     func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
@@ -20,8 +22,14 @@ final class BaseInterceptor: RequestInterceptor {
     ) {
         var request = urlRequest
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        if let accessToken = keychainManager.read(token: .AccessToken) {
-            request.setValue(accessToken, forHTTPHeaderField: "Authorization")
+        if request.url?.absoluteString.contains("/refresh") == false {
+          if let accessToken = keychainManager.read(token: .AccessToken) {
+             request.setValue(accessToken, forHTTPHeaderField: "Authorization")
+         }
+        } else {
+            if let refreshToken = keychainManager.read(token: .RefreshToken) {
+                request.setValue(refreshToken, forHTTPHeaderField: "Authorization")
+            }
         }
         completion(.success(request))
     }
@@ -32,9 +40,12 @@ final class BaseInterceptor: RequestInterceptor {
         dueTo error: Error,
         completion: @escaping (RetryResult) -> Void
     ) {
-        guard let refreshToken = keychainManager.read(token: .RefreshToken), request.response?.statusCode == 401 else {
-            return completion(.doNotRetryWithError(error))
+        guard let refreshToken = keychainManager.read(token: .RefreshToken),
+                request.response?.statusCode == 401 else {
+            completion(.doNotRetryWithError(error))
+            return
         }
+
         let target = APITarget.User.refresh(DTO.RefreshRequest(authorization: refreshToken))
         APIProvider.requestRefreshToken(DTO.RefreshResponse.self, target: target) { [weak self] response in
             switch response.result {
@@ -44,8 +55,8 @@ final class BaseInterceptor: RequestInterceptor {
                     completion(.doNotRetry)
                     return
                 }
-                self.keychainManager.create(token: .AccessToken, value: tokens.accessToken)
-                self.keychainManager.create(token: .RefreshToken, value: tokens.refreshToken)
+                self.keychainManager.create(token: .AccessToken, value: tokens.AccessToken)
+                self.keychainManager.create(token: .RefreshToken, value: tokens.RefreshToken)
                 completion(.retry)
             case .failure:
                 completion(.doNotRetryWithError(error))
