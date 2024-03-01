@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct UnFilledStar: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    var width: CGFloat
+    var height: CGFloat
 
-#Preview {
-    UnFilledStar()
+    var body: some View {
+        Image(systemName: "star.fill")
+            .resizable()
+            .frame(width: width, height: height)
+            .foregroundStyle(Color(uiColor: .grayDA))
+    }
 }
