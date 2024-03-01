@@ -30,11 +30,11 @@ extension DTO {
         /// 강의평가 배움 지수
         let lectureLearningAvg: Float
         /// 강의평가 팀플 지수
-        let lectureTeamAvg: Int
+        let lectureTeamAvg: Float
         /// 강의평가 난이도 지수
-        let lectureDifficultyAvg: Int
+        let lectureDifficultyAvg: Float
         /// 강의평가 과제 지수
-        let lectureHomeworkAvg: Int
+        let lectureHomeworkAvg: Float
     }
 }
 
@@ -49,9 +49,9 @@ extension DTO.DetailLectureResponse {
                       lectureSatisfactionAvg: Double(lectureSatisfactionAvg),
                       lectureHoneyAvg: Double(lectureHoneyAvg),
                       lectureLearningAvg: Double(lectureLearningAvg),
-                      lectureDifficultyAvg: lectureDifficultyAvg,
-                      lectureTeamAvg: lectureTeamAvg,
-                      lectureHomeworkAvg: lectureHomeworkAvg)
+                      lectureDifficultyAvg: Int(lectureDifficultyAvg),
+                      lectureTeamAvg: Int(lectureTeamAvg),
+                      lectureHomeworkAvg: Int(lectureHomeworkAvg))
     }
 }
 

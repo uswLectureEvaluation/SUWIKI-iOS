@@ -19,6 +19,8 @@ extension DTO {
         let satisfaction: Float
         /// 배움지수
         let learning: Float
+        /// 꿀강 지수
+        let honey: Float
         /// 조별모임 유무(없음 == 0, 있음 == 1)
         let team: Int
         /// 학점 잘주는가?(잘줌 == 0, 보통 == 1, 까다로움 == 2)
