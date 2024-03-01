@@ -9,8 +9,8 @@ import Foundation
 
 final class LectureEvaluationHomeViewModel: ObservableObject {
 
-    var fetchUseCase: FetchLectureUseCase = DIContainer.shared.resolve(type: FetchLectureUseCase.self)
-    var searchUseCase: SearchLectureUseCase = DIContainer.shared.resolve(type: SearchLectureUseCase.self)
+    @Inject var fetchUseCase: FetchLectureUseCase
+    @Inject var searchUseCase: SearchLectureUseCase
     var fetchLecture: [Lecture] = []
     var searchLecture: [Lecture] = []
     @Published var lecture: [Lecture] = []

@@ -7,28 +7,130 @@
 
 import SwiftUI
 
+enum PostType {
+    case evaluate
+    case exam
+}
+
 struct LectureEvaluationDetailView: View {
 
-    @StateObject var viewModel = LectureEvaluationDetailViewModel()
+    @StateObject var viewModel: LectureEvaluationDetailViewModel
+
+    init(id: Int) {
+        self._viewModel = StateObject(wrappedValue: LectureEvaluationDetailViewModel(id: id))
+    }
 
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color(uiColor: .systemGray6)
+                .ignoresSafeArea()
             VStack(spacing: 0) {
                 lectureType
                 name
                 majorAndProfessor
                 difficultyAndHomeworkAndTeam
                 avarageBox
+                    .padding(.bottom, 24)
+                postTypeButtons
+                    .padding(.bottom, 12)
+                if viewModel.postType == .evaluate {
+                    postList
+                } else {
+                    examPostList
+                }
                 Spacer()
-    //            postList
             }
         }
+    }
+
+    func evaluatePost() {
+        if viewModel.evaluatePosts.isEmpty {
+            //TODO: 강의평가 없음, 강의평가 작성하기 출력
+        } else {
+            postList
+        }
+    }
+
+    func examPost() {
+        if viewModel.examPostInfo.isExamPostsExists {
+            if viewModel.examPostInfo.isPurchased {
+                //TODO: 시험정보 리스트 ㄱㄱ
+            } else {
+                //TODO: 구매 버튼 ㄱㄱㄱ
+            }
+        } else {
+            //TODO: 시험 정보 없음, 시험 정보 작성하기 버튼 출력
+        }
+    }
+
+    var postTypeButtons: some View {
+        HStack(spacing: 0) {
+            Button {
+                viewModel.postType = .evaluate
+            } label: {
+                Text("강의평가")
+                    .font(.h6)
+                    .foregroundStyle(Color(uiColor: viewModel.postType == .evaluate ? .basicBlack : .gray95))
+            }
+            Button {
+                viewModel.postType = .exam
+            } label: {
+                Text("시험정보")
+                    .font(.h6)
+                    .foregroundStyle(Color(uiColor: viewModel.postType == .exam ? .basicBlack : .gray95))
+            }
+            .padding(.leading, 12)
+            Spacer()
+        }
+        .padding(.leading, 26)
+    }
+
+    var examPostList: some View {
+        List {
+            ForEach(viewModel.examPosts, id: \.id) { post in
+                ExamCell(semester: post.semester,
+                         examType: post.examType,
+                         difficulty: post.difficulty,
+                         sourceOfExam: post.sourceOfExam,
+                         content: post.content)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .background(Color(uiColor: .systemGray6))
+            .listRowSeparator(.hidden)
+        }
+        .background(Color(uiColor: .systemGray6))
+        .scrollIndicators(.hidden)
+        .listRowSpacing(10)
+        .listStyle(.plain)
+        .padding(.horizontal, 24)
+    }
+
+    // 얘네 코드 줄이기
+    var postList: some View {
+        List {
+            ForEach(viewModel.evaluatePosts, id: \.id) { post in
+                EvaluateCell(semester: post.selectedSemester,
+                             totalAvg: post.totalAvarage,
+                             content: post.content)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .background(Color(uiColor: .systemGray6))
+            .listRowSeparator(.hidden)
+        }
+        .background(Color(uiColor: .systemGray6))
+        .scrollIndicators(.hidden)
+        .listRowSpacing(10)
+        .listStyle(.plain)
+        .padding(.horizontal, 24)
     }
 
     var lectureType: some View {
         RoundedRectangle(cornerRadius: 10)
             .frame(width: 53, height: 21)
-            .foregroundStyle(Color(uiColor: .grayF6))
+            .foregroundStyle(Color(uiColor: .white))
+            .shadow(radius: 3)
             .overlay {
                 Text(viewModel.detailLecture.lectureType)
                     .font(.c4)
@@ -62,9 +164,9 @@ struct LectureEvaluationDetailView: View {
 
     var difficultyAndHomeworkAndTeam: some View {
         HStack(spacing: 12) {
-            averageLabel(type: .difficulty, average: viewModel.detailLecture.lectureDifficultyAvg.description)
-            averageLabel(type: .homework, average: viewModel.detailLecture.lectureHomeworkAvg.description)
-            averageLabel(type: .team, average: viewModel.detailLecture.lectureTeamAvg.description)
+            averageLabel(type: .difficulty, average: viewModel.detailLecture.lectureDifficultyAvg)
+            averageLabel(type: .homework, average: viewModel.detailLecture.lectureHomeworkAvg)
+            averageLabel(type: .team, average: viewModel.detailLecture.lectureTeamAvg)
         }
         .padding(.top, 14)
     }
@@ -72,7 +174,7 @@ struct LectureEvaluationDetailView: View {
     var avarageBox: some View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundStyle(.white)
-            .shadow(radius: 10, x: 4, y: 4)
+            .shadow(radius: 4, x: 0, y: 0)
             .frame(height: 86)
             .overlay(alignment: .leading) {
                 HStack {
@@ -88,51 +190,15 @@ struct LectureEvaluationDetailView: View {
             .padding(.horizontal, 24)
             .padding(.top, 24)
     }
-}
-
-extension LectureEvaluationDetailView {
-
-    func averageLabel(
-        type: DetailLabelType,
-        average: String
-    ) -> some View {
-        RoundedRectangle(cornerRadius: 5)
-            .frame(width: 66, height: 26)
-            .foregroundStyle(type.backgroundColor)
-            .overlay {
-                Text("\(type.title) \(average)")
-                    .font(.c1)
-                    .foregroundStyle(type.fontColor)
-            }
-    }
 
     var totalAvarage: some View {
         VStack(spacing: 0) {
-            Text(viewModel.detailLecture.lectureTotalAvg.description)
+            Text(avgToString(viewModel.detailLecture.lectureTotalAvg))
                 .font(.h1)
                 .foregroundStyle(Color(uiColor: .primaryColor))
-            stars
-        }
-    }
-
-    /// https://developer.apple.com/documentation/swiftui/view/mask(alignment:_:)
-    @ViewBuilder
-    var stars: some View {
-        HStack(spacing: 0) {
-            ForEach(0..<5) { index in
-                if viewModel.detailLecture.lectureTotalAvg > CGFloat(index) {
-                    /// 3.4일 경우 3과 4사이일 때
-                    if viewModel.detailLecture.lectureTotalAvg < CGFloat(index + 1) {
-                        drawingStarRatio(ratio:
-                                            Double(viewModel.detailLecture.lectureTotalAvg * 10).truncatingRemainder(dividingBy: 10) * 1.5
-                                         )
-                    } else {
-                        filledStar
-                    }
-                } else {
-                    unFilledStar
-                }
-            }
+            Stars(avarage: viewModel.detailLecture.lectureTotalAvg,
+                  width: 15,
+                  height: 15)
         }
     }
 
@@ -143,32 +209,22 @@ extension LectureEvaluationDetailView {
             averageSummary(averageType: .satisfaction, ratio: viewModel.detailLecture.lectureSatisfactionAvg)
         }
     }
+}
 
+extension LectureEvaluationDetailView {
 
-    var filledStar: some View {
-        Image(systemName: "star.fill")
-            .resizable()
-            .frame(width: 15, height: 15)
-            .foregroundStyle(Color(uiColor: .primaryColor))
-    }
-
-    var unFilledStar: some View {
-        Image(systemName: "star.fill")
-            .resizable()
-            .frame(width: 15, height: 15)
-            .foregroundStyle(Color(uiColor: .grayDA))
-    }
-
-    func drawingStarRatio(ratio: Double) -> some View {
-        ZStack {
-            unFilledStar
-            filledStar
-                .mask {
-                    Rectangle()
-                        .size(width: ratio,
-                              height: 15)
-                }
-        }
+    func averageLabel(
+        type: DetailLabelType,
+        average: Int
+    ) -> some View {
+        RoundedRectangle(cornerRadius: 5)
+            .frame(width: 66, height: 26)
+            .foregroundStyle(type.backgroundColor)
+            .overlay {
+                Text("\(type.title) \(type.descriptions[average])")
+                    .font(.c1)
+                    .foregroundStyle(type.fontColor)
+            }
     }
 
     func drawingProgressBar(ratio: Double) -> some View {
@@ -197,10 +253,10 @@ extension LectureEvaluationDetailView {
                 .font(.c1)
         }
     }
-}
 
-#Preview {
-    LectureEvaluationDetailView()
+    func avgToString(_ avg: Double) -> String {
+        return String(format: "%.1f", avg)
+    }
 }
 
 enum DetailLabelType {
@@ -216,6 +272,17 @@ enum DetailLabelType {
             "과제"
         case .team:
             "팀플"
+        }
+    }
+
+    var descriptions: [String] {
+        switch self {
+        case .difficulty:
+            ["잘줌", "보통", "하드"]
+        case .homework:
+            ["없음", "보통", "많음"]
+        case .team:
+            ["없음", "있음"]
         }
     }
 

@@ -49,9 +49,9 @@ extension DTO.DetailLectureResponse {
                       lectureSatisfactionAvg: Double(lectureSatisfactionAvg),
                       lectureHoneyAvg: Double(lectureHoneyAvg),
                       lectureLearningAvg: Double(lectureLearningAvg),
-                      lectureDifficultyAvg: Double(lectureDifficultyAvg),
-                      lectureTeamAvg: Double(lectureTeamAvg),
-                      lectureHomeworkAvg: Double(lectureHomeworkAvg))
+                      lectureDifficultyAvg: Int(lectureDifficultyAvg),
+                      lectureTeamAvg: Int(lectureTeamAvg),
+                      lectureHomeworkAvg: Int(lectureHomeworkAvg))
     }
 }
 

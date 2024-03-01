@@ -49,7 +49,12 @@ class CourseCell: UITableViewCell, Reusable {
         $0.textColor = .gray
         $0.font = UIFont.systemFont(ofSize: 14)
     }
-    
+
+    let grade = UILabel().then {
+        $0.textColor = .gray
+        $0.font = UIFont.systemFont(ofSize: 14)
+    }
+
     let credit = UILabel().then {
         $0.textColor = .gray
         $0.font = UIFont.systemFont(ofSize: 14)
@@ -74,7 +79,7 @@ class CourseCell: UITableViewCell, Reusable {
     }
     
     func setupLabels() {
-        [courseName, classification, major, professor, roomName, credit].forEach {
+        [courseName, classification, grade, major, professor, roomName, credit].forEach {
             contentView.addSubview($0)
         }
         
@@ -96,7 +101,7 @@ class CourseCell: UITableViewCell, Reusable {
             $0.leading.equalTo(major.snp.trailing)
             $0.top.equalTo(courseName.snp.bottom).offset(5)
         }
-        credit.snp.makeConstraints {
+        grade.snp.makeConstraints {
             $0.leading.equalTo(professor.snp.trailing)
             $0.top.equalTo(courseName.snp.bottom).offset(5)
         }
@@ -104,11 +109,16 @@ class CourseCell: UITableViewCell, Reusable {
             $0.leading.equalToSuperview().offset(15)
             $0.top.equalTo(major.snp.bottom).offset(5)
         }
+        credit.snp.makeConstraints {
+            $0.leading.equalTo(roomName.snp.trailing)
+            $0.top.equalTo(major.snp.bottom).offset(5)
+        }
     }
     
     func configureUI() {
         self.classification.text = viewModel.classification
         self.courseName.text = viewModel.courseName
+        self.grade.text = viewModel.grade
         self.credit.text = viewModel.credit
         self.major.text = viewModel.major
         self.professor.text = viewModel.professor

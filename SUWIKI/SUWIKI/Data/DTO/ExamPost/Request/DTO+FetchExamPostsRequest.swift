@@ -1,14 +1,14 @@
 //
-//  DTO+FetchEvaluatePostsRequest.swift
+//  DTO+FetchExamPostsRequest.swift
 //  SUWIKI
 //
-//  Created by 한지석 on 2/8/24.
+//  Created by 한지석 on 3/1/24.
 //
 
 import Foundation
 
 extension DTO {
-    struct FetchEvaluatePostRequest: Encodable {
+    struct FetchExamPostsRequest: Encodable {
         /// 강의 ID
         let lectureId: Int
         /// 페이지(1...)

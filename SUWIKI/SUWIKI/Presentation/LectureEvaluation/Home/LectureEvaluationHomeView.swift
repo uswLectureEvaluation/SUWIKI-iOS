@@ -12,9 +12,10 @@ struct LectureEvaluationHomeView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var viewModel = LectureEvaluationHomeViewModel()
     @State var isLoginViewPresented = false
+    @State var path = NavigationPath()
 
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $path) {
             ZStack {
                 Color(uiColor: .systemGray6)
                     .ignoresSafeArea()
@@ -37,8 +38,12 @@ struct LectureEvaluationHomeView: View {
                         .tint(Color(uiColor: .primaryColor))
                 }
             }
+            .navigationDestination(for: Lecture.self) { lecture in
+                LectureEvaluationDetailView(id: lecture.id)
+                    .navigationBarTitleDisplayMode(.inline)
+            }
             .onAppear {
-                print("@Log - \(appState.isLoggedIn)")
+                print("@Login - \(appState.isLoggedIn)")
             }
             .sheet(isPresented: $viewModel.isMajorSelectSheetPresented) {
                 //TODO: 학과 필터링 뷰
@@ -65,18 +70,10 @@ struct LectureEvaluationHomeView: View {
                                 }
                             }
                         }
-                        .overlay {
-                            if appState.isLoggedIn {
-                                NavigationLink {
-                                    DetailLectureEvaluationView()
-                                } label: {
-                                    EmptyView()
-                                }
-                                .opacity(0.0)
-                            }
-                        }
                         .onTapGesture {
-                            if !appState.isLoggedIn {
+                            if appState.isLoggedIn {
+                                path.append(lecture)
+                            } else {
                                 isLoginViewPresented.toggle()
                             }
                         }
@@ -125,6 +122,9 @@ struct LectureEvaluationHomeView: View {
     var selectedMajor: some View {
         Button {
             viewModel.isMajorSelectSheetPresented.toggle()
+            KeychainManager.shared.delete(token: .AccessToken)
+            KeychainManager.shared.delete(token: .RefreshToken)
+            appState.isLoggedIn = false
         } label: {
             Text("학과 선택하기")
             Text("전체")

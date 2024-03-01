@@ -17,6 +17,8 @@ struct AppEnvironment {
     func dependencyInjection() {
         registerRepositories()
         registerUseCases()
+        registerViewModels()
+        registerViews()
     }
 
     func registerRepositories() {
@@ -26,6 +28,8 @@ struct AppEnvironment {
                            DefaultUserRepository())
         container.register(type: KeychainRepository.self,
                            DefaultKeychainRepository())
+        container.register(type: EvaluatePostRepository.self, 
+                           DefaultEvaluatePostRepository())
     }
 
     func registerUseCases() {
@@ -35,5 +39,14 @@ struct AppEnvironment {
         container.register(type: CreateTokenUseCase.self, DefaultCreateTokenUseCase())
         container.register(type: ReadTokenUseCase.self, DefaultReadTokenUseCase())
         container.register(type: FetchDetailLectureUseCase.self, DefaultFetchDetailLectureUseCase())
+        container.register(type: FetchEvaluatePostsUseCase.self, DefaultFetchEvaluatePostsUseCase())
+    }
+
+    func registerViewModels() {
+        container.register(type: LectureEvaluationHomeViewModel.self, LectureEvaluationHomeViewModel())
+    }
+
+    func registerViews() {
+        container.register(type: LectureEvaluationHomeView.self, LectureEvaluationHomeView())
     }
 }
