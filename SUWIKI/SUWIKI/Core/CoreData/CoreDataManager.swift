@@ -23,7 +23,6 @@ final class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}
 
-
     private static let appGroup = "group.sozohoy.suwiki"
 
     let container: NSPersistentContainer  = {

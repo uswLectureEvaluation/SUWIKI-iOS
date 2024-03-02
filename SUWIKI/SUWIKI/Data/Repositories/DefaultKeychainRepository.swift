@@ -19,6 +19,7 @@ final class DefaultKeychainRepository: KeychainRepository {
             token: token,
             value: value
         )
+        print("@Log \(token) - \(value)")
     }
 
     func read(

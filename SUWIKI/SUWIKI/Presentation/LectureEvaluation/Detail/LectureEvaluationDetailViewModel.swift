@@ -7,18 +7,21 @@
 
 import Foundation
 
-enum PostType {
-    case evaluate
-    case exam
-}
-//4591
+// 데이터 상태에 따른 View 분기 처리
 final class LectureEvaluationDetailViewModel: ObservableObject {
     var fetchDetailLectureUseCase: FetchDetailLectureUseCase = DIContainer.shared.resolve(type: FetchDetailLectureUseCase.self)
     var fetchEvaluatePostUseCase: FetchEvaluatePostsUseCase = DIContainer.shared.resolve(type: FetchEvaluatePostsUseCase.self)
+    var fetchExamPostUseCase: FetchExamPostsUseCase = DIContainer.shared.resolve(type: FetchExamPostsUseCase.self)
     var id: Int
     @Published var postType: PostType = .evaluate
     @Published var detailLecture: DetailLecture = DetailLecture.mockdata
     @Published var evaluatePosts: [EvaluatePost] = EvaluatePost.mockData
+    @Published var examPosts: [ExamPost] = []
+    @Published var examPostInfo: ExamPostInfo = .init(posts: [], 
+                                                      isPurchased: false,
+                                                      isWritten: false,
+                                                      isExamPostsExists: false)
+    /// state enum 정의, isLoading -> isFinished 되었을 경우 view 띄워버리기
 
     init(id: Int) {
         self.id = id
@@ -26,10 +29,14 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
             do {
                 let detailLecture = try await fetchDetailLectureUseCase.excute(id: id)
                 let evaluatePosts = try await fetchEvaluatePostUseCase.execute(lectureId: id, page: 1)
+                let examPostInfo = try await fetchExamPostUseCase.execute(id: id, page: 1)
                 await MainActor.run {
                     self.detailLecture = detailLecture
                     self.evaluatePosts = evaluatePosts
-                    print("@Log - \(evaluatePosts)")
+                    self.examPosts = examPostInfo.posts
+                    self.examPostInfo = examPostInfo
+                    print(self.examPosts)
+                    print(self.examPostInfo)
                 }
             } catch {
                 print("@Log LectureEvaluationDetialVM Fetch - \(error.localizedDescription)")

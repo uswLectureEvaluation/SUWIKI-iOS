@@ -18,9 +18,7 @@ final class AlamofireManager {
     var session: Session
 
     private init() {
-        self.session = Session(
-            interceptor: interceptor,
-            eventMonitors: loggers
-        )
+        self.session = Session(interceptor: interceptor, 
+                               eventMonitors: loggers)
     }
 }

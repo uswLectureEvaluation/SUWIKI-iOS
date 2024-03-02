@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let _ = AppEnvironment()
         let appState = AppState()
         guard (scene is UIWindowScene) else { return }
-        let lectureView = LectureEvaluationHomeView().environmentObject(appState)
+        let lectureView = DIContainer.shared.resolve(type: LectureEvaluationHomeView.self).environmentObject(appState)
+//        let lectureDetailView = LectureEvaluationDetailView()
+        let login = LoginView()
         let mainViewController = UIHostingController(rootView: lectureView)
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()

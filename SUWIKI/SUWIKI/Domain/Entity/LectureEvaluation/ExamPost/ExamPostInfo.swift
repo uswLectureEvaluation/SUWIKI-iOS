@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct ExamPostInfo {
+    let posts: [ExamPost]
+    let isPurchased: Bool
+    let isWritten: Bool
+    let isExamPostsExists: Bool
+}

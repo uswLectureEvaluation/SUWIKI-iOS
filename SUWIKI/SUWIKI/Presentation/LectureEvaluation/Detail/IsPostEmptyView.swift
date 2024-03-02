@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct IsPostEmptyView: View {
+
+    @Binding var postType: PostType
+
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-#Preview {
-    IsPostEmptyView()
-}
+//#Preview {
+//    IsPostEmptyView()
+//}

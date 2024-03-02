@@ -21,7 +21,6 @@ final class APIStatusLogger: EventMonitor {
         } else {
             print("@Log ✅ body - null")
         }
-        print("=========================================================")
     }
 
     func request<Value>(

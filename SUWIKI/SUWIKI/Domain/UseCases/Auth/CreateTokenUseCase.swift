@@ -21,7 +21,6 @@ final class DefaultCreateTokenUseCase: CreateTokenUseCase {
         token: TokenType,
         value: String
     ) {
-        repository.create(token: token,
-                          value: value)
+        repository.create(token: token, value: value)
     }
 }
