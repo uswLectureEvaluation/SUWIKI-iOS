@@ -57,7 +57,6 @@ final class AddCourseManager {
         return isDuplicated
     }
 
-
     func isCourseDuplicated(existingCourse: [Course],
                             course: [TimetableCourse]) -> Bool {
         var isDuplicated = false

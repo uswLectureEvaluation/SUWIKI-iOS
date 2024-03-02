@@ -6,3 +6,22 @@
 //
 
 import Foundation
+import Alamofire
+
+//private func dataTask<Value>(automaticallyCancelling shouldAutomaticallyCancel: Bool,
+//                             forResponse onResponse: @escaping (@escaping (DataResponse<Value, AFError>) -> Void) -> Void)
+//    -> DataTask<Value> {
+//    let task = Task {
+//        await withTaskCancellationHandler {
+//            await withCheckedContinuation { continuation in
+//                onResponse {
+//                    continuation.resume(returning: $0)
+//                }
+//            }
+//        } onCancel: {
+//            self.cancel()
+//        }
+//    }
+//
+//    return DataTask<Value>(request: self, task: task, shouldAutomaticallyCancel: shouldAutomaticallyCancel)
+//}

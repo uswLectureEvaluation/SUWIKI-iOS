@@ -31,7 +31,7 @@ class APIProvider {
                 .shared
                 .session
                 .request(target)
-                .responseDecodable { response in
+                .responseDecodable(of: object) { response in
                     completion(response)
                 }
         }

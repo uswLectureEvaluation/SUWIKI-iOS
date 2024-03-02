@@ -114,7 +114,7 @@ final class TimetableViewModel {
                     }
                 }
             } else {
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "")
             }
         }
     }

@@ -50,6 +50,7 @@ final class LoginViewModel: ObservableObject {
             createTokenUseCase.excute(token: .RefreshToken, value: signIn.refreshToken)
         } catch {
             isInvalid = true
+            print("에러 캐치")
         }
     }
 

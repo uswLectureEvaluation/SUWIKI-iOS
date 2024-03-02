@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56377D7D00321644A4555875 /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2185BEBBA967714113401781 /* Pods_SUWIKI.framework */; };
+		A2CF8E1591E52063B3B527DD /* Pods_SUWIKI_TimetableWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D79FD3F84CEC88CFA7B795 /* Pods_SUWIKI_TimetableWidgetExtension.framework */; };
 		AF057A162A77F365004577E7 /* CoreDataManager+Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A152A77F365004577E7 /* CoreDataManager+Read.swift */; };
 		AF057A182A77F36E004577E7 /* CoreDataManager+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A172A77F36E004577E7 /* CoreDataManager+Update.swift */; };
 		AF057A1A2A77F375004577E7 /* CoreDataManager+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A192A77F375004577E7 /* CoreDataManager+Delete.swift */; };
@@ -58,12 +60,22 @@
 		AF37C9A72B553FB000D4949D /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF4E41EE2A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld */; };
 		AF3C07482A349A3A00806AEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */; };
 		AF4E41F02A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF4E41EE2A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld */; };
+		AF5434B82B91EAE300AB1E7F /* DTO+FetchExamPostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434B72B91EAE300AB1E7F /* DTO+FetchExamPostsRequest.swift */; };
+		AF5434BA2B91EAF900AB1E7F /* DTO+FetchExamPostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434B92B91EAF900AB1E7F /* DTO+FetchExamPostsResponse.swift */; };
+		AF5434BC2B91EB0200AB1E7F /* DTO+ExamPostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434BB2B91EB0200AB1E7F /* DTO+ExamPostResponse.swift */; };
+		AF5434BF2B91EC4D00AB1E7F /* APITarget+ExamPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434BE2B91EC4D00AB1E7F /* APITarget+ExamPost.swift */; };
+		AF5434C22B91F00700AB1E7F /* FetchExamPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434C12B91F00700AB1E7F /* FetchExamPostsUseCase.swift */; };
+		AF5434C52B91F03100AB1E7F /* ExamPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434C42B91F03100AB1E7F /* ExamPost.swift */; };
+		AF5434C72B91F2FB00AB1E7F /* ExamPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434C62B91F2FB00AB1E7F /* ExamPostRepository.swift */; };
+		AF5434C92B91F3EF00AB1E7F /* DefaultExamPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434C82B91F3EF00AB1E7F /* DefaultExamPostRepository.swift */; };
+		AF5434CB2B91F43A00AB1E7F /* ExamPostInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434CA2B91F43A00AB1E7F /* ExamPostInfo.swift */; };
+		AF5434CF2B91FC4800AB1E7F /* IsPostEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5434CE2B91FC4800AB1E7F /* IsPostEmptyView.swift */; };
 		AF5E2A9C2AAF6B8D006DEE02 /* TimetableEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */; };
 		AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */; };
 		AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */; };
 		AF60C27F2A29C5B000AE0126 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60C27E2A29C5B000AE0126 /* CourseCell.swift */; };
 		AF67E6F42B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */; };
-		AF67E6F62B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */; };
+		AF67E6F62B74BB4E006CF9FC /* DTO+EvaluatePostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF67E6F52B74BB4E006CF9FC /* DTO+EvaluatePostResponse.swift */; };
 		AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */; };
 		AF6A8ACE2B6CEE6500DD58EF /* DTO+LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8ACD2B6CEE6500DD58EF /* DTO+LoginRequest.swift */; };
 		AF6A8AD12B6CEEB800DD58EF /* APITarget+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AD02B6CEEB800DD58EF /* APITarget+User.swift */; };
@@ -80,6 +92,15 @@
 		AF6A8AEF2B6E4CF900DD58EF /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AEE2B6E4CF900DD58EF /* LoginViewModel.swift */; };
 		AF6A8AF62B6E590600DD58EF /* DTO+CheckEmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AF52B6E590600DD58EF /* DTO+CheckEmailRequest.swift */; };
 		AF6A8AF82B6E59EB00DD58EF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6A8AF72B6E59EB00DD58EF /* UserRepository.swift */; };
+		AF72114D2B8DD77E009D77FF /* DTO+RefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72114C2B8DD77E009D77FF /* DTO+RefreshRequest.swift */; };
+		AF72114F2B8DD7C7009D77FF /* DTO+RefreshResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72114E2B8DD7C7009D77FF /* DTO+RefreshResponse.swift */; };
+		AF7211522B8DDB7C009D77FF /* APITarget+EvaluatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7211512B8DDB7C009D77FF /* APITarget+EvaluatePost.swift */; };
+		AF7211552B8DDCBF009D77FF /* FetchEvaluatePostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7211542B8DDCBF009D77FF /* FetchEvaluatePostsUseCase.swift */; };
+		AF7211582B8DDCF2009D77FF /* EvaluatePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7211572B8DDCF2009D77FF /* EvaluatePost.swift */; };
+		AF72115A2B8DDDCB009D77FF /* EvaluatePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7211592B8DDDCB009D77FF /* EvaluatePostRepository.swift */; };
+		AF72115C2B8DDE21009D77FF /* DefaultEvaluatePostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72115B2B8DDE21009D77FF /* DefaultEvaluatePostRepository.swift */; };
+		AF72115E2B8DE170009D77FF /* DTO+FetchEvaluatePostsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72115D2B8DE170009D77FF /* DTO+FetchEvaluatePostsResponse.swift */; };
+		AF7211602B8DF716009D77FF /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72115F2B8DF716009D77FF /* Temp.swift */; };
 		AF7DF1E82B64EDB400C2CF4E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E72B64EDB400C2CF4E /* DIContainer.swift */; };
 		AF7DF1EA2B64EDE800C2CF4E /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E92B64EDE800C2CF4E /* Inject.swift */; };
 		AF7DF1EC2B64EFB100C2CF4E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1EB2B64EFB100C2CF4E /* AppEnvironment.swift */; };
@@ -119,6 +140,11 @@
 		AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */; };
 		AFD5CC122A404338008F95B7 /* SelectCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */; };
 		AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */; };
+		AFDFB4B52B907EC700448A0C /* EvaluateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDFB4B42B907EC700448A0C /* EvaluateCell.swift */; };
+		AFDFB4B72B907ECC00448A0C /* ExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDFB4B62B907ECC00448A0C /* ExamCell.swift */; };
+		AFDFB4BA2B907F9F00448A0C /* FilledStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDFB4B92B907F9F00448A0C /* FilledStar.swift */; };
+		AFDFB4BC2B907FAC00448A0C /* UnFilledStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDFB4BB2B907FAC00448A0C /* UnFilledStar.swift */; };
+		AFDFB4BE2B90803200448A0C /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDFB4BD2B90803200448A0C /* Stars.swift */; };
 		AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */; };
 		AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */; };
 		AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF82A1C8ABF009D4D58 /* SelectCourseViewController.swift */; };
@@ -133,8 +159,6 @@
 		AFF785C92A949C5700B6D531 /* AddCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF785C82A949C5700B6D531 /* AddCourseViewModel.swift */; };
 		AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */; };
 		AFF9DE922A34841D00CCB1D2 /* TimetableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */; };
-		C4CE3F240D6E49BF16078DEA /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBDCB09292C279BAEFE5739 /* Pods_SUWIKI.framework */; };
-		E19B8C1651D95043EE43B0E7 /* Pods_SUWIKI_TimetableWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871349BB8C58C6318EECACE4 /* Pods_SUWIKI_TimetableWidgetExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,10 +196,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0E882CEC831A9F2BFFD51F1C /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
-		4DBDCB09292C279BAEFE5739 /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		79A806FC0D7C8FBD8BB2B3A5 /* Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI-TimetableWidgetExtension/Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		871349BB8C58C6318EECACE4 /* Pods_SUWIKI_TimetableWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI_TimetableWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2185BEBBA967714113401781 /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B8A861BC0D580D243654819 /* Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI-TimetableWidgetExtension/Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		60D79FD3F84CEC88CFA7B795 /* Pods_SUWIKI_TimetableWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI_TimetableWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D02DF8463C15591EFBD6077 /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
 		AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Create.swift"; sourceTree = "<group>"; };
 		AF057A152A77F365004577E7 /* CoreDataManager+Read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Read.swift"; sourceTree = "<group>"; };
 		AF057A172A77F36E004577E7 /* CoreDataManager+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Update.swift"; sourceTree = "<group>"; };
@@ -223,12 +247,22 @@
 		AF2AADDF2A89440900923A61 /* UISearchBar+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+.swift"; sourceTree = "<group>"; };
 		AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF4E41EF2A7FEF4500954710 /* SuwikiTimetable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuwikiTimetable.xcdatamodel; sourceTree = "<group>"; };
+		AF5434B72B91EAE300AB1E7F /* DTO+FetchExamPostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchExamPostsRequest.swift"; sourceTree = "<group>"; };
+		AF5434B92B91EAF900AB1E7F /* DTO+FetchExamPostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchExamPostsResponse.swift"; sourceTree = "<group>"; };
+		AF5434BB2B91EB0200AB1E7F /* DTO+ExamPostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+ExamPostResponse.swift"; sourceTree = "<group>"; };
+		AF5434BE2B91EC4D00AB1E7F /* APITarget+ExamPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+ExamPost.swift"; sourceTree = "<group>"; };
+		AF5434C12B91F00700AB1E7F /* FetchExamPostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchExamPostsUseCase.swift; sourceTree = "<group>"; };
+		AF5434C42B91F03100AB1E7F /* ExamPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPost.swift; sourceTree = "<group>"; };
+		AF5434C62B91F2FB00AB1E7F /* ExamPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPostRepository.swift; sourceTree = "<group>"; };
+		AF5434C82B91F3EF00AB1E7F /* DefaultExamPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultExamPostRepository.swift; sourceTree = "<group>"; };
+		AF5434CA2B91F43A00AB1E7F /* ExamPostInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPostInfo.swift; sourceTree = "<group>"; };
+		AF5434CE2B91FC4800AB1E7F /* IsPostEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPostEmptyView.swift; sourceTree = "<group>"; };
 		AF5E2A9B2AAF6B8D006DEE02 /* TimetableEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableEmptyView.swift; sourceTree = "<group>"; };
 		AF60C2772A29BF5B00AE0126 /* SelectMajorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewController.swift; sourceTree = "<group>"; };
 		AF60C27C2A29C59E00AE0126 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		AF60C27E2A29C5B000AE0126 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
 		AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchEvaluatePostsRequest.swift"; sourceTree = "<group>"; };
-		AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchEvaluatePostsResponse.swift"; sourceTree = "<group>"; };
+		AF67E6F52B74BB4E006CF9FC /* DTO+EvaluatePostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+EvaluatePostResponse.swift"; sourceTree = "<group>"; };
 		AF6A8AC72B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+SearchLectureRequest.swift"; sourceTree = "<group>"; };
 		AF6A8ACD2B6CEE6500DD58EF /* DTO+LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+LoginRequest.swift"; sourceTree = "<group>"; };
 		AF6A8AD02B6CEEB800DD58EF /* APITarget+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+User.swift"; sourceTree = "<group>"; };
@@ -245,6 +279,15 @@
 		AF6A8AEE2B6E4CF900DD58EF /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		AF6A8AF52B6E590600DD58EF /* DTO+CheckEmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+CheckEmailRequest.swift"; sourceTree = "<group>"; };
 		AF6A8AF72B6E59EB00DD58EF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		AF72114C2B8DD77E009D77FF /* DTO+RefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+RefreshRequest.swift"; sourceTree = "<group>"; };
+		AF72114E2B8DD7C7009D77FF /* DTO+RefreshResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+RefreshResponse.swift"; sourceTree = "<group>"; };
+		AF7211512B8DDB7C009D77FF /* APITarget+EvaluatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+EvaluatePost.swift"; sourceTree = "<group>"; };
+		AF7211542B8DDCBF009D77FF /* FetchEvaluatePostsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEvaluatePostsUseCase.swift; sourceTree = "<group>"; };
+		AF7211572B8DDCF2009D77FF /* EvaluatePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluatePost.swift; sourceTree = "<group>"; };
+		AF7211592B8DDDCB009D77FF /* EvaluatePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluatePostRepository.swift; sourceTree = "<group>"; };
+		AF72115B2B8DDE21009D77FF /* DefaultEvaluatePostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEvaluatePostRepository.swift; sourceTree = "<group>"; };
+		AF72115D2B8DE170009D77FF /* DTO+FetchEvaluatePostsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+FetchEvaluatePostsResponse.swift"; sourceTree = "<group>"; };
+		AF72115F2B8DF716009D77FF /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
 		AF7DF1E72B64EDB400C2CF4E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		AF7DF1E92B64EDE800C2CF4E /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		AF7DF1EB2B64EFB100C2CF4E /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
@@ -276,6 +319,11 @@
 		AFD5CC0F2A3993A2008F95B7 /* FetchCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCourse.swift; sourceTree = "<group>"; };
 		AFD5CC112A404338008F95B7 /* SelectCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseViewModel.swift; sourceTree = "<group>"; };
 		AFD5CC132A405BFE008F95B7 /* SelectCourseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCourseListViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		AFDFB4B42B907EC700448A0C /* EvaluateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluateCell.swift; sourceTree = "<group>"; };
+		AFDFB4B62B907ECC00448A0C /* ExamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCell.swift; sourceTree = "<group>"; };
+		AFDFB4B92B907F9F00448A0C /* FilledStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledStar.swift; sourceTree = "<group>"; };
+		AFDFB4BB2B907FAC00448A0C /* UnFilledStar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnFilledStar.swift; sourceTree = "<group>"; };
+		AFDFB4BD2B90803200448A0C /* Stars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stars.swift; sourceTree = "<group>"; };
 		AFE18EF12A1C8ABF009D4D58 /* SUWIKI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SUWIKI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE18EF42A1C8ABF009D4D58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,8 +341,8 @@
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		AFF9DE8F2A34821800CCB1D2 /* TimetableCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCourse.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
-		F64F28D97CB82C0FC5A1E7FB /* Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI-TimetableWidgetExtension/Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
-		FE344B51626DEFCDF195B556 /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
+		BBBE36A7645D292A4316EB2E /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
+		EE893C91EFDA6058598BA2F8 /* Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI-TimetableWidgetExtension/Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,7 +352,7 @@
 			files = (
 				AFBEF3462B4417A50047DDC3 /* SwiftUI.framework in Frameworks */,
 				AFBEF3452B4417A50047DDC3 /* WidgetKit.framework in Frameworks */,
-				E19B8C1651D95043EE43B0E7 /* Pods_SUWIKI_TimetableWidgetExtension.framework in Frameworks */,
+				A2CF8E1591E52063B3B527DD /* Pods_SUWIKI_TimetableWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +360,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4CE3F240D6E49BF16078DEA /* Pods_SUWIKI.framework in Frameworks */,
+				56377D7D00321644A4555875 /* Pods_SUWIKI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,10 +370,10 @@
 		1C336A60AC1966203879B6A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DBDCB09292C279BAEFE5739 /* Pods_SUWIKI.framework */,
 				AFBEF3292B44115C0047DDC3 /* WidgetKit.framework */,
 				AFBEF32B2B44115C0047DDC3 /* SwiftUI.framework */,
-				871349BB8C58C6318EECACE4 /* Pods_SUWIKI_TimetableWidgetExtension.framework */,
+				2185BEBBA967714113401781 /* Pods_SUWIKI.framework */,
+				60D79FD3F84CEC88CFA7B795 /* Pods_SUWIKI_TimetableWidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -333,10 +381,10 @@
 		63B3105FE151B90524E772B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				0E882CEC831A9F2BFFD51F1C /* Pods-SUWIKI.debug.xcconfig */,
-				FE344B51626DEFCDF195B556 /* Pods-SUWIKI.release.xcconfig */,
-				79A806FC0D7C8FBD8BB2B3A5 /* Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig */,
-				F64F28D97CB82C0FC5A1E7FB /* Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig */,
+				9D02DF8463C15591EFBD6077 /* Pods-SUWIKI.debug.xcconfig */,
+				BBBE36A7645D292A4316EB2E /* Pods-SUWIKI.release.xcconfig */,
+				3B8A861BC0D580D243654819 /* Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig */,
+				EE893C91EFDA6058598BA2F8 /* Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -344,6 +392,11 @@
 		AF065E1B2B70C5CF00676752 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				AF065E202B70D46800676752 /* LectureEvaluationDetailView.swift */,
+				AF065E2C2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift */,
+				AFDFB4B42B907EC700448A0C /* EvaluateCell.swift */,
+				AFDFB4B62B907ECC00448A0C /* ExamCell.swift */,
+				AF5434CE2B91FC4800AB1E7F /* IsPostEmptyView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -366,6 +419,7 @@
 				AF0ABE2C2B6232F500AA93EE /* Encodable+.swift */,
 				AF0ABE382B62458900AA93EE /* APIProvider.swift */,
 				AF065E282B70E27E00676752 /* Interceptor.swift */,
+				AF72115F2B8DF716009D77FF /* Temp.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -394,6 +448,8 @@
 				AF0ABE492B624BFF00AA93EE /* DefaultLectureRepository.swift */,
 				AF6A8ADD2B6E2F5100DD58EF /* DefaultKeychainRepository.swift */,
 				AF065E062B6EA68E00676752 /* DefaultUserRepository.swift */,
+				AF72115B2B8DDE21009D77FF /* DefaultEvaluatePostRepository.swift */,
+				AF5434C82B91F3EF00AB1E7F /* DefaultExamPostRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -404,6 +460,8 @@
 				AF0ABE472B624B5300AA93EE /* LectureRepository.swift */,
 				AF6A8ADB2B6E2EAE00DD58EF /* KeychainRepository.swift */,
 				AF6A8AF72B6E59EB00DD58EF /* UserRepository.swift */,
+				AF7211592B8DDDCB009D77FF /* EvaluatePostRepository.swift */,
+				AF5434C62B91F2FB00AB1E7F /* ExamPostRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -420,6 +478,8 @@
 		AF0ABE3F2B624AAA00AA93EE /* LectureEvaluation */ = {
 			isa = PBXGroup;
 			children = (
+				AF5434C32B91F02800AB1E7F /* ExamPost */,
+				AF7211562B8DDCDD009D77FF /* EvaluatePost */,
 				AF6A8AC92B6CED6300DD58EF /* User */,
 				AF0ABE3C2B62471000AA93EE /* Lecture */,
 			);
@@ -429,6 +489,8 @@
 		AF0ABE402B624AB700AA93EE /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				AF5434C02B91F00000AB1E7F /* ExamPost */,
+				AF7211532B8DDCAB009D77FF /* EvaluatePost */,
 				AF6A8AF02B6E57E000DD58EF /* Auth */,
 				AF7DF1E22B64EA7100C2CF4E /* Lecture */,
 			);
@@ -451,8 +513,6 @@
 				AF0ABE452B624B1400AA93EE /* LectureEvaluationHomeView.swift */,
 				AF7DF1ED2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift */,
 				AFC90FC62B6799A90007DA1B /* LectureCell.swift */,
-				AF065E202B70D46800676752 /* LectureEvaluationDetailView.swift */,
-				AF065E2C2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -544,6 +604,7 @@
 		AF0ECA102B5E9B230012CC44 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AFDFB4B82B907F9000448A0C /* Component */,
 				AF2AADDC2A85411C00923A61 /* Extension */,
 				AFC335302A4DD20900D22DEC /* AddCourseManager.swift */,
 			);
@@ -590,6 +651,57 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		AF5434B42B91EA9200AB1E7F /* ExamPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF5434B62B91EAA300AB1E7F /* Request */,
+				AF5434B52B91EA9700AB1E7F /* Response */,
+			);
+			path = ExamPost;
+			sourceTree = "<group>";
+		};
+		AF5434B52B91EA9700AB1E7F /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				AF5434B92B91EAF900AB1E7F /* DTO+FetchExamPostsResponse.swift */,
+				AF5434BB2B91EB0200AB1E7F /* DTO+ExamPostResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		AF5434B62B91EAA300AB1E7F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				AF5434B72B91EAE300AB1E7F /* DTO+FetchExamPostsRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		AF5434BD2B91EC3F00AB1E7F /* ExamPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF5434BE2B91EC4D00AB1E7F /* APITarget+ExamPost.swift */,
+			);
+			path = ExamPost;
+			sourceTree = "<group>";
+		};
+		AF5434C02B91F00000AB1E7F /* ExamPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF5434C12B91F00700AB1E7F /* FetchExamPostsUseCase.swift */,
+			);
+			path = ExamPost;
+			sourceTree = "<group>";
+		};
+		AF5434C32B91F02800AB1E7F /* ExamPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF5434C42B91F03100AB1E7F /* ExamPost.swift */,
+				AF5434CA2B91F43A00AB1E7F /* ExamPostInfo.swift */,
+			);
+			path = ExamPost;
+			sourceTree = "<group>";
+		};
 		AF67E6F02B74BA9F006CF9FC /* EvaluatePost */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,7 +722,8 @@
 		AF67E6F22B74BAE2006CF9FC /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				AF67E6F52B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift */,
+				AF67E6F52B74BB4E006CF9FC /* DTO+EvaluatePostResponse.swift */,
+				AF72115D2B8DE170009D77FF /* DTO+FetchEvaluatePostsResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -639,6 +752,7 @@
 				AF6A8ADF2B6E319A00DD58EF /* DTO+CheckIdRequest.swift */,
 				AF6A8AE32B6E35E700DD58EF /* DTO+JoinRequest.swift */,
 				AF6A8AF52B6E590600DD58EF /* DTO+CheckEmailRequest.swift */,
+				AF72114C2B8DD77E009D77FF /* DTO+RefreshRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -649,6 +763,7 @@
 				AF6A8AD22B6CEFA000DD58EF /* DTO+TokenResponse.swift */,
 				AF6A8AE12B6E31B700DD58EF /* DTO+OverlapResponse.swift */,
 				AF6A8AE52B6E362500DD58EF /* DTO+JoinResponse.swift */,
+				AF72114E2B8DD7C7009D77FF /* DTO+RefreshResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -689,6 +804,30 @@
 				AF065E142B6EAB4000676752 /* SignUpUseCase.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		AF7211502B8DDB6C009D77FF /* EvaluatePost */ = {
+			isa = PBXGroup;
+			children = (
+				AF7211512B8DDB7C009D77FF /* APITarget+EvaluatePost.swift */,
+			);
+			path = EvaluatePost;
+			sourceTree = "<group>";
+		};
+		AF7211532B8DDCAB009D77FF /* EvaluatePost */ = {
+			isa = PBXGroup;
+			children = (
+				AF7211542B8DDCBF009D77FF /* FetchEvaluatePostsUseCase.swift */,
+			);
+			path = EvaluatePost;
+			sourceTree = "<group>";
+		};
+		AF7211562B8DDCDD009D77FF /* EvaluatePost */ = {
+			isa = PBXGroup;
+			children = (
+				AF7211572B8DDCF2009D77FF /* EvaluatePost.swift */,
+			);
+			path = EvaluatePost;
 			sourceTree = "<group>";
 		};
 		AF7DF1E22B64EA7100C2CF4E /* Lecture */ = {
@@ -761,6 +900,8 @@
 		AFBF51402B6156B1001B6EA1 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				AF5434BD2B91EC3F00AB1E7F /* ExamPost */,
+				AF7211502B8DDB6C009D77FF /* EvaluatePost */,
 				AF6A8ACF2B6CEEA300DD58EF /* User */,
 				AF0ABE312B623E5500AA93EE /* Lecture */,
 				AF0ABE2F2B623AA700AA93EE /* APITarget.swift */,
@@ -771,6 +912,7 @@
 		AFBF51412B6156D8001B6EA1 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				AF5434B42B91EA9200AB1E7F /* ExamPost */,
 				AF67E6F02B74BA9F006CF9FC /* EvaluatePost */,
 				AFBF51422B6156EA001B6EA1 /* DTO+Namespace.swift */,
 				AF6A8ACA2B6CEE3D00DD58EF /* User */,
@@ -797,6 +939,16 @@
 				AF065E2E2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		AFDFB4B82B907F9000448A0C /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				AFDFB4B92B907F9F00448A0C /* FilledStar.swift */,
+				AFDFB4BB2B907FAC00448A0C /* UnFilledStar.swift */,
+				AFDFB4BD2B90803200448A0C /* Stars.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		AFE18EE82A1C8ABF009D4D58 = {
@@ -935,7 +1087,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFBEF3522B4417A70047DDC3 /* Build configuration list for PBXNativeTarget "TimetableWidgetExtension" */;
 			buildPhases = (
-				83621421D04BA14972524D30 /* [CP] Check Pods Manifest.lock */,
+				130347EEBF9548A37FB55624 /* [CP] Check Pods Manifest.lock */,
 				AFBEF3402B4417A50047DDC3 /* Sources */,
 				AFBEF3412B4417A50047DDC3 /* Frameworks */,
 				AFBEF3422B4417A50047DDC3 /* Resources */,
@@ -953,13 +1105,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFE18F082A1C8AC1009D4D58 /* Build configuration list for PBXNativeTarget "SUWIKI" */;
 			buildPhases = (
-				D796E9A8644C4F0FC590146B /* [CP] Check Pods Manifest.lock */,
+				370DDD0233B65CE5A47D782D /* [CP] Check Pods Manifest.lock */,
 				AFE18EED2A1C8ABF009D4D58 /* Sources */,
 				AFE18EEE2A1C8ABF009D4D58 /* Frameworks */,
 				AFE18EEF2A1C8ABF009D4D58 /* Resources */,
 				AFE18F272A271C69009D4D58 /* Embed Frameworks */,
-				AE8BE050CDD12AC165D65B09 /* [CP] Embed Pods Frameworks */,
 				AFBEF3552B4417A70047DDC3 /* Embed Foundation Extensions */,
+				26EB8B791F852CA1750EA42F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1034,7 +1186,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		83621421D04BA14972524D30 /* [CP] Check Pods Manifest.lock */ = {
+		130347EEBF9548A37FB55624 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1056,7 +1208,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AE8BE050CDD12AC165D65B09 /* [CP] Embed Pods Frameworks */ = {
+		26EB8B791F852CA1750EA42F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1073,7 +1225,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D796E9A8644C4F0FC590146B /* [CP] Check Pods Manifest.lock */ = {
+		370DDD0233B65CE5A47D782D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1126,21 +1278,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF5434CF2B91FC4800AB1E7F /* IsPostEmptyView.swift in Sources */,
 				AF065E232B70DA9400676752 /* DetailLecture.swift in Sources */,
 				AFBF51432B6156EA001B6EA1 /* DTO+Namespace.swift in Sources */,
 				AF6A8ADA2B6E2E7A00DD58EF /* TokenType.swift in Sources */,
 				AF6A8AE02B6E319A00DD58EF /* DTO+CheckIdRequest.swift in Sources */,
+				AFDFB4BC2B907FAC00448A0C /* UnFilledStar.swift in Sources */,
 				AF08A8D82A9F0736005C3D00 /* AddTimetableViewModel.swift in Sources */,
 				AF057A162A77F365004577E7 /* CoreDataManager+Read.swift in Sources */,
+				AF5434B82B91EAE300AB1E7F /* DTO+FetchExamPostsRequest.swift in Sources */,
 				AFE18EF92A1C8ABF009D4D58 /* SelectCourseViewController.swift in Sources */,
 				AF9907D42B5670F100EF0D91 /* TimetableWidgetCell.swift in Sources */,
 				AF057A1A2A77F375004577E7 /* CoreDataManager+Delete.swift in Sources */,
+				AF72114D2B8DD77E009D77FF /* DTO+RefreshRequest.swift in Sources */,
 				AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */,
 				AFC90FC72B6799A90007DA1B /* LectureCell.swift in Sources */,
 				AF08A8E12A9F6E63005C3D00 /* TimetableListViewModel.swift in Sources */,
 				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
 				AF6A8AF62B6E590600DD58EF /* DTO+CheckEmailRequest.swift in Sources */,
 				AFD5CC102A3993A2008F95B7 /* FetchCourse.swift in Sources */,
+				AF7211522B8DDB7C009D77FF /* APITarget+EvaluatePost.swift in Sources */,
 				AF065E212B70D46800676752 /* LectureEvaluationDetailView.swift in Sources */,
 				AFBF51482B615C0C001B6EA1 /* DTO+AllLectureResponse.swift in Sources */,
 				AF08A8DC2A9F6C5E005C3D00 /* TimetableListViewController.swift in Sources */,
@@ -1157,14 +1314,16 @@
 				AFAA2F012B343BC000899E98 /* FirebaseManager.swift in Sources */,
 				AF6A8AE42B6E35E700DD58EF /* DTO+JoinRequest.swift in Sources */,
 				AF08A8D62A9DE1EE005C3D00 /* AddTimetableViewController.swift in Sources */,
+				AF7211552B8DDCBF009D77FF /* FetchEvaluatePostsUseCase.swift in Sources */,
 				AFF785C52A93332E00B6D531 /* AddCourseViewController.swift in Sources */,
 				AF9907CE2B566F8700EF0D91 /* TimetableWidgetMedium.swift in Sources */,
 				AFF9DE8E2A3481D900CCB1D2 /* TimetableViewController.swift in Sources */,
 				AF065E0F2B6EAB0D00676752 /* CreateTokenUseCase.swift in Sources */,
 				AFE18F1A2A271755009D4D58 /* Major.swift in Sources */,
-				AF67E6F62B74BB4E006CF9FC /* DTO+FetchEvaluatePostsResponse.swift in Sources */,
+				AF67E6F62B74BB4E006CF9FC /* DTO+EvaluatePostResponse.swift in Sources */,
 				AF0ABE372B62407200AA93EE /* DTO+AllLectureRequest.swift in Sources */,
 				AF065E2F2B722D0900676752 /* DTO+DecodingDetailLectureResponse.swift in Sources */,
+				AF5434C72B91F2FB00AB1E7F /* ExamPostRepository.swift in Sources */,
 				AF6A8AD32B6CEFA000DD58EF /* DTO+TokenResponse.swift in Sources */,
 				AF065E0B2B6EA8FB00676752 /* SearchLectureUseCase.swift in Sources */,
 				AF0ABE392B62458900AA93EE /* APIProvider.swift in Sources */,
@@ -1175,11 +1334,14 @@
 				AF6A8AF82B6E59EB00DD58EF /* UserRepository.swift in Sources */,
 				AF0ABE462B624B1400AA93EE /* LectureEvaluationHomeView.swift in Sources */,
 				AF9907C32B564AFD00EF0D91 /* TimetableWidgetViewModel.swift in Sources */,
+				AF72115C2B8DDE21009D77FF /* DefaultEvaluatePostRepository.swift in Sources */,
 				AF0ABE4A2B624BFF00AA93EE /* DefaultLectureRepository.swift in Sources */,
+				AF72115E2B8DE170009D77FF /* DTO+FetchEvaluatePostsResponse.swift in Sources */,
 				AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */,
 				AF08A8DA2A9F2BF6005C3D00 /* UITextField+.swift in Sources */,
 				AF065E092B6EA8F200676752 /* FetchLectureUseCase.swift in Sources */,
 				AF7DF1E82B64EDB400C2CF4E /* DIContainer.swift in Sources */,
+				AF5434C22B91F00700AB1E7F /* FetchExamPostsUseCase.swift in Sources */,
 				AF065E112B6EAB2700676752 /* ReadTokenUseCase.swift in Sources */,
 				AF065E252B70DC5400676752 /* DTO+DetailLectureRequest.swift in Sources */,
 				AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */,
@@ -1188,9 +1350,12 @@
 				AF6A8AEF2B6E4CF900DD58EF /* LoginViewModel.swift in Sources */,
 				AF6A8AE22B6E31B700DD58EF /* DTO+OverlapResponse.swift in Sources */,
 				AF6A8AED2B6E367A00DD58EF /* LoginView.swift in Sources */,
+				AF5434BA2B91EAF900AB1E7F /* DTO+FetchExamPostsResponse.swift in Sources */,
 				AF7DF1EC2B64EFB100C2CF4E /* AppEnvironment.swift in Sources */,
 				AFEC86962A37712A008C5781 /* TimetableViewModel.swift in Sources */,
 				AF6A8AE62B6E362500DD58EF /* DTO+JoinResponse.swift in Sources */,
+				AF72115A2B8DDDCB009D77FF /* EvaluatePostRepository.swift in Sources */,
+				AF7211582B8DDCF2009D77FF /* EvaluatePost.swift in Sources */,
 				AF2AADE02A89440900923A61 /* UISearchBar+.swift in Sources */,
 				AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */,
 				AF0ABE3E2B62472200AA93EE /* Lecture.swift in Sources */,
@@ -1199,14 +1364,22 @@
 				AFC90FC92B679BD40007DA1B /* Font+.swift in Sources */,
 				AF60C27D2A29C59E00AE0126 /* CategoryCell.swift in Sources */,
 				AF67E6F42B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift in Sources */,
+				AF5434BC2B91EB0200AB1E7F /* DTO+ExamPostResponse.swift in Sources */,
 				AF065E132B6EAB3000676752 /* DeleteTokenUseCase.swift in Sources */,
 				AF60C2782A29BF5B00AE0126 /* SelectMajorViewController.swift in Sources */,
 				AFA499E72A2881BF0047A4B4 /* SelectMajorViewModel.swift in Sources */,
+				AF5434C92B91F3EF00AB1E7F /* DefaultExamPostRepository.swift in Sources */,
 				AF9907BE2B554FCF00EF0D91 /* CoreDataManager+Create.swift in Sources */,
+				AFDFB4B72B907ECC00448A0C /* ExamCell.swift in Sources */,
+				AFDFB4BE2B90803200448A0C /* Stars.swift in Sources */,
 				AFF785C92A949C5700B6D531 /* AddCourseViewModel.swift in Sources */,
+				AF5434CB2B91F43A00AB1E7F /* ExamPostInfo.swift in Sources */,
 				AF0ABE2B2B6232C400AA93EE /* RequestParameter.swift in Sources */,
 				AF065E2B2B70E59C00676752 /* FetchDetailLectureUseCase.swift in Sources */,
+				AF7211602B8DF716009D77FF /* Temp.swift in Sources */,
 				AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */,
+				AFDFB4BA2B907F9F00448A0C /* FilledStar.swift in Sources */,
+				AF72114F2B8DD7C7009D77FF /* DTO+RefreshResponse.swift in Sources */,
 				AF065E0D2B6EAB0500676752 /* SignInUseCase.swift in Sources */,
 				AFBF51452B615863001B6EA1 /* DTO+LectureResponse.swift in Sources */,
 				AF86F18D2B4AF0110001904A /* UserDefaults+.swift in Sources */,
@@ -1223,8 +1396,11 @@
 				AF6A8ADC2B6E2EAE00DD58EF /* KeychainRepository.swift in Sources */,
 				AF065E292B70E27E00676752 /* Interceptor.swift in Sources */,
 				AF0ABE342B623E6A00AA93EE /* APITarget+Lecture.swift in Sources */,
+				AFDFB4B52B907EC700448A0C /* EvaluateCell.swift in Sources */,
 				AF065E2D2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift in Sources */,
+				AF5434C52B91F03100AB1E7F /* ExamPost.swift in Sources */,
 				AF0ABE2D2B6232F600AA93EE /* Encodable+.swift in Sources */,
+				AF5434BF2B91EC4D00AB1E7F /* APITarget+ExamPost.swift in Sources */,
 				AF0ABE272B6227F800AA93EE /* AlamofireManager.swift in Sources */,
 				AF057A182A77F36E004577E7 /* CoreDataManager+Update.swift in Sources */,
 			);
@@ -1254,7 +1430,7 @@
 /* Begin XCBuildConfiguration section */
 		AFBEF3532B4417A70047DDC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79A806FC0D7C8FBD8BB2B3A5 /* Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig */;
+			baseConfigurationReference = 3B8A861BC0D580D243654819 /* Pods-SUWIKI-TimetableWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1289,7 +1465,7 @@
 		};
 		AFBEF3542B4417A70047DDC3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F64F28D97CB82C0FC5A1E7FB /* Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig */;
+			baseConfigurationReference = EE893C91EFDA6058598BA2F8 /* Pods-SUWIKI-TimetableWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1437,7 +1613,7 @@
 		};
 		AFE18F092A1C8AC1009D4D58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E882CEC831A9F2BFFD51F1C /* Pods-SUWIKI.debug.xcconfig */;
+			baseConfigurationReference = 9D02DF8463C15591EFBD6077 /* Pods-SUWIKI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1461,7 +1637,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1475,7 +1651,7 @@
 		};
 		AFE18F0A2A1C8AC1009D4D58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE344B51626DEFCDF195B556 /* Pods-SUWIKI.release.xcconfig */;
+			baseConfigurationReference = BBBE36A7645D292A4316EB2E /* Pods-SUWIKI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1499,7 +1675,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sozohoy.uswTimeTable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -8,7 +8,7 @@
 import Foundation
 
 /// 강의평가 상세
-struct DetailLecture {
+struct DetailLecture: Identifiable {
     /// 강의 ID
     let id: Int
     /// 강의명
