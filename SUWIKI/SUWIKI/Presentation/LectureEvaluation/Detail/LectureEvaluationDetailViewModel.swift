@@ -13,9 +13,10 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
     var fetchEvaluatePostUseCase: FetchEvaluatePostsUseCase = DIContainer.shared.resolve(type: FetchEvaluatePostsUseCase.self)
     var fetchExamPostUseCase: FetchExamPostsUseCase = DIContainer.shared.resolve(type: FetchExamPostsUseCase.self)
     var id: Int
+    @Published var requestState: RequestState = .notRequest
     @Published var postType: PostType = .evaluate
     @Published var detailLecture: DetailLecture = DetailLecture.mockdata
-    @Published var evaluatePosts: [EvaluatePost] = EvaluatePost.mockData
+    @Published var evaluatePosts: [EvaluatePost] = []
     @Published var examPosts: [ExamPost] = []
     @Published var examPostInfo: ExamPostInfo = .init(posts: [], 
                                                       isPurchased: false,
@@ -35,11 +36,11 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
                     self.evaluatePosts = evaluatePosts
                     self.examPosts = examPostInfo.posts
                     self.examPostInfo = examPostInfo
-                    print(self.examPosts)
-                    print(self.examPostInfo)
+                    requestState = .success
                 }
             } catch {
                 print("@Log LectureEvaluationDetialVM Fetch - \(error.localizedDescription)")
+                requestState = .failed(error)
             }
         }
     }
