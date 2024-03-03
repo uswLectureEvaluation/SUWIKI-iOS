@@ -25,41 +25,59 @@ struct LectureEvaluationDetailView: View {
             Color(uiColor: .systemGray6)
                 .ignoresSafeArea()
             VStack(spacing: 0) {
-                lectureType
-                name
-                majorAndProfessor
-                difficultyAndHomeworkAndTeam
-                avarageBox
-                    .padding(.bottom, 24)
-                postTypeButtons
-                    .padding(.bottom, 12)
-                if viewModel.postType == .evaluate {
-                    postList
+                if viewModel.requestState == .success {
+                    lectureType
+                    name
+                    majorAndProfessor
+                    difficultyAndHomeworkAndTeam
+                    avarageBox
+                        .padding(.bottom, 24)
+                    postTypeButtons
+                        .padding(.bottom, 12)
+                    if viewModel.postType == .evaluate {
+                        evaluatePost()
+                    } else {
+                        examPost()
+                    }
+                    Spacer()
                 } else {
-                    examPostList
+                    ProgressView()
                 }
-                Spacer()
             }
         }
     }
 
-    func evaluatePost() {
-        if viewModel.evaluatePosts.isEmpty {
-            //TODO: 강의평가 없음, 강의평가 작성하기 출력
+    @ViewBuilder
+    func evaluatePost() -> some View {
+        if !viewModel.evaluatePosts.isEmpty {
+            evaluatePostList
         } else {
-            postList
+            IsPostEmptyView(postType: $viewModel.postType)
+                .padding(.top, 60)
         }
     }
 
-    func examPost() {
+
+    @ViewBuilder
+    func examPost() -> some View{
         if viewModel.examPostInfo.isExamPostsExists {
             if viewModel.examPostInfo.isPurchased {
-                //TODO: 시험정보 리스트 ㄱㄱ
+                examPostList
             } else {
-                //TODO: 구매 버튼 ㄱㄱㄱ
+                //TODO: 시험정보 구매 버튼 구현 필요
+                ExamCell(isPurchased: false,
+                         semester: ExamPost.MockData.semester,
+                         examType: ExamPost.MockData.examType,
+                         difficulty: ExamPost.MockData.difficulty,
+                         sourceOfExam: ExamPost.MockData.sourceOfExam,
+                         content: ExamPost.MockData.content)
+                .opacity(0.5)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding(.horizontal, 24)
             }
         } else {
-            //TODO: 시험 정보 없음, 시험 정보 작성하기 버튼 출력
+            IsPostEmptyView(postType: $viewModel.postType)
+                .padding(.top, 60)
         }
     }
 
@@ -88,7 +106,8 @@ struct LectureEvaluationDetailView: View {
     var examPostList: some View {
         List {
             ForEach(viewModel.examPosts, id: \.id) { post in
-                ExamCell(semester: post.semester,
+                ExamCell(isPurchased: viewModel.examPostInfo.isPurchased,
+                         semester: post.semester,
                          examType: post.examType,
                          difficulty: post.difficulty,
                          sourceOfExam: post.sourceOfExam,
@@ -107,7 +126,7 @@ struct LectureEvaluationDetailView: View {
     }
 
     // 얘네 코드 줄이기
-    var postList: some View {
+    var evaluatePostList: some View {
         List {
             ForEach(viewModel.evaluatePosts, id: \.id) { post in
                 EvaluateCell(semester: post.selectedSemester,
@@ -289,22 +308,22 @@ enum DetailLabelType {
     var fontColor: Color {
         switch self {
         case .difficulty:
-            Color(uiColor: .difficultyFont)
+            Color(uiColor: .easyFont)
         case .homework:
-            Color(uiColor: .homeworkFont)
+            Color(uiColor: .normalFont)
         case .team:
-            Color(uiColor: .teamFont)
+            Color(uiColor: .hardFont)
         }
     }
 
     var backgroundColor: Color {
         switch self {
         case .difficulty:
-            Color(uiColor: .difficultyBackground)
+            Color(uiColor: .easyBackground)
         case .homework:
-            Color(uiColor: .homeworkBackground)
+            Color(uiColor: .normalBackground)
         case .team:
-            Color(uiColor: .teamBackground)
+            Color(uiColor: .hardBackground)
         }
     }
 }
@@ -324,13 +343,4 @@ enum DetailAverageType {
             "만족도"
         }
     }
-}
-
-extension UIColor {
-    static let difficultyBackground = UIColor(red: 236 / 255, green: 237 / 255, blue: 1, alpha: 1)
-    static let difficultyFont = UIColor(red: 61 / 255, green: 78 / 255, blue: 251 / 255, alpha: 1)
-    static let homeworkBackground = UIColor(red: 234 / 255, green: 248 / 255, blue: 236 / 255, alpha: 1)
-    static let homeworkFont = UIColor(red: 45 / 255, green: 185 / 255, blue: 66 / 255, alpha: 1)
-    static let teamBackground = UIColor(red: 255 / 255, green: 241 / 255, blue: 229 / 255, alpha: 1)
-    static let teamFont = UIColor(red: 253 / 255, green: 135 / 255, blue: 59 / 255, alpha: 1)
 }
