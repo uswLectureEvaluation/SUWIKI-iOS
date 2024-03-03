@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ExamCell: View {
 
+    var isPurchased: Bool
     var semester: String
     var examType: String
     var difficulty: String
@@ -24,8 +25,13 @@ struct ExamCell: View {
                 .padding(.bottom, 4)
             sourceOfExamLabel
                 .padding(.bottom, 10)
-            postContent
-                .padding(.bottom, 12)
+            if isPurchased {
+                postContent
+                    .padding(.bottom, 12)
+            } else {
+                redactedPost
+                    .padding(.bottom, 12)
+            }
         }
         .padding(.horizontal, 12)
         .background(Color.white)
@@ -40,6 +46,7 @@ struct ExamCell: View {
                     Text(semester)
                         .font(.c4)
                         .foregroundStyle(Color(uiColor: .gray6A))
+                        .redacted(reason: isPurchased ? [] : .placeholder)
                 }
             RoundedRectangle(cornerRadius: 10)
                 .frame(width: 50, height: 21)
@@ -48,6 +55,7 @@ struct ExamCell: View {
                     Text(examType)
                         .font(.c4)
                         .foregroundStyle(Color(uiColor: .gray6A))
+                        .redacted(reason: isPurchased ? [] : .placeholder)
                 }
             Spacer()
         }
@@ -62,6 +70,7 @@ struct ExamCell: View {
             Text(difficulty)
                 .font(.c2)
                 .foregroundStyle(Color(uiColor: .basicBlack))
+                .redacted(reason: isPurchased ? [] : .placeholder)
         }
     }
 
@@ -74,6 +83,7 @@ struct ExamCell: View {
             Text(sourceOfExam)
                 .font(.c2)
                 .foregroundStyle(Color(uiColor: .basicBlack))
+                .redacted(reason: isPurchased ? [] : .placeholder)
         }
     }
 
@@ -84,12 +94,26 @@ struct ExamCell: View {
             .truncationMode(.tail)
     }
 
-}
+    var redactedPost: some View {
+        VStack(alignment: .leading) {
+            Text(content)
+                .font(.b7)
+                .lineSpacing(2)
+                .truncationMode(.tail)
+                .redacted(reason: .placeholder)
+            Text("")
+            Text("wefpjofeowfppwjejewojpwefpjofeowfppwjejewojp")
+                .font(.b7)
+                .lineSpacing(2)
+                .truncationMode(.tail)
+                .redacted(reason: .placeholder)
+            Text("")
+            Text("wefpjofeowfppwjejewojpwefpjofeowfppwj")
+                .font(.b7)
+                .lineSpacing(2)
+                .truncationMode(.tail)
+                .redacted(reason: .placeholder)
+        }
+    }
 
-#Preview {
-    ExamCell(semester: "2022-2",
-             examType: "기말고사",
-             difficulty: "쉬움",
-             sourceOfExam: "교재, PPT",
-             content: "시험 전 강의 시간에 교수님이 시험에 나올 것이라고 알려주신 세 부분 중 두 부분에 대해 작성하는 문제가 나왔다. OSI 7계층에 대해 논술하라는 문제와 CSMACD에 대해 설명하라는 문제가 출제되었다.")
 }
