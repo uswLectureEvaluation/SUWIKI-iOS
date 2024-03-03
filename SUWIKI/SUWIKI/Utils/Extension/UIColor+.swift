@@ -42,4 +42,10 @@ extension UIColor {
     static let grayCB = UIColor(red: 203/255, green: 203/255, blue: 203/255, alpha: 1)
     static let gray95 = UIColor(red: 149/255, green: 149/255, blue: 149/255, alpha: 1)
     static let gray6A = UIColor(red: 106/255, green: 106/255, blue: 106/255, alpha: 1)
+    static let easyBackground = UIColor(red: 234 / 255, green: 248 / 255, blue: 236 / 255, alpha: 1)
+    static let easyFont = UIColor(red: 45 / 255, green: 185 / 255, blue: 66 / 255, alpha: 1)
+    static let normalBackground = UIColor(red: 236 / 255, green: 237 / 255, blue: 1, alpha: 1)
+    static let normalFont = UIColor(red: 61 / 255, green: 78 / 255, blue: 251 / 255, alpha: 1)
+    static let hardBackground = UIColor(red: 255 / 255, green: 241 / 255, blue: 229 / 255, alpha: 1)
+    static let hardFont = UIColor(red: 253 / 255, green: 135 / 255, blue: 59 / 255, alpha: 1)
 }
