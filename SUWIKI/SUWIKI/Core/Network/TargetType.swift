@@ -33,14 +33,15 @@ extension TargetType {
             break
 
         case let .query(query):
+            print("@Query - \(query)")
             request = try URLEncoding.queryString.encode(request, with: query.toDictionary())
 
         case let .body(json):
             request = try JSONEncoding.default.encode(request, with: json.toDictionary())
 
         case let .both(query, json):
-            request = try URLEncoding.queryString.encode(request, with: query.toDictionary())
-            request = try JSONEncoding.default.encode(request, with: json.toDictionary())
+            let queryRequest = try URLEncoding.queryString.encode(request, with: query.toDictionary())
+            request = try JSONEncoding.default.encode(queryRequest, with: json.toDictionary())
         }
         return request
     }
@@ -53,6 +54,7 @@ extension TargetType {
             urlRequest.headers = HTTPHeaders(headers)
         }
         urlRequest = try addParameters(urlRequest)
+        print("@KOZI - \(urlRequest)")
         return urlRequest
     }
 }
