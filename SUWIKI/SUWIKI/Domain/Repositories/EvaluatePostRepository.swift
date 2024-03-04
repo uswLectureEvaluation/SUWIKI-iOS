@@ -12,4 +12,18 @@ protocol EvaluatePostRepository {
         lectureId: Int,
         page: Int
     ) async throws -> [EvaluatePost]
+
+    func write(
+        id: Int,
+        lectureName: String,
+        professor: String,
+        selectedSemester: String,
+        satisfaction: Double,
+        learning: Double,
+        honey: Double,
+        team: Int,
+        difficulty: Int,
+        homework: Int,
+        content: String
+    ) async throws -> Bool
 }
