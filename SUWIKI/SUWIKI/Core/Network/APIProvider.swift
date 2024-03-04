@@ -23,6 +23,17 @@ class APIProvider {
         /// response()로 수정해야 함
     }
 
+    static func request(target: TargetType) async throws -> Int? {
+        let dataRequest = await AlamofireManager
+            .shared
+            .session
+            .request(target)
+            .serializingData()
+            .response
+        let statusCode = dataRequest.response?.statusCode
+        return statusCode
+    }
+
     static func requestRefreshToken<T: Decodable>(
         _ object: T.Type,
         target: TargetType,
