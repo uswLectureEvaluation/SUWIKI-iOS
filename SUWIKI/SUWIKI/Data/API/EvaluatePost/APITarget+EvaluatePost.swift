@@ -12,6 +12,7 @@ import Alamofire
 extension APITarget {
     enum EvaluatePost: TargetType {
         case fetchEvaluatePosts(DTO.FetchEvaluatePostRequest)
+        case writeEvaluatePost(DTO.WriteEvaluatePostRequest)
     }
 }
 
@@ -24,13 +25,17 @@ extension APITarget.EvaluatePost {
         switch self {
         case .fetchEvaluatePosts:
             return .get
+        case .writeEvaluatePost:
+            return .post
         }
     }
 
     var path: String {
         switch self {
         case .fetchEvaluatePosts:
-            ""
+            return ""
+        case .writeEvaluatePost:
+            return ""
         }
     }
 
@@ -38,6 +43,9 @@ extension APITarget.EvaluatePost {
         switch self {
         case let .fetchEvaluatePosts(fetchEvaluatePostRequest):
             return .query(fetchEvaluatePostRequest)
+        case let .writeEvaluatePost(writeEvaluatePostRequest):
+            return .both(query: writeEvaluatePostRequest.lectureInfo,
+                         json: writeEvaluatePostRequest.post)
         }
     }
 }
