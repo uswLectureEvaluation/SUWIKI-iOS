@@ -27,29 +27,29 @@ enum DifficultyType: CaseIterable {
         }
     }
 
-    var font: Color {
+    var font: UIColor {
         switch self {
         case .notSelected:
-            Color(uiColor: .gray95)
+            return .gray95
         case .easy:
-            Color(uiColor: .easyFont)
+            return .easyFont
         case .normal:
-            Color(uiColor: .normalFont)
+            return .normalFont
         case .hard:
-            Color(uiColor: .hardFont)
+            return .hardFont
         }
     }
 
-    var background: Color {
+    var background: UIColor {
         switch self {
         case .notSelected:
-            Color(uiColor: .grayF6)
+            return .grayF6
         case .easy:
-            Color(uiColor: .easyBackground)
+            return .easyBackground
         case .normal:
-            Color(uiColor: .normalBackground)
+            return .normalBackground
         case .hard:
-            Color(uiColor: .hardBackground)
+            return .hardBackground
         }
     }
 
@@ -63,6 +63,19 @@ enum DifficultyType: CaseIterable {
             35
         case .hard:
             57
+        }
+    }
+
+    var point: Int {
+        switch self {
+        case .notSelected:
+            0
+        case .easy:
+            2
+        case .normal:
+            1
+        case .hard:
+            0
         }
     }
 }
@@ -86,29 +99,42 @@ enum HomeworkType: CaseIterable {
         }
     }
 
-    var font: Color {
+    var font: UIColor {
         switch self {
         case .notSelected:
-            Color(uiColor: .gray95)
+            return .gray95
         case .none:
-            Color(uiColor: .easyFont)
+            return .easyFont
         case .normal:
-            Color(uiColor: .normalFont)
+            return .normalFont
         case .many:
-            Color(uiColor: .hardFont)
+            return .hardFont
         }
     }
 
-    var background: Color {
+    var background: UIColor {
         switch self {
         case .notSelected:
-            Color(uiColor: .grayF6)
+            return .grayF6
         case .none:
-            Color(uiColor: .easyBackground)
+            return .easyBackground
         case .normal:
-            Color(uiColor: .normalBackground)
+            return .normalBackground
         case .many:
-            Color(uiColor: .hardBackground)
+            return .hardBackground
+        }
+    }
+
+    var point: Int {
+        switch self {
+        case .notSelected:
+            0
+        case .none:
+            0
+        case .normal:
+            1
+        case .many:
+            2
         }
     }
 }
@@ -129,25 +155,36 @@ enum TeamplayType: CaseIterable {
         }
     }
 
-    var font: Color {
+    var font: UIColor {
         switch self {
         case .notSelected:
-            Color(uiColor: .gray95)
+            return .gray95
         case .none:
-            Color(uiColor: .easyFont)
+            return .easyFont
         case .some:
-            Color(uiColor: .hardFont)
+            return .hardFont
         }
     }
 
-    var background: Color {
+    var background: UIColor {
         switch self {
         case .notSelected:
-            Color(uiColor: .grayF6)
+            return .grayF6
         case .none:
-            Color(uiColor: .easyBackground)
+            return .easyBackground
         case .some:
-            Color(uiColor: .hardBackground)
+            return .hardBackground
+        }
+    }
+
+    var point: Int {
+        switch self {
+        case .notSelected:
+            0
+        case .none:
+            0
+        case .some:
+            1
         }
     }
 }
