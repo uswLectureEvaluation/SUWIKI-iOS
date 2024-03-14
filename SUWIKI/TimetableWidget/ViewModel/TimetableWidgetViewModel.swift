@@ -14,18 +14,42 @@ enum WidgetType {
 
 final class TimetableWidgetViewModel: ObservableObject {
 
-    let courses: [CourseForWidget]
-    let eLearning: [CourseForWidget]
+    var courses: [CourseForWidget] = []
+    var eLearning: [CourseForWidget] = []
     @Published var date = ""
     @Published var weekday = ""
 
     init() {
         let id = UserDefaults.shared.value(forKey: "id") as? String
-        let coreDataCourses = CoreDataManager.shared.fetchCourse(id: id ?? "")
-        let weekday = Calendar.current.component(.weekday, from: Date())
-        if weekday != 1 || weekday != 7 {
-            self.courses = coreDataCourses.filter {
-                $0.courseDay == Calendar.current.component(.weekday, from: Date()) - 1
+        Task {
+            let coreDataCourses = await CoreDataManager.shared.fetchCourse(id: id ?? "")
+            let weekday = Calendar.current.component(.weekday, from: Date())
+            if weekday != 1 || weekday != 7 {
+                self.courses = coreDataCourses.filter {
+                    $0.courseDay == Calendar.current.component(.weekday, from: Date()) - 1
+                }.map {
+                    CourseForWidget(id: UUID(),
+                                    professor: $0.professor ?? "미정",
+                                    roomName: $0.roomName ?? "미정",
+                                    courseName: $0.courseName ?? "미정",
+                                    courseDay: Int($0.courseDay),
+                                    startTime: $0.startTime ?? "미정",
+                                    endTime: $0.endTime ?? "미정",
+                                    color: Int($0.timetableColor))
+                }.sorted { pre, next in
+                    let preTime = pre.startTime.split(separator: ":").map { Int(String($0))! }.first!
+                    let nextTime = next.startTime.split(separator: ":").map { Int(String($0))! }.first!
+                    if preTime < nextTime {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+            } else {
+                self.courses = []
+            }
+            self.eLearning = coreDataCourses.filter {
+                $0.courseDay == 6
             }.map {
                 CourseForWidget(id: UUID(),
                                 professor: $0.professor ?? "미정",
@@ -35,31 +59,9 @@ final class TimetableWidgetViewModel: ObservableObject {
                                 startTime: $0.startTime ?? "미정",
                                 endTime: $0.endTime ?? "미정",
                                 color: Int($0.timetableColor))
-            }.sorted { pre, next in
-                let preTime = pre.startTime.split(separator: ":").map { Int(String($0))! }.first!
-                let nextTime = next.startTime.split(separator: ":").map { Int(String($0))! }.first!
-                if preTime < nextTime {
-                    return true
-                } else {
-                    return false
-                }
             }
-        } else {
-            self.courses = []
+            self.getDateAndDay()
         }
-        self.eLearning = coreDataCourses.filter {
-            $0.courseDay == 6
-        }.map {
-            CourseForWidget(id: UUID(),
-                            professor: $0.professor ?? "미정",
-                            roomName: $0.roomName ?? "미정",
-                            courseName: $0.courseName ?? "미정",
-                            courseDay: Int($0.courseDay),
-                            startTime: $0.startTime ?? "미정",
-                            endTime: $0.endTime ?? "미정",
-                            color: Int($0.timetableColor))
-        }
-        self.getDateAndDay()
     }
 
     func getDateAndDay() {
