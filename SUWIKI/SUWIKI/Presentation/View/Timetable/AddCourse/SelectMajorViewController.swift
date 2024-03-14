@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 import SnapKit
 import Then
@@ -13,7 +14,8 @@ import Then
 class SelectMajorViewController: UIViewController {
 
     var viewModel = SelectMajorViewModel()
-    
+    var cancellable = Set<AnyCancellable>()
+
     private let emptyLabel = UILabel().then {
         $0.text = ""
     }
@@ -26,6 +28,7 @@ class SelectMajorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGray6
+        binding()
         setupUI()
         setupTableView()
     }
@@ -33,7 +36,16 @@ class SelectMajorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
     }
-    
+
+    func binding() {
+        viewModel.$isMajorsFetched
+            .receive(on: RunLoop.main)
+            .sink { _ in
+                self.tableView.reloadData()
+            }
+            .store(in: &cancellable)
+    }
+
     private func setupNavigationBar() {
         self.navigationItem.title = "학과 선택"
         self.navigationController?.navigationBar.backgroundColor = .systemGray6
