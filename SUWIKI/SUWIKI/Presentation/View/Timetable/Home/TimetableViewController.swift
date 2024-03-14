@@ -58,7 +58,6 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
     }
 
     private func binding() {
-        
         viewModel.$timetableTitle
             .receive(on: RunLoop.main)
             .sink { title in

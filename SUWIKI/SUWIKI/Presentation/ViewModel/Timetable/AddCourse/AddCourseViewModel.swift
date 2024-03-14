@@ -25,7 +25,7 @@ final class AddCourseViewModel {
         timetableColorNumber = changeNumber
     }
     
-    func saveCourse() -> Bool {
+    func saveCourse() async throws -> Bool {
         var isDuplicated = false
         guard let courseName = firebaseCourse.courseName,
               let roomName = firebaseCourse.roomName,
@@ -43,13 +43,13 @@ final class AddCourseViewModel {
                                      endTime: endTime,
                                      timetableColor: timetableColorNumber)
         if courseName.contains("이러닝") || courseName.contains("온라인") {
-            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .eLearning)
+            isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .eLearning)
         } else if roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
-            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentTime)
+            isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentTime)
         } else if roomName.split(separator: "),").count > 1 { // 2. 음악109(화1,2),음악110(수1,2)
-            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentPlace)
+            isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentPlace)
         } else {
-            isDuplicated = addCourseManager.saveCourse(newCourse: course, duplicateCase: .normal)
+            isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .normal)
         }
         
         return isDuplicated

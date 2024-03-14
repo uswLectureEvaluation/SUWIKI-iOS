@@ -36,7 +36,10 @@ class SelectCourseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("@Log SearchText -\(viewModel.searchText)-")
+        print("@Log - \(viewModel.courseNumbersOfRowsInSection)")
         self.view.backgroundColor = .systemGray6
+        binding()
         setupUI()
         setupTableView()
     }
@@ -44,7 +47,16 @@ class SelectCourseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
     }
-    
+
+    private func binding() {
+        viewModel.$courseList
+            .receive(on: RunLoop.main)
+            .sink { _ in
+                self.courseTableView.reloadData()
+            }
+            .store(in: &cancellable)
+    }
+
     private func setupNavigationBar() {
         self.navigationItem.title = viewModel.major
         
@@ -127,7 +139,7 @@ extension SelectCourseViewController: UITableViewDelegate, UITableViewDataSource
         }
         courseTableView.delegate = self
         courseTableView.dataSource = self
-        courseTableView.backgroundView = searchEmptyView
+//        courseTableView.backgroundView = searchEmptyView
         courseTableView.reloadData()
     }
 

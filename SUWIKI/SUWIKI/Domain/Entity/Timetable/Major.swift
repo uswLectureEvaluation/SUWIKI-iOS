@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct Major { //: Equatable, Hashable, Decodable
+class Major { //: Equatable, Hashable, Decodable
     var name: String
     var bookmark: Bool = false
     var courseCount: Int = 0
-    
+
     init(name: String) {
         self.name = name
-        self.courseCount = CoreDataManager.shared.fetchCourseCount(major: name)
+        Task {
+            self.courseCount = await CoreDataManager.shared.fetchCourseCount(major: name)
+        }
     }
 }
 

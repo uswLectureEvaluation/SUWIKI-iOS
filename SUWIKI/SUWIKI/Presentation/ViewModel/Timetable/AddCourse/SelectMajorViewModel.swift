@@ -16,9 +16,11 @@ final class SelectMajorViewModel {
     }
     
     init() {
-        let majors = CoreDataManager.shared.fetchMajors()
-        majors.forEach { major.append(Major(name: $0)) }
-        fetchBookmark()
+        Task {
+            let majors = await CoreDataManager.shared.fetchMajors()
+            majors.forEach { major.append(Major(name: $0)) }
+            fetchBookmark()
+        }
     }
     
     func toggleBookmark(name: String) {
@@ -60,6 +62,7 @@ final class SelectMajorViewModel {
     
     func pushVC(major: String, currentVC: UIViewController, animated: Bool) {
         let navigationVC = currentVC.navigationController
+        print("@Log - \(major)")
         let selectCourseVC = SelectCourseViewController(viewModel: SelectCourseListViewModel(major: major))
         navigationVC?.pushViewController(selectCourseVC, animated: animated)
     }

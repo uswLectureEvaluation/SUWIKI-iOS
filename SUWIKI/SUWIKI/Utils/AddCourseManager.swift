@@ -19,14 +19,15 @@ final class AddCourseManager {
     let coreDataManager = CoreDataManager.shared
 
     func saveCourse(newCourse: TimetableCourse,
-                    duplicateCase: DuplicateCase) -> Bool {
+                    duplicateCase: DuplicateCase) async throws -> Bool {
         guard let id = UserDefaults.shared.value(forKey: "id") as? String else { return false }
+        
         var isDuplicated = false
-        let timetableCourse = coreDataManager.fetchCourse(id: id) // userdefault.get
+        let timetableCourse = await coreDataManager.fetchCourse(id: id) // userdefault.get
         var course: [TimetableCourse] = []
         switch duplicateCase {
         case .eLearning:
-            let eLearning = eLearning(id: id, course: newCourse)
+            let eLearning = await eLearning(id: id, course: newCourse)
             course.append(eLearning)
         case .normal:
             let roomName = newCourse.roomName.split(separator: "(").map { String($0) }[0]
@@ -48,10 +49,10 @@ final class AddCourseManager {
         if !isDuplicated {
             do {
                 for i in 0..<course.count {
-                    try coreDataManager.saveCourse(id: id, course: course[i])
+                    try await coreDataManager.saveCourse(id: id, course: course[i])
                 }
             } catch {
-                coreDataManager.handleCoreDataError(error)
+                await coreDataManager.handleCoreDataError(error)
             }
         }
         return isDuplicated
@@ -74,10 +75,10 @@ final class AddCourseManager {
     func eLearning(
         id: String,
         course: TimetableCourse
-    ) -> TimetableCourse {
+    ) async -> TimetableCourse {
         let eStart = ["9:30", "11:30", "13:30"]
         let eEnd = ["11:20", "13:20", "15:20"]
-        let eLearningCourses = coreDataManager.fetchELearningCourse(id: id)
+        let eLearningCourses = await coreDataManager.fetchELearningCourse(id: id)
         let nums = eLearningCourses.count < 3 ? eLearningCourses.count : 0
         let eLearning = TimetableCourse(courseId: course.courseId,
                                         courseName: course.courseName,

@@ -108,7 +108,9 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
         )
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.deleteTimetable(index: index, currentVC: self)
+            Task {
+                try await self.viewModel.deleteTimetable(index: index, currentVC: self)
+            }
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         alertController.addAction(deleteAction)

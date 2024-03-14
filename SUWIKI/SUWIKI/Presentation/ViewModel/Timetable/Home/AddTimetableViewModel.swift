@@ -39,8 +39,7 @@ final class AddTimetableViewModel {
         self.selectedSemester = semester
     }
     
-    func addTimetable() {
-        coreDataManager.addTimeTable(name: name,
-                                      semester: selectedSemester)
+    func addTimetable() async {
+        await coreDataManager.addTimeTable(name: name, semester: selectedSemester)
     }
 }

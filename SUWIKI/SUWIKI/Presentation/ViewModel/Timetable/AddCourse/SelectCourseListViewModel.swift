@@ -16,13 +16,18 @@ final class SelectCourseListViewModel {
     private let coreDataManager = CoreDataManager.shared
     private let addCourseManager = AddCourseManager()
     var major: String
-    var searchText = ""
+    var searchText: String
     var searchedCourseList: [FirebaseCourse] = []
-    var courseList: [FirebaseCourse]
-    
+    @Published var courseList: [FirebaseCourse]
+
     init(major: String) {
         self.major = major
-        self.courseList = CoreDataManager.shared.fetchFirebaseCourse(major: major)
+        self.searchText = ""
+        self.courseList = []
+        Task {
+            print("@INIT")
+            self.courseList = await CoreDataManager.shared.fetchFirebaseCourse(major: major)
+        }
     }
     
     var courseNumbersOfRowsInSection: Int {

@@ -152,14 +152,16 @@ class AddCourseViewController: UIViewController {
     func addButtonTouchUpInside(_ sender: UIButton) {
         sender.setTitleColor(UIColor.white, for: .normal)
         sender.backgroundColor = .primaryColor
-        let isDuplicated = viewModel.saveCourse()
-        if isDuplicated {
-            print("@Log isDuplicated")
-            customAlert()
-        } else {
-            NotificationCenter.default.post(name: Notification.Name("addCourse"),
-                                            object: nil)
-            dismiss(animated: true)
+        Task {
+            let isDuplicated = try await viewModel.saveCourse()
+            if isDuplicated {
+                print("@Log isDuplicated")
+                customAlert()
+            } else {
+                NotificationCenter.default.post(name: Notification.Name("addCourse"),
+                                                object: nil)
+                dismiss(animated: true)
+            }
         }
     }
     

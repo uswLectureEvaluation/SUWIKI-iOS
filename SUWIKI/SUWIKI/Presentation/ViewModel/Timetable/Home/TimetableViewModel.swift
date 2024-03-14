@@ -28,59 +28,69 @@ final class TimetableViewModel {
     }
 
     func fetchTimetable() {
-        let timetable = coreDataManager.fetchTimetableList()
-        updateCourse()
-        self.timetableIsEmpty = timetable.isEmpty
+        Task {
+            let timetable = await coreDataManager.fetchTimetableList()
+            updateCourse()
+            self.timetableIsEmpty = timetable.isEmpty
+        }
     }
     
     func addTimetable() {
-        let calculateSemester = calculateSemester()
-        coreDataManager.addTimeTable(name: calculateSemester.0,
-                                     semester: calculateSemester.1)
-        updateTimetable()
-        updateCourse()
+        Task {
+            let calculateSemester = calculateSemester()
+            await coreDataManager.addTimeTable(name: calculateSemester.0,
+                                               semester: calculateSemester.1)
+            updateTimetable()
+            updateCourse()
+        }
     }
     
     func updateTimetable() {
-        guard let id = UserDefaults.shared.value(forKey: "id") as? String,
-              let title = coreDataManager.fetchTimetable(id: id)?.name else {
-            self.timetableTitle = "시간표"
-            self.timetableIsEmpty = true
-            return
+        Task {
+            guard let id = UserDefaults.shared.value(forKey: "id") as? String,
+                  let title = await coreDataManager.fetchTimetable(id: id)?.name else {
+                self.timetableTitle = "시간표"
+                self.timetableIsEmpty = true
+                return
+            }
+            self.timetableTitle = title
         }
-        self.timetableTitle = title
     }
     
     func updateCourse() {
-        guard let id = UserDefaults.shared.value(forKey: "id") as? String else {
-            self.timetableIsEmpty = true
-            return
+        Task {
+            guard let id = UserDefaults.shared.value(forKey: "id") as? String else {
+                self.timetableIsEmpty = true
+                return
+            }
+            let course = await coreDataManager.fetchCourse(id: id) // userdefault.get
+            elliottEvent = []
+            for i in 0..<course.count {
+                let event = ElliottEvent(courseId: course[i].courseId ?? "",
+                                         courseName: course[i].courseName ?? "",
+                                         roomName: course[i].roomName ?? "",
+                                         professor: course[i].professor ?? "",
+                                         courseDay: ElliotDay(rawValue: Int(course[i].courseDay)) ?? .monday,
+                                         startTime: course[i].startTime ?? "",
+                                         endTime: course[i].endTime ?? "",
+                                         backgroundColor: .timetableColors[Int(course[i].timetableColor)])
+                elliottEvent.append(event)
+            }
+            self.timetableIsEmpty = false
         }
-        let course = coreDataManager.fetchCourse(id: id) // userdefault.get
-        elliottEvent = []
-        for i in 0..<course.count {
-            let event = ElliottEvent(courseId: course[i].courseId ?? "",
-                                     courseName: course[i].courseName ?? "",
-                                     roomName: course[i].roomName ?? "",
-                                     professor: course[i].professor ?? "",
-                                     courseDay: ElliotDay(rawValue: Int(course[i].courseDay)) ?? .monday,
-                                     startTime: course[i].startTime ?? "",
-                                     endTime: course[i].endTime ?? "",
-                                     backgroundColor: .timetableColors[Int(course[i].timetableColor)])
-            elliottEvent.append(event)
-        }
-        self.timetableIsEmpty = false
     }
     
     func deleteCourse(uuid: String) {
-        guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }),
-              let id = UserDefaults.shared.value(forKey: "id") as? String
-        else { return }
-        elliottEvent.remove(at: index)
-        do {
-            try coreDataManager.deleteCourse(id: id, courseId: uuid)
-        } catch {
-            coreDataManager.handleCoreDataError(error)
+        Task {
+            guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }),
+                  let id = UserDefaults.shared.value(forKey: "id") as? String
+            else { return }
+            elliottEvent.remove(at: index)
+            do {
+                try await coreDataManager.deleteCourse(id: id, courseId: uuid)
+            } catch {
+                await coreDataManager.handleCoreDataError(error)
+            }
         }
     }
     

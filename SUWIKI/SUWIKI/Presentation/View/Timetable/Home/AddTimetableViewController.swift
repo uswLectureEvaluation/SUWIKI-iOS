@@ -123,8 +123,12 @@ class AddTimetableViewController: UIViewController {
         semesterPickerView.dataSource = self
         semesterPickerView.selectRow(1, inComponent: 0, animated: false)
         timetableNameTextField.becomeFirstResponder()
-        addButton.addAction(UIAction { [weak self] _ in self?.addButtonTapped() },
-                            for: .touchUpInside)
+        addButton.addAction(
+            UIAction { [weak self] _ in
+                Task {
+                    try await self?.addButtonTapped()
+                }
+            }, for: .touchUpInside)
     }
     
     private func setupConstraints() {
@@ -153,8 +157,8 @@ class AddTimetableViewController: UIViewController {
 
 extension AddTimetableViewController {
     
-    func addButtonTapped() {
-        viewModel.addTimetable()
+    func addButtonTapped() async throws {
+        await viewModel.addTimetable()
         dismiss(animated: true)
     }
     

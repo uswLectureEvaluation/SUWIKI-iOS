@@ -17,7 +17,7 @@ enum CoreDataError: Error {
     case deleteError
 }
 
-final class CoreDataManager {
+actor CoreDataManager {
     
     // 싱글톤으로 만들기
     static let shared = CoreDataManager()
