@@ -9,10 +9,20 @@ import SwiftUI
 
 struct EvaluatePostView: View {
 
-    var semesterList: [String] = ["2022-1", "2022-2"]
-    @State var semester: String = ""
-    @State var text: String = ""
-    @State var honey: Double = 2.5
+    @Environment(\.dismiss) var dismiss
+    @StateObject var viewModel: EvaluatePostViewModel
+
+    init(
+        id: Int,
+        lectureName: String,
+        professor: String,
+        semester: String
+    ) {
+        self._viewModel = StateObject(wrappedValue: EvaluatePostViewModel(id: id,
+                                                                          lectureName: lectureName,
+                                                                          professor: professor,
+                                                                          semester: semester))
+    }
 
     var body: some View {
         ZStack {
@@ -20,6 +30,8 @@ struct EvaluatePostView: View {
                 .ignoresSafeArea()
             VStack(alignment: .leading,
                    spacing: 0) {
+                closeButton
+                    .padding(.bottom, 24)
                 semesterAndAverageView
                     .padding(.bottom, 16)
                 honeyView
@@ -35,24 +47,41 @@ struct EvaluatePostView: View {
                 teamplayView
                     .padding(.bottom, 25)
                 contentView
-                Spacer()
+                    .padding(.bottom, 40)
+//                Spacer()
+                postButton
+                    .padding(.bottom, 20)
             }
         }
     }
 
+    var closeButton: some View {
+        HStack(spacing: 0) {
+            Spacer()
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .foregroundStyle(Color(uiColor: .gray95))
+            }
+        }
+        .padding(.horizontal, 24)
+    }
+
     var semesterAndAverageView: some View {
         HStack(spacing: 0) {
-            Picker("", selection: $semester) {
-                ForEach(semesterList, id: \.self) { semester in
+            Picker("", selection: $viewModel.selectedSemester) {
+                ForEach(viewModel.semesterList, id: \.self) { semester in
                     Text(semester)
                 }
             }
             .pickerStyle(.menu)
-            .tint(Color(uiColor: .gray95))
+            .tint(Color(uiColor: .gray))
             Spacer()
-            Stars(avarage: honey, width: 16, height: 16)
+            //TODO: 평균으로 수정
+            Stars(avarage: viewModel.honeyPoint, width: 16, height: 16)
                 .padding(.horizontal, 4)
-            Text(honey.description)
+            Text(viewModel.honeyPoint.description)
                 .font(.b4)
                 .foregroundStyle(Color(uiColor: .primaryColor))
         }
@@ -65,10 +94,10 @@ struct EvaluatePostView: View {
             Text("꿀강지수")
                 .frame(width: 58, height: 21)
                 .font(.h5)
-            Slider(value: $honey, in: 0...5, step: 0.5)
+            Slider(value: $viewModel.honeyPoint, in: 0...5, step: 0.5)
                 .padding(.leading, 12)
                 .padding(.trailing, 4)
-            Text(honey.description)
+            Text(viewModel.honeyPoint.description)
                 .font(.h6)
                 .foregroundStyle(Color(uiColor: .primaryColor))
         }
@@ -80,10 +109,10 @@ struct EvaluatePostView: View {
             Text("배움지수")
                 .frame(width: 58, height: 21)
                 .font(.h5)
-            Slider(value: $honey, in: 0...5, step: 0.5)
+            Slider(value: $viewModel.learningPoint, in: 0...5, step: 0.5)
                 .padding(.leading, 12)
                 .padding(.trailing, 4)
-            Text(honey.description)
+            Text(viewModel.learningPoint.description)
                 .font(.h6)
                 .foregroundStyle(Color(uiColor: .primaryColor))
         }
@@ -99,10 +128,10 @@ struct EvaluatePostView: View {
             }
             .frame(width: 58, height: 21)
 
-            Slider(value: $honey, in: 0...5, step: 0.5)
+            Slider(value: $viewModel.satisfactionPoint, in: 0...5, step: 0.5)
                 .padding(.leading, 12)
                 .padding(.trailing, 4)
-            Text(honey.description)
+            Text(viewModel.satisfactionPoint.description)
                 .font(.h6)
                 .foregroundStyle(Color(uiColor: .primaryColor))
         }
@@ -122,15 +151,17 @@ struct EvaluatePostView: View {
             ForEach(DifficultyType.allCases, id: \.self) { type in
                 if type != .notSelected {
                     Button {
-                        
+                        viewModel.difficultyType = type
                     } label: {
                         RoundedRectangle(cornerRadius: 5)
                             .frame(width: type.width, height: 26)
-                            .foregroundStyle(Color(uiColor: .grayF6))
+                            .foregroundStyle(viewModel.difficultyType == type ?
+                                             Color(type.background) : Color(uiColor: .grayF6))
                             .overlay {
                                 Text(type.description)
                                     .font(.c1)
-                                    .foregroundStyle(Color(uiColor: .gray95))
+                                    .foregroundStyle(viewModel.difficultyType == type ?
+                                                     Color(type.font) : Color(uiColor: .gray95))
                             }
                     }
                     .padding(.trailing, 4)
@@ -153,15 +184,17 @@ struct EvaluatePostView: View {
             ForEach(HomeworkType.allCases, id: \.self) { type in
                 if type != .notSelected {
                     Button {
-
+                        viewModel.homeworkType = type
                     } label: {
                         RoundedRectangle(cornerRadius: 5)
                             .frame(width: 35, height: 26)
-                            .foregroundStyle(Color(uiColor: .grayF6))
+                            .foregroundStyle(viewModel.homeworkType == type ?
+                                             Color(type.background) : Color(uiColor: .grayF6))
                             .overlay {
                                 Text(type.description)
                                     .font(.c1)
-                                    .foregroundStyle(Color(uiColor: .gray95))
+                                    .foregroundStyle(viewModel.homeworkType == type ?
+                                                     Color(type.font) : Color(uiColor: .gray95))
                             }
                     }
                     .padding(.trailing, 4)
@@ -174,7 +207,7 @@ struct EvaluatePostView: View {
     var teamplayView: some View {
         HStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text("조모임")
+                Text("팀플")
                     .font(.b4)
                 Spacer()
             }
@@ -184,15 +217,17 @@ struct EvaluatePostView: View {
             ForEach(TeamplayType.allCases, id: \.self) { type in
                 if type != .notSelected {
                     Button {
-
+                        viewModel.teamplayType = type
                     } label: {
                         RoundedRectangle(cornerRadius: 5)
                             .frame(width: 35, height: 26)
-                            .foregroundStyle(Color(uiColor: .grayF6))
+                            .foregroundStyle(viewModel.teamplayType == type ?
+                                             Color(type.background) : Color(uiColor: .grayF6))
                             .overlay {
                                 Text(type.description)
                                     .font(.c1)
-                                    .foregroundStyle(Color(uiColor: .gray95))
+                                    .foregroundStyle(viewModel.teamplayType == type ?
+                                                     Color(type.font) : Color(uiColor: .gray95))
                             }
                     }
                     .padding(.trailing, 4)
@@ -206,17 +241,33 @@ struct EvaluatePostView: View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundStyle(Color(uiColor: .white))
             .padding(.horizontal, 24)
-            .frame(height: 200)
+            .frame(minHeight: 150, maxHeight: .infinity)
             .overlay {
-                TextEditor(text: $text)
+                TextEditor(text: $viewModel.content)
                     .font(.b7)
                     .padding(.vertical, 10)
                     .padding(.horizontal, 36)
             }
+    }
 
+    var postButton: some View {
+        Button {
+            Task {
+                try await viewModel.write()
+            }
+        } label: {
+            RoundedRectangle(cornerRadius: 15)
+                .frame(height: 50)
+                .padding(.horizontal, 24)
+                .overlay {
+                    Text("작성하기")
+                        .font(.h5)
+                        .foregroundStyle(Color(uiColor: .white))
+                }
+        }
     }
 }
 
-#Preview {
-    EvaluatePostView()
-}
+//#Preview {
+//    EvaluatePostView()
+//}
