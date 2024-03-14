@@ -25,7 +25,26 @@
 
 ## 개발일지 및 트러블 슈팅
 ### 1. 시간표 UX 개선
+**1.1 시간표를 강의에 추가하기 어려운 UX**
+<img width="622" alt="image" src="https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/3e520c19-4f28-41fc-9399-9179811c3312">
+- 유저는 강의명을 모를 경우 강의를 추가하기 어려운 UX 발생
+  
+**해결방안**
+- 학과를 우선 선택할 수 있도록 UI 수정, 유저의 학과 즐겨찾기 기능 추가
+- 강의, 교수명 검색으로 강의 검색 가능. 띄어쓰기 고려한 데이터 필터링 기능 구현
+
+**1.2 HIG에 적합하지 않은 UI/UX**
+<img width="474" alt="image" src="https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/5cca0e9b-d832-4d01-bc76-ea1c3be209b3">
+- iOS의 UX와는 동떨어진 UI / UX, 강의 정보 수정의 불필요한 UX 발생
+
+**해결방안**
+- 애플의 UX와 유사한 형태로 UI 수정
+- 강의 정보 수정 기능 삭제
+  
 ### 2. 리펙토링 및 프로젝트 구조 설계
+<img width="602" alt="image" src="https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/5fa794ff-e180-4a1c-a15e-5829fd2df909">
+
+
 ### 3. App Group 적용
 ### 4. 코어데이터 NSBatchInsertRequest를 사용한 성능 개선
 ### 5. Alamofire serializingDecodable 적용
