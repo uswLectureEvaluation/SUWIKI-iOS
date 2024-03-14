@@ -25,6 +25,13 @@
 
 ## 개발일지 및 트러블 슈팅
 ### 1. 시간표 UX 개선
+### 2. 리펙토링 및 프로젝트 구조 설계
+### 3. App Group 적용
+### 4. 코어데이터 NSBatchInsertRequest를 사용한 성능 개선
+### 5. Alamofire serializingDecodable 적용
+### 6. Network Layer 설계
+### 7. Core Data thread-safe 문제
+### 8. 스파게티 코드 리펙토링
 
 
 ## 📱서비스 화면 (일부)
