@@ -76,7 +76,6 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
     
     /// func search: 강의평가를 검색한 후, 검색 데이터를 서버에서 내려받습니다.
     /// 무한스크롤 기능을 위해 페이지가 1일 경우 search 데이터로 초기화, 아닐 경우 append 합니다.
-    @MainActor
     func search() async throws {
         guard !searchText.isEmpty else { return }
         do {
@@ -85,14 +84,18 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
                                                                option: option,
                                                                page: searchPage,
                                                                major: major)
-                lecture = searchLecture
+                await MainActor.run {
+                    lecture = searchLecture
+                }
             } else {
                 let searchData = try await searchUseCase.excute(searchText: searchText,
                                                                 option: option,
                                                                 page: searchPage,
                                                                 major: major)
-                searchLecture.append(contentsOf: searchData)
-                lecture.append(contentsOf: searchData)
+                await MainActor.run {
+                    searchLecture.append(contentsOf: searchData)
+                    lecture.append(contentsOf: searchData)
+                }
             }
         } catch {
             fatalError(error.localizedDescription)
