@@ -3,12 +3,28 @@
 
 ![image](https://user-images.githubusercontent.com/81678959/182590817-3ffdfe89-cafc-434b-821c-9241d486c322.png)
 
-## 🧑🏻‍💻 수원대학교 시간표 & 강의평가 서비스
+## 🧑🏻‍💻 수원대학교 공식 시간표 & 강의평가 서비스
+- 3,600명의 사용 유저, 다운로드 약 6,700회, 업데이트 16회
+- iOS 1인 개발, 디자인 - 기획 참여
+- 대량 데이터 저장 속도 약 3초대에서 0.6초 미만으로 개선(약 83%)
+- 1,000줄 이상의 스파게티 코드 약 240줄로 개선
+- 아키텍처가 없는 구조에서 MVC, 현재는 MVVM + Clean Architecture 적용 진행 중
+- 2년간 운영중
 
+## 담당 기능
+- 앱 구조 설계 - Clean Architecture, MVVM
+- 시간표, 시간표 위젯 구현(Core Data, Firebase)
+- 강의평가 기능 구현(Alamofire, Network Layer 설계)
+- 토큰 인터셉터 구현
 
+## 사용 기술
+- UIKit(Storyboard & Code Base), SwiftUI, SnapKit, Then, WidgetKit
+- Swift Concurrency, Actor, Combine(일부 기능 binding)
+- Core Data, Firebase
+- Alamofire, JWT, Clean Architecture, MVVM
 
-### 개발 동기
-- 대학생 전용 시간표 앱(에브리타임)에서 더 이상 재학 중인 학교의 시간표 & 강의평가 기능을 서비스해주지 않음.
+## 개발일지 및 트러블 슈팅
+### 1. 시간표 UX 개선
 
 
 ## 📱서비스 화면 (일부)
