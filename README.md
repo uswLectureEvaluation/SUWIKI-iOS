@@ -21,10 +21,9 @@ ___
     - [4. 코어데이터 NSBatchInsertRequest를 사용한 성능 개선](#4-코어데이터-nsbatchinsertrequest를-사용한-성능-개선)
     - [5. Alamofire serializingDecodable 적용](#5-alamofire-serializingdecodable-적용)
     - [6. Network Layer 설계](#6-network-layer-설계)
-    - [기존 네트워크 호출 방식의 문제](#기존-네트워크-호출-방식의-문제)
-    - [개선 후](#개선-후)
-    - [7. Core Data thread-safe 문제](#7-core-data-thread-safe-문제)
-    - [8. 스파게티 코드 리펙토링](#8-스파게티-코드-리펙토링)
+    - [7. 스파게티 코드 리펙토링](#7-스파게티-코드-리펙토링)
+    - [8. Core Data thread-safe 문제](#8-core-data-thread-safe-문제)
+    
 
 ## 🧑🏻‍💻 수원대학교 공식 시간표 & 강의평가 서비스
 - **3,600명의 사용 유저, 다운로드 약 6,700회, 업데이트 16회**
@@ -326,8 +325,7 @@ func fetchDetail(
 - 확장성과 재사용성을 고려한 DTO 설계
 - 클린아키텍처의 데이터 흐름을 지향
 
-### 7. Core Data thread-safe 문제
-### 8. 스파게티 코드 리펙토링
+### 7. 스파게티 코드 리펙토링
 **문제 상황**
 - 기존의 시간표 중복 검증 로직은 약 천 줄가량의 코드로 복잡하게 구현되어 있음
 - 대부분의 버그가 시간표 중복 검증이 정상적으로 이루어지지 않아 버그 해결이 어려움
@@ -340,3 +338,6 @@ func fetchDetail(
 - 2천여개의 시간표 데이터의 케이스 정의, 케이스 별로 시간표 중복 검증 로직을 대응함<br>
   (일반 강의 - 하나의 강의와 하나의 강의실, 강의 시간 1 : 강의실 N, 강의실 1 : 강의 시간 N, 온라인 강의)
 - 약 240줄로 개선
+
+### 8. Core Data thread-safe 문제
+- 해결해보기!
