@@ -9,6 +9,7 @@
 
 ___
 ### 바로가기
+  - [UI](#ui)
   - [담당 기능](#담당-기능)
   - [사용 기술](#사용-기술)
   - [개발일지 및 트러블 슈팅](#개발일지-및-트러블-슈팅)
@@ -32,6 +33,19 @@ ___
 - 1,000줄 이상의 스파게티 코드 **약 240줄로 개선**
 - 아키텍처가 없는 구조에서 MVC, 현재는 **MVVM + Clean Architecture 적용 진행 중**
 - 2년간 운영중
+
+## UI
+| **시간표** | **강의평가** | **위젯** |
+| :---: | :---: | :---: |
+| ![시간표](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/763634c5-5555-4810-b168-f9d78f95bbbc) | ![강의평가](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/51a06401-9824-4f79-88da-ad9a033bbb79) | ![위젯](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/7e2cd0de-d8ab-4805-897d-f1c5ee00238a) |
+
+| **시간표 추가 1** | **시간표 추가 2** | **시간표 추가 3** |
+| :---: | :---: | :---: |
+| ![시간표 추가 1](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/ad1069bd-8a97-44c4-8d5d-3fdba5522add) | ![시간표 추가 2](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/0d0efda0-0f10-47e5-bee3-47308b200060) | ![시간표 추가 3](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/e7f084f5-e939-4a2e-95f5-feebd44287c3) |
+
+| **강의평가** | **시험정보** | **글 작성** |
+| :---: | :---: | :---: |
+| ![강의평가](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/becb251f-83b2-4d76-b0a3-4278cd50b90d) | ![시험정보](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/9b5486e1-e30f-4f09-ba16-dd4a15caf5a3) | ![글 작성](https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/e935a422-8e29-47e2-87f9-06d391bafe27) |
 
 ## 담당 기능
 - 앱 구조 설계 - Clean Architecture, MVVM
