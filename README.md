@@ -1,7 +1,29 @@
 # SUWIKI(2022.01 ~ )
-<br>
 
-![image](https://user-images.githubusercontent.com/81678959/182590817-3ffdfe89-cafc-434b-821c-9241d486c322.png)
+
+[App Store - SUWIKI](https://apps.apple.com/kr/app/suwiki/id1615744899)
+
+<img src="https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/280abf3b-8750-4941-aa14-6fb205426836" width="200">
+<br>
+<img src="https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/7eb97179-75bb-48a3-a247-84a7a0383963" width="400">
+
+___
+### 바로가기
+  - [담당 기능](#담당-기능)
+  - [사용 기술](#사용-기술)
+  - [개발일지 및 트러블 슈팅](#개발일지-및-트러블-슈팅)
+    - [1. 시간표 UX 개선](#1-시간표-ux-개선)
+      - [1.1 시간표를 강의에 추가하기 어려운 UX](#11-시간표를-강의에-추가하기-어려운-ux)
+      - [1.2 HIG에 적합하지 않은 UI/UX](#12-hig에-적합하지-않은-uiux)
+    - [2. 리펙토링 및 프로젝트 구조 설계](#2-리펙토링-및-프로젝트-구조-설계)
+    - [3. App Group 적용](#3-app-group-적용)
+    - [4. 코어데이터 NSBatchInsertRequest를 사용한 성능 개선](#4-코어데이터-nsbatchinsertrequest를-사용한-성능-개선)
+    - [5. Alamofire serializingDecodable 적용](#5-alamofire-serializingdecodable-적용)
+    - [6. Network Layer 설계](#6-network-layer-설계)
+    - [기존 네트워크 호출 방식의 문제](#기존-네트워크-호출-방식의-문제)
+    - [개선 후](#개선-후)
+    - [7. Core Data thread-safe 문제](#7-core-data-thread-safe-문제)
+    - [8. 스파게티 코드 리펙토링](#8-스파게티-코드-리펙토링)
 
 ## 🧑🏻‍💻 수원대학교 공식 시간표 & 강의평가 서비스
 - **3,600명의 사용 유저, 다운로드 약 6,700회, 업데이트 16회**
@@ -9,7 +31,7 @@
 - 대량 데이터 저장 속도 **약 3초대에서 0.6초 미만으로 개선(약 83%)**
 - 1,000줄 이상의 스파게티 코드 **약 240줄로 개선**
 - 아키텍처가 없는 구조에서 MVC, 현재는 **MVVM + Clean Architecture 적용 진행 중**
-- 2년간 운영하며 **약 12만줄 이상의 코드 작성**
+- 2년간 운영중
 
 ## 담당 기능
 - 앱 구조 설계 - Clean Architecture, MVVM
@@ -295,5 +317,3 @@ func fetchDetail(
 - 2천여개의 시간표 데이터의 케이스 정의, 케이스 별로 시간표 중복 검증 로직을 대응함<br>
   (일반 강의 - 하나의 강의와 하나의 강의실, 강의 시간 1 : 강의실 N, 강의실 1 : 강의 시간 N, 온라인 강의)
 - 약 240줄로 개선
-
-
