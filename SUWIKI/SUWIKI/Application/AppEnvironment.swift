@@ -43,6 +43,7 @@ struct AppEnvironment {
         container.register(type: FetchDetailLectureUseCase.self, DefaultFetchDetailLectureUseCase())
         container.register(type: FetchEvaluatePostsUseCase.self, DefaultFetchEvaluatePostsUseCase())
         container.register(type: FetchExamPostsUseCase.self, DefaultFetchExamPostUseCase())
+        container.register(type: WriteEvaluatePostUseCase.self, DefaultWriteEvaluatePostUseCase())
     }
 
     func registerViewModels() {

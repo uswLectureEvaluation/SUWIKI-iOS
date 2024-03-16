@@ -18,10 +18,9 @@ extension RequestState {
     static func == (lhs: RequestState, rhs: RequestState) -> Bool {
         switch (lhs, rhs) {
         case (.notRequest, .notRequest),
-             (.isProgress, .isProgress),
-             (.success, .success):
-            return true
-        case (.failed, .failed):
+            (.isProgress, .isProgress),
+            (.success, .success),
+            (.failed, .failed):
             return true
         default:
             return false

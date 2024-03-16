@@ -44,6 +44,7 @@ extension DTO.DetailLectureResponse {
                       name: lectureName,
                       major: majorType,
                       professor: professor,
+                      semester: semesterList,
                       lectureType: lectureType,
                       lectureTotalAvg: Double(lectureTotalAvg),
                       lectureSatisfactionAvg: Double(lectureSatisfactionAvg),

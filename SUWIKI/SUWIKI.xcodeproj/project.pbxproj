@@ -105,6 +105,15 @@
 		AF7DF1EA2B64EDE800C2CF4E /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1E92B64EDE800C2CF4E /* Inject.swift */; };
 		AF7DF1EC2B64EFB100C2CF4E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1EB2B64EFB100C2CF4E /* AppEnvironment.swift */; };
 		AF7DF1EE2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1ED2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift */; };
+		AF83C06C2B9474C3006AE961 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C06B2B9474C3006AE961 /* RequestState.swift */; };
+		AF83C06E2B9474DF006AE961 /* CustomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C06D2B9474DF006AE961 /* CustomState.swift */; };
+		AF83C0712B948273006AE961 /* EvaluatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C0702B948273006AE961 /* EvaluatePostView.swift */; };
+		AF83C0732B94832F006AE961 /* PostEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C0722B94832F006AE961 /* PostEnum.swift */; };
+		AF83C0752B948434006AE961 /* EvaluatePostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C0742B948434006AE961 /* EvaluatePostViewModel.swift */; };
+		AF83C0772B949807006AE961 /* WriteEvaluatePostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C0762B949807006AE961 /* WriteEvaluatePostUseCase.swift */; };
+		AF83C0792B95BF47006AE961 /* DTO+WriteEvaluatePostResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C0782B95BF47006AE961 /* DTO+WriteEvaluatePostResponse.swift */; };
+		AF83C07B2B95C02E006AE961 /* DTO+WriteEvaluatePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C07A2B95C02E006AE961 /* DTO+WriteEvaluatePostRequest.swift */; };
+		AF83C07D2B95D050006AE961 /* EncodingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C07C2B95D050006AE961 /* EncodingType.swift */; };
 		AF86F18D2B4AF0110001904A /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86F18C2B4AF0110001904A /* UserDefaults+.swift */; };
 		AF9907BC2B554FBC00EF0D91 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86982A3771C6008C5781 /* CoreDataManager.swift */; };
 		AF9907BD2B554FCE00EF0D91 /* CoreDataManager+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */; };
@@ -292,6 +301,15 @@
 		AF7DF1E92B64EDE800C2CF4E /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		AF7DF1EB2B64EFB100C2CF4E /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		AF7DF1ED2B64F09900C2CF4E /* LectureEvaluationHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureEvaluationHomeViewModel.swift; sourceTree = "<group>"; };
+		AF83C06B2B9474C3006AE961 /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestState.swift; sourceTree = "<group>"; };
+		AF83C06D2B9474DF006AE961 /* CustomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomState.swift; sourceTree = "<group>"; };
+		AF83C0702B948273006AE961 /* EvaluatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluatePostView.swift; sourceTree = "<group>"; };
+		AF83C0722B94832F006AE961 /* PostEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEnum.swift; sourceTree = "<group>"; };
+		AF83C0742B948434006AE961 /* EvaluatePostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluatePostViewModel.swift; sourceTree = "<group>"; };
+		AF83C0762B949807006AE961 /* WriteEvaluatePostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteEvaluatePostUseCase.swift; sourceTree = "<group>"; };
+		AF83C0782B95BF47006AE961 /* DTO+WriteEvaluatePostResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+WriteEvaluatePostResponse.swift"; sourceTree = "<group>"; };
+		AF83C07A2B95C02E006AE961 /* DTO+WriteEvaluatePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DTO+WriteEvaluatePostRequest.swift"; sourceTree = "<group>"; };
+		AF83C07C2B95D050006AE961 /* EncodingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingType.swift; sourceTree = "<group>"; };
 		AF86F18A2B4AEAB20001904A /* SUWIKI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SUWIKI.entitlements; sourceTree = "<group>"; };
 		AF86F18B2B4AEAFD0001904A /* TimetableWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimetableWidgetExtension.entitlements; sourceTree = "<group>"; };
 		AF86F18C2B4AF0110001904A /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
@@ -415,6 +433,7 @@
 				AF0ABE242B6227E500AA93EE /* APIStatusLogger.swift */,
 				AF0ABE262B6227F700AA93EE /* AlamofireManager.swift */,
 				AF0ABE282B622BE600AA93EE /* TargetType.swift */,
+				AF83C07C2B95D050006AE961 /* EncodingType.swift */,
 				AF0ABE2A2B6232C400AA93EE /* RequestParameter.swift */,
 				AF0ABE2C2B6232F500AA93EE /* Encodable+.swift */,
 				AF0ABE382B62458900AA93EE /* APIProvider.swift */,
@@ -500,6 +519,7 @@
 		AF0ABE412B624ADB00AA93EE /* LectureEvaluation */ = {
 			isa = PBXGroup;
 			children = (
+				AF83C06F2B94825E006AE961 /* Post */,
 				AF065E1B2B70C5CF00676752 /* Detail */,
 				AF6A8AE92B6E366D00DD58EF /* Login */,
 				AF0ABE422B624AE400AA93EE /* Home */,
@@ -520,6 +540,7 @@
 		AF0ECA082B5E99FC0012CC44 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				AF83C06A2B9474BB006AE961 /* State */,
 				AF6A8AD42B6CF10300DD58EF /* Keychain */,
 				AF7DF1E62B64EDA600C2CF4E /* DIContainer */,
 				AF0ABE212B62279D00AA93EE /* Network */,
@@ -715,6 +736,7 @@
 			isa = PBXGroup;
 			children = (
 				AF67E6F32B74BAF5006CF9FC /* DTO+FetchEvaluatePostsRequest.swift */,
+				AF83C07A2B95C02E006AE961 /* DTO+WriteEvaluatePostRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -724,6 +746,7 @@
 			children = (
 				AF67E6F52B74BB4E006CF9FC /* DTO+EvaluatePostResponse.swift */,
 				AF72115D2B8DE170009D77FF /* DTO+FetchEvaluatePostsResponse.swift */,
+				AF83C0782B95BF47006AE961 /* DTO+WriteEvaluatePostResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -818,6 +841,7 @@
 			isa = PBXGroup;
 			children = (
 				AF7211542B8DDCBF009D77FF /* FetchEvaluatePostsUseCase.swift */,
+				AF83C0762B949807006AE961 /* WriteEvaluatePostUseCase.swift */,
 			);
 			path = EvaluatePost;
 			sourceTree = "<group>";
@@ -847,6 +871,25 @@
 				AF7DF1E92B64EDE800C2CF4E /* Inject.swift */,
 			);
 			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		AF83C06A2B9474BB006AE961 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				AF83C06B2B9474C3006AE961 /* RequestState.swift */,
+				AF83C06D2B9474DF006AE961 /* CustomState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		AF83C06F2B94825E006AE961 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				AF83C0702B948273006AE961 /* EvaluatePostView.swift */,
+				AF83C0722B94832F006AE961 /* PostEnum.swift */,
+				AF83C0742B948434006AE961 /* EvaluatePostViewModel.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		AF9907C92B566F4900EF0D91 /* View */ = {
@@ -1293,6 +1336,7 @@
 				AF72114D2B8DD77E009D77FF /* DTO+RefreshRequest.swift in Sources */,
 				AF6A8AC82B6C0AE200DD58EF /* DTO+SearchLectureRequest.swift in Sources */,
 				AFC90FC72B6799A90007DA1B /* LectureCell.swift in Sources */,
+				AF83C06C2B9474C3006AE961 /* RequestState.swift in Sources */,
 				AF08A8E12A9F6E63005C3D00 /* TimetableListViewModel.swift in Sources */,
 				AFF785C72A93513F00B6D531 /* AddCourseView.swift in Sources */,
 				AF6A8AF62B6E590600DD58EF /* DTO+CheckEmailRequest.swift in Sources */,
@@ -1304,8 +1348,10 @@
 				AF6A8AD82B6E298C00DD58EF /* KeychainManager.swift in Sources */,
 				AF065E152B6EAB4000676752 /* SignUpUseCase.swift in Sources */,
 				AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */,
+				AF83C0792B95BF47006AE961 /* DTO+WriteEvaluatePostResponse.swift in Sources */,
 				AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */,
 				AF065E072B6EA68E00676752 /* DefaultUserRepository.swift in Sources */,
+				AF83C07D2B95D050006AE961 /* EncodingType.swift in Sources */,
 				AF9907C72B56542400EF0D91 /* CourseForWidget.swift in Sources */,
 				AF6A8ADE2B6E2F5100DD58EF /* DefaultKeychainRepository.swift in Sources */,
 				AF065E1A2B70C24C00676752 /* AppState.swift in Sources */,
@@ -1326,6 +1372,7 @@
 				AF5434C72B91F2FB00AB1E7F /* ExamPostRepository.swift in Sources */,
 				AF6A8AD32B6CEFA000DD58EF /* DTO+TokenResponse.swift in Sources */,
 				AF065E0B2B6EA8FB00676752 /* SearchLectureUseCase.swift in Sources */,
+				AF83C07B2B95C02E006AE961 /* DTO+WriteEvaluatePostRequest.swift in Sources */,
 				AF0ABE392B62458900AA93EE /* APIProvider.swift in Sources */,
 				AF4E41F02A7FEF4500954710 /* SuwikiTimetable.xcdatamodeld in Sources */,
 				AF0ABE302B623AA700AA93EE /* APITarget.swift in Sources */,
@@ -1338,10 +1385,12 @@
 				AF0ABE4A2B624BFF00AA93EE /* DefaultLectureRepository.swift in Sources */,
 				AF72115E2B8DE170009D77FF /* DTO+FetchEvaluatePostsResponse.swift in Sources */,
 				AFD5CC142A405BFE008F95B7 /* SelectCourseListViewModel.swift in Sources */,
+				AF83C06E2B9474DF006AE961 /* CustomState.swift in Sources */,
 				AF08A8DA2A9F2BF6005C3D00 /* UITextField+.swift in Sources */,
 				AF065E092B6EA8F200676752 /* FetchLectureUseCase.swift in Sources */,
 				AF7DF1E82B64EDB400C2CF4E /* DIContainer.swift in Sources */,
 				AF5434C22B91F00700AB1E7F /* FetchExamPostsUseCase.swift in Sources */,
+				AF83C0732B94832F006AE961 /* PostEnum.swift in Sources */,
 				AF065E112B6EAB2700676752 /* ReadTokenUseCase.swift in Sources */,
 				AF065E252B70DC5400676752 /* DTO+DetailLectureRequest.swift in Sources */,
 				AFC335312A4DD20900D22DEC /* AddCourseManager.swift in Sources */,
@@ -1381,6 +1430,7 @@
 				AFDFB4BA2B907F9F00448A0C /* FilledStar.swift in Sources */,
 				AF72114F2B8DD7C7009D77FF /* DTO+RefreshResponse.swift in Sources */,
 				AF065E0D2B6EAB0500676752 /* SignInUseCase.swift in Sources */,
+				AF83C0712B948273006AE961 /* EvaluatePostView.swift in Sources */,
 				AFBF51452B615863001B6EA1 /* DTO+LectureResponse.swift in Sources */,
 				AF86F18D2B4AF0110001904A /* UserDefaults+.swift in Sources */,
 				AF37C9A32B5539A300D4949D /* TimetableCourse.swift in Sources */,
@@ -1397,10 +1447,12 @@
 				AF065E292B70E27E00676752 /* Interceptor.swift in Sources */,
 				AF0ABE342B623E6A00AA93EE /* APITarget+Lecture.swift in Sources */,
 				AFDFB4B52B907EC700448A0C /* EvaluateCell.swift in Sources */,
+				AF83C0772B949807006AE961 /* WriteEvaluatePostUseCase.swift in Sources */,
 				AF065E2D2B721ABF00676752 /* LectureEvaluationDetailViewModel.swift in Sources */,
 				AF5434C52B91F03100AB1E7F /* ExamPost.swift in Sources */,
 				AF0ABE2D2B6232F600AA93EE /* Encodable+.swift in Sources */,
 				AF5434BF2B91EC4D00AB1E7F /* APITarget+ExamPost.swift in Sources */,
+				AF83C0752B948434006AE961 /* EvaluatePostViewModel.swift in Sources */,
 				AF0ABE272B6227F800AA93EE /* AlamofireManager.swift in Sources */,
 				AF057A182A77F36E004577E7 /* CoreDataManager+Update.swift in Sources */,
 			);

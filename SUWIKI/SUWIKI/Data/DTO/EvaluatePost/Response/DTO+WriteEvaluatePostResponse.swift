@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct WriteEvaluatePostResponse: Decodable {
+        let status: String
+    }
+}
