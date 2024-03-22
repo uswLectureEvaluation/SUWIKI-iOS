@@ -2,6 +2,7 @@
 
 
 [App Store - SUWIKI](https://apps.apple.com/kr/app/suwiki/id1615744899)
+- 리펙토링은 SUWIKI 디렉터리에서 진행중입니다.
 
 <img src="https://github.com/uswLectureEvaluation/SUWIKI-iOS/assets/49385546/280abf3b-8750-4941-aa14-6fb205426836" width="200">
 <br>
