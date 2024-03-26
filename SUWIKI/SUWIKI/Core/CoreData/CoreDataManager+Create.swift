@@ -16,6 +16,7 @@ extension CoreDataManager {
     func addTimeTable(name: String, semester: String) {
         guard let entity = NSEntityDescription.entity(forEntityName: "Timetable", in: context) else { return }
         let timetableEntity = NSManagedObject(entity: entity, insertInto: context)
+        checkMainThread()
         let id = UUID().uuidString
         timetableEntity.setValue(id,  forKey: "id")
         timetableEntity.setValue(name, forKey: "name")
@@ -37,14 +38,11 @@ extension CoreDataManager {
         guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", in: context) else {
             throw CoreDataError.entityError
         }
-        let start = CFAbsoluteTimeGetCurrent()
+        checkMainThread()
         let batchInsertRequest = NSBatchInsertRequest(entity: entity, objects: course)
         if let fetchResult = try? context.execute(batchInsertRequest),
            let batchInsertResult = fetchResult as? NSBatchInsertResult,
            let success = batchInsertResult.result as? Bool, success {
-            print("@Log - saveFirebaseCourse")
-            let diff = CFAbsoluteTimeGetCurrent() - start
-            print("걸린시간 -- \(diff)")
             return
         }
         print(CoreDataError.batchInsertError.localizedDescription)
@@ -60,6 +58,7 @@ extension CoreDataManager {
             guard let timetable = try context.fetch(fetchRequest).first else {
                 throw CoreDataError.fetchError
             }
+            checkMainThread()
             let courseEntity = Course(context: context)
             courseEntity.courseId = course.courseId
             courseEntity.courseName = course.courseName

@@ -35,7 +35,7 @@ final class APIStatusLogger: EventMonitor {
         case .failure:
             print("@Log ❎ .failure, statusCode : \(statusCode)")
         }
-
+        print("@Log responseData- \(response)")
         if let statusCode = response.response?.statusCode {
             switch statusCode {
             case 400..<500:

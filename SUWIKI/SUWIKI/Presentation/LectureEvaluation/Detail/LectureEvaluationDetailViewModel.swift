@@ -22,6 +22,7 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
                                                       isPurchased: false,
                                                       isWritten: false,
                                                       isExamPostsExists: false)
+    @Published var evaluatePostWriteButtonClicked = false
     /// state enum 정의, isLoading -> isFinished 되었을 경우 view 띄워버리기
 
     init(id: Int) {

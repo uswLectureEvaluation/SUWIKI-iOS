@@ -14,6 +14,7 @@ extension CoreDataManager {
     func fetchTimetableList() -> [Timetable] {
         var timetable: [Timetable] = []
         do {
+            checkMainThread()
             timetable = try context.fetch(Timetable.fetchRequest())
         } catch {
             print("@Log - \(error.localizedDescription)")
@@ -25,6 +26,7 @@ extension CoreDataManager {
     func fetchTimetable(id: String) -> Timetable? {
         var timetable: [Timetable] = []
         do {
+            checkMainThread()
             let fetehRequest = Timetable.fetchRequest()
             fetehRequest.predicate = NSPredicate(format: "id == %@", id)
             timetable = try context.fetch(fetehRequest)
@@ -43,6 +45,7 @@ extension CoreDataManager {
     func fetchCourse(id: String) -> [Course] {
         var course: [Course] = []
         do {
+            checkMainThread()
             let fetchRequest = Timetable.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
             let timetable = try context.fetch(fetchRequest)
@@ -63,6 +66,7 @@ extension CoreDataManager {
     ) -> [Course] {
         var course: [Course] = []
         do {
+            checkMainThread()
             let fetchRequest = Timetable.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
             let timetable = try context.fetch(fetchRequest)[0]
@@ -82,6 +86,7 @@ extension CoreDataManager {
     func fetchFirebaseCourse(major: String) -> [FirebaseCourse] {
         var course: [FirebaseCourse] = []
         do {
+            checkMainThread()
             let fetchRequest = FirebaseCourse.fetchRequest()
             if major != "전체" {
                 fetchRequest.predicate = NSPredicate(format: "major == %@", major)
@@ -101,6 +106,7 @@ extension CoreDataManager {
     func fetchMajors() -> [String] {
         var courses: [FirebaseCourse] = []
         do {
+            checkMainThread()
             let fetchRequest = FirebaseCourse.fetchRequest()
             courses = try context.fetch(fetchRequest)
             let majors = Array(Set(courses.compactMap { $0.major })).sorted { $0 < $1 }
@@ -115,6 +121,7 @@ extension CoreDataManager {
     func fetchCourseCount(major: String) -> Int {
         var count = 0
         do {
+            checkMainThread()
             let fetchRequest = FirebaseCourse.fetchRequest()
             if major != "전체" {
                 fetchRequest.predicate = NSPredicate(format: "major == %@", major)

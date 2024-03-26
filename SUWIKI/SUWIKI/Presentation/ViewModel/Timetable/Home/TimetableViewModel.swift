@@ -12,11 +12,11 @@ import Elliotable
 import FirebaseRemoteConfig
 
 final class TimetableViewModel {
-    
+
     let coreDataManager = CoreDataManager.shared
-    
+
     private var cancellables: Set<AnyCancellable> = []
-    
+
     @Published var elliottEvent: [ElliottEvent] = []
     @Published var timetableTitle: String = ""
     @Published var timetableIsEmpty: Bool = false
@@ -34,7 +34,7 @@ final class TimetableViewModel {
             self.timetableIsEmpty = timetable.isEmpty
         }
     }
-    
+
     func addTimetable() {
         Task {
             let calculateSemester = calculateSemester()
@@ -44,7 +44,7 @@ final class TimetableViewModel {
             updateCourse()
         }
     }
-    
+
     func updateTimetable() {
         Task {
             guard let id = UserDefaults.shared.value(forKey: "id") as? String,
@@ -56,7 +56,7 @@ final class TimetableViewModel {
             self.timetableTitle = title
         }
     }
-    
+
     func updateCourse() {
         Task {
             guard let id = UserDefaults.shared.value(forKey: "id") as? String else {
@@ -79,7 +79,7 @@ final class TimetableViewModel {
             self.timetableIsEmpty = false
         }
     }
-    
+
     func deleteCourse(uuid: String) {
         Task {
             guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }),
@@ -93,7 +93,7 @@ final class TimetableViewModel {
             }
         }
     }
-    
+
     func calculateSemester() -> (String, String) {
         let currentYear = Calendar.current.component(.year, from: Date())
         let currentMonth = Calendar.current.component(.month, from: Date())

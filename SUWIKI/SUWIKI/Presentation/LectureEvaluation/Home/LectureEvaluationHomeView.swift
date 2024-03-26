@@ -22,7 +22,7 @@ struct LectureEvaluationHomeView: View {
                 lectureList
             }
             //TODO: 학과 필터링 뷰 구현 시 해당 데이터 들어와야 함. @Binding viewmodel.major
-            .navigationTitle("정보보호")
+            .navigationTitle("전체")
             .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onSubmit(of: .search) {
                 Task {

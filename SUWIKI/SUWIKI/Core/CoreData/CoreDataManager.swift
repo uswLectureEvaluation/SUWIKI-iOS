@@ -17,8 +17,9 @@ enum CoreDataError: Error {
     case deleteError
 }
 
-actor CoreDataManager {
-    
+@MainActor
+final class CoreDataManager {
+
     // 싱글톤으로 만들기
     static let shared = CoreDataManager()
     private init() {}
@@ -44,7 +45,15 @@ actor CoreDataManager {
 
     // 임시저장소
     lazy var context = container.viewContext
-    
+
+    func checkMainThread() {
+        if Thread.isMainThread {
+            print("Main Thread")
+        } else {
+            print("Not Main Thread - \(Thread.current)")
+        }
+    }
+
     func handleCoreDataError(_ error: Error) {
         switch error {
         case CoreDataError.batchInsertError:

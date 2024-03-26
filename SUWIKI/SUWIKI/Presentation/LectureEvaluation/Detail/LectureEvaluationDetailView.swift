@@ -45,6 +45,12 @@ struct LectureEvaluationDetailView: View {
                 }
             }
         }
+        .sheet(isPresented: $viewModel.evaluatePostWriteButtonClicked) {
+            EvaluatePostView(id: viewModel.id,
+                             lectureName: viewModel.detailLecture.name,
+                             professor: viewModel.detailLecture.professor,
+                             semester: viewModel.detailLecture.semester)
+        }
     }
 
     @ViewBuilder
@@ -99,6 +105,12 @@ struct LectureEvaluationDetailView: View {
             }
             .padding(.leading, 12)
             Spacer()
+            Button {
+                // postType에 따라 다르게
+                viewModel.evaluatePostWriteButtonClicked.toggle()
+            } label: {
+                Text("임시 작성")
+            }
         }
         .padding(.leading, 26)
     }

@@ -37,7 +37,6 @@ final class DefaultEvaluatePostRepository: EvaluatePostRepository {
         homework: Int,
         content: String
     ) async throws -> Bool {
-        print("@Kozi - \(id)")
         let apiTarget = APITarget.EvaluatePost.writeEvaluatePost(
             DTO.WriteEvaluatePostRequest(
                 lectureInfo: DTO.WriteEvaluatePostRequest.LectureInfo(lectureId: id),

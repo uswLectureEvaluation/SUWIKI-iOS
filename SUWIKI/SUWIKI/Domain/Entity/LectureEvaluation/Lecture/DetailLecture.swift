@@ -17,6 +17,8 @@ struct DetailLecture: Identifiable {
     let major: String
     /// 교수명
     let professor: String
+    /// 개설 학기
+    let semester: String
     /// 이수구분
     let lectureType: String
     /// 평점
@@ -40,6 +42,7 @@ extension DetailLecture {
                                         name: "강의명",
                                         major: "개설학과",
                                         professor: "교수명",
+                                        semester: "2021-2, 2022-1",
                                         lectureType: "이수구분",
                                         lectureTotalAvg: 3.5,
                                         lectureSatisfactionAvg: 0.0,
