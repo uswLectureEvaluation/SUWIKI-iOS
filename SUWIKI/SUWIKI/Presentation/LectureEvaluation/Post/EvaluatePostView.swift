@@ -31,6 +31,7 @@ struct EvaluatePostView: View {
             VStack(alignment: .leading,
                    spacing: 0) {
                 closeButton
+                    .padding(.top, 24)
                     .padding(.bottom, 24)
                 semesterAndAverageView
                     .padding(.bottom, 16)
@@ -56,16 +57,20 @@ struct EvaluatePostView: View {
     }
 
     var closeButton: some View {
-        HStack(spacing: 0) {
-            Spacer()
-            Button {
-                dismiss()
-            } label: {
-                Image(systemName: "xmark")
-                    .foregroundStyle(Color(uiColor: .gray95))
+        ZStack {
+            Text("강의평가")
+                .font(.h6)
+            HStack(spacing: 0) {
+                Spacer()
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                        .foregroundStyle(Color(uiColor: .gray95))
+                }
             }
+            .padding(.horizontal, 24)
         }
-        .padding(.horizontal, 24)
     }
 
     var semesterAndAverageView: some View {
@@ -79,9 +84,9 @@ struct EvaluatePostView: View {
             .tint(Color(uiColor: .gray))
             Spacer()
             //TODO: 평균으로 수정
-            Stars(avarage: viewModel.honeyPoint, width: 16, height: 16)
+            Stars(avarage: viewModel.averagePoint, width: 16, height: 16)
                 .padding(.horizontal, 4)
-            Text(viewModel.honeyPoint.description)
+            Text(String(format: "%.1f", viewModel.averagePoint))
                 .font(.b4)
                 .foregroundStyle(Color(uiColor: .primaryColor))
         }
