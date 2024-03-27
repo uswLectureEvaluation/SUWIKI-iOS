@@ -25,6 +25,8 @@ final class EvaluatePostViewModel: ObservableObject {
     @Published var content: String = ""
     @Published var averagePoint: Double = 2.5
     @Published var isWriteEnabled = false
+    @Published var isDataEmpty = false
+    @Published var isWritten = false
     var cancellables = Set<AnyCancellable>()
 
     init(
@@ -53,6 +55,7 @@ final class EvaluatePostViewModel: ObservableObject {
                 return difficultyType != .notSelected && homeworkType != .notSelected && teamplayType != .notSelected && !content.isEmpty
             }
             .filter { $0 == true }
+            .receive(on: RunLoop.main)
             .sink {
                 self.isWriteEnabled = $0
             }
@@ -62,22 +65,26 @@ final class EvaluatePostViewModel: ObservableObject {
     func write() async throws {
         if isWriteEnabled {
             if try await writeEvaluatePostUseCase.execute(id: self.id,
-                                                              lectureName: self.lectureName,
-                                                              professor: self.professor,
-                                                              selectedSemester: self.selectedSemester,
-                                                              satisfaction: self.satisfactionPoint,
-                                                              learning: self.learningPoint,
-                                                              honey: self.honeyPoint,
-                                                              team: self.teamplayType.point,
-                                                              difficulty: self.difficultyType.point,
-                                                              homework: self.homeworkType.point,
-                                                              content: self.content) {
-                    // dismiss
-                } else {
-                    // 이미 글 작성함
+                                                          lectureName: self.lectureName,
+                                                          professor: self.professor,
+                                                          selectedSemester: self.selectedSemester,
+                                                          satisfaction: self.satisfactionPoint,
+                                                          learning: self.learningPoint,
+                                                          honey: self.honeyPoint,
+                                                          team: self.teamplayType.point,
+                                                          difficulty: self.difficultyType.point,
+                                                          homework: self.homeworkType.point,
+                                                          content: self.content) {
+                // dismiss
+            } else {
+                await MainActor.run {
+                    isWritten.toggle()
                 }
+            }
         } else {
-            print("데이터 누락")
+            await MainActor.run {
+                isDataEmpty.toggle()
+            }
         }
     }
 
