@@ -44,12 +44,21 @@ struct LectureEvaluationDetailView: View {
                     ProgressView()
                 }
             }
+            VStack {
+                Spacer()
+                if viewModel.requestState == .success {
+                    postButton
+                }
+            }
         }
         .sheet(isPresented: $viewModel.evaluatePostWriteButtonClicked) {
             EvaluatePostView(id: viewModel.id,
                              lectureName: viewModel.detailLecture.name,
                              professor: viewModel.detailLecture.professor,
                              semester: viewModel.detailLecture.semester)
+        }
+        .sheet(isPresented: $viewModel.examPostWriteButtonClicked) {
+            
         }
     }
 
@@ -87,6 +96,37 @@ struct LectureEvaluationDetailView: View {
         }
     }
 
+    var postButton: some View {
+        HStack(spacing: 0) {
+            Spacer()
+            Menu {
+                examPostWriteButton
+                evaluatePostWriteButton
+            } label: {
+                Circle()
+                    .frame(width: 48, height: 48)
+                    .foregroundStyle(Color(uiColor: .primaryColor))
+            }
+        }
+        .padding(.horizontal, 20)
+    }
+
+    var evaluatePostWriteButton: some View {
+        Button {
+            viewModel.evaluatePostWriteButtonClicked.toggle()
+        } label: {
+            Label("강의평가 작성", systemImage: "pencil.and.list.clipboard")
+        }
+    }
+
+    var examPostWriteButton: some View {
+        Button {
+            viewModel.evaluatePostWriteButtonClicked.toggle()
+        } label: {
+            Text("시험정보 작성")
+        }
+    }
+
     var postTypeButtons: some View {
         HStack(spacing: 0) {
             Button {
@@ -105,14 +145,8 @@ struct LectureEvaluationDetailView: View {
             }
             .padding(.leading, 12)
             Spacer()
-            Button {
-                // postType에 따라 다르게
-                viewModel.evaluatePostWriteButtonClicked.toggle()
-            } label: {
-                Text("임시 작성")
-            }
         }
-        .padding(.leading, 26)
+        .padding(.horizontal, 26)
     }
 
     var examPostList: some View {
@@ -250,11 +284,11 @@ extension LectureEvaluationDetailView {
     ) -> some View {
         RoundedRectangle(cornerRadius: 5)
             .frame(width: 66, height: 26)
-            .foregroundStyle(type.backgroundColor)
+            .foregroundStyle(type.backgroundColor[average])
             .overlay {
                 Text("\(type.title) \(type.descriptions[average])")
                     .font(.c1)
-                    .foregroundStyle(type.fontColor)
+                    .foregroundStyle(type.fontColor[average])
             }
     }
 
@@ -309,7 +343,7 @@ enum DetailLabelType {
     var descriptions: [String] {
         switch self {
         case .difficulty:
-            ["잘줌", "보통", "하드"]
+            ["하드", "보통", "잘줌"]
         case .homework:
             ["없음", "보통", "많음"]
         case .team:
@@ -317,25 +351,25 @@ enum DetailLabelType {
         }
     }
 
-    var fontColor: Color {
+    var fontColor: [Color] {
         switch self {
         case .difficulty:
-            Color(uiColor: .easyFont)
+            [Color(uiColor: .hardFont), Color(uiColor: .normalFont), Color(uiColor: .easyFont)]
         case .homework:
-            Color(uiColor: .normalFont)
+            [Color(uiColor: .easyFont), Color(uiColor: .normalFont), Color(uiColor: .hardFont)]
         case .team:
-            Color(uiColor: .hardFont)
+            [Color(uiColor: .easyFont), Color(uiColor: .hardFont)]
         }
     }
 
-    var backgroundColor: Color {
+    var backgroundColor: [Color] {
         switch self {
         case .difficulty:
-            Color(uiColor: .easyBackground)
+            [Color(uiColor: .hardBackground), Color(uiColor: .normalBackground), Color(uiColor: .easyBackground)]
         case .homework:
-            Color(uiColor: .normalBackground)
+            [Color(uiColor: .easyBackground), Color(uiColor: .normalBackground), Color(uiColor: .hardBackground)]
         case .team:
-            Color(uiColor: .hardBackground)
+            [Color(uiColor: .easyBackground), Color(uiColor: .hardBackground)]
         }
     }
 }
