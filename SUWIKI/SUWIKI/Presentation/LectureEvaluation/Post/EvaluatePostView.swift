@@ -49,7 +49,6 @@ struct EvaluatePostView: View {
                     .padding(.bottom, 25)
                 contentView
                     .padding(.bottom, 40)
-                //                Spacer()
                 postButton
                     .padding(.bottom, 20)
             }
@@ -258,10 +257,18 @@ struct EvaluatePostView: View {
             .padding(.horizontal, 24)
             .frame(minHeight: 150, maxHeight: .infinity)
             .overlay {
-                TextEditor(text: $viewModel.content)
-                    .font(.b7)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 36)
+                ZStack(alignment: .topLeading) {
+                    TextEditor(text: $viewModel.content)
+                        .font(.b7)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 36)
+                    Text(viewModel.content.isEmpty ? "10글자 이상 입력해주세요." : "")
+                        .font(.b7)
+                        .foregroundStyle(Color.gray)
+                        .padding(.top, 18)
+                        .padding(.leading, 40)
+                }
+
             }
     }
 
