@@ -11,17 +11,21 @@ import Combine
 final class ExamPostViewModel: ObservableObject {
 
     var useCase: WriteExamPostUseCase = DIContainer.shared.resolve(type: WriteExamPostUseCase.self)
+    let examTypeList = ["중간고사", "기말고사"]
+    var cancellables = Set<AnyCancellable>()
     let id: Int
     let lectureName: String
     let professor: String
     let semesterList: [String]
-    let examTypeList = ["중간고사", "기말고사"]
     @Published var examInfos: [(ExamInfoType, Bool)] = ExamInfoType.allCases.map { ($0, false) }
     @Published var selectedSemester: String
-    @Published var examInfo: [String] = [] // 교재 피피티
+    @Published var examInfoArray: [String] = [] // 교재 피피티
     @Published var examType: String = "중간고사" // 중간고사 or 기말고사
     @Published var examDifficulty: DifficultyType = .notSelected
     @Published var content: String = ""
+    @Published var isWriteEnabled = false
+    @Published var isWritten = false
+    @Published var isDataEmpty = false
 
     init(
         id: Int,
@@ -36,10 +40,10 @@ final class ExamPostViewModel: ObservableObject {
         self.semesterList = splitedSemester
         self.selectedSemester = splitedSemester[0]
 
-        $difficultyType
-            .combineLatest($homeworkType, $teamplayType, $content)
-            .map { difficultyType, homeworkType, teamplayType, content in
-                return difficultyType != .notSelected && homeworkType != .notSelected && teamplayType != .notSelected && !content.isEmpty
+        $examDifficulty
+            .combineLatest($examInfoArray, $content)
+            .map { examDifficulty, examInfoArray, content in
+                return examDifficulty != .notSelected && !examInfoArray.isEmpty && content.count >= 10
             }
             .filter { $0 == true }
             .receive(on: RunLoop.main)
@@ -50,22 +54,35 @@ final class ExamPostViewModel: ObservableObject {
     }
 
     func settingExamInfo(type: String) {
-        if examInfo.contains(type) {
-            let removeIndex = examInfo.firstIndex(of: type)!
-            examInfo.remove(at: removeIndex)
+        if examInfoArray.contains(type) {
+            let removeIndex = examInfoArray.firstIndex(of: type)!
+            examInfoArray.remove(at: removeIndex)
         } else {
-            examInfo.append(type)
+            examInfoArray.append(type)
         }
     }
 
     func write() async throws {
-        try await useCase.execute(id: self.id,
-                                  lectureName: self.lectureName,
-                                  professor: self.professor,
-                                  selectedSemester: self.selectedSemester,
-                                  examInfo: "",
-                                  examType: self.examType,
-                                  examDifficulty: self.examDifficulty.description,
-                                  content: self.content)
+        if isWriteEnabled {
+            let examInfo = examInfoArray.joined(separator: ", ")
+            if try await useCase.execute(id: self.id,
+                                         lectureName: self.lectureName,
+                                         professor: self.professor,
+                                         selectedSemester: self.selectedSemester,
+                                         examInfo: examInfo,
+                                         examType: self.examType,
+                                         examDifficulty: self.examDifficulty.description,
+                                         content: self.content) {
+
+            } else {
+                await MainActor.run {
+                    isWritten.toggle()
+                }
+            }
+        } else {
+            await MainActor.run {
+                isDataEmpty.toggle()
+            }
+        }
     }
 }
