@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExamPostView: View {
-
+    
     let semesterList = ["2022-1", "2022-2"]
     let examTypeList = ["중간고사", "기말고사"]
     var examInfoTypeList = ExamInfoType.allCases
@@ -18,7 +18,7 @@ struct ExamPostView: View {
     @State var examInfoType: ExamInfoType = .notSelected
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ExamPostViewModel
-
+    
     init(
         id: Int,
         lectureName: String,
@@ -30,7 +30,7 @@ struct ExamPostView: View {
                                                                       professor: professor,
                                                                       semester: semester))
     }
-
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Color(uiColor: .systemGray6)
@@ -52,7 +52,7 @@ struct ExamPostView: View {
             }
         }
     }
-
+    
     var closeButton: some View {
         ZStack {
             Text("시험정보")
@@ -69,7 +69,7 @@ struct ExamPostView: View {
             .padding(.horizontal, 24)
         }
     }
-
+    
     var semesterAndExamTypeView: some View {
         VStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 12)
@@ -118,7 +118,7 @@ struct ExamPostView: View {
         }
         .padding(.horizontal, 20)
     }
-
+    
     var difficultyView: some View {
         HStack(spacing: 0) {
             HStack {
@@ -153,7 +153,7 @@ struct ExamPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var examInfoTypeView: some View {
         HStack(spacing: 0) {
             HStack {
@@ -176,7 +176,7 @@ struct ExamPostView: View {
                             .frame(width: 35, height: 26)
                             .foregroundStyle(type.wrappedValue.1 == true ?
                                              Color(uiColor: .white) : Color(uiColor: .grayF6))
-
+                        
                             .overlay {
                                 Text(type.wrappedValue.0.description)
                                     .font(.c1)
@@ -190,7 +190,7 @@ struct ExamPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var contentView: some View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundStyle(Color(uiColor: .white))
@@ -210,11 +210,11 @@ struct ExamPostView: View {
                 }
             }
     }
-
+    
     var postButton: some View {
         Button {
             Task {
-                //                try await viewModel.write()
+                try await viewModel.write()
             }
         } label: {
             RoundedRectangle(cornerRadius: 15)
@@ -227,5 +227,5 @@ struct ExamPostView: View {
                 }
         }
     }
-
+    
 }
