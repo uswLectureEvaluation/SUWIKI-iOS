@@ -12,4 +12,15 @@ protocol ExamPostRepository {
         id: Int,
         page: Int
     ) async throws -> ExamPostInfo
+
+    func write(
+        id: Int,
+        lectureName: String,
+        professor: String,
+        selectedSemester: String,
+        examInfo: String,
+        examType: String,
+        examDifficulty: String,
+        content: String
+    ) async throws -> Bool
 }
