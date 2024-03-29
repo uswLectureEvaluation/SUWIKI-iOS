@@ -28,9 +28,9 @@ struct AppEnvironment {
                            DefaultUserRepository())
         container.register(type: KeychainRepository.self,
                            DefaultKeychainRepository())
-        container.register(type: EvaluatePostRepository.self, 
+        container.register(type: EvaluatePostRepository.self,
                            DefaultEvaluatePostRepository())
-        container.register(type: ExamPostRepository.self, 
+        container.register(type: ExamPostRepository.self,
                            DefaultExamPostRepository())
     }
 
@@ -44,6 +44,8 @@ struct AppEnvironment {
         container.register(type: FetchEvaluatePostsUseCase.self, DefaultFetchEvaluatePostsUseCase())
         container.register(type: FetchExamPostsUseCase.self, DefaultFetchExamPostUseCase())
         container.register(type: WriteEvaluatePostUseCase.self, DefaultWriteEvaluatePostUseCase())
+        container.register(type: WriteExamPostUseCase.self,
+                           DefaultWriteExamPostUseCase())
     }
 
     func registerViewModels() {
