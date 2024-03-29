@@ -22,4 +22,33 @@ final class DefaultExamPostRepository: ExamPostRepository {
                             isExamPostsExists: dtoExamInfo.examDataExist)
     }
 
+    func write(id: Int,
+               lectureName: String,
+               professor: String,
+               selectedSemester: String,
+               examInfo: String,
+               examType: String,
+               examDifficulty: String,
+               content: String) async throws -> Bool {
+        let apiTarget = APITarget.ExamPost.writeExamPost(
+            DTO.WriteExamPostRequest(lectureInfo: DTO.WriteExamPostRequest.LectureInfo(lectureId: id),
+                                     post: DTO.WriteExamPostRequest.Post(lectureName: lectureName,
+                                                                         professor: professor,
+                                                                         selectedSemester: selectedSemester,
+                                                                         examInfo: examInfo,
+                                                                         examType: examType,
+                                                                         examDifficulty: examDifficulty,
+                                                                         content: content))
+        )
+        if let statusCode = try await APIProvider.request(target: apiTarget) {
+            if statusCode == 200 {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
 }
