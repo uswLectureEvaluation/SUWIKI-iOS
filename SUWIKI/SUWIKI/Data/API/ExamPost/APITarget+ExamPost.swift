@@ -12,6 +12,7 @@ import Alamofire
 extension APITarget {
     enum ExamPost: TargetType {
         case fetchExamPosts(DTO.FetchExamPostsRequest)
+        case writeExamPost(DTO.WriteExamPostRequest)
     }
 }
 
@@ -24,12 +25,16 @@ extension APITarget.ExamPost {
         switch self {
         case .fetchExamPosts:
             return .get
+        case .writeExamPost:
+            return .post
         }
     }
 
     var path: String {
         switch self {
         case .fetchExamPosts:
+            ""
+        case .writeExamPost:
             ""
         }
     }
@@ -38,6 +43,9 @@ extension APITarget.ExamPost {
         switch self {
         case let .fetchExamPosts(fetchExamPosts):
             return .query(fetchExamPosts)
+        case let .writeExamPost(writeExamPost):
+            return .both(query: writeExamPost.lectureInfo, 
+                         json: writeExamPost.post)
         }
     }
 }
