@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct PurchaseExamPostRequest: Encodable {
+        let lectureId: Int
+    }
+}

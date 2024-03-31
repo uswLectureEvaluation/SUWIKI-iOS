@@ -13,6 +13,7 @@ extension APITarget {
     enum ExamPost: TargetType {
         case fetchExamPosts(DTO.FetchExamPostsRequest)
         case writeExamPost(DTO.WriteExamPostRequest)
+        case purchaseExamPost(DTO.PurchaseExamPostRequest)
     }
 }
 
@@ -27,6 +28,8 @@ extension APITarget.ExamPost {
             return .get
         case .writeExamPost:
             return .post
+        case .purchaseExamPost:
+            return .post
         }
     }
 
@@ -36,6 +39,8 @@ extension APITarget.ExamPost {
             ""
         case .writeExamPost:
             ""
+        case .purchaseExamPost:
+            "/purchase"
         }
     }
 
@@ -46,6 +51,8 @@ extension APITarget.ExamPost {
         case let .writeExamPost(writeExamPost):
             return .both(query: writeExamPost.lectureInfo, 
                          json: writeExamPost.post)
+        case let .purchaseExamPost(purchaseExamPost):
+            return .query(purchaseExamPost)
         }
     }
 }

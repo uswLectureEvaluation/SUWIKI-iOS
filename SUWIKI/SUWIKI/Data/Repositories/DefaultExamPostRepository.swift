@@ -51,4 +51,18 @@ final class DefaultExamPostRepository: ExamPostRepository {
         }
     }
 
+    func purchase(id: Int) async throws -> Bool {
+        let apiTarget = APITarget.ExamPost.purchaseExamPost(
+            DTO.PurchaseExamPostRequest(lectureId: id)
+        )
+        if let statusCode = try await APIProvider.request(target: apiTarget) {
+            if statusCode == 200 {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
 }

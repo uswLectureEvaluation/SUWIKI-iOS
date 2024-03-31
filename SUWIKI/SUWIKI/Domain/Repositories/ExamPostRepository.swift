@@ -23,4 +23,6 @@ protocol ExamPostRepository {
         examDifficulty: String,
         content: String
     ) async throws -> Bool
+
+    func purchase(id: Int) async throws -> Bool
 }

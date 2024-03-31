@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol PurchaseExamPostUseCase {
+    func execute(id: Int) async throws -> Bool
+}
+
+final class DefaultPurchaseExamPostUseCase: PurchaseExamPostUseCase {
+
+    @Inject var repository: ExamPostRepository
+
+    func execute(id: Int) async throws -> Bool {
+        try await repository.purchase(id: id)
+    }
+}
