@@ -10,6 +10,8 @@ import SwiftUI
 struct IsPostEmptyView: View {
 
     @Binding var postType: PostType
+    @Binding var evaluatePostWriteButtonClicked: Bool
+    @Binding var examPostWriteButtonClicked: Bool
 
     var body: some View {
         if postType == .evaluate {
@@ -27,7 +29,7 @@ struct IsPostEmptyView: View {
                 .lineSpacing(4)
                 .padding(.bottom, 28)
             Button {
-                
+                evaluatePostWriteButtonClicked.toggle()
             } label: {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 158, height: 40)
@@ -49,7 +51,7 @@ struct IsPostEmptyView: View {
                 .lineSpacing(4)
                 .padding(.bottom, 28)
             Button {
-
+                examPostWriteButtonClicked.toggle()
             } label: {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 158, height: 40)
