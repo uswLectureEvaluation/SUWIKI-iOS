@@ -12,6 +12,7 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
     var fetchDetailLectureUseCase: FetchDetailLectureUseCase = DIContainer.shared.resolve(type: FetchDetailLectureUseCase.self)
     var fetchEvaluatePostUseCase: FetchEvaluatePostsUseCase = DIContainer.shared.resolve(type: FetchEvaluatePostsUseCase.self)
     var fetchExamPostUseCase: FetchExamPostsUseCase = DIContainer.shared.resolve(type: FetchExamPostsUseCase.self)
+    var purchaseExamPostUseCase: PurchaseExamPostUseCase = DIContainer.shared.resolve(type: PurchaseExamPostUseCase.self)
     var id: Int
     @Published var requestState: RequestState = .notRequest
     @Published var postType: PostType = .evaluate
@@ -23,6 +24,8 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
                                                       isWritten: false,
                                                       isExamPostsExists: false)
     @Published var evaluatePostWriteButtonClicked = false
+    @Published var examPostWriteButtonClicked = false
+    @Published var isPurchaseImpossible = false
     /// state enum 정의, isLoading -> isFinished 되었을 경우 view 띄워버리기
 
     init(id: Int) {
@@ -43,6 +46,23 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
                 print("@Log LectureEvaluationDetialVM Fetch - \(error.localizedDescription)")
                 requestState = .failed(error)
             }
+        }
+    }
+
+    func fetchExamPost() async throws {
+        let examPostInfo = try await fetchExamPostUseCase.execute(id: id, page: 1)
+        await MainActor.run {
+            self.examPosts = examPostInfo.posts
+            self.examPostInfo = examPostInfo
+        }
+    }
+
+    func purchase() async throws {
+        let success = try await purchaseExamPostUseCase.execute(id: self.id)
+        if success {
+            try await fetchExamPost()
+        } else {
+            isPurchaseImpossible.toggle()
         }
     }
 }
