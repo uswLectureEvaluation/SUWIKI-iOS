@@ -14,6 +14,7 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
     var fetchLecture: [Lecture] = []
     var searchLecture: [Lecture] = []
     @Published var lecture: [Lecture] = []
+    /// UserDefaults
     @Published var option: LectureOption = .modifiedDate {
         didSet {
             fetchPage = 1
@@ -26,7 +27,17 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
     }
     @Published var fetchPage: Int = 1
     @Published var searchPage: Int = 1
-    @Published var major: String? = nil
+    /// UserDefaults
+    @Published var major: String = "전체" {
+        didSet {
+            searchPage = 1
+            fetchPage = 1
+            Task {
+                try await fetch()
+                try await search()
+            }
+        }
+    }
     @Published var searchText: String = "" {
         didSet {
             searchPage = 1
