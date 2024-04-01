@@ -21,8 +21,8 @@ struct LectureEvaluationHomeView: View {
                     .ignoresSafeArea()
                 lectureList
             }
-            //TODO: 학과 필터링 뷰 구현 시 해당 데이터 들어와야 함. @Binding viewmodel.major
-            .navigationTitle("전체")
+            .navigationTitle(viewModel.major)
+            .navigationBarTitleDisplayMode(.large)
             .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
             .onSubmit(of: .search) {
                 Task {
@@ -46,7 +46,7 @@ struct LectureEvaluationHomeView: View {
                 print("@Login - \(appState.isLoggedIn)")
             }
             .sheet(isPresented: $viewModel.isMajorSelectSheetPresented) {
-                //TODO: 학과 필터링 뷰
+                LectureEvaluationMajorSelectView(selectedMajor: $viewModel.major)
             }
             .sheet(isPresented: $isLoginViewPresented) {
                 LoginView()
@@ -122,12 +122,12 @@ struct LectureEvaluationHomeView: View {
     var selectedMajor: some View {
         Button {
             viewModel.isMajorSelectSheetPresented.toggle()
-            KeychainManager.shared.delete(token: .AccessToken)
-            KeychainManager.shared.delete(token: .RefreshToken)
-            appState.isLoggedIn = false
+//            KeychainManager.shared.delete(token: .AccessToken)
+//            KeychainManager.shared.delete(token: .RefreshToken)
+//            appState.isLoggedIn = false
         } label: {
             Text("학과 선택하기")
-            Text("전체")
+            Text(viewModel.major)
         }
     }
 
