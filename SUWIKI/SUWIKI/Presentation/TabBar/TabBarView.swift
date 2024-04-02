@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct TabBarView: View {
+
+    let lectureEvaluationHomeView = DIContainer.shared.resolve(type: LectureEvaluationHomeView.self)
+    let appState: AppState
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            TabView {
+                TimetableWrapperView()
+                    .tabItem {
+                        Text("A")
+                    }
+                lectureEvaluationHomeView
+                    .environmentObject(appState)
+                    .tabItem {
+                        Text("B")
+                    }
+            }
+        }
+
     }
 }
 
-#Preview {
-    TabBarView()
-}
+//#Preview {
+//    TabBarView()
+//}
