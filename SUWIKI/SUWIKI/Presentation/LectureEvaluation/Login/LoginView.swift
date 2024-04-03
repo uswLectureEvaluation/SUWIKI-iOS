@@ -12,16 +12,22 @@ struct LoginView: View {
     //TODO: FocusState 내려가면 isInvaild.toggle()
     @FocusState private var focusField: LoginViewInputType?
     @StateObject var viewModel = LoginViewModel()
+    @EnvironmentObject var appState: AppState
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack {
-            title
-            ForEach(LoginViewInputType.allCases, id: \.self) { input in
-                inputViews(input)
+        ZStack {
+            Color(uiColor: .systemGray6)
+                .ignoresSafeArea()
+            VStack {
+                title
+                ForEach(LoginViewInputType.allCases, id: \.self) { input in
+                    inputViews(input)
+                }
+                Spacer()
+                buttonViews
+                loginButton
             }
-            Spacer()
-            buttonViews
-            loginButton
         }
     }
 
@@ -108,16 +114,18 @@ struct LoginView: View {
             if type != .signIn {
                 Rectangle()
                     .frame(width: 1, height: 12)
-                    .foregroundStyle(Color(uiColor: .grayF6))
+                    .foregroundStyle(Color(uiColor: .gray6A))
             }
         }
     }
 
     var loginButton: some View {
         Button {
-            /// Login API 붙히기
             Task {
-                try await viewModel.signIn()
+                if try await viewModel.signIn() {
+                    appState.isLoggedIn = true
+                    dismiss()
+                }
             }
         } label: {
             RoundedRectangle(cornerRadius: 15.0)
