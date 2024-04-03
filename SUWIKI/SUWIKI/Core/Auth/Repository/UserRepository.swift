@@ -11,7 +11,7 @@ protocol UserRepository {
     func login(
         id: String,
         password: String
-    ) async throws -> SignIn
+    ) async throws -> Bool
     func join() -> Bool
     func checkId() -> Bool
     func checkEmail() -> Bool

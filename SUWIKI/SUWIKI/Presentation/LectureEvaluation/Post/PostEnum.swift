@@ -27,6 +27,19 @@ enum DifficultyType: CaseIterable {
         }
     }
 
+    var exam: String {
+        switch self {
+        case .notSelected:
+            ""
+        case .easy:
+            "쉬움"
+        case .normal:
+            "보통"
+        case .hard:
+            "어려움"
+        }
+    }
+
     var font: UIColor {
         switch self {
         case .notSelected:
@@ -63,6 +76,19 @@ enum DifficultyType: CaseIterable {
             35
         case .hard:
             57
+        }
+    }
+
+    var examWidth: CGFloat {
+        switch self {
+        case .notSelected:
+            0
+        case .easy:
+            35
+        case .normal:
+            35
+        case .hard:
+            46
         }
     }
 
@@ -187,4 +213,37 @@ enum TeamplayType: CaseIterable {
             1
         }
     }
+}
+
+enum ExamInfoType: Hashable, CaseIterable {
+    case notSelected
+    case pastExams
+    case textbook
+    case takeNotes
+    case application
+    case practice
+    case assignment
+    case ppt
+
+    var description: String {
+        switch self {
+        case .notSelected:
+            ""
+        case .pastExams:
+            "족보"
+        case .textbook:
+            "교재"
+        case .takeNotes:
+            "필기"
+        case .application:
+            "응용"
+        case .practice:
+            "실습"
+        case .assignment:
+            "과제"
+        case .ppt:
+            "PPT"
+        }
+    }
+
 }

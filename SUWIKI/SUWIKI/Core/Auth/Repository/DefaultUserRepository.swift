@@ -9,20 +9,28 @@ import Foundation
 
 final class DefaultUserRepository: UserRepository {
 
+    let keychainManager = KeychainManager.shared
+
     func login(
         id: String,
         password: String
-    ) async throws -> SignIn {
+    ) async throws -> Bool {
         let target = APITarget.User.login(
             DTO.LoginRequest(
                 loginId: id,
                 password: password
             )
         )
-        let dtoTokens = try await APIProvider.request(
-            DTO.TokenResponse.self,
-            target: target)
-        return dtoTokens.entity
+        do {
+            let response = try await APIProvider.request(
+                DTO.TokenResponse.self,
+                target: target).entity
+            keychainManager.create(token: .AccessToken, value: response.accessToken)
+            keychainManager.create(token: .RefreshToken, value: response.accessToken)
+            return true
+        } catch {
+            return false
+        }
     }
     
     func join() -> Bool {
