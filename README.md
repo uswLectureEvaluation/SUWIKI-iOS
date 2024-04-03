@@ -64,7 +64,7 @@ ___
 
 ## 사용 기술
 - UIKit(Storyboard & Code Base), SwiftUI, SnapKit, Then, WidgetKit
-- Swift Concurrency, Actor, Combine(일부 기능 binding)
+- Swift Concurrency, Actor, Combine
 - Core Data, Firebase
 - Alamofire, JWT, Clean Architecture, MVVM
 
