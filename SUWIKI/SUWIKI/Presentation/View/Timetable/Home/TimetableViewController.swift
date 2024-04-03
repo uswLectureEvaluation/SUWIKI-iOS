@@ -14,20 +14,20 @@ import Then
 import FirebaseRemoteConfig
 
 class TimetableViewController: UIViewController, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var timetable: Elliotable!
-
+    
     private let navigationTitle = UILabel().then {
         $0.text = "SUWIKI"
         $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
     }
-
+    
     private let timetableTitleBackground = UIView().then {
         $0.layer.cornerRadius = 12.0
         $0.frame = CGRect(x: 0, y: 0, width: 0, height: 60)
         $0.backgroundColor = .white
     }
-
+    
     private let timetableTitle = UILabel().then {
         $0.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         $0.layer.masksToBounds = true
@@ -36,17 +36,17 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         $0.textAlignment = .left
         $0.textColor = .black
     }
-
+    
     private var addButton = UIBarButtonItem()
     private var listButton = UIBarButtonItem()
-
+    
     let timetableEmptyView = TimetableEmptyView()
     let initView = InitView()
-
+    
     let dayString: [String] = ["월", "화", "수", "목", "금", "이러닝"]
     var viewModel = TimetableViewModel()
     private var cancellables: Set<AnyCancellable> = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.updateTimetable()
@@ -56,7 +56,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         setupUI()
         setupNavigationBar()
     }
-
+    
     private func binding() {
         viewModel.$timetableTitle
             .receive(on: RunLoop.main)
@@ -68,10 +68,10 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
             .combineLatest(viewModel.$versionChecked)
             .receive(on: RunLoop.main)
             .sink { isEmpty, versionChecked in
-
+                
                 self.timetableEmptyView.isHidden = !isEmpty
                 self.timetable.isHidden = isEmpty
-
+                
                 if versionChecked && !isEmpty {
                     self.initView.removeFromSuperview()
                     self.navigationItem.rightBarButtonItems = [self.addButton, self.listButton]
@@ -89,7 +89,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
             }
             .store(in: &cancellables)
     }
-
+    
     func setObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadCourse),
@@ -100,7 +100,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
                                                name: Notification.Name("timetableIsEmpty"),
                                                object: nil)
     }
-
+    
     private func setupUI() {
         self.view.addSubview(timetableEmptyView)
         self.timetableEmptyView.snp.makeConstraints {
@@ -111,24 +111,24 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         }
         self.timetableEmptyView.addButton.addAction(UIAction { [weak self] _ in self?.viewModel.addTimetable() },
                                                     for: .touchUpInside)
-
+        
         self.view.addSubview(timetableTitleBackground)
         self.timetableTitleBackground.addSubview(timetableTitle)
-
+        
         self.timetableTitleBackground.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.leading.equalToSuperview().offset(15)
             $0.trailing.equalToSuperview().offset(-15)
             $0.height.equalTo(60)
         }
-
+        
         self.timetableTitle.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(timetableTitleBackground.snp.leading).offset(10)
             $0.trailing.equalTo(timetableTitleBackground.snp.trailing).offset(-10)
         }
         self.timetableTitle.text = viewModel.timetableTitle
-
+        
         //TODO: 최상위 뷰, InitView 만들기
         self.view.addSubview(initView)
         self.initView.snp.makeConstraints {
@@ -155,7 +155,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
             $0.height.equalTo(20)
         }
     }
-
+    
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.tintColor = UIColor.primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -165,19 +165,19 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         addButton = UIBarButtonItem(systemItem: .add,
                                     primaryAction: UIAction { [weak self] _ in self?.addButtonTapped() })
     }
-
+    
     @objc
     func timetableIsEmpty() {
         viewModel.timetableIsEmpty = true
     }
-
+    
     @objc
     func reloadCourse() {
         viewModel.updateCourse()
-//        timetable.reloadData()
+        //        timetable.reloadData()
     }
-
-
+    
+    
     func addButtonTapped() {
         let majorVC = UINavigationController(rootViewController: SelectMajorViewController())
         if let sheet = majorVC.sheetPresentationController {
@@ -185,23 +185,23 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         }
         self.present(majorVC, animated: true)
     }
-
+    
     func listButtonTapped() {
         let listVC = TimetableListViewController()
         listVC.delegate = self
-
+        
         let listNC = UINavigationController(rootViewController: listVC)
         if let sheet = listNC.sheetPresentationController {
             sheet.prefersGrabberVisible = true
         }
-
+        
         self.present(listNC, animated: true)
     }
-
+    
     func initTimetable() {
         timetable.delegate = self
         timetable.dataSource = self
-
+        
         timetable.elliotBackgroundColor = UIColor.white
         timetable.borderWidth = 1.0
         timetable.borderColor = .systemGray6
@@ -219,20 +219,19 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         timetable.symbolTimeFontColor = UIColor(displayP3Red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
         timetable.layer.cornerRadius = 12.0
         timetable.layer.masksToBounds = true
-
+        
         timetable.reloadData()
     }
 }
 
 extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, TimetableDelegate {
-
+    
     func updateTimetable() {
         print("@Log - Update")
         viewModel.updateCourse()
         viewModel.updateTimetable()
-//        timetable.reloadData()
     }
-
+    
     func elliotable(elliotable: Elliotable, didSelectCourse selectedCourse: ElliottEvent) {
         let actionSheet = UIAlertController(
             title: "\(selectedCourse.courseName) | \(selectedCourse.professor)",
@@ -249,23 +248,23 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, Tim
         actionSheet.addAction(UIAlertAction(title: "취소", style: .cancel))
         self.present(actionSheet, animated: true)
     }
-
+    
     func elliotable(elliotable: Elliotable, didLongSelectCourse longSelectedCourse: ElliottEvent) {
         print("@Log long select")
     }
-
+    
     func elliotable(elliotable: Elliotable, at dayPerIndex: Int) -> String {
         return dayString[dayPerIndex]
     }
-
+    
     func numberOfDays(in elliotable: Elliotable) -> Int {
         return dayString.count
     }
-
+    
     func courseItems(in elliotable: Elliotable) -> [ElliottEvent] {
         return viewModel.elliottEvent
     }
-
+    
 }
 
 protocol TimetableDelegate: AnyObject {
