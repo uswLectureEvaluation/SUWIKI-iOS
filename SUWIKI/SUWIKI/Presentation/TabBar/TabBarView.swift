@@ -8,25 +8,23 @@
 import SwiftUI
 
 struct TabBarView: View {
-
+    
     let lectureEvaluationHomeView = DIContainer.shared.resolve(type: LectureEvaluationHomeView.self)
     let appState: AppState
-
+    
     var body: some View {
-        ZStack {
-            TabView {
-                TimetableWrapperView()
-                    .tabItem {
-                        Text("A")
-                    }
-                lectureEvaluationHomeView
-                    .environmentObject(appState)
-                    .tabItem {
-                        Text("B")
-                    }
-            }
+        TabView {
+            TimetableWrapperView()
+                .ignoresSafeArea()
+                .tabItem {
+                    Text("시간표")
+                }
+            lectureEvaluationHomeView
+                .environmentObject(appState)
+                .tabItem {
+                    Text("강의평가")
+                }
         }
-
     }
 }
 
