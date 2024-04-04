@@ -11,8 +11,9 @@ import Alamofire
 
 extension APITarget {
     enum EvaluationPost: TargetType {
-        case fetchEvaluatePosts(DTO.FetchEvaluatePostRequest)
-        case writeEvaluatePost(DTO.WriteEvaluatePostRequest)
+        case fetchEvaluationPosts(DTO.FetchEvaluationPostRequest)
+        case writeEvaluationPost(DTO.WriteEvaluationPostRequest)
+        case fetchUserEvaluationPosts
     }
 }
 
@@ -23,29 +24,35 @@ extension APITarget.EvaluationPost {
 
     var method: Alamofire.HTTPMethod {
         switch self {
-        case .fetchEvaluatePosts:
+        case .fetchEvaluationPosts:
             return .get
-        case .writeEvaluatePost:
+        case .writeEvaluationPost:
             return .post
+        case .fetchUserEvaluationPosts:
+            return .get
         }
     }
 
     var path: String {
         switch self {
-        case .fetchEvaluatePosts:
+        case .fetchEvaluationPosts:
             return ""
-        case .writeEvaluatePost:
+        case .writeEvaluationPost:
             return ""
+        case .fetchUserEvaluationPosts:
+            return "/written"
         }
     }
 
     var parameters: RequestParameter {
         switch self {
-        case let .fetchEvaluatePosts(fetchEvaluatePostRequest):
+        case let .fetchEvaluationPosts(fetchEvaluatePostRequest):
             return .query(fetchEvaluatePostRequest)
-        case let .writeEvaluatePost(writeEvaluatePostRequest):
+        case let .writeEvaluationPost(writeEvaluatePostRequest):
             return .both(query: writeEvaluatePostRequest.lectureInfo,
                          json: writeEvaluatePostRequest.post)
+        case .fetchUserEvaluationPosts:
+            return .plain
         }
     }
 }
