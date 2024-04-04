@@ -15,4 +15,5 @@ protocol UserRepository {
     func join() -> Bool
     func checkId() -> Bool
     func checkEmail() -> Bool
+    func userInfo() async throws -> UserInfo
 }

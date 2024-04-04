@@ -8,5 +8,6 @@
 import Foundation
 
 protocol NoticeRepository {
-    func fetch() -> Announcement
+    func fetch() async throws -> [Announcement]
+    func fetchDetail(id: Int) async throws -> Announcement
 }
