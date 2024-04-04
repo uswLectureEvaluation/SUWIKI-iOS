@@ -6,3 +6,23 @@
 //
 
 import Foundation
+
+final class AnnouncementViewModel: ObservableObject {
+    @Inject var useCase: FetchAnnouncementUseCase
+    @Published var announcement: [Announcement] = []
+
+    init() {
+        Task {
+            try await fetch()
+        }
+    }
+
+    @MainActor
+    func fetch() async throws {
+        do {
+            self.announcement = try await useCase.execute()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
