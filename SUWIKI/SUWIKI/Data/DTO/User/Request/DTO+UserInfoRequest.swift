@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct UserInfoRequest: Encodable {
+        let authorization: String
+    }
+}

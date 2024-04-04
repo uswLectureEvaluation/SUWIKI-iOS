@@ -6,3 +6,25 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct UserInfoResponse: Decodable {
+        let loginId: String
+        let email: String
+        let point: Int
+        let writtenEvaluation: Int
+        let writtenExam: Int
+        let viewExam: Int
+    }
+}
+
+extension DTO.UserInfoResponse {
+    var entity: UserInfo {
+        UserInfo(id: loginId,
+                 email: email,
+                 point: point,
+                 writtenEvaluationPosts: writtenEvaluation,
+                 writtenExamPosts: writtenExam,
+                 purchasedExamPosts: viewExam)
+    }
+}
