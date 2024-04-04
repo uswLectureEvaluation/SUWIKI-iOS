@@ -8,7 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct FetchAnnouncementRequest: Encodable {
-        let page: Int
-    }
+//    struct FetchAnnouncementRequest: Encodable {
+//        let page: Int
+//    }
 }

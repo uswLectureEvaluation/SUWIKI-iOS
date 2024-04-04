@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct FetchDetailAnnouncementRequest: Encodable {
+        let noticeId: Int
+    }
+}

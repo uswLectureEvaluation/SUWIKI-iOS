@@ -10,8 +10,8 @@ import Foundation
 extension DTO {
     struct FetchAnnouncementResponse: Decodable {
         let announcements: [FetchAnnouncement]
-        let statusCode: String
-        let message: String
+        let statusCode: Int?
+        let message: String?
 
         enum CodingKeys: String, CodingKey {
             case announcements = "data"
@@ -29,5 +29,11 @@ extension DTO.FetchAnnouncementResponse {
         let title: String
         /// 수정
         let modifiedDate: String
+
+        var entity: Announcement {
+            Announcement(id: id,
+                         title: title,
+                         date: modifiedDate.formatDate())
+        }
     }
 }
