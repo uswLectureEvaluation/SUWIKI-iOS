@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol UserInfoUseCase {
+    func execute() async throws -> UserInfo
+}
+
+final class DefaultUserInfoUseCase: UserInfoUseCase {
+    @Inject var repository: UserRepository
+
+    func execute() async throws -> UserInfo {
+        return try await repository.userInfo()
+    }
+}
