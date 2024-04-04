@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct UserInfo {
+    let id: String
+    let email: String
+    let point: Int
+    let writtenEvaluationPosts: Int
+    let writtenExamPosts: Int
+    let purchasedExamPosts: Int
+}
