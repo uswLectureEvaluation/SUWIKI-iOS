@@ -16,6 +16,7 @@ extension APITarget {
         case checkId(DTO.CheckIdRequest)
         case checkEmail(DTO.CheckEmailRequest)
         case refresh(DTO.RefreshRequest)
+        case userInfo
     }
 }
 
@@ -36,6 +37,8 @@ extension APITarget.User {
             return .post
         case .refresh:
             return .post
+        case .userInfo:
+            return .get
         }
     }
 
@@ -51,6 +54,8 @@ extension APITarget.User {
             return "/check-email"
         case .refresh:
             return "/refresh"
+        case .userInfo:
+            return "/my-page"
         }
     }
 
@@ -77,6 +82,8 @@ extension APITarget.User {
         case let .checkEmail(checkEmailRequest):
             return .body(checkEmailRequest)
         case .refresh:
+            return .plain
+        case .userInfo:
             return .plain
         }
     }

@@ -44,4 +44,10 @@ final class DefaultUserRepository: UserRepository {
     func checkEmail() -> Bool {
         true
     }
+
+    func userInfo() async throws -> UserInfo {
+        let apiTarget = APITarget.User.userInfo
+        let value = try await APIProvider.request(DTO.UserInfoResponse.self, target: apiTarget)
+        return value.entity
+    }
 }

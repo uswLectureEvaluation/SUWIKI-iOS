@@ -8,23 +8,82 @@
 import SwiftUI
 
 struct UserInfoView: View {
+
+    @EnvironmentObject var appState: AppState
+    @State var path = NavigationPath()
+    @StateObject var viewModel = UserInfoViewModel()
+
     var body: some View {
-        ZStack {
-            Color(uiColor: .systemGray6)
-                .ignoresSafeArea()
-            VStack {
-                logoutStateButton
-                    .padding(.top, 20)
-                    .padding(.bottom, 12)
-                manageButtons
-                    .padding(.bottom, 12)
-                loginServices
-                services
-                Spacer()
+        NavigationStack(path: $path) {
+            ZStack {
+                Color(uiColor: .systemGray6)
+                    .ignoresSafeArea()
+                VStack {
+                    if viewModel.requestState == .success {
+                        if appState.isLoggedIn {
+                            loginStateButton
+                                .padding(.top, 20)
+                                .padding(.bottom, 12)
+                        } else {
+                            logoutStateButton
+                                .padding(.top, 20)
+                                .padding(.bottom, 12)
+                        }
+                        manageButtons
+                            .padding(.bottom, 12)
+                        if appState.isLoggedIn {
+                            loginServices
+                        }
+                        services
+                        Spacer()
+                    } else {
+                        ProgressView()
+                    }
+                }
             }
         }
 
 
+    }
+
+    var loginStateButton: some View {
+        Button {
+            KeychainManager.shared.delete(token: .AccessToken)
+            KeychainManager.shared.delete(token: .RefreshToken)
+        } label: {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundStyle(Color(uiColor: .white))
+                .overlay(alignment: .leading) {
+                    HStack {
+                        VStack(alignment: .leading,
+                               spacing: 4) {
+                            if let userInfo = viewModel.userInfo {
+                                Text(userInfo.id)
+                                    .font(.h3)
+                                    .tint(Color(uiColor: .black))
+                                HStack {
+                                    Image(systemName: "p.circle.fill")
+                                        .resizable()
+                                        .foregroundStyle(Color(uiColor: .systemYellow))
+                                        .frame(width: 16, height: 16)
+                                    Text("\(userInfo.point)")
+                                        .font(.b5)
+                                        .tint(Color(uiColor: .basicBlack))
+                                }
+                            }
+                        }
+                        Spacer()
+                        Text("내 글 관리")
+                            .font(.b5)
+                            .tint(.black)
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(Color(uiColor: .grayDA))
+                    }
+                    .padding(.horizontal, 16)
+                }
+        }
+        .frame(height: 86)
+        .padding(.horizontal, 24)
     }
 
     var logoutStateButton: some View {
@@ -57,8 +116,13 @@ struct UserInfoView: View {
     var manageButtons: some View {
         HStack {
             ForEach(ManageButtonType.allCases, id: \.self) { type in
-                Button {
-
+                NavigationLink {
+                    switch type {
+                    case .announcement:
+                        AnnouncementView()
+                    default:
+                        Text("hi")
+                    }
                 } label: {
                     VStack {
                         type.image
@@ -72,6 +136,11 @@ struct UserInfoView: View {
                 }
                 .frame(width: 60, height: 60)
                 .padding(.horizontal, 24)
+                //                Button {
+                //
+                //                } label: {
+                //
+                //                }
                 if type != .manageAccount {
                     Rectangle()
                         .frame(width: 1, height: 49)
@@ -86,34 +155,34 @@ struct UserInfoView: View {
     }
 
     var services: some View {
-            Section {
-                ForEach(ServiceType.allCases, id: \.self) { type in
-                    Button {
+        Section {
+            ForEach(ServiceType.allCases, id: \.self) { type in
+                Button {
 
-                    } label: {
-                        HStack {
-                            Text(type.title)
-                                .font(.b2)
-                                .foregroundStyle(Color.black)
-                            Spacer()
-                        }
-                        .frame(height: 50)
-                        .padding(.leading, 16)
+                } label: {
+                    HStack {
+                        Text(type.title)
+                            .font(.b2)
+                            .foregroundStyle(Color.black)
+                        Spacer()
                     }
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .padding(.horizontal, 24)
+                    .frame(height: 50)
+                    .padding(.leading, 16)
                 }
-            } header: {
-                HStack {
-                    Text("서비스")
-                        .font(.b5)
-                        .foregroundStyle(Color(uiColor: .gray95))
-                    Spacer()
-                }
-                .padding(.horizontal, 28)
-                .padding(.top, 12)
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal, 24)
             }
+        } header: {
+            HStack {
+                Text("서비스")
+                    .font(.b5)
+                    .foregroundStyle(Color(uiColor: .gray95))
+                Spacer()
+            }
+            .padding(.horizontal, 28)
+            .padding(.top, 12)
+        }
     }
 
     var loginServices: some View {
