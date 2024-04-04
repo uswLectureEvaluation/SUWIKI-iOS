@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol FetchDetailAnnouncementUseCase {
+    func execute(id: Int) async throws -> Announcement
+}
+
+final class DefaultFetchDetailAnnouncementUseCase: FetchDetailAnnouncementUseCase {
+    @Inject var repository: NoticeRepository
+
+    func execute(id: Int) async throws -> Announcement {
+        return try await repository.fetchDetail(id: id)
+    }
+}
