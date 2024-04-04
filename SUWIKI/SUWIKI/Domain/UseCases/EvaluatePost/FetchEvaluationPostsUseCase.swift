@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol FetchEvaluatePostsUseCase {
+protocol FetchEvaluationPostsUseCase {
     func execute(
         lectureId: Int,
         page: Int
     ) async throws -> [EvaluationPost]
 }
 
-final class DefaultFetchEvaluatePostsUseCase: FetchEvaluatePostsUseCase {
+final class DefaultFetchEvaluationPostsUseCase: FetchEvaluationPostsUseCase {
 
-    @Inject var repository: EvaluatePostRepository
+    @Inject var repository: EvaluationPostRepository
 
     func execute(
         lectureId: Int,
