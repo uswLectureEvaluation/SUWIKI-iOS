@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol WriteEvaluatePostUseCase {
+protocol WriteEvaluationPostUseCase {
     func execute(
         id: Int,
         lectureName: String,
@@ -23,7 +23,7 @@ protocol WriteEvaluatePostUseCase {
     ) async throws -> Bool
 }
 
-final class DefaultWriteEvaluatePostUseCase: WriteEvaluatePostUseCase {
+final class DefaultWriteEvaluatePostUseCase: WriteEvaluationPostUseCase {
 
     @Inject var repository: EvaluatePostRepository
 

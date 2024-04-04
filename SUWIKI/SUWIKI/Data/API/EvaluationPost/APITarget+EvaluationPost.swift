@@ -10,13 +10,13 @@ import Foundation
 import Alamofire
 
 extension APITarget {
-    enum EvaluatePost: TargetType {
+    enum EvaluationPost: TargetType {
         case fetchEvaluatePosts(DTO.FetchEvaluatePostRequest)
         case writeEvaluatePost(DTO.WriteEvaluatePostRequest)
     }
 }
 
-extension APITarget.EvaluatePost {
+extension APITarget.EvaluationPost {
     var targetURL: URL {
         URL(string: APITarget.baseURL + "evaluate-posts")!
     }

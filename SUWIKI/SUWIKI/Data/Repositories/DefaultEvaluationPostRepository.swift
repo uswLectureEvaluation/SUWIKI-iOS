@@ -7,19 +7,19 @@
 
 import Foundation
 
-final class DefaultEvaluatePostRepository: EvaluatePostRepository {
+final class DefaultEvaluationPostRepository: EvaluationPostRepository {
 
     func fetch(
         lectureId: Int,
         page: Int
-    ) async throws -> [EvaluatePost] {
-        let apiTarget = APITarget.EvaluatePost.fetchEvaluatePosts(
+    ) async throws -> [EvaluationPost] {
+        let apiTarget = APITarget.EvaluationPost.fetchEvaluationPosts(
             DTO.FetchEvaluatePostRequest(
                 lectureId: lectureId,
                 page: page
             )
         )
-        let dtoEvaluatePosts = try await APIProvider.request(DTO.FetchEvaluatePostsResponse.self,
+        let dtoEvaluatePosts = try await APIProvider.request(DTO.FetchEvaluationPostsResponse.self,
                                                              target: apiTarget)
         return dtoEvaluatePosts.posts.map { $0.entity }
     }
@@ -37,7 +37,7 @@ final class DefaultEvaluatePostRepository: EvaluatePostRepository {
         homework: Int,
         content: String
     ) async throws -> Bool {
-        let apiTarget = APITarget.EvaluatePost.writeEvaluatePost(
+        let apiTarget = APITarget.EvaluationPost.writeEvaluationPost(
             DTO.WriteEvaluatePostRequest(
                 lectureInfo: DTO.WriteEvaluatePostRequest.LectureInfo(lectureId: id),
                 post: DTO.WriteEvaluatePostRequest.Post(lectureName: lectureName,
@@ -61,4 +61,12 @@ final class DefaultEvaluatePostRepository: EvaluatePostRepository {
             return false
         }
     }
+
+    func fetchUserPosts() async throws -> [UserEvaluationPost] {
+        let apiTarget = APITarget.EvaluationPost.fetchUserEvaluationPosts
+        let value = try await APIProvider.request(DTO.FetchUserEvaluationPostsResponse.self,
+                                                  target: apiTarget)
+        return value.posts.map { $0.entity }
+    }
+
 }

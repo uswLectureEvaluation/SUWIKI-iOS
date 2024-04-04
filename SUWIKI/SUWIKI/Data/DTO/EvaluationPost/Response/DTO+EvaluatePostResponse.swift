@@ -33,8 +33,8 @@ extension DTO {
 }
 
 extension DTO.EvaluatePostResponse {
-    var entity: EvaluatePost {
-        EvaluatePost(
+    var entity: EvaluationPost {
+        EvaluationPost(
             id: id,
             selectedSemester: selectedSemester,
             totalAvarage: Double(totalAvg),

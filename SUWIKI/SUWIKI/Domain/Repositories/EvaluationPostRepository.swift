@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol EvaluatePostRepository {
+protocol EvaluationPostRepository {
     func fetch(
         lectureId: Int,
         page: Int
-    ) async throws -> [EvaluatePost]
+    ) async throws -> [EvaluationPost]
 
     func write(
         id: Int,
@@ -26,4 +26,6 @@ protocol EvaluatePostRepository {
         homework: Int,
         content: String
     ) async throws -> Bool
+
+    func fetchUserPosts() async throws -> [UserEvaluationPost]
 }
