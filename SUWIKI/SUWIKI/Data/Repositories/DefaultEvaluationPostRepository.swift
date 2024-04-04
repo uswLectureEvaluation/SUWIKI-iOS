@@ -14,7 +14,7 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
         page: Int
     ) async throws -> [EvaluationPost] {
         let apiTarget = APITarget.EvaluationPost.fetchEvaluationPosts(
-            DTO.FetchEvaluatePostRequest(
+            DTO.FetchEvaluationPostRequest(
                 lectureId: lectureId,
                 page: page
             )
@@ -38,9 +38,9 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
         content: String
     ) async throws -> Bool {
         let apiTarget = APITarget.EvaluationPost.writeEvaluationPost(
-            DTO.WriteEvaluatePostRequest(
-                lectureInfo: DTO.WriteEvaluatePostRequest.LectureInfo(lectureId: id),
-                post: DTO.WriteEvaluatePostRequest.Post(lectureName: lectureName,
+            DTO.WriteEvaluationPostRequest(
+                lectureInfo: DTO.WriteEvaluationPostRequest.LectureInfo(lectureId: id),
+                post: DTO.WriteEvaluationPostRequest.Post(lectureName: lectureName,
                                                         professor: professor,
                                                         selectedSemester: selectedSemester,
                                                         satisfaction: Float(satisfaction),
