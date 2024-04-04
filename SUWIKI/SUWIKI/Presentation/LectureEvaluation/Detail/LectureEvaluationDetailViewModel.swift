@@ -10,14 +10,14 @@ import Foundation
 // 데이터 상태에 따른 View 분기 처리
 final class LectureEvaluationDetailViewModel: ObservableObject {
     var fetchDetailLectureUseCase: FetchDetailLectureUseCase = DIContainer.shared.resolve(type: FetchDetailLectureUseCase.self)
-    var fetchEvaluatePostUseCase: FetchEvaluatePostsUseCase = DIContainer.shared.resolve(type: FetchEvaluatePostsUseCase.self)
+    var fetchEvaluatePostUseCase: FetchEvaluationPostsUseCase = DIContainer.shared.resolve(type: FetchEvaluationPostsUseCase.self)
     var fetchExamPostUseCase: FetchExamPostsUseCase = DIContainer.shared.resolve(type: FetchExamPostsUseCase.self)
     var purchaseExamPostUseCase: PurchaseExamPostUseCase = DIContainer.shared.resolve(type: PurchaseExamPostUseCase.self)
     var id: Int
     @Published var requestState: RequestState = .notRequest
     @Published var postType: PostType = .evaluate
     @Published var detailLecture: DetailLecture = DetailLecture.mockdata
-    @Published var evaluatePosts: [EvaluatePost] = []
+    @Published var evaluatePosts: [EvaluationPost] = []
     @Published var examPosts: [ExamPost] = []
     @Published var examPostInfo: ExamPostInfo = .init(posts: [], 
                                                       isPurchased: false,

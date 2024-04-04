@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct EvaluatePostView: View {
+struct EvaluationPostView: View {
 
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: EvaluatePostViewModel
+    @StateObject var viewModel: EvaluationPostViewModel
 
     init(
         id: Int,
@@ -18,7 +18,7 @@ struct EvaluatePostView: View {
         professor: String,
         semester: String
     ) {
-        self._viewModel = StateObject(wrappedValue: EvaluatePostViewModel(id: id,
+        self._viewModel = StateObject(wrappedValue: EvaluationPostViewModel(id: id,
                                                                           lectureName: lectureName,
                                                                           professor: professor,
                                                                           semester: semester))
@@ -268,7 +268,6 @@ struct EvaluatePostView: View {
                         .padding(.top, 18)
                         .padding(.leading, 40)
                 }
-
             }
     }
 
@@ -288,6 +287,7 @@ struct EvaluatePostView: View {
                 }
         }
     }
+    
 }
 
 //#Preview {

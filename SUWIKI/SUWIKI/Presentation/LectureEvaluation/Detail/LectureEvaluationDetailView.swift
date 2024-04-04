@@ -52,13 +52,16 @@ struct LectureEvaluationDetailView: View {
             }
         }
         .sheet(isPresented: $viewModel.evaluatePostWriteButtonClicked) {
-            EvaluatePostView(id: viewModel.id,
+            EvaluationPostView(id: viewModel.id,
                              lectureName: viewModel.detailLecture.name,
                              professor: viewModel.detailLecture.professor,
                              semester: viewModel.detailLecture.semester)
         }
         .sheet(isPresented: $viewModel.examPostWriteButtonClicked) {
-            
+            ExamPostView(id: viewModel.id,
+                         lectureName: viewModel.detailLecture.name,
+                         professor: viewModel.detailLecture.professor,
+                         semester: viewModel.detailLecture.semester)
         }
     }
 
@@ -67,7 +70,9 @@ struct LectureEvaluationDetailView: View {
         if !viewModel.evaluatePosts.isEmpty {
             evaluatePostList
         } else {
-            IsPostEmptyView(postType: $viewModel.postType)
+            IsPostEmptyView(postType: $viewModel.postType,
+                            evaluatePostWriteButtonClicked: $viewModel.evaluatePostWriteButtonClicked,
+                            examPostWriteButtonClicked: $viewModel.examPostWriteButtonClicked)
                 .padding(.top, 60)
         }
     }
@@ -80,20 +85,44 @@ struct LectureEvaluationDetailView: View {
                 examPostList
             } else {
                 //TODO: 시험정보 구매 버튼 구현 필요
-                ExamCell(isPurchased: false,
-                         semester: ExamPost.MockData.semester,
-                         examType: ExamPost.MockData.examType,
-                         difficulty: ExamPost.MockData.difficulty,
-                         sourceOfExam: ExamPost.MockData.sourceOfExam,
-                         content: ExamPost.MockData.content)
-                .opacity(0.5)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .padding(.horizontal, 24)
+                ZStack {
+                    ExamCell(isPurchased: false,
+                             semester: ExamPost.MockData.semester,
+                             examType: ExamPost.MockData.examType,
+                             difficulty: ExamPost.MockData.difficulty,
+                             sourceOfExam: ExamPost.MockData.sourceOfExam,
+                             content: ExamPost.MockData.content)
+                    .opacity(0.5)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .padding(.horizontal, 24)
+
+                    purchaseButton
+                }
             }
         } else {
-            IsPostEmptyView(postType: $viewModel.postType)
+            IsPostEmptyView(postType: $viewModel.postType,
+                            evaluatePostWriteButtonClicked: $viewModel.evaluatePostWriteButtonClicked,
+                            examPostWriteButtonClicked: $viewModel.examPostWriteButtonClicked)
                 .padding(.top, 60)
         }
+    }
+
+    var purchaseButton: some View {
+        Button {
+            Task {
+                try await viewModel.purchase()
+            }
+        } label: {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundStyle(Color(uiColor: .primaryColor))
+                .frame(width: 158, height: 40)
+                .overlay {
+                    Text("시험정보 확인 -10P")
+                        .font(.b4)
+                        .foregroundStyle(Color(uiColor: .white))
+                }
+        }
+
     }
 
     var postButton: some View {
@@ -106,6 +135,11 @@ struct LectureEvaluationDetailView: View {
                 Circle()
                     .frame(width: 48, height: 48)
                     .foregroundStyle(Color(uiColor: .primaryColor))
+                    .overlay {
+                        Image(systemName: "plus")
+                            .foregroundStyle(Color.white)
+                            .frame(width: 44, height: 44)
+                    }
             }
         }
         .padding(.horizontal, 20)
@@ -121,9 +155,9 @@ struct LectureEvaluationDetailView: View {
 
     var examPostWriteButton: some View {
         Button {
-            viewModel.evaluatePostWriteButtonClicked.toggle()
+            viewModel.examPostWriteButtonClicked.toggle()
         } label: {
-            Text("시험정보 작성")
+            Label("시험정보 작성", systemImage: "pencil.and.list.clipboard")
         }
     }
 

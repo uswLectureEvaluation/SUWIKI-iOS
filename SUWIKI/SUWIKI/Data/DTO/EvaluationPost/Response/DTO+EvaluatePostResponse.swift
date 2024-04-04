@@ -8,7 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct EvaluatePostResponse: Decodable {
+    struct EvaluationPostResponse: Decodable {
         /// 글 ID
         let id: Int
         /// 수강 학기
@@ -32,7 +32,7 @@ extension DTO {
     }
 }
 
-extension DTO.EvaluatePostResponse {
+extension DTO.EvaluationPostResponse {
     var entity: EvaluationPost {
         EvaluationPost(
             id: id,

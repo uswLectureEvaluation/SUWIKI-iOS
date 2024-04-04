@@ -23,9 +23,9 @@ protocol WriteEvaluationPostUseCase {
     ) async throws -> Bool
 }
 
-final class DefaultWriteEvaluatePostUseCase: WriteEvaluationPostUseCase {
+final class DefaultWriteEvaluationPostUseCase: WriteEvaluationPostUseCase {
 
-    @Inject var repository: EvaluatePostRepository
+    @Inject var repository: EvaluationPostRepository
 
     func execute(id: Int,
                  lectureName: String,

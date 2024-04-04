@@ -8,7 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct WriteEvaluatePostResponse: Decodable {
+    struct WriteEvaluationPostResponse: Decodable {
         let status: String
     }
 }

@@ -8,14 +8,14 @@
 import Foundation
 
 extension DTO {
-    struct WriteEvaluatePostRequest: Encodable {
+    struct WriteEvaluationPostRequest: Encodable {
         /// 강의 ID
         let lectureInfo: LectureInfo
         let post: Post
     }
 }
 
-extension DTO.WriteEvaluatePostRequest {
+extension DTO.WriteEvaluationPostRequest {
     struct LectureInfo: Encodable {
         let lectureId: Int
     }

@@ -8,8 +8,8 @@
 import Foundation
 
 extension DTO {
-    struct FetchEvaluatePostsResponse: Decodable {
-        let posts: [DTO.EvaluatePostResponse]
+    struct FetchEvaluationPostsResponse: Decodable {
+        let posts: [DTO.EvaluationPostResponse]
         let written: Bool
 
         enum CodingKeys: String, CodingKey {

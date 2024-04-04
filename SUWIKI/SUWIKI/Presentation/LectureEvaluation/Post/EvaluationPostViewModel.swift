@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-final class EvaluatePostViewModel: ObservableObject {
+final class EvaluationPostViewModel: ObservableObject {
 
-    var writeEvaluatePostUseCase: WriteEvaluatePostUseCase = DIContainer.shared.resolve(type: WriteEvaluatePostUseCase.self)
+    var writeEvaluationPostUseCase: WriteEvaluationPostUseCase = DIContainer.shared.resolve(type: WriteEvaluationPostUseCase.self)
     var id: Int
     var lectureName: String
     var professor: String
@@ -64,7 +64,7 @@ final class EvaluatePostViewModel: ObservableObject {
 
     func write() async throws {
         if isWriteEnabled {
-            if try await writeEvaluatePostUseCase.execute(id: self.id,
+            if try await writeEvaluationPostUseCase.execute(id: self.id,
                                                           lectureName: self.lectureName,
                                                           professor: self.professor,
                                                           selectedSemester: self.selectedSemester,

@@ -8,7 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct FetchEvaluatePostRequest: Encodable {
+    struct FetchEvaluationPostRequest: Encodable {
         /// 강의 ID
         let lectureId: Int
         /// 페이지(1...)
