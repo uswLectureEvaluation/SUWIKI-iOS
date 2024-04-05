@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-enum DifficultyType: CaseIterable {
+enum DifficultyType: Int, CaseIterable {
     case notSelected
-    case easy
-    case normal
     case hard
+    case normal
+    case easy
 
     var description: String {
         switch self {
@@ -106,7 +106,7 @@ enum DifficultyType: CaseIterable {
     }
 }
 
-enum HomeworkType: CaseIterable {
+enum HomeworkType: Int, CaseIterable {
     case notSelected
     case none
     case normal
@@ -165,7 +165,7 @@ enum HomeworkType: CaseIterable {
     }
 }
 
-enum TeamplayType: CaseIterable {
+enum TeamplayType: Int, CaseIterable {
     case notSelected
     case none
     case some
