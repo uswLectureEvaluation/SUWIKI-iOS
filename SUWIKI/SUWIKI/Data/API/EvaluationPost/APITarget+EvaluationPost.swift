@@ -13,6 +13,7 @@ extension APITarget {
     enum EvaluationPost: TargetType {
         case fetchEvaluationPosts(DTO.FetchEvaluationPostRequest)
         case writeEvaluationPost(DTO.WriteEvaluationPostRequest)
+        case updateEvaluationPost(DTO.UpdateEvaluationPostRequest)
         case fetchUserEvaluationPosts
     }
 }
@@ -30,6 +31,8 @@ extension APITarget.EvaluationPost {
             return .post
         case .fetchUserEvaluationPosts:
             return .get
+        case .updateEvaluationPost:
+            return .put
         }
     }
 
@@ -41,6 +44,8 @@ extension APITarget.EvaluationPost {
             return ""
         case .fetchUserEvaluationPosts:
             return "/written"
+        case .updateEvaluationPost:
+            return ""
         }
     }
 
@@ -53,6 +58,9 @@ extension APITarget.EvaluationPost {
                          json: writeEvaluatePostRequest.post)
         case .fetchUserEvaluationPosts:
             return .plain
+        case let .updateEvaluationPost(updateEvaluationPostRequest):
+            return .both(query: updateEvaluationPostRequest.lectureInfo,
+                         json: updateEvaluationPostRequest.post)
         }
     }
 }

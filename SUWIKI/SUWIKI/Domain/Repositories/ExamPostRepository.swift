@@ -24,5 +24,15 @@ protocol ExamPostRepository {
         content: String
     ) async throws -> Bool
 
+    func update(
+        id: Int,
+        selectedSemester: String,
+        examInfo: String,
+        examType: String,
+        examDifficulty: String,
+        content: String
+    ) async throws -> Bool
+
     func purchase(id: Int) async throws -> Bool
+    func fetchUserPosts() async throws -> [UserExamPost]
 }

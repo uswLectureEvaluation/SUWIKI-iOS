@@ -27,5 +27,19 @@ protocol EvaluationPostRepository {
         content: String
     ) async throws -> Bool
 
+    func update(
+        id: Int,
+        lectureName: String,
+        professor: String,
+        selectedSemester: String,
+        satisfaction: Double,
+        learning: Double,
+        honey: Double,
+        team: Int,
+        difficulty: Int,
+        homework: Int,
+        content: String
+    ) async throws -> Bool
+
     func fetchUserPosts() async throws -> [UserEvaluationPost]
 }

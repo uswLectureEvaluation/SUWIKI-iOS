@@ -22,14 +22,16 @@ final class DefaultExamPostRepository: ExamPostRepository {
                             isExamPostsExists: dtoExamInfo.examDataExist)
     }
 
-    func write(id: Int,
-               lectureName: String,
-               professor: String,
-               selectedSemester: String,
-               examInfo: String,
-               examType: String,
-               examDifficulty: String,
-               content: String) async throws -> Bool {
+    func write(
+        id: Int,
+        lectureName: String,
+        professor: String,
+        selectedSemester: String,
+        examInfo: String,
+        examType: String,
+        examDifficulty: String,
+        content: String
+    ) async throws -> Bool {
         let apiTarget = APITarget.ExamPost.writeExamPost(
             DTO.WriteExamPostRequest(lectureInfo: DTO.WriteExamPostRequest.LectureInfo(lectureId: id),
                                      post: DTO.WriteExamPostRequest.Post(lectureName: lectureName,
@@ -55,6 +57,39 @@ final class DefaultExamPostRepository: ExamPostRepository {
         let apiTarget = APITarget.ExamPost.purchaseExamPost(
             DTO.PurchaseExamPostRequest(lectureId: id)
         )
+        if let statusCode = try await APIProvider.request(target: apiTarget) {
+            if statusCode == 200 {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
+    func fetchUserPosts() async throws -> [UserExamPost] {
+        let apiTarget = APITarget.ExamPost.fetchUserExamPosts
+        let value = try await APIProvider.request(DTO.FetchUserExamPostsResponse.self, target: apiTarget)
+        return value.posts.map { $0.entity }
+    }
+
+    func update(
+        id: Int,
+        selectedSemester: String,
+        examInfo: String,
+        examType: String,
+        examDifficulty: String,
+        content: String
+    ) async throws -> Bool {
+        let apiTarget = APITarget
+            .ExamPost
+            .updateExamPost(DTO.UpdateExamPostRequest(lectureInfo: DTO.UpdateExamPostRequest.LectureInfo(examIdx: id),
+                                                      post: DTO.UpdateExamPostRequest.Post(selectedSemester: selectedSemester,
+                                                                                           examInfo: examInfo,
+                                                                                           examType: examType,
+                                                                                           examDifficulty: examDifficulty,
+                                                                                           content: content)))
         if let statusCode = try await APIProvider.request(target: apiTarget) {
             if statusCode == 200 {
                 return true

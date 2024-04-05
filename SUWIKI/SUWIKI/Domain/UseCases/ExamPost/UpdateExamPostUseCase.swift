@@ -6,3 +6,35 @@
 //
 
 import Foundation
+
+protocol UpdateExamPostUseCase {
+    func execute(
+        id: Int,
+        selectedSemester: String,
+        examInfo: String,
+        examType: String,
+        examDifficulty: String,
+        content: String
+    ) async throws -> Bool
+}
+
+final class DefaultUpdateExamPostUseCase: UpdateExamPostUseCase {
+
+    @Inject var repository: ExamPostRepository
+
+    func execute(
+        id: Int,
+        selectedSemester: String,
+        examInfo: String,
+        examType: String,
+        examDifficulty: String,
+        content: String
+    ) async throws -> Bool {
+        return try await repository.update(id: id,
+                                           selectedSemester: selectedSemester,
+                                           examInfo: examInfo,
+                                           examType: examType,
+                                           examDifficulty: examDifficulty,
+                                           content: content)
+    }
+}

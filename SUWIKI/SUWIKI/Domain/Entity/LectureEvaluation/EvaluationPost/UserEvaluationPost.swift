@@ -7,15 +7,18 @@
 
 import Foundation
 
-struct UserEvaluationPost {
+struct UserEvaluationPost: Identifiable, Hashable {
     /// 강의평가 ID
     let id: Int
     /// 강의 이름
     let name: String
+    /// 교수
+    let professor: String
     /// 유저 선택 학기
     let selectedSemester: String
     /// 개설학기
     let semester: String
+    /// 강의평가 종합 지수
     let lectureTotalAvg: Double
     /// 강의 평가 만족도 지수
     let lectureSatisfactionAvg: Double

@@ -31,6 +31,38 @@ struct ExamPostView: View {
                                                                       semester: semester))
     }
     
+    init(
+        id: Int,
+        lectureName: String,
+        professor: String,
+        semester: String,
+        examInfo: String,
+        examType: String,
+        examDifficulty: String,
+        content: String
+    ) {
+        var difficulty: DifficultyType = .notSelected
+        switch examDifficulty {
+        case "어려움":
+            difficulty = .hard
+        case "보통":
+            difficulty = .normal
+        case "쉬움":
+            difficulty = .easy
+        default:
+            difficulty = .notSelected
+        }
+        self._viewModel = StateObject(wrappedValue: ExamPostViewModel(id: id,
+                                                                      lectureName: lectureName,
+                                                                      professor: professor,
+                                                                      semester: semester,
+                                                                      isModified: true,
+                                                                      examInfo: examInfo,
+                                                                      examType: examType,
+                                                                      examDifficulty: difficulty,
+                                                                      content: content))
+    }
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Color(uiColor: .systemGray6)
@@ -214,7 +246,15 @@ struct ExamPostView: View {
     var postButton: some View {
         Button {
             Task {
-                try await viewModel.write()
+                var isFinished = false
+                if viewModel.isModified {
+                    isFinished = try await viewModel.update()
+                } else {
+                    isFinished = try await viewModel.write()
+                }
+                if isFinished {
+                    dismiss()
+                }
             }
         } label: {
             RoundedRectangle(cornerRadius: 15)

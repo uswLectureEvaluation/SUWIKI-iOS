@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct EvaluationPostView: View {
-
+    
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: EvaluationPostViewModel
-
+    
     init(
         id: Int,
         lectureName: String,
@@ -19,9 +19,39 @@ struct EvaluationPostView: View {
         semester: String
     ) {
         self._viewModel = StateObject(wrappedValue: EvaluationPostViewModel(id: id,
-                                                                          lectureName: lectureName,
-                                                                          professor: professor,
-                                                                          semester: semester))
+                                                                            lectureName: lectureName,
+                                                                            professor: professor,
+                                                                            semester: semester))
+    }
+
+    init(
+        id: Int,
+        lectureName: String,
+        professor: String,
+        semester: String,
+        isModified: Bool,
+        honeyPoint: Double,
+        learningPoint: Double,
+        satisfactionPoint: Double,
+        difficultyType: DifficultyType,
+        homeworkType: HomeworkType,
+        teamplayType: TeamplayType,
+        content: String,
+        averagePoint: Double
+    ) {
+        self._viewModel = StateObject(wrappedValue: EvaluationPostViewModel(id: id,
+                                                                            lectureName: lectureName,
+                                                                            professor: professor,
+                                                                            semester: semester,
+                                                                            isModified: isModified,
+                                                                            honeyPoint: honeyPoint,
+                                                                            learningPoint: learningPoint,
+                                                                            satisfactionPoint: satisfactionPoint,
+                                                                            difficultyType: difficultyType,
+                                                                            homeworkType: homeworkType,
+                                                                            teamplayType: teamplayType,
+                                                                            content: content,
+                                                                            averagePoint: averagePoint))
     }
 
     var body: some View {
@@ -64,7 +94,7 @@ struct EvaluationPostView: View {
             Text("한 강의에 하나의 강의평가만 남길 수 있어요!")
         }
     }
-
+    
     var closeButton: some View {
         ZStack {
             Text("강의평가")
@@ -81,7 +111,7 @@ struct EvaluationPostView: View {
             .padding(.horizontal, 24)
         }
     }
-
+    
     var semesterAndAverageView: some View {
         HStack(spacing: 0) {
             Picker("", selection: $viewModel.selectedSemester) {
@@ -102,7 +132,7 @@ struct EvaluationPostView: View {
         .padding(.leading, 12)
         .padding(.trailing, 24)
     }
-
+    
     var honeyView: some View {
         HStack(spacing: 0) {
             Text("꿀강지수")
@@ -117,7 +147,7 @@ struct EvaluationPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var learningView: some View {
         HStack(spacing: 0) {
             Text("배움지수")
@@ -132,7 +162,7 @@ struct EvaluationPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var satisfactionView: some View {
         HStack(spacing: 0) {
             HStack {
@@ -141,7 +171,7 @@ struct EvaluationPostView: View {
                 Spacer()
             }
             .frame(width: 58, height: 21)
-
+            
             Slider(value: $viewModel.satisfactionPoint, in: 0...5, step: 0.5)
                 .padding(.leading, 12)
                 .padding(.trailing, 4)
@@ -151,7 +181,7 @@ struct EvaluationPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var difficultyView: some View {
         HStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -184,7 +214,7 @@ struct EvaluationPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var homeworkView: some View {
         HStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -217,7 +247,7 @@ struct EvaluationPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var teamplayView: some View {
         HStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -250,7 +280,7 @@ struct EvaluationPostView: View {
         }
         .padding(.horizontal, 24)
     }
-
+    
     var contentView: some View {
         RoundedRectangle(cornerRadius: 10)
             .foregroundStyle(Color(uiColor: .white))
@@ -270,11 +300,19 @@ struct EvaluationPostView: View {
                 }
             }
     }
-
+    
     var postButton: some View {
         Button {
             Task {
-                try await viewModel.write()
+                var isFinished = false
+                if viewModel.isModified {
+                    isFinished = try await viewModel.update()
+                } else {
+                    isFinished = try await viewModel.write()
+                }
+                if isFinished {
+                    dismiss()
+                }
             }
         } label: {
             RoundedRectangle(cornerRadius: 15)

@@ -12,6 +12,12 @@ extension DTO {
         let posts: [UserEvaluationPostResponse]
         let statusCode: Int?
         let message: String?
+
+        enum CodingKeys: String, CodingKey {
+            case posts = "data"
+            case statusCode
+            case message
+        }
     }
 }
 
@@ -22,7 +28,7 @@ extension DTO.FetchUserEvaluationPostsResponse {
         let professor: String
         let majorType: String
         let selectedSemester: String
-        let semester: String
+        let semesterList: String
         let totalAvg: Double
         let satisfaction: Double
         let learning: Double
@@ -35,8 +41,9 @@ extension DTO.FetchUserEvaluationPostsResponse {
         var entity: UserEvaluationPost {
             UserEvaluationPost(id: id,
                                name: lectureName,
+                               professor: professor,
                                selectedSemester: selectedSemester,
-                               semester: semester,
+                               semester: semesterList,
                                lectureTotalAvg: totalAvg,
                                lectureSatisfactionAvg: satisfaction,
                                lectureHoneyAvg: honey,

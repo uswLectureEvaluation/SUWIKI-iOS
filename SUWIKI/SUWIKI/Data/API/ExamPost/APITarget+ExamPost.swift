@@ -14,6 +14,8 @@ extension APITarget {
         case fetchExamPosts(DTO.FetchExamPostsRequest)
         case writeExamPost(DTO.WriteExamPostRequest)
         case purchaseExamPost(DTO.PurchaseExamPostRequest)
+        case fetchUserExamPosts
+        case updateExamPost(DTO.UpdateExamPostRequest)
     }
 }
 
@@ -30,6 +32,10 @@ extension APITarget.ExamPost {
             return .post
         case .purchaseExamPost:
             return .post
+        case .fetchUserExamPosts:
+            return .get
+        case .updateExamPost:
+            return .put
         }
     }
 
@@ -41,6 +47,10 @@ extension APITarget.ExamPost {
             ""
         case .purchaseExamPost:
             "/purchase"
+        case .fetchUserExamPosts:
+            "/written"
+        case .updateExamPost:
+            ""
         }
     }
 
@@ -53,6 +63,11 @@ extension APITarget.ExamPost {
                          json: writeExamPost.post)
         case let .purchaseExamPost(purchaseExamPost):
             return .query(purchaseExamPost)
+        case .fetchUserExamPosts:
+            return .plain
+        case let .updateExamPost(updateExamPostRequest):
+            return .both(query: updateExamPostRequest.lectureInfo,
+                         json: updateExamPostRequest.post)
         }
     }
 }
