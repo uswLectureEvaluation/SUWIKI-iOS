@@ -20,7 +20,6 @@ class APIProvider {
             .request(target)
             .serializingDecodable()
             .value
-        /// response()로 수정해야 함
     }
 
     static func request(target: TargetType) async throws -> Int? {
