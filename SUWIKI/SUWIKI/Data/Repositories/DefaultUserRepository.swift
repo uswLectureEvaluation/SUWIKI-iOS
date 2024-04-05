@@ -26,7 +26,7 @@ final class DefaultUserRepository: UserRepository {
                 DTO.TokenResponse.self,
                 target: target).entity
             keychainManager.create(token: .AccessToken, value: response.accessToken)
-            keychainManager.create(token: .RefreshToken, value: response.accessToken)
+            keychainManager.create(token: .RefreshToken, value: response.refreshToken)
             return true
         } catch {
             return false
