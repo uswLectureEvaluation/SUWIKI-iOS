@@ -24,6 +24,11 @@ struct TabBarView: View {
                 .tabItem {
                     Text("강의평가")
                 }
+            UserInfoView()
+                .environmentObject(appState)
+                .tabItem {
+                    Text("내 정보")
+                }
         }
     }
 }
