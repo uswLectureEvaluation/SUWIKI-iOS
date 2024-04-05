@@ -11,7 +11,8 @@ import Alamofire
 
 extension APITarget {
     enum Notice: TargetType {
-        case fetchAnnouncements(DTO.FetchAnnouncementRequest)
+        case fetchAnnouncements
+        case fetchDetailAnnouncement(DTO.FetchDetailAnnouncementRequest)
     }
 }
 
@@ -24,6 +25,8 @@ extension APITarget.Notice {
         switch self {
         case .fetchAnnouncements:
             return .get
+        case .fetchDetailAnnouncement:
+            return .get
         }
     }
 
@@ -31,13 +34,17 @@ extension APITarget.Notice {
         switch self {
         case .fetchAnnouncements:
             "/all"
+        case .fetchDetailAnnouncement:
+            ""
         }
     }
 
     var parameters: RequestParameter {
         switch self {
-        case let .fetchAnnouncements(fetchAnnouncementRequest):
-            return .query(fetchAnnouncementRequest)
+        case .fetchAnnouncements:
+            return .plain
+        case let .fetchDetailAnnouncement(fetchDetailAnnouncementRequest):
+            return .query(fetchDetailAnnouncementRequest)
         }
     }
 }
