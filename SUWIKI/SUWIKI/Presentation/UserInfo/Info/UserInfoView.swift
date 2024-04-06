@@ -41,15 +41,19 @@ struct UserInfoView: View {
                     }
                 }
             }
+            .onAppear {
+                Task {
+                    try await viewModel.getUserInfo()
+                }
+            }
         }
 
 
     }
 
     var loginStateButton: some View {
-        Button {
-            KeychainManager.shared.delete(token: .AccessToken)
-            KeychainManager.shared.delete(token: .RefreshToken)
+        NavigationLink {
+            UserPostView()
         } label: {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(Color(uiColor: .white))
@@ -120,6 +124,8 @@ struct UserInfoView: View {
                     switch type {
                     case .announcement:
                         AnnouncementView()
+                    case .manageAccount:
+                        ManageAccountView()
                     default:
                         Text("hi")
                     }
@@ -136,11 +142,6 @@ struct UserInfoView: View {
                 }
                 .frame(width: 60, height: 60)
                 .padding(.horizontal, 24)
-                //                Button {
-                //
-                //                } label: {
-                //
-                //                }
                 if type != .manageAccount {
                     Rectangle()
                         .frame(width: 1, height: 49)
@@ -157,6 +158,7 @@ struct UserInfoView: View {
     var services: some View {
         Section {
             ForEach(ServiceType.allCases, id: \.self) { type in
+
                 Button {
 
                 } label: {
