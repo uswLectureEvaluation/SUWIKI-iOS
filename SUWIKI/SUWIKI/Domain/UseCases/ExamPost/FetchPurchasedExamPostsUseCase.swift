@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol FetchPurchasedExamPostsUseCase {
+    func execute() async throws -> [PurchasedPost]
+}
+
+final class DefaultFetchPurchasedExamPostsUseCase: FetchPurchasedExamPostsUseCase {
+    @Inject var repository: ExamPostRepository
+
+    func execute() async throws -> [PurchasedPost] {
+        return try await repository.fetchPurchasedExamPosts()
+    }
+}
