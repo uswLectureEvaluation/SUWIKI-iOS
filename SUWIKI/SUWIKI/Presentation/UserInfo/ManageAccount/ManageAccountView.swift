@@ -70,7 +70,7 @@ struct ManageAccountView: View {
 
     var changePasswordButton: some View {
         NavigationLink {
-            Text("hi")
+            ChangePasswordView()
         } label: {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(.white)
