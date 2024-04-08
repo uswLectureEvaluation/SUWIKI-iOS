@@ -73,6 +73,10 @@ struct AppEnvironment {
         container.register(type: UpdateEvaluationPostUseCase.self, DefaultUpdateEvaluationPostUseCase())
         /// 시험정보 수정
         container.register(type: UpdateExamPostUseCase.self, DefaultUpdateExamPostUseCase())
+        /// 비밀번호 변경
+        container.register(type: ChangePasswordUseCase.self, DefaultChangePasswordUseCase())
+        /// 시험정보 구매 목록
+        container.register(type: FetchPurchasedExamPostsUseCase.self, DefaultFetchPurchasedExamPostsUseCase())
     }
 
     func registerViewModels() {
