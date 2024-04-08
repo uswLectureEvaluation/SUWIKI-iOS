@@ -8,14 +8,20 @@
 import Foundation
 
 class AppState: ObservableObject {
-    @Published var isLoggedIn: Bool
-
+    @Published var isLoggedIn: Bool = false
+    @Inject var repository: UserRepository
     init() {
         if KeychainManager.shared.read(token: .AccessToken) != nil &&
             KeychainManager.shared.read(token: .RefreshToken) != nil {
-            self.isLoggedIn = true
-        } else {
-            self.isLoggedIn = false
+            Task {
+                do {
+                    let _ = try await repository.userInfo()
+                    self.isLoggedIn = true
+                } catch {
+                    KeychainManager.shared.delete(token: .AccessToken)
+                    KeychainManager.shared.delete(token: .RefreshToken)
+                }
+            }
         }
     }
 }
