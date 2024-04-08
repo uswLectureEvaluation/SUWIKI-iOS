@@ -100,4 +100,11 @@ final class DefaultExamPostRepository: ExamPostRepository {
             return false
         }
     }
+
+    func fetchPurchasedExamPosts() async throws -> [PurchasedPost] {
+        let apiTarget = APITarget.ExamPost.fetchPurchasedExamPosts
+        let value = try await APIProvider.request(DTO.FetchPurchasedExamPostsResponse.self,
+                                        target: apiTarget)
+        return value.posts.map { $0.entity }
+    }
 }

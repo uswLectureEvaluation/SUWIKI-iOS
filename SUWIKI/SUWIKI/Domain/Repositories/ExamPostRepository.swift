@@ -35,4 +35,5 @@ protocol ExamPostRepository {
 
     func purchase(id: Int) async throws -> Bool
     func fetchUserPosts() async throws -> [UserExamPost]
+    func fetchPurchasedExamPosts() async throws -> [PurchasedPost]
 }
