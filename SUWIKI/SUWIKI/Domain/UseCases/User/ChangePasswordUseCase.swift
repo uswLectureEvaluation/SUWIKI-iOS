@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+protocol ChangePasswordUseCase {
+    func execute(
+        current: String,
+        new: String
+    ) async throws -> Bool
+}
+
+final class DefaultChangePasswordUseCase: ChangePasswordUseCase {
+    @Inject var repository: UserRepository
+
+    func execute(
+        current: String,
+        new: String
+    ) async throws -> Bool {
+        return try await repository.changePassword(current: current, new: new)
+    }
+}
