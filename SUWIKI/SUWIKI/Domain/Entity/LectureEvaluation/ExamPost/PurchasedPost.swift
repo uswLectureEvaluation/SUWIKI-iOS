@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct PurchasedPost: Identifiable {
+    let id: Int
+    let name: String
+    let date: String
+}
