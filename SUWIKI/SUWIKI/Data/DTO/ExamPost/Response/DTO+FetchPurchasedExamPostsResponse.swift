@@ -8,8 +8,8 @@
 import Foundation
 
 extension DTO {
-    struct PurchasedExamPostsResponse: Decodable {
-        let posts: [String]
+    struct FetchPurchasedExamPostsResponse: Decodable {
+        let posts: [PurchasedExamPosts]
         let statusCode: Int?
         let message: String?
 
@@ -21,12 +21,18 @@ extension DTO {
     }
 }
 
-extension DTO.PurchasedExamPostsResponse {
+extension DTO.FetchPurchasedExamPostsResponse {
     struct PurchasedExamPosts: Decodable {
         let id: Int
         let professor: String
         let lectureName: String
         let majorType: String
         let createDate: String
+
+        var entity: PurchasedPost {
+            PurchasedPost(id: id,
+                          name: lectureName,
+                          date: createDate.formatDate())
+        }
     }
 }

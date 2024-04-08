@@ -8,7 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct ResetPasswordRequest: Encodable {
+    struct ChangePasswordRequest: Encodable {
         let prePassword: String
         let newPassword: String
     }
