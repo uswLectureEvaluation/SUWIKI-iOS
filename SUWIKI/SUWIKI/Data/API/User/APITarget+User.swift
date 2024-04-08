@@ -17,6 +17,7 @@ extension APITarget {
         case checkEmail(DTO.CheckEmailRequest)
         case refresh(DTO.RefreshRequest)
         case userInfo
+        case changePassword(DTO.ChangePasswordRequest)
     }
 }
 
@@ -39,6 +40,8 @@ extension APITarget.User {
             return .post
         case .userInfo:
             return .get
+        case .changePassword:
+            return .post
         }
     }
 
@@ -56,20 +59,10 @@ extension APITarget.User {
             return "/refresh"
         case .userInfo:
             return "/my-page"
+        case .changePassword:
+            return "/reset-pw"
         }
     }
-
-//    var headers: [String: String]? {
-//        switch self {
-//        case let .refresh(refreshRequest):
-//            return [
-//                "Content-Type": "application/json",
-//                "Authorization": "\(refreshRequest.authorization)"
-//            ]
-//        default:
-//            return ["Content-Type": "application/json"]
-//        }
-//    }
 
     var parameters: RequestParameter {
         switch self {
@@ -85,6 +78,8 @@ extension APITarget.User {
             return .plain
         case .userInfo:
             return .plain
+        case let .changePassword(changePasswordRequest):
+            return .body(changePasswordRequest)
         }
     }
 }
