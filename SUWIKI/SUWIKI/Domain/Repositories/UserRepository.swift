@@ -16,4 +16,8 @@ protocol UserRepository {
     func checkId() -> Bool
     func checkEmail() -> Bool
     func userInfo() async throws -> UserInfo
+    func changePassword(
+        current: String, 
+        new: String
+    ) async throws -> Bool
 }

@@ -8,9 +8,9 @@
 import Foundation
 
 final class DefaultUserRepository: UserRepository {
-
+    
     let keychainManager = KeychainManager.shared
-
+    
     func login(
         id: String,
         password: String
@@ -44,10 +44,33 @@ final class DefaultUserRepository: UserRepository {
     func checkEmail() -> Bool {
         true
     }
-
+    
     func userInfo() async throws -> UserInfo {
         let apiTarget = APITarget.User.userInfo
         let value = try await APIProvider.request(DTO.UserInfoResponse.self, target: apiTarget)
         return value.entity
+    }
+    
+    func changePassword(
+        current: String,
+        new: String
+    ) async throws -> Bool {
+        let apiTarget = APITarget
+            .User
+            .changePassword(
+                DTO.ChangePasswordRequest(
+                    prePassword: current,
+                    newPassword: new
+                )
+            )
+        if let statusCode = try await APIProvider.request(target: apiTarget) {
+            if statusCode == 200 {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
     }
 }
