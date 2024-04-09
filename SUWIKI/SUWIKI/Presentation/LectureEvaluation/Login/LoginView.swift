@@ -16,28 +16,24 @@ struct LoginView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        ZStack {
-            Color(uiColor: .systemGray6)
-                .ignoresSafeArea()
-            VStack {
-                title
-                ForEach(LoginViewInputType.allCases, id: \.self) { input in
-                    inputViews(input)
+        NavigationView {
+            ZStack {
+                Color(uiColor: .systemGray6)
+                    .ignoresSafeArea()
+                VStack {
+                    ForEach(LoginViewInputType.allCases, id: \.self) { input in
+                        inputViews(input)
+                    }
+                    Spacer()
+                    buttonViews
+                    loginButton
                 }
-                Spacer()
-                buttonViews
-                loginButton
             }
+            .navigationTitle("SUWIKI")
         }
     }
 
-    var title: some View {
-        Text("로그인")
-            .font(.h1)
-            .padding(.top, 60)
-    }
-
-    func inputViews(
+    private func inputViews(
         _ type: LoginViewInputType
     ) -> some View {
         VStack {
@@ -92,7 +88,7 @@ struct LoginView: View {
         .padding(.horizontal, 24)
     }
 
-    var buttonViews: some View {
+    private var buttonViews: some View {
         HStack {
             ForEach(LoginViewButtonType.allCases, id: \.self) { type in
                 buttons(type)
@@ -100,18 +96,25 @@ struct LoginView: View {
         }
     }
 
-    func buttons(
+    private func buttons(
         _ type: LoginViewButtonType
     ) -> some View {
         HStack {
-            Button {
-                print(type)
+            NavigationLink {
+                switch type {
+                case .findId:
+                    Text("Hio")
+                case .findPassword:
+                    Text("Hio")
+                case .signUp:
+                    SignUpView()
+                }
             } label: {
                 Text(type.title)
                     .font(.b5)
-                    .foregroundStyle(Color(uiColor: type == .signIn ? .primaryColor : .gray6A))
+                    .foregroundStyle(Color(uiColor: type == .signUp ? .primaryColor : .gray6A))
             }
-            if type != .signIn {
+            if type != .signUp {
                 Rectangle()
                     .frame(width: 1, height: 12)
                     .foregroundStyle(Color(uiColor: .gray6A))
@@ -119,7 +122,7 @@ struct LoginView: View {
         }
     }
 
-    var loginButton: some View {
+    private var loginButton: some View {
         Button {
             Task {
                 if try await viewModel.signIn() {
@@ -152,7 +155,7 @@ enum LoginViewInputType: CaseIterable {
 enum LoginViewButtonType: CaseIterable {
     case findId
     case findPassword
-    case signIn
+    case signUp
 
     var title: String {
         switch self {
@@ -160,7 +163,7 @@ enum LoginViewButtonType: CaseIterable {
             "아이디 찾기"
         case .findPassword:
             "비밀번호 찾기"
-        case .signIn:
+        case .signUp:
             "회원가입"
         }
     }
