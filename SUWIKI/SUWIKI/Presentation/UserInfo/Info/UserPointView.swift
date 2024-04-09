@@ -24,17 +24,32 @@ struct UserPointView: View {
         "· 강의평가/시험정보 삭제 : -30p"
     ]
 
-    init()
+    @StateObject var viewModel: UserPointViewModel
+
+    init(userInfo: UserInfo) {
+        self._viewModel = StateObject(
+            wrappedValue:
+                UserPointViewModel(point: userInfo.point,
+                                   writtenEvaluationPosts: userInfo.writtenEvaluationPosts,
+                                   writtenExamPosts: userInfo.writtenExamPosts,
+                                   purchasedExamPosts: userInfo.purchasedExamPosts)
+        )
+    }
 
     var body: some View {
         ZStack {
+            Color(uiColor: .systemGray6)
+                .ignoresSafeArea()
             ScrollView {
                 title
                     .padding(.bottom, 8)
-                pointView("현재 포인트", "180p")
-                pointView("작성한 강의평가(\(16))", "+160p")
-                pointView("작성한 시험정보(\(1))", "+20p")
-                pointView("시험정보 열람(\(3))", "-180p")
+                pointView("현재 포인트", "\(viewModel.point)p")
+                pointView("작성한 강의평가(\(viewModel.writtenEvaluationPosts))",
+                          "+\(viewModel.writtenEvaluationPosts * 10)p")
+                pointView("작성한 시험정보(\(viewModel.writtenExamPosts))",
+                          "+\(viewModel.writtenEvaluationPosts * 20)p")
+                pointView("시험정보 열람(\(viewModel.purchasedExamPosts))",
+                          "-\(viewModel.purchasedExamPosts * 20)p")
                 descriptionView
                     .padding(.top, 16)
                     .padding(.bottom, 16)
@@ -117,13 +132,13 @@ struct UserPointView: View {
 
     private var purchasedList: some View {
         VStack {
-            ForEach(descriptions.indices, id: \.self) { index in
+            ForEach(viewModel.purchasedPosts, id: \.self) { post in
                 HStack {
-                    Text("2022.03.04")
+                    Text(post.date)
                         .font(.c1)
                         .foregroundStyle(Color(uiColor: .gray95))
                     Spacer()
-                    Text("창업마케팅")
+                    Text(post.name)
                         .font(.b5)
                 }
                 .padding(.horizontal, 24)
@@ -133,8 +148,4 @@ struct UserPointView: View {
             .padding(.top, 6)
         }
     }
-}
-
-#Preview {
-    UserPointView()
 }
