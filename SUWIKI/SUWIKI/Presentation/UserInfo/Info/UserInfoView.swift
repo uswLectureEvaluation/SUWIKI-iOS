@@ -189,23 +189,25 @@ struct UserInfoView: View {
 
     var loginServices: some View {
         Section {
-            ForEach(UserInfoType.allCases, id: \.self) { type in
-                Button {
-
-                } label: {
-                    HStack {
-                        Text(type.title)
-                            .font(.b2)
-                            .foregroundStyle(Color.black)
-                        Spacer()
-                    }
-                    .frame(height: 50)
-                    .padding(.leading, 16)
+            NavigationLink {
+                if let userInfo = viewModel.userInfo {
+                    UserPointView(userInfo: userInfo)
+                } else {
+                    Text("다시 로그인하세요")
                 }
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .padding(.horizontal, 24)
+            } label: {
+                HStack {
+                    Text("내 포인트")
+                        .font(.b2)
+                        .foregroundStyle(Color.black)
+                    Spacer()
+                }
+                .frame(height: 50)
+                .padding(.leading, 16)
             }
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.horizontal, 24)
         } header: {
             HStack {
                 Text("MY")
@@ -215,10 +217,9 @@ struct UserInfoView: View {
             }
             .padding(.horizontal, 28)
         }
-
     }
+    
 }
-
-#Preview {
-    UserInfoView()
-}
+    #Preview {
+        UserInfoView()
+    }
