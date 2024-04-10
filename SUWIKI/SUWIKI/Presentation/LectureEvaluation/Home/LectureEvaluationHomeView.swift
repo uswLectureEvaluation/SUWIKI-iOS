@@ -24,6 +24,13 @@ struct LectureEvaluationHomeView: View {
             .navigationTitle(viewModel.major)
             .navigationBarTitleDisplayMode(.large)
             .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .refreshable {
+                Task {
+                    viewModel.fetchPage = 1
+                    viewModel.searchPage = 1
+                    try await viewModel.fetch()
+                }
+            }
             .onSubmit(of: .search) {
                 Task {
                     try await viewModel.search()
