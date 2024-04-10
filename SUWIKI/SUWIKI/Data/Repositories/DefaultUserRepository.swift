@@ -33,18 +33,44 @@ final class DefaultUserRepository: UserRepository {
         }
     }
     
-    func join() -> Bool {
-        true
+    func join(
+        id: String,
+        password: String,
+        email: String
+    ) async throws -> Bool {
+        let apiTarget = APITarget.User.join(
+            DTO.JoinRequest(loginId: id,
+                            password: password,
+                            email: email)
+        )
+        return try await APIProvider.request(target: apiTarget)
     }
-    
-    func checkId() -> Bool {
-        true
+
+    func findId(email: String) async throws -> Bool {
+        let apiTarget = APITarget.User.findId(DTO.FindIdRequest(email: email))
+        return try await APIProvider.request(target: apiTarget)
     }
-    
-    func checkEmail() -> Bool {
-        true
+
+    func findPassword(
+        id: String,
+        email: String
+    ) async throws -> Bool {
+        let apiTarget = APITarget.User.findPassword(DTO.FindPasswordRequest(loginId: id, email: email))
+        return try await APIProvider.request(target: apiTarget)
     }
-    
+
+    func checkDuplicatedId(id: String) async throws -> Bool {
+        let apiTarget = APITarget.User.checkDuplicatedId(DTO.CheckDuplicatedIdRequest(loginId: id))
+        let value = try await APIProvider.request(DTO.CheckDuplicatedIdResponse.self, target: apiTarget)
+        return value.overlap
+    }
+
+    func checkDuplicatedEmail(email: String) async throws -> Bool {
+        let apiTarget = APITarget.User.checkDuplicatedEmail(DTO.CheckDuplicatedEmailRequest(email: email))
+        let value = try await APIProvider.request(DTO.CheckDuplicatedEmailResponse.self, target: apiTarget)
+        return value.overlap
+    }
+
     func userInfo() async throws -> UserInfo {
         let apiTarget = APITarget.User.userInfo
         let value = try await APIProvider.request(DTO.UserInfoResponse.self, target: apiTarget)
@@ -63,14 +89,10 @@ final class DefaultUserRepository: UserRepository {
                     newPassword: new
                 )
             )
-        if let statusCode = try await APIProvider.request(target: apiTarget) {
-            if statusCode == 200 {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+        return try await APIProvider.request(target: apiTarget)
     }
+//
+//    func fetchRestrictionList() async throws -> [Restriction] {
+//        <#code#>
+//    }
 }

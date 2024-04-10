@@ -12,12 +12,22 @@ protocol UserRepository {
         id: String,
         password: String
     ) async throws -> Bool
-    func join() -> Bool
-    func checkId() -> Bool
-    func checkEmail() -> Bool
+    func join(
+        id: String,
+        password: String,
+        email: String
+    ) async throws -> Bool
+    func checkDuplicatedId(id: String) async throws -> Bool
+    func checkDuplicatedEmail(email: String) async throws -> Bool
+    func findId(email: String) async throws -> Bool
+    func findPassword(
+        id: String,
+        email: String
+    ) async throws -> Bool
     func userInfo() async throws -> UserInfo
     func changePassword(
         current: String, 
         new: String
     ) async throws -> Bool
+
 }
