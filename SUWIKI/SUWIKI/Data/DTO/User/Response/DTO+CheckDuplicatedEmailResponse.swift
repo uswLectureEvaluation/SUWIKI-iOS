@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct CheckDuplicatedEmailResponse: Decodable {
+        let overlap: Bool
+    }
+}

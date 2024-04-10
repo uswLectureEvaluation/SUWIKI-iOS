@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct CheckDuplicatedIdResponse: Decodable {
+        let overlap: Bool
+    }
+}

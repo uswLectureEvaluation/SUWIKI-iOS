@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct FindIdRequest: Encodable {
+        let email: String
+    }
+}

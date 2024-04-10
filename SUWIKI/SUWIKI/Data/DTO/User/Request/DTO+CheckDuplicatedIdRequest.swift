@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct CheckDuplicatedIdRequest: Encodable {
+        let loginId: String
+    }
+}

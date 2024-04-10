@@ -1,5 +1,5 @@
 //
-//  DTO+CehckDuplicatedEmailRequest.swift
+//  DTO+CheckDuplicatedEmailRequest.swift
 //  SUWIKI
 //
 //  Created by 한지석 on 4/10/24.
@@ -8,5 +8,7 @@
 import Foundation
 
 extension DTO {
-    struct 
+    struct CheckDuplicatedEmailRequest: Encodable {
+        let email: String
+    }
 }

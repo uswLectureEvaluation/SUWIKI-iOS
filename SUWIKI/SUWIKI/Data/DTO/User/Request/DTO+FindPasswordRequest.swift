@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct FindPasswordRequest: Encodable {
+        let loginId: String
+        let email: String
+    }
+}
