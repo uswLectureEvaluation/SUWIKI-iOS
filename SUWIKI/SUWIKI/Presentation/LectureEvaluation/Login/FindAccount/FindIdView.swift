@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct FindIDView: View {
-    
-    @FocusState private var focusField: FindIDInputType?
-    @State var id: String = ""
-    
+struct FindIdView: View {
+
+    @FocusState private var focusField: FindIdInputType?
+    @StateObject var viewModel = FindIdViewModel()
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         ZStack {
             Color(uiColor: .systemGray6)
@@ -19,10 +20,19 @@ struct FindIDView: View {
             VStack {
                 emailInputView
                 Spacer()
-                findIDButton
+                findIdButton
             }
         }
-
+        .alert("계정을 확인해주세요!", isPresented: $viewModel.isFindIdFailure) {
+            Button("확인") { }
+        } message: {
+            Text("해당 계정을 찾을 수 없습니다.")
+        }
+        .alert("이메일이 발송되었습니다.", isPresented: $viewModel.isFindIdSuccess) {
+            Button("확인") { dismiss() }
+        } message: {
+            Text("이메일 수신함을 확인해주세요.")
+        }
         .navigationTitle("아이디 찾기")
         .navigationBarTitleDisplayMode(.large)
     }
@@ -33,11 +43,13 @@ struct FindIDView: View {
             HStack {
                 Text("학교 이메일")
                     .font(.c2)
-                    .foregroundStyle(focusField == .email ? Color(uiColor: .primaryColor) : Color(uiColor: .gray95))
+                    .foregroundStyle(focusField == .email ? 
+                                     (viewModel.isEmailVaild ? Color(uiColor: .primaryColor) : Color(uiColor: .red))
+                                     : Color(uiColor: .gray95))
                 Spacer()
             }
             HStack {
-                TextField("@suwon.ac.kr", text: $id)
+                TextField("@suwon.ac.kr", text: $viewModel.email)
                     .focused($focusField, equals: .email)
                 if focusField == .email {
                     Button {
@@ -51,9 +63,11 @@ struct FindIDView: View {
             }
             Rectangle()
                 .frame(height: 1)
-                .foregroundStyle(focusField == .email ? Color(uiColor: .primaryColor) : Color(uiColor: .gray95))
+                .foregroundStyle(focusField == .email ?
+                                 (viewModel.isEmailVaild ? Color(uiColor: .primaryColor) : Color(uiColor: .red))
+                                 : Color(uiColor: .gray95))
                 .padding(.top, 4)
-            if focusField == .email {
+            if focusField == .email && !viewModel.isEmailVaild {
                 HStack {
                     Text("올바른 형식의 수원대학교 이메일을 입력해주세요.")
                         .font(.c4)
@@ -81,9 +95,11 @@ struct FindIDView: View {
         .padding(.horizontal, 24)
     }
 
-    private var findIDButton: some View {
+    private var findIdButton: some View {
         Button {
-//            viewModel.signUpStateChange()
+            Task {
+                try await viewModel.findId()
+            }
         } label: {
             RoundedRectangle(cornerRadius: 15.0)
                 .frame(height: 50)
@@ -93,16 +109,12 @@ struct FindIDView: View {
                         .foregroundStyle(Color(uiColor: .white))
                 }
         }
-//        .disabled(!viewModel.isNextButtonEnabled)
+        .disabled(!viewModel.isEmailVaild)
         .padding(.horizontal, 24)
         .padding(.bottom, 24)
     }
 }
 
-enum FindIDInputType {
+enum FindIdInputType {
     case email
-}
-
-#Preview {
-    FindIDView()
 }
