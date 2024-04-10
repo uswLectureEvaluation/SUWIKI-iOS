@@ -103,9 +103,9 @@ struct LoginView: View {
             NavigationLink {
                 switch type {
                 case .findId:
-                    Text("Hio")
+                    FindIdView()
                 case .findPassword:
-                    Text("Hio")
+                    FindPasswordView()
                 case .signUp:
                     SignUpView()
                 }

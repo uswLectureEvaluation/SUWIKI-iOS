@@ -10,7 +10,7 @@ import Combine
 
 final class LoginViewModel: ObservableObject {
 
-    @Inject var respository: UserRepository
+    @Inject var useCase: SignInUseCase
 
     @Published var id: String = "" {
         didSet {
@@ -46,7 +46,7 @@ final class LoginViewModel: ObservableObject {
     /// 로그인에 실패했을 경우 catch문을 통해 isInvalid 프로퍼티를 true, UI 피드백을 진행합니다.
     func signIn() async throws -> Bool {
         do {
-            return try await self.respository.login(id: self.id, password: self.password)
+            return try await self.useCase.excute(id: self.id, password: self.password)
         } catch {
             isInvalid = true
             return false
