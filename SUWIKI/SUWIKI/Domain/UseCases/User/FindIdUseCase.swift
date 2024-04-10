@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol FindIdUseCase {
+    func execute(email: String) async throws -> Bool
+}
+
+final class DefaultFindIdUseCase: FindIdUseCase {
+    @Inject var repository: UserRepository
+
+    func execute(email: String) async throws -> Bool {
+        return try await repository.findId(email: email)
+    }
+}

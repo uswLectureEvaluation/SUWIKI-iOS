@@ -6,3 +6,23 @@
 //
 
 import Foundation
+
+protocol SignUpUseCase {
+    func execute(
+        id: String,
+        password: String,
+        email: String
+    ) async throws -> Bool
+}
+
+final class DefaultSignUpUseCase: SignUpUseCase {
+    @Inject var repository: UserRepository
+
+    func execute(
+        id: String, 
+        password: String,
+        email: String
+    ) async throws -> Bool {
+        return try await repository.join(id: id, password: password, email: email)
+    }
+}

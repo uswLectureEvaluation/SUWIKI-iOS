@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol CheckDuplicatedIdUseCase {
+    func execute(id: String) async throws -> Bool
+}
+
+final class DefaultCheckDuplicatedIdUseCase: CheckDuplicatedIdUseCase {
+
+    @Inject var repository: UserRepository
+
+    func execute(id: String) async throws -> Bool {
+        return try await repository.checkDuplicatedId(id: id)
+    }
+}

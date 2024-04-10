@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+protocol CheckDuplicatedEmailUseCase {
+    func execute(email: String) async throws -> Bool
+}
+
+final class DefaultCheckDuplicatedEmailUseCase: CheckDuplicatedEmailUseCase {
+
+    @Inject var repository: UserRepository
+
+    func execute(email: String) async throws -> Bool {
+        return try await repository.checkDuplicatedEmail(email: email)
+    }
+}
