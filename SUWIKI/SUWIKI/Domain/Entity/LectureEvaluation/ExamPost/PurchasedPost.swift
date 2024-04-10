@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PurchasedPost: Identifiable {
+struct PurchasedPost: Identifiable, Hashable {
     let id: Int
     let name: String
     let date: String
