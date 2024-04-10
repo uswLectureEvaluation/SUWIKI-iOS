@@ -39,18 +39,19 @@ extension SignUpView {
                                  (viewModel.isEmailAvailabled ? Color(uiColor: .primaryColor) : Color(uiColor: .red))
                                  : Color(uiColor: .gray95))
                 .padding(.top, 4)
-            HStack {
-                if focusField == .email {
+            if focusField == .email {
+                HStack {
                     Text(viewModel.isEmailVaild ?
                          (viewModel.isEmailAvailabled ? "" : "중복된 이메일입니다.")
                          : SignUpInputType.email.warning)
                     .font(.c4)
                     .foregroundStyle(Color.red)
                     .frame(height: 18)
+                    Spacer()
                 }
-                Spacer()
+                .frame(height: 18)
             }
-            .frame(height: 18)
+
             HStack {
                 Text("웹메일이 휴먼 상태인지 확인해주세요.")
                     .font(.b5)
@@ -68,7 +69,7 @@ extension SignUpView {
         .padding(.top, 30)
         .padding(.horizontal, 24)
     }
-
+    
     var emailAndBackButton: some View {
         HStack {
             Button {
