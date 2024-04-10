@@ -33,7 +33,7 @@ struct ChangePasswordView: View {
                                  $viewModel.isPasswordMatched,
                                  $viewModel.isCheckPasswordVisible)
                 Spacer()
-                loginButton
+                changePasswordButton
             }
         }
 
@@ -45,7 +45,7 @@ struct ChangePasswordView: View {
         }
     }
 
-    func inputViews(
+    private func inputViews(
         _ type: ChangePasswordInputType,
         _ password: Binding<String>,
         _ visible: Binding<Bool>
@@ -95,7 +95,7 @@ struct ChangePasswordView: View {
         .padding(.horizontal, 24)
     }
 
-    func newPasswordInput(
+    private func newPasswordInput(
         _ type: ChangePasswordInputType,
         _ password: Binding<String>,
         _ isVaild: Binding<Bool>,
@@ -116,7 +116,7 @@ struct ChangePasswordView: View {
                     TextField(type.subtitle, text: password)
                         .focused($focusField, equals: type)
                 } else {
-                    SecureField("비밀번호를 입력하세요",text: password)
+                    SecureField("비밀번호를 입력하세요", text: password)
                         .focused($focusField, equals: type)
                 }
                 if focusField == type {
@@ -155,7 +155,7 @@ struct ChangePasswordView: View {
         .padding(.horizontal, 24)
     }
 
-    var loginButton: some View {
+    private var changePasswordButton: some View {
         Button {
             Task {
                 if try await viewModel.changePassword() {

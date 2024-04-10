@@ -39,7 +39,7 @@ final class ChangePasswordViewModel: ObservableObject {
             .debounce(for: 0.1, scheduler: RunLoop.main)
             .sink { [weak self] newPassword, checkPassword in
                 guard let self = self else { return }
-                self.isPasswordVaild = newPassword.isVaild()
+                self.isPasswordVaild = newPassword.isPasswordVaild()
                 self.updateButtonState()
             }
             .store(in: &cancellables)
