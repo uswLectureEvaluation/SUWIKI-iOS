@@ -42,30 +42,14 @@ final class DefaultExamPostRepository: ExamPostRepository {
                                                                          examDifficulty: examDifficulty,
                                                                          content: content))
         )
-        if let statusCode = try await APIProvider.request(target: apiTarget) {
-            if statusCode == 200 {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+        return try await APIProvider.request(target: apiTarget)
     }
 
     func purchase(id: Int) async throws -> Bool {
         let apiTarget = APITarget.ExamPost.purchaseExamPost(
             DTO.PurchaseExamPostRequest(lectureId: id)
         )
-        if let statusCode = try await APIProvider.request(target: apiTarget) {
-            if statusCode == 200 {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+        return try await APIProvider.request(target: apiTarget)
     }
 
     func fetchUserPosts() async throws -> [UserExamPost] {
@@ -90,21 +74,13 @@ final class DefaultExamPostRepository: ExamPostRepository {
                                                                                            examType: examType,
                                                                                            examDifficulty: examDifficulty,
                                                                                            content: content)))
-        if let statusCode = try await APIProvider.request(target: apiTarget) {
-            if statusCode == 200 {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+        return try await APIProvider.request(target: apiTarget)
     }
 
     func fetchPurchasedExamPosts() async throws -> [PurchasedPost] {
         let apiTarget = APITarget.ExamPost.fetchPurchasedExamPosts
         let value = try await APIProvider.request(DTO.FetchPurchasedExamPostsResponse.self,
                                         target: apiTarget)
-        return value.posts.map { $0.entity }
+        return value.posts.map { $0.entity }.reversed()
     }
 }

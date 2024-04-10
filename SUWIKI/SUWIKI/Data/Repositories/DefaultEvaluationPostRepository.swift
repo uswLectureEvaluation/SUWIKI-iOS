@@ -51,15 +51,7 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
                                                           homework: homework,
                                                           content: content))
         )
-        if let statusCode = try await APIProvider.request(target: apiTarget) {
-            if statusCode == 200 {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+        return try await APIProvider.request(target: apiTarget)
     }
 
     func fetchUserPosts() async throws -> [UserEvaluationPost] {
@@ -94,15 +86,7 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
                                                                                            difficulty: difficulty,
                                                                                            homework: homework,
                                                                                            content: content)))
-        if let statusCode = try await APIProvider.request(target: apiTarget) {
-            if statusCode == 200 {
-                return true
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+        return try await APIProvider.request(target: apiTarget)
     }
 
 }

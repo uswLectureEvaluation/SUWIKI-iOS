@@ -22,7 +22,7 @@ class APIProvider {
             .value
     }
 
-    static func request(target: TargetType) async throws -> Int? {
+    static func request(target: TargetType) async throws -> Bool {
         let dataRequest = await AlamofireManager
             .shared
             .session
@@ -30,7 +30,11 @@ class APIProvider {
             .serializingData()
             .response
         let statusCode = dataRequest.response?.statusCode
-        return statusCode
+        if statusCode == 200 {
+            return true
+        } else {
+            return false
+        }
     }
 
     static func requestRefreshToken<T: Decodable>(
