@@ -13,8 +13,10 @@ extension APITarget {
     enum User: TargetType {
         case login(DTO.LoginRequest)
         case join(DTO.JoinRequest)
-        case checkId(DTO.CheckIdRequest)
-        case checkEmail(DTO.CheckEmailRequest)
+        case findId(DTO.FindIdRequest)
+        case findPassword(DTO.FindPasswordRequest)
+        case checkDuplicatedId(DTO.CheckDuplicatedIdRequest)
+        case checkDuplicatedEmail(DTO.CheckDuplicatedEmailRequest)
         case refresh(DTO.RefreshRequest)
         case userInfo
         case changePassword(DTO.ChangePasswordRequest)
@@ -32,9 +34,13 @@ extension APITarget.User {
             return .post
         case .join:
             return .post
-        case .checkId:
+        case .findId:
             return .post
-        case .checkEmail:
+        case .findPassword:
+            return .post
+        case .checkDuplicatedId:
+            return .post
+        case .checkDuplicatedEmail:
             return .post
         case .refresh:
             return .post
@@ -51,9 +57,13 @@ extension APITarget.User {
             return "/login"
         case .join:
             return "/join"
-        case .checkId:
+        case .findId:
+            return "/find-id"
+        case .findPassword:
+            return "/find-pw"
+        case .checkDuplicatedId:
             return "/check-id"
-        case .checkEmail:
+        case .checkDuplicatedEmail:
             return "/check-email"
         case .refresh:
             return "/refresh"
@@ -70,10 +80,14 @@ extension APITarget.User {
             return .body(loginRequest)
         case let .join(joinRequest):
             return .body(joinRequest)
-        case let .checkId(checkIdRequest):
-            return .body(checkIdRequest)
-        case let .checkEmail(checkEmailRequest):
-            return .body(checkEmailRequest)
+        case let .findId(findIdRequest):
+            return .body(findIdRequest)
+        case let .findPassword(findPasswordRequest):
+            return .body(findPasswordRequest)
+        case let .checkDuplicatedId(checkDuplicatedIdRequest):
+            return .body(checkDuplicatedIdRequest)
+        case let .checkDuplicatedEmail(checkDuplicatedEmailRequest):
+            return .body(checkDuplicatedEmailRequest)
         case .refresh:
             return .plain
         case .userInfo:
