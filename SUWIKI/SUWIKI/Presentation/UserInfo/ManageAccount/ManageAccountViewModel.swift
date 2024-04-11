@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+final class ManageAccountViewModel: ObservableObject {
+
+    @Published var isLogoutButtonTapped = false
+
+    let userInfo: UserInfo
+
+    init(userInfo: UserInfo) {
+        self.userInfo = userInfo
+    }
+
+    func logout() {
+        KeychainManager.shared.delete(token: .AccessToken)
+        KeychainManager.shared.delete(token: .RefreshToken)
+    }
+
+}
