@@ -63,11 +63,21 @@ struct LectureEvaluationDetailView: View {
                          professor: viewModel.detailLecture.professor,
                          semester: viewModel.detailLecture.semester)
         }
+        .alert("이미 강의평가를 작성했어요.", isPresented: $viewModel.isEvaluationWritten) {
+            Button("확인") { }
+        } message: {
+            Text("한 강의에 하나의 강의평가만 남길 수 있어요!")
+        }
+        .alert("이미 시험정보를 작성했어요.", isPresented: $viewModel.isExamWritten) {
+            Button("확인") { }
+        } message: {
+            Text("한 강의에 하나의 시험정보만 남길 수 있어요!")
+        }
     }
 
     @ViewBuilder
     func evaluatePost() -> some View {
-        if !viewModel.evaluatePosts.isEmpty {
+        if !viewModel.evaluation.posts.isEmpty {
             evaluatePostList
         } else {
             IsPostEmptyView(postType: $viewModel.postType,
@@ -80,8 +90,8 @@ struct LectureEvaluationDetailView: View {
 
     @ViewBuilder
     func examPost() -> some View{
-        if viewModel.examPostInfo.isExamPostsExists {
-            if viewModel.examPostInfo.isPurchased {
+        if viewModel.exam.isExamPostsExists {
+            if viewModel.exam.isPurchased {
                 examPostList
             } else {
                 //TODO: 시험정보 구매 버튼 구현 필요
@@ -147,7 +157,11 @@ struct LectureEvaluationDetailView: View {
 
     var evaluatePostWriteButton: some View {
         Button {
-            viewModel.evaluatePostWriteButtonClicked.toggle()
+            if viewModel.evaluation.written {
+                viewModel.isEvaluationWritten.toggle()
+            } else {
+                viewModel.evaluatePostWriteButtonClicked.toggle()
+            }
         } label: {
             Label("강의평가 작성", systemImage: "pencil.and.list.clipboard")
         }
@@ -155,7 +169,11 @@ struct LectureEvaluationDetailView: View {
 
     var examPostWriteButton: some View {
         Button {
-            viewModel.examPostWriteButtonClicked.toggle()
+            if viewModel.exam.isWritten {
+                viewModel.isExamWritten.toggle()
+            } else {
+                viewModel.examPostWriteButtonClicked.toggle()
+            }
         } label: {
             Label("시험정보 작성", systemImage: "pencil.and.list.clipboard")
         }
@@ -185,8 +203,8 @@ struct LectureEvaluationDetailView: View {
 
     var examPostList: some View {
         List {
-            ForEach(viewModel.examPosts, id: \.id) { post in
-                ExamCell(isPurchased: viewModel.examPostInfo.isPurchased,
+            ForEach(viewModel.exam.posts, id: \.id) { post in
+                ExamCell(isPurchased: viewModel.exam.isPurchased,
                          semester: post.semester,
                          examType: post.examType,
                          difficulty: post.difficulty,
@@ -208,7 +226,7 @@ struct LectureEvaluationDetailView: View {
     // 얘네 코드 줄이기
     var evaluatePostList: some View {
         List {
-            ForEach(viewModel.evaluatePosts, id: \.id) { post in
+            ForEach(viewModel.evaluation.posts, id: \.id) { post in
                 EvaluateCell(semester: post.selectedSemester,
                              totalAvg: post.totalAvarage,
                              content: post.content)

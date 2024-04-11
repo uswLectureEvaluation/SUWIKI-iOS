@@ -17,15 +17,17 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
     @Published var requestState: RequestState = .notRequest
     @Published var postType: PostType = .evaluate
     @Published var detailLecture: DetailLecture = DetailLecture.mockdata
-    @Published var evaluatePosts: [EvaluationPost] = []
-    @Published var examPosts: [ExamPost] = []
-    @Published var examPostInfo: ExamPostInfo = .init(posts: [], 
-                                                      isPurchased: false,
-                                                      isWritten: false,
-                                                      isExamPostsExists: false)
+    @Published var evaluation: Evaluation = .init(written: false,
+                                                  posts: [])
+    @Published var exam: Exam = .init(posts: [],
+                                      isPurchased: false,
+                                      isWritten: false,
+                                      isExamPostsExists: false)
     @Published var evaluatePostWriteButtonClicked = false
     @Published var examPostWriteButtonClicked = false
     @Published var isPurchaseImpossible = false
+    @Published var isEvaluationWritten = false
+    @Published var isExamWritten = false
     /// state enum 정의, isLoading -> isFinished 되었을 경우 view 띄워버리기
 
     init(id: Int) {
@@ -33,13 +35,12 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
         Task {
             do {
                 let detailLecture = try await fetchDetailLectureUseCase.excute(id: id)
-                let evaluatePosts = try await fetchEvaluatePostUseCase.execute(lectureId: id, page: 1)
-                let examPostInfo = try await fetchExamPostUseCase.execute(id: id, page: 1)
+                let fetchEvaluation = try await fetchEvaluatePostUseCase.execute(lectureId: id, page: 1)
+                let fetchExam = try await fetchExamPostUseCase.execute(id: id, page: 1)
                 await MainActor.run {
                     self.detailLecture = detailLecture
-                    self.evaluatePosts = evaluatePosts
-                    self.examPosts = examPostInfo.posts
-                    self.examPostInfo = examPostInfo
+                    self.evaluation = fetchEvaluation
+                    self.exam = fetchExam
                     requestState = .success
                 }
             } catch {
@@ -50,10 +51,9 @@ final class LectureEvaluationDetailViewModel: ObservableObject {
     }
 
     func fetchExamPost() async throws {
-        let examPostInfo = try await fetchExamPostUseCase.execute(id: id, page: 1)
+        let fetchExam = try await fetchExamPostUseCase.execute(id: id, page: 1)
         await MainActor.run {
-            self.examPosts = examPostInfo.posts
-            self.examPostInfo = examPostInfo
+            self.exam = fetchExam
         }
     }
 
