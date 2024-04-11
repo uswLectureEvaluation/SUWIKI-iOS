@@ -20,6 +20,7 @@ extension APITarget {
         case refresh(DTO.RefreshRequest)
         case userInfo
         case changePassword(DTO.ChangePasswordRequest)
+        case withDraw(DTO.WithDrawUserRequest)
     }
 }
 
@@ -48,6 +49,8 @@ extension APITarget.User {
             return .get
         case .changePassword:
             return .post
+        case .withDraw:
+            return .post
         }
     }
 
@@ -71,6 +74,8 @@ extension APITarget.User {
             return "/my-page"
         case .changePassword:
             return "/reset-pw"
+        case .withDraw:
+            return "/quit"
         }
     }
 
@@ -94,6 +99,8 @@ extension APITarget.User {
             return .plain
         case let .changePassword(changePasswordRequest):
             return .body(changePasswordRequest)
+        case let .withDraw(withDrawRequest):
+            return .body(withDrawRequest)
         }
     }
 }
