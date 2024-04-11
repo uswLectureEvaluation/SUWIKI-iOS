@@ -11,7 +11,6 @@ struct LectureEvaluationHomeView: View {
 
     @EnvironmentObject var appState: AppState
     @StateObject var viewModel = LectureEvaluationHomeViewModel()
-    @State var isLoginViewPresented = false
     @State var path = NavigationPath()
 
     var body: some View {
@@ -55,7 +54,7 @@ struct LectureEvaluationHomeView: View {
             .sheet(isPresented: $viewModel.isMajorSelectSheetPresented) {
                 LectureEvaluationMajorSelectView(selectedMajor: $viewModel.major)
             }
-            .sheet(isPresented: $isLoginViewPresented) {
+            .sheet(isPresented: $viewModel.isLoginViewPresented) {
                 LoginView()
             }
         }
@@ -81,7 +80,7 @@ struct LectureEvaluationHomeView: View {
                             if appState.isLoggedIn {
                                 path.append(lecture)
                             } else {
-                                isLoginViewPresented.toggle()
+                                viewModel.isLoginViewPresented.toggle()
                             }
                         }
                 }

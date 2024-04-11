@@ -14,6 +14,7 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
     var fetchLecture: [Lecture] = []
     var searchLecture: [Lecture] = []
     @Published var lecture: [Lecture] = []
+    
     /// UserDefaults
     @Published var option: LectureOption = .modifiedDate {
         didSet {
@@ -46,7 +47,8 @@ final class LectureEvaluationHomeViewModel: ObservableObject {
             }
         }
     }
-    @Published var isMajorSelectSheetPresented: Bool = false
+    @Published var isMajorSelectSheetPresented = false
+    @Published var isLoginViewPresented = false
     @Published var isLoggedOut = false
 
     init() {
