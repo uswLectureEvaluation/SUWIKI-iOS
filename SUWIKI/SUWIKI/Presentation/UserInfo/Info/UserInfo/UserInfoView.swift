@@ -29,8 +29,12 @@ struct UserInfoView: View {
                                 .padding(.top, 20)
                                 .padding(.bottom, 12)
                         }
-                        manageButtons
-                            .padding(.bottom, 12)
+                        HStack {
+                            navigationLinkButtons(type: .announcement)
+                            linkButton(type: .inquire)
+                            navigationLinkButtons(type: .manageAccount)
+                        }
+                        .padding(.bottom, 12)
                         if appState.isLoggedIn {
                             loginServices
                         }
@@ -46,9 +50,16 @@ struct UserInfoView: View {
                     try await viewModel.getUserInfo()
                 }
             }
+            .sheet(isPresented: $viewModel.isLoginViewPresented, onDismiss: {
+                if appState.isLoggedIn {
+                    Task {
+                        try await viewModel.getUserInfo()
+                    }
+                }
+            }) {
+                LoginView()
+            }
         }
-
-
     }
 
     var loginStateButton: some View {
@@ -92,7 +103,7 @@ struct UserInfoView: View {
 
     var logoutStateButton: some View {
         Button {
-
+            viewModel.isLoginViewPresented.toggle()
         } label: {
             RoundedRectangle(cornerRadius: 10)
                 .foregroundStyle(Color(uiColor: .white))
@@ -117,40 +128,56 @@ struct UserInfoView: View {
         .padding(.horizontal, 24)
     }
 
-    var manageButtons: some View {
+    func linkButton(type: ManageButtonType) -> some View {
         HStack {
-            ForEach(ManageButtonType.allCases, id: \.self) { type in
-                NavigationLink {
-                    switch type {
-                    case .announcement:
-                        AnnouncementView()
-                    case .manageAccount:
-                        if let userInfo = viewModel.userInfo {
-                            ManageAccountView(userInfo: userInfo)
-                        } else {
-                            LoginView()
-                        }
-                    default:
-                        Text("hi")
-                    }
-                } label: {
-                    VStack {
-                        type.image
-                            .resizable()
-                            .frame(width: 18, height: 18)
-                            .padding(.bottom, 4)
-                        Text(type.title)
-                            .font(.c2)
-                            .tint(.black)
+            Link(destination: URL(string: "https://alike-pump-ae3.notion.site/SUWIKI-2cd58468e90b404fbd3e30b8b2c0b699")!) {
+                VStack {
+                    type.image
+                        .resizable()
+                        .frame(width: 18, height: 18)
+                        .padding(.bottom, 4)
+                    Text(type.title)
+                        .font(.c2)
+                        .tint(.black)
+                }
+            }
+            .frame(width: 60, height: 60)
+            .padding(.horizontal, 24)
+            Rectangle()
+                .frame(width: 1, height: 49)
+                .foregroundStyle(Color(uiColor: .grayCB))
+        }
+    }
+
+    func navigationLinkButtons(type: ManageButtonType) -> some View {
+        HStack {
+            NavigationLink {
+                if type == .announcement {
+                    AnnouncementView()
+                } else {
+                    if let userInfo = viewModel.userInfo {
+                        ManageAccountView(userInfo: userInfo)
+                    } else {
+                        LoginView()
                     }
                 }
-                .frame(width: 60, height: 60)
-                .padding(.horizontal, 24)
-                if type != .manageAccount {
-                    Rectangle()
-                        .frame(width: 1, height: 49)
-                        .foregroundStyle(Color(uiColor: .grayCB))
+            } label: {
+                VStack {
+                    type.image
+                        .resizable()
+                        .frame(width: 18, height: 18)
+                        .padding(.bottom, 4)
+                    Text(type.title)
+                        .font(.c2)
+                        .tint(.black)
                 }
+            }
+            .frame(width: 60, height: 60)
+            .padding(.horizontal, 24)
+            if type == .announcement {
+                Rectangle()
+                    .frame(width: 1, height: 49)
+                    .foregroundStyle(Color(uiColor: .grayCB))
             }
         }
     }
@@ -162,10 +189,7 @@ struct UserInfoView: View {
     var services: some View {
         Section {
             ForEach(ServiceType.allCases, id: \.self) { type in
-
-                Button {
-
-                } label: {
+                Link(destination: type.url) {
                     HStack {
                         Text(type.title)
                             .font(.b2)
@@ -222,8 +246,8 @@ struct UserInfoView: View {
             .padding(.horizontal, 28)
         }
     }
-    
+
 }
-    #Preview {
-        UserInfoView()
-    }
+#Preview {
+    UserInfoView()
+}
