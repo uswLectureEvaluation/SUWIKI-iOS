@@ -8,9 +8,11 @@
 import Foundation
 
 final class UserInfoViewModel: ObservableObject {
+
     @Inject var userInfoUseCase: UserInfoUseCase
     @Published var userInfo: UserInfo? = nil
     @Published var requestState: RequestState = .notRequest
+    @Published var isLoginViewPresented = false
 
     init() {
         self.requestState = .isProgress
@@ -21,10 +23,11 @@ final class UserInfoViewModel: ObservableObject {
 
     @MainActor
     func getUserInfo() async throws {
+        self.requestState = .isProgress
         do {
             self.userInfo = try await userInfoUseCase.execute()
         } catch {
-
+            self.userInfo = nil
         }
         self.requestState = .success
     }
