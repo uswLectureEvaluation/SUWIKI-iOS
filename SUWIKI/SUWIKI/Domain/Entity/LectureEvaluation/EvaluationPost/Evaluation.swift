@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct Evaluation {
+    let written: Bool
+    let posts: [EvaluationPost]
+}
+
 struct EvaluationPost: Identifiable {
     let id: Int
     let selectedSemester: String

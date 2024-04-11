@@ -37,8 +37,6 @@ struct AnnouncementView: View {
             }
         }
     }
-
-
 }
 
 #Preview {

@@ -21,7 +21,11 @@ final class UserInfoViewModel: ObservableObject {
 
     @MainActor
     func getUserInfo() async throws {
-        self.userInfo = try await userInfoUseCase.execute()
+        do {
+            self.userInfo = try await userInfoUseCase.execute()
+        } catch {
+
+        }
         self.requestState = .success
     }
 }

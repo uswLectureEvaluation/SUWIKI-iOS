@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExamPostInfo {
+struct Exam {
     let posts: [ExamPost]
     let isPurchased: Bool
     let isWritten: Bool

@@ -125,7 +125,11 @@ struct UserInfoView: View {
                     case .announcement:
                         AnnouncementView()
                     case .manageAccount:
-                        ManageAccountView()
+                        if let userInfo = viewModel.userInfo {
+                            ManageAccountView(userInfo: userInfo)
+                        } else {
+                            LoginView()
+                        }
                     default:
                         Text("hi")
                     }

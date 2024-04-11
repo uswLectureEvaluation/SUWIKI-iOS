@@ -1,18 +1,18 @@
 //
-//  LogoutView.swift
+//  WithDrawAccountView.swift
 //  SUWIKI
 //
-//  Created by 한지석 on 4/3/24.
+//  Created by 한지석 on 4/11/24.
 //
 
 import SwiftUI
 
-struct LogoutView: View {
+struct WithDrawAccountView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    LogoutView()
+    WithDrawAccountView()
 }
