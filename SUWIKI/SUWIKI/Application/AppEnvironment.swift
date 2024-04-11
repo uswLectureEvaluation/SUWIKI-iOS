@@ -41,8 +41,8 @@ struct AppEnvironment {
         container.register(type: FetchLectureUseCase.self, DefaultFetchLectureUseCase())
         /// 강의평가 검색
         container.register(type: SearchLectureUseCase.self, DefaultSearchLectureUseCase())
-        /// 회원가입
-//        container.register(type: SignInUseCase.self, DefaultSignInUseCase())
+        /// 로그인
+        container.register(type: SignInUseCase.self, DefaultSignInUseCase())
         /// 토큰 생성
         container.register(type: CreateTokenUseCase.self, DefaultCreateTokenUseCase())
         /// 토큰 읽기
@@ -77,6 +77,18 @@ struct AppEnvironment {
         container.register(type: ChangePasswordUseCase.self, DefaultChangePasswordUseCase())
         /// 시험정보 구매 목록
         container.register(type: FetchPurchasedExamPostsUseCase.self, DefaultFetchPurchasedExamPostsUseCase())
+        /// 아이디 중복 확인
+        container.register(type: CheckDuplicatedIdUseCase.self, DefaultCheckDuplicatedIdUseCase())
+        /// 이메일 중복 확인
+        container.register(type: CheckDuplicatedEmailUseCase.self, DefaultCheckDuplicatedEmailUseCase())
+        /// 회원가입
+        container.register(type: SignUpUseCase.self, DefaultSignUpUseCase())
+        /// 아이디 찾기
+        container.register(type: FindIdUseCase.self, DefaultFindIdUseCase())
+        /// 비밀번호 찾기
+        container.register(type: FindPasswordUseCase.self, DefaultFindPasswordUseCase())
+        /// 회원탈퇴
+        container.register(type: WithDrawUseCase.self, DefaultWithDrawUseCase())
     }
 
     func registerViewModels() {
