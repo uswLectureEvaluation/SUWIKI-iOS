@@ -76,6 +76,15 @@ struct LoginView: View {
                                 .frame(width: 18, height: 18)
                         }
                     }
+                    if focusField == type {
+                        Button {
+                            viewModel.password = ""
+                        } label: {
+                            Image(systemName: "x.circle.fill")
+                                .foregroundStyle(Color(uiColor: .gray95))
+                                .frame(width: 18, height: 18)
+                        }
+                    }
                 }
             }
             Rectangle()
