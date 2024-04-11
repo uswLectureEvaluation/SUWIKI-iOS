@@ -25,7 +25,7 @@ extension SignUpView {
 
     var successButtons: some View {
         VStack {
-            Link(destination: URL(string: "https://portal.suwon.ac.kr/enview/index.html")!) {
+            Link(destination: URL(string: "https://mail.suwon.ac.kr/index.jsp")!) {
                 RoundedRectangle(cornerRadius: 15.0)
                     .frame(height: 50)
                     .overlay {
