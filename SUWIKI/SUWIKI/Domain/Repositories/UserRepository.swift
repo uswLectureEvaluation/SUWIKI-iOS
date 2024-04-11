@@ -29,5 +29,8 @@ protocol UserRepository {
         current: String, 
         new: String
     ) async throws -> Bool
-
+    func withDraw(
+        id: String, 
+        password: String
+    ) async throws -> Bool
 }

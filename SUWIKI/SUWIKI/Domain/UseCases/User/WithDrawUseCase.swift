@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol WithDrawUseCase {
+    func execute(id: String, password: String) async throws -> Bool
+}
+
+final class DefaultWithDrawUseCase: WithDrawUseCase {
+    @Inject var repository: UserRepository
+
+    func execute(
+        id: String,
+        password: String
+    ) async throws -> Bool {
+        return try await repository.withDraw(id: id, password: password)
+    }
+}

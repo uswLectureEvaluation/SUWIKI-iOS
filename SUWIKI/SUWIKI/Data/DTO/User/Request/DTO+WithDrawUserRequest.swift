@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+extension DTO {
+    struct WithDrawUserRequest: Encodable {
+        let loginId: String
+        let password: String
+    }
+}

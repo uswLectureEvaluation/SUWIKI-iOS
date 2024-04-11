@@ -91,8 +91,12 @@ final class DefaultUserRepository: UserRepository {
             )
         return try await APIProvider.request(target: apiTarget)
     }
-//
-//    func fetchRestrictionList() async throws -> [Restriction] {
-//        <#code#>
-//    }
+
+    func withDraw(
+        id: String,
+        password: String
+    ) async throws -> Bool {
+        let apiTarget = APITarget.User.withDraw(DTO.WithDrawUserRequest(loginId: id, password: password))
+        return try await APIProvider.request(target: apiTarget)
+    }
 }
