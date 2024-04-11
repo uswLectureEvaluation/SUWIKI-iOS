@@ -11,7 +11,7 @@ protocol FetchEvaluationPostsUseCase {
     func execute(
         lectureId: Int,
         page: Int
-    ) async throws -> [EvaluationPost]
+    ) async throws -> Evaluation
 }
 
 final class DefaultFetchEvaluationPostsUseCase: FetchEvaluationPostsUseCase {
@@ -21,7 +21,7 @@ final class DefaultFetchEvaluationPostsUseCase: FetchEvaluationPostsUseCase {
     func execute(
         lectureId: Int,
         page: Int
-    ) async throws -> [EvaluationPost] {
+    ) async throws -> Evaluation {
         try await repository.fetch(lectureId: lectureId, page: page)
     }
 

@@ -11,13 +11,13 @@ protocol FetchExamPostsUseCase {
     func execute(
         id: Int,
         page: Int
-    ) async throws -> ExamPostInfo
+    ) async throws -> Exam
 }
 
 final class DefaultFetchExamPostUseCase: FetchExamPostsUseCase {
     @Inject var repository: ExamPostRepository
 
-    func execute(id: Int, page: Int) async throws -> ExamPostInfo {
+    func execute(id: Int, page: Int) async throws -> Exam {
         try await repository.fetch(id: id, page: page)
     }
 }

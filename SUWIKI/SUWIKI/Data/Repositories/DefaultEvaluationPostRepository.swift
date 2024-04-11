@@ -12,7 +12,7 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
     func fetch(
         lectureId: Int,
         page: Int
-    ) async throws -> [EvaluationPost] {
+    ) async throws -> Evaluation {
         let apiTarget = APITarget.EvaluationPost.fetchEvaluationPosts(
             DTO.FetchEvaluationPostRequest(
                 lectureId: lectureId,
@@ -21,7 +21,8 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
         )
         let dtoEvaluatePosts = try await APIProvider.request(DTO.FetchEvaluationPostsResponse.self,
                                                              target: apiTarget)
-        return dtoEvaluatePosts.posts.map { $0.entity }
+        return Evaluation(written: dtoEvaluatePosts.written,
+                          posts: dtoEvaluatePosts.posts.map { $0.entity} )
     }
 
     func write(

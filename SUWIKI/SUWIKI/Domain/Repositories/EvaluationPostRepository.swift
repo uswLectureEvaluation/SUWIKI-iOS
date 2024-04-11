@@ -11,7 +11,7 @@ protocol EvaluationPostRepository {
     func fetch(
         lectureId: Int,
         page: Int
-    ) async throws -> [EvaluationPost]
+    ) async throws -> Evaluation
 
     func write(
         id: Int,

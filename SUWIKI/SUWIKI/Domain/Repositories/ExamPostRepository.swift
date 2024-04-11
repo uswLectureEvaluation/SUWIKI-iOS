@@ -11,7 +11,7 @@ protocol ExamPostRepository {
     func fetch(
         id: Int,
         page: Int
-    ) async throws -> ExamPostInfo
+    ) async throws -> Exam
 
     func write(
         id: Int,
