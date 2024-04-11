@@ -36,7 +36,13 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         $0.textAlignment = .left
         $0.textColor = .black
     }
-    
+
+    private lazy var titleChangeButton = UIButton().then {
+        let uiImage = UIImage(systemName: "pencil")
+        $0.setImage(uiImage?.imageWithColor(color: .primaryColor), for: .normal)
+        $0.addTarget(self, action: #selector(changeButtonTapped), for: .touchUpInside)
+    }
+
     private var addButton = UIBarButtonItem()
     private var listButton = UIBarButtonItem()
     
@@ -114,7 +120,8 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         
         self.view.addSubview(timetableTitleBackground)
         self.timetableTitleBackground.addSubview(timetableTitle)
-        
+        self.timetableTitleBackground.addSubview(titleChangeButton)
+
         self.timetableTitleBackground.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             $0.leading.equalToSuperview().offset(15)
@@ -125,8 +132,17 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
         self.timetableTitle.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(timetableTitleBackground.snp.leading).offset(10)
-            $0.trailing.equalTo(timetableTitleBackground.snp.trailing).offset(-10)
+            $0.trailing.equalTo(titleChangeButton.snp.leading).offset(-10)
         }
+
+        self.titleChangeButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(timetableTitle.snp.trailing).offset(10)
+            $0.trailing.equalTo(timetableTitleBackground.snp.trailing).offset(-12)
+            $0.width.equalTo(18)
+            $0.height.equalTo(18)
+        }
+
         self.timetableTitle.text = viewModel.timetableTitle
         
         //TODO: 최상위 뷰, InitView 만들기
@@ -174,9 +190,24 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
     @objc
     func reloadCourse() {
         viewModel.updateCourse()
-        //        timetable.reloadData()
     }
-    
+
+    @objc
+    func changeButtonTapped() {
+        let alert = UIAlertController(title: "시간표 이름 수정", message: nil, preferredStyle: .alert)
+        alert.addTextField()
+        let confirm = UIAlertAction(title: "수정", style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            let title = alert.textFields?.first?.text ?? "시간표"
+            self.viewModel.updateTimetableTitle(title: title)
+            self.viewModel.timetableTitle = title
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(confirm)
+        alert.addAction(cancel)
+        self.present(alert, animated: true)
+    }
+
     
     func addButtonTapped() {
         let majorVC = UINavigationController(rootViewController: SelectMajorViewController())

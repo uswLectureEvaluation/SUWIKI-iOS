@@ -76,6 +76,21 @@ extension CoreDataManager {
         }
     }
 
+    func saveTitle(id: String, title: String) throws {
+        let fetchRequest = Timetable.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            guard let timetable = try context.fetch(fetchRequest).first else {
+                throw CoreDataError.fetchError
+            }
+            timetable.name = title
+            try context.save()
+        } catch {
+            context.rollback()
+            throw CoreDataError.saveError
+        }
+    }
+
     /// func test1SaveFirebaseCourse: 저장 속도 테스트를 위한 코드입니다. 저장속도 약 60초 소요됩니다. 저장 에러도 발생하는 코드입니다.
     func test1SaveFirebaseCourse(item: [String: Any]) throws {
         guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", in: context) else {

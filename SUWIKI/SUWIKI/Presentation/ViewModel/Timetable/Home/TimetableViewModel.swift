@@ -80,6 +80,13 @@ final class TimetableViewModel {
         }
     }
 
+    func updateTimetableTitle(title: String) {
+        Task {
+            guard let id = UserDefaults.shared.value(forKey: "id") as? String else { return }
+            try await coreDataManager.saveTitle(id: id, title: title)
+        }
+    }
+
     func deleteCourse(uuid: String) {
         Task {
             guard let index = elliottEvent.firstIndex(where: { $0.courseId == uuid }),
