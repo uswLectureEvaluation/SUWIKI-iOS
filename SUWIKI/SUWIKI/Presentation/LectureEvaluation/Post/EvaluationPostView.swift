@@ -88,11 +88,6 @@ struct EvaluationPostView: View {
         } message: {
             Text("정확한 강의평가를 위해 항목을 채워주세요!")
         }
-        .alert("이미 작성하신 강의평가에요.", isPresented: $viewModel.isWritten) {
-            Button("확인") { }
-        } message: {
-            Text("한 강의에 하나의 강의평가만 남길 수 있어요!")
-        }
     }
     
     var closeButton: some View {
