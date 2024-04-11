@@ -160,7 +160,7 @@ class AddCourseViewController: UIViewController {
             } else {
                 NotificationCenter.default.post(name: Notification.Name("addCourse"),
                                                 object: nil)
-                dismiss(animated: true)
+                self.dismiss(animated: true)
             }
         }
     }
@@ -179,7 +179,7 @@ class AddCourseViewController: UIViewController {
     
     
     @objc func rightButtonTapped() {
-        dismiss(animated: true)
+        self.dismiss(animated: true)
     }
     
     private func customAlert() {

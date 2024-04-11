@@ -137,7 +137,6 @@ class AddTimetableViewController: UIViewController {
         if view.bounds.height < 700 {
             isOverHeight = false
         }
-        
         self.timetableNameTextField.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(isOverHeight ? 12 : 4)
             $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
@@ -159,7 +158,7 @@ extension AddTimetableViewController {
     
     func addButtonTapped() async throws {
         await viewModel.addTimetable()
-        dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func keyboardWillAppear(_ notification: Notification) {

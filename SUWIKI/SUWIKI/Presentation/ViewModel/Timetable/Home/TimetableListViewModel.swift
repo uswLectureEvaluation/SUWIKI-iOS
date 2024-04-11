@@ -22,7 +22,7 @@ final class TimetableListViewModel {
 
     init() {
         Task {
-            self.timetable = await CoreDataManager.shared.fetchTimetableList().reversed()
+            try await self.fetchTimetable()
         }
     }
 
@@ -54,5 +54,9 @@ final class TimetableListViewModel {
         } else if setId == deleteId {
             UserDefaults.shared.set(self.timetable.first?.id, forKey: "id")
         }
+    }
+
+    func fetchTimetable() async throws {
+        self.timetable = await CoreDataManager.shared.fetchTimetableList().reversed()
     }
 }
