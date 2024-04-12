@@ -21,8 +21,10 @@ final class TimetableListViewModel {
     }
 
     init() {
-        Task {
-            try await self.fetchTimetable()
+        do {
+            try self.fetchTimetable()
+        } catch {
+            self.timetable = []
         }
     }
 
@@ -41,9 +43,9 @@ final class TimetableListViewModel {
         let setId = UserDefaults.shared.value(forKey: "id") as? String
         let deleteId = timetable[index].id
         do {
-            try await coreDataManager.deleteTimetable(id: deleteId ?? "")
+            try coreDataManager.deleteTimetable(id: deleteId ?? "")
         } catch {
-            await coreDataManager.handleCoreDataError(error)
+            coreDataManager.handleCoreDataError(error)
         }
         self.timetable.remove(at: index)
         if timetable.count == 0 {
@@ -56,7 +58,12 @@ final class TimetableListViewModel {
         }
     }
 
-    func fetchTimetable() async throws {
-        self.timetable = await CoreDataManager.shared.fetchTimetableList().reversed()
+    func fetchTimetable() throws {
+        do {
+            self.timetable = CoreDataManager.shared.fetchTimetableList().reversed()
+        } catch {
+            self.timetable = []
+        }
+
     }
 }

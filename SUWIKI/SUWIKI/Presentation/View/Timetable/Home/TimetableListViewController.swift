@@ -36,8 +36,10 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
-        Task {
-            try await viewModel.fetchTimetable()
+        do {
+            try viewModel.fetchTimetable()
+        } catch {
+            print(error.localizedDescription)
         }
     }
     
