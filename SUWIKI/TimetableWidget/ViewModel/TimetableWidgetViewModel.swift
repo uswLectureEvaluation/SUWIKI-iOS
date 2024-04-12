@@ -13,16 +13,16 @@ enum WidgetType {
 }
 
 final class TimetableWidgetViewModel: ObservableObject {
-
+    
     var courses: [CourseForWidget] = []
     var eLearning: [CourseForWidget] = []
     @Published var date = ""
     @Published var weekday = ""
-
+    
     init() {
         let id = UserDefaults.shared.value(forKey: "id") as? String
         Task {
-            let coreDataCourses = await CoreDataManager.shared.fetchCourse(id: id ?? "")
+            let coreDataCourses = CoreDataManager.shared.fetchCourse(id: id ?? "")
             let weekday = Calendar.current.component(.weekday, from: Date())
             if weekday != 1 || weekday != 7 {
                 self.courses = coreDataCourses.filter {
@@ -63,18 +63,17 @@ final class TimetableWidgetViewModel: ObservableObject {
             self.getDateAndDay()
         }
     }
-
+    
     func getDateAndDay() {
         let date = Date()
         let calendar = Calendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
-        self.date = dateFormatter.string(from: date)
-
         let weekday = calendar.component(.weekday, from: date)
-        self.weekday = dayToString(weekDay: weekday)
+        self.date = dateFormatter.string(from: date)
+        self.weekday = self.dayToString(weekDay: weekday)
     }
-
+    
     private func dayToString(weekDay: Int) -> String {
         switch weekDay {
         case 1: "일"
@@ -87,7 +86,7 @@ final class TimetableWidgetViewModel: ObservableObject {
         default: "요일 불러오기에 실패했어요!"
         }
     }
-
-
-
+    
+    
+    
 }
