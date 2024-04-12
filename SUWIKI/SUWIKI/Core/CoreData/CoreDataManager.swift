@@ -17,7 +17,6 @@ enum CoreDataError: Error {
     case deleteError
 }
 
-@MainActor
 final class CoreDataManager {
 
     // 싱글톤으로 만들기
