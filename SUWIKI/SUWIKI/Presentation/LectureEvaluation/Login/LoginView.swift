@@ -151,7 +151,7 @@ struct LoginView: View {
         .disabled(viewModel.isButtonDisabled)
         .padding(.horizontal, 24)
         .padding(.top, 16)
-        .padding(.bottom, 120)
+        .padding(.bottom, 40)
     }
 
 }
