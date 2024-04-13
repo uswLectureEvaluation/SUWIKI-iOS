@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol TimetableRepository {
+    func saveTimetable(name: String, semester: String)
+    func fetchTimetable(id: String) -> Timetable?
+    func fetchCourses(id: String) -> [Course]?
+}

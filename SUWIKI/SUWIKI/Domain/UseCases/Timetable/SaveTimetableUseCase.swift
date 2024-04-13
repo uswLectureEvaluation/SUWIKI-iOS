@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol SaveTimetableUseCase {
+    func execute(name: String, semester: String)
+}

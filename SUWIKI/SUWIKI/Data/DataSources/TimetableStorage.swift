@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol TimetableStorage {
+    func saveTimetable(name: String, semester: String) throws
+    func fetchTimetable(id: String) throws -> Timetable?
+    func fetchCourses(id: String) throws -> [Course]?
+}

@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol FetchTimetableUseCase {
+    func execute(id: String) -> Timetable?
+}
+
+final class DefaultFetchTimetableUseCase: FetchTimetableUseCase {
+    @Inject var repository: TimetableRepository
+
+    func execute(id: String) -> Timetable? {
+        return repository.fetchTimetable(id: id)
+    }
+}
