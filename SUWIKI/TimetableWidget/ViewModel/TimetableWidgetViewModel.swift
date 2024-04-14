@@ -22,7 +22,7 @@ final class TimetableWidgetViewModel: ObservableObject {
     init() {
         let id = UserDefaults.shared.value(forKey: "id") as? String
         Task {
-            let coreDataCourses = CoreDataManager.shared.fetchCourse(id: id ?? "")
+            let coreDataCourses = try CoreDataManager.shared.fetchCourses(id: id ?? "") ?? []
             let weekday = Calendar.current.component(.weekday, from: Date())
             if weekday != 1 || weekday != 7 {
                 self.courses = coreDataCourses.filter {
