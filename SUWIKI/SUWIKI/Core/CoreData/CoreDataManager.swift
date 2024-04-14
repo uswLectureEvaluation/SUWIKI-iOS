@@ -72,5 +72,72 @@ final class CoreDataManager {
         }
     }
 
+    /// func fetchCourses: Core Data에 저장된 Course를 fetch합니다.
+    func fetchCourses(id: String) throws -> [Course]? {
+        var courses: [Course] = []
+        do {
+            let fetchRequest = Timetable.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+            let timetable = try context.fetch(fetchRequest)
+            if let timetableCourses = timetable.first?.courses as? Set<Course> {
+                courses = Array(timetableCourses)
+            }
+        } catch {
+            throw CoreDataError.fetchError
+        }
+        return courses
+    }
+
+    /// func fetchMajors: 학과를 받아옵니다.
+    /// 중복되는 형태를 없애도록 Set으로 구현했습니다.
+    func fetchMajors() throws -> [String] {
+        var courses: [FirebaseCourse]
+        do {
+            let fetchRequest = FirebaseCourse.fetchRequest()
+            courses = try context.fetch(fetchRequest)
+            let majors = Array(Set(courses.compactMap { $0.major })).sorted { $0 < $1 }
+            return majors
+        } catch {
+            throw CoreDataError.fetchError
+        }
+    }
+
+    func fetchELearningCourse(
+        id: String,
+        courseDay: Int = 6
+    ) -> [Course] {
+        var course: [Course] = []
+        do {
+            checkMainThread()
+            let fetchRequest = Timetable.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+            let timetable = try context.fetch(fetchRequest)[0]
+            if let timetableCourses = timetable.courses as? Set<Course> {
+                let filteredCourses = Array(timetableCourses).filter { $0.courseDay == courseDay }
+                course = filteredCourses
+            }
+        } catch {
+            fatalError(CoreDataError.fetchError.localizedDescription)
+        }
+        return course
+    }
+
+    /// func fetchCourseCount: 학과 선택 화면에서, 미리 보여줄 강의의 갯수들을 가져옵니다.
+    /// return: 강의 Count(Int)
+    func fetchCourseCount(major: String) -> Int {
+        var count = 0
+        do {
+            checkMainThread()
+            let fetchRequest = FirebaseCourse.fetchRequest()
+            if major != "전체" {
+                fetchRequest.predicate = NSPredicate(format: "major == %@", major)
+            }
+            count = try context.count(for: fetchRequest)
+        } catch {
+            print("@Log - \(error.localizedDescription)")
+        }
+        return count
+    }
+
 }
 
