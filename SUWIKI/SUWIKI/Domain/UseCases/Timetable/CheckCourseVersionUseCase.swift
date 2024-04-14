@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol CheckCourseVersionUseCase {
+    func execute() async throws
+}
+
+final class DefaultCheckCourseVersionUseCase: CheckCourseVersionUseCase {
+    @Inject var repository: TimetableRepository
+
+    func execute() async throws {
+        try await repository.checkCourseVersion()
+    }
+}
