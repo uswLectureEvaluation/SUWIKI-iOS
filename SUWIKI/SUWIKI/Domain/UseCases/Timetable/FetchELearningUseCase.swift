@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol FetchELearningUseCase {
+    func execute(id: String) -> [Course]
+}
+
+final class DefaultFetchELearningUseCase: FetchELearningUseCase {
+    @Inject var repository: TimetableRepository
+
+    func execute(id: String) -> [Course] {
+        return repository.fetchELearning(id: id)
+    }
+}
