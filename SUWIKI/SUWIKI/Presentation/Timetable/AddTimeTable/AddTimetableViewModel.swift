@@ -10,8 +10,8 @@ import Foundation
 
 final class AddTimetableViewModel {
     
-    let coreDataManager = CoreDataManager.shared
-    
+    @Inject var useCase: SaveTimetableUseCase
+
     var semester: [String] = []
     var selectedSemester = ""
     @Published var name = ""
@@ -39,7 +39,7 @@ final class AddTimetableViewModel {
         self.selectedSemester = semester
     }
     
-    func addTimetable() async {
-        await coreDataManager.addTimeTable(name: name, semester: selectedSemester)
+    func addTimetable() {
+        useCase.execute(name: name, semester: selectedSemester)
     }
 }
