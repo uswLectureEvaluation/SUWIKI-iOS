@@ -10,3 +10,11 @@ import Foundation
 protocol UpdateTimetableTitleUseCase {
     func execute(id: String, title: String)
 }
+
+final class DefaultUpdateTimetableTitleUseCase: UpdateTimetableTitleUseCase {
+    @Inject var repository: TimetableRepository
+
+    func execute(id: String, title: String) {
+        repository.updateTimetableTitle(id: id, title: title)
+    }
+}
