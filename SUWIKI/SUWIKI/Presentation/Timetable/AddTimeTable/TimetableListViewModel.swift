@@ -10,7 +10,9 @@ import UIKit
 
 final class TimetableListViewModel {
     
-    let coreDataManager = CoreDataManager.shared
+    @Inject var fetchTimetableListUseCase: FetchTimetableListUseCase
+    @Inject var deleteTimetableUseCase: DeleteTimetableUseCase
+
     @Published var timetable: [Timetable] = []
 
     var timetableNumberOfRowsInSection: Int {
@@ -21,11 +23,7 @@ final class TimetableListViewModel {
     }
 
     init() {
-        do {
-            try self.fetchTimetable()
-        } catch {
-            self.timetable = []
-        }
+        fetchTimetableList()
     }
 
     func updateTimetable(index: Int) {
@@ -41,12 +39,8 @@ final class TimetableListViewModel {
     
     func deleteTimetable(index: Int, currentVC: UIViewController) async throws {
         let setId = UserDefaults.shared.value(forKey: "id") as? String
-        let deleteId = timetable[index].id
-        do {
-            try coreDataManager.deleteTimetable(id: deleteId ?? "")
-        } catch {
-            coreDataManager.handleCoreDataError(error)
-        }
+        guard let deleteId = timetable[index].id else { return }
+        deleteTimetableUseCase.execute(id: deleteId)
         self.timetable.remove(at: index)
         if timetable.count == 0 {
             UserDefaults.shared.removeObject(forKey: "id")
@@ -58,12 +52,7 @@ final class TimetableListViewModel {
         }
     }
 
-    func fetchTimetable() throws {
-        do {
-            self.timetable = CoreDataManager.shared.fetchTimetableList().reversed()
-        } catch {
-            self.timetable = []
-        }
-
+    func fetchTimetableList()  {
+        self.timetable = fetchTimetableListUseCase.execute()
     }
 }
