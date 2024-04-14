@@ -20,11 +20,11 @@ final class LectureEvaluationMajorSelectViewModel: ObservableObject {
     @MainActor
     init() {
         Task {
-            let allMajor = try await Major.majorCount(name: "전체")
+            let allMajor = Major.majorCount(name: "전체")
             major = [allMajor]
-            let majors = CoreDataManager.shared.fetchMajors()
+            let majors = try CoreDataManager.shared.fetchMajors()
             for i in 0..<majors.count {
-                let majorCount = try await Major.majorCount(name: majors[i])
+                let majorCount = Major.majorCount(name: majors[i])
                 major.append(majorCount)
             }
             fetchBookmark()
