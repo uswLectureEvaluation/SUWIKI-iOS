@@ -16,13 +16,14 @@ final class LectureEvaluationMajorSelectViewModel: ObservableObject {
     @Published var searchMajor: [Major] = []
     @Published var searchText: String = ""
     @Published var fetchState: RequestState = .notRequest
+    @Inject var useCase: FetchMajorsUseCase
 
     @MainActor
     init() {
         Task {
             let allMajor = Major.majorCount(name: "전체")
             major = [allMajor]
-            let majors = try CoreDataManager.shared.fetchMajors()
+            let majors = useCase.execute()
             for i in 0..<majors.count {
                 let majorCount = Major.majorCount(name: majors[i])
                 major.append(majorCount)
