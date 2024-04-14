@@ -9,6 +9,7 @@ import UIKit
 
 final class SelectMajorViewModel {
 
+    @Inject var useCase: FetchMajorsUseCase
     var major: [Major] = []
     var bookmark: [String] = []
     var majorNumberOfRowsInSection: Int {
@@ -17,17 +18,15 @@ final class SelectMajorViewModel {
     @Published var isMajorsFetched = false
 
     init() {
-        Task {
-            let allMajor = try await Major.majorCount(name: "전체")
-            major = [allMajor]
-            let majors = await CoreDataManager.shared.fetchMajors()
-            for i in 0..<majors.count {
-                let majorCount = try await Major.majorCount(name: majors[i])
-                major.append(majorCount)
-            }
-            self.isMajorsFetched = true
-            fetchBookmark()
+        let allMajor = Major.majorCount(name: "전체")
+        major = [allMajor]
+        let majors = useCase.execute()
+        for i in 0..<majors.count {
+            let majorCount = Major.majorCount(name: majors[i])
+            major.append(majorCount)
         }
+        self.isMajorsFetched = true
+        fetchBookmark()
     }
 
     func toggleBookmark(name: String) {
@@ -69,7 +68,6 @@ final class SelectMajorViewModel {
 
     func pushVC(major: String, currentVC: UIViewController, animated: Bool) {
         let navigationVC = currentVC.navigationController
-        print("@Log - \(major)")
         let selectCourseVC = SelectCourseViewController(viewModel: SelectCourseListViewModel(major: major))
         navigationVC?.pushViewController(selectCourseVC, animated: animated)
     }
