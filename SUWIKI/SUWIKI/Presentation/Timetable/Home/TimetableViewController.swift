@@ -71,7 +71,7 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
             }
             .store(in: &cancellables)
         viewModel.$timetableIsEmpty
-            .combineLatest(viewModel.$versionChecked)
+            .combineLatest(viewModel.$isVersionChecked)
             .receive(on: RunLoop.main)
             .sink { isEmpty, versionChecked in
                 
@@ -200,7 +200,6 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
             guard let self = self else { return }
             let title = alert.textFields?.first?.text ?? "시간표"
             self.viewModel.updateTimetableTitle(title: title)
-            self.viewModel.timetableTitle = title
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         alert.addAction(confirm)
@@ -258,7 +257,6 @@ class TimetableViewController: UIViewController, UINavigationControllerDelegate 
 extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, TimetableDelegate {
     
     func updateTimetable() {
-        print("@Log - Update")
         viewModel.updateCourse()
         viewModel.updateTimetable()
     }
@@ -272,7 +270,7 @@ extension TimetableViewController: ElliotableDelegate, ElliotableDataSource, Tim
         actionSheet.addAction(
             UIAlertAction(title: "삭제", style: .destructive) { [weak self] alert in
                 guard let self = self else { return }
-                self.viewModel.deleteCourse(uuid: selectedCourse.courseId)
+                self.viewModel.deleteCourse(courseId: selectedCourse.courseId)
                 self.updateTimetable()
             }
         )
