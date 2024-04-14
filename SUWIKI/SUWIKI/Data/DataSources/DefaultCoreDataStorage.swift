@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class DefaultTimetableStorage: TimetableStorage {
+final class DefaultCoreDataStorage: CoreDataStorage {
 
     let coreDataManager = CoreDataManager.shared
 
@@ -26,6 +26,24 @@ final class DefaultTimetableStorage: TimetableStorage {
             try coreDataManager.context.save()
             UserDefaults.shared.set(id, forKey: "id")
         } catch {
+            throw CoreDataError.saveError
+        }
+    }
+
+    func updateTimetableTitle(
+        id: String,
+        title: String
+    ) throws {
+        let fetchRequest = Timetable.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
+                throw CoreDataError.fetchError
+            }
+            timetable.name = title
+            try coreDataManager.context.save()
+        } catch {
+            coreDataManager.context.rollback()
             throw CoreDataError.saveError
         }
     }
@@ -57,6 +75,38 @@ final class DefaultTimetableStorage: TimetableStorage {
             throw CoreDataError.fetchError
         }
         return courses
+    }
+
+    /// func fetchTimetableList: Core Data에 저장된 Timetable List를 fetch합니다.
+    func fetchTimetableList() throws -> [Timetable] {
+        var timetable: [Timetable] = []
+        do {
+            let fetchRequest = Timetable.fetchRequest()
+            timetable = try coreDataManager.context.fetch(fetchRequest)
+        } catch {
+            throw CoreDataError.fetchError
+        }
+        return timetable
+    }
+
+    func deleteCourse(
+        id: String,
+        courseId: String
+    ) throws {
+        let fetchRequest = Timetable.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            let timetable = try coreDataManager.context.fetch(fetchRequest)
+            guard let courses = timetable.first?.courses as? Set<Course>,
+                  let removeCourse = courses.first(where: { $0.courseId == courseId }) else {
+                throw CoreDataError.fetchError
+            }
+            timetable.first?.removeFromCourses(removeCourse)
+            coreDataManager.context.delete(removeCourse)
+            try coreDataManager.context.save()
+        } catch {
+            throw CoreDataError.deleteError
+        }
     }
 
 }
