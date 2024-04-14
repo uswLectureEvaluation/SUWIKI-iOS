@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol DeleteTimetableUseCase {
+    func execute(id: String)
+}
+
+final class DefaultDeleteTimeTableUseCase: DeleteTimetableUseCase {
+    @Inject var repository: TimetableRepository
+
+    func execute(id: String) {
+        repository.deleteTimetable(id: id)
+    }
+}
