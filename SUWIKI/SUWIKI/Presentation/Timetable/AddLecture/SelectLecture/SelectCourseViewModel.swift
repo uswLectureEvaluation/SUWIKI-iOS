@@ -8,8 +8,7 @@
 import Foundation
 
 final class SelectCourseViewModel {
-    
-    let coreDataManager = CoreDataManager.shared
+
     var course: FirebaseCourse
     
     init(course: FirebaseCourse) {
