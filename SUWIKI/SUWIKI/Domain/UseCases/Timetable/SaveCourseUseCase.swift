@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol SaveCourseUseCase {
+    func execute(
+        id: String,
+        course: TimetableCourse
+    )
+}
+
+final class DefaultSaveCourseUseCase: SaveCourseUseCase {
+    @Inject var repository: TimetableRepository
+
+    func execute(id: String, course: TimetableCourse) {
+        repository.saveCourse(id: id, course: course)
+    }
+}
