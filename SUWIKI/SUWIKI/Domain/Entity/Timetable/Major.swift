@@ -18,8 +18,8 @@ struct Major: Identifiable { //: Equatable, Hashable, Decodable
         self.courseCount = courseCount
     }
 
-    static func majorCount(name: String) async throws -> Major {
-        var count = await CoreDataManager.shared.fetchCourseCount(major: name)
+    static func majorCount(name: String) -> Major {
+        var count = CoreDataManager.shared.fetchCourseCount(major: name)
         return Major(name: name, courseCount: count)
     }
 }
