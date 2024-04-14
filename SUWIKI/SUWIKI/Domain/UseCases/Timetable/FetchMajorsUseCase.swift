@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+protocol FetchMajorsUseCase {
+    func execute() -> [String]
+}
+
+final class DefaultFetchMajorsUseCase: FetchMajorsUseCase {
+    @Inject var repository: TimetableRepository
+
+    func execute() -> [String] {
+        return repository.fetchMajors()
+    }
+}
