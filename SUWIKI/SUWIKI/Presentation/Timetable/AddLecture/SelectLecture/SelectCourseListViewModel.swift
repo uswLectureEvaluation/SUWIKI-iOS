@@ -13,7 +13,8 @@ import Combine
 
 final class SelectCourseListViewModel {
 
-    private let coreDataManager = CoreDataManager.shared
+    @Inject var useCase: FetchFirebaseCourseUseCase
+
     private let addCourseManager = AddCourseManager()
     var major: String
     var searchText: String
@@ -26,7 +27,7 @@ final class SelectCourseListViewModel {
         self.courseList = []
         Task {
             print("@INIT")
-            self.courseList = await CoreDataManager.shared.fetchFirebaseCourse(major: major)
+            self.courseList = useCase.execute(major: major)
         }
     }
     
