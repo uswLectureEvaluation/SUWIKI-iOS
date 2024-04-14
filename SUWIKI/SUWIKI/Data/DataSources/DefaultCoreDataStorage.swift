@@ -30,6 +30,55 @@ final class DefaultCoreDataStorage: CoreDataStorage {
         }
     }
 
+    func saveFirebaseCourse(course: [[String : Any]]) throws {
+        try deleteFirebaseCourse()
+        guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", 
+                                                      in: coreDataManager.context)
+        else {
+            throw CoreDataError.entityError
+        }
+        let batchInsertRequest = NSBatchInsertRequest(entity: entity,
+                                                      objects: course)
+        if let fetchResult = try? coreDataManager.context.execute(batchInsertRequest),
+           let batchInsertResult = fetchResult as? NSBatchDeleteResult,
+           let success = batchInsertResult.result as? Bool,
+           success {
+            return
+        } else {
+            throw CoreDataError.batchInsertError
+        }
+    }
+
+    /// func saveTimetableCourse: 선택된 시간표에 강의를 저장합니다.
+    /// - Parameter id : timetable id
+    /// - Parameter course : 추가할 강의
+    func saveCourse(
+        id: String,
+        course: TimetableCourse
+    ) throws {
+        let fetchRequest = Timetable.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
+                throw CoreDataError.fetchError
+            }
+            let courseEntity = Course(context: coreDataManager.context)
+            courseEntity.courseId = course.courseId
+            courseEntity.courseName = course.courseName
+            courseEntity.roomName = course.roomName
+            courseEntity.courseDay = Int16(course.courseDay)
+            courseEntity.professor = course.professor
+            courseEntity.startTime = course.startTime
+            courseEntity.endTime = course.endTime
+            courseEntity.timetableColor = Int16(course.timetableColor)
+            timetable.addToCourses(courseEntity)
+            try coreDataManager.context.save()
+        } catch {
+            coreDataManager.context.rollback()
+            throw CoreDataError.saveError
+        }
+    }
+
     func updateTimetableTitle(
         id: String,
         title: String
@@ -77,6 +126,59 @@ final class DefaultCoreDataStorage: CoreDataStorage {
         return courses
     }
 
+    /// func fetchFirebaseCourse: 학과 선택 시, 과목을 선택하는 화면에서 firebaseCourse를 내려받습니다.(강의 원본)
+    /// - Parameter : major(학과, String)
+    /// - return : [FireabaseCourse]
+    func fetchFirebaseCourse(major: String) throws -> [FirebaseCourse] {
+        var course: [FirebaseCourse] = []
+        do {
+            let fetchRequest = FirebaseCourse.fetchRequest()
+            if major != "전체" {
+                fetchRequest.predicate = NSPredicate(format: "major == %@", major)
+            }
+            course = try coreDataManager.context.fetch(fetchRequest)
+        } catch {
+            throw CoreDataError.fetchError
+        }
+        let sortedCourse = course.sorted { $0.courseName! < $1.courseName! }
+        return sortedCourse
+    }
+
+    /// func fetchELearningCourse: Core Data에 저장된 강의 중 이러닝을 Fetch합니다.
+    /// - Parameter : id(시간표 ID), courseDay(강의 요일)
+    func fetchELearning(id: String) throws -> [Course] {
+        var course: [Course] = []
+        do {
+            let fetchRequest = Timetable.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+            guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
+                throw CoreDataError.fetchError
+            }
+            if let timetableCourses = timetable.courses as? Set<Course> {
+                let filteredCourses = Array(timetableCourses).filter {
+                    $0.courseDay == 6 }
+                course = filteredCourses
+                }
+        } catch {
+            throw CoreDataError.fetchError
+        }
+        return course
+    }
+
+    /// func fetchMajors: 학과를 받아옵니다.
+    /// 중복되는 형태를 없애도록 Set으로 구현했습니다.
+    func fetchMajors() throws -> [String] {
+        var courses: [FirebaseCourse]
+        do {
+            let fetchRequest = FirebaseCourse.fetchRequest()
+            courses = try coreDataManager.context.fetch(fetchRequest)
+            let majors = Array(Set(courses.compactMap { $0.major            })).sorted { $0 < $1 }
+            return majors
+        } catch {
+            throw CoreDataError.fetchError
+        }
+    }
+
     /// func fetchTimetableList: Core Data에 저장된 Timetable List를 fetch합니다.
     func fetchTimetableList() throws -> [Timetable] {
         var timetable: [Timetable] = []
@@ -86,7 +188,7 @@ final class DefaultCoreDataStorage: CoreDataStorage {
         } catch {
             throw CoreDataError.fetchError
         }
-        return timetable
+        return timetable.reversed()
     }
 
     func deleteCourse(
@@ -105,6 +207,32 @@ final class DefaultCoreDataStorage: CoreDataStorage {
             coreDataManager.context.delete(removeCourse)
             try coreDataManager.context.save()
         } catch {
+            throw CoreDataError.deleteError
+        }
+    }
+
+    func deleteTimetable(id: String) throws {
+        let fetchRequest = Timetable.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        do {
+            guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
+                throw CoreDataError.fetchError
+            }
+            coreDataManager.context.delete(timetable)
+            try coreDataManager.context.save()
+        } catch {
+            throw CoreDataError.deleteError
+        }
+    }
+
+    func deleteFirebaseCourse() throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FirebaseCourse")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try coreDataManager.context.execute(deleteRequest)
+            try coreDataManager.context.save()
+        } catch {
+            coreDataManager.context.rollback()
             throw CoreDataError.deleteError
         }
     }
