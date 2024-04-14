@@ -16,18 +16,22 @@ enum DuplicateCase {
 
 final class AddCourseManager {
 
-    let coreDataManager = CoreDataManager.shared
+    @Inject var fetchCourseUseCase: FetchCoursesUseCase
+    @Inject var saveCourseUseCase: SaveCourseUseCase
+    @Inject var fetchELearningUseCase: FetchELearningUseCase
 
     func saveCourse(newCourse: TimetableCourse,
                     duplicateCase: DuplicateCase) async throws -> Bool {
-        guard let id = UserDefaults.shared.value(forKey: "id") as? String else { return false }
-        
+        guard let id = UserDefaults.shared.value(forKey: "id") as? String,
+              let timetableCourse = fetchCourseUseCase.execute(id: id)
+        else { return false }
+
         var isDuplicated = false
-        let timetableCourse = await coreDataManager.fetchCourse(id: id) // userdefault.get
+
         var course: [TimetableCourse] = []
         switch duplicateCase {
         case .eLearning:
-            let eLearning = await eLearning(id: id, course: newCourse)
+            let eLearning = eLearning(id: id, course: newCourse)
             course.append(eLearning)
         case .normal:
             let roomName = newCourse.roomName.split(separator: "(").map { String($0) }[0]
@@ -47,12 +51,8 @@ final class AddCourseManager {
         }
         isDuplicated = isCourseDuplicated(existingCourse: timetableCourse, course: course)
         if !isDuplicated {
-            do {
-                for i in 0..<course.count {
-                    try await coreDataManager.saveCourse(id: id, course: course[i])
-                }
-            } catch {
-                await coreDataManager.handleCoreDataError(error)
+            for i in 0..<course.count {
+                saveCourseUseCase.execute(id: id, course: course[i])
             }
         }
         return isDuplicated
@@ -75,10 +75,10 @@ final class AddCourseManager {
     func eLearning(
         id: String,
         course: TimetableCourse
-    ) async -> TimetableCourse {
+    ) -> TimetableCourse {
         let eStart = ["9:30", "11:30", "13:30"]
         let eEnd = ["11:20", "13:20", "15:20"]
-        let eLearningCourses = await coreDataManager.fetchELearningCourse(id: id)
+        let eLearningCourses = fetchELearningUseCase.execute(id: id)
         let nums = eLearningCourses.count < 3 ? eLearningCourses.count : 0
         let eLearning = TimetableCourse(courseId: course.courseId,
                                         courseName: course.courseName,
@@ -95,7 +95,7 @@ final class AddCourseManager {
         var timeTableCourse: [TimetableCourse] = []
         let components = course.roomName.split(separator: " ")
         let roomName = course.roomName.split(separator: "(").map { String($0)} [0]
-//        let componentsToString = components.map { String($0) }
+        //        let componentsToString = components.map { String($0) }
         let firstIndex = components[0].firstIndex(of: "(")
         let firstDayIndex = components[0].index(after: firstIndex!)
         let firstDay = String(components[0][firstDayIndex])
