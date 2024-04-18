@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol CreateTokenUseCase {
     func excute(
         token: TokenType,

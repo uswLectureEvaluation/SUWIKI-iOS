@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchMajorsUseCase {
     func execute() -> [String]
 }

@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol DeleteCourseUseCase {
     func execute(id: String, courseId: String)
 }

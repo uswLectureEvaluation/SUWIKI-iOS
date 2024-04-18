@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchDetailLectureUseCase {
     func excute(
         id: Int

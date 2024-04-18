@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 final class DefaultTimetableRepository: TimetableRepository {
 
     @Inject var coreDataStorage: CoreDataStorage

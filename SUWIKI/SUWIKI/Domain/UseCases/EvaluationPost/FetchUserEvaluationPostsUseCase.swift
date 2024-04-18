@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchUserEvaluationPostsUseCase {
     func execute() async throws -> [UserEvaluationPost]
 }

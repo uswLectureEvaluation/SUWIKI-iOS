@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchDetailAnnouncementUseCase {
     func execute(id: Int) async throws -> Announcement
 }

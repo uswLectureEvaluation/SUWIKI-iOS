@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol CheckDuplicatedEmailUseCase {
     func execute(email: String) async throws -> Bool
 }

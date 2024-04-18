@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol UpdateExamPostUseCase {
     func execute(
         id: Int,

@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchExamPostsUseCase {
     func execute(
         id: Int,

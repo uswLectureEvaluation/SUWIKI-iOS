@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FindIdUseCase {
     func execute(email: String) async throws -> Bool
 }

@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol SaveCourseUseCase {
     func execute(
         id: String,

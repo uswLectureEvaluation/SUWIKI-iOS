@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchFirebaseCourseUseCase {
     func execute(major: String) -> [FirebaseCourse]
 }

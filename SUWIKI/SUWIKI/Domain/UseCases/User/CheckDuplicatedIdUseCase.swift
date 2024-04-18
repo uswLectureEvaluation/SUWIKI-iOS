@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol CheckDuplicatedIdUseCase {
     func execute(id: String) async throws -> Bool
 }

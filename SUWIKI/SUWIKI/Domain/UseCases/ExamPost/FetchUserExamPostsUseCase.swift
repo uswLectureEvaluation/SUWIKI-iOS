@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchUserExamPostsUseCase {
     func execute() async throws -> [UserExamPost]
 }

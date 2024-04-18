@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchELearningUseCase {
     func execute(id: String) -> [Course]
 }

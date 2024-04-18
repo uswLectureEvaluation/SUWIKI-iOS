@@ -7,8 +7,12 @@
 
 import Foundation
 
+import DIContainer
+import FirebaseManager
+
 import Firebase
 import FirebaseDatabase
+import FirebaseRemoteConfig
 
 final class DefaultFirebaseStorage: FirebaseStorage {
 

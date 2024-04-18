@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchTimetableUseCase {
     func execute(id: String) -> Timetable?
 }

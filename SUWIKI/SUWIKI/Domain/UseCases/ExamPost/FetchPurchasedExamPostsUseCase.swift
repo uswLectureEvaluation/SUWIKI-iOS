@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FetchPurchasedExamPostsUseCase {
     func execute() async throws -> [PurchasedPost]
 }

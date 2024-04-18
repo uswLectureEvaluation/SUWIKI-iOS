@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol WithDrawUseCase {
     func execute(id: String, password: String) async throws -> Bool
 }

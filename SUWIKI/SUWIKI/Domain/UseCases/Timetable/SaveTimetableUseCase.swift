@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol SaveTimetableUseCase {
     func execute(name: String, semester: String)
 }

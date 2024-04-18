@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol CheckCourseVersionUseCase {
     func execute() async throws
 }

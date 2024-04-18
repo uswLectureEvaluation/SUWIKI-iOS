@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol WriteEvaluationPostUseCase {
     func execute(
         id: Int,

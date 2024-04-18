@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol SignInUseCase {
     func excute(
         id: String,

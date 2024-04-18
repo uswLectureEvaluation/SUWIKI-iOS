@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol UpdateTimetableTitleUseCase {
     func execute(id: String, title: String)
 }

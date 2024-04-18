@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 class AppState: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Inject var repository: UserRepository

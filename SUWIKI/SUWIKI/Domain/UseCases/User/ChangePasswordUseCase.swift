@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol ChangePasswordUseCase {
     func execute(
         current: String,

@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol PurchaseExamPostUseCase {
     func execute(id: Int) async throws -> Bool
 }

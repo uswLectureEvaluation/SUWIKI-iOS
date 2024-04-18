@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol FindPasswordUseCase {
     func execute(id: String, email: String) async throws -> Bool
 }

@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol SearchLectureUseCase {
     func excute(
         searchText: String,

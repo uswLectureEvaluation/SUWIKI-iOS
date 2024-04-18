@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol ReadTokenUseCase {
     func excute(token: TokenType) -> String?
 }

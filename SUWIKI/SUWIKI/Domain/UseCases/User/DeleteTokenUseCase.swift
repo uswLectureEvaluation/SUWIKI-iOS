@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 protocol DeleteTokenUseCase {
     func excute(token: TokenType)
 }
