@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import DIContainer
+
 struct TabBarView: View {
     
     let lectureEvaluationHomeView = DIContainer.shared.resolve(type: LectureEvaluationHomeView.self)

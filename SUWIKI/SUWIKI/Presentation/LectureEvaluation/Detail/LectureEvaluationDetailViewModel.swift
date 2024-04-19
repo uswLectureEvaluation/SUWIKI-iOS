@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 // 데이터 상태에 따른 View 분기 처리
 final class LectureEvaluationDetailViewModel: ObservableObject {
     var fetchDetailLectureUseCase: FetchDetailLectureUseCase = DIContainer.shared.resolve(type: FetchDetailLectureUseCase.self)

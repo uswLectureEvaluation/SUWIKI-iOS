@@ -8,6 +8,8 @@
 import UIKit
 import Combine
 
+import DIContainer
+
 // 0번 ~ 2번 케이스마다 메소드를 분리해서 따로따로 체크를 하는게 좋은 방법인지
 // 하나의 메소드에서 분기처리하여 체크할 수 없을까?
 

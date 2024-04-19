@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class SignUpViewModel: ObservableObject {
 
     @Inject var checkDuplicatedIdUseCase: CheckDuplicatedIdUseCase

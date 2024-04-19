@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class LectureEvaluationMajorSelectViewModel: ObservableObject {
 
     var bookmark: [String] = []

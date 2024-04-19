@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 final class UserInfoViewModel: ObservableObject {
 
     @Inject var userInfoUseCase: UserInfoUseCase

@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 final class LectureEvaluationHomeViewModel: ObservableObject {
 
     @Inject var fetchUseCase: FetchLectureUseCase

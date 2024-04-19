@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class WithDrawAccountViewModel: ObservableObject {
 
     @Inject var useCase: WithDrawUseCase

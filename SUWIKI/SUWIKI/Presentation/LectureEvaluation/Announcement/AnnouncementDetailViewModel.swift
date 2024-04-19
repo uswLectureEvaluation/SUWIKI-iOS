@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 final class AnnouncementDetailViewModel: ObservableObject {
 
     @Inject var useCase: FetchDetailAnnouncementUseCase

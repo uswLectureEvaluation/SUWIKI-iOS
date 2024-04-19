@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 import Elliotable
 
 final class TimetableViewModel {

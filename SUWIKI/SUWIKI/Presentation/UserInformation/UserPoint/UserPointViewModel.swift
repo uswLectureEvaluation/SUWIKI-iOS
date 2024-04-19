@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 final class UserPointViewModel: ObservableObject {
 
     @Inject var useCase: FetchPurchasedExamPostsUseCase

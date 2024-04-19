@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 final class AnnouncementViewModel: ObservableObject {
     @Inject var useCase: FetchAnnouncementUseCase
     @Published var announcement: [Announcement] = []

@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class FindIdViewModel: ObservableObject {
     
     @Inject var useCase: FindIdUseCase

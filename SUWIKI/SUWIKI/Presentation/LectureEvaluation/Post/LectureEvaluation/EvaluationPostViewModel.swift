@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class EvaluationPostViewModel: ObservableObject {
 
     var writeEvaluationPostUseCase: WriteEvaluationPostUseCase = DIContainer.shared.resolve(type: WriteEvaluationPostUseCase.self)

@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class ChangePasswordViewModel: ObservableObject {
 
     @Inject var useCase: ChangePasswordUseCase

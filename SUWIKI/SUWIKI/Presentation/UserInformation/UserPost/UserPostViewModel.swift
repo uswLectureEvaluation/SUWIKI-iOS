@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 final class UserPostViewModel: ObservableObject {
 
     @Inject var fetchEvaluationUseCase: FetchUserEvaluationPostsUseCase

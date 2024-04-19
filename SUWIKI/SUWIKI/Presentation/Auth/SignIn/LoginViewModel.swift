@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class LoginViewModel: ObservableObject {
 
     @Inject var useCase: SignInUseCase

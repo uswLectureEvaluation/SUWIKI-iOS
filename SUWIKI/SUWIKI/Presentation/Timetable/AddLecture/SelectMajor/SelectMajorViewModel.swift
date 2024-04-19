@@ -7,6 +7,8 @@
 import Foundation
 import UIKit
 
+import DIContainer
+
 final class SelectMajorViewModel {
 
     @Inject var useCase: FetchMajorsUseCase

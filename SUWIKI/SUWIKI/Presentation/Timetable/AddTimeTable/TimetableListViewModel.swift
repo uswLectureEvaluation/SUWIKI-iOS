@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+import DIContainer
+
 final class TimetableListViewModel {
     
     @Inject var fetchTimetableListUseCase: FetchTimetableListUseCase

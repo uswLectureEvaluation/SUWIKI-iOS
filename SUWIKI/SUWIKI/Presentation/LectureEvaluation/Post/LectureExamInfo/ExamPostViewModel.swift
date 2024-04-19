@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+import DIContainer
+
 final class ExamPostViewModel: ObservableObject {
 
     @Inject var writeExamPostUseCase: WriteExamPostUseCase
