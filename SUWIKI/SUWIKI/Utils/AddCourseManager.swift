@@ -7,6 +7,8 @@
 
 import Foundation
 
+import DIContainer
+
 enum DuplicateCase {
     case eLearning
     case normal
