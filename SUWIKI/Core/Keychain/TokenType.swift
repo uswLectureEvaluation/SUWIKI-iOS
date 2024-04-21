@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+enum TokenType {
+    case AccessToken
+    case RefreshToken
+
+    var account: String {
+        switch self {
+        case .AccessToken:
+            "accessToken"
+        case .RefreshToken:
+            "refreshToken"
+        }
+    }
+}
