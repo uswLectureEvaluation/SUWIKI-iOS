@@ -7,14 +7,14 @@
 
 import Foundation
 
-class KeychainManager {
+public class KeychainManager {
 
-    static let shared = KeychainManager()
+    static public let shared = KeychainManager()
     let service = "com.sozohoy.uswTimeTable"
 
     private init() { }
 
-    func create(
+    public func create(
         token: TokenType,
         value: String
     ) {
@@ -34,7 +34,7 @@ class KeychainManager {
         assert(status == noErr, "@Log - Failed to save token")
     }
 
-    func read(
+    public func read(
         token: TokenType
     ) -> String? {
 
@@ -63,7 +63,7 @@ class KeychainManager {
         }
     }
 
-    func delete(
+    public func delete(
         token: TokenType
     ) {
         let keychainQuery: NSDictionary = [
