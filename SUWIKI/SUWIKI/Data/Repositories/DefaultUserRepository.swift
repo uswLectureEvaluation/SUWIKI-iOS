@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Keychain
+
 final class DefaultUserRepository: UserRepository {
     
     let keychainManager = KeychainManager.shared

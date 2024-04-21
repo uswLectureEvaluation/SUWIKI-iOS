@@ -7,9 +7,11 @@
 
 import Foundation
 
+import Keychain
+
 final class DefaultKeychainRepository: KeychainRepository {
 
-    var keychainManager: KeychainManager = KeychainManager.shared
+    let keychainManager = KeychainManager.shared
 
     func create(
         token: TokenType,
@@ -22,7 +24,7 @@ final class DefaultKeychainRepository: KeychainRepository {
         print("@Log \(token) - \(value)")
     }
 
-    func read(
+    public func read(
         token: TokenType
     ) -> String? {
         keychainManager.read(
