@@ -13,7 +13,7 @@ import Alamofire
 
 public protocol TargetType: URLRequestConvertible {
     var targetURL: URL { get }
-    var method: HTTPMethod { get }
+    var method: NetworkHTTPMethod { get }
     var path: String { get }
     /// 파라미터의 종류. Query / JSON
     var parameters: RequestParameter { get }
@@ -50,7 +50,7 @@ extension TargetType {
     public func asURLRequest() throws -> URLRequest {
         let url = try targetURL.appending(path: path).asURL()
         var urlRequest = try URLRequest(url: url,
-                                        method: method)
+                                        method: Alamofire.HTTPMethod(rawValue: method.rawValue))
         if let headers = headers {
             urlRequest.headers = HTTPHeaders(headers)
         }
