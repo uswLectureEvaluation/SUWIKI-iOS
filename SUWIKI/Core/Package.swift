@@ -12,7 +12,6 @@ let package = Package(
         .library(name: "Network", targets: ["Network"]),
         .library(name: "State", targets: ["State"]),
         .library(name: "FirebaseManager", targets: ["FirebaseManager"]),
-        .library(name: "CoreDataManager", targets: ["CoreDataManager"]),
         .library(name: "CustomElliotable", targets: ["CustomElliotable"])
     ],
     dependencies: [
@@ -46,10 +45,6 @@ let package = Package(
                 .product(name: "FirebaseDatabase", package: "firebase-ios-sdk")
             ],
             path: "FirebaseManager"
-        ),
-        .target(
-            name: "CoreDataManager",
-            path: "CoreDataManager"
         ),
         .target(
             name: "CustomElliotable",
