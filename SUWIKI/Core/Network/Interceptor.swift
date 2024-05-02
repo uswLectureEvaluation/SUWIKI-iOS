@@ -37,38 +37,38 @@ final class BaseInterceptor: RequestInterceptor {
         completion(.success(request))
     }
 
-    func retry(
-        _ request: Request,
-        for session: Session,
-        dueTo error: Error,
-        completion: @escaping (RetryResult) -> Void
-    ) {
-        lock.lock()
-        defer { lock.unlock() }
-        guard let refreshToken = keychainManager.read(token: .RefreshToken),
-              request.response?.statusCode == 401,
-              let urlString = request.response?.url?.absoluteString,
-              !urlString.contains("refresh") else {
-            completion(.doNotRetryWithError(error))
-            return
-        }
-        let target = APITarget.User.refresh(DTO.RefreshRequest(authorization: refreshToken))
-        APIProvider.requestRefreshToken(DTO.RefreshResponse.self, target: target) { [weak self] response in
-            switch response.result {
-            case .success:
-                guard let tokens = response.value,
-                      let self = self else {
-                    completion(.doNotRetry)
-                    return
-                }
-                self.keychainManager.create(token: .AccessToken, value: tokens.AccessToken)
-                self.keychainManager.create(token: .RefreshToken, value: tokens.RefreshToken)
-                completion(.retry)
-            case .failure:
-                print("@Log retry error")
-                completion(.doNotRetryWithError(error))
-            }
-        }
-    }
+//    func retry(
+//        _ request: Request,
+//        for session: Session,
+//        dueTo error: Error,
+//        completion: @escaping (RetryResult) -> Void
+//    ) {
+//        lock.lock()
+//        defer { lock.unlock() }
+//        guard let refreshToken = keychainManager.read(token: .RefreshToken),
+//              request.response?.statusCode == 401,
+//              let urlString = request.response?.url?.absoluteString,
+//              !urlString.contains("refresh") else {
+//            completion(.doNotRetryWithError(error))
+//            return
+//        }
+//        let target = APITarget.User.refresh(DTO.RefreshRequest(authorization: refreshToken))
+//        APIProvider.requestRefreshToken(DTO.RefreshResponse.self, target: target) { [weak self] response in
+//            switch response.result {
+//            case .success:
+//                guard let tokens = response.value,
+//                      let self = self else {
+//                    completion(.doNotRetry)
+//                    return
+//                }
+//                self.keychainManager.create(token: .AccessToken, value: tokens.AccessToken)
+//                self.keychainManager.create(token: .RefreshToken, value: tokens.RefreshToken)
+//                completion(.retry)
+//            case .failure:
+//                print("@Log retry error")
+//                completion(.doNotRetryWithError(error))
+//            }
+//        }
+//    }
 }
 
