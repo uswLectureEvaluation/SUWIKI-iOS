@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Network
+
 final class DefaultLectureRepository: LectureRepository {
 
     func fetch(

@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Network
+
 final class DefaultExamPostRepository: ExamPostRepository {
 
     func fetch(id: Int, page: Int) async throws -> Exam {

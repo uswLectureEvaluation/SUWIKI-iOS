@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Network
+
 final class DefaultNoticeRepository: NoticeRepository {
     func fetch() async throws -> [Announcement] {
         let apiTarget = APITarget

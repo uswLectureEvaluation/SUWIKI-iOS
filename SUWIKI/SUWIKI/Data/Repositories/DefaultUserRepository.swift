@@ -8,6 +8,7 @@
 import Foundation
 
 import Keychain
+import Network
 
 final class DefaultUserRepository: UserRepository {
     
