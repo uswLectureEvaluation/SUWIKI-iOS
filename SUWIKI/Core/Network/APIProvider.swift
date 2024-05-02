@@ -9,8 +9,9 @@ import Foundation
 
 import Alamofire
 
-class APIProvider {
-    static func request<T: Decodable>(
+@available(iOS 13, *)
+public class APIProvider {
+    public static func request<T: Decodable>(
         _ object: T.Type,
         target: TargetType
     ) async throws -> T {
@@ -21,8 +22,8 @@ class APIProvider {
             .serializingDecodable()
             .value
     }
-
-    static func request(target: TargetType) async throws -> Bool {
+    
+    public static func request(target: TargetType) async throws -> Bool {
         let dataRequest = await AlamofireManager
             .shared
             .session
@@ -36,8 +37,8 @@ class APIProvider {
             return false
         }
     }
-
-    static func requestRefreshToken<T: Decodable>(
+    
+    public static func requestRefreshToken<T: Decodable>(
         _ object: T.Type,
         target: TargetType,
         completion: @escaping (DataResponse<T, AFError>) -> Void) {
