@@ -7,7 +7,7 @@
 
 import Foundation
 
-import Alamofire
+import Network
 
 extension APITarget {
     enum Notice: TargetType {
@@ -21,7 +21,7 @@ extension APITarget.Notice {
         URL(string: APITarget.baseURL + "notice")!
     }
 
-    var method: Alamofire.HTTPMethod {
+    var method: NetworkHTTPMethod {
         switch self {
         case .fetchAnnouncements:
             return .get

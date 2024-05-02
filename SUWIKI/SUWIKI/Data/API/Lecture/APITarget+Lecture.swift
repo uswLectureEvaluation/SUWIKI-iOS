@@ -7,7 +7,7 @@
 
 import Foundation
 
-import Alamofire
+import Network
 
 extension APITarget {
     enum Lecture: TargetType {
@@ -22,7 +22,7 @@ extension APITarget.Lecture {
         URL(string: APITarget.baseURL + "lecture")!
     }
 
-    var method: Alamofire.HTTPMethod {
+    var method: NetworkHTTPMethod {
         switch self {
         case .getHome:
             return .get

@@ -7,7 +7,7 @@
 
 import Foundation
 
-import Alamofire
+import Network
 
 extension APITarget {
     enum User: TargetType {
@@ -29,7 +29,7 @@ extension APITarget.User {
         URL(string: APITarget.baseURL + "user")!
     }
 
-    var method: Alamofire.HTTPMethod {
+    var method: NetworkHTTPMethod {
         switch self {
         case .login:
             return .post

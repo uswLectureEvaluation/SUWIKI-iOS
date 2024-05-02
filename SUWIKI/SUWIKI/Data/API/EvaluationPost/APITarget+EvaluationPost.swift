@@ -7,7 +7,7 @@
 
 import Foundation
 
-import Alamofire
+import Network
 
 extension APITarget {
     enum EvaluationPost: TargetType {
@@ -23,7 +23,7 @@ extension APITarget.EvaluationPost {
         URL(string: APITarget.baseURL + "evaluate-posts")!
     }
 
-    var method: Alamofire.HTTPMethod {
+    var method: NetworkHTTPMethod {
         switch self {
         case .fetchEvaluationPosts:
             return .get
