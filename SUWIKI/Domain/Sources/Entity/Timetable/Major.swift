@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct Major: Identifiable { //: Equatable, Hashable, Decodable
-    let id = UUID()
-    var name: String
-    var bookmark: Bool = false
-    var courseCount: Int = 0
+public struct Major: Identifiable { //: Equatable, Hashable, Decodable
+    public let id = UUID()
+    public var name: String
+    public var bookmark: Bool = false
+    public var courseCount: Int = 0
 
-    init(name: String, courseCount: Int = 0) {
+    public init(name: String, courseCount: Int = 0) {
         self.name = name
         self.courseCount = courseCount
     }
 
-    static func majorCount(name: String) -> Major {
-        let count = CoreDataManager.shared.fetchCourseCount(major: name)
-        return Major(name: name, courseCount: count)
-    }
+//    static func majorCount(name: String) -> Major {
+//        let count = CoreDataManager.shared.fetchCourseCount(major: name)
+//        return Major(name: name, courseCount: count)
+//    }
 }
 
 

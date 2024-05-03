@@ -7,16 +7,36 @@
 
 import Foundation
 
-struct Evaluation {
-    let written: Bool
-    let posts: [EvaluationPost]
+public struct Evaluation {
+    public let written: Bool
+    public let posts: [EvaluationPost]
+
+    public init(
+        written: Bool,
+        posts: [EvaluationPost]
+    ) {
+        self.written = written
+        self.posts = posts
+    }
 }
 
-struct EvaluationPost: Identifiable {
-    let id: Int
-    let selectedSemester: String
-    let totalAvarage: Double
-    let content: String
+public struct EvaluationPost: Identifiable {
+    public let id: Int
+    public let selectedSemester: String
+    public let totalAvarage: Double
+    public let content: String
+
+    public init(
+        id: Int,
+        selectedSemester: String,
+        totalAvarage: Double,
+        content: String
+    ) {
+        self.id = id
+        self.selectedSemester = selectedSemester
+        self.totalAvarage = totalAvarage
+        self.content = content
+    }
 }
 
 extension EvaluationPost {

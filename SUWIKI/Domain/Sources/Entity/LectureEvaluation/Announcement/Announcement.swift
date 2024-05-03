@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Announcement: Identifiable, Hashable {
-    let id: Int
-    let title: String
-    let date: String
-    let content: String?
+public struct Announcement: Identifiable, Hashable {
+    public let id: Int
+    public let title: String
+    public let date: String
+    public let content: String?
 
-    init(
+    public init(
         id: Int,
         title: String,
         date: String,
