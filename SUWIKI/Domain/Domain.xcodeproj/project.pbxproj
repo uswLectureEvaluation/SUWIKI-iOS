@@ -1,0 +1,881 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AF01FC242BE3A65600F0EAD0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF01FC1B2BE3A65600F0EAD0 /* Domain.framework */; };
+		AF01FC292BE3A65600F0EAD0 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC282BE3A65600F0EAD0 /* DomainTests.swift */; };
+		AF01FC2A2BE3A65600F0EAD0 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = AF01FC1E2BE3A65600F0EAD0 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF01FCA52BE3A92A00F0EAD0 /* DIContainer in Frameworks */ = {isa = PBXBuildFile; productRef = AF01FCA42BE3A92A00F0EAD0 /* DIContainer */; };
+		AF01FCA72BE3A92C00F0EAD0 /* Keychain in Frameworks */ = {isa = PBXBuildFile; productRef = AF01FCA62BE3A92C00F0EAD0 /* Keychain */; };
+		AF01FCAB2BE3AA9500F0EAD0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC9B2BE3A6DF00F0EAD0 /* UserRepository.swift */; };
+		AF01FCAC2BE3AA9500F0EAD0 /* NoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC9C2BE3A6DF00F0EAD0 /* NoticeRepository.swift */; };
+		AF01FCAD2BE3AA9500F0EAD0 /* LectureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC9D2BE3A6DF00F0EAD0 /* LectureRepository.swift */; };
+		AF01FCAE2BE3AA9500F0EAD0 /* TimetableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC9E2BE3A6DF00F0EAD0 /* TimetableRepository.swift */; };
+		AF01FCAF2BE3AA9500F0EAD0 /* ExamPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC9F2BE3A6DF00F0EAD0 /* ExamPostRepository.swift */; };
+		AF01FCB02BE3AA9500F0EAD0 /* KeychainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FCA02BE3A6DF00F0EAD0 /* KeychainRepository.swift */; };
+		AF01FCB12BE3AA9500F0EAD0 /* EvaluationPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FCA12BE3A6DF00F0EAD0 /* EvaluationPostRepository.swift */; };
+		AF01FCB22BE3AA9500F0EAD0 /* FetchDetailLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC6D2BE3A6DC00F0EAD0 /* FetchDetailLectureUseCase.swift */; };
+		AF01FCB32BE3AA9500F0EAD0 /* SearchLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC6E2BE3A6DC00F0EAD0 /* SearchLectureUseCase.swift */; };
+		AF01FCB42BE3AA9500F0EAD0 /* FetchLectureUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC6F2BE3A6DC00F0EAD0 /* FetchLectureUseCase.swift */; };
+		AF01FCB52BE3AA9500F0EAD0 /* FetchUserEvaluationPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC712BE3A6DC00F0EAD0 /* FetchUserEvaluationPostsUseCase.swift */; };
+		AF01FCB62BE3AA9500F0EAD0 /* UpdateEvaluationPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC722BE3A6DC00F0EAD0 /* UpdateEvaluationPostUseCase.swift */; };
+		AF01FCB72BE3AA9500F0EAD0 /* WriteEvaluationPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC732BE3A6DC00F0EAD0 /* WriteEvaluationPostUseCase.swift */; };
+		AF01FCB82BE3AA9500F0EAD0 /* FetchEvaluationPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC742BE3A6DC00F0EAD0 /* FetchEvaluationPostsUseCase.swift */; };
+		AF01FCB92BE3AA9500F0EAD0 /* DeleteTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC762BE3A6DC00F0EAD0 /* DeleteTokenUseCase.swift */; };
+		AF01FCBA2BE3AA9500F0EAD0 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC772BE3A6DC00F0EAD0 /* SignUpUseCase.swift */; };
+		AF01FCBB2BE3AA9500F0EAD0 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC782BE3A6DC00F0EAD0 /* SignInUseCase.swift */; };
+		AF01FCBC2BE3AA9500F0EAD0 /* WithDrawUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC792BE3A6DC00F0EAD0 /* WithDrawUseCase.swift */; };
+		AF01FCBD2BE3AA9500F0EAD0 /* CheckDuplicatedEmailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7A2BE3A6DC00F0EAD0 /* CheckDuplicatedEmailUseCase.swift */; };
+		AF01FCBE2BE3AA9500F0EAD0 /* CreateTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7B2BE3A6DC00F0EAD0 /* CreateTokenUseCase.swift */; };
+		AF01FCBF2BE3AA9500F0EAD0 /* UserInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7C2BE3A6DC00F0EAD0 /* UserInfoUseCase.swift */; };
+		AF01FCC02BE3AA9500F0EAD0 /* FindIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7D2BE3A6DC00F0EAD0 /* FindIdUseCase.swift */; };
+		AF01FCC12BE3AA9500F0EAD0 /* ReadTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7E2BE3A6DC00F0EAD0 /* ReadTokenUseCase.swift */; };
+		AF01FCC22BE3AA9500F0EAD0 /* ChangePasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7F2BE3A6DC00F0EAD0 /* ChangePasswordUseCase.swift */; };
+		AF01FCC32BE3AA9500F0EAD0 /* FindPasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC802BE3A6DC00F0EAD0 /* FindPasswordUseCase.swift */; };
+		AF01FCC42BE3AA9500F0EAD0 /* CheckDuplicatedIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC812BE3A6DC00F0EAD0 /* CheckDuplicatedIdUseCase.swift */; };
+		AF01FCC52BE3AA9500F0EAD0 /* WriteExamPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC832BE3A6DC00F0EAD0 /* WriteExamPostUseCase.swift */; };
+		AF01FCC62BE3AA9500F0EAD0 /* FetchUserExamPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC842BE3A6DC00F0EAD0 /* FetchUserExamPostsUseCase.swift */; };
+		AF01FCC72BE3AA9500F0EAD0 /* FetchPurchasedExamPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC852BE3A6DC00F0EAD0 /* FetchPurchasedExamPostsUseCase.swift */; };
+		AF01FCC82BE3AA9500F0EAD0 /* UpdateExamPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC862BE3A6DC00F0EAD0 /* UpdateExamPostUseCase.swift */; };
+		AF01FCC92BE3AA9500F0EAD0 /* PurchaseExamPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC872BE3A6DC00F0EAD0 /* PurchaseExamPostUseCase.swift */; };
+		AF01FCCA2BE3AA9500F0EAD0 /* FetchExamPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC882BE3A6DC00F0EAD0 /* FetchExamPostsUseCase.swift */; };
+		AF01FCCB2BE3AA9500F0EAD0 /* FetchAnnouncementUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC8A2BE3A6DC00F0EAD0 /* FetchAnnouncementUseCase.swift */; };
+		AF01FCCC2BE3AA9500F0EAD0 /* FetchDetailAnnouncementUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC8B2BE3A6DC00F0EAD0 /* FetchDetailAnnouncementUseCase.swift */; };
+		AF01FCCD2BE3AA9500F0EAD0 /* SaveCourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC8D2BE3A6DC00F0EAD0 /* SaveCourseUseCase.swift */; };
+		AF01FCCE2BE3AA9500F0EAD0 /* FetchTimetableListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC8E2BE3A6DC00F0EAD0 /* FetchTimetableListUseCase.swift */; };
+		AF01FCCF2BE3AA9500F0EAD0 /* DeleteCourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC8F2BE3A6DC00F0EAD0 /* DeleteCourseUseCase.swift */; };
+		AF01FCD02BE3AA9500F0EAD0 /* DeleteTimetableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC902BE3A6DC00F0EAD0 /* DeleteTimetableUseCase.swift */; };
+		AF01FCD12BE3AA9500F0EAD0 /* SaveTimetableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC912BE3A6DC00F0EAD0 /* SaveTimetableUseCase.swift */; };
+		AF01FCD22BE3AA9500F0EAD0 /* FetchELearningUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC922BE3A6DC00F0EAD0 /* FetchELearningUseCase.swift */; };
+		AF01FCD32BE3AA9500F0EAD0 /* UpdateTimetableTitleUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC932BE3A6DC00F0EAD0 /* UpdateTimetableTitleUseCase.swift */; };
+		AF01FCD42BE3AA9500F0EAD0 /* FetchCoursesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC942BE3A6DC00F0EAD0 /* FetchCoursesUseCase.swift */; };
+		AF01FCD52BE3AA9500F0EAD0 /* FetchFirebaseCourseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC952BE3A6DC00F0EAD0 /* FetchFirebaseCourseUseCase.swift */; };
+		AF01FCD62BE3AA9500F0EAD0 /* FetchMajorsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC962BE3A6DC00F0EAD0 /* FetchMajorsUseCase.swift */; };
+		AF01FCD72BE3AA9500F0EAD0 /* CheckCourseVersionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC972BE3A6DC00F0EAD0 /* CheckCourseVersionUseCase.swift */; };
+		AF01FCD82BE3AA9500F0EAD0 /* FetchTimetableUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC982BE3A6DC00F0EAD0 /* FetchTimetableUseCase.swift */; };
+		AF01FCD92BE3AA9500F0EAD0 /* DetailLecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC572BE3A6AE00F0EAD0 /* DetailLecture.swift */; };
+		AF01FCDA2BE3AA9500F0EAD0 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC582BE3A6AE00F0EAD0 /* Lecture.swift */; };
+		AF01FCDB2BE3AA9500F0EAD0 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC5A2BE3A6AE00F0EAD0 /* Evaluation.swift */; };
+		AF01FCDC2BE3AA9500F0EAD0 /* UserEvaluationPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC5B2BE3A6AE00F0EAD0 /* UserEvaluationPost.swift */; };
+		AF01FCDD2BE3AA9500F0EAD0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC5D2BE3A6AE00F0EAD0 /* UserInfo.swift */; };
+		AF01FCDE2BE3AA9500F0EAD0 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC5E2BE3A6AE00F0EAD0 /* SignIn.swift */; };
+		AF01FCDF2BE3AA9500F0EAD0 /* UserExamPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC602BE3A6AE00F0EAD0 /* UserExamPost.swift */; };
+		AF01FCE02BE3AA9500F0EAD0 /* ExamPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC612BE3A6AE00F0EAD0 /* ExamPost.swift */; };
+		AF01FCE12BE3AA9500F0EAD0 /* Exam.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC622BE3A6AE00F0EAD0 /* Exam.swift */; };
+		AF01FCE22BE3AA9500F0EAD0 /* PurchasedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC632BE3A6AE00F0EAD0 /* PurchasedPost.swift */; };
+		AF01FCE32BE3AA9500F0EAD0 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC652BE3A6AE00F0EAD0 /* Announcement.swift */; };
+		AF01FCE42BE3AA9500F0EAD0 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC682BE3A6AE00F0EAD0 /* Major.swift */; };
+		AF01FCE52BE3AA9500F0EAD0 /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC692BE3A6AE00F0EAD0 /* TimetableCourse.swift */; };
+		AF01FCE62BE3AA9500F0EAD0 /* FetchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC6A2BE3A6AE00F0EAD0 /* FetchCourse.swift */; };
+		AF01FCE82BE3DC3300F0EAD0 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FCE72BE3DC3300F0EAD0 /* Timetable.swift */; };
+		AF01FCEA2BE3E0D700F0EAD0 /* LectureOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FCE92BE3E0D700F0EAD0 /* LectureOption.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AF01FC252BE3A65600F0EAD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF01FC122BE3A65500F0EAD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF01FC1A2BE3A65600F0EAD0;
+			remoteInfo = Domain;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AF01FC1B2BE3A65600F0EAD0 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF01FC1E2BE3A65600F0EAD0 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
+		AF01FC232BE3A65600F0EAD0 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF01FC282BE3A65600F0EAD0 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		AF01FC572BE3A6AE00F0EAD0 /* DetailLecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLecture.swift; sourceTree = "<group>"; };
+		AF01FC582BE3A6AE00F0EAD0 /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
+		AF01FC5A2BE3A6AE00F0EAD0 /* Evaluation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
+		AF01FC5B2BE3A6AE00F0EAD0 /* UserEvaluationPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEvaluationPost.swift; sourceTree = "<group>"; };
+		AF01FC5D2BE3A6AE00F0EAD0 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		AF01FC5E2BE3A6AE00F0EAD0 /* SignIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		AF01FC602BE3A6AE00F0EAD0 /* UserExamPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserExamPost.swift; sourceTree = "<group>"; };
+		AF01FC612BE3A6AE00F0EAD0 /* ExamPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamPost.swift; sourceTree = "<group>"; };
+		AF01FC622BE3A6AE00F0EAD0 /* Exam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exam.swift; sourceTree = "<group>"; };
+		AF01FC632BE3A6AE00F0EAD0 /* PurchasedPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasedPost.swift; sourceTree = "<group>"; };
+		AF01FC652BE3A6AE00F0EAD0 /* Announcement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		AF01FC682BE3A6AE00F0EAD0 /* Major.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Major.swift; sourceTree = "<group>"; };
+		AF01FC692BE3A6AE00F0EAD0 /* TimetableCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCourse.swift; sourceTree = "<group>"; };
+		AF01FC6A2BE3A6AE00F0EAD0 /* FetchCourse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchCourse.swift; sourceTree = "<group>"; };
+		AF01FC6D2BE3A6DC00F0EAD0 /* FetchDetailLectureUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchDetailLectureUseCase.swift; sourceTree = "<group>"; };
+		AF01FC6E2BE3A6DC00F0EAD0 /* SearchLectureUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLectureUseCase.swift; sourceTree = "<group>"; };
+		AF01FC6F2BE3A6DC00F0EAD0 /* FetchLectureUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchLectureUseCase.swift; sourceTree = "<group>"; };
+		AF01FC712BE3A6DC00F0EAD0 /* FetchUserEvaluationPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserEvaluationPostsUseCase.swift; sourceTree = "<group>"; };
+		AF01FC722BE3A6DC00F0EAD0 /* UpdateEvaluationPostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateEvaluationPostUseCase.swift; sourceTree = "<group>"; };
+		AF01FC732BE3A6DC00F0EAD0 /* WriteEvaluationPostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteEvaluationPostUseCase.swift; sourceTree = "<group>"; };
+		AF01FC742BE3A6DC00F0EAD0 /* FetchEvaluationPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchEvaluationPostsUseCase.swift; sourceTree = "<group>"; };
+		AF01FC762BE3A6DC00F0EAD0 /* DeleteTokenUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTokenUseCase.swift; sourceTree = "<group>"; };
+		AF01FC772BE3A6DC00F0EAD0 /* SignUpUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
+		AF01FC782BE3A6DC00F0EAD0 /* SignInUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
+		AF01FC792BE3A6DC00F0EAD0 /* WithDrawUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawUseCase.swift; sourceTree = "<group>"; };
+		AF01FC7A2BE3A6DC00F0EAD0 /* CheckDuplicatedEmailUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckDuplicatedEmailUseCase.swift; sourceTree = "<group>"; };
+		AF01FC7B2BE3A6DC00F0EAD0 /* CreateTokenUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTokenUseCase.swift; sourceTree = "<group>"; };
+		AF01FC7C2BE3A6DC00F0EAD0 /* UserInfoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoUseCase.swift; sourceTree = "<group>"; };
+		AF01FC7D2BE3A6DC00F0EAD0 /* FindIdUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdUseCase.swift; sourceTree = "<group>"; };
+		AF01FC7E2BE3A6DC00F0EAD0 /* ReadTokenUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadTokenUseCase.swift; sourceTree = "<group>"; };
+		AF01FC7F2BE3A6DC00F0EAD0 /* ChangePasswordUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCase.swift; sourceTree = "<group>"; };
+		AF01FC802BE3A6DC00F0EAD0 /* FindPasswordUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordUseCase.swift; sourceTree = "<group>"; };
+		AF01FC812BE3A6DC00F0EAD0 /* CheckDuplicatedIdUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckDuplicatedIdUseCase.swift; sourceTree = "<group>"; };
+		AF01FC832BE3A6DC00F0EAD0 /* WriteExamPostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteExamPostUseCase.swift; sourceTree = "<group>"; };
+		AF01FC842BE3A6DC00F0EAD0 /* FetchUserExamPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserExamPostsUseCase.swift; sourceTree = "<group>"; };
+		AF01FC852BE3A6DC00F0EAD0 /* FetchPurchasedExamPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchPurchasedExamPostsUseCase.swift; sourceTree = "<group>"; };
+		AF01FC862BE3A6DC00F0EAD0 /* UpdateExamPostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateExamPostUseCase.swift; sourceTree = "<group>"; };
+		AF01FC872BE3A6DC00F0EAD0 /* PurchaseExamPostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseExamPostUseCase.swift; sourceTree = "<group>"; };
+		AF01FC882BE3A6DC00F0EAD0 /* FetchExamPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchExamPostsUseCase.swift; sourceTree = "<group>"; };
+		AF01FC8A2BE3A6DC00F0EAD0 /* FetchAnnouncementUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchAnnouncementUseCase.swift; sourceTree = "<group>"; };
+		AF01FC8B2BE3A6DC00F0EAD0 /* FetchDetailAnnouncementUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchDetailAnnouncementUseCase.swift; sourceTree = "<group>"; };
+		AF01FC8D2BE3A6DC00F0EAD0 /* SaveCourseUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCourseUseCase.swift; sourceTree = "<group>"; };
+		AF01FC8E2BE3A6DC00F0EAD0 /* FetchTimetableListUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTimetableListUseCase.swift; sourceTree = "<group>"; };
+		AF01FC8F2BE3A6DC00F0EAD0 /* DeleteCourseUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteCourseUseCase.swift; sourceTree = "<group>"; };
+		AF01FC902BE3A6DC00F0EAD0 /* DeleteTimetableUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTimetableUseCase.swift; sourceTree = "<group>"; };
+		AF01FC912BE3A6DC00F0EAD0 /* SaveTimetableUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTimetableUseCase.swift; sourceTree = "<group>"; };
+		AF01FC922BE3A6DC00F0EAD0 /* FetchELearningUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchELearningUseCase.swift; sourceTree = "<group>"; };
+		AF01FC932BE3A6DC00F0EAD0 /* UpdateTimetableTitleUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateTimetableTitleUseCase.swift; sourceTree = "<group>"; };
+		AF01FC942BE3A6DC00F0EAD0 /* FetchCoursesUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchCoursesUseCase.swift; sourceTree = "<group>"; };
+		AF01FC952BE3A6DC00F0EAD0 /* FetchFirebaseCourseUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFirebaseCourseUseCase.swift; sourceTree = "<group>"; };
+		AF01FC962BE3A6DC00F0EAD0 /* FetchMajorsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchMajorsUseCase.swift; sourceTree = "<group>"; };
+		AF01FC972BE3A6DC00F0EAD0 /* CheckCourseVersionUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckCourseVersionUseCase.swift; sourceTree = "<group>"; };
+		AF01FC982BE3A6DC00F0EAD0 /* FetchTimetableUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchTimetableUseCase.swift; sourceTree = "<group>"; };
+		AF01FC9B2BE3A6DF00F0EAD0 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		AF01FC9C2BE3A6DF00F0EAD0 /* NoticeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeRepository.swift; sourceTree = "<group>"; };
+		AF01FC9D2BE3A6DF00F0EAD0 /* LectureRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureRepository.swift; sourceTree = "<group>"; };
+		AF01FC9E2BE3A6DF00F0EAD0 /* TimetableRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableRepository.swift; sourceTree = "<group>"; };
+		AF01FC9F2BE3A6DF00F0EAD0 /* ExamPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamPostRepository.swift; sourceTree = "<group>"; };
+		AF01FCA02BE3A6DF00F0EAD0 /* KeychainRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainRepository.swift; sourceTree = "<group>"; };
+		AF01FCA12BE3A6DF00F0EAD0 /* EvaluationPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluationPostRepository.swift; sourceTree = "<group>"; };
+		AF01FCE72BE3DC3300F0EAD0 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		AF01FCE92BE3E0D700F0EAD0 /* LectureOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureOption.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AF01FC182BE3A65600F0EAD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF01FCA72BE3A92C00F0EAD0 /* Keychain in Frameworks */,
+				AF01FCA52BE3A92A00F0EAD0 /* DIContainer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF01FC202BE3A65600F0EAD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF01FC242BE3A65600F0EAD0 /* Domain.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AF01FC112BE3A65500F0EAD0 = {
+			isa = PBXGroup;
+			children = (
+				AF01FC1E2BE3A65600F0EAD0 /* Domain.h */,
+				AF01FC1D2BE3A65600F0EAD0 /* Sources */,
+				AF01FC272BE3A65600F0EAD0 /* Tests */,
+				AF01FC1C2BE3A65600F0EAD0 /* Products */,
+				AF01FCA32BE3A92A00F0EAD0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AF01FC1C2BE3A65600F0EAD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC1B2BE3A65600F0EAD0 /* Domain.framework */,
+				AF01FC232BE3A65600F0EAD0 /* DomainTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF01FC1D2BE3A65600F0EAD0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FCA22BE3A6DF00F0EAD0 /* Repositories */,
+				AF01FC9A2BE3A6DC00F0EAD0 /* UseCases */,
+				AF01FC6C2BE3A6AE00F0EAD0 /* Entity */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		AF01FC272BE3A65600F0EAD0 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC282BE3A65600F0EAD0 /* DomainTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		AF01FC592BE3A6AE00F0EAD0 /* Lecture */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC572BE3A6AE00F0EAD0 /* DetailLecture.swift */,
+				AF01FC582BE3A6AE00F0EAD0 /* Lecture.swift */,
+			);
+			path = Lecture;
+			sourceTree = "<group>";
+		};
+		AF01FC5C2BE3A6AE00F0EAD0 /* EvaluationPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC5A2BE3A6AE00F0EAD0 /* Evaluation.swift */,
+				AF01FC5B2BE3A6AE00F0EAD0 /* UserEvaluationPost.swift */,
+			);
+			path = EvaluationPost;
+			sourceTree = "<group>";
+		};
+		AF01FC5F2BE3A6AE00F0EAD0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC5D2BE3A6AE00F0EAD0 /* UserInfo.swift */,
+				AF01FC5E2BE3A6AE00F0EAD0 /* SignIn.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		AF01FC642BE3A6AE00F0EAD0 /* ExamPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC602BE3A6AE00F0EAD0 /* UserExamPost.swift */,
+				AF01FC612BE3A6AE00F0EAD0 /* ExamPost.swift */,
+				AF01FC622BE3A6AE00F0EAD0 /* Exam.swift */,
+				AF01FC632BE3A6AE00F0EAD0 /* PurchasedPost.swift */,
+			);
+			path = ExamPost;
+			sourceTree = "<group>";
+		};
+		AF01FC662BE3A6AE00F0EAD0 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC652BE3A6AE00F0EAD0 /* Announcement.swift */,
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		AF01FC672BE3A6AE00F0EAD0 /* LectureEvaluation */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC592BE3A6AE00F0EAD0 /* Lecture */,
+				AF01FC5C2BE3A6AE00F0EAD0 /* EvaluationPost */,
+				AF01FC5F2BE3A6AE00F0EAD0 /* User */,
+				AF01FC642BE3A6AE00F0EAD0 /* ExamPost */,
+				AF01FC662BE3A6AE00F0EAD0 /* Announcement */,
+			);
+			path = LectureEvaluation;
+			sourceTree = "<group>";
+		};
+		AF01FC6B2BE3A6AE00F0EAD0 /* Timetable */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC682BE3A6AE00F0EAD0 /* Major.swift */,
+				AF01FC692BE3A6AE00F0EAD0 /* TimetableCourse.swift */,
+				AF01FC6A2BE3A6AE00F0EAD0 /* FetchCourse.swift */,
+				AF01FCE72BE3DC3300F0EAD0 /* Timetable.swift */,
+			);
+			path = Timetable;
+			sourceTree = "<group>";
+		};
+		AF01FC6C2BE3A6AE00F0EAD0 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC672BE3A6AE00F0EAD0 /* LectureEvaluation */,
+				AF01FC6B2BE3A6AE00F0EAD0 /* Timetable */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		AF01FC702BE3A6DC00F0EAD0 /* Lecture */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC6D2BE3A6DC00F0EAD0 /* FetchDetailLectureUseCase.swift */,
+				AF01FC6E2BE3A6DC00F0EAD0 /* SearchLectureUseCase.swift */,
+				AF01FC6F2BE3A6DC00F0EAD0 /* FetchLectureUseCase.swift */,
+			);
+			path = Lecture;
+			sourceTree = "<group>";
+		};
+		AF01FC752BE3A6DC00F0EAD0 /* EvaluationPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC712BE3A6DC00F0EAD0 /* FetchUserEvaluationPostsUseCase.swift */,
+				AF01FC722BE3A6DC00F0EAD0 /* UpdateEvaluationPostUseCase.swift */,
+				AF01FC732BE3A6DC00F0EAD0 /* WriteEvaluationPostUseCase.swift */,
+				AF01FC742BE3A6DC00F0EAD0 /* FetchEvaluationPostsUseCase.swift */,
+			);
+			path = EvaluationPost;
+			sourceTree = "<group>";
+		};
+		AF01FC822BE3A6DC00F0EAD0 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC762BE3A6DC00F0EAD0 /* DeleteTokenUseCase.swift */,
+				AF01FC772BE3A6DC00F0EAD0 /* SignUpUseCase.swift */,
+				AF01FC782BE3A6DC00F0EAD0 /* SignInUseCase.swift */,
+				AF01FC792BE3A6DC00F0EAD0 /* WithDrawUseCase.swift */,
+				AF01FC7A2BE3A6DC00F0EAD0 /* CheckDuplicatedEmailUseCase.swift */,
+				AF01FC7B2BE3A6DC00F0EAD0 /* CreateTokenUseCase.swift */,
+				AF01FC7C2BE3A6DC00F0EAD0 /* UserInfoUseCase.swift */,
+				AF01FC7D2BE3A6DC00F0EAD0 /* FindIdUseCase.swift */,
+				AF01FC7E2BE3A6DC00F0EAD0 /* ReadTokenUseCase.swift */,
+				AF01FC7F2BE3A6DC00F0EAD0 /* ChangePasswordUseCase.swift */,
+				AF01FC802BE3A6DC00F0EAD0 /* FindPasswordUseCase.swift */,
+				AF01FC812BE3A6DC00F0EAD0 /* CheckDuplicatedIdUseCase.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		AF01FC892BE3A6DC00F0EAD0 /* ExamPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC832BE3A6DC00F0EAD0 /* WriteExamPostUseCase.swift */,
+				AF01FC842BE3A6DC00F0EAD0 /* FetchUserExamPostsUseCase.swift */,
+				AF01FC852BE3A6DC00F0EAD0 /* FetchPurchasedExamPostsUseCase.swift */,
+				AF01FC862BE3A6DC00F0EAD0 /* UpdateExamPostUseCase.swift */,
+				AF01FC872BE3A6DC00F0EAD0 /* PurchaseExamPostUseCase.swift */,
+				AF01FC882BE3A6DC00F0EAD0 /* FetchExamPostsUseCase.swift */,
+			);
+			path = ExamPost;
+			sourceTree = "<group>";
+		};
+		AF01FC8C2BE3A6DC00F0EAD0 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC8A2BE3A6DC00F0EAD0 /* FetchAnnouncementUseCase.swift */,
+				AF01FC8B2BE3A6DC00F0EAD0 /* FetchDetailAnnouncementUseCase.swift */,
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		AF01FC992BE3A6DC00F0EAD0 /* Timetable */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC8D2BE3A6DC00F0EAD0 /* SaveCourseUseCase.swift */,
+				AF01FC8E2BE3A6DC00F0EAD0 /* FetchTimetableListUseCase.swift */,
+				AF01FC8F2BE3A6DC00F0EAD0 /* DeleteCourseUseCase.swift */,
+				AF01FC902BE3A6DC00F0EAD0 /* DeleteTimetableUseCase.swift */,
+				AF01FC912BE3A6DC00F0EAD0 /* SaveTimetableUseCase.swift */,
+				AF01FC922BE3A6DC00F0EAD0 /* FetchELearningUseCase.swift */,
+				AF01FC932BE3A6DC00F0EAD0 /* UpdateTimetableTitleUseCase.swift */,
+				AF01FC942BE3A6DC00F0EAD0 /* FetchCoursesUseCase.swift */,
+				AF01FC952BE3A6DC00F0EAD0 /* FetchFirebaseCourseUseCase.swift */,
+				AF01FC962BE3A6DC00F0EAD0 /* FetchMajorsUseCase.swift */,
+				AF01FC972BE3A6DC00F0EAD0 /* CheckCourseVersionUseCase.swift */,
+				AF01FC982BE3A6DC00F0EAD0 /* FetchTimetableUseCase.swift */,
+			);
+			path = Timetable;
+			sourceTree = "<group>";
+		};
+		AF01FC9A2BE3A6DC00F0EAD0 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC702BE3A6DC00F0EAD0 /* Lecture */,
+				AF01FC752BE3A6DC00F0EAD0 /* EvaluationPost */,
+				AF01FC822BE3A6DC00F0EAD0 /* User */,
+				AF01FC892BE3A6DC00F0EAD0 /* ExamPost */,
+				AF01FC8C2BE3A6DC00F0EAD0 /* Announcement */,
+				AF01FC992BE3A6DC00F0EAD0 /* Timetable */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AF01FCA22BE3A6DF00F0EAD0 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				AF01FC9B2BE3A6DF00F0EAD0 /* UserRepository.swift */,
+				AF01FC9C2BE3A6DF00F0EAD0 /* NoticeRepository.swift */,
+				AF01FC9D2BE3A6DF00F0EAD0 /* LectureRepository.swift */,
+				AF01FC9E2BE3A6DF00F0EAD0 /* TimetableRepository.swift */,
+				AF01FC9F2BE3A6DF00F0EAD0 /* ExamPostRepository.swift */,
+				AF01FCA02BE3A6DF00F0EAD0 /* KeychainRepository.swift */,
+				AF01FCA12BE3A6DF00F0EAD0 /* EvaluationPostRepository.swift */,
+				AF01FCE92BE3E0D700F0EAD0 /* LectureOption.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		AF01FCA32BE3A92A00F0EAD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AF01FC162BE3A65600F0EAD0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF01FC2A2BE3A65600F0EAD0 /* Domain.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AF01FC1A2BE3A65600F0EAD0 /* Domain */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF01FC2D2BE3A65600F0EAD0 /* Build configuration list for PBXNativeTarget "Domain" */;
+			buildPhases = (
+				AF01FC162BE3A65600F0EAD0 /* Headers */,
+				AF01FC172BE3A65600F0EAD0 /* Sources */,
+				AF01FC182BE3A65600F0EAD0 /* Frameworks */,
+				AF01FC192BE3A65600F0EAD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Domain;
+			packageProductDependencies = (
+				AF01FCA42BE3A92A00F0EAD0 /* DIContainer */,
+				AF01FCA62BE3A92C00F0EAD0 /* Keychain */,
+			);
+			productName = Domain;
+			productReference = AF01FC1B2BE3A65600F0EAD0 /* Domain.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AF01FC222BE3A65600F0EAD0 /* DomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF01FC302BE3A65600F0EAD0 /* Build configuration list for PBXNativeTarget "DomainTests" */;
+			buildPhases = (
+				AF01FC1F2BE3A65600F0EAD0 /* Sources */,
+				AF01FC202BE3A65600F0EAD0 /* Frameworks */,
+				AF01FC212BE3A65600F0EAD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AF01FC262BE3A65600F0EAD0 /* PBXTargetDependency */,
+			);
+			name = DomainTests;
+			productName = DomainTests;
+			productReference = AF01FC232BE3A65600F0EAD0 /* DomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AF01FC122BE3A65500F0EAD0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AF01FC1A2BE3A65600F0EAD0 = {
+						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
+					};
+					AF01FC222BE3A65600F0EAD0 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = AF01FC152BE3A65500F0EAD0 /* Build configuration list for PBXProject "Domain" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF01FC112BE3A65500F0EAD0;
+			productRefGroup = AF01FC1C2BE3A65600F0EAD0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF01FC1A2BE3A65600F0EAD0 /* Domain */,
+				AF01FC222BE3A65600F0EAD0 /* DomainTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AF01FC192BE3A65600F0EAD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF01FC212BE3A65600F0EAD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AF01FC172BE3A65600F0EAD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF01FCAB2BE3AA9500F0EAD0 /* UserRepository.swift in Sources */,
+				AF01FCAC2BE3AA9500F0EAD0 /* NoticeRepository.swift in Sources */,
+				AF01FCAD2BE3AA9500F0EAD0 /* LectureRepository.swift in Sources */,
+				AF01FCAE2BE3AA9500F0EAD0 /* TimetableRepository.swift in Sources */,
+				AF01FCAF2BE3AA9500F0EAD0 /* ExamPostRepository.swift in Sources */,
+				AF01FCB02BE3AA9500F0EAD0 /* KeychainRepository.swift in Sources */,
+				AF01FCB12BE3AA9500F0EAD0 /* EvaluationPostRepository.swift in Sources */,
+				AF01FCB22BE3AA9500F0EAD0 /* FetchDetailLectureUseCase.swift in Sources */,
+				AF01FCB32BE3AA9500F0EAD0 /* SearchLectureUseCase.swift in Sources */,
+				AF01FCB42BE3AA9500F0EAD0 /* FetchLectureUseCase.swift in Sources */,
+				AF01FCB52BE3AA9500F0EAD0 /* FetchUserEvaluationPostsUseCase.swift in Sources */,
+				AF01FCB62BE3AA9500F0EAD0 /* UpdateEvaluationPostUseCase.swift in Sources */,
+				AF01FCB72BE3AA9500F0EAD0 /* WriteEvaluationPostUseCase.swift in Sources */,
+				AF01FCB82BE3AA9500F0EAD0 /* FetchEvaluationPostsUseCase.swift in Sources */,
+				AF01FCB92BE3AA9500F0EAD0 /* DeleteTokenUseCase.swift in Sources */,
+				AF01FCBA2BE3AA9500F0EAD0 /* SignUpUseCase.swift in Sources */,
+				AF01FCBB2BE3AA9500F0EAD0 /* SignInUseCase.swift in Sources */,
+				AF01FCBC2BE3AA9500F0EAD0 /* WithDrawUseCase.swift in Sources */,
+				AF01FCBD2BE3AA9500F0EAD0 /* CheckDuplicatedEmailUseCase.swift in Sources */,
+				AF01FCBE2BE3AA9500F0EAD0 /* CreateTokenUseCase.swift in Sources */,
+				AF01FCBF2BE3AA9500F0EAD0 /* UserInfoUseCase.swift in Sources */,
+				AF01FCE82BE3DC3300F0EAD0 /* Timetable.swift in Sources */,
+				AF01FCC02BE3AA9500F0EAD0 /* FindIdUseCase.swift in Sources */,
+				AF01FCC12BE3AA9500F0EAD0 /* ReadTokenUseCase.swift in Sources */,
+				AF01FCC22BE3AA9500F0EAD0 /* ChangePasswordUseCase.swift in Sources */,
+				AF01FCC32BE3AA9500F0EAD0 /* FindPasswordUseCase.swift in Sources */,
+				AF01FCC42BE3AA9500F0EAD0 /* CheckDuplicatedIdUseCase.swift in Sources */,
+				AF01FCC52BE3AA9500F0EAD0 /* WriteExamPostUseCase.swift in Sources */,
+				AF01FCC62BE3AA9500F0EAD0 /* FetchUserExamPostsUseCase.swift in Sources */,
+				AF01FCEA2BE3E0D700F0EAD0 /* LectureOption.swift in Sources */,
+				AF01FCC72BE3AA9500F0EAD0 /* FetchPurchasedExamPostsUseCase.swift in Sources */,
+				AF01FCC82BE3AA9500F0EAD0 /* UpdateExamPostUseCase.swift in Sources */,
+				AF01FCC92BE3AA9500F0EAD0 /* PurchaseExamPostUseCase.swift in Sources */,
+				AF01FCCA2BE3AA9500F0EAD0 /* FetchExamPostsUseCase.swift in Sources */,
+				AF01FCCB2BE3AA9500F0EAD0 /* FetchAnnouncementUseCase.swift in Sources */,
+				AF01FCCC2BE3AA9500F0EAD0 /* FetchDetailAnnouncementUseCase.swift in Sources */,
+				AF01FCCD2BE3AA9500F0EAD0 /* SaveCourseUseCase.swift in Sources */,
+				AF01FCCE2BE3AA9500F0EAD0 /* FetchTimetableListUseCase.swift in Sources */,
+				AF01FCCF2BE3AA9500F0EAD0 /* DeleteCourseUseCase.swift in Sources */,
+				AF01FCD02BE3AA9500F0EAD0 /* DeleteTimetableUseCase.swift in Sources */,
+				AF01FCD12BE3AA9500F0EAD0 /* SaveTimetableUseCase.swift in Sources */,
+				AF01FCD22BE3AA9500F0EAD0 /* FetchELearningUseCase.swift in Sources */,
+				AF01FCD32BE3AA9500F0EAD0 /* UpdateTimetableTitleUseCase.swift in Sources */,
+				AF01FCD42BE3AA9500F0EAD0 /* FetchCoursesUseCase.swift in Sources */,
+				AF01FCD52BE3AA9500F0EAD0 /* FetchFirebaseCourseUseCase.swift in Sources */,
+				AF01FCD62BE3AA9500F0EAD0 /* FetchMajorsUseCase.swift in Sources */,
+				AF01FCD72BE3AA9500F0EAD0 /* CheckCourseVersionUseCase.swift in Sources */,
+				AF01FCD82BE3AA9500F0EAD0 /* FetchTimetableUseCase.swift in Sources */,
+				AF01FCD92BE3AA9500F0EAD0 /* DetailLecture.swift in Sources */,
+				AF01FCDA2BE3AA9500F0EAD0 /* Lecture.swift in Sources */,
+				AF01FCDB2BE3AA9500F0EAD0 /* Evaluation.swift in Sources */,
+				AF01FCDC2BE3AA9500F0EAD0 /* UserEvaluationPost.swift in Sources */,
+				AF01FCDD2BE3AA9500F0EAD0 /* UserInfo.swift in Sources */,
+				AF01FCDE2BE3AA9500F0EAD0 /* SignIn.swift in Sources */,
+				AF01FCDF2BE3AA9500F0EAD0 /* UserExamPost.swift in Sources */,
+				AF01FCE02BE3AA9500F0EAD0 /* ExamPost.swift in Sources */,
+				AF01FCE12BE3AA9500F0EAD0 /* Exam.swift in Sources */,
+				AF01FCE22BE3AA9500F0EAD0 /* PurchasedPost.swift in Sources */,
+				AF01FCE32BE3AA9500F0EAD0 /* Announcement.swift in Sources */,
+				AF01FCE42BE3AA9500F0EAD0 /* Major.swift in Sources */,
+				AF01FCE52BE3AA9500F0EAD0 /* TimetableCourse.swift in Sources */,
+				AF01FCE62BE3AA9500F0EAD0 /* FetchCourse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF01FC1F2BE3A65600F0EAD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF01FC292BE3A65600F0EAD0 /* DomainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AF01FC262BE3A65600F0EAD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF01FC1A2BE3A65600F0EAD0 /* Domain */;
+			targetProxy = AF01FC252BE3A65600F0EAD0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AF01FC2B2BE3A65600F0EAD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AF01FC2C2BE3A65600F0EAD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AF01FC2E2BE3A65600F0EAD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8R3N359429;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.Domain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF01FC2F2BE3A65600F0EAD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 8R3N359429;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.Domain;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AF01FC312BE3A65600F0EAD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8R3N359429;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AF01FC322BE3A65600F0EAD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8R3N359429;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.DomainTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF01FC152BE3A65500F0EAD0 /* Build configuration list for PBXProject "Domain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF01FC2B2BE3A65600F0EAD0 /* Debug */,
+				AF01FC2C2BE3A65600F0EAD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF01FC2D2BE3A65600F0EAD0 /* Build configuration list for PBXNativeTarget "Domain" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF01FC2E2BE3A65600F0EAD0 /* Debug */,
+				AF01FC2F2BE3A65600F0EAD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF01FC302BE3A65600F0EAD0 /* Build configuration list for PBXNativeTarget "DomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF01FC312BE3A65600F0EAD0 /* Debug */,
+				AF01FC322BE3A65600F0EAD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF01FCA42BE3A92A00F0EAD0 /* DIContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DIContainer;
+		};
+		AF01FCA62BE3A92C00F0EAD0 /* Keychain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Keychain;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AF01FC122BE3A65500F0EAD0 /* Project object */;
+}
