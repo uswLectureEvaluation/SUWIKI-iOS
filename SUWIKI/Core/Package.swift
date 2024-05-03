@@ -42,7 +42,8 @@ let package = Package(
             name: "FirebaseManager",
             dependencies: [
                 .product(name: "FirebaseAuth", package: "firebase-ios-sdk"),
-                .product(name: "FirebaseDatabase", package: "firebase-ios-sdk")
+                .product(name: "FirebaseDatabase", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk")
             ],
             path: "FirebaseManager"
         ),
