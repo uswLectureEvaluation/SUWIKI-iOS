@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct SearchLectureRequest: Encodable {
         /// 교수이름 OR 과목이름

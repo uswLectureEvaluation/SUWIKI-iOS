@@ -7,6 +7,7 @@
 
 import Foundation
 
+import Domain
 import Keychain
 
 final class DefaultKeychainRepository: KeychainRepository {

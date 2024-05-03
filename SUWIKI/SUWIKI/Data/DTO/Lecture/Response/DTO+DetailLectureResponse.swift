@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct DetailLectureResponse: Codable {
         /// 강의 ID
@@ -40,19 +42,21 @@ extension DTO {
 
 extension DTO.DetailLectureResponse {
     var entity: DetailLecture {
-        DetailLecture(id: id,
-                      name: lectureName,
-                      major: majorType,
-                      professor: professor,
-                      semester: semesterList,
-                      lectureType: lectureType,
-                      lectureTotalAvg: Double(lectureTotalAvg),
-                      lectureSatisfactionAvg: Double(lectureSatisfactionAvg),
-                      lectureHoneyAvg: Double(lectureHoneyAvg),
-                      lectureLearningAvg: Double(lectureLearningAvg),
-                      lectureDifficultyAvg: Int(lectureDifficultyAvg),
-                      lectureTeamAvg: Int(lectureTeamAvg),
-                      lectureHomeworkAvg: Int(lectureHomeworkAvg))
+        DetailLecture(
+            id: id,
+            name: lectureName,
+            major: majorType,
+            professor: professor,
+            semester: semesterList,
+            lectureType: lectureType,
+            lectureTotalAvg: Double(lectureTotalAvg),
+            lectureSatisfactionAvg: Double(lectureSatisfactionAvg),
+            lectureHoneyAvg: Double(lectureHoneyAvg),
+            lectureLearningAvg: Double(lectureLearningAvg),
+            lectureDifficultyAvg: Int(lectureDifficultyAvg),
+            lectureTeamAvg: Int(lectureTeamAvg),
+            lectureHomeworkAvg: Int(lectureHomeworkAvg)
+        )
     }
 }
 

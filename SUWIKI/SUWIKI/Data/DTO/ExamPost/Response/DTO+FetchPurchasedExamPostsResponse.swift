@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct FetchPurchasedExamPostsResponse: Decodable {
         let posts: [PurchasedExamPosts]

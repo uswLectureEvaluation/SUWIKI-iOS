@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct TokenResponse: Codable {
         /// 액세스 토큰

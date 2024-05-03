@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct EvaluationPostResponse: Decodable {
         /// 글 ID

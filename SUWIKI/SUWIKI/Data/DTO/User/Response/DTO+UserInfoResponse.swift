@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct UserInfoResponse: Decodable {
         let loginId: String
@@ -20,11 +22,13 @@ extension DTO {
 
 extension DTO.UserInfoResponse {
     var entity: UserInfo {
-        UserInfo(id: loginId,
-                 email: email,
-                 point: point,
-                 writtenEvaluationPosts: writtenEvaluation,
-                 writtenExamPosts: writtenExam,
-                 purchasedExamPosts: viewExam)
+        UserInfo(
+            id: loginId,
+            email: email,
+            point: point,
+            writtenEvaluationPosts: writtenEvaluation,
+            writtenExamPosts: writtenExam,
+            purchasedExamPosts: viewExam
+        )
     }
 }

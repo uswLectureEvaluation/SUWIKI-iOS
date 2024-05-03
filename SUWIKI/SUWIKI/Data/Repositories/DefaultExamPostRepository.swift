@@ -7,6 +7,7 @@
 
 import Foundation
 
+import Domain
 import Network
 
 final class DefaultExamPostRepository: ExamPostRepository {

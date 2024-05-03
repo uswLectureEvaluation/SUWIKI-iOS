@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct LectureResponse: Codable, Identifiable {
         /// 강의 ID

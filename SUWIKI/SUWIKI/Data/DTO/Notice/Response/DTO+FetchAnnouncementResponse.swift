@@ -7,6 +7,8 @@
 
 import Foundation
 
+import Domain
+
 extension DTO {
     struct FetchAnnouncementResponse: Decodable {
         let announcements: [FetchAnnouncement]
