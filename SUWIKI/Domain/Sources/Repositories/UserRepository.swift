@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UserRepository {
+public protocol UserRepository {
     func login(
         id: String,
         password: String
@@ -26,11 +26,11 @@ protocol UserRepository {
     ) async throws -> Bool
     func userInfo() async throws -> UserInfo
     func changePassword(
-        current: String, 
+        current: String,
         new: String
     ) async throws -> Bool
     func withDraw(
-        id: String, 
+        id: String,
         password: String
     ) async throws -> Bool
 }

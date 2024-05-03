@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NoticeRepository {
+public protocol NoticeRepository {
     func fetch() async throws -> [Announcement]
     func fetchDetail(id: Int) async throws -> Announcement
 }

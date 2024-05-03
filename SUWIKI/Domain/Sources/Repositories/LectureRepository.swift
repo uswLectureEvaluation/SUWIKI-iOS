@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol LectureRepository {
+public protocol LectureRepository {
     func fetch(
         option: LectureOption,
         page: Int,

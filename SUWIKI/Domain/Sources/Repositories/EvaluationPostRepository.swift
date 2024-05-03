@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol EvaluationPostRepository {
+public protocol EvaluationPostRepository {
     func fetch(
         lectureId: Int,
         page: Int

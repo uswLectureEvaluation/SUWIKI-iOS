@@ -9,7 +9,7 @@ import Foundation
 
 import Keychain
 
-protocol KeychainRepository {
+public protocol KeychainRepository {
     var keychainManager: KeychainManager { get }
     func create(token: TokenType, value: String)
     func read(token: TokenType) -> String?

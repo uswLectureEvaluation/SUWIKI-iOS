@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ExamPostRepository {
+public protocol ExamPostRepository {
     func fetch(
         id: Int,
         page: Int
