@@ -1,8 +1,8 @@
 //
-//  APITarget+EvaluatePost.swift
-//  SUWIKI
+//  APITarget+EvaluationPost.swift
+//  Data
 //
-//  Created by 한지석 on 2/27/24.
+//  Created by 한지석 on 5/3/24.
 //
 
 import Foundation

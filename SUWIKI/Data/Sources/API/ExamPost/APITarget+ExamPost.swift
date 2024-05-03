@@ -64,7 +64,7 @@ extension APITarget.ExamPost {
         case let .fetchExamPosts(fetchExamPosts):
             return .query(fetchExamPosts)
         case let .writeExamPost(writeExamPost):
-            return .both(query: writeExamPost.lectureInfo, 
+            return .both(query: writeExamPost.lectureInfo,
                          json: writeExamPost.post)
         case let .purchaseExamPost(purchaseExamPost):
             return .query(purchaseExamPost)
