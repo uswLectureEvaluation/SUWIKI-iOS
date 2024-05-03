@@ -8,6 +8,7 @@
 import Foundation
 
 import DIContainer
+import Domain
 
 // 데이터 상태에 따른 View 분기 처리
 final class LectureEvaluationDetailViewModel: ObservableObject {

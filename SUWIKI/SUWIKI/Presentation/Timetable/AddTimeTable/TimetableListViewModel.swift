@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+import Domain
 import DIContainer
 
 final class TimetableListViewModel {
@@ -15,7 +16,7 @@ final class TimetableListViewModel {
     @Inject var fetchTimetableListUseCase: FetchTimetableListUseCase
     @Inject var deleteTimetableUseCase: DeleteTimetableUseCase
 
-    @Published var timetable: [Timetable] = []
+    @Published var timetable: [Domain.Timetable] = []
 
     var timetableNumberOfRowsInSection: Int {
         return self.timetable.count
@@ -38,10 +39,9 @@ final class TimetableListViewModel {
     /// 3. CoreData 삭제
     /// 4. if id == timetable.id라면 id 수정
     /// 5. timetable = [] 면 id 없애고 아니면 first로 id 수정
-    
     func deleteTimetable(index: Int, currentVC: UIViewController) async throws {
         let setId = UserDefaults.shared.value(forKey: "id") as? String
-        guard let deleteId = timetable[index].id else { return }
+        let deleteId = timetable[index].id
         deleteTimetableUseCase.execute(id: deleteId)
         self.timetable.remove(at: index)
         if timetable.count == 0 {

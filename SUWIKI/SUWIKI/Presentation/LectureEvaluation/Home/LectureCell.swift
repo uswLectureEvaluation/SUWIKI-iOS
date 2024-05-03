@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct LectureCell: View {
     
     let lecture: Lecture
@@ -82,8 +84,4 @@ struct LectureCell: View {
         return String(format: "%.1f", avg)
     }
     
-}
-
-#Preview {
-    LectureCell(lecture: Lecture(id: 0, name: "강의명", major: "개설학과", professor: "교수명", lectureType: "전핵", lectureTotalAvg: 5.0))
 }

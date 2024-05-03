@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct LectureEvaluationMajorSelectView: View {
 
     @Binding var selectedMajor: String

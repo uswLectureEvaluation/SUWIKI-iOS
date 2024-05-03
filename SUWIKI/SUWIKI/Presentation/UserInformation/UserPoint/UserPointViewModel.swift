@@ -7,6 +7,7 @@
 
 import Foundation
 
+import Domain
 import DIContainer
 
 final class UserPointViewModel: ObservableObject {

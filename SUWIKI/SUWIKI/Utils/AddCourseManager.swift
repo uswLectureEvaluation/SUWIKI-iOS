@@ -8,6 +8,7 @@
 import Foundation
 
 import DIContainer
+import Domain
 
 enum DuplicateCase {
     case eLearning
@@ -17,7 +18,6 @@ enum DuplicateCase {
 }
 
 final class AddCourseManager {
-
     @Inject var fetchCourseUseCase: FetchCoursesUseCase
     @Inject var saveCourseUseCase: SaveCourseUseCase
     @Inject var fetchELearningUseCase: FetchELearningUseCase
@@ -60,7 +60,7 @@ final class AddCourseManager {
         return isDuplicated
     }
 
-    func isCourseDuplicated(existingCourse: [Course],
+    func isCourseDuplicated(existingCourse: [TimetableCourse],
                             course: [TimetableCourse]) -> Bool {
         var isDuplicated = false
         for i in 0..<existingCourse.count {
@@ -192,14 +192,14 @@ final class AddCourseManager {
         return timeTableCourse
     }
 
-    func isTimeDuplicated(existingCourse: Course,
+    func isTimeDuplicated(existingCourse: TimetableCourse,
                           newCourse: TimetableCourse) -> Bool {
-        let existingCourseStartTimeStr = existingCourse.startTime?.filter { $0 != ":" }
-        let existingCourseEndTimeStr = existingCourse.endTime?.filter { $0 != ":" }
+        let existingCourseStartTimeStr = existingCourse.startTime.filter { $0 != ":" }
+        let existingCourseEndTimeStr = existingCourse.endTime.filter { $0 != ":" }
         let newCourseStartTimeStr = newCourse.startTime.filter { $0 != ":" }
         let newCourseEndTimeStr = newCourse.endTime.filter { $0 != ":" }
-        guard let existingCourseStartTime = Int(existingCourseStartTimeStr ?? "100"),
-              let existingCourseEndTime = Int(existingCourseEndTimeStr ?? "100"),
+        guard let existingCourseStartTime = Int(existingCourseStartTimeStr),
+              let existingCourseEndTime = Int(existingCourseEndTimeStr),
               let newCourseStartTime = Int(newCourseStartTimeStr),
               let newCourseEndTime = Int(newCourseEndTimeStr)
         else { return true }

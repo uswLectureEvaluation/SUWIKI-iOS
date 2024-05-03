@@ -8,6 +8,7 @@
 import Foundation
 
 import DIContainer
+import Domain
 
 final class UserPostViewModel: ObservableObject {
 

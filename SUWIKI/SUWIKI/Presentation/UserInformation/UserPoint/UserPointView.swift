@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct UserPointView: View {
 
     var descriptions: [String] = [

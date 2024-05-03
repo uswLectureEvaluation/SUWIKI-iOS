@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct ManageAccountView: View {
 
     @StateObject var viewModel: ManageAccountViewModel

@@ -9,20 +9,21 @@ import UIKit
 import Combine
 
 import DIContainer
+import Domain
 
 // 0번 ~ 2번 케이스마다 메소드를 분리해서 따로따로 체크를 하는게 좋은 방법인지
 // 하나의 메소드에서 분기처리하여 체크할 수 없을까?
 
 final class SelectCourseListViewModel {
-
+    
     @Inject var useCase: FetchFirebaseCourseUseCase
-
+    
     private let addCourseManager = AddCourseManager()
     var major: String
     var searchText: String
-    var searchedCourseList: [FirebaseCourse] = []
-    @Published var courseList: [FirebaseCourse]
-
+    var searchedCourseList: [FetchCourse] = []
+    @Published var courseList: [FetchCourse]
+    
     init(major: String) {
         self.major = major
         self.searchText = ""
@@ -54,10 +55,21 @@ final class SelectCourseListViewModel {
         searchText = removeSpacingSearchText
     }
     
-    func pushVC(firebaseCourse: FirebaseCourse, currentVC: UIViewController, animated: Bool) {
+    func pushVC(
+        fetchCourse: FetchCourse,
+        currentVC: UIViewController,
+        animated: Bool
+    ) {
         let navigationVC = currentVC.navigationController
-        let addCourseVC = AddCourseViewController(viewModel: AddCourseViewModel(firebaseCourse: firebaseCourse))
-        navigationVC?.pushViewController(addCourseVC, animated: animated)
+        let addCourseVC = AddCourseViewController(
+            viewModel: AddCourseViewModel(
+                fetchCourse: fetchCourse
+            )
+        )
+        navigationVC?.pushViewController(
+            addCourseVC,
+            animated: animated
+        )
     }
     
 }

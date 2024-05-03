@@ -7,11 +7,13 @@
 
 import Foundation
 
+import Domain
+
 final class SelectCourseViewModel {
 
-    var course: FirebaseCourse
-    
-    init(course: FirebaseCourse) {
+    var course: FetchCourse
+
+    init(course: FetchCourse) {
         self.course = course
     }
     

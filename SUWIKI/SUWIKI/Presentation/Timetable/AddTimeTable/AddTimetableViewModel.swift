@@ -8,6 +8,7 @@
 import Foundation
 //import Combine
 
+import Domain
 import DIContainer
 
 final class AddTimetableViewModel {

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct LectureEvaluationHomeView: View {
 
     @EnvironmentObject var appState: AppState

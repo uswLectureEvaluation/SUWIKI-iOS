@@ -86,13 +86,13 @@ class AddCourseViewController: UIViewController {
     }
     
     private func setAddCourseView() {
-        addCourseView.classficationLabel.text = viewModel.firebaseCourse.classification
-        addCourseView.courseNameLabel.text = viewModel.firebaseCourse.courseName
-        addCourseView.gradeLabel.text = "\(viewModel.firebaseCourse.num)학년"
-        addCourseView.creditLabel.text = "\(viewModel.firebaseCourse.credit)학점"
-        addCourseView.majorLabel.text = viewModel.firebaseCourse.major
-        addCourseView.professorLabel.text = viewModel.firebaseCourse.professor
-        addCourseView.roomNameLabel.text = viewModel.firebaseCourse.roomName
+        addCourseView.classficationLabel.text = viewModel.fetchCourse.classification
+        addCourseView.courseNameLabel.text = viewModel.fetchCourse.courseName
+        addCourseView.gradeLabel.text = "\(viewModel.fetchCourse.num)학년"
+        addCourseView.creditLabel.text = "\(viewModel.fetchCourse.credit)학점"
+        addCourseView.majorLabel.text = viewModel.fetchCourse.major
+        addCourseView.professorLabel.text = viewModel.fetchCourse.professor
+        addCourseView.roomNameLabel.text = viewModel.fetchCourse.roomName
         addCourseView.bottomBackground.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
         addCourseView.classficationLabel.backgroundColor = .timetableColors[viewModel.timetableColorNumber]
         changeColorButton.addTarget(self, action: #selector(changeTimetableColorButtonTouchUpInside), for: .touchUpInside)

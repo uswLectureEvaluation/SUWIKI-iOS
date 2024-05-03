@@ -8,27 +8,30 @@
 import Foundation
 import Combine
 
+import Domain
 import DIContainer
 
 final class LectureEvaluationMajorSelectViewModel: ObservableObject {
 
-    var bookmark: [String] = []
-    var cancellables = Set<AnyCancellable>()
+    @Inject var useCase: FetchMajorsUseCase
     @Published var major: [Major] = []
     @Published var searchMajor: [Major] = []
     @Published var searchText: String = ""
     @Published var fetchState: RequestState = .notRequest
-    @Inject var useCase: FetchMajorsUseCase
+    var bookmark: [String] = []
+    var cancellables = Set<AnyCancellable>()
 
     @MainActor
     init() {
         Task {
-            let allMajor = Major.majorCount(name: "전체")
+            let count = CoreDataManager.shared.fetchCourseCount(major: "전체")
+            let allMajor = Major(name: "전체", courseCount: count)
             major = [allMajor]
             let majors = useCase.execute()
             for i in 0..<majors.count {
-                let majorCount = Major.majorCount(name: majors[i])
-                major.append(majorCount)
+                let majorCount = CoreDataManager.shared.fetchCourseCount(major: majors[i])
+                let currentMajor = Major(name: majors[i], courseCount: majorCount)
+                major.append(currentMajor)
             }
             fetchBookmark()
         }

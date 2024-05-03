@@ -7,14 +7,16 @@
 
 import Foundation
 
+import Domain
+
 final class AddCourseViewModel {
     
     let addCourseManager = AddCourseManager()
     var timetableColorNumber = Int.random(in: 0...20)
-    var firebaseCourse: FirebaseCourse
-    
-    init(firebaseCourse: FirebaseCourse) {
-        self.firebaseCourse = firebaseCourse
+    var fetchCourse: FetchCourse
+
+    init(fetchCourse: FetchCourse) {
+        self.fetchCourse = fetchCourse
     }
     
     func changeTimetableColor() {
@@ -27,26 +29,19 @@ final class AddCourseViewModel {
     
     func saveCourse() async throws -> Bool {
         var isDuplicated = false
-        guard let courseName = firebaseCourse.courseName,
-              let roomName = firebaseCourse.roomName,
-              let professor = firebaseCourse.professor,
-              let startTime = firebaseCourse.startTime,
-              let endTime = firebaseCourse.endTime,
-              let courseDay = firebaseCourse.courseDay
-        else { return true }
         let course = TimetableCourse(courseId: UUID().uuidString,
-                                     courseName: courseName,
-                                     roomName: roomName,
-                                     professor: professor,
-                                     courseDay: dayToInt(courseDay: courseDay),
-                                     startTime: startTime,
-                                     endTime: endTime,
+                                     courseName: fetchCourse.courseName,
+                                     roomName: fetchCourse.roomName,
+                                     professor: fetchCourse.professor,
+                                     courseDay: dayToInt(courseDay: fetchCourse.courseDay),
+                                     startTime: fetchCourse.startTime,
+                                     endTime: fetchCourse.endTime,
                                      timetableColor: timetableColorNumber)
-        if courseName.contains("이러닝") || courseName.contains("온라인") {
+        if fetchCourse.courseName.contains("이러닝") || fetchCourse.courseName.contains("온라인") {
             isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .eLearning)
-        } else if roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
+        } else if fetchCourse.roomName.split(separator: " ").count > 1 { // 1. 음악109(화1,2 수3,4)
             isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentTime)
-        } else if roomName.split(separator: "),").count > 1 { // 2. 음악109(화1,2),음악110(수1,2)
+        } else if fetchCourse.roomName.split(separator: "),").count > 1 { // 2. 음악109(화1,2),음악110(수1,2)
             isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentPlace)
         } else {
             isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .normal)

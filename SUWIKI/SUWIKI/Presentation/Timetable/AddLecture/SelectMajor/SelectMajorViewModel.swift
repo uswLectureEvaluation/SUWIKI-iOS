@@ -4,10 +4,12 @@
 //
 //  Created by 한지석 on 2023/06/01.
 //
+
 import Foundation
 import UIKit
 
 import DIContainer
+import Domain
 
 final class SelectMajorViewModel {
 
@@ -20,12 +22,14 @@ final class SelectMajorViewModel {
     @Published var isMajorsFetched = false
 
     init() {
-        let allMajor = Major.majorCount(name: "전체")
+        let count = CoreDataManager.shared.fetchCourseCount(major: "전체")
+        let allMajor = Major(name: "전체", courseCount: count)
         major = [allMajor]
         let majors = useCase.execute()
         for i in 0..<majors.count {
-            let majorCount = Major.majorCount(name: majors[i])
-            major.append(majorCount)
+            let majorCount = CoreDataManager.shared.fetchCourseCount(major: majors[i])
+            let currentMajor = Major(name: majors[i], courseCount: majorCount)
+            major.append(currentMajor)
         }
         self.isMajorsFetched = true
         fetchBookmark()

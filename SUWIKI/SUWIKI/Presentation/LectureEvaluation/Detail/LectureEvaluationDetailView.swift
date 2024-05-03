@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 enum PostType {
     case evaluate
     case exam

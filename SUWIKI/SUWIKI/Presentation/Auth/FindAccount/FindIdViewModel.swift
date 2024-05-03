@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 import DIContainer
+import Domain
 
 final class FindIdViewModel: ObservableObject {
     
