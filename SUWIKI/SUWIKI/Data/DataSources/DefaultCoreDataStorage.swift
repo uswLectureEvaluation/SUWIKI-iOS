@@ -8,6 +8,8 @@
 import Foundation
 import CoreData
 
+import Domain
+
 final class DefaultCoreDataStorage: CoreDataStorage {
 
     let coreDataManager = CoreDataManager.shared
@@ -28,11 +30,14 @@ final class DefaultCoreDataStorage: CoreDataStorage {
         } catch {
             throw CoreDataError.saveError
         }
+        //        if let id = try coreDataManager.saveTimetable(name: name, semester: semester) {
+        //            UserDefaults.shared.set(id, forKey: "id")
+        //        }
     }
 
     func saveFirebaseCourse(course: [[String : Any]]) throws {
         try deleteFirebaseCourse()
-        guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse", 
+        guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse",
                                                       in: coreDataManager.context)
         else {
             throw CoreDataError.entityError
@@ -98,20 +103,47 @@ final class DefaultCoreDataStorage: CoreDataStorage {
     }
 
     /// func fetchTimetable: Core Data에 저장된 Timetable을 fetch합니다.
-    func fetchTimetable(id: String) throws -> Timetable? {
-        var timetable: [Timetable] = []
+    func fetchTimetable(id: String) throws -> Domain.Timetable? {
+        var savedTimetable: [Timetable] = []
         do {
             let fetchRequest = Timetable.fetchRequest()
+            print("@FETCH - \(fetchRequest)")
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-            timetable = try coreDataManager.context.fetch(fetchRequest)
+            print("@FETCH - \(fetchRequest)")
+            savedTimetable = try coreDataManager.context.fetch(fetchRequest)
         } catch {
             throw CoreDataError.fetchError
         }
-        return timetable.first
+        let timetable: Domain.Timetable? = savedTimetable.first.map { timetable in
+            var courses: [TimetableCourse]
+            if let savedCourses = timetable.courses as? Set<Course> {
+                courses = Array(savedCourses).map {
+                    TimetableCourse(
+                        courseId: $0.courseId ?? "9999",
+                        courseName: $0.courseName ?? "무제",
+                        roomName: $0.roomName ?? "미정",
+                        professor: $0.professor ?? "미정",
+                        courseDay: Int($0.courseDay),
+                        startTime: $0.startTime ?? "09:30",
+                        endTime: $0.endTime ?? "10:20",
+                        timetableColor: Int($0.timetableColor)
+                    )
+                }
+            } else {
+                courses = []
+            }
+            return Domain.Timetable(
+                id: timetable.id ?? UUID().uuidString,
+                name: timetable.name ?? "시간표",
+                semester: timetable.semester ?? "2024-2",
+                courses: courses
+            )
+        }
+        return timetable
     }
-    
+
     /// func fetchCourses: Core Data에 저장된 Course를 fetch합니다.
-    func fetchCourses(id: String) throws -> [Course]? {
+    func fetchCourses(id: String) throws -> [TimetableCourse]? {
         var courses: [Course] = []
         do {
             let fetchRequest = Timetable.fetchRequest()
@@ -123,13 +155,25 @@ final class DefaultCoreDataStorage: CoreDataStorage {
         } catch {
             throw CoreDataError.fetchError
         }
-        return courses
+        let timetableCourse: [Domain.TimetableCourse] = courses.map {
+            TimetableCourse(
+                courseId: $0.courseId ?? "9999",
+                courseName: $0.courseName ?? "무제",
+                roomName: $0.roomName ?? "미정",
+                professor: $0.professor ?? "미정",
+                courseDay: Int($0.courseDay),
+                startTime: $0.startTime ?? "09:30",
+                endTime: $0.endTime ?? "10:20",
+                timetableColor: Int($0.timetableColor)
+            )
+        }
+        return timetableCourse
     }
 
     /// func fetchFirebaseCourse: 학과 선택 시, 과목을 선택하는 화면에서 firebaseCourse를 내려받습니다.(강의 원본)
     /// - Parameter : major(학과, String)
     /// - return : [FireabaseCourse]
-    func fetchFirebaseCourse(major: String) throws -> [FirebaseCourse] {
+    func fetchFirebaseCourse(major: String) throws -> [FetchCourse] {
         var course: [FirebaseCourse] = []
         do {
             let fetchRequest = FirebaseCourse.fetchRequest()
@@ -141,12 +185,27 @@ final class DefaultCoreDataStorage: CoreDataStorage {
             throw CoreDataError.fetchError
         }
         let sortedCourse = course.sorted { $0.courseName! < $1.courseName! }
-        return sortedCourse
+        let fetchCourse = sortedCourse.map {
+            FetchCourse(
+                classNum: $0.classNum ?? "",
+                classification: $0.classification ?? "미정",
+                courseDay: $0.courseDay ?? "월",
+                courseName: $0.courseName ?? "미정",
+                credit: Int($0.credit),
+                startTime: $0.startTime ?? "09:30",
+                endTime: $0.endTime ?? "10:20",
+                major: $0.major ?? "미정",
+                num: Int($0.num),
+                professor: $0.professor ?? "미정",
+                roomName: $0.roomName ?? "미정"
+            )
+        }
+        return fetchCourse
     }
 
     /// func fetchELearningCourse: Core Data에 저장된 강의 중 이러닝을 Fetch합니다.
     /// - Parameter : id(시간표 ID), courseDay(강의 요일)
-    func fetchELearning(id: String) throws -> [Course] {
+    func fetchELearning(id: String) throws -> [TimetableCourse] {
         var course: [Course] = []
         do {
             let fetchRequest = Timetable.fetchRequest()
@@ -158,11 +217,23 @@ final class DefaultCoreDataStorage: CoreDataStorage {
                 let filteredCourses = Array(timetableCourses).filter {
                     $0.courseDay == 6 }
                 course = filteredCourses
-                }
+            }
         } catch {
             throw CoreDataError.fetchError
         }
-        return course
+        let timetableCourse: [Domain.TimetableCourse] = course.map {
+            TimetableCourse(
+                courseId: $0.courseId ?? "9999",
+                courseName: $0.courseName ?? "무제",
+                roomName: $0.roomName ?? "미정",
+                professor: $0.professor ?? "미정",
+                courseDay: Int($0.courseDay),
+                startTime: $0.startTime ?? "09:30",
+                endTime: $0.endTime ?? "10:20",
+                timetableColor: Int($0.timetableColor)
+            )
+        }
+        return timetableCourse
     }
 
     /// func fetchMajors: 학과를 받아옵니다.
@@ -172,7 +243,9 @@ final class DefaultCoreDataStorage: CoreDataStorage {
         do {
             let fetchRequest = FirebaseCourse.fetchRequest()
             courses = try coreDataManager.context.fetch(fetchRequest)
-            let majors = Array(Set(courses.compactMap { $0.major            })).sorted { $0 < $1 }
+            let majors = Array(Set(courses.compactMap {
+                $0.major
+            })).sorted { $0 < $1 }
             return majors
         } catch {
             throw CoreDataError.fetchError
@@ -180,13 +253,19 @@ final class DefaultCoreDataStorage: CoreDataStorage {
     }
 
     /// func fetchTimetableList: Core Data에 저장된 Timetable List를 fetch합니다.
-    func fetchTimetableList() throws -> [Timetable] {
-        var timetable: [Timetable] = []
+    func fetchTimetableList() throws -> [Domain.Timetable] {
+        var savedTimetable: [Timetable] = []
         do {
             let fetchRequest = Timetable.fetchRequest()
-            timetable = try coreDataManager.context.fetch(fetchRequest)
+            savedTimetable = try coreDataManager.context.fetch(fetchRequest)
         } catch {
             throw CoreDataError.fetchError
+        }
+        let timetable: [Domain.Timetable] = savedTimetable.map {
+            let id = $0.id ?? UUID().uuidString
+            let name = $0.name ?? "시간표"
+            let semester = $0.semester ?? "2024-1"
+            return Domain.Timetable(id: id, name: name, semester: semester, courses: [])
         }
         return timetable.reversed()
     }
