@@ -8,11 +8,11 @@
 import Foundation
 import CoreData
 
+import DIContainer
 import Domain
 
 final class DefaultCoreDataStorage: CoreDataStorage {
-
-    let coreDataManager = CoreDataManager.shared
+    @Inject var coreDataManager: CoreDataManagerInterface
 
     func saveTimetable(
         name: String,
@@ -30,9 +30,6 @@ final class DefaultCoreDataStorage: CoreDataStorage {
         } catch {
             throw CoreDataError.saveError
         }
-        //        if let id = try coreDataManager.saveTimetable(name: name, semester: semester) {
-        //            UserDefaults.shared.set(id, forKey: "id")
-        //        }
     }
 
     func saveFirebaseCourse(course: [[String : Any]]) throws {
