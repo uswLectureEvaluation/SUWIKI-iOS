@@ -7,11 +7,19 @@
 
 import SwiftUI
 
-struct UnFilledStar: View {
-    var width: CGFloat
-    var height: CGFloat
+public struct UnFilledStar: View {
+    private var width: CGFloat
+    private var height: CGFloat
 
-    var body: some View {
+    public init(
+        width: CGFloat,
+        height: CGFloat
+    ) {
+        self.width = width
+        self.height = height
+    }
+
+    public var body: some View {
         Image(systemName: "star.fill")
             .resizable()
             .frame(width: width, height: height)

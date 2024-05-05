@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let primaryColor = UIColor(red: 52/255, green: 108/255, blue: 253/255, alpha: 1.0)
-    static let timetableColors: [UIColor] = [
+    static public let primaryColor = UIColor(red: 52/255, green: 108/255, blue: 253/255, alpha: 1.0)
+    static public let timetableColors: [UIColor] = [
         UIColor(red: 140/255, green: 156/255, blue: 247/255, alpha: 1.0), /* #8c9cf7 */
         UIColor(red: 34/255, green: 119/255, blue: 103/255, alpha: 1.0), /* #227767 */
         UIColor(red: 69/255, green: 201/255, blue: 164/255, alpha: 1.0), /* #45c9a4 */
@@ -33,19 +33,19 @@ extension UIColor {
         UIColor(red: 178/255, green: 190/255, blue: 195/255, alpha: 1.0), /* #b2bec3 */
         UIColor(red: 45/255, green: 52/255, blue: 54/255, alpha: 1.0) /* #2d3436 */
     ]
-    static let listTitleColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
-    static let basicBlack = UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 1)
-    static let basicWhite = UIColor(red: 228/255, green: 228/255, blue: 233/255, alpha: 1)
-    static let grayFB = UIColor(red: 228/255, green: 228/255, blue: 228/255, alpha: 1)
-    static let grayF6 = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
-    static let grayDA = UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1)
-    static let grayCB = UIColor(red: 203/255, green: 203/255, blue: 203/255, alpha: 1)
-    static let gray95 = UIColor(red: 149/255, green: 149/255, blue: 149/255, alpha: 1)
-    static let gray6A = UIColor(red: 106/255, green: 106/255, blue: 106/255, alpha: 1)
-    static let easyBackground = UIColor(red: 234 / 255, green: 248 / 255, blue: 236 / 255, alpha: 1)
-    static let easyFont = UIColor(red: 45 / 255, green: 185 / 255, blue: 66 / 255, alpha: 1)
-    static let normalBackground = UIColor(red: 236 / 255, green: 237 / 255, blue: 1, alpha: 1)
-    static let normalFont = UIColor(red: 61 / 255, green: 78 / 255, blue: 251 / 255, alpha: 1)
-    static let hardBackground = UIColor(red: 255 / 255, green: 241 / 255, blue: 229 / 255, alpha: 1)
-    static let hardFont = UIColor(red: 253 / 255, green: 135 / 255, blue: 59 / 255, alpha: 1)
+    static public let listTitleColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+    static public let basicBlack = UIColor(red: 34/255, green: 34/255, blue: 34/255, alpha: 1)
+    static public let basicWhite = UIColor(red: 228/255, green: 228/255, blue: 233/255, alpha: 1)
+    static public let grayFB = UIColor(red: 228/255, green: 228/255, blue: 228/255, alpha: 1)
+    static public let grayF6 = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
+    static public let grayDA = UIColor(red: 218/255, green: 218/255, blue: 218/255, alpha: 1)
+    static public let grayCB = UIColor(red: 203/255, green: 203/255, blue: 203/255, alpha: 1)
+    static public let gray95 = UIColor(red: 149/255, green: 149/255, blue: 149/255, alpha: 1)
+    static public let gray6A = UIColor(red: 106/255, green: 106/255, blue: 106/255, alpha: 1)
+    static public let easyBackground = UIColor(red: 234 / 255, green: 248 / 255, blue: 236 / 255, alpha: 1)
+    static public let easyFont = UIColor(red: 45 / 255, green: 185 / 255, blue: 66 / 255, alpha: 1)
+    static public let normalBackground = UIColor(red: 236 / 255, green: 237 / 255, blue: 1, alpha: 1)
+    static public let normalFont = UIColor(red: 61 / 255, green: 78 / 255, blue: 251 / 255, alpha: 1)
+    static public let hardBackground = UIColor(red: 255 / 255, green: 241 / 255, blue: 229 / 255, alpha: 1)
+    static public let hardFont = UIColor(red: 253 / 255, green: 135 / 255, blue: 59 / 255, alpha: 1)
 }

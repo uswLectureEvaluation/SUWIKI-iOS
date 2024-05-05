@@ -8,12 +8,22 @@
 import SwiftUI
 
 /// https://developer.apple.com/documentation/swiftui/view/mask(alignment:_:)
-struct Stars: View {
+public struct Stars: View {
     var avarage: Double
     var width: CGFloat
     var height: CGFloat
 
-    var body: some View {
+    public init(
+        avarage: Double,
+        width: CGFloat, 
+        height: CGFloat
+    ) {
+        self.avarage = avarage
+        self.width = width
+        self.height = height
+    }
+
+    public var body: some View {
         HStack(spacing: 0) {
             ForEach(0..<5) { index in
                 if avarage > CGFloat(index) {

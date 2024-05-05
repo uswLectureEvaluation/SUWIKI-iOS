@@ -8,7 +8,7 @@
 import UIKit
 
 extension UISearchBar {
-    func setTextFieldColor(_ color: UIColor) {
+    public func setTextFieldColor(_ color: UIColor) {
         for subView in self.subviews {
             for subSubView in subView.subviews {
                 let view = subSubView as? UITextInputTraits
