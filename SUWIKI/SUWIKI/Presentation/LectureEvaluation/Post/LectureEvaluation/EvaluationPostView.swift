@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Common
+
 struct EvaluationPostView: View {
     
     @Environment(\.dismiss) var dismiss

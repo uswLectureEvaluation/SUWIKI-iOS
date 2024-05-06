@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Common
+
 struct EvaluateCell: View {
 
     var semester: String
@@ -56,6 +58,6 @@ struct EvaluateCell: View {
     }
 }
 
-#Preview {
-    EvaluateCell(semester: "2022-2", totalAvg: 3.5, content: "거의 한 학기 팀플하시는데...팀원 잘 만나면 잘 모르겠네요.굉장히 오거의 한 학기 팀플하시는데...팀원 잘 만나면 잘 모르겠네요.굉장히오픈 마인드시긴해요.\n전 이 교수님 적응하기 힘들었어요.\n굉장히 오픈 마인드시긴해요.\n전 이 교수님 적응하기 힘들었어요.")
-}
+//#Preview {
+//    EvaluateCell(semester: "2022-2", totalAvg: 3.5, content: "거의 한 학기 팀플하시는데...팀원 잘 만나면 잘 모르겠네요.굉장히 오거의 한 학기 팀플하시는데...팀원 잘 만나면 잘 모르겠네요.굉장히오픈 마인드시긴해요.\n전 이 교수님 적응하기 힘들었어요.\n굉장히 오픈 마인드시긴해요.\n전 이 교수님 적응하기 힘들었어요.")
+//}
