@@ -9,7 +9,7 @@ import Foundation
 
 import Network
 
-extension APITarget {
+public extension APITarget {
     enum EvaluationPost: TargetType {
         case fetchEvaluationPosts(DTO.FetchEvaluationPostRequest)
         case writeEvaluationPost(DTO.WriteEvaluationPostRequest)
@@ -18,7 +18,7 @@ extension APITarget {
     }
 }
 
-extension APITarget.EvaluationPost {
+public extension APITarget.EvaluationPost {
     var targetURL: URL {
         URL(string: APITarget.baseURL + "evaluate-posts")!
     }
