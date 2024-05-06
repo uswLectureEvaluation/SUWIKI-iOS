@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Timetable {
+public struct UserTimetable {
     public let id: String
     public let name: String
     public let semester: String
