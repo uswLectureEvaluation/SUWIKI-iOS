@@ -8,11 +8,14 @@
 import Foundation
 
 import DIContainer
+import Domain
+import Data
 
 struct AppEnvironment {
     let container = DIContainer.shared
 
     init() {
+        container.register(type: CoreDataManagerInterface.self, CoreDataManager())
         dependencyInjection()
     }
 

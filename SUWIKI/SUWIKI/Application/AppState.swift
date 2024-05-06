@@ -8,6 +8,8 @@
 import Foundation
 
 import DIContainer
+import Domain
+import Keychain
 
 class AppState: ObservableObject {
     @Published var isLoggedIn: Bool = false
