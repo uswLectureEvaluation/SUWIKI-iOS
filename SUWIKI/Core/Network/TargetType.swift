@@ -15,7 +15,6 @@ public protocol TargetType: URLRequestConvertible {
     var targetURL: URL { get }
     var method: NetworkHTTPMethod { get }
     var path: String { get }
-    /// 파라미터의 종류. Query / JSON
     var parameters: RequestParameter { get }
 }
 
@@ -26,8 +25,8 @@ public extension TargetType {
 }
 
 @available(iOS 16.0, *)
-extension TargetType {
-    public func addParameters(_ request: URLRequest) throws -> URLRequest {
+public extension TargetType {
+    func addParameters(_ request: URLRequest) throws -> URLRequest {
         var request = request
         switch parameters {
         case .plain:
@@ -47,7 +46,7 @@ extension TargetType {
         return request
     }
 
-    public func asURLRequest() throws -> URLRequest {
+    func asURLRequest() throws -> URLRequest {
         let url = try targetURL.appending(path: path).asURL()
         var urlRequest = try URLRequest(url: url,
                                         method: Alamofire.HTTPMethod(rawValue: method.rawValue))

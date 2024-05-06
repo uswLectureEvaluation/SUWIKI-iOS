@@ -7,8 +7,9 @@
 
 import Foundation
 
-import Alamofire
 import Keychain
+
+import Alamofire
 
 final class BaseInterceptor: RequestInterceptor {
 

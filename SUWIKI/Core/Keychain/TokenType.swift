@@ -11,7 +11,7 @@ public enum TokenType {
     case AccessToken
     case RefreshToken
     
-    var account: String {
+    public var account: String {
         switch self {
         case .AccessToken:
             "accessToken"
