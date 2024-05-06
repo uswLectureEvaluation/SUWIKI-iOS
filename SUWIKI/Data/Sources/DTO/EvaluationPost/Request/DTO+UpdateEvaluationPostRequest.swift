@@ -8,25 +8,57 @@
 import Foundation
 
 extension DTO {
-    struct UpdateEvaluationPostRequest: Encodable {
-        let lectureInfo: LectureInfo
-        let post: Post
+    public struct UpdateEvaluationPostRequest: Encodable {
+        public let lectureInfo: LectureInfo
+        public let post: Post
+
+        public init(
+            lectureInfo: LectureInfo,
+            post: Post
+        ) {
+            self.lectureInfo = lectureInfo
+            self.post = post
+        }
     }
 }
 
 extension DTO.UpdateEvaluationPostRequest {
-    struct LectureInfo: Encodable {
-        let evaluateIdx: Int
+    public struct LectureInfo: Encodable {
+        public let evaluateIdx: Int
+
+        public init(evaluateIdx: Int) {
+            self.evaluateIdx = evaluateIdx
+        }
     }
 
-    struct Post: Encodable {
-        let selectedSemester: String
-        let satisfaction: Double
-        let learning: Double
-        let honey: Double
-        let team: Int
-        let difficulty: Int
-        let homework: Int
-        let content: String
+    public struct Post: Encodable {
+        public let selectedSemester: String
+        public let satisfaction: Double
+        public let learning: Double
+        public let honey: Double
+        public let team: Int
+        public let difficulty: Int
+        public let homework: Int
+        public let content: String
+
+        public init(
+            selectedSemester: String,
+            satisfaction: Double,
+            learning: Double,
+            honey: Double,
+            team: Int,
+            difficulty: Int,
+            homework: Int,
+            content: String
+        ) {
+            self.selectedSemester = selectedSemester
+            self.satisfaction = satisfaction
+            self.learning = learning
+            self.honey = honey
+            self.team = team
+            self.difficulty = difficulty
+            self.homework = homework
+            self.content = content
+        }
     }
 }

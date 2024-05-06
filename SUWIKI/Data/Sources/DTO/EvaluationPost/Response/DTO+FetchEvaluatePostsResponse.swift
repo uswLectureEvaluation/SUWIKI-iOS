@@ -8,9 +8,17 @@
 import Foundation
 
 extension DTO {
-    struct FetchEvaluationPostsResponse: Decodable {
-        let posts: [DTO.EvaluationPostResponse]
-        let written: Bool
+    public struct FetchEvaluationPostsResponse: Decodable {
+        public let posts: [DTO.EvaluationPostResponse]
+        public let written: Bool
+
+        public init(
+            posts: [DTO.EvaluationPostResponse],
+            written: Bool
+        ) {
+            self.posts = posts
+            self.written = written
+        }
 
         enum CodingKeys: String, CodingKey {
             case posts = "data"

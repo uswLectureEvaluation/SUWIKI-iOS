@@ -10,9 +10,11 @@ import Foundation
 import Domain
 import Network
 
-final class DefaultEvaluationPostRepository: EvaluationPostRepository {
+public final class DefaultEvaluationPostRepository: EvaluationPostRepository {
 
-    func fetch(
+    public init() { }
+
+    public func fetch(
         lectureId: Int,
         page: Int
     ) async throws -> Evaluation {
@@ -28,7 +30,7 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
                           posts: dtoEvaluatePosts.posts.map { $0.entity} )
     }
 
-    func write(
+    public func write(
         id: Int,
         lectureName: String,
         professor: String,
@@ -58,14 +60,14 @@ final class DefaultEvaluationPostRepository: EvaluationPostRepository {
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func fetchUserPosts() async throws -> [UserEvaluationPost] {
+    public func fetchUserPosts() async throws -> [UserEvaluationPost] {
         let apiTarget = APITarget.EvaluationPost.fetchUserEvaluationPosts
         let value = try await APIProvider.request(DTO.FetchUserEvaluationPostsResponse.self,
                                                   target: apiTarget)
         return value.posts.map { $0.entity }
     }
 
-    func update(
+    public func update(
         id: Int,
         lectureName: String,
         professor: String,

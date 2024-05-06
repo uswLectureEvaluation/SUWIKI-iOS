@@ -8,8 +8,12 @@
 import Foundation
 
 extension DTO {
-    struct DetailLectureRequest: Encodable {
+    public struct DetailLectureRequest: Encodable {
         /// 강의 ID
-        let lectureId: Int
+        public let lectureId: Int
+
+        public init(lectureId: Int) {
+            self.lectureId = lectureId
+        }
     }
 }

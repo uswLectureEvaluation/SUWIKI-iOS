@@ -8,8 +8,12 @@
 import Foundation
 
 extension DTO {
-    struct CheckIdRequest: Encodable {
+    public struct CheckIdRequest: Encodable {
         /// 아이디 중복 확인
-        let loginId: String
+        public let loginId: String
+
+        public init(loginId: String) {
+            self.loginId = loginId
+        }
     }
 }

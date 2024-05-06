@@ -8,10 +8,18 @@
 import Foundation
 
 extension DTO {
-    struct FetchExamPostsRequest: Encodable {
+    public struct FetchExamPostsRequest: Encodable {
         /// 강의 ID
-        let lectureId: Int
+        public let lectureId: Int
         /// 페이지(1...)
-        let page: Int
+        public let page: Int
+
+        public init(
+            lectureId: Int,
+            page: Int
+        ) {
+            self.lectureId = lectureId
+            self.page = page
+        }
     }
 }

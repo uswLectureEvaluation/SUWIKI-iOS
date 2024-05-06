@@ -8,7 +8,11 @@
 import Foundation
 
 extension DTO {
-    struct FetchDetailAnnouncementRequest: Encodable {
-        let noticeId: Int
+    public struct FetchDetailAnnouncementRequest: Encodable {
+        public let noticeId: Int
+
+        public init(noticeId: Int) {
+            self.noticeId = noticeId
+        }
     }
 }

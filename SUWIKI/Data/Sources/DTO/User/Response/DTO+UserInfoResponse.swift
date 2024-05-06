@@ -10,13 +10,29 @@ import Foundation
 import Domain
 
 extension DTO {
-    struct UserInfoResponse: Decodable {
-        let loginId: String
-        let email: String
-        let point: Int
-        let writtenEvaluation: Int
-        let writtenExam: Int
-        let viewExam: Int
+    public struct UserInfoResponse: Decodable {
+        public let loginId: String
+        public let email: String
+        public let point: Int
+        public let writtenEvaluation: Int
+        public let writtenExam: Int
+        public let viewExam: Int
+
+        public init(
+            loginId: String,
+            email: String,
+            point: Int,
+            writtenEvaluation: Int,
+            writtenExam: Int,
+            viewExam: Int
+        ) {
+            self.loginId = loginId
+            self.email = email
+            self.point = point
+            self.writtenEvaluation = writtenEvaluation
+            self.writtenExam = writtenExam
+            self.viewExam = viewExam
+        }
     }
 }
 

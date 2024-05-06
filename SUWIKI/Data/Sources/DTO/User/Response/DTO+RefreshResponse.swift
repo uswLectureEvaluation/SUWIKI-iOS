@@ -8,8 +8,16 @@
 import Foundation
 
 extension DTO {
-    struct RefreshResponse: Codable {
-        let RefreshToken: String
-        let AccessToken: String
+    public struct RefreshResponse: Codable {
+        public let RefreshToken: String
+        public let AccessToken: String
+
+        public init(
+            RefreshToken: String, 
+            AccessToken: String
+        ) {
+            self.RefreshToken = RefreshToken
+            self.AccessToken = AccessToken
+        }
     }
 }

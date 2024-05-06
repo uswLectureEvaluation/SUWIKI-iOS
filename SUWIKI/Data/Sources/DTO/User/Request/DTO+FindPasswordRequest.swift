@@ -8,8 +8,16 @@
 import Foundation
 
 extension DTO {
-    struct FindPasswordRequest: Encodable {
-        let loginId: String
-        let email: String
+    public struct FindPasswordRequest: Encodable {
+        public let loginId: String
+        public let email: String
+
+        public init(
+            loginId: String,
+            email: String
+        ) {
+            self.loginId = loginId
+            self.email = email
+        }
     }
 }

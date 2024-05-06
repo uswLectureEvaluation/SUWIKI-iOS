@@ -9,7 +9,7 @@ import Foundation
 
 import Network
 
-extension APITarget {
+public extension APITarget {
     enum User: TargetType {
         case login(DTO.LoginRequest)
         case join(DTO.JoinRequest)
@@ -24,7 +24,7 @@ extension APITarget {
     }
 }
 
-extension APITarget.User {
+public extension APITarget.User {
     var targetURL: URL {
         URL(string: APITarget.baseURL + "user")!
     }

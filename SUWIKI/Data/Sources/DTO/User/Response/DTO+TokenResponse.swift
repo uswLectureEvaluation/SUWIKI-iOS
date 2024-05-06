@@ -10,11 +10,19 @@ import Foundation
 import Domain
 
 extension DTO {
-    struct TokenResponse: Codable {
+    public struct TokenResponse: Codable {
         /// 액세스 토큰
-        let AccessToken: String
+        public let AccessToken: String
         /// 리프레쉬 토큰
-        let RefreshToken: String
+        public let RefreshToken: String
+
+        public init(
+            AccessToken: String,
+            RefreshToken: String
+        ) {
+            self.AccessToken = AccessToken
+            self.RefreshToken = RefreshToken
+        }
     }
 }
 

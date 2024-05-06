@@ -10,11 +10,14 @@ import Foundation
 import DIContainer
 import FirebaseManager
 
-final class DefaultFirebaseStorage: FirebaseStorage {
+public final class DefaultFirebaseStorage: FirebaseStorage {
+    
     @Inject var coreDataStorage: CoreDataStorage
     let firebaseManager = FirebaseManager.shared
 
-    func fetchCourse() async throws {
+    public init() { }
+
+    public func fetchCourse() async throws {
         do {
             let course = try await firebaseManager.fetchCourse()
             try coreDataStorage.saveFirebaseCourse(course: course)
@@ -23,7 +26,7 @@ final class DefaultFirebaseStorage: FirebaseStorage {
         }
     }
 
-    func isVersionChanged() async throws {
+    public func isVersionChanged() async throws {
         try await firebaseManager.isVersionChanged { versionChanged in
             if versionChanged {
                 Task {

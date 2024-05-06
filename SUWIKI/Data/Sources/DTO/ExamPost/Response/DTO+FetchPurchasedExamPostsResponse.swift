@@ -11,10 +11,20 @@ import Common
 import Domain
 
 extension DTO {
-    struct FetchPurchasedExamPostsResponse: Decodable {
-        let posts: [PurchasedExamPosts]
-        let statusCode: Int?
-        let message: String?
+    public struct FetchPurchasedExamPostsResponse: Decodable {
+        public let posts: [PurchasedExamPosts]
+        public let statusCode: Int?
+        public let message: String?
+
+        public init(
+            posts: [PurchasedExamPosts],
+            statusCode: Int?,
+            message: String?
+        ) {
+            self.posts = posts
+            self.statusCode = statusCode
+            self.message = message
+        }
 
         enum CodingKeys: String, CodingKey {
             case posts = "data"
@@ -25,12 +35,26 @@ extension DTO {
 }
 
 extension DTO.FetchPurchasedExamPostsResponse {
-    struct PurchasedExamPosts: Decodable {
-        let id: Int
-        let professor: String
-        let lectureName: String
-        let majorType: String
-        let createDate: String
+    public struct PurchasedExamPosts: Decodable {
+        public let id: Int
+        public let professor: String
+        public let lectureName: String
+        public let majorType: String
+        public let createDate: String
+
+        public init(
+            id: Int,
+            professor: String,
+            lectureName: String,
+            majorType: String,
+            createDate: String
+        ) {
+            self.id = id
+            self.professor = professor
+            self.lectureName = lectureName
+            self.majorType = majorType
+            self.createDate = createDate
+        }
 
         var entity: PurchasedPost {
             PurchasedPost(id: id,

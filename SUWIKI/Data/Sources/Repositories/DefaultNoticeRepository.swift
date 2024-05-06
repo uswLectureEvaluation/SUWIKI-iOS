@@ -10,8 +10,11 @@ import Foundation
 import Domain
 import Network
 
-final class DefaultNoticeRepository: NoticeRepository {
-    func fetch() async throws -> [Announcement] {
+public final class DefaultNoticeRepository: NoticeRepository {
+
+    public init() { }
+
+    public func fetch() async throws -> [Announcement] {
         let apiTarget = APITarget
             .Notice
             .fetchAnnouncements
@@ -20,7 +23,7 @@ final class DefaultNoticeRepository: NoticeRepository {
         return value.announcements.map { $0.entity }
     }
 
-    func fetchDetail(id: Int) async throws -> Announcement {
+    public func fetchDetail(id: Int) async throws -> Announcement {
         let apiTarget = APITarget
             .Notice
             .fetchDetailAnnouncement(

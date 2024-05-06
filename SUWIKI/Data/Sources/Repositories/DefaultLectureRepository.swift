@@ -10,9 +10,11 @@ import Foundation
 import Domain
 import Network
 
-final class DefaultLectureRepository: LectureRepository {
+public final class DefaultLectureRepository: LectureRepository {
 
-    func fetch(
+    public init() { }
+
+    public func fetch(
         option: LectureOption,
         page: Int,
         major: String?
@@ -31,7 +33,7 @@ final class DefaultLectureRepository: LectureRepository {
         return dtoLecture.lecture.map { $0.entity }
     }
 
-    func search(
+    public func search(
         searchText: String,
         option: LectureOption,
         page: Int,
@@ -52,7 +54,7 @@ final class DefaultLectureRepository: LectureRepository {
         return dtoLecture.lecture.map { $0.entity }
     }
 
-    func fetchDetail(
+    public func fetchDetail(
         id: Int
     ) async throws -> DetailLecture {
         let target = APITarget.Lecture.detail(

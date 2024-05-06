@@ -9,7 +9,7 @@ import Foundation
 
 import Network
 
-extension APITarget {
+public extension APITarget {
     enum Lecture: TargetType {
         case getHome(DTO.AllLectureRequest)
         case search(DTO.SearchLectureRequest)
@@ -17,7 +17,7 @@ extension APITarget {
     }
 }
 
-extension APITarget.Lecture {
+public extension APITarget.Lecture {
     var targetURL: URL {
         URL(string: APITarget.baseURL + "lecture")!
     }

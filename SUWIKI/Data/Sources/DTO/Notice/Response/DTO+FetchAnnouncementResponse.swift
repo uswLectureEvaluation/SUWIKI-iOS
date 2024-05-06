@@ -10,10 +10,20 @@ import Foundation
 import Domain
 
 extension DTO {
-    struct FetchAnnouncementResponse: Decodable {
-        let announcements: [FetchAnnouncement]
-        let statusCode: Int?
-        let message: String?
+    public struct FetchAnnouncementResponse: Decodable {
+        public let announcements: [FetchAnnouncement]
+        public let statusCode: Int?
+        public let message: String?
+
+        public init(
+            announcements: [FetchAnnouncement],
+            statusCode: Int?,
+            message: String?
+        ) {
+            self.announcements = announcements
+            self.statusCode = statusCode
+            self.message = message
+        }
 
         enum CodingKeys: String, CodingKey {
             case announcements = "data"
@@ -24,13 +34,13 @@ extension DTO {
 }
 
 extension DTO.FetchAnnouncementResponse {
-    struct FetchAnnouncement: Decodable {
+    public struct FetchAnnouncement: Decodable {
         /// 공지사항 ID
-        let id: Int
+        public let id: Int
         /// 공지사항 제목
-        let title: String
+        public let title: String
         /// 수정
-        let modifiedDate: String
+        public let modifiedDate: String
 
         var entity: Announcement {
             Announcement(id: id,

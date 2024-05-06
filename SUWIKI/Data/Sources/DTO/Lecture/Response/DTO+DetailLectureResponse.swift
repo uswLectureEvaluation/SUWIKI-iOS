@@ -10,33 +10,63 @@ import Foundation
 import Domain
 
 extension DTO {
-    struct DetailLectureResponse: Codable {
+    public struct DetailLectureResponse: Codable {
         /// 강의 ID
-        let id: Int
+        public let id: Int
         /// 해당 강의 년도 + 학기 -> "2021-1,2022-1"
-        let semesterList: String
+        public let semesterList: String
         /// 교수명
-        let professor: String
+        public let professor: String
         /// 개설 학과
-        let majorType: String
+        public let majorType: String
         /// 이수 구분
-        let lectureType: String
+        public let lectureType: String
         /// 강의명
-        let lectureName: String
+        public let lectureName: String
         /// 강의평가 평균 지수
-        let lectureTotalAvg: Float
+        public let lectureTotalAvg: Float
         /// 강의평가 만족도 지수
-        let lectureSatisfactionAvg: Float
+        public let lectureSatisfactionAvg: Float
         /// 강의평가 꿀강 지수
-        let lectureHoneyAvg: Float
+        public let lectureHoneyAvg: Float
         /// 강의평가 배움 지수
-        let lectureLearningAvg: Float
+        public let lectureLearningAvg: Float
         /// 강의평가 팀플 지수
-        let lectureTeamAvg: Float
+        public let lectureTeamAvg: Float
         /// 강의평가 난이도 지수
-        let lectureDifficultyAvg: Float
+        public let lectureDifficultyAvg: Float
         /// 강의평가 과제 지수
-        let lectureHomeworkAvg: Float
+        public let lectureHomeworkAvg: Float
+
+        public init(
+            id: Int,
+            semesterList: String,
+            professor: String,
+            majorType: String,
+            lectureType: String,
+            lectureName: String,
+            lectureTotalAvg: Float,
+            lectureSatisfactionAvg: Float,
+            lectureHoneyAvg: Float,
+            lectureLearningAvg: Float,
+            lectureTeamAvg: Float,
+            lectureDifficultyAvg: Float,
+            lectureHomeworkAvg: Float
+        ) {
+            self.id = id
+            self.semesterList = semesterList
+            self.professor = professor
+            self.majorType = majorType
+            self.lectureType = lectureType
+            self.lectureName = lectureName
+            self.lectureTotalAvg = lectureTotalAvg
+            self.lectureSatisfactionAvg = lectureSatisfactionAvg
+            self.lectureHoneyAvg = lectureHoneyAvg
+            self.lectureLearningAvg = lectureLearningAvg
+            self.lectureTeamAvg = lectureTeamAvg
+            self.lectureDifficultyAvg = lectureDifficultyAvg
+            self.lectureHomeworkAvg = lectureHomeworkAvg
+        }
     }
 }
 

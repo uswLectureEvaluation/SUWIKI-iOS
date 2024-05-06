@@ -9,14 +9,14 @@ import Foundation
 
 import Network
 
-extension APITarget {
+public extension APITarget {
     enum Notice: TargetType {
         case fetchAnnouncements
         case fetchDetailAnnouncement(DTO.FetchDetailAnnouncementRequest)
     }
 }
 
-extension APITarget.Notice {
+public extension APITarget.Notice {
     var targetURL: URL {
         URL(string: APITarget.baseURL + "notice")!
     }

@@ -9,7 +9,7 @@ import Foundation
 
 import Domain
 
-protocol CoreDataStorage {
+public protocol CoreDataStorage {
     func saveTimetable(name: String, semester: String) throws
     func saveFirebaseCourse(course: [[String: Any]]) throws
     func saveCourse(id: String, course: TimetableCourse) throws

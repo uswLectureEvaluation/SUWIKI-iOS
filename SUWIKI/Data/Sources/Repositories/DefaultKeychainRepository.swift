@@ -10,11 +10,13 @@ import Foundation
 import Domain
 import Keychain
 
-final class DefaultKeychainRepository: KeychainRepository {
+public final class DefaultKeychainRepository: KeychainRepository {
 
-    let keychainManager = KeychainManager.shared
+    public let keychainManager = KeychainManager.shared
 
-    func create(
+    public init() { }
+
+    public func create(
         token: TokenType,
         value: String
     ) {

@@ -10,19 +10,35 @@ import Foundation
 import Domain
 
 extension DTO {
-    struct ExamPostResponse: Decodable {
+    public struct ExamPostResponse: Decodable {
         /// 글 ID
-        let id: Int
+        public let id: Int
         /// 수강 학기(2023-1)
-        let selectedSemester: String
+        public let selectedSemester: String
         /// 시험 정보(교재, PPT)
-        let examInfo: String
+        public let examInfo: String
         /// 시험 타입(기말고사)
-        let examType: String
+        public let examType: String
         /// 난이도(쉬움, 어려움)
-        let examDifficulty: String
+        public let examDifficulty: String
         /// 시험 정보 내용
-        let content: String
+        public let content: String
+
+        public init(
+            id: Int,
+            selectedSemester: String,
+            examInfo: String,
+            examType: String,
+            examDifficulty: String,
+            content: String
+        ) {
+            self.id = id
+            self.selectedSemester = selectedSemester
+            self.examInfo = examInfo
+            self.examType = examType
+            self.examDifficulty = examDifficulty
+            self.content = content
+        }
     }
 }
 

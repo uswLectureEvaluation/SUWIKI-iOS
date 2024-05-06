@@ -10,9 +10,11 @@ import Foundation
 import Domain
 import Network
 
-final class DefaultExamPostRepository: ExamPostRepository {
+public final class DefaultExamPostRepository: ExamPostRepository {
 
-    func fetch(id: Int, page: Int) async throws -> Exam {
+    public init() { }
+
+    public func fetch(id: Int, page: Int) async throws -> Exam {
         let apiTarget = APITarget.ExamPost.fetchExamPosts(
             DTO.FetchExamPostsRequest(
                 lectureId: id, page: page
@@ -25,7 +27,7 @@ final class DefaultExamPostRepository: ExamPostRepository {
                             isExamPostsExists: dtoExamInfo.examDataExist)
     }
 
-    func write(
+    public func write(
         id: Int,
         lectureName: String,
         professor: String,
@@ -48,20 +50,20 @@ final class DefaultExamPostRepository: ExamPostRepository {
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func purchase(id: Int) async throws -> Bool {
+    public func purchase(id: Int) async throws -> Bool {
         let apiTarget = APITarget.ExamPost.purchaseExamPost(
             DTO.PurchaseExamPostRequest(lectureId: id)
         )
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func fetchUserPosts() async throws -> [UserExamPost] {
+    public func fetchUserPosts() async throws -> [UserExamPost] {
         let apiTarget = APITarget.ExamPost.fetchUserExamPosts
         let value = try await APIProvider.request(DTO.FetchUserExamPostsResponse.self, target: apiTarget)
         return value.posts.map { $0.entity }
     }
 
-    func update(
+    public func update(
         id: Int,
         selectedSemester: String,
         examInfo: String,
@@ -80,7 +82,7 @@ final class DefaultExamPostRepository: ExamPostRepository {
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func fetchPurchasedExamPosts() async throws -> [PurchasedPost] {
+    public func fetchPurchasedExamPosts() async throws -> [PurchasedPost] {
         let apiTarget = APITarget.ExamPost.fetchPurchasedExamPosts
         let value = try await APIProvider.request(DTO.FetchPurchasedExamPostsResponse.self,
                                         target: apiTarget)

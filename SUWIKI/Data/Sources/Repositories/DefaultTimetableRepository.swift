@@ -10,12 +10,14 @@ import Foundation
 import DIContainer
 import Domain
 
-final class DefaultTimetableRepository: TimetableRepository {
+public final class DefaultTimetableRepository: TimetableRepository {
 
     @Inject var coreDataStorage: CoreDataStorage
     @Inject var firebaseStorage: FirebaseStorage
 
-    func saveTimetable(
+    public init() { }
+
+    public func saveTimetable(
         name: String,
         semester: String
     ) {
@@ -26,7 +28,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func saveCourse(id: String, course: TimetableCourse) {
+    public func saveCourse(id: String, course: TimetableCourse) {
         do {
             try coreDataStorage.saveCourse(id: id, course: course)
         } catch {
@@ -34,7 +36,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func updateTimetableTitle(id: String, title: String) {
+    public func updateTimetableTitle(id: String, title: String) {
         do {
             try coreDataStorage.updateTimetableTitle(id: id, title: title)
         } catch {
@@ -42,7 +44,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func fetchTimetable(id: String) -> Domain.Timetable? {
+    public func fetchTimetable(id: String) -> Domain.Timetable? {
         do {
             return try coreDataStorage.fetchTimetable(id: id)
         } catch {
@@ -50,7 +52,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func fetchCourses(id: String) -> [TimetableCourse]? {
+    public func fetchCourses(id: String) -> [TimetableCourse]? {
         do {
             return try coreDataStorage.fetchCourses(id: id)
         } catch {
@@ -58,7 +60,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func fetchFirebaseCourse(major: String) -> [FetchCourse] {
+    public func fetchFirebaseCourse(major: String) -> [FetchCourse] {
         do {
             return try coreDataStorage.fetchFirebaseCourse(major: major)
         } catch {
@@ -66,7 +68,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func fetchMajors() -> [String] {
+    public func fetchMajors() -> [String] {
         do {
             return try coreDataStorage.fetchMajors()
         } catch {
@@ -74,7 +76,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func fetchTimetableList() -> [Domain.Timetable] {
+    public func fetchTimetableList() -> [Domain.Timetable] {
         do {
             return try coreDataStorage.fetchTimetableList()
         } catch {
@@ -83,7 +85,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func fetchELearning(id: String) -> [TimetableCourse] {
+    public func fetchELearning(id: String) -> [TimetableCourse] {
         do {
             return try coreDataStorage.fetchELearning(id: id)
         } catch {
@@ -91,7 +93,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func deleteCourse(
+    public func deleteCourse(
         id: String,
         courseId: String
     ) {
@@ -102,7 +104,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func deleteTimetable(id: String) {
+    public func deleteTimetable(id: String) {
         do {
             try coreDataStorage.deleteTimetable(id: id)
         } catch {
@@ -110,7 +112,7 @@ final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    func checkCourseVersion() async throws {
+    public func checkCourseVersion() async throws {
         do {
             try await firebaseStorage.isVersionChanged()
         } catch {

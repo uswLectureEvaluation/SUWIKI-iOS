@@ -10,28 +10,51 @@ import Foundation
 import Domain
 
 extension DTO {
-    struct LectureResponse: Codable, Identifiable {
+    public struct LectureResponse: Codable, Identifiable {
         /// 강의 ID
-        let id: Int
+        public let id: Int
         /// 강의년도 + 학기 "2021-1, 2022-1"
-        let semesterList: String
+        public let semesterList: String
         /// 교수명
-        let professor: String
+        public let professor: String
         /// 개설학과
-        let majorType: String
+        public let majorType: String
         /// 이수구분
-        let lectureType: String
+        public let lectureType: String
         /// 강의 이름
-        let lectureName: String
-
+        public let lectureName: String
         /// 강의 평가 지수 평균
-        let lectureTotalAvg: Float
+        public let lectureTotalAvg: Float
         /// 강의 평가 만족도 지수 평균
-        let lectureSatisfactionAvg: Float
+        public let lectureSatisfactionAvg: Float
         /// 강의 평가 꿀강 지수 평균
-        let lectureHoneyAvg: Float
+        public let lectureHoneyAvg: Float
         /// 강의 평가 배움 지수 평균
-        let lectureLearningAvg: Float
+        public let lectureLearningAvg: Float
+
+        public init(
+            id: Int,
+            semesterList: String,
+            professor: String,
+            majorType: String,
+            lectureType: String,
+            lectureName: String,
+            lectureTotalAvg: Float,
+            lectureSatisfactionAvg: Float,
+            lectureHoneyAvg: Float,
+            lectureLearningAvg: Float
+        ) {
+            self.id = id
+            self.semesterList = semesterList
+            self.professor = professor
+            self.majorType = majorType
+            self.lectureType = lectureType
+            self.lectureName = lectureName
+            self.lectureTotalAvg = lectureTotalAvg
+            self.lectureSatisfactionAvg = lectureSatisfactionAvg
+            self.lectureHoneyAvg = lectureHoneyAvg
+            self.lectureLearningAvg = lectureLearningAvg
+        }
     }
 }
 
@@ -45,5 +68,3 @@ extension DTO.LectureResponse {
                 lectureTotalAvg: Double(lectureTotalAvg))
     }
 }
-
-

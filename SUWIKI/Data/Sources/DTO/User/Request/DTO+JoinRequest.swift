@@ -8,12 +8,22 @@
 import Foundation
 
 extension DTO {
-    struct JoinRequest: Encodable {
+    public struct JoinRequest: Encodable {
         /// 유저 아이디
-        let loginId: String
+        public let loginId: String
         /// 패스워드
-        let password: String
+        public let password: String
         /// 회원가입 학교 이메일
-        let email: String
+        public let email: String
+
+        public init(
+            loginId: String,
+            password: String,
+            email: String
+        ) {
+            self.loginId = loginId
+            self.password = password
+            self.email = email
+        }
     }
 }

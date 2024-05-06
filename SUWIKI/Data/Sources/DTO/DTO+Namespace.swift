@@ -13,4 +13,4 @@ import Foundation
 /// 네임스페이스를 통해서만 문자열에 접근할 수 있게 만드는 '캡슐화' 방법이기도 함
 /// enum을 사용하는 이유 : 초기화를 못하게 하기 위해, 순수히 Namespace로서만 작동시키기 위해
 
-enum DTO { }
+public enum DTO { }

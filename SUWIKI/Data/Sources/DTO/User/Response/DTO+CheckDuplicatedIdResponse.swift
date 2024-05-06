@@ -8,7 +8,11 @@
 import Foundation
 
 extension DTO {
-    struct CheckDuplicatedIdResponse: Decodable {
-        let overlap: Bool
+    public struct CheckDuplicatedIdResponse: Decodable {
+        public let overlap: Bool
+
+        public init(overlap: Bool) {
+            self.overlap = overlap
+        }
     }
 }

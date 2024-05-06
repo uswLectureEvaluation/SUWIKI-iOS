@@ -8,11 +8,19 @@
 import Foundation
 
 extension DTO {
-    struct AllLectureResponse: Codable {
+    public struct AllLectureResponse: Codable {
         /// 강의 데이터
-        let lecture: [DTO.LectureResponse]
+        public let lecture: [DTO.LectureResponse]
         /// 강의 데이터 갯수 - 불필요할 수 있음.
-        let count: Int
+        public let count: Int
+
+        public init(
+            lecture: [DTO.LectureResponse],
+            count: Int
+        ) {
+            self.lecture = lecture
+            self.count = count
+        }
 
         enum CodingKeys: String, CodingKey {
             case lecture = "data"

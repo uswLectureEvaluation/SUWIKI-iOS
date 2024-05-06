@@ -7,9 +7,7 @@
 
 import Foundation
 
-import FirebaseDatabase
-
-protocol FirebaseStorage {
+public protocol FirebaseStorage {
     func fetchCourse() async throws
     func isVersionChanged() async throws
 }

@@ -10,14 +10,26 @@ import Foundation
 import Domain
 
 extension DTO {
-    struct SearchLectureRequest: Encodable {
+    public struct SearchLectureRequest: Encodable {
         /// 교수이름 OR 과목이름
-        let searchValue: String
+        public let searchValue: String
         /// 필터링 옵션
-        let option: LectureOption
+        public let option: LectureOption
         /// Fetch Page
-        let page: Int
+        public let page: Int
         /// 학과 필터링, 이후 학과 fetch 기능 구현 후 붙힐 예정
-        let majorType: String?
+        public let majorType: String?
+
+        public init(
+            searchValue: String,
+            option: LectureOption,
+            page: Int,
+            majorType: String?
+        ) {
+            self.searchValue = searchValue
+            self.option = option
+            self.page = page
+            self.majorType = majorType
+        }
     }
 }

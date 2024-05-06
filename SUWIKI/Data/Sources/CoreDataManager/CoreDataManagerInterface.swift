@@ -8,6 +8,6 @@
 import Foundation
 import CoreData
 
-protocol CoreDataManagerInterface {
+public protocol CoreDataManagerInterface {
     var context: NSManagedObjectContext { get }
 }

@@ -8,8 +8,16 @@
 import Foundation
 
 extension DTO {
-    struct ChangePasswordRequest: Encodable {
-        let prePassword: String
-        let newPassword: String
+    public struct ChangePasswordRequest: Encodable {
+        public let prePassword: String
+        public let newPassword: String
+
+        public init(
+            prePassword: String,
+            newPassword: String
+        ) {
+            self.prePassword = prePassword
+            self.newPassword = newPassword
+        }
     }
 }

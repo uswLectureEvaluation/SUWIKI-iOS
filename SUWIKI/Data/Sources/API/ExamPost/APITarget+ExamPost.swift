@@ -9,7 +9,7 @@ import Foundation
 
 import Network
 
-extension APITarget {
+public extension APITarget {
     enum ExamPost: TargetType {
         case fetchExamPosts(DTO.FetchExamPostsRequest)
         case writeExamPost(DTO.WriteExamPostRequest)
@@ -20,7 +20,7 @@ extension APITarget {
     }
 }
 
-extension APITarget.ExamPost {
+public extension APITarget.ExamPost {
     var targetURL: URL {
         URL(string: APITarget.baseURL + "exam-posts")!
     }

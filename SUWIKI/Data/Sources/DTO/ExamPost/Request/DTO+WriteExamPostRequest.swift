@@ -8,30 +8,60 @@
 import Foundation
 
 extension DTO {
-    struct WriteExamPostRequest: Encodable {
-        let lectureInfo: LectureInfo
-        let post: Post
+    public struct WriteExamPostRequest: Encodable {
+        public let lectureInfo: LectureInfo
+        public let post: Post
+
+        public init(
+            lectureInfo: LectureInfo,
+            post: Post
+        ) {
+            self.lectureInfo = lectureInfo
+            self.post = post
+        }
     }
 }
 
 extension DTO.WriteExamPostRequest {
-    struct LectureInfo: Encodable {
-        let lectureId: Int
+    public struct LectureInfo: Encodable {
+        public let lectureId: Int
+
+        public init(lectureId: Int) {
+            self.lectureId = lectureId
+        }
     }
-    struct Post: Encodable {
+    public struct Post: Encodable {
         /// 강의명
-        let lectureName: String
+        public let lectureName: String
         /// 교수
-        let professor: String
+        public let professor: String
         /// 선택학기
-        let selectedSemester: String
+        public let selectedSemester: String
         /// 교재, 피피티 등
-        let examInfo: String
+        public let examInfo: String
         /// 중간고사 - 기말고사
-        let examType: String
+        public let examType: String
         /// 쉬움, 보통, 어려움
-        let examDifficulty: String
+        public let examDifficulty: String
         /// 유저가 작성한 내용
-        let content: String
+        public let content: String
+
+        public init(
+            lectureName: String,
+            professor: String,
+            selectedSemester: String,
+            examInfo: String,
+            examType: String,
+            examDifficulty: String,
+            content: String
+        ) {
+            self.lectureName = lectureName
+            self.professor = professor
+            self.selectedSemester = selectedSemester
+            self.examInfo = examInfo
+            self.examType = examType
+            self.examDifficulty = examDifficulty
+            self.content = content
+        }
     }
 }

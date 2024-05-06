@@ -8,8 +8,12 @@
 import Foundation
 
 extension DTO {
-    struct JoinResponse: Codable {
+    public struct JoinResponse: Codable {
         /// 요청 성공 여부
-        let success: Bool
+        public let success: Bool
+
+        public init(success: Bool) {
+            self.success = success
+        }
     }
 }

@@ -8,7 +8,11 @@
 import Foundation
 
 extension DTO {
-    struct FindIdRequest: Encodable {
-        let email: String
+    public struct FindIdRequest: Encodable {
+        public let email: String
+
+        public init(email: String) {
+            self.email = email
+        }
     }
 }

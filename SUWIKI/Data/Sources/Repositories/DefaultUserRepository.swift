@@ -11,11 +11,13 @@ import Domain
 import Keychain
 import Network
 
-final class DefaultUserRepository: UserRepository {
-    
+public final class DefaultUserRepository: UserRepository {
+
     let keychainManager = KeychainManager.shared
-    
-    func login(
+
+    public init() { }
+
+    public func login(
         id: String,
         password: String
     ) async throws -> Bool {
@@ -37,7 +39,7 @@ final class DefaultUserRepository: UserRepository {
         }
     }
     
-    func join(
+    public func join(
         id: String,
         password: String,
         email: String
@@ -50,12 +52,12 @@ final class DefaultUserRepository: UserRepository {
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func findId(email: String) async throws -> Bool {
+    public func findId(email: String) async throws -> Bool {
         let apiTarget = APITarget.User.findId(DTO.FindIdRequest(email: email))
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func findPassword(
+    public func findPassword(
         id: String,
         email: String
     ) async throws -> Bool {
@@ -63,25 +65,25 @@ final class DefaultUserRepository: UserRepository {
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func checkDuplicatedId(id: String) async throws -> Bool {
+    public func checkDuplicatedId(id: String) async throws -> Bool {
         let apiTarget = APITarget.User.checkDuplicatedId(DTO.CheckDuplicatedIdRequest(loginId: id))
         let value = try await APIProvider.request(DTO.CheckDuplicatedIdResponse.self, target: apiTarget)
         return value.overlap
     }
 
-    func checkDuplicatedEmail(email: String) async throws -> Bool {
+    public func checkDuplicatedEmail(email: String) async throws -> Bool {
         let apiTarget = APITarget.User.checkDuplicatedEmail(DTO.CheckDuplicatedEmailRequest(email: email))
         let value = try await APIProvider.request(DTO.CheckDuplicatedEmailResponse.self, target: apiTarget)
         return value.overlap
     }
 
-    func userInfo() async throws -> UserInfo {
+    public func userInfo() async throws -> UserInfo {
         let apiTarget = APITarget.User.userInfo
         let value = try await APIProvider.request(DTO.UserInfoResponse.self, target: apiTarget)
         return value.entity
     }
     
-    func changePassword(
+    public func changePassword(
         current: String,
         new: String
     ) async throws -> Bool {
@@ -96,7 +98,7 @@ final class DefaultUserRepository: UserRepository {
         return try await APIProvider.request(target: apiTarget)
     }
 
-    func withDraw(
+    public func withDraw(
         id: String,
         password: String
     ) async throws -> Bool {

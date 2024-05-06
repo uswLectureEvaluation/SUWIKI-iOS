@@ -8,10 +8,20 @@
 import Foundation
 
 extension DTO {
-    struct DecodingDetailLectureResponse: Decodable {
-        let statusCode: Int?
-        let message: String?
-        let detailLecture: DTO.DetailLectureResponse
+    public struct DecodingDetailLectureResponse: Decodable {
+        public let statusCode: Int?
+        public let message: String?
+        public let detailLecture: DTO.DetailLectureResponse
+
+        public init(
+            statusCode: Int?,
+            message: String?,
+            detailLecture: DTO.DetailLectureResponse
+        ) {
+            self.statusCode = statusCode
+            self.message = message
+            self.detailLecture = detailLecture
+        }
 
         enum CodingKeys: String, CodingKey {
             case statusCode
