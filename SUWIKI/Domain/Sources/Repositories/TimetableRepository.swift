@@ -11,12 +11,12 @@ public protocol TimetableRepository {
     func saveTimetable(name: String, semester: String)
     func saveCourse(id: String, course: TimetableCourse)
     func updateTimetableTitle(id: String, title: String)
-    func fetchTimetable(id: String) -> Timetable?
+    func fetchTimetable(id: String) -> UserTimetable?
     func fetchCourses(id: String) -> [TimetableCourse]?
     func fetchELearning(id: String) -> [TimetableCourse]
     func fetchFirebaseCourse(major: String) -> [FetchCourse]
     func fetchMajors() -> [String]
-    func fetchTimetableList() -> [Timetable]
+    func fetchTimetableList() -> [UserTimetable]
     func deleteCourse(id: String, courseId: String)
     func deleteTimetable(id: String)
     func checkCourseVersion() async throws
