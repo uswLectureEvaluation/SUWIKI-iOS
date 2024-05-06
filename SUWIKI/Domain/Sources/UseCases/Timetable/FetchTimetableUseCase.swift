@@ -12,7 +12,7 @@ import DIContainer
 public protocol FetchTimetableUseCase {
     func execute(
         id: String
-    ) -> Timetable?
+    ) -> UserTimetable?
 }
 
 public final class DefaultFetchTimetableUseCase: FetchTimetableUseCase {
@@ -22,7 +22,7 @@ public final class DefaultFetchTimetableUseCase: FetchTimetableUseCase {
 
     public func execute(
         id: String
-    ) -> Timetable? {
+    ) -> UserTimetable? {
         return repository.fetchTimetable(id: id)
     }
 }

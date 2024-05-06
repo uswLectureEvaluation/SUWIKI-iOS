@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF01FC022BE3A64700F0EAD0 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF01FBF92BE3A64700F0EAD0 /* Data.framework */; };
-		AF01FC072BE3A64700F0EAD0 /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC062BE3A64700F0EAD0 /* DataTests.swift */; };
 		AF01FC082BE3A64700F0EAD0 /* Data.h in Headers */ = {isa = PBXBuildFile; fileRef = AF01FBFC2BE3A64700F0EAD0 /* Data.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF1F64D82BE8D049004DE418 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA6E2BE5049D00454E7C /* Common.framework */; };
+		AF5A4D502BE8EB4C0015D214 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AF5A4D4F2BE8EB4C0015D214 /* Network */; };
+		AF5A4D572BE8ED990015D214 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AF5A4D562BE8ED990015D214 /* Alamofire */; };
 		AF60A9782BE4F2F700454E7C /* APITarget+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60A9772BE4F2F700454E7C /* APITarget+User.swift */; };
 		AF60A97C2BE4F31200454E7C /* APITarget+Notice.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60A97B2BE4F31200454E7C /* APITarget+Notice.swift */; };
 		AF60A97E2BE4F32100454E7C /* APITarget+ExamPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60A97D2BE4F32100454E7C /* APITarget+ExamPost.swift */; };
@@ -75,47 +76,21 @@
 		AF60AA0F2BE4FFE100454E7C /* DTO+FindPasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60A9E02BE4FFE100454E7C /* DTO+FindPasswordRequest.swift */; };
 		AF60AA102BE4FFE100454E7C /* DTO+CheckEmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60A9E12BE4FFE100454E7C /* DTO+CheckEmailRequest.swift */; };
 		AF60AA132BE4FFF300454E7C /* DIContainer in Frameworks */ = {isa = PBXBuildFile; productRef = AF60AA122BE4FFF300454E7C /* DIContainer */; };
-		AF60AA152BE4FFFA00454E7C /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AF60AA142BE4FFFA00454E7C /* Network */; };
 		AF60AA172BE4FFFE00454E7C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA162BE4FFFE00454E7C /* Domain.framework */; };
-		AF60AA182BE4FFFE00454E7C /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA162BE4FFFE00454E7C /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AF60AA1B2BE5000200454E7C /* FirebaseManager in Frameworks */ = {isa = PBXBuildFile; productRef = AF60AA1A2BE5000200454E7C /* FirebaseManager */; };
-		AF60AAB12BE5063F00454E7C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA6E2BE5049D00454E7C /* Common.framework */; };
+		AFA5238D2BE79C92001F285D /* CoreDataManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA5238C2BE79C92001F285D /* CoreDataManagerInterface.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		AF01FC032BE3A64700F0EAD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF01FBF02BE3A64700F0EAD0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AF01FBF82BE3A64700F0EAD0;
-			remoteInfo = Data;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		AF60AA192BE4FFFE00454E7C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				AF60AA182BE4FFFE00454E7C /* Domain.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AF01FBF92BE3A64700F0EAD0 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF01FBFC2BE3A64700F0EAD0 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
-		AF01FC012BE3A64700F0EAD0 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF01FC062BE3A64700F0EAD0 /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		AF5A4D512BE8ED4C0015D214 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF60A9772BE4F2F700454E7C /* APITarget+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+User.swift"; sourceTree = "<group>"; };
 		AF60A97B2BE4F31200454E7C /* APITarget+Notice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+Notice.swift"; sourceTree = "<group>"; };
 		AF60A97D2BE4F32100454E7C /* APITarget+ExamPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+ExamPost.swift"; sourceTree = "<group>"; };
 		AF60A97F2BE4F32C00454E7C /* APITarget+Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APITarget+Lecture.swift"; sourceTree = "<group>"; };
-		AF60A9812BE4F34600454E7C /* APITarget+EvaluationPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APITarget+EvaluationPost.swift"; path = "Sources/API/Lecture/APITarget+EvaluationPost.swift"; sourceTree = SOURCE_ROOT; };
+		AF60A9812BE4F34600454E7C /* APITarget+EvaluationPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "APITarget+EvaluationPost.swift"; path = "Sources/API/EvaluationPost/APITarget+EvaluationPost.swift"; sourceTree = SOURCE_ROOT; };
 		AF60A9832BE4F38400454E7C /* APITarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITarget.swift; sourceTree = "<group>"; };
 		AF60A98E2BE4FFBB00454E7C /* DefaultLectureRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultLectureRepository.swift; sourceTree = "<group>"; };
 		AF60A98F2BE4FFBB00454E7C /* DefaultTimetableRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTimetableRepository.swift; sourceTree = "<group>"; };
@@ -177,6 +152,7 @@
 		AF60A9E12BE4FFE100454E7C /* DTO+CheckEmailRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DTO+CheckEmailRequest.swift"; sourceTree = "<group>"; };
 		AF60AA162BE4FFFE00454E7C /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF60AA6E2BE5049D00454E7C /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFA5238C2BE79C92001F285D /* CoreDataManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,19 +160,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF60AAB12BE5063F00454E7C /* Common.framework in Frameworks */,
 				AF60AA172BE4FFFE00454E7C /* Domain.framework in Frameworks */,
 				AF60AA132BE4FFF300454E7C /* DIContainer in Frameworks */,
-				AF60AA152BE4FFFA00454E7C /* Network in Frameworks */,
+				AF1F64D82BE8D049004DE418 /* Common.framework in Frameworks */,
+				AF5A4D572BE8ED990015D214 /* Alamofire in Frameworks */,
 				AF60AA1B2BE5000200454E7C /* FirebaseManager in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AF01FBFE2BE3A64700F0EAD0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF01FC022BE3A64700F0EAD0 /* Data.framework in Frameworks */,
+				AF5A4D502BE8EB4C0015D214 /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				AF01FBF92BE3A64700F0EAD0 /* Data.framework */,
-				AF01FC012BE3A64700F0EAD0 /* DataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,23 +214,14 @@
 		AF01FCFB2BE4F25E00F0EAD0 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				AF6D59F92BE7B26C007ED08E /* EvaluationPost */,
 				AF60A9762BE4F2F000454E7C /* User */,
 				AF60A9752BE4F2E900454E7C /* Lecture */,
 				AF60A9742BE4F2E300454E7C /* ExamPost */,
 				AF60A9732BE4F2DE00454E7C /* Notice */,
-				AF01FCFD2BE4F2A400F0EAD0 /* EvaluationPost */,
 				AF60A9832BE4F38400454E7C /* APITarget.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		AF01FCFD2BE4F2A400F0EAD0 /* EvaluationPost */ = {
-			isa = PBXGroup;
-			children = (
-				AF60A9812BE4F34600454E7C /* APITarget+EvaluationPost.swift */,
-			);
-			name = EvaluationPost;
-			path = ../../../SUWIKI/Data/API/EvaluationPost;
 			sourceTree = "<group>";
 		};
 		AF60A9732BE4F2DE00454E7C /* Notice */ = {
@@ -499,6 +458,7 @@
 		AF60AA112BE4FFF300454E7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF5A4D512BE8ED4C0015D214 /* Alamofire.framework */,
 				AF60AA6E2BE5049D00454E7C /* Common.framework */,
 				AF60AA162BE4FFFE00454E7C /* Domain.framework */,
 			);
@@ -508,8 +468,17 @@
 		AF60AAB22BE506D200454E7C /* CoreDataManager */ = {
 			isa = PBXGroup;
 			children = (
+				AFA5238C2BE79C92001F285D /* CoreDataManagerInterface.swift */,
 			);
 			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
+		AF6D59F92BE7B26C007ED08E /* EvaluationPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF60A9812BE4F34600454E7C /* APITarget+EvaluationPost.swift */,
+			);
+			path = EvaluationPost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,7 +503,6 @@
 				AF01FBF52BE3A64700F0EAD0 /* Sources */,
 				AF01FBF62BE3A64700F0EAD0 /* Frameworks */,
 				AF01FBF72BE3A64700F0EAD0 /* Resources */,
-				AF60AA192BE4FFFE00454E7C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -543,30 +511,13 @@
 			name = Data;
 			packageProductDependencies = (
 				AF60AA122BE4FFF300454E7C /* DIContainer */,
-				AF60AA142BE4FFFA00454E7C /* Network */,
 				AF60AA1A2BE5000200454E7C /* FirebaseManager */,
+				AF5A4D4F2BE8EB4C0015D214 /* Network */,
+				AF5A4D562BE8ED990015D214 /* Alamofire */,
 			);
 			productName = Data;
 			productReference = AF01FBF92BE3A64700F0EAD0 /* Data.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		AF01FC002BE3A64700F0EAD0 /* DataTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AF01FC0E2BE3A64700F0EAD0 /* Build configuration list for PBXNativeTarget "DataTests" */;
-			buildPhases = (
-				AF01FBFD2BE3A64700F0EAD0 /* Sources */,
-				AF01FBFE2BE3A64700F0EAD0 /* Frameworks */,
-				AF01FBFF2BE3A64700F0EAD0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				AF01FC042BE3A64700F0EAD0 /* PBXTargetDependency */,
-			);
-			name = DataTests;
-			productName = DataTests;
-			productReference = AF01FC012BE3A64700F0EAD0 /* DataTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -582,9 +533,6 @@
 						CreatedOnToolsVersion = 15.0.1;
 						LastSwiftMigration = 1500;
 					};
-					AF01FC002BE3A64700F0EAD0 = {
-						CreatedOnToolsVersion = 15.0.1;
-					};
 				};
 			};
 			buildConfigurationList = AF01FBF32BE3A64700F0EAD0 /* Build configuration list for PBXProject "Data" */;
@@ -596,25 +544,20 @@
 				Base,
 			);
 			mainGroup = AF01FBEF2BE3A64700F0EAD0;
+			packageReferences = (
+				AF5A4D552BE8ED990015D214 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = AF01FBFA2BE3A64700F0EAD0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				AF01FBF82BE3A64700F0EAD0 /* Data */,
-				AF01FC002BE3A64700F0EAD0 /* DataTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AF01FBF72BE3A64700F0EAD0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AF01FBFF2BE3A64700F0EAD0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -661,6 +604,7 @@
 				AF60A9E72BE4FFE100454E7C /* DTO+DetailLectureRequest.swift in Sources */,
 				AF60A9F52BE4FFE100454E7C /* DTO+FetchAnnouncementRequest.swift in Sources */,
 				AF60A9982BE4FFBB00454E7C /* DefaultExamPostRepository.swift in Sources */,
+				AFA5238D2BE79C92001F285D /* CoreDataManagerInterface.swift in Sources */,
 				AF60A9EC2BE4FFE100454E7C /* DTO+WriteEvaluatePostResponse.swift in Sources */,
 				AF60A9FB2BE4FFE100454E7C /* DTO+UpdateExamPostRequest.swift in Sources */,
 				AF60A9A22BE4FFC900454E7C /* FirebaseStorage.swift in Sources */,
@@ -695,23 +639,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AF01FBFD2BE3A64700F0EAD0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF01FC072BE3A64700F0EAD0 /* DataTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		AF01FC042BE3A64700F0EAD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AF01FBF82BE3A64700F0EAD0 /* Data */;
-			targetProxy = AF01FC032BE3A64700F0EAD0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AF01FC092BE3A64700F0EAD0 /* Debug */ = {
@@ -767,7 +695,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -827,7 +755,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -843,6 +771,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -854,6 +783,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -876,6 +806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -887,6 +818,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -899,40 +831,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		AF01FC0F2BE3A64700F0EAD0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8R3N359429;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.DataTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		AF01FC102BE3A64700F0EAD0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8R3N359429;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kozi.DataTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -959,25 +857,32 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AF01FC0E2BE3A64700F0EAD0 /* Build configuration list for PBXNativeTarget "DataTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AF01FC0F2BE3A64700F0EAD0 /* Debug */,
-				AF01FC102BE3A64700F0EAD0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		AF5A4D552BE8ED990015D214 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		AF5A4D4F2BE8EB4C0015D214 /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Network;
+		};
+		AF5A4D562BE8ED990015D214 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF5A4D552BE8ED990015D214 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		AF60AA122BE4FFF300454E7C /* DIContainer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DIContainer;
-		};
-		AF60AA142BE4FFFA00454E7C /* Network */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Network;
 		};
 		AF60AA1A2BE5000200454E7C /* FirebaseManager */ = {
 			isa = XCSwiftPackageProductDependency;

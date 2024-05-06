@@ -10,7 +10,7 @@ import Foundation
 import DIContainer
 
 public protocol FetchTimetableListUseCase {
-    func execute() -> [Timetable]
+    func execute() -> [UserTimetable]
 }
 
 public final class DefaultFetchTimetableListUseCase: FetchTimetableListUseCase {
@@ -18,7 +18,7 @@ public final class DefaultFetchTimetableListUseCase: FetchTimetableListUseCase {
 
     public init() { }
 
-    public func execute() -> [Timetable] {
+    public func execute() -> [UserTimetable] {
         return repository.fetchTimetableList()
     }
 }

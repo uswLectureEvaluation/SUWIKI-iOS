@@ -44,7 +44,7 @@ public final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    public func fetchTimetable(id: String) -> Domain.Timetable? {
+    public func fetchTimetable(id: String) -> Domain.UserTimetable? {
         do {
             return try coreDataStorage.fetchTimetable(id: id)
         } catch {
@@ -76,7 +76,7 @@ public final class DefaultTimetableRepository: TimetableRepository {
         }
     }
 
-    public func fetchTimetableList() -> [Domain.Timetable] {
+    public func fetchTimetableList() -> [Domain.UserTimetable] {
         do {
             return try coreDataStorage.fetchTimetableList()
         } catch {

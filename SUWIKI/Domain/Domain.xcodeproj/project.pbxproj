@@ -72,8 +72,15 @@
 		AF01FCE42BE3AA9500F0EAD0 /* Major.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC682BE3A6AE00F0EAD0 /* Major.swift */; };
 		AF01FCE52BE3AA9500F0EAD0 /* TimetableCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC692BE3A6AE00F0EAD0 /* TimetableCourse.swift */; };
 		AF01FCE62BE3AA9500F0EAD0 /* FetchCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC6A2BE3A6AE00F0EAD0 /* FetchCourse.swift */; };
-		AF01FCE82BE3DC3300F0EAD0 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FCE72BE3DC3300F0EAD0 /* Timetable.swift */; };
+		AF01FCE82BE3DC3300F0EAD0 /* UserTimetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FCE72BE3DC3300F0EAD0 /* UserTimetable.swift */; };
 		AF01FCEA2BE3E0D700F0EAD0 /* LectureOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FCE92BE3E0D700F0EAD0 /* LectureOption.swift */; };
+		AF5A4D672BE8F1CF0015D214 /* FirebaseCourse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D612BE8F1CF0015D214 /* FirebaseCourse+CoreDataClass.swift */; };
+		AF5A4D682BE8F1CF0015D214 /* FirebaseCourse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D622BE8F1CF0015D214 /* FirebaseCourse+CoreDataProperties.swift */; };
+		AF5A4D692BE8F1CF0015D214 /* Timetable+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D632BE8F1CF0015D214 /* Timetable+CoreDataClass.swift */; };
+		AF5A4D6A2BE8F1CF0015D214 /* Timetable+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D642BE8F1CF0015D214 /* Timetable+CoreDataProperties.swift */; };
+		AF5A4D6B2BE8F1CF0015D214 /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D652BE8F1CF0015D214 /* Course+CoreDataClass.swift */; };
+		AF5A4D6C2BE8F1CF0015D214 /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D662BE8F1CF0015D214 /* Course+CoreDataProperties.swift */; };
+		AF6D59F82BE7B0D4007ED08E /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D59F72BE7B0D4007ED08E /* CoreDataError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,8 +158,15 @@
 		AF01FC9F2BE3A6DF00F0EAD0 /* ExamPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamPostRepository.swift; sourceTree = "<group>"; };
 		AF01FCA02BE3A6DF00F0EAD0 /* KeychainRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainRepository.swift; sourceTree = "<group>"; };
 		AF01FCA12BE3A6DF00F0EAD0 /* EvaluationPostRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluationPostRepository.swift; sourceTree = "<group>"; };
-		AF01FCE72BE3DC3300F0EAD0 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		AF01FCE72BE3DC3300F0EAD0 /* UserTimetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTimetable.swift; sourceTree = "<group>"; };
 		AF01FCE92BE3E0D700F0EAD0 /* LectureOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureOption.swift; sourceTree = "<group>"; };
+		AF5A4D612BE8F1CF0015D214 /* FirebaseCourse+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FirebaseCourse+CoreDataClass.swift"; path = "../../../FirebaseCourse+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AF5A4D622BE8F1CF0015D214 /* FirebaseCourse+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FirebaseCourse+CoreDataProperties.swift"; path = "../../../FirebaseCourse+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AF5A4D632BE8F1CF0015D214 /* Timetable+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timetable+CoreDataClass.swift"; path = "../../../Timetable+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AF5A4D642BE8F1CF0015D214 /* Timetable+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Timetable+CoreDataProperties.swift"; path = "../../../Timetable+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AF5A4D652BE8F1CF0015D214 /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataClass.swift"; path = "../../../Course+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AF5A4D662BE8F1CF0015D214 /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataProperties.swift"; path = "../../../Course+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AF6D59F72BE7B0D4007ED08E /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,7 +292,7 @@
 				AF01FC682BE3A6AE00F0EAD0 /* Major.swift */,
 				AF01FC692BE3A6AE00F0EAD0 /* TimetableCourse.swift */,
 				AF01FC6A2BE3A6AE00F0EAD0 /* FetchCourse.swift */,
-				AF01FCE72BE3DC3300F0EAD0 /* Timetable.swift */,
+				AF01FCE72BE3DC3300F0EAD0 /* UserTimetable.swift */,
 			);
 			path = Timetable;
 			sourceTree = "<group>";
@@ -286,8 +300,15 @@
 		AF01FC6C2BE3A6AE00F0EAD0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				AF5A4D612BE8F1CF0015D214 /* FirebaseCourse+CoreDataClass.swift */,
+				AF5A4D622BE8F1CF0015D214 /* FirebaseCourse+CoreDataProperties.swift */,
+				AF5A4D632BE8F1CF0015D214 /* Timetable+CoreDataClass.swift */,
+				AF5A4D642BE8F1CF0015D214 /* Timetable+CoreDataProperties.swift */,
+				AF5A4D652BE8F1CF0015D214 /* Course+CoreDataClass.swift */,
+				AF5A4D662BE8F1CF0015D214 /* Course+CoreDataProperties.swift */,
 				AF01FC672BE3A6AE00F0EAD0 /* LectureEvaluation */,
 				AF01FC6B2BE3A6AE00F0EAD0 /* Timetable */,
+				AF6D59F72BE7B0D4007ED08E /* CoreDataError.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -529,8 +550,10 @@
 				AF01FCAF2BE3AA9500F0EAD0 /* ExamPostRepository.swift in Sources */,
 				AF01FCB02BE3AA9500F0EAD0 /* KeychainRepository.swift in Sources */,
 				AF01FCB12BE3AA9500F0EAD0 /* EvaluationPostRepository.swift in Sources */,
+				AF5A4D682BE8F1CF0015D214 /* FirebaseCourse+CoreDataProperties.swift in Sources */,
 				AF01FCB22BE3AA9500F0EAD0 /* FetchDetailLectureUseCase.swift in Sources */,
 				AF01FCB32BE3AA9500F0EAD0 /* SearchLectureUseCase.swift in Sources */,
+				AF5A4D6C2BE8F1CF0015D214 /* Course+CoreDataProperties.swift in Sources */,
 				AF01FCB42BE3AA9500F0EAD0 /* FetchLectureUseCase.swift in Sources */,
 				AF01FCB52BE3AA9500F0EAD0 /* FetchUserEvaluationPostsUseCase.swift in Sources */,
 				AF01FCB62BE3AA9500F0EAD0 /* UpdateEvaluationPostUseCase.swift in Sources */,
@@ -543,7 +566,7 @@
 				AF01FCBD2BE3AA9500F0EAD0 /* CheckDuplicatedEmailUseCase.swift in Sources */,
 				AF01FCBE2BE3AA9500F0EAD0 /* CreateTokenUseCase.swift in Sources */,
 				AF01FCBF2BE3AA9500F0EAD0 /* UserInfoUseCase.swift in Sources */,
-				AF01FCE82BE3DC3300F0EAD0 /* Timetable.swift in Sources */,
+				AF01FCE82BE3DC3300F0EAD0 /* UserTimetable.swift in Sources */,
 				AF01FCC02BE3AA9500F0EAD0 /* FindIdUseCase.swift in Sources */,
 				AF01FCC12BE3AA9500F0EAD0 /* ReadTokenUseCase.swift in Sources */,
 				AF01FCC22BE3AA9500F0EAD0 /* ChangePasswordUseCase.swift in Sources */,
@@ -563,9 +586,11 @@
 				AF01FCCF2BE3AA9500F0EAD0 /* DeleteCourseUseCase.swift in Sources */,
 				AF01FCD02BE3AA9500F0EAD0 /* DeleteTimetableUseCase.swift in Sources */,
 				AF01FCD12BE3AA9500F0EAD0 /* SaveTimetableUseCase.swift in Sources */,
+				AF6D59F82BE7B0D4007ED08E /* CoreDataError.swift in Sources */,
 				AF01FCD22BE3AA9500F0EAD0 /* FetchELearningUseCase.swift in Sources */,
 				AF01FCD32BE3AA9500F0EAD0 /* UpdateTimetableTitleUseCase.swift in Sources */,
 				AF01FCD42BE3AA9500F0EAD0 /* FetchCoursesUseCase.swift in Sources */,
+				AF5A4D6B2BE8F1CF0015D214 /* Course+CoreDataClass.swift in Sources */,
 				AF01FCD52BE3AA9500F0EAD0 /* FetchFirebaseCourseUseCase.swift in Sources */,
 				AF01FCD62BE3AA9500F0EAD0 /* FetchMajorsUseCase.swift in Sources */,
 				AF01FCD72BE3AA9500F0EAD0 /* CheckCourseVersionUseCase.swift in Sources */,
@@ -579,11 +604,14 @@
 				AF01FCDF2BE3AA9500F0EAD0 /* UserExamPost.swift in Sources */,
 				AF01FCE02BE3AA9500F0EAD0 /* ExamPost.swift in Sources */,
 				AF01FCE12BE3AA9500F0EAD0 /* Exam.swift in Sources */,
+				AF5A4D692BE8F1CF0015D214 /* Timetable+CoreDataClass.swift in Sources */,
 				AF01FCE22BE3AA9500F0EAD0 /* PurchasedPost.swift in Sources */,
 				AF01FCE32BE3AA9500F0EAD0 /* Announcement.swift in Sources */,
 				AF01FCE42BE3AA9500F0EAD0 /* Major.swift in Sources */,
 				AF01FCE52BE3AA9500F0EAD0 /* TimetableCourse.swift in Sources */,
 				AF01FCE62BE3AA9500F0EAD0 /* FetchCourse.swift in Sources */,
+				AF5A4D6A2BE8F1CF0015D214 /* Timetable+CoreDataProperties.swift in Sources */,
+				AF5A4D672BE8F1CF0015D214 /* FirebaseCourse+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

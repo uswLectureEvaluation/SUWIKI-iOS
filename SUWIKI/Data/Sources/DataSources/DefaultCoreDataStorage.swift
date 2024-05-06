@@ -20,7 +20,7 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
         name: String,
         semester: String
     ) throws {
-        guard let entity = NSEntityDescription.entity(forEntityName: "CoreDataTimetable", in: coreDataManager.context) else { return }
+        guard let entity = NSEntityDescription.entity(forEntityName: "Timetable", in: coreDataManager.context) else { return }
         let timetableEntity = NSManagedObject(entity: entity, insertInto: coreDataManager.context)
         let id = UUID().uuidString
         timetableEntity.setValue(id, forKey: "id")
@@ -36,7 +36,7 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
 
     public func saveFirebaseCourse(course: [[String : Any]]) throws {
         try deleteFirebaseCourse()
-        guard let entity = NSEntityDescription.entity(forEntityName: "CoreDataFirebaseCourse",
+        guard let entity = NSEntityDescription.entity(forEntityName: "FirebaseCourse",
                                                       in: coreDataManager.context)
         else {
             throw CoreDataError.entityError
@@ -60,13 +60,13 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
         id: String,
         course: TimetableCourse
     ) throws {
-        let fetchRequest = CoreDataTimetable.fetchRequest()
+        let fetchRequest = Timetable.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {
             guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
                 throw CoreDataError.fetchError
             }
-            let courseEntity = CoreDataCourse(context: coreDataManager.context)
+            let courseEntity = Course(context: coreDataManager.context)
             courseEntity.courseId = course.courseId
             courseEntity.courseName = course.courseName
             courseEntity.roomName = course.roomName
@@ -87,7 +87,7 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
         id: String,
         title: String
     ) throws {
-        let fetchRequest = CoreDataTimetable.fetchRequest()
+        let fetchRequest = Timetable.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {
             guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
@@ -102,10 +102,10 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     }
 
     /// func fetchTimetable: Core Data에 저장된 Timetable을 fetch합니다.
-    public func fetchTimetable(id: String) throws -> Domain.Timetable? {
-        var savedTimetable: [CoreDataTimetable] = []
+    public func fetchTimetable(id: String) throws -> Domain.UserTimetable? {
+        var savedTimetable: [Timetable] = []
         do {
-            let fetchRequest = CoreDataTimetable.fetchRequest()
+            let fetchRequest = Timetable.fetchRequest()
             print("@FETCH - \(fetchRequest)")
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
             print("@FETCH - \(fetchRequest)")
@@ -113,9 +113,9 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
         } catch {
             throw CoreDataError.fetchError
         }
-        let timetable: Domain.Timetable? = savedTimetable.first.map { timetable in
+        let timetable: Domain.UserTimetable? = savedTimetable.first.map { timetable in
             var courses: [TimetableCourse]
-            if let savedCourses = timetable.courses as? Set<CoreDataCourse> {
+            if let savedCourses = timetable.courses as? Set<Course> {
                 courses = Array(savedCourses).map {
                     TimetableCourse(
                         courseId: $0.courseId ?? "9999",
@@ -131,7 +131,7 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
             } else {
                 courses = []
             }
-            return Domain.Timetable(
+            return Domain.UserTimetable(
                 id: timetable.id ?? UUID().uuidString,
                 name: timetable.name ?? "시간표",
                 semester: timetable.semester ?? "2024-2",
@@ -143,12 +143,12 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
 
     /// func fetchCourses: Core Data에 저장된 Course를 fetch합니다.
     public func fetchCourses(id: String) throws -> [TimetableCourse]? {
-        var courses: [CoreDataCourse] = []
+        var courses: [Course] = []
         do {
-            let fetchRequest = CoreDataTimetable.fetchRequest()
+            let fetchRequest = Timetable.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
             let timetable = try coreDataManager.context.fetch(fetchRequest)
-            if let timetableCourses = timetable.first?.courses as? Set<CoreDataCourse> {
+            if let timetableCourses = timetable.first?.courses as? Set<Course> {
                 courses = Array(timetableCourses)
             }
         } catch {
@@ -173,9 +173,9 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     /// - Parameter : major(학과, String)
     /// - return : [FireabaseCourse]
     public func fetchFirebaseCourse(major: String) throws -> [FetchCourse] {
-        var course: [CoreDataFirebaseCourse] = []
+        var course: [FirebaseCourse] = []
         do {
-            let fetchRequest = CoreDataFirebaseCourse.fetchRequest()
+            let fetchRequest = FirebaseCourse.fetchRequest()
             if major != "전체" {
                 fetchRequest.predicate = NSPredicate(format: "major == %@", major)
             }
@@ -205,14 +205,14 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     /// func fetchELearningCourse: Core Data에 저장된 강의 중 이러닝을 Fetch합니다.
     /// - Parameter : id(시간표 ID), courseDay(강의 요일)
     public func fetchELearning(id: String) throws -> [TimetableCourse] {
-        var course: [CoreDataCourse] = []
+        var course: [Course] = []
         do {
-            let fetchRequest = CoreDataTimetable.fetchRequest()
+            let fetchRequest = Timetable.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "id == %@", id)
             guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
                 throw CoreDataError.fetchError
             }
-            if let timetableCourses = timetable.courses as? Set<CoreDataCourse> {
+            if let timetableCourses = timetable.courses as? Set<Course> {
                 let filteredCourses = Array(timetableCourses).filter {
                     $0.courseDay == 6 }
                 course = filteredCourses
@@ -238,9 +238,9 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     /// func fetchMajors: 학과를 받아옵니다.
     /// 중복되는 형태를 없애도록 Set으로 구현했습니다.
     public func fetchMajors() throws -> [String] {
-        var courses: [CoreDataFirebaseCourse]
+        var courses: [FirebaseCourse]
         do {
-            let fetchRequest = CoreDataFirebaseCourse.fetchRequest()
+            let fetchRequest = FirebaseCourse.fetchRequest()
             courses = try coreDataManager.context.fetch(fetchRequest)
             let majors = Array(Set(courses.compactMap {
                 $0.major
@@ -252,19 +252,19 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     }
 
     /// func fetchTimetableList: Core Data에 저장된 Timetable List를 fetch합니다.
-    public func fetchTimetableList() throws -> [Domain.Timetable] {
-        var savedTimetable: [CoreDataTimetable] = []
+    public func fetchTimetableList() throws -> [Domain.UserTimetable] {
+        var savedTimetable: [Timetable] = []
         do {
-            let fetchRequest = CoreDataTimetable.fetchRequest()
+            let fetchRequest = Timetable.fetchRequest()
             savedTimetable = try coreDataManager.context.fetch(fetchRequest)
         } catch {
             throw CoreDataError.fetchError
         }
-        let timetable: [Domain.Timetable] = savedTimetable.map {
+        let timetable: [Domain.UserTimetable] = savedTimetable.map {
             let id = $0.id ?? UUID().uuidString
             let name = $0.name ?? "시간표"
             let semester = $0.semester ?? "2024-1"
-            return Domain.Timetable(id: id, name: name, semester: semester, courses: [])
+            return Domain.UserTimetable(id: id, name: name, semester: semester, courses: [])
         }
         return timetable.reversed()
     }
@@ -273,11 +273,11 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
         id: String,
         courseId: String
     ) throws {
-        let fetchRequest = CoreDataTimetable.fetchRequest()
+        let fetchRequest = Timetable.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {
             let timetable = try coreDataManager.context.fetch(fetchRequest)
-            guard let courses = timetable.first?.courses as? Set<CoreDataCourse>,
+            guard let courses = timetable.first?.courses as? Set<Course>,
                   let removeCourse = courses.first(where: { $0.courseId == courseId }) else {
                 throw CoreDataError.fetchError
             }
@@ -290,7 +290,7 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     }
 
     public func deleteTimetable(id: String) throws {
-        let fetchRequest = CoreDataTimetable.fetchRequest()
+        let fetchRequest = Timetable.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         do {
             guard let timetable = try coreDataManager.context.fetch(fetchRequest).first else {
@@ -304,7 +304,7 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     }
 
     public func deleteFirebaseCourse() throws {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreDataFirebaseCourse")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FirebaseCourse")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try coreDataManager.context.execute(deleteRequest)

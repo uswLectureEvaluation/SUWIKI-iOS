@@ -14,12 +14,12 @@ public protocol CoreDataStorage {
     func saveFirebaseCourse(course: [[String: Any]]) throws
     func saveCourse(id: String, course: TimetableCourse) throws
     func updateTimetableTitle(id: String, title: String) throws
-    func fetchTimetable(id: String) throws -> Domain.Timetable?
+    func fetchTimetable(id: String) throws -> Domain.UserTimetable?
     func fetchCourses(id: String) throws -> [TimetableCourse]?
     func fetchELearning(id: String) throws -> [TimetableCourse]
     func fetchFirebaseCourse(major: String) throws -> [FetchCourse]
     func fetchMajors() throws -> [String]
-    func fetchTimetableList() throws -> [Domain.Timetable]
+    func fetchTimetableList() throws -> [Domain.UserTimetable]
     func deleteCourse(id: String, courseId: String) throws
     func deleteTimetable(id: String) throws
     func deleteFirebaseCourse() throws
