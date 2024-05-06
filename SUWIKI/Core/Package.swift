@@ -32,7 +32,10 @@ let package = Package(
         ),
         .target(
             name: "Network",
-            dependencies: [.product(name: "Alamofire", package: "Alamofire")],
+            dependencies: [
+                .target(name: "Keychain"),
+                .product(name: "Alamofire", package: "Alamofire")
+            ],
             path: "Network"),
         .target(
             name: "State",
@@ -51,8 +54,5 @@ let package = Package(
             name: "CustomElliotable",
             path: "CustomElliotable"
         ),
-//        .testTarget(
-//            name: "NetworkTest",
-//            dependencies: ["Network"]),
     ]
 )
