@@ -1,27 +1,21 @@
 //
 //  CoreDataManager.swift
-//  
+//  SUWIKI
 //
-//  Created by 한지석 on 4/16/24.
-//
+//  Created by 한지석 on 2023/06/13.
+
 
 import UIKit
 import CoreData
 
-enum CoreDataError: Error {
-    case batchInsertError
-    case entityError
-    case contextError
-    case saveError
-    case fetchError
-    case deleteError
-}
+import Data
+import Domain
 
-final class CoreDataManager {
+public final class CoreDataManager: CoreDataManagerInterface {
 
     // 싱글톤으로 만들기
     static let shared = CoreDataManager()
-    private init() {}
+    public init() {}
 
     private static let appGroup = "group.sozohoy.suwiki"
 
@@ -43,7 +37,7 @@ final class CoreDataManager {
     }()
 
     // 임시저장소
-    lazy var context = container.viewContext
+    lazy public var context = container.viewContext
 
     func checkMainThread() {
         if Thread.isMainThread {
@@ -140,5 +134,4 @@ final class CoreDataManager {
     }
 
 }
-
 
