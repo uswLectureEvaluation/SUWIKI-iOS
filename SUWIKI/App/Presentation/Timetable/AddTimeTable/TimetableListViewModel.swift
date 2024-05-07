@@ -16,7 +16,7 @@ final class TimetableListViewModel {
     @Inject var fetchTimetableListUseCase: FetchTimetableListUseCase
     @Inject var deleteTimetableUseCase: DeleteTimetableUseCase
 
-    @Published var timetable: [Domain.Timetable] = []
+    @Published var timetable: [Domain.UserTimetable] = []
 
     var timetableNumberOfRowsInSection: Int {
         return self.timetable.count

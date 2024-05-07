@@ -2,7 +2,7 @@
 //  FirebaseCourse+CoreDataProperties.swift
 //  
 //
-//  Created by 한지석 on 1/22/24.
+//  Created by 한지석 on 4/15/24.
 //
 //
 

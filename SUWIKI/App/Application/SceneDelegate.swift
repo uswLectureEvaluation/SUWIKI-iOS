@@ -13,16 +13,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let _ = AppEnvironment()
+
         let appState = AppState()
         guard (scene is UIWindowScene) else { return }
-        let lectureView = DIContainer.shared.resolve(type: LectureEvaluationHomeView.self).environmentObject(appState)
-//        let lectureDetailView = LectureEvaluationDetailView()
-        let login = LoginView()
-        let mainViewController = UIHostingController(rootView: lectureView)
+        let mainViewController = UIHostingController(rootView: TabBarView(appState: appState))
+        mainViewController.view.backgroundColor = .systemGray6
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()
     }
+
+    //        let lectureDetailView = LectureEvaluationDetailView()
+    //        let login = LoginView()
 
     func sceneDidDisconnect(_ scene: UIScene) { }
 
