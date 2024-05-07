@@ -11,10 +11,10 @@ import XCTest
 final class WithDrawUseCaseTests: XCTestCase {
 
     var useCase: DefaultWithDrawUseCase!
-    var mockRepository: MockLectureRepository!
+    var mockRepository: MockUserRepository!
 
     override func setUpWithError() throws {
-        mockRepository = MockLectureRepository()
+        mockRepository = MockUserRepository()
         useCase = DefaultWithDrawUseCase(repository: mockRepository)
     }
 

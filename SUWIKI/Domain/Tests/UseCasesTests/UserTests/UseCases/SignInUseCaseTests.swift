@@ -11,10 +11,10 @@ import XCTest
 final class SignInUseCaseTests: XCTestCase {
 
     var useCase: DefaultSignInUseCase!
-    var mockRepository: MockLectureRepository!
+    var mockRepository: MockUserRepository!
 
     override func setUpWithError() throws {
-        mockRepository = MockLectureRepository()
+        mockRepository = MockUserRepository()
         useCase = DefaultSignInUseCase(repository: mockRepository)
     }
 
