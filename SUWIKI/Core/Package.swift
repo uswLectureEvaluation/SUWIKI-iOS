@@ -11,8 +11,7 @@ let package = Package(
         .library(name: "Keychain", targets: ["Keychain"]),
         .library(name: "Network", targets: ["Network"]),
         .library(name: "State", targets: ["State"]),
-        .library(name: "FirebaseManager", targets: ["FirebaseManager"]),
-        .library(name: "CustomElliotable", targets: ["CustomElliotable"])
+        .library(name: "FirebaseManager", targets: ["FirebaseManager"])
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git",
@@ -49,10 +48,6 @@ let package = Package(
                 .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk")
             ],
             path: "FirebaseManager"
-        ),
-        .target(
-            name: "CustomElliotable",
-            path: "CustomElliotable"
-        ),
+        )
     ]
 )
