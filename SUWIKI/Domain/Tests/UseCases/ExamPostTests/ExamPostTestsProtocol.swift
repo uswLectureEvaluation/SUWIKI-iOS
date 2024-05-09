@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol ExamPostTestsProtocol {
+    func testSuccess() async throws
+    func testFailure() async throws
+}
