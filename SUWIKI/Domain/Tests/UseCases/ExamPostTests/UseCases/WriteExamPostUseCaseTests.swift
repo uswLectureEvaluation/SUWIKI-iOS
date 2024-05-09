@@ -6,36 +6,56 @@
 //
 
 import XCTest
+@testable import DIContainer
+@testable import Domain
 
-final class WriteExamPostUseCaseTests: XCTestCase {
+final class WriteExamPostUseCaseTests: XCTestCase, ExamPostTestsProtocol {
+    func testSuccess() async throws {
+        // given
+        let mockRepository = MockExamPostRepository()
+        DIContainer.shared.register(type: ExamPostRepository.self,
+                                    mockRepository)
+        let useCase = DefaultWriteExamPostUseCase()
+        let isWriteCalled = true
+        mockRepository.isWriteCalled = isWriteCalled
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // when
+        let result = try await useCase.execute(id: 1,
+                                               lectureName: "테스트 강의",
+                                               professor: "홍길동",
+                                               selectedSemester: "2024 1학기", 
+                                               examInfo: "중간고사",
+                                               examType: "서술형",
+                                               examDifficulty: "어려움",
+                                               content: "테스트 내용")
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        // then
+        XCTAssertTrue(result == isWriteCalled)
+        XCTAssertEqual(1, mockRepository.id)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testFailure() async throws {
+        // given
+        let mockRepository = MockExamPostRepository()
+        DIContainer.shared.register(type: ExamPostRepository.self,
+                                    mockRepository)
+        let useCase = DefaultWriteExamPostUseCase()
+        let isWriteCalled = false
+        mockRepository.isWriteCalled = isWriteCalled
+
+        // when
+        let result = try await useCase.execute(id: 1,
+                                               lectureName: "테스트 강의",
+                                               professor: "홍길동",
+                                               selectedSemester: "2024 1학기",
+                                               examInfo: "중간고사",
+                                               examType: "서술형",
+                                               examDifficulty: "어려움",
+                                               content: "테스트 내용")
+
+        // then
+        XCTAssertFalse(result)
+        XCTAssertEqual(1, mockRepository.id)
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }
