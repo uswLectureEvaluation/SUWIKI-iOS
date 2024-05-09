@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import DIContainer
 @testable import Domain
 
 final class CheckDuplicatedEmailUseCaseTests: XCTestCase, UserTestsProtocol {
@@ -16,7 +17,9 @@ final class CheckDuplicatedEmailUseCaseTests: XCTestCase, UserTestsProtocol {
 
     override func setUpWithError() throws {
         repository = MockUserRepository()
-        useCase = DefaultCheckDuplicatedEmailUseCase(repository: repository)
+        DIContainer.shared.register(type: UserRepository.self,
+                                    repository)
+        useCase = DefaultCheckDuplicatedEmailUseCase()
     }
 
     func testSuccess() async throws {

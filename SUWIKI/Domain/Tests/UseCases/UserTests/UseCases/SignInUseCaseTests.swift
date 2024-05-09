@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import DIContainer
 @testable import Domain
 
 final class SignInUseCaseTests: XCTestCase {
@@ -15,7 +16,9 @@ final class SignInUseCaseTests: XCTestCase {
 
     override func setUpWithError() throws {
         mockRepository = MockUserRepository()
-        useCase = DefaultSignInUseCase(repository: mockRepository)
+        DIContainer.shared.register(type: UserRepository.self,
+                                    mockRepository)
+        useCase = DefaultSignInUseCase()
     }
 
     func testSignInSuccess() async throws {

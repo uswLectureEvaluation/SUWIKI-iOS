@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import DIContainer
 @testable import Domain
 
 final class FindIdUseCaseTests: XCTestCase, UserTestsProtocol {
@@ -16,7 +17,9 @@ final class FindIdUseCaseTests: XCTestCase, UserTestsProtocol {
 
     override func setUpWithError() throws {
         repository = MockUserRepository()
-        useCase = DefaultFindIdUseCase(repository: repository)
+        DIContainer.shared.register(type: UserRepository.self,
+                                    repository)
+        useCase = DefaultFindIdUseCase()
     }
 
     func testSuccess() async throws {

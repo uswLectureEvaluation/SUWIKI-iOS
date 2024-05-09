@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import DIContainer
 @testable import Domain
 
 final class ChangePasswordUseCaseTests: XCTestCase, UserTestsProtocol {
@@ -16,7 +17,9 @@ final class ChangePasswordUseCaseTests: XCTestCase, UserTestsProtocol {
 
     override func setUpWithError() throws {
         repository = MockUserRepository()
-        useCase = DefaultChangePasswordUseCase(repository: repository)
+        DIContainer.shared.register(type: UserRepository.self,
+                                    repository)
+        useCase = DefaultChangePasswordUseCase()
     }
 
     func testSuccess() async throws {

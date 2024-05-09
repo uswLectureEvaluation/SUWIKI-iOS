@@ -17,7 +17,7 @@ public protocol SignInUseCase {
 }
 
 public final class DefaultSignInUseCase: SignInUseCase {
-    @Inject private var repository: UserRepository
+    @Inject var repository: UserRepository
 
     public init() { }
 

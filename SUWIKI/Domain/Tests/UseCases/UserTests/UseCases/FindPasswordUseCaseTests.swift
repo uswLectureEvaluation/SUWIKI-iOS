@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import DIContainer
 @testable import Domain
 
 final class FindPasswordUseCaseTests: XCTestCase, UserTestsProtocol {
@@ -16,7 +17,9 @@ final class FindPasswordUseCaseTests: XCTestCase, UserTestsProtocol {
 
     override func setUpWithError() throws {
         repository = MockUserRepository()
-        useCase = DefaultFindPasswordUseCase(repository: repository)
+        DIContainer.shared.register(type: UserRepository.self,
+                                    repository)
+        useCase = DefaultFindPasswordUseCase()
     }
 
     func testSuccess() async throws {
