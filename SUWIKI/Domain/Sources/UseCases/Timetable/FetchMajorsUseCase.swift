@@ -19,6 +19,12 @@ public final class DefaultFetchMajorsUseCase: FetchMajorsUseCase {
     public init() { }
 
     public func execute() -> [String] {
-        return repository.fetchMajors()
+        let result = repository.fetchMajors()
+        switch result {
+        case .success(let majors):
+            return majors
+        case .failure:
+            return []
+        }
     }
 }

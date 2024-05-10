@@ -23,6 +23,11 @@ public final class DefaultDeleteTimeTableUseCase: DeleteTimetableUseCase {
     public func execute(
         id: String
     ) {
-        repository.deleteTimetable(id: id)
+        let result = repository.deleteTimetable(id: id)
+        switch result {
+        case .success: break
+        case .failure(let failure):
+            dump(failure)
+        }
     }
 }

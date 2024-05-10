@@ -25,9 +25,15 @@ public final class DefaultSaveCourseUseCase: SaveCourseUseCase {
         id: String,
         course: TimetableCourse
     ) {
-        repository.saveCourse(
+        let result = repository.saveCourse(
             id: id,
             course: course
         )
+        switch result {
+        case .success:
+            break
+        case .failure(let failure):
+            dump(failure)
+        }
     }
 }

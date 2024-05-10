@@ -19,6 +19,12 @@ public final class DefaultFetchTimetableListUseCase: FetchTimetableListUseCase {
     public init() { }
 
     public func execute() -> [UserTimetable] {
-        return repository.fetchTimetableList()
+        let result = repository.fetchTimetableList()
+        switch result {
+        case .success(let userTimetable):
+            return userTimetable
+        case .failure:
+            return []
+        }
     }
 }

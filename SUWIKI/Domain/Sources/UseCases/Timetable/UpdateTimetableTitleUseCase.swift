@@ -25,9 +25,14 @@ public final class DefaultUpdateTimetableTitleUseCase: UpdateTimetableTitleUseCa
         id: String,
         title: String
     ) {
-        repository.updateTimetableTitle(
+        let result = repository.updateTimetableTitle(
             id: id,
             title: title
         )
+        switch result {
+        case .success: break
+        case .failure(let failure):
+            dump(failure)
+        }
     }
 }

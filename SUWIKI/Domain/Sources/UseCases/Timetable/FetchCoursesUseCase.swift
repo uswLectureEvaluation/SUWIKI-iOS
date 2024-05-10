@@ -23,6 +23,12 @@ public final class DefaultFetchCoursesUseCase: FetchCoursesUseCase {
     public func execute(
         id: String
     ) -> [TimetableCourse]? {
-        return repository.fetchCourses(id: id)
+        let result = repository.fetchCourses(id: id)
+        switch result {
+        case .success(let timetableCourse):
+            return timetableCourse
+        case .failure:
+            return nil
+        }
     }
 }

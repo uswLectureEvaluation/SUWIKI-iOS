@@ -22,6 +22,12 @@ public final class DefaultSaveTimetableUseCase: SaveTimetableUseCase {
     public init() { }
 
     public func execute(name: String, semester: String) {
-        repository.saveTimetable(name: name, semester: semester)
+        let result = repository.saveTimetable(name: name, semester: semester)
+        switch result {
+        case .success:
+            break
+        case .failure(let failure):
+            dump(failure)
+        }
     }
 }

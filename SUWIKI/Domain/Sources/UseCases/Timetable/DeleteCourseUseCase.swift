@@ -25,9 +25,15 @@ public final class DefaultDeleteCourseUseCase: DeleteCourseUseCase {
         id: String,
         courseId: String
     ) {
-        repository.deleteCourse(
+        let result = repository.deleteCourse(
             id: id,
             courseId: courseId
         )
+        switch result {
+        case .success:
+            break
+        case .failure(let failure):
+            dump(failure)
+        }
     }
 }

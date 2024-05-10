@@ -23,6 +23,12 @@ public final class DefaultFetchELearningUseCase: FetchELearningUseCase {
     public func execute(
         id: String
     ) -> [TimetableCourse] {
-        return repository.fetchELearning(id: id)
+        let result = repository.fetchELearning(id: id)
+        switch result {
+        case .success(let eLearning):
+            return eLearning
+        case .failure:
+            return []
+        }
     }
 }

@@ -19,6 +19,12 @@ public final class DefaultCheckCourseVersionUseCase: CheckCourseVersionUseCase {
     public init() { }
 
     public func execute() async throws {
-        try await repository.checkCourseVersion()
+        let result = try await repository.checkCourseVersion()
+        switch result {
+        case .success:
+            break
+        case .failure(let failure):
+            dump(failure)
+        }
     }
 }

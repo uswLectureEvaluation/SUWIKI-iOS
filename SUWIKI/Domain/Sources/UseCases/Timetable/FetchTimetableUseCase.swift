@@ -23,6 +23,12 @@ public final class DefaultFetchTimetableUseCase: FetchTimetableUseCase {
     public func execute(
         id: String
     ) -> UserTimetable? {
-        return repository.fetchTimetable(id: id)
+        let result = repository.fetchTimetable(id: id)
+        switch result {
+        case .success(let userTimetable):
+            return userTimetable
+        case .failure:
+            return nil
+        }
     }
 }

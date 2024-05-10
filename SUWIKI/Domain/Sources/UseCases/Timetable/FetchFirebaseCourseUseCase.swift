@@ -23,6 +23,12 @@ public final class DefaultFetchFirebaseCourseUseCase: FetchFirebaseCourseUseCase
     public func execute(
         major: String
     ) -> [FetchCourse] {
-        return repository.fetchFirebaseCourse(major: major)
+        let result = repository.fetchFirebaseCourse(major: major)
+        switch result {
+        case .success(let fetchCourse):
+            return fetchCourse
+        case .failure:
+            return []
+        }
     }
 }
