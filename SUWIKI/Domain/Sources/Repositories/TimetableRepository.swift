@@ -8,16 +8,16 @@
 import Foundation
 
 public protocol TimetableRepository {
-    func saveTimetable(name: String, semester: String)
-    func saveCourse(id: String, course: TimetableCourse)
-    func updateTimetableTitle(id: String, title: String)
-    func fetchTimetable(id: String) -> UserTimetable?
-    func fetchCourses(id: String) -> [TimetableCourse]?
-    func fetchELearning(id: String) -> [TimetableCourse]
-    func fetchFirebaseCourse(major: String) -> [FetchCourse]
-    func fetchMajors() -> [String]
-    func fetchTimetableList() -> [UserTimetable]
-    func deleteCourse(id: String, courseId: String)
-    func deleteTimetable(id: String)
-    func checkCourseVersion() async throws
+    func saveTimetable(name: String, semester: String) -> Result<(), CoreDataError>
+    func saveCourse(id: String, course: TimetableCourse) -> Result<(), CoreDataError>
+    func updateTimetableTitle(id: String, title: String) -> Result<(), CoreDataError>
+    func fetchTimetable(id: String) -> Result<UserTimetable?, CoreDataError>
+    func fetchCourses(id: String) -> Result<[TimetableCourse]?, CoreDataError>
+    func fetchELearning(id: String) -> Result<[TimetableCourse], CoreDataError>
+    func fetchFirebaseCourse(major: String) -> Result<[FetchCourse], CoreDataError>
+    func fetchMajors() -> Result<[String], CoreDataError>
+    func fetchTimetableList() -> Result<[UserTimetable], CoreDataError>
+    func deleteCourse(id: String, courseId: String) -> Result<(), CoreDataError>
+    func deleteTimetable(id: String) -> Result<(), CoreDataError>
+    func checkCourseVersion() async throws -> Result<(), CoreDataError>
 }
