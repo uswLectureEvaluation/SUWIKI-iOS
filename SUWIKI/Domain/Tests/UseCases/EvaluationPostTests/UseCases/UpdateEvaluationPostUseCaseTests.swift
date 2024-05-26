@@ -50,7 +50,7 @@ final class UpdateEvaluationPostUseCaseTests: XCTestCase, TestsProtocol {
         let isUpdateCalled = false
         mockRepository.isUpdateCalled = isUpdateCalled
 
-        let result = try await useCase.execute(
+        try await useCase.execute(
             id: id,
             lectureName: "",
             professor: "",

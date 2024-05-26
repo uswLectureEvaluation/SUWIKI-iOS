@@ -6,36 +6,37 @@
 //
 
 import XCTest
+@testable import DIContainer
+@testable import Domain
 
-final class CheckCourseVersionUseCaseTests: XCTestCase {
+final class CheckCourseVersionUseCaseTests: XCTestCase, TestsProtocol {
+    func testSuccess() async throws{
+        let mockRepository = MockTimetableRepository()
+        DIContainer.shared.register(
+            type: TimetableRepository.self,
+            mockRepository
+        )
+        let useCase = DefaultCheckCourseVersionUseCase()
+        let isVersionCheckCalled = true
+        mockRepository.isVersionCheckCalled = isVersionCheckCalled
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        try await useCase.execute()
+        
+        XCTAssertTrue(mockRepository.isVersionCheckCalled)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    func testFailure() async throws {
+        let mockRepository = MockTimetableRepository()
+        DIContainer.shared.register(
+            type: TimetableRepository.self,
+            mockRepository
+        )
+        let useCase = DefaultCheckCourseVersionUseCase()
+        let isVersionCheckCalled = false
+        mockRepository.isVersionCheckCalled = isVersionCheckCalled
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+        try await useCase.execute()
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+        XCTAssertFalse(mockRepository.isVersionCheckCalled)
     }
 }

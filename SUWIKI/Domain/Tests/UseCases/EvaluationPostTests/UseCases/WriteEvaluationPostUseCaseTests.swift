@@ -50,7 +50,7 @@ final class WriteEvaluationPostUseCaseTests: XCTestCase, TestsProtocol {
         let isWriteCalled = false
         mockRepository.isWriteCalled = isWriteCalled
 
-        let result = try await useCase.execute(
+        try await useCase.execute(
             id: id,
             lectureName: "",
             professor: "",

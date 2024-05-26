@@ -6,36 +6,42 @@
 //
 
 import XCTest
+@testable import DIContainer
+@testable import Domain
 
 final class FetchMajorsUseCaseTests: XCTestCase {
+    func testSuccess() {
+        let mockRepository = MockTimetableRepository()
+        DIContainer.shared.register(
+            type: TimetableRepository.self,
+            mockRepository
+        )
+        let useCase = DefaultFetchMajorsUseCase()
+        let isFetchMajorsCalled = true
+        mockRepository.isFetchMajorsCalled = isFetchMajorsCalled
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let result = useCase.execute()
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        XCTAssertEqual(2, result.count)
+        XCTAssertEqual("전체", result.first)
+        XCTAssertTrue(mockRepository.isFetchMajorsCalled)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testFailure() {
+        let mockRepository = MockTimetableRepository()
+        DIContainer.shared.register(
+            type: TimetableRepository.self,
+            mockRepository
+        )
+        let useCase = DefaultFetchMajorsUseCase()
+        let isFetchMajorsCalled = false
+        mockRepository.isFetchMajorsCalled = isFetchMajorsCalled
+
+        let result = useCase.execute()
+
+        XCTAssertNotEqual(2, result.count)
+        XCTAssertNotEqual("전체", result.first)
+        XCTAssertFalse(mockRepository.isFetchMajorsCalled)
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }
