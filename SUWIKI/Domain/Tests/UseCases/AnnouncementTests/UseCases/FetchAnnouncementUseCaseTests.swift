@@ -6,30 +6,41 @@
 //
 
 import XCTest
+@testable import DIContainer
+@testable import Domain
 
-final class FetchAnnouncementUseCaseTests: XCTestCase {
+final class FetchAnnouncementUseCaseTests: XCTestCase, TestsProtocol {
+    func testSuccess() async throws {
+        let mockRepository = MockNoticeRepository()
+        DIContainer.shared.register(
+            type: NoticeRepository.self,
+            mockRepository
+        )
+        let useCase = DefaultFetchAnnouncementUseCase()
+        let isFetchCalled = true
+        mockRepository.isFetchCalled = isFetchCalled
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let result = try await useCase.execute()
+
+        XCTAssertEqual(isFetchCalled, mockRepository.isFetchCalled)
+        XCTAssertTrue(mockRepository.isFetchCalled)
+        XCTAssertEqual(1, result.count)
     }
+    
+    func testFailure() async throws {
+        let mockRepository = MockNoticeRepository()
+        DIContainer.shared.register(
+            type: NoticeRepository.self,
+            mockRepository
+        )
+        let useCase = DefaultFetchAnnouncementUseCase()
+        let isFetchCalled = false
+        mockRepository.isFetchCalled = isFetchCalled
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        let result = try await useCase.execute()
+
+        XCTAssertEqual(isFetchCalled, mockRepository.isFetchCalled)
+        XCTAssertFalse(mockRepository.isFetchCalled)
+        XCTAssertEqual(0, result.count)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
