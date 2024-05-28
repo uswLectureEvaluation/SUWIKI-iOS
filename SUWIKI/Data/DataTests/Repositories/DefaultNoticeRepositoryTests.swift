@@ -6,36 +6,56 @@
 //
 
 import XCTest
+@testable import Data
+@testable import DIContainer
 
 final class DefaultNoticeRepositoryTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var mockAPIProvider: MockAPIProvider!
+    var repository: DefaultNoticeRepository!
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    override func setUp() {
+        super.setUp()
+        mockAPIProvider = MockAPIProvider()
+        repository = DefaultNoticeRepository(apiProvider: mockAPIProvider)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        repository = nil
+        mockAPIProvider = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testFetchAnnouncements() async throws {
+        let mockAnnouncements = [DTO.FetchAnnouncementResponse.FetchAnnouncement(id: 1, title: "Test Title", modifiedDate: "2024-05-28")]
+        let mockResponse = DTO.FetchAnnouncementResponse(announcements: mockAnnouncements, statusCode: 200, message: "Success")
+        mockAPIProvider.setResponse(DTO.FetchAnnouncementResponse.self,
+                                    response: mockResponse)
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // When
+        let announcements = try await repository.fetch()
+
+        // Then
+        XCTAssertEqual(announcements.count, 1)
+        XCTAssertEqual(announcements.first?.title, "Test Title")
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func testFetchDetailAnnouncements() async throws {
+        let mockAnnouncement = DTO.FetchDetailAnnouncementResponse.FetchDetailAnnouncement(
+            id: 1,
+            title: "test",
+            modifiedDate: "2022-02-02",
+            content: "announcement"
+        )
+        let mockResponse = DTO.FetchDetailAnnouncementResponse(
+            announcement: mockAnnouncement,
+            statusCode: 200, 
+            message: nil
+        )
+
+        let announcement = try await repository.fetchDetail(id: 1)
+
+        XCTAssertEqual(announcement.id, 1)
+        XCTAssertEqual(announcement.title, "test")
     }
 }
