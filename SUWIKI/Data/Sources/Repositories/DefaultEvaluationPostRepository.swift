@@ -12,7 +12,11 @@ import Network
 
 public final class DefaultEvaluationPostRepository: EvaluationPostRepository {
 
-    public init() { }
+    let apiProvider: APIProviderProtocol
+
+    public init(apiProvider: APIProviderProtocol) {
+        self.apiProvider = apiProvider
+    }
 
     public func fetch(
         lectureId: Int,
@@ -24,7 +28,7 @@ public final class DefaultEvaluationPostRepository: EvaluationPostRepository {
                 page: page
             )
         )
-        let dtoEvaluatePosts = try await APIProvider.request(DTO.FetchEvaluationPostsResponse.self,
+        let dtoEvaluatePosts = try await apiProvider.request(DTO.FetchEvaluationPostsResponse.self,
                                                              target: apiTarget)
         return Evaluation(written: dtoEvaluatePosts.written,
                           posts: dtoEvaluatePosts.posts.map { $0.entity} )
@@ -57,12 +61,12 @@ public final class DefaultEvaluationPostRepository: EvaluationPostRepository {
                                                           homework: homework,
                                                           content: content))
         )
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProvider.request(target: apiTarget)
     }
 
     public func fetchUserPosts() async throws -> [UserEvaluationPost] {
         let apiTarget = APITarget.EvaluationPost.fetchUserEvaluationPosts
-        let value = try await APIProvider.request(DTO.FetchUserEvaluationPostsResponse.self,
+        let value = try await apiProvider.request(DTO.FetchUserEvaluationPostsResponse.self,
                                                   target: apiTarget)
         return value.posts.map { $0.entity }
     }
@@ -92,7 +96,7 @@ public final class DefaultEvaluationPostRepository: EvaluationPostRepository {
                                                                                            difficulty: difficulty,
                                                                                            homework: homework,
                                                                                            content: content)))
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProvider.request(target: apiTarget)
     }
 
 }

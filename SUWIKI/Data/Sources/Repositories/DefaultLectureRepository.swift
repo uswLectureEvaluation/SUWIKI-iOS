@@ -12,7 +12,11 @@ import Network
 
 public final class DefaultLectureRepository: LectureRepository {
 
-    public init() { }
+    let apiProvider: APIProviderProtocol
+
+    public init(apiProvider: APIProviderProtocol) {
+        self.apiProvider = apiProvider
+    }
 
     public func fetch(
         option: LectureOption,
@@ -26,7 +30,7 @@ public final class DefaultLectureRepository: LectureRepository {
                 majorType: major
             )
         )
-        let dtoLecture = try await APIProvider.request(
+        let dtoLecture = try await apiProvider.request(
             DTO.AllLectureResponse.self,
             target: target
         )
@@ -47,7 +51,7 @@ public final class DefaultLectureRepository: LectureRepository {
                 majorType: major
             )
         )
-        let dtoLecture = try await APIProvider.request(
+        let dtoLecture = try await apiProvider.request(
             DTO.AllLectureResponse.self,
             target: target
         )
@@ -60,7 +64,7 @@ public final class DefaultLectureRepository: LectureRepository {
         let target = APITarget.Lecture.detail(
             DTO.DetailLectureRequest(lectureId: id)
         )
-        let dtoDetailLecture = try await APIProvider.request(
+        let dtoDetailLecture = try await apiProvider.request(
             DTO.DecodingDetailLectureResponse.self,
             target: target
         )

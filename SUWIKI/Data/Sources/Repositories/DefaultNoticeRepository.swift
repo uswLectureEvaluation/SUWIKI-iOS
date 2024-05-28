@@ -9,16 +9,21 @@ import Foundation
 
 import Domain
 import Network
+//let apiProvider: APIProviderProtocol
 
 public final class DefaultNoticeRepository: NoticeRepository {
 
-    public init() { }
+    let apiProvider: APIProviderProtocol
+
+    public init(apiProvider: APIProviderProtocol) {
+        self.apiProvider = apiProvider
+    }
 
     public func fetch() async throws -> [Announcement] {
         let apiTarget = APITarget
             .Notice
             .fetchAnnouncements
-        let value = try await APIProvider.request(DTO.FetchAnnouncementResponse.self,
+        let value = try await apiProvider.request(DTO.FetchAnnouncementResponse.self,
                                                   target: apiTarget)
         return value.announcements.map { $0.entity }
     }
@@ -29,7 +34,7 @@ public final class DefaultNoticeRepository: NoticeRepository {
             .fetchDetailAnnouncement(
                 DTO.FetchDetailAnnouncementRequest(noticeId: id)
             )
-        let value = try await APIProvider.request(DTO.FetchDetailAnnouncementResponse.self,
+        let value = try await apiProvider.request(DTO.FetchDetailAnnouncementResponse.self,
                                                   target: apiTarget)
         return value.announcement.entity
     }

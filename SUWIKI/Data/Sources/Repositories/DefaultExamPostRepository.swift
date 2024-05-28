@@ -12,7 +12,11 @@ import Network
 
 public final class DefaultExamPostRepository: ExamPostRepository {
 
-    public init() { }
+    let apiProvider: APIProviderProtocol
+
+    public init(apiProvider: APIProviderProtocol) {
+        self.apiProvider = apiProvider
+    }
 
     public func fetch(id: Int, page: Int) async throws -> Exam {
         let apiTarget = APITarget.ExamPost.fetchExamPosts(
@@ -20,7 +24,7 @@ public final class DefaultExamPostRepository: ExamPostRepository {
                 lectureId: id, page: page
             )
         )
-        let dtoExamInfo = try await APIProvider.request(DTO.FetchExamPostsResponse.self, target: apiTarget)
+        let dtoExamInfo = try await apiProvider.request(DTO.FetchExamPostsResponse.self, target: apiTarget)
         return Exam(posts: dtoExamInfo.posts.map { $0.entity },
                             isPurchased: dtoExamInfo.canRead,
                             isWritten: dtoExamInfo.written,
@@ -47,19 +51,19 @@ public final class DefaultExamPostRepository: ExamPostRepository {
                                                                          examDifficulty: examDifficulty,
                                                                          content: content))
         )
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProvider.request(target: apiTarget)
     }
 
     public func purchase(id: Int) async throws -> Bool {
         let apiTarget = APITarget.ExamPost.purchaseExamPost(
             DTO.PurchaseExamPostRequest(lectureId: id)
         )
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProvider.request(target: apiTarget)
     }
 
     public func fetchUserPosts() async throws -> [UserExamPost] {
         let apiTarget = APITarget.ExamPost.fetchUserExamPosts
-        let value = try await APIProvider.request(DTO.FetchUserExamPostsResponse.self, target: apiTarget)
+        let value = try await apiProvider.request(DTO.FetchUserExamPostsResponse.self, target: apiTarget)
         return value.posts.map { $0.entity }
     }
 
@@ -79,12 +83,12 @@ public final class DefaultExamPostRepository: ExamPostRepository {
                                                                                            examType: examType,
                                                                                            examDifficulty: examDifficulty,
                                                                                            content: content)))
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProvider.request(target: apiTarget)
     }
 
     public func fetchPurchasedExamPosts() async throws -> [PurchasedPost] {
         let apiTarget = APITarget.ExamPost.fetchPurchasedExamPosts
-        let value = try await APIProvider.request(DTO.FetchPurchasedExamPostsResponse.self,
+        let value = try await apiProvider.request(DTO.FetchPurchasedExamPostsResponse.self,
                                         target: apiTarget)
         return value.posts.map { $0.entity }.reversed()
     }

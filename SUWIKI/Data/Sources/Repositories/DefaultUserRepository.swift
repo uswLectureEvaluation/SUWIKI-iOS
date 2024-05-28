@@ -14,8 +14,11 @@ import Network
 public final class DefaultUserRepository: UserRepository {
 
     let keychainManager = KeychainManager.shared
+    let apiProivder: APIProviderProtocol
 
-    public init() { }
+    public init(apiProivder: APIProviderProtocol) {
+        self.apiProivder = apiProivder
+    }
 
     public func login(
         id: String,
@@ -28,7 +31,7 @@ public final class DefaultUserRepository: UserRepository {
             )
         )
         do {
-            let response = try await APIProvider.request(
+            let response = try await apiProivder.request(
                 DTO.TokenResponse.self,
                 target: target).entity
             keychainManager.create(token: .AccessToken, value: response.accessToken)
@@ -49,12 +52,12 @@ public final class DefaultUserRepository: UserRepository {
                             password: password,
                             email: email)
         )
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProivder.request(target: apiTarget)
     }
 
     public func findId(email: String) async throws -> Bool {
         let apiTarget = APITarget.User.findId(DTO.FindIdRequest(email: email))
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProivder.request(target: apiTarget)
     }
 
     public func findPassword(
@@ -62,24 +65,24 @@ public final class DefaultUserRepository: UserRepository {
         email: String
     ) async throws -> Bool {
         let apiTarget = APITarget.User.findPassword(DTO.FindPasswordRequest(loginId: id, email: email))
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProivder.request(target: apiTarget)
     }
 
     public func checkDuplicatedId(id: String) async throws -> Bool {
         let apiTarget = APITarget.User.checkDuplicatedId(DTO.CheckDuplicatedIdRequest(loginId: id))
-        let value = try await APIProvider.request(DTO.CheckDuplicatedIdResponse.self, target: apiTarget)
+        let value = try await apiProivder.request(DTO.CheckDuplicatedIdResponse.self, target: apiTarget)
         return value.overlap
     }
 
     public func checkDuplicatedEmail(email: String) async throws -> Bool {
         let apiTarget = APITarget.User.checkDuplicatedEmail(DTO.CheckDuplicatedEmailRequest(email: email))
-        let value = try await APIProvider.request(DTO.CheckDuplicatedEmailResponse.self, target: apiTarget)
+        let value = try await apiProivder.request(DTO.CheckDuplicatedEmailResponse.self, target: apiTarget)
         return value.overlap
     }
 
     public func userInfo() async throws -> UserInfo {
         let apiTarget = APITarget.User.userInfo
-        let value = try await APIProvider.request(DTO.UserInfoResponse.self, target: apiTarget)
+        let value = try await apiProivder.request(DTO.UserInfoResponse.self, target: apiTarget)
         return value.entity
     }
     
@@ -95,7 +98,7 @@ public final class DefaultUserRepository: UserRepository {
                     newPassword: new
                 )
             )
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProivder.request(target: apiTarget)
     }
 
     public func withDraw(
@@ -103,6 +106,6 @@ public final class DefaultUserRepository: UserRepository {
         password: String
     ) async throws -> Bool {
         let apiTarget = APITarget.User.withDraw(DTO.WithDrawUserRequest(loginId: id, password: password))
-        return try await APIProvider.request(target: apiTarget)
+        return try await apiProivder.request(target: apiTarget)
     }
 }
