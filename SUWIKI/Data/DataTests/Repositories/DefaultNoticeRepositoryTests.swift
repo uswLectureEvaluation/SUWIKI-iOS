@@ -52,6 +52,10 @@ final class DefaultNoticeRepositoryTests: XCTestCase {
             statusCode: 200, 
             message: nil
         )
+        mockAPIProvider.setResponse(
+            DTO.FetchDetailAnnouncementResponse.self, 
+            response: mockResponse
+        )
 
         let announcement = try await repository.fetchDetail(id: 1)
 
