@@ -10,7 +10,7 @@ import XCTest
 @testable import Domain
 
 final class CheckCourseVersionUseCaseTests: XCTestCase, TestsProtocol {
-    func testSuccess() async throws{
+    func testSuccess() async throws {
         let mockRepository = MockTimetableRepository()
         DIContainer.shared.register(
             type: TimetableRepository.self,

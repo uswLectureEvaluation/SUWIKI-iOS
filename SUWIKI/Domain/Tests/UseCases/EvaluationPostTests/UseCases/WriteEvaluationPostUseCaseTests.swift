@@ -20,7 +20,7 @@ final class WriteEvaluationPostUseCaseTests: XCTestCase, TestsProtocol {
         let id = 10
         let isWriteCalled = true
         mockRepository.isWriteCalled = isWriteCalled
-
+        
         let result = try await useCase.execute(
             id: id,
             lectureName: "",
@@ -34,11 +34,11 @@ final class WriteEvaluationPostUseCaseTests: XCTestCase, TestsProtocol {
             homework: 1,
             content: ""
         )
-
+        
         XCTAssertEqual(id, mockRepository.id)
         XCTAssertEqual(isWriteCalled, mockRepository.isWriteCalled)
     }
-
+    
     func testFailure() async throws {
         let mockRepository = MockEvaluationPostRepository()
         DIContainer.shared.register(
@@ -49,8 +49,8 @@ final class WriteEvaluationPostUseCaseTests: XCTestCase, TestsProtocol {
         let id = 10
         let isWriteCalled = false
         mockRepository.isWriteCalled = isWriteCalled
-
-        try await useCase.execute(
+        
+        let result = try await useCase.execute(
             id: id,
             lectureName: "",
             professor: "",
@@ -63,7 +63,7 @@ final class WriteEvaluationPostUseCaseTests: XCTestCase, TestsProtocol {
             homework: 1,
             content: ""
         )
-
+        
         XCTAssertNotEqual(id, mockRepository.id)
         XCTAssertFalse(mockRepository.isWriteCalled)
     }
