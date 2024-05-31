@@ -25,7 +25,7 @@ final class DefaultExamPostRepositoryTests: XCTestCase {
         super.tearDown()
     }
 
-    func testFetchExam() async throws {
+    func testFetchExamPosts() async throws {
         let mockExamPost = DTO.ExamPostResponse(
             id: 0,
             selectedSemester: "",
@@ -50,5 +50,63 @@ final class DefaultExamPostRepositoryTests: XCTestCase {
         XCTAssertEqual(exam.isPurchased, mockResponse.canRead)
         XCTAssertEqual(exam.isWritten, mockResponse.written)
         XCTAssertEqual(exam.isExamPostsExists, mockResponse.examDataExist)
+    }
+
+    func testFetchUserPosts() async throws {
+        let mockUserExamPost = DTO
+            .FetchUserExamPostsResponse
+            .UserExamPostResponse(
+                id: 0,
+                lectureName: "test name",
+                professor: "",
+                majorType: "",
+                selectedSemester: "",
+                semesterList: "",
+                examType: "",
+                examInfo: "",
+                examDifficulty: "",
+                content: ""
+            )
+        let mockResponse = DTO.FetchUserExamPostsResponse(
+            posts: [mockUserExamPost],
+            statusCode: 200,
+            message: "success"
+        )
+
+        mockAPIProvider.setResponse(
+            DTO.FetchUserExamPostsResponse.self,
+            response: mockResponse
+        )
+
+        let userPosts = try await repository.fetchUserPosts()
+
+        XCTAssertEqual(userPosts.count, 1)
+        XCTAssertEqual(userPosts.first?.id, mockUserExamPost.id)
+        XCTAssertEqual(userPosts.first?.name, "test name")
+    }
+
+    func testFetchPurchasedExamPosts() async throws {
+        let mockPurchasedExamPost = DTO
+            .FetchPurchasedExamPostsResponse
+            .PurchasedExamPosts(
+                id: 1,
+                professor: "",
+                lectureName: "",
+                majorType: "",
+                createDate: ""
+            )
+        let mockResponse = DTO.FetchPurchasedExamPostsResponse(
+            posts: [mockPurchasedExamPost],
+            statusCode: 200,
+            message: "success"
+        )
+        mockAPIProvider.setResponse(
+            DTO.FetchPurchasedExamPostsResponse.self,
+            response: mockResponse)
+
+        let purchasedPost = try await repository.fetchPurchasedExamPosts()
+
+        XCTAssertEqual(purchasedPost.count, 1)
+        XCTAssertEqual(purchasedPost.first?.id, 1)
     }
 }
