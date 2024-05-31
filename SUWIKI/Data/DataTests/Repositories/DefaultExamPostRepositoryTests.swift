@@ -6,36 +6,49 @@
 //
 
 import XCTest
+@testable import Data
 
 final class DefaultExamPostRepositoryTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var mockAPIProvider: MockAPIProvider!
+    var repository: DefaultExamPostRepository!
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    override func setUp() {
+        super.setUp()
+        mockAPIProvider = MockAPIProvider()
+        repository = DefaultExamPostRepository(apiProvider: mockAPIProvider)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    override func tearDown() {
+        repository = nil
+        mockAPIProvider = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testFetchExam() async throws {
+        let mockExamPost = DTO.ExamPostResponse(
+            id: 0,
+            selectedSemester: "",
+            examInfo: "",
+            examType: "",
+            examDifficulty: "",
+            content: ""
+        )
+        let mockResponse = DTO.FetchExamPostsResponse(
+            posts: [mockExamPost],
+            canRead: true,
+            written: true,
+            examDataExist: true
+        )
+        mockAPIProvider.setResponse(DTO.FetchExamPostsResponse.self,
+                                    response: mockResponse)
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+        let exam = try await repository.fetch(id: 0, page: 0)
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+        XCTAssertEqual(exam.posts.count, 1)
+        XCTAssertEqual(exam.posts.first?.id, mockExamPost.id)
+        XCTAssertEqual(exam.isPurchased, mockResponse.canRead)
+        XCTAssertEqual(exam.isWritten, mockResponse.written)
+        XCTAssertEqual(exam.isExamPostsExists, mockResponse.examDataExist)
     }
 }
