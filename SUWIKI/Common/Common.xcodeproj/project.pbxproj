@@ -19,7 +19,6 @@
 		AF1F64D52BE8CC41004DE418 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1F64CB2BE8CC41004DE418 /* UIColor+.swift */; };
 		AF60AA832BE504EC00454E7C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA7A2BE504EB00454E7C /* Common.framework */; };
 		AF60AA882BE504EC00454E7C /* CommonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60AA872BE504EC00454E7C /* CommonTests.swift */; };
-		AF60AA892BE504EC00454E7C /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = AF60AA7D2BE504EB00454E7C /* Common.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +43,6 @@
 		AF1F64CA2BE8CC41004DE418 /* Font+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		AF1F64CB2BE8CC41004DE418 /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		AF60AA7A2BE504EB00454E7C /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF60AA7D2BE504EB00454E7C /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		AF60AA822BE504EC00454E7C /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF60AA872BE504EC00454E7C /* CommonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +113,6 @@
 			children = (
 				AF1F64C02BE8CC41004DE418 /* Component */,
 				AF1F64C42BE8CC41004DE418 /* Extension */,
-				AF60AA7D2BE504EB00454E7C /* Common.h */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -135,7 +132,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF60AA892BE504EC00454E7C /* Common.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

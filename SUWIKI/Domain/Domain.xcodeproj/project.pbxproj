@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AF01FC242BE3A65600F0EAD0 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF01FC1B2BE3A65600F0EAD0 /* Domain.framework */; };
-		AF01FC292BE3A65600F0EAD0 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC282BE3A65600F0EAD0 /* DomainTests.swift */; };
-		AF01FC2A2BE3A65600F0EAD0 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = AF01FC1E2BE3A65600F0EAD0 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF01FCA52BE3A92A00F0EAD0 /* DIContainer in Frameworks */ = {isa = PBXBuildFile; productRef = AF01FCA42BE3A92A00F0EAD0 /* DIContainer */; };
 		AF01FCA72BE3A92C00F0EAD0 /* Keychain in Frameworks */ = {isa = PBXBuildFile; productRef = AF01FCA62BE3A92C00F0EAD0 /* Keychain */; };
 		AF01FCAB2BE3AA9500F0EAD0 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC9B2BE3A6DF00F0EAD0 /* UserRepository.swift */; };
@@ -26,15 +24,12 @@
 		AF01FCB62BE3AA9500F0EAD0 /* UpdateEvaluationPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC722BE3A6DC00F0EAD0 /* UpdateEvaluationPostUseCase.swift */; };
 		AF01FCB72BE3AA9500F0EAD0 /* WriteEvaluationPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC732BE3A6DC00F0EAD0 /* WriteEvaluationPostUseCase.swift */; };
 		AF01FCB82BE3AA9500F0EAD0 /* FetchEvaluationPostsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC742BE3A6DC00F0EAD0 /* FetchEvaluationPostsUseCase.swift */; };
-		AF01FCB92BE3AA9500F0EAD0 /* DeleteTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC762BE3A6DC00F0EAD0 /* DeleteTokenUseCase.swift */; };
 		AF01FCBA2BE3AA9500F0EAD0 /* SignUpUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC772BE3A6DC00F0EAD0 /* SignUpUseCase.swift */; };
 		AF01FCBB2BE3AA9500F0EAD0 /* SignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC782BE3A6DC00F0EAD0 /* SignInUseCase.swift */; };
 		AF01FCBC2BE3AA9500F0EAD0 /* WithDrawUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC792BE3A6DC00F0EAD0 /* WithDrawUseCase.swift */; };
 		AF01FCBD2BE3AA9500F0EAD0 /* CheckDuplicatedEmailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7A2BE3A6DC00F0EAD0 /* CheckDuplicatedEmailUseCase.swift */; };
-		AF01FCBE2BE3AA9500F0EAD0 /* CreateTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7B2BE3A6DC00F0EAD0 /* CreateTokenUseCase.swift */; };
 		AF01FCBF2BE3AA9500F0EAD0 /* UserInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7C2BE3A6DC00F0EAD0 /* UserInfoUseCase.swift */; };
 		AF01FCC02BE3AA9500F0EAD0 /* FindIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7D2BE3A6DC00F0EAD0 /* FindIdUseCase.swift */; };
-		AF01FCC12BE3AA9500F0EAD0 /* ReadTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7E2BE3A6DC00F0EAD0 /* ReadTokenUseCase.swift */; };
 		AF01FCC22BE3AA9500F0EAD0 /* ChangePasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC7F2BE3A6DC00F0EAD0 /* ChangePasswordUseCase.swift */; };
 		AF01FCC32BE3AA9500F0EAD0 /* FindPasswordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC802BE3A6DC00F0EAD0 /* FindPasswordUseCase.swift */; };
 		AF01FCC42BE3AA9500F0EAD0 /* CheckDuplicatedIdUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01FC812BE3A6DC00F0EAD0 /* CheckDuplicatedIdUseCase.swift */; };
@@ -81,6 +76,51 @@
 		AF5A4D6B2BE8F1CF0015D214 /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D652BE8F1CF0015D214 /* Course+CoreDataClass.swift */; };
 		AF5A4D6C2BE8F1CF0015D214 /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5A4D662BE8F1CF0015D214 /* Course+CoreDataProperties.swift */; };
 		AF6D59F82BE7B0D4007ED08E /* CoreDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D59F72BE7B0D4007ED08E /* CoreDataError.swift */; };
+		AF88DD092C04564E00030825 /* FetchAnnouncementUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88DD082C04564E00030825 /* FetchAnnouncementUseCaseTests.swift */; };
+		AF88DD0B2C04577D00030825 /* FetchDetailAnnouncementUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88DD0A2C04577D00030825 /* FetchDetailAnnouncementUseCaseTests.swift */; };
+		AFB758782BECD6EC00CEE3D1 /* FetchUserExamPostsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB758772BECD6EC00CEE3D1 /* FetchUserExamPostsUseCaseTests.swift */; };
+		AFB7587A2BECD90300CEE3D1 /* FetchPurchasedExamPostsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB758792BECD90300CEE3D1 /* FetchPurchasedExamPostsUseCaseTests.swift */; };
+		AFB7587C2BECDB0200CEE3D1 /* UpdateExamPostUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB7587B2BECDB0200CEE3D1 /* UpdateExamPostUseCase.swift */; };
+		AFB7587E2BECDC0C00CEE3D1 /* PurchaseExamPostUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB7587D2BECDC0C00CEE3D1 /* PurchaseExamPostUseCaseTests.swift */; };
+		AFB758802BECDCAA00CEE3D1 /* FetchExamPostsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB7587F2BECDCAA00CEE3D1 /* FetchExamPostsUseCaseTests.swift */; };
+		AFBA84C72BEA32D90070E34C /* SignInUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84C62BEA32D90070E34C /* SignInUseCaseTests.swift */; };
+		AFBA84CB2BEA4CBA0070E34C /* WithDrawUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84CA2BEA4CBA0070E34C /* WithDrawUseCaseTests.swift */; };
+		AFBA84CD2BEA4D830070E34C /* SignUpUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84CC2BEA4D830070E34C /* SignUpUseCaseTests.swift */; };
+		AFBA84CF2BEA4D8B0070E34C /* CheckDuplicatedEmailUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84CE2BEA4D8B0070E34C /* CheckDuplicatedEmailUseCaseTests.swift */; };
+		AFBA84D12BEA4D9C0070E34C /* UserInfoUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84D02BEA4D9C0070E34C /* UserInfoUseCaseTests.swift */; };
+		AFBA84D32BEA4DA40070E34C /* FindIdUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84D22BEA4DA40070E34C /* FindIdUseCaseTests.swift */; };
+		AFBA84D72BEA4DB90070E34C /* ChangePasswordUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84D62BEA4DB90070E34C /* ChangePasswordUseCaseTests.swift */; };
+		AFBA84D92BEA4DBF0070E34C /* FindPasswordUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84D82BEA4DBF0070E34C /* FindPasswordUseCaseTests.swift */; };
+		AFBA84DB2BEA4DC70070E34C /* CheckDuplicatedIdUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84DA2BEA4DC70070E34C /* CheckDuplicatedIdUseCaseTests.swift */; };
+		AFBA84E12BEA4F120070E34C /* UserTestsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84E02BEA4F120070E34C /* UserTestsProtocol.swift */; };
+		AFBA84E32BEA4F7C0070E34C /* MockUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBA84E22BEA4F7C0070E34C /* MockUserRepository.swift */; };
+		AFC8ABB82BED196D005EAE74 /* MockLectureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABB72BED196D005EAE74 /* MockLectureRepository.swift */; };
+		AFC8ABB92BED1973005EAE74 /* TestsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABB42BED193F005EAE74 /* TestsProtocol.swift */; };
+		AFC8ABC32BEDFE3E005EAE74 /* FetchLectureUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABC22BEDFE3E005EAE74 /* FetchLectureUseCaseTests.swift */; };
+		AFC8ABC52BEE0060005EAE74 /* SearchLectureUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABC42BEE0060005EAE74 /* SearchLectureUseCaseTests.swift */; };
+		AFC8ABC72BEE016B005EAE74 /* FetchDetailLectureUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABC62BEE016B005EAE74 /* FetchDetailLectureUseCaseTests.swift */; };
+		AFC8ABCC2BEE02BD005EAE74 /* MockEvaluationPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABCB2BEE02BD005EAE74 /* MockEvaluationPostRepository.swift */; };
+		AFC8ABCE2BEE0767005EAE74 /* FetchEvaluationPostsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABCD2BEE0767005EAE74 /* FetchEvaluationPostsUseCaseTests.swift */; };
+		AFC8ABD02BEE0848005EAE74 /* WriteEvaluationPostUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABCF2BEE0848005EAE74 /* WriteEvaluationPostUseCaseTests.swift */; };
+		AFC8ABD22BEE0935005EAE74 /* UpdateEvaluationPostUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABD12BEE0935005EAE74 /* UpdateEvaluationPostUseCaseTests.swift */; };
+		AFC8ABD42BEE09F6005EAE74 /* FetchUserEvaluationPostsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABD32BEE09F6005EAE74 /* FetchUserEvaluationPostsUseCaseTests.swift */; };
+		AFC8ABD92BEE0B2F005EAE74 /* MockTimetableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABD82BEE0B2F005EAE74 /* MockTimetableRepository.swift */; };
+		AFC8ABDB2BEE2511005EAE74 /* SaveTimetableUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABDA2BEE2511005EAE74 /* SaveTimetableUseCaseTests.swift */; };
+		AFC8ABDD2BEE261E005EAE74 /* FetchTimetableUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABDC2BEE261E005EAE74 /* FetchTimetableUseCaseTests.swift */; };
+		AFC8ABDF2BEE26E4005EAE74 /* DeleteCourseUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABDE2BEE26E4005EAE74 /* DeleteCourseUseCaseTests.swift */; };
+		AFC8ABE12BEE2B42005EAE74 /* DeleteTimetableUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABE02BEE2B42005EAE74 /* DeleteTimetableUseCaseTests.swift */; };
+		AFC8ABE32BEE2BB9005EAE74 /* SaveCourseUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABE22BEE2BB9005EAE74 /* SaveCourseUseCaseTests.swift */; };
+		AFC8ABE52BEE2CA2005EAE74 /* FetchELearningUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABE42BEE2CA2005EAE74 /* FetchELearningUseCaseTests.swift */; };
+		AFC8ABE72BEE2DE0005EAE74 /* UpdateTimetableTitleUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABE62BEE2DDF005EAE74 /* UpdateTimetableTitleUseCaseTests.swift */; };
+		AFC8ABE92BEE2ECE005EAE74 /* FetchCoursesUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABE82BEE2ECE005EAE74 /* FetchCoursesUseCaseTests.swift */; };
+		AFC8ABEB2BEE2FB0005EAE74 /* FetchFirebaseCourseUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABEA2BEE2FB0005EAE74 /* FetchFirebaseCourseUseCaseTests.swift */; };
+		AFC8ABED2BEE3039005EAE74 /* FetchMajorsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABEC2BEE3039005EAE74 /* FetchMajorsUseCaseTests.swift */; };
+		AFC8ABEF2BEE30BC005EAE74 /* CheckCourseVersionUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABEE2BEE30BC005EAE74 /* CheckCourseVersionUseCaseTests.swift */; };
+		AFC8ABF12BEE314B005EAE74 /* FetchTimetableListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABF02BEE314B005EAE74 /* FetchTimetableListUseCaseTests.swift */; };
+		AFC8ABF62BEE32B4005EAE74 /* MockNoticeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8ABF52BEE32B4005EAE74 /* MockNoticeRepository.swift */; };
+		AFDB17822BECCE30004447C9 /* WriteExamPostUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB17812BECCE30004447C9 /* WriteExamPostUseCaseTests.swift */; };
+		AFDB17842BECCE5A004447C9 /* ExamPostTestsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB177B2BECCCDF004447C9 /* ExamPostTestsProtocol.swift */; };
+		AFDB17872BECCE9A004447C9 /* MockExamPostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDB177D2BECCD4A004447C9 /* MockExamPostRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,9 +135,7 @@
 
 /* Begin PBXFileReference section */
 		AF01FC1B2BE3A65600F0EAD0 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF01FC1E2BE3A65600F0EAD0 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		AF01FC232BE3A65600F0EAD0 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF01FC282BE3A65600F0EAD0 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		AF01FC572BE3A6AE00F0EAD0 /* DetailLecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLecture.swift; sourceTree = "<group>"; };
 		AF01FC582BE3A6AE00F0EAD0 /* Lecture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		AF01FC5A2BE3A6AE00F0EAD0 /* Evaluation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
@@ -119,15 +157,12 @@
 		AF01FC722BE3A6DC00F0EAD0 /* UpdateEvaluationPostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateEvaluationPostUseCase.swift; sourceTree = "<group>"; };
 		AF01FC732BE3A6DC00F0EAD0 /* WriteEvaluationPostUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteEvaluationPostUseCase.swift; sourceTree = "<group>"; };
 		AF01FC742BE3A6DC00F0EAD0 /* FetchEvaluationPostsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchEvaluationPostsUseCase.swift; sourceTree = "<group>"; };
-		AF01FC762BE3A6DC00F0EAD0 /* DeleteTokenUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteTokenUseCase.swift; sourceTree = "<group>"; };
 		AF01FC772BE3A6DC00F0EAD0 /* SignUpUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpUseCase.swift; sourceTree = "<group>"; };
 		AF01FC782BE3A6DC00F0EAD0 /* SignInUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInUseCase.swift; sourceTree = "<group>"; };
 		AF01FC792BE3A6DC00F0EAD0 /* WithDrawUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawUseCase.swift; sourceTree = "<group>"; };
 		AF01FC7A2BE3A6DC00F0EAD0 /* CheckDuplicatedEmailUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckDuplicatedEmailUseCase.swift; sourceTree = "<group>"; };
-		AF01FC7B2BE3A6DC00F0EAD0 /* CreateTokenUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTokenUseCase.swift; sourceTree = "<group>"; };
 		AF01FC7C2BE3A6DC00F0EAD0 /* UserInfoUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoUseCase.swift; sourceTree = "<group>"; };
 		AF01FC7D2BE3A6DC00F0EAD0 /* FindIdUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdUseCase.swift; sourceTree = "<group>"; };
-		AF01FC7E2BE3A6DC00F0EAD0 /* ReadTokenUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadTokenUseCase.swift; sourceTree = "<group>"; };
 		AF01FC7F2BE3A6DC00F0EAD0 /* ChangePasswordUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCase.swift; sourceTree = "<group>"; };
 		AF01FC802BE3A6DC00F0EAD0 /* FindPasswordUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordUseCase.swift; sourceTree = "<group>"; };
 		AF01FC812BE3A6DC00F0EAD0 /* CheckDuplicatedIdUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckDuplicatedIdUseCase.swift; sourceTree = "<group>"; };
@@ -167,6 +202,51 @@
 		AF5A4D652BE8F1CF0015D214 /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataClass.swift"; path = "../../../Course+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AF5A4D662BE8F1CF0015D214 /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Course+CoreDataProperties.swift"; path = "../../../Course+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AF6D59F72BE7B0D4007ED08E /* CoreDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataError.swift; sourceTree = "<group>"; };
+		AF88DD082C04564E00030825 /* FetchAnnouncementUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAnnouncementUseCaseTests.swift; sourceTree = "<group>"; };
+		AF88DD0A2C04577D00030825 /* FetchDetailAnnouncementUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailAnnouncementUseCaseTests.swift; sourceTree = "<group>"; };
+		AFB758772BECD6EC00CEE3D1 /* FetchUserExamPostsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserExamPostsUseCaseTests.swift; sourceTree = "<group>"; };
+		AFB758792BECD90300CEE3D1 /* FetchPurchasedExamPostsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPurchasedExamPostsUseCaseTests.swift; sourceTree = "<group>"; };
+		AFB7587B2BECDB0200CEE3D1 /* UpdateExamPostUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExamPostUseCase.swift; sourceTree = "<group>"; };
+		AFB7587D2BECDC0C00CEE3D1 /* PurchaseExamPostUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseExamPostUseCaseTests.swift; sourceTree = "<group>"; };
+		AFB7587F2BECDCAA00CEE3D1 /* FetchExamPostsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchExamPostsUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84C62BEA32D90070E34C /* SignInUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84CA2BEA4CBA0070E34C /* WithDrawUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithDrawUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84CC2BEA4D830070E34C /* SignUpUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84CE2BEA4D8B0070E34C /* CheckDuplicatedEmailUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDuplicatedEmailUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84D02BEA4D9C0070E34C /* UserInfoUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84D22BEA4DA40070E34C /* FindIdUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindIdUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84D62BEA4DB90070E34C /* ChangePasswordUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84D82BEA4DBF0070E34C /* FindPasswordUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84DA2BEA4DC70070E34C /* CheckDuplicatedIdUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDuplicatedIdUseCaseTests.swift; sourceTree = "<group>"; };
+		AFBA84E02BEA4F120070E34C /* UserTestsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTestsProtocol.swift; sourceTree = "<group>"; };
+		AFBA84E22BEA4F7C0070E34C /* MockUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserRepository.swift; sourceTree = "<group>"; };
+		AFC8ABB42BED193F005EAE74 /* TestsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsProtocol.swift; sourceTree = "<group>"; };
+		AFC8ABB72BED196D005EAE74 /* MockLectureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLectureRepository.swift; sourceTree = "<group>"; };
+		AFC8ABC22BEDFE3E005EAE74 /* FetchLectureUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLectureUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABC42BEE0060005EAE74 /* SearchLectureUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLectureUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABC62BEE016B005EAE74 /* FetchDetailLectureUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDetailLectureUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABCB2BEE02BD005EAE74 /* MockEvaluationPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEvaluationPostRepository.swift; sourceTree = "<group>"; };
+		AFC8ABCD2BEE0767005EAE74 /* FetchEvaluationPostsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchEvaluationPostsUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABCF2BEE0848005EAE74 /* WriteEvaluationPostUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteEvaluationPostUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABD12BEE0935005EAE74 /* UpdateEvaluationPostUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEvaluationPostUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABD32BEE09F6005EAE74 /* FetchUserEvaluationPostsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserEvaluationPostsUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABD82BEE0B2F005EAE74 /* MockTimetableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimetableRepository.swift; sourceTree = "<group>"; };
+		AFC8ABDA2BEE2511005EAE74 /* SaveTimetableUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTimetableUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABDC2BEE261E005EAE74 /* FetchTimetableUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTimetableUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABDE2BEE26E4005EAE74 /* DeleteCourseUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCourseUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABE02BEE2B42005EAE74 /* DeleteTimetableUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTimetableUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABE22BEE2BB9005EAE74 /* SaveCourseUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCourseUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABE42BEE2CA2005EAE74 /* FetchELearningUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchELearningUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABE62BEE2DDF005EAE74 /* UpdateTimetableTitleUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTimetableTitleUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABE82BEE2ECE005EAE74 /* FetchCoursesUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCoursesUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABEA2BEE2FB0005EAE74 /* FetchFirebaseCourseUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFirebaseCourseUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABEC2BEE3039005EAE74 /* FetchMajorsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMajorsUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABEE2BEE30BC005EAE74 /* CheckCourseVersionUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCourseVersionUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABF02BEE314B005EAE74 /* FetchTimetableListUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTimetableListUseCaseTests.swift; sourceTree = "<group>"; };
+		AFC8ABF52BEE32B4005EAE74 /* MockNoticeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNoticeRepository.swift; sourceTree = "<group>"; };
+		AFDB177B2BECCCDF004447C9 /* ExamPostTestsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamPostTestsProtocol.swift; sourceTree = "<group>"; };
+		AFDB177D2BECCD4A004447C9 /* MockExamPostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockExamPostRepository.swift; sourceTree = "<group>"; };
+		AFDB17812BECCE30004447C9 /* WriteExamPostUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteExamPostUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +273,6 @@
 		AF01FC112BE3A65500F0EAD0 = {
 			isa = PBXGroup;
 			children = (
-				AF01FC1E2BE3A65600F0EAD0 /* Domain.h */,
 				AF01FC1D2BE3A65600F0EAD0 /* Sources */,
 				AF01FC272BE3A65600F0EAD0 /* Tests */,
 				AF01FC1C2BE3A65600F0EAD0 /* Products */,
@@ -223,7 +302,8 @@
 		AF01FC272BE3A65600F0EAD0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				AF01FC282BE3A65600F0EAD0 /* DomainTests.swift */,
+				AFBA84C52BEA32A80070E34C /* UseCases */,
+				AFC8ABB42BED193F005EAE74 /* TestsProtocol.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -337,15 +417,12 @@
 		AF01FC822BE3A6DC00F0EAD0 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				AF01FC762BE3A6DC00F0EAD0 /* DeleteTokenUseCase.swift */,
 				AF01FC772BE3A6DC00F0EAD0 /* SignUpUseCase.swift */,
 				AF01FC782BE3A6DC00F0EAD0 /* SignInUseCase.swift */,
 				AF01FC792BE3A6DC00F0EAD0 /* WithDrawUseCase.swift */,
 				AF01FC7A2BE3A6DC00F0EAD0 /* CheckDuplicatedEmailUseCase.swift */,
-				AF01FC7B2BE3A6DC00F0EAD0 /* CreateTokenUseCase.swift */,
 				AF01FC7C2BE3A6DC00F0EAD0 /* UserInfoUseCase.swift */,
 				AF01FC7D2BE3A6DC00F0EAD0 /* FindIdUseCase.swift */,
-				AF01FC7E2BE3A6DC00F0EAD0 /* ReadTokenUseCase.swift */,
 				AF01FC7F2BE3A6DC00F0EAD0 /* ChangePasswordUseCase.swift */,
 				AF01FC802BE3A6DC00F0EAD0 /* FindPasswordUseCase.swift */,
 				AF01FC812BE3A6DC00F0EAD0 /* CheckDuplicatedIdUseCase.swift */,
@@ -429,6 +506,193 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AFBA84C42BEA329B0070E34C /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA84E22BEA4F7C0070E34C /* MockUserRepository.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		AFBA84C52BEA32A80070E34C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABF22BEE328B005EAE74 /* AnnouncementTests */,
+				AFC8ABD52BEE0B14005EAE74 /* TimetableTests */,
+				AFC8ABC82BEE028C005EAE74 /* EvaluationPostTests */,
+				AFC8ABB32BED18F5005EAE74 /* LectureTests */,
+				AFDB177A2BECCC8F004447C9 /* ExamPostTests */,
+				AFBA84DE2BEA4ECA0070E34C /* UserTests */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AFBA84DE2BEA4ECA0070E34C /* UserTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA84E02BEA4F120070E34C /* UserTestsProtocol.swift */,
+				AFBA84DF2BEA4ED80070E34C /* UseCases */,
+				AFBA84C42BEA329B0070E34C /* Mock */,
+			);
+			path = UserTests;
+			sourceTree = "<group>";
+		};
+		AFBA84DF2BEA4ED80070E34C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AFBA84C62BEA32D90070E34C /* SignInUseCaseTests.swift */,
+				AFBA84D02BEA4D9C0070E34C /* UserInfoUseCaseTests.swift */,
+				AFBA84CE2BEA4D8B0070E34C /* CheckDuplicatedEmailUseCaseTests.swift */,
+				AFBA84D22BEA4DA40070E34C /* FindIdUseCaseTests.swift */,
+				AFBA84D62BEA4DB90070E34C /* ChangePasswordUseCaseTests.swift */,
+				AFBA84D82BEA4DBF0070E34C /* FindPasswordUseCaseTests.swift */,
+				AFBA84DA2BEA4DC70070E34C /* CheckDuplicatedIdUseCaseTests.swift */,
+				AFBA84CC2BEA4D830070E34C /* SignUpUseCaseTests.swift */,
+				AFBA84CA2BEA4CBA0070E34C /* WithDrawUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AFC8ABB32BED18F5005EAE74 /* LectureTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABB62BED195B005EAE74 /* UseCases */,
+				AFC8ABB72BED196D005EAE74 /* MockLectureRepository.swift */,
+			);
+			path = LectureTests;
+			sourceTree = "<group>";
+		};
+		AFC8ABB62BED195B005EAE74 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABC22BEDFE3E005EAE74 /* FetchLectureUseCaseTests.swift */,
+				AFC8ABC42BEE0060005EAE74 /* SearchLectureUseCaseTests.swift */,
+				AFC8ABC62BEE016B005EAE74 /* FetchDetailLectureUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AFC8ABC82BEE028C005EAE74 /* EvaluationPostTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABCA2BEE02A4005EAE74 /* UseCases */,
+				AFC8ABC92BEE02A1005EAE74 /* Mock */,
+			);
+			path = EvaluationPostTests;
+			sourceTree = "<group>";
+		};
+		AFC8ABC92BEE02A1005EAE74 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABCB2BEE02BD005EAE74 /* MockEvaluationPostRepository.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		AFC8ABCA2BEE02A4005EAE74 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABCD2BEE0767005EAE74 /* FetchEvaluationPostsUseCaseTests.swift */,
+				AFC8ABCF2BEE0848005EAE74 /* WriteEvaluationPostUseCaseTests.swift */,
+				AFC8ABD12BEE0935005EAE74 /* UpdateEvaluationPostUseCaseTests.swift */,
+				AFC8ABD32BEE09F6005EAE74 /* FetchUserEvaluationPostsUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AFC8ABD52BEE0B14005EAE74 /* TimetableTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABD72BEE0B23005EAE74 /* UseCases */,
+				AFC8ABD62BEE0B20005EAE74 /* Mock */,
+			);
+			path = TimetableTests;
+			sourceTree = "<group>";
+		};
+		AFC8ABD62BEE0B20005EAE74 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABD82BEE0B2F005EAE74 /* MockTimetableRepository.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		AFC8ABD72BEE0B23005EAE74 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABDA2BEE2511005EAE74 /* SaveTimetableUseCaseTests.swift */,
+				AFC8ABDC2BEE261E005EAE74 /* FetchTimetableUseCaseTests.swift */,
+				AFC8ABF02BEE314B005EAE74 /* FetchTimetableListUseCaseTests.swift */,
+				AFC8ABDE2BEE26E4005EAE74 /* DeleteCourseUseCaseTests.swift */,
+				AFC8ABE02BEE2B42005EAE74 /* DeleteTimetableUseCaseTests.swift */,
+				AFC8ABE22BEE2BB9005EAE74 /* SaveCourseUseCaseTests.swift */,
+				AFC8ABE42BEE2CA2005EAE74 /* FetchELearningUseCaseTests.swift */,
+				AFC8ABE62BEE2DDF005EAE74 /* UpdateTimetableTitleUseCaseTests.swift */,
+				AFC8ABE82BEE2ECE005EAE74 /* FetchCoursesUseCaseTests.swift */,
+				AFC8ABEA2BEE2FB0005EAE74 /* FetchFirebaseCourseUseCaseTests.swift */,
+				AFC8ABEC2BEE3039005EAE74 /* FetchMajorsUseCaseTests.swift */,
+				AFC8ABEE2BEE30BC005EAE74 /* CheckCourseVersionUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AFC8ABF22BEE328B005EAE74 /* AnnouncementTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABF32BEE3298005EAE74 /* UseCases */,
+				AFC8ABF42BEE329F005EAE74 /* Mock */,
+			);
+			path = AnnouncementTests;
+			sourceTree = "<group>";
+		};
+		AFC8ABF32BEE3298005EAE74 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AF88DD082C04564E00030825 /* FetchAnnouncementUseCaseTests.swift */,
+				AF88DD0A2C04577D00030825 /* FetchDetailAnnouncementUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		AFC8ABF42BEE329F005EAE74 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				AFC8ABF52BEE32B4005EAE74 /* MockNoticeRepository.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		AFDB177A2BECCC8F004447C9 /* ExamPostTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFDB17802BECCD51004447C9 /* UseCases */,
+				AFDB177F2BECCD4D004447C9 /* Mock */,
+				AFDB177B2BECCCDF004447C9 /* ExamPostTestsProtocol.swift */,
+			);
+			path = ExamPostTests;
+			sourceTree = "<group>";
+		};
+		AFDB177F2BECCD4D004447C9 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				AFDB177D2BECCD4A004447C9 /* MockExamPostRepository.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		AFDB17802BECCD51004447C9 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				AFDB17812BECCE30004447C9 /* WriteExamPostUseCaseTests.swift */,
+				AFB758772BECD6EC00CEE3D1 /* FetchUserExamPostsUseCaseTests.swift */,
+				AFB758792BECD90300CEE3D1 /* FetchPurchasedExamPostsUseCaseTests.swift */,
+				AFB7587B2BECDB0200CEE3D1 /* UpdateExamPostUseCase.swift */,
+				AFB7587D2BECDC0C00CEE3D1 /* PurchaseExamPostUseCaseTests.swift */,
+				AFB7587F2BECDCAA00CEE3D1 /* FetchExamPostsUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -436,7 +700,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF01FC2A2BE3A65600F0EAD0 /* Domain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,16 +822,13 @@
 				AF01FCB62BE3AA9500F0EAD0 /* UpdateEvaluationPostUseCase.swift in Sources */,
 				AF01FCB72BE3AA9500F0EAD0 /* WriteEvaluationPostUseCase.swift in Sources */,
 				AF01FCB82BE3AA9500F0EAD0 /* FetchEvaluationPostsUseCase.swift in Sources */,
-				AF01FCB92BE3AA9500F0EAD0 /* DeleteTokenUseCase.swift in Sources */,
 				AF01FCBA2BE3AA9500F0EAD0 /* SignUpUseCase.swift in Sources */,
 				AF01FCBB2BE3AA9500F0EAD0 /* SignInUseCase.swift in Sources */,
 				AF01FCBC2BE3AA9500F0EAD0 /* WithDrawUseCase.swift in Sources */,
 				AF01FCBD2BE3AA9500F0EAD0 /* CheckDuplicatedEmailUseCase.swift in Sources */,
-				AF01FCBE2BE3AA9500F0EAD0 /* CreateTokenUseCase.swift in Sources */,
 				AF01FCBF2BE3AA9500F0EAD0 /* UserInfoUseCase.swift in Sources */,
 				AF01FCE82BE3DC3300F0EAD0 /* UserTimetable.swift in Sources */,
 				AF01FCC02BE3AA9500F0EAD0 /* FindIdUseCase.swift in Sources */,
-				AF01FCC12BE3AA9500F0EAD0 /* ReadTokenUseCase.swift in Sources */,
 				AF01FCC22BE3AA9500F0EAD0 /* ChangePasswordUseCase.swift in Sources */,
 				AF01FCC32BE3AA9500F0EAD0 /* FindPasswordUseCase.swift in Sources */,
 				AF01FCC42BE3AA9500F0EAD0 /* CheckDuplicatedIdUseCase.swift in Sources */,
@@ -619,7 +879,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF01FC292BE3A65600F0EAD0 /* DomainTests.swift in Sources */,
+				AFB7587C2BECDB0200CEE3D1 /* UpdateExamPostUseCase.swift in Sources */,
+				AFC8ABD02BEE0848005EAE74 /* WriteEvaluationPostUseCaseTests.swift in Sources */,
+				AFBA84DB2BEA4DC70070E34C /* CheckDuplicatedIdUseCaseTests.swift in Sources */,
+				AF88DD092C04564E00030825 /* FetchAnnouncementUseCaseTests.swift in Sources */,
+				AFC8ABB92BED1973005EAE74 /* TestsProtocol.swift in Sources */,
+				AFBA84D12BEA4D9C0070E34C /* UserInfoUseCaseTests.swift in Sources */,
+				AFBA84CB2BEA4CBA0070E34C /* WithDrawUseCaseTests.swift in Sources */,
+				AFC8ABF12BEE314B005EAE74 /* FetchTimetableListUseCaseTests.swift in Sources */,
+				AFBA84E32BEA4F7C0070E34C /* MockUserRepository.swift in Sources */,
+				AFC8ABCE2BEE0767005EAE74 /* FetchEvaluationPostsUseCaseTests.swift in Sources */,
+				AFC8ABE32BEE2BB9005EAE74 /* SaveCourseUseCaseTests.swift in Sources */,
+				AFC8ABE92BEE2ECE005EAE74 /* FetchCoursesUseCaseTests.swift in Sources */,
+				AFBA84CD2BEA4D830070E34C /* SignUpUseCaseTests.swift in Sources */,
+				AFBA84D92BEA4DBF0070E34C /* FindPasswordUseCaseTests.swift in Sources */,
+				AFC8ABEB2BEE2FB0005EAE74 /* FetchFirebaseCourseUseCaseTests.swift in Sources */,
+				AFC8ABD22BEE0935005EAE74 /* UpdateEvaluationPostUseCaseTests.swift in Sources */,
+				AFB7587E2BECDC0C00CEE3D1 /* PurchaseExamPostUseCaseTests.swift in Sources */,
+				AFC8ABF62BEE32B4005EAE74 /* MockNoticeRepository.swift in Sources */,
+				AFDB17872BECCE9A004447C9 /* MockExamPostRepository.swift in Sources */,
+				AFDB17842BECCE5A004447C9 /* ExamPostTestsProtocol.swift in Sources */,
+				AFBA84C72BEA32D90070E34C /* SignInUseCaseTests.swift in Sources */,
+				AFC8ABCC2BEE02BD005EAE74 /* MockEvaluationPostRepository.swift in Sources */,
+				AFC8ABDD2BEE261E005EAE74 /* FetchTimetableUseCaseTests.swift in Sources */,
+				AFC8ABC72BEE016B005EAE74 /* FetchDetailLectureUseCaseTests.swift in Sources */,
+				AFC8ABE72BEE2DE0005EAE74 /* UpdateTimetableTitleUseCaseTests.swift in Sources */,
+				AFBA84CF2BEA4D8B0070E34C /* CheckDuplicatedEmailUseCaseTests.swift in Sources */,
+				AFC8ABE52BEE2CA2005EAE74 /* FetchELearningUseCaseTests.swift in Sources */,
+				AF88DD0B2C04577D00030825 /* FetchDetailAnnouncementUseCaseTests.swift in Sources */,
+				AFC8ABB82BED196D005EAE74 /* MockLectureRepository.swift in Sources */,
+				AFC8ABE12BEE2B42005EAE74 /* DeleteTimetableUseCaseTests.swift in Sources */,
+				AFC8ABED2BEE3039005EAE74 /* FetchMajorsUseCaseTests.swift in Sources */,
+				AFC8ABDB2BEE2511005EAE74 /* SaveTimetableUseCaseTests.swift in Sources */,
+				AFC8ABD92BEE0B2F005EAE74 /* MockTimetableRepository.swift in Sources */,
+				AFBA84D32BEA4DA40070E34C /* FindIdUseCaseTests.swift in Sources */,
+				AFC8ABC32BEDFE3E005EAE74 /* FetchLectureUseCaseTests.swift in Sources */,
+				AFBA84D72BEA4DB90070E34C /* ChangePasswordUseCaseTests.swift in Sources */,
+				AFDB17822BECCE30004447C9 /* WriteExamPostUseCaseTests.swift in Sources */,
+				AFB758802BECDCAA00CEE3D1 /* FetchExamPostsUseCaseTests.swift in Sources */,
+				AFC8ABC52BEE0060005EAE74 /* SearchLectureUseCaseTests.swift in Sources */,
+				AFC8ABD42BEE09F6005EAE74 /* FetchUserEvaluationPostsUseCaseTests.swift in Sources */,
+				AFB7587A2BECD90300CEE3D1 /* FetchPurchasedExamPostsUseCaseTests.swift in Sources */,
+				AFC8ABEF2BEE30BC005EAE74 /* CheckCourseVersionUseCaseTests.swift in Sources */,
+				AFBA84E12BEA4F120070E34C /* UserTestsProtocol.swift in Sources */,
+				AFB758782BECD6EC00CEE3D1 /* FetchUserExamPostsUseCaseTests.swift in Sources */,
+				AFC8ABDF2BEE26E4005EAE74 /* DeleteCourseUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
