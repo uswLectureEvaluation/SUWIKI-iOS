@@ -11,21 +11,21 @@ import Domain
 import DIContainer
 
 final class AnnouncementViewModel: ObservableObject {
-    @Inject var useCase: FetchAnnouncementUseCase
-    @Published var announcement: [Announcement] = []
-
-    init() {
-        Task {
-            try await fetch()
-        }
+  @Inject var useCase: FetchAnnouncementUseCase
+  @Published var announcement: [Announcement] = []
+  
+  init() {
+    Task {
+      try await fetch()
     }
-
-    @MainActor
-    func fetch() async throws {
-        do {
-            self.announcement = try await useCase.execute()
-        } catch {
-            print(error.localizedDescription)
-        }
+  }
+  
+  @MainActor
+  func fetch() async throws {
+    do {
+      self.announcement = try await useCase.execute()
+    } catch {
+      print(error.localizedDescription)
     }
+  }
 }
