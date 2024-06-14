@@ -8,15 +8,15 @@
 import Foundation
 
 enum UserInfoType: CaseIterable {
-    case myPoint
-    case restrictionHistory
+  case myPoint
+  case restrictionHistory
 
-    var title: String {
-        switch self {
-        case .myPoint:
-            "내 포인트"
-        case .restrictionHistory:
-            "이용제한 내역"
-        }
+  var title: String {
+    switch self {
+    case .myPoint:
+      "내 포인트"
+    case .restrictionHistory:
+      "이용제한 내역"
     }
+  }
 }
