@@ -12,17 +12,16 @@ import Keychain
 
 final class ManageAccountViewModel: ObservableObject {
 
-    @Published var isLogoutButtonTapped = false
+  @Published var isLogoutButtonTapped = false
 
-    let userInfo: UserInfo
+  let userInfo: UserInfo
 
-    init(userInfo: UserInfo) {
-        self.userInfo = userInfo
-    }
+  init(userInfo: UserInfo) {
+    self.userInfo = userInfo
+  }
 
-    func logout() {
-        KeychainManager.shared.delete(token: .AccessToken)
-        KeychainManager.shared.delete(token: .RefreshToken)
-    }
-
+  func logout() {
+    KeychainManager.shared.delete(token: .AccessToken)
+    KeychainManager.shared.delete(token: .RefreshToken)
+  }
 }
