@@ -10,21 +10,21 @@ import Foundation
 import DIContainer
 
 public protocol FetchMajorsUseCase {
-    func execute() -> [String]
+  func execute() -> [String]
 }
 
 public final class DefaultFetchMajorsUseCase: FetchMajorsUseCase {
-    @Inject private var repository: TimetableRepository
-
-    public init() { }
-
-    public func execute() -> [String] {
-        let result = repository.fetchMajors()
-        switch result {
-        case .success(let majors):
-            return majors
-        case .failure:
-            return []
-        }
+  @Inject private var repository: TimetableRepository
+  
+  public init() { }
+  
+  public func execute() -> [String] {
+    let result = repository.fetchMajors()
+    switch result {
+    case .success(let majors):
+      return majors
+    case .failure:
+      return []
     }
+  }
 }

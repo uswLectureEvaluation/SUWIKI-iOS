@@ -10,24 +10,24 @@ import Foundation
 import DIContainer
 
 public protocol SignInUseCase {
-    func excute(
-        id: String,
-        password: String
-    ) async throws -> Bool
+  func excute(
+    id: String,
+    password: String
+  ) async throws -> Bool
 }
 
 public final class DefaultSignInUseCase: SignInUseCase {
-    @Inject var repository: UserRepository
-
-    public init() { }
-
-    public func excute(
-        id: String,
-        password: String
-    ) async throws -> Bool {
-        try await repository.login(
-            id: id,
-            password: password
-        )
-    }
+  @Inject var repository: UserRepository
+  
+  public init() { }
+  
+  public func excute(
+    id: String,
+    password: String
+  ) async throws -> Bool {
+    try await repository.login(
+      id: id,
+      password: password
+    )
+  }
 }

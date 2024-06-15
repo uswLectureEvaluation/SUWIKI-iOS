@@ -10,21 +10,21 @@ import Foundation
 import DIContainer
 
 public protocol FetchTimetableListUseCase {
-    func execute() -> [UserTimetable]
+  func execute() -> [UserTimetable]
 }
 
 public final class DefaultFetchTimetableListUseCase: FetchTimetableListUseCase {
-    @Inject private var repository: TimetableRepository
-
-    public init() { }
-
-    public func execute() -> [UserTimetable] {
-        let result = repository.fetchTimetableList()
-        switch result {
-        case .success(let userTimetable):
-            return userTimetable
-        case .failure:
-            return []
-        }
+  @Inject private var repository: TimetableRepository
+  
+  public init() { }
+  
+  public func execute() -> [UserTimetable] {
+    let result = repository.fetchTimetableList()
+    switch result {
+    case .success(let userTimetable):
+      return userTimetable
+    case .failure:
+      return []
     }
+  }
 }

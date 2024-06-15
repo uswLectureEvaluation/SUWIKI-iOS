@@ -10,30 +10,30 @@ import Foundation
 import DIContainer
 
 public protocol DeleteCourseUseCase {
-    func execute(
-        id: String,
-        courseId: String
-    )
+  func execute(
+    id: String,
+    courseId: String
+  )
 }
 
 public final class DefaultDeleteCourseUseCase: DeleteCourseUseCase {
-    @Inject private var repository: TimetableRepository
-
-    public init() { }
-
-    public func execute(
-        id: String,
-        courseId: String
-    ) {
-        let result = repository.deleteCourse(
-            id: id,
-            courseId: courseId
-        )
-        switch result {
-        case .success:
-            break
-        case .failure(let failure):
-            dump(failure)
-        }
+  @Inject private var repository: TimetableRepository
+  
+  public init() { }
+  
+  public func execute(
+    id: String,
+    courseId: String
+  ) {
+    let result = repository.deleteCourse(
+      id: id,
+      courseId: courseId
+    )
+    switch result {
+    case .success:
+      break
+    case .failure(let failure):
+      dump(failure)
     }
+  }
 }

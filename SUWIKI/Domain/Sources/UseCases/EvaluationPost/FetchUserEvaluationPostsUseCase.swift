@@ -10,15 +10,15 @@ import Foundation
 import DIContainer
 
 public protocol FetchUserEvaluationPostsUseCase {
-    func execute() async throws -> [UserEvaluationPost]
+  func execute() async throws -> [UserEvaluationPost]
 }
 
 public final class DefaultFetchUserEvaluationPostUseCase: FetchUserEvaluationPostsUseCase {
-    @Inject private var repository: EvaluationPostRepository
-
-    public init() { }
-
-    public func execute() async throws -> [UserEvaluationPost] {
-        return try await repository.fetchUserPosts()
-    }
+  @Inject private var repository: EvaluationPostRepository
+  
+  public init() { }
+  
+  public func execute() async throws -> [UserEvaluationPost] {
+    return try await repository.fetchUserPosts()
+  }
 }

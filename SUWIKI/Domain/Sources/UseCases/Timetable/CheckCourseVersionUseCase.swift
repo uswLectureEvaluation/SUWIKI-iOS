@@ -10,21 +10,21 @@ import Foundation
 import DIContainer
 
 public protocol CheckCourseVersionUseCase {
-    func execute() async throws
+  func execute() async throws
 }
 
 public final class DefaultCheckCourseVersionUseCase: CheckCourseVersionUseCase {
-    @Inject private var repository: TimetableRepository
-
-    public init() { }
-
-    public func execute() async throws {
-        let result = try await repository.checkCourseVersion()
-        switch result {
-        case .success:
-            break
-        case .failure(let failure):
-            dump(failure)
-        }
+  @Inject private var repository: TimetableRepository
+  
+  public init() { }
+  
+  public func execute() async throws {
+    let result = try await repository.checkCourseVersion()
+    switch result {
+    case .success:
+      break
+    case .failure(let failure):
+      dump(failure)
     }
+  }
 }

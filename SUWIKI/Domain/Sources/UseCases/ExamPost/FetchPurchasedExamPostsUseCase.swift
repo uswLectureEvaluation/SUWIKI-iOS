@@ -10,15 +10,15 @@ import Foundation
 import DIContainer
 
 public protocol FetchPurchasedExamPostsUseCase {
-    func execute() async throws -> [PurchasedPost]
+  func execute() async throws -> [PurchasedPost]
 }
 
 public final class DefaultFetchPurchasedExamPostsUseCase: FetchPurchasedExamPostsUseCase {
-    @Inject private var repository: ExamPostRepository
-
-    public init() { }
-
-    public func execute() async throws -> [PurchasedPost] {
-        return try await repository.fetchPurchasedExamPosts()
-    }
+  @Inject private var repository: ExamPostRepository
+  
+  public init() { }
+  
+  public func execute() async throws -> [PurchasedPost] {
+    return try await repository.fetchPurchasedExamPosts()
+  }
 }

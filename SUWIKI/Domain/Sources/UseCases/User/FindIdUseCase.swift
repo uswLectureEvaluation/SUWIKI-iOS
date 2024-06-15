@@ -10,19 +10,19 @@ import Foundation
 import DIContainer
 
 public protocol FindIdUseCase {
-    func execute(
-        email: String
-    ) async throws -> Bool
+  func execute(
+    email: String
+  ) async throws -> Bool
 }
 
 public final class DefaultFindIdUseCase: FindIdUseCase {
-    @Inject private var repository: UserRepository
-
-    public init() { }
-
-    public func execute(
-        email: String
-    ) async throws -> Bool {
-        return try await repository.findId(email: email)
-    }
+  @Inject private var repository: UserRepository
+  
+  public init() { }
+  
+  public func execute(
+    email: String
+  ) async throws -> Bool {
+    return try await repository.findId(email: email)
+  }
 }

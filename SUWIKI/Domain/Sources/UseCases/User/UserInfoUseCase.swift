@@ -10,15 +10,15 @@ import Foundation
 import DIContainer
 
 public protocol UserInfoUseCase {
-    func execute() async throws -> UserInfo
+  func execute() async throws -> UserInfo
 }
 
 public final class DefaultUserInfoUseCase: UserInfoUseCase {
-    @Inject private var repository: UserRepository
-
-    public init() { }
-
-    public func execute() async throws -> UserInfo {
-        return try await repository.userInfo()
-    }
+  @Inject private var repository: UserRepository
+  
+  public init() { }
+  
+  public func execute() async throws -> UserInfo {
+    return try await repository.userInfo()
+  }
 }

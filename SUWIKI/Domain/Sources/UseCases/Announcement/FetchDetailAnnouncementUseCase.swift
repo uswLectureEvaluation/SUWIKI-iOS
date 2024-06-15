@@ -10,19 +10,19 @@ import Foundation
 import DIContainer
 
 public protocol FetchDetailAnnouncementUseCase {
-    func execute(
-        id: Int
-    ) async throws -> Announcement
+  func execute(
+    id: Int
+  ) async throws -> Announcement
 }
 
 public final class DefaultFetchDetailAnnouncementUseCase: FetchDetailAnnouncementUseCase {
-    @Inject private var repository: NoticeRepository
-
-    public init() { }
-
-    public func execute(
-        id: Int
-    ) async throws -> Announcement {
-        return try await repository.fetchDetail(id: id)
-    }
+  @Inject private var repository: NoticeRepository
+  
+  public init() { }
+  
+  public func execute(
+    id: Int
+  ) async throws -> Announcement {
+    return try await repository.fetchDetail(id: id)
+  }
 }
