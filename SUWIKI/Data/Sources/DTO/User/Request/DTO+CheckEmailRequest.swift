@@ -8,12 +8,12 @@
 import Foundation
 
 extension DTO {
-    public struct CheckEmailRequest: Encodable {
-        /// 학교 이메일
-        public let email: String
-
-        public init(email: String) {
-            self.email = email
-        }
+  public struct CheckEmailRequest: Encodable {
+    /// 학교 이메일
+    public let email: String
+    
+    public init(email: String) {
+      self.email = email
     }
+  }
 }

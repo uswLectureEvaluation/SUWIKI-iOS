@@ -8,11 +8,11 @@
 import Foundation
 
 extension DTO {
-    public struct UserInfoRequest: Encodable {
-        public let authorization: String
-
-        public init(authorization: String) {
-            self.authorization = authorization
-        }
+  public struct UserInfoRequest: Encodable {
+    public let authorization: String
+    
+    public init(authorization: String) {
+      self.authorization = authorization
     }
+  }
 }

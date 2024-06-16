@@ -8,16 +8,16 @@
 import Foundation
 
 extension DTO {
-    public struct WithDrawUserRequest: Encodable {
-        public let loginId: String
-        public let password: String
-
-        public init(
-            loginId: String,
-            password: String
-        ) {
-            self.loginId = loginId
-            self.password = password
-        }
+  public struct WithDrawUserRequest: Encodable {
+    public let loginId: String
+    public let password: String
+    
+    public init(
+      loginId: String,
+      password: String
+    ) {
+      self.loginId = loginId
+      self.password = password
     }
+  }
 }

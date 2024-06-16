@@ -8,18 +8,18 @@
 import Foundation
 
 extension DTO {
-    public struct LoginRequest: Encodable {
-        /// 유저 아이디
-        public let loginId: String
-        /// PWD
-        public let password: String
-
-        public init(
-            loginId: String,
-            password: String
-        ) {
-            self.loginId = loginId
-            self.password = password
-        }
+  public struct LoginRequest: Encodable {
+    /// 유저 아이디
+    public let loginId: String
+    /// PWD
+    public let password: String
+    
+    public init(
+      loginId: String,
+      password: String
+    ) {
+      self.loginId = loginId
+      self.password = password
     }
+  }
 }

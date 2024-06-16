@@ -8,11 +8,11 @@
 import Foundation
 
 extension DTO {
-    public struct RefreshRequest: Encodable {
-        public let authorization: String
+  public struct RefreshRequest: Encodable {
+    public let authorization: String
 
-        public init(authorization: String) {
-            self.authorization = authorization
-        }
+    public init(authorization: String) {
+      self.authorization = authorization
     }
+  }
 }

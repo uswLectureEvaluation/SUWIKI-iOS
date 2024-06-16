@@ -8,12 +8,12 @@
 import Foundation
 
 extension DTO {
-    public struct OverlapResponse: Codable {
-        /// 중복 확인 불리언 값
-        public let overlap: Bool
-
-        public init(overlap: Bool) {
-            self.overlap = overlap
-        }
+  public struct OverlapResponse: Codable {
+    /// 중복 확인 불리언 값
+    public let overlap: Bool
+    
+    public init(overlap: Bool) {
+      self.overlap = overlap
     }
+  }
 }

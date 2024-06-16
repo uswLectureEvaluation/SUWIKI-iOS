@@ -8,11 +8,11 @@
 import Foundation
 
 extension DTO {
-    public struct PurchaseExamPostRequest: Encodable {
-        public let lectureId: Int
+  public struct PurchaseExamPostRequest: Encodable {
+    public let lectureId: Int
 
-        public init(lectureId: Int) {
-            self.lectureId = lectureId
-        }
+    public init(lectureId: Int) {
+      self.lectureId = lectureId
     }
+  }
 }
