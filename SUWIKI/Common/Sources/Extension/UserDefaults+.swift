@@ -8,8 +8,8 @@
 import Foundation
 
 extension UserDefaults {
-    static public var shared: UserDefaults {
-        let appGroupId = "group.sozohoy.suwiki"
-        return UserDefaults(suiteName: appGroupId)!
-    }
+  static public var shared: UserDefaults {
+    let appGroupId = "group.sozohoy.suwiki"
+    return UserDefaults(suiteName: appGroupId)!
+  }
 }

@@ -12,20 +12,20 @@ import Domain
 import Keychain
 
 class AppState: ObservableObject {
-    @Published var isLoggedIn: Bool = false
-    @Inject var repository: UserRepository
-    init() {
-        if KeychainManager.shared.read(token: .AccessToken) != nil &&
-            KeychainManager.shared.read(token: .RefreshToken) != nil {
-            Task {
-                do {
-                    let _ = try await repository.userInfo()
-                    self.isLoggedIn = true
-                } catch {
-                    KeychainManager.shared.delete(token: .AccessToken)
-                    KeychainManager.shared.delete(token: .RefreshToken)
-                }
-            }
+  @Published var isLoggedIn: Bool = false
+  @Inject var repository: UserRepository
+  init() {
+    if KeychainManager.shared.read(token: .AccessToken) != nil &&
+        KeychainManager.shared.read(token: .RefreshToken) != nil {
+      Task {
+        do {
+          let _ = try await repository.userInfo()
+          self.isLoggedIn = true
+        } catch {
+          KeychainManager.shared.delete(token: .AccessToken)
+          KeychainManager.shared.delete(token: .RefreshToken)
         }
+      }
     }
+  }
 }
