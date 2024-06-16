@@ -16,7 +16,9 @@ final class DefaultExamPostRepositoryTests: XCTestCase {
   override func setUp() {
     super.setUp()
     mockAPIProvider = MockAPIProvider()
-    repository = DefaultExamPostRepository(apiProvider: mockAPIProvider)
+    repository = DefaultExamPostRepository(
+      apiProvider: mockAPIProvider
+    )
   }
   
   override func tearDown() {
@@ -40,16 +42,36 @@ final class DefaultExamPostRepositoryTests: XCTestCase {
       written: true,
       examDataExist: true
     )
-    mockAPIProvider.setResponse(DTO.FetchExamPostsResponse.self,
-                                response: mockResponse)
+    mockAPIProvider.setResponse(
+      DTO.FetchExamPostsResponse.self,
+      response: mockResponse
+    )
     
-    let exam = try await repository.fetch(id: 0, page: 0)
+    let exam = try await repository.fetch(
+      id: 0,
+      page: 0
+    )
     
-    XCTAssertEqual(exam.posts.count, 1)
-    XCTAssertEqual(exam.posts.first?.id, mockExamPost.id)
-    XCTAssertEqual(exam.isPurchased, mockResponse.canRead)
-    XCTAssertEqual(exam.isWritten, mockResponse.written)
-    XCTAssertEqual(exam.isExamPostsExists, mockResponse.examDataExist)
+    XCTAssertEqual(
+      exam.posts.count,
+      1
+    )
+    XCTAssertEqual(
+      exam.posts.first?.id,
+      mockExamPost.id
+    )
+    XCTAssertEqual(
+      exam.isPurchased,
+      mockResponse.canRead
+    )
+    XCTAssertEqual(
+      exam.isWritten,
+      mockResponse.written
+    )
+    XCTAssertEqual(
+      exam.isExamPostsExists,
+      mockResponse.examDataExist
+    )
   }
   
   func testFetchUserPosts() async throws {
@@ -80,9 +102,18 @@ final class DefaultExamPostRepositoryTests: XCTestCase {
     
     let userPosts = try await repository.fetchUserPosts()
     
-    XCTAssertEqual(userPosts.count, 1)
-    XCTAssertEqual(userPosts.first?.id, mockUserExamPost.id)
-    XCTAssertEqual(userPosts.first?.name, "test name")
+    XCTAssertEqual(
+      userPosts.count,
+      1
+    )
+    XCTAssertEqual(
+      userPosts.first?.id,
+      mockUserExamPost.id
+    )
+    XCTAssertEqual(
+      userPosts.first?.name,
+      "test name"
+    )
   }
   
   func testFetchPurchasedExamPosts() async throws {
@@ -102,11 +133,18 @@ final class DefaultExamPostRepositoryTests: XCTestCase {
     )
     mockAPIProvider.setResponse(
       DTO.FetchPurchasedExamPostsResponse.self,
-      response: mockResponse)
+      response: mockResponse
+    )
     
     let purchasedPost = try await repository.fetchPurchasedExamPosts()
     
-    XCTAssertEqual(purchasedPost.count, 1)
-    XCTAssertEqual(purchasedPost.first?.id, 1)
+    XCTAssertEqual(
+      purchasedPost.count,
+      1
+    )
+    XCTAssertEqual(
+      purchasedPost.first?.id,
+      1
+    )
   }
 }
