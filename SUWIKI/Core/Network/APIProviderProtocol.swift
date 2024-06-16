@@ -8,10 +8,10 @@
 import Foundation
 
 public protocol APIProviderProtocol {
-    func request<T: Decodable>(
-        _ object: T.Type,
-        target: TargetType
-    ) async throws -> T
-
-    func request(target: TargetType) async throws -> Bool
+  func request<T: Decodable>(
+    _ object: T.Type,
+    target: TargetType
+  ) async throws -> T
+  
+  func request(target: TargetType) async throws -> Bool
 }

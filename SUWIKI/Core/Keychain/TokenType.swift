@@ -8,15 +8,15 @@
 import Foundation
 
 public enum TokenType {
-    case AccessToken
-    case RefreshToken
-    
-    public var account: String {
-        switch self {
-        case .AccessToken:
-            "accessToken"
-        case .RefreshToken:
-            "refreshToken"
-        }
+  case AccessToken
+  case RefreshToken
+  
+  public var account: String {
+    switch self {
+    case .AccessToken:
+      "accessToken"
+    case .RefreshToken:
+      "refreshToken"
     }
+  }
 }
