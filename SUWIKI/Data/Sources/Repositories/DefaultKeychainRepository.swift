@@ -12,26 +12,26 @@ import Keychain
 
 public final class DefaultKeychainRepository: KeychainRepository {
 
-    public let keychainManager = KeychainManager.shared
+  public let keychainManager = KeychainManager.shared
 
-    public init() { }
+  public init() { }
 
-    public func create(
-        token: TokenType,
-        value: String
-    ) {
-        keychainManager.create(
-            token: token,
-            value: value
-        )
-        print("@Log \(token) - \(value)")
-    }
+  public func create(
+    token: TokenType,
+    value: String
+  ) {
+    keychainManager.create(
+      token: token,
+      value: value
+    )
+    print("@Log \(token) - \(value)")
+  }
 
-    public func read(
-        token: TokenType
-    ) -> String? {
-        keychainManager.read(
-            token: token
-        )
-    }
+  public func read(
+    token: TokenType
+  ) -> String? {
+    keychainManager.read(
+      token: token
+    )
+  }
 }
