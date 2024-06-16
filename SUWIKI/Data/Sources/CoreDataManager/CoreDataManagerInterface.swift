@@ -9,5 +9,5 @@ import Foundation
 import CoreData
 
 public protocol CoreDataManagerInterface {
-    var context: NSManagedObjectContext { get }
+  var context: NSManagedObjectContext { get }
 }
