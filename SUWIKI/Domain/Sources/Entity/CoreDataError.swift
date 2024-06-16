@@ -8,10 +8,10 @@
 import Foundation
 
 public enum CoreDataError: Error {
-    case batchInsertError
-    case entityError
-    case contextError
-    case saveError
-    case fetchError
-    case deleteError
+  case batchInsertError
+  case entityError
+  case contextError
+  case saveError
+  case fetchError
+  case deleteError
 }

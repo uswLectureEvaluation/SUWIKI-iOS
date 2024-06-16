@@ -8,20 +8,20 @@
 import Foundation
 
 public struct UserTimetable {
-    public let id: String
-    public let name: String
-    public let semester: String
-    public let courses: [TimetableCourse]
-
-    public init(
-        id: String,
-        name: String,
-        semester: String,
-        courses: [TimetableCourse]
-    ) {
-        self.id = id
-        self.name = name
-        self.semester = semester
-        self.courses = courses
-    }
+  public let id: String
+  public let name: String
+  public let semester: String
+  public let courses: [TimetableCourse]
+  
+  public init(
+    id: String,
+    name: String,
+    semester: String,
+    courses: [TimetableCourse]
+  ) {
+    self.id = id
+    self.name = name
+    self.semester = semester
+    self.courses = courses
+  }
 }

@@ -12,32 +12,32 @@ import Foundation
 
 /// 강의평가 강의
 public struct Lecture: Identifiable, Equatable, Hashable {
-    /// 강의 ID
-    public let id: Int
-    /// 강의명
-    public let name: String
-    /// 전공
-    public let major: String
-    /// 교수명
-    public let professor: String
-    /// 이수구분
-    public let lectureType: String
-    /// 평점
-    public let lectureTotalAvg: Double
-
-    public init(
-        id: Int,
-        name: String, 
-        major: String, 
-        professor: String,
-        lectureType: String,
-        lectureTotalAvg: Double
-    ) {
-        self.id = id
-        self.name = name
-        self.major = major
-        self.professor = professor
-        self.lectureType = lectureType
-        self.lectureTotalAvg = lectureTotalAvg
-    }
+  /// 강의 ID
+  public let id: Int
+  /// 강의명
+  public let name: String
+  /// 전공
+  public let major: String
+  /// 교수명
+  public let professor: String
+  /// 이수구분
+  public let lectureType: String
+  /// 평점
+  public let lectureTotalAvg: Double
+  
+  public init(
+    id: Int,
+    name: String, 
+    major: String, 
+    professor: String,
+    lectureType: String,
+    lectureTotalAvg: Double
+  ) {
+    self.id = id
+    self.name = name
+    self.major = major
+    self.professor = professor
+    self.lectureType = lectureType
+    self.lectureTotalAvg = lectureTotalAvg
+  }
 }
