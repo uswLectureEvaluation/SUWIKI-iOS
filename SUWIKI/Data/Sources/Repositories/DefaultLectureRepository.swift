@@ -14,7 +14,9 @@ public final class DefaultLectureRepository: LectureRepository {
   
   let apiProvider: APIProviderProtocol
   
-  public init(apiProvider: APIProviderProtocol) {
+  public init(
+    apiProvider: APIProviderProtocol
+  ) {
     self.apiProvider = apiProvider
   }
   
@@ -34,7 +36,9 @@ public final class DefaultLectureRepository: LectureRepository {
       DTO.AllLectureResponse.self,
       target: target
     )
-    return dtoLecture.lecture.map { $0.entity }
+    return dtoLecture.lecture.map {
+      $0.entity
+    }
   }
   
   public func search(
@@ -55,14 +59,18 @@ public final class DefaultLectureRepository: LectureRepository {
       DTO.AllLectureResponse.self,
       target: target
     )
-    return dtoLecture.lecture.map { $0.entity }
+    return dtoLecture.lecture.map {
+      $0.entity
+    }
   }
   
   public func fetchDetail(
     id: Int
   ) async throws -> DetailLecture {
     let target = APITarget.Lecture.detail(
-      DTO.DetailLectureRequest(lectureId: id)
+      DTO.DetailLectureRequest(
+        lectureId: id
+      )
     )
     let dtoDetailLecture = try await apiProvider.request(
       DTO.DecodingDetailLectureResponse.self,
