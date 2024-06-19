@@ -14,12 +14,12 @@ import Network
 public final class DefaultUserRepository: UserRepository {
   
   let keychainManager = KeychainManager.shared
-  let apiProivder: APIProviderProtocol
-  
+  let apiProvider: APIProviderProtocol
+
   public init(
-    apiProivder: APIProviderProtocol
+    apiProvider: APIProviderProtocol
   ) {
-    self.apiProivder = apiProivder
+    self.apiProvider = apiProvider
   }
   
   public func login(
@@ -33,7 +33,7 @@ public final class DefaultUserRepository: UserRepository {
       )
     )
     do {
-      let response = try await apiProivder.request(
+      let response = try await apiProvider.request(
         DTO.TokenResponse.self,
         target: target
       ).entity
@@ -63,7 +63,7 @@ public final class DefaultUserRepository: UserRepository {
         email: email
       )
     )
-    return try await apiProivder.request(
+    return try await apiProvider.request(
       target: apiTarget
     )
   }
@@ -76,7 +76,7 @@ public final class DefaultUserRepository: UserRepository {
         email: email
       )
     )
-    return try await apiProivder.request(
+    return try await apiProvider.request(
       target: apiTarget
     )
   }
@@ -91,7 +91,7 @@ public final class DefaultUserRepository: UserRepository {
         email: email
       )
     )
-    return try await apiProivder.request(
+    return try await apiProvider.request(
       target: apiTarget
     )
   }
@@ -104,7 +104,7 @@ public final class DefaultUserRepository: UserRepository {
         loginId: id
       )
     )
-    let value = try await apiProivder.request(
+    let value = try await apiProvider.request(
       DTO.CheckDuplicatedIdResponse.self,
       target: apiTarget
     )
@@ -119,7 +119,7 @@ public final class DefaultUserRepository: UserRepository {
         email: email
       )
     )
-    let value = try await apiProivder.request(
+    let value = try await apiProvider.request(
       DTO.CheckDuplicatedEmailResponse.self,
       target: apiTarget
     )
@@ -128,7 +128,7 @@ public final class DefaultUserRepository: UserRepository {
   
   public func userInfo() async throws -> UserInfo {
     let apiTarget = APITarget.User.userInfo
-    let value = try await apiProivder.request(
+    let value = try await apiProvider.request(
       DTO.UserInfoResponse.self,
       target: apiTarget
     )
@@ -147,7 +147,7 @@ public final class DefaultUserRepository: UserRepository {
           newPassword: new
         )
       )
-    return try await apiProivder.request(
+    return try await apiProvider.request(
       target: apiTarget
     )
   }
@@ -162,7 +162,7 @@ public final class DefaultUserRepository: UserRepository {
         password: password
       )
     )
-    return try await apiProivder.request(
+    return try await apiProvider.request(
       target: apiTarget
     )
   }
