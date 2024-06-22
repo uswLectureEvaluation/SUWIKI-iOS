@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Common
+
 struct TimetableWidgetMedium: View {
 
     @StateObject var viewModel = TimetableWidgetViewModel()
