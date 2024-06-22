@@ -7,13 +7,15 @@
 
 import Foundation
 
+import Network
 import DIContainer
 import Domain
 import Data
 
 struct AppEnvironment {
   let container = DIContainer.shared
-  
+  let apiProvider = APIProvider.shared
+
   init() {
     container.register(type: CoreDataManagerInterface.self, CoreDataManager())
     dependencyInjection()
@@ -33,13 +35,44 @@ struct AppEnvironment {
   }
   
   func registerRepositories() {
-    container.register(type: LectureRepository.self, DefaultLectureRepository())
-    container.register(type: UserRepository.self, DefaultUserRepository())
-    container.register(type: KeychainRepository.self, DefaultKeychainRepository())
-    container.register(type: EvaluationPostRepository.self, DefaultEvaluationPostRepository())
-    container.register(type: ExamPostRepository.self, DefaultExamPostRepository())
-    container.register(type: NoticeRepository.self, DefaultNoticeRepository())
-    container.register(type: TimetableRepository.self, DefaultTimetableRepository())
+    container.register(
+      type: LectureRepository.self,
+      DefaultLectureRepository(
+        apiProvider: apiProvider
+      )
+    )
+    container.register(
+      type: UserRepository.self,
+      DefaultUserRepository(
+        apiProvider: apiProvider
+      )
+    )
+    container.register(
+      type: KeychainRepository.self,
+      DefaultKeychainRepository()
+    )
+    container.register(
+      type: EvaluationPostRepository.self,
+      DefaultEvaluationPostRepository(
+        apiProvider: apiProvider
+      )
+    )
+    container.register(
+      type: ExamPostRepository.self,
+      DefaultExamPostRepository(
+        apiProvider: apiProvider
+      )
+    )
+    container.register(
+      type: NoticeRepository.self,
+      DefaultNoticeRepository(
+        apiProvider: apiProvider
+      )
+    )
+    container.register(
+      type: TimetableRepository.self,
+      DefaultTimetableRepository()
+    )
   }
   
   func registerUseCases() {
@@ -53,11 +86,11 @@ struct AppEnvironment {
     container.register(type: SignInUseCase.self,
                        DefaultSignInUseCase())
     /// 토큰 생성
-    container.register(type: CreateTokenUseCase.self,
-                       DefaultCreateTokenUseCase())
+//    container.register(type: CreateTokenUseCase.self,
+//                       DefaultCreateTokenUseCase())
     /// 토큰 읽기
-    container.register(type: ReadTokenUseCase.self,
-                       DefaultReadTokenUseCase())
+//    container.register(type: ReadTokenUseCase.self,
+//                       DefaultReadTokenUseCase())
     /// 강의평가 요약 내려받기
     container.register(type: FetchDetailLectureUseCase.self,
                        DefaultFetchDetailLectureUseCase())
