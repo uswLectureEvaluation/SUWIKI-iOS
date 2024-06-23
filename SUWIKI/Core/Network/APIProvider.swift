@@ -11,6 +11,11 @@ import Alamofire
 
 @available(iOS 13, *)
 public class APIProvider: APIProviderProtocol {
+
+  public static let shared = APIProvider()
+  
+  public init() { }
+  
   public func request<T: Decodable>(
     _ object: T.Type,
     target: TargetType
