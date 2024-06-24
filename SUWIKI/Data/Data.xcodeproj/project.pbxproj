@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AF1F64D82BE8D049004DE418 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA6E2BE5049D00454E7C /* Common.framework */; };
-		AF23C0F82C0A0AC000681EB7 /* DefaultExamPostRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF23C0F72C0A0AC000681EB7 /* DefaultExamPostRepositoryTests.swift */; };
 		AF5A4D502BE8EB4C0015D214 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = AF5A4D4F2BE8EB4C0015D214 /* Network */; };
 		AF5A4D572BE8ED990015D214 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = AF5A4D562BE8ED990015D214 /* Alamofire */; };
 		AF60A9782BE4F2F700454E7C /* APITarget+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60A9772BE4F2F700454E7C /* APITarget+User.swift */; };
@@ -79,8 +78,6 @@
 		AF60AA172BE4FFFE00454E7C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA162BE4FFFE00454E7C /* Domain.framework */; };
 		AF60AA1B2BE5000200454E7C /* FirebaseManager in Frameworks */ = {isa = PBXBuildFile; productRef = AF60AA1A2BE5000200454E7C /* FirebaseManager */; };
 		AF88DD312C045A8600030825 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF01FBF92BE3A64700F0EAD0 /* Data.framework */; };
-		AF88DD3B2C045C5900030825 /* MockAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88DD3A2C045C5900030825 /* MockAPIProvider.swift */; };
-		AF88DD3E2C04C0E200030825 /* DefaultNoticeRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF88DD3D2C04C0E200030825 /* DefaultNoticeRepositoryTests.swift */; };
 		AFA5238D2BE79C92001F285D /* CoreDataManagerInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA5238C2BE79C92001F285D /* CoreDataManagerInterface.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +165,9 @@
 		AF88DD3A2C045C5900030825 /* MockAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIProvider.swift; sourceTree = "<group>"; };
 		AF88DD3D2C04C0E200030825 /* DefaultNoticeRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNoticeRepositoryTests.swift; sourceTree = "<group>"; };
 		AFA5238C2BE79C92001F285D /* CoreDataManagerInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerInterface.swift; sourceTree = "<group>"; };
+		AFFB6D652C1F5E1300B3C6AE /* DefaultEvaluationPostRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEvaluationPostRepositoryTests.swift; sourceTree = "<group>"; };
+		AFFB6D672C1F660C00B3C6AE /* DefaultLectureRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLectureRepositoryTests.swift; sourceTree = "<group>"; };
+		AFFB6D692C2310F000B3C6AE /* DefaultUserRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +518,9 @@
 			children = (
 				AF88DD3D2C04C0E200030825 /* DefaultNoticeRepositoryTests.swift */,
 				AF23C0F72C0A0AC000681EB7 /* DefaultExamPostRepositoryTests.swift */,
+				AFFB6D652C1F5E1300B3C6AE /* DefaultEvaluationPostRepositoryTests.swift */,
+				AFFB6D672C1F660C00B3C6AE /* DefaultLectureRepositoryTests.swift */,
+				AFFB6D692C2310F000B3C6AE /* DefaultUserRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -573,6 +576,8 @@
 				AF88DD332C045A8600030825 /* PBXTargetDependency */,
 			);
 			name = DataTests;
+			packageProductDependencies = (
+			);
 			productName = DataTests;
 			productReference = AF88DD2D2C045A8600030825 /* DataTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -712,9 +717,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF23C0F82C0A0AC000681EB7 /* DefaultExamPostRepositoryTests.swift in Sources */,
-				AF88DD3B2C045C5900030825 /* MockAPIProvider.swift in Sources */,
-				AF88DD3E2C04C0E200030825 /* DefaultNoticeRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

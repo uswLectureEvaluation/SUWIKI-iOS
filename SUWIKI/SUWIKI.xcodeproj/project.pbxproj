@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1596919FB782975945E0B9F /* Pods_SUWIKI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE656CFDD6DF7BF4884235D2 /* Pods_SUWIKI.framework */; };
+		259B0EB768ACF67A430A68D3 /* Pods_TimetableWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94443CAA7C2D508243BBBDFF /* Pods_TimetableWidgetExtension.framework */; };
+		5253CFA8B67D660477447967 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0AF376E95CB92096353DB6 /* Pods_App.framework */; };
 		AF01FBED2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF01FBEB2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld */; };
 		AF01FBEE2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF01FBEB2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld */; };
 		AF065E1A2B70C24C00676752 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E192B70C24C00676752 /* AppState.swift */; };
@@ -41,6 +42,7 @@
 		AF2586C92A8F5AB400A61F8E /* SearchCourseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2586C82A8F5AB400A61F8E /* SearchCourseEmptyView.swift */; };
 		AF2630322BB986CE00C9FB24 /* LectureEvaluationMajorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2630312BB986CE00C9FB24 /* LectureEvaluationMajorSelectView.swift */; };
 		AF2630342BB9872500C9FB24 /* LectureEvaluationMajorSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2630332BB9872500C9FB24 /* LectureEvaluationMajorSelectViewModel.swift */; };
+		AF2F7F4D2C26A763000E768A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86982A3771C6008C5781 /* CoreDataManager.swift */; };
 		AF3617CF2BCE62F70019185A /* DIContainer in Frameworks */ = {isa = PBXBuildFile; productRef = AF3617CE2BCE62F70019185A /* DIContainer */; };
 		AF3617D12BCE62F70019185A /* FirebaseManager in Frameworks */ = {isa = PBXBuildFile; productRef = AF3617D02BCE62F70019185A /* FirebaseManager */; };
 		AF3617D32BCE62F70019185A /* Keychain in Frameworks */ = {isa = PBXBuildFile; productRef = AF3617D22BCE62F70019185A /* Keychain */; };
@@ -231,8 +233,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		012A43604A333B98FA589C71 /* Pods-SUWIKI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.debug.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.debug.xcconfig"; sourceTree = "<group>"; };
-		2C88CEADC92B42C67B2B6F53 /* Pods-SUWIKI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SUWIKI.release.xcconfig"; path = "Target Support Files/Pods-SUWIKI/Pods-SUWIKI.release.xcconfig"; sourceTree = "<group>"; };
+		09BCCAB8EE2B336E786FCB62 /* Pods-TimetableWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-TimetableWidgetExtension/Pods-TimetableWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		21CE84D74177AEF67C81982F /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
+		94443CAA7C2D508243BBBDFF /* Pods_TimetableWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimetableWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD47C2CD3B28F7D483270F46 /* Pods-TimetableWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-TimetableWidgetExtension/Pods-TimetableWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		AE0AF376E95CB92096353DB6 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF01FBEC2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuwikiTimetable.xcdatamodel; sourceTree = "<group>"; };
 		AF01FC482BE3A67800F0EAD0 /* Domain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Domain.xcodeproj; path = Domain/Domain.xcodeproj; sourceTree = "<group>"; };
 		AF01FCF02BE4EB1800F0EAD0 /* Data.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Data.xcodeproj; path = Data/Data.xcodeproj; sourceTree = "<group>"; };
@@ -339,7 +344,7 @@
 		AFF785C82A949C5700B6D531 /* AddCourseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCourseViewModel.swift; sourceTree = "<group>"; };
 		AFF9DE8D2A3481D900CCB1D2 /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 		AFF9DE912A34841D00CCB1D2 /* TimetableView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
-		FE656CFDD6DF7BF4884235D2 /* Pods_SUWIKI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SUWIKI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5F29E80ABB14A1F1054E265 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +362,7 @@
 				AF7A0BE62BE7B89800A9885C /* Common.framework in Frameworks */,
 				AFBEF3452B4417A50047DDC3 /* WidgetKit.framework in Frameworks */,
 				AF5C84DA2BCF50B8007D5409 /* FirebaseRemoteConfig in Frameworks */,
+				259B0EB768ACF67A430A68D3 /* Pods_TimetableWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,8 +381,8 @@
 				AF3617D72BCE62F70019185A /* State in Frameworks */,
 				AF3617CF2BCE62F70019185A /* DIContainer in Frameworks */,
 				AF5C84D02BCF509D007D5409 /* FirebaseDatabase in Frameworks */,
-				A1596919FB782975945E0B9F /* Pods_SUWIKI.framework in Frameworks */,
 				AF5C84CC2BCF509D007D5409 /* FirebaseAnalytics in Frameworks */,
+				5253CFA8B67D660477447967 /* Pods_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,7 +396,8 @@
 				AF3617ED2BCE69AF0019185A /* FirebaseCore.framework */,
 				AFBEF3292B44115C0047DDC3 /* WidgetKit.framework */,
 				AFBEF32B2B44115C0047DDC3 /* SwiftUI.framework */,
-				FE656CFDD6DF7BF4884235D2 /* Pods_SUWIKI.framework */,
+				AE0AF376E95CB92096353DB6 /* Pods_App.framework */,
+				94443CAA7C2D508243BBBDFF /* Pods_TimetableWidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -398,8 +405,10 @@
 		63B3105FE151B90524E772B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				012A43604A333B98FA589C71 /* Pods-SUWIKI.debug.xcconfig */,
-				2C88CEADC92B42C67B2B6F53 /* Pods-SUWIKI.release.xcconfig */,
+				21CE84D74177AEF67C81982F /* Pods-App.debug.xcconfig */,
+				D5F29E80ABB14A1F1054E265 /* Pods-App.release.xcconfig */,
+				AD47C2CD3B28F7D483270F46 /* Pods-TimetableWidgetExtension.debug.xcconfig */,
+				09BCCAB8EE2B336E786FCB62 /* Pods-TimetableWidgetExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -868,6 +877,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFBEF3522B4417A70047DDC3 /* Build configuration list for PBXNativeTarget "TimetableWidgetExtension" */;
 			buildPhases = (
+				8438A8030E1EE5FACE03C528 /* [CP] Check Pods Manifest.lock */,
 				AFBEF3402B4417A50047DDC3 /* Sources */,
 				AFBEF3412B4417A50047DDC3 /* Frameworks */,
 				AFBEF3422B4417A50047DDC3 /* Resources */,
@@ -893,13 +903,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFE18F082A1C8AC1009D4D58 /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
-				DA9CD63BF554F65A5D8DC94A /* [CP] Check Pods Manifest.lock */,
+				C2108BEC3F3521AFEFCFE852 /* [CP] Check Pods Manifest.lock */,
 				AFE18EED2A1C8ABF009D4D58 /* Sources */,
 				AFE18EEE2A1C8ABF009D4D58 /* Frameworks */,
 				AFE18EEF2A1C8ABF009D4D58 /* Resources */,
 				AFBEF3552B4417A70047DDC3 /* Embed Foundation Extensions */,
-				520FD92A667F91E5B80F826A /* [CP] Embed Pods Frameworks */,
 				AF5A4D5C2BE8F1420015D214 /* Embed Frameworks */,
+				8D7F6FAE7E226B68630FFEFA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -930,7 +940,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					AFBEF3432B4417A50047DDC3 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -1044,24 +1054,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		520FD92A667F91E5B80F826A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SUWIKI/Pods-SUWIKI-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DA9CD63BF554F65A5D8DC94A /* [CP] Check Pods Manifest.lock */ = {
+		8438A8030E1EE5FACE03C528 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1076,7 +1069,46 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SUWIKI-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-TimetableWidgetExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D7F6FAE7E226B68630FFEFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2108BEC3F3521AFEFCFE852 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-App-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1096,6 +1128,7 @@
 				AF9907C42B564EA600EF0D91 /* TimetableWidgetViewModel.swift in Sources */,
 				AF01FBEE2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld in Sources */,
 				AF9907C62B564FCA00EF0D91 /* CourseForWidget.swift in Sources */,
+				AF2F7F4D2C26A763000E768A /* CoreDataManager.swift in Sources */,
 				AF9907CD2B566F7600EF0D91 /* TimetableWidgetMedium.swift in Sources */,
 				AF9907D02B566FC100EF0D91 /* TimetableWidgetCell.swift in Sources */,
 			);
@@ -1216,6 +1249,7 @@
 /* Begin XCBuildConfiguration section */
 		AFBEF3532B4417A70047DDC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD47C2CD3B28F7D483270F46 /* Pods-TimetableWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1250,6 +1284,7 @@
 		};
 		AFBEF3542B4417A70047DDC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09BCCAB8EE2B336E786FCB62 /* Pods-TimetableWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1397,7 +1432,7 @@
 		};
 		AFE18F092A1C8AC1009D4D58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 012A43604A333B98FA589C71 /* Pods-SUWIKI.debug.xcconfig */;
+			baseConfigurationReference = 21CE84D74177AEF67C81982F /* Pods-App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1435,7 +1470,7 @@
 		};
 		AFE18F0A2A1C8AC1009D4D58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C88CEADC92B42C67B2B6F53 /* Pods-SUWIKI.release.xcconfig */;
+			baseConfigurationReference = D5F29E80ABB14A1F1054E265 /* Pods-App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
