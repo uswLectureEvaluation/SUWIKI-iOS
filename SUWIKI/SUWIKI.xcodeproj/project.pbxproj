@@ -182,6 +182,20 @@
 			remoteGlobalIDString = AF60AA822BE504EC00454E7C;
 			remoteInfo = CommonTests;
 		};
+		AF9C40102C78B68D00F3D0B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF9C400B2C78B68D00F3D0B9 /* Presentation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AF9C3FF02C78B66A00F3D0B9;
+			remoteInfo = Presentation;
+		};
+		AF9C40122C78B68D00F3D0B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AF9C400B2C78B68D00F3D0B9 /* Presentation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AF9C3FF82C78B66A00F3D0B9;
+			remoteInfo = PresentationTests;
+		};
 		AFBEF34F2B4417A70047DDC3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AFE18EE92A1C8ABF009D4D58 /* Project object */;
@@ -309,6 +323,7 @@
 		AF9907CC2B566F7600EF0D91 /* TimetableWidgetMedium.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableWidgetMedium.swift; sourceTree = "<group>"; };
 		AF9907CF2B566FC100EF0D91 /* TimetableWidgetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableWidgetCell.swift; sourceTree = "<group>"; };
 		AF9907D12B566FD800EF0D91 /* TimetableWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableWidgetSmall.swift; sourceTree = "<group>"; };
+		AF9C400B2C78B68D00F3D0B9 /* Presentation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Presentation.xcodeproj; path = Presentation/Presentation.xcodeproj; sourceTree = "<group>"; };
 		AFA499E02A2798600047A4B4 /* MajorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorCell.swift; sourceTree = "<group>"; };
 		AFA499E62A2881BF0047A4B4 /* SelectMajorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMajorViewModel.swift; sourceTree = "<group>"; };
 		AFBEF3292B44115C0047DDC3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -566,6 +581,15 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		AF9C400C2C78B68D00F3D0B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40112C78B68D00F3D0B9 /* Presentation.framework */,
+				AF9C40132C78B68D00F3D0B9 /* PresentationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AFBA84C32BEA28D50070E34C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -815,6 +839,7 @@
 		AFE18EE82A1C8ABF009D4D58 = {
 			isa = PBXGroup;
 			children = (
+				AF9C400B2C78B68D00F3D0B9 /* Presentation.xcodeproj */,
 				AF3617C92BCE61540019185A /* Core */,
 				AF60AA922BE504FE00454E7C /* Common.xcodeproj */,
 				AF01FCF02BE4EB1800F0EAD0 /* Data.xcodeproj */,
@@ -939,7 +964,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					AFBEF3432B4417A50047DDC3 = {
@@ -976,6 +1001,10 @@
 				{
 					ProductGroup = AF01FC492BE3A67800F0EAD0 /* Products */;
 					ProjectRef = AF01FC482BE3A67800F0EAD0 /* Domain.xcodeproj */;
+				},
+				{
+					ProductGroup = AF9C400C2C78B68D00F3D0B9 /* Products */;
+					ProjectRef = AF9C400B2C78B68D00F3D0B9 /* Presentation.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1027,6 +1056,20 @@
 			fileType = wrapper.cfbundle;
 			path = CommonTests.xctest;
 			remoteRef = AF60AA992BE504FE00454E7C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AF9C40112C78B68D00F3D0B9 /* Presentation.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Presentation.framework;
+			remoteRef = AF9C40102C78B68D00F3D0B9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AF9C40132C78B68D00F3D0B9 /* PresentationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PresentationTests.xctest;
+			remoteRef = AF9C40122C78B68D00F3D0B9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
