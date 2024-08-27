@@ -22,8 +22,10 @@ final class AddCourseManager {
   @Inject var saveCourseUseCase: SaveCourseUseCase
   @Inject var fetchELearningUseCase: FetchELearningUseCase
   
-  func saveCourse(newCourse: TimetableCourse,
-                  duplicateCase: DuplicateCase) async throws -> Bool {
+  func saveCourse(
+    newCourse: TimetableCourse,
+    duplicateCase: DuplicateCase
+  ) async throws -> Bool {
     guard let id = UserDefaults.shared.value(forKey: "id") as? String,
           let timetableCourse = fetchCourseUseCase.execute(id: id)
     else { return false }
@@ -60,8 +62,10 @@ final class AddCourseManager {
     return isDuplicated
   }
   
-  func isCourseDuplicated(existingCourse: [TimetableCourse],
-                          course: [TimetableCourse]) -> Bool {
+  func isCourseDuplicated(
+    existingCourse: [TimetableCourse],
+    course: [TimetableCourse]
+  ) -> Bool {
     var isDuplicated = false
     for i in 0..<existingCourse.count {
       for j in 0..<course.count {
@@ -191,8 +195,10 @@ final class AddCourseManager {
     return timeTableCourse
   }
   
-  func isTimeDuplicated(existingCourse: TimetableCourse,
-                        newCourse: TimetableCourse) -> Bool {
+  func isTimeDuplicated(
+    existingCourse: TimetableCourse,
+    newCourse: TimetableCourse
+  ) -> Bool {
     let existingCourseStartTimeStr = existingCourse.startTime.filter { $0 != ":" }
     let existingCourseEndTimeStr = existingCourse.endTime.filter { $0 != ":" }
     let newCourseStartTimeStr = newCourse.startTime.filter { $0 != ":" }
@@ -245,5 +251,4 @@ final class AddCourseManager {
     }
     return dayToString
   }
-  
 }

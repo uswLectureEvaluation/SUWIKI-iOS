@@ -11,6 +11,78 @@
 		AF9C3FFE2C78B66A00F3D0B9 /* PresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C3FFD2C78B66A00F3D0B9 /* PresentationTests.swift */; };
 		AF9C3FFF2C78B66A00F3D0B9 /* Presentation.h in Headers */ = {isa = PBXBuildFile; fileRef = AF9C3FF32C78B66A00F3D0B9 /* Presentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AF9C400A2C78B67500F3D0B9 /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40092C78B67500F3D0B9 /* Presentation.swift */; };
+		AF9C40902C7DCB2700F3D0B9 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C402C2C7DCB2700F3D0B9 /* TabBarView.swift */; };
+		AF9C40912C7DCB2700F3D0B9 /* AnnouncementDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C402E2C7DCB2700F3D0B9 /* AnnouncementDetailView.swift */; };
+		AF9C40922C7DCB2700F3D0B9 /* AnnouncementDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C402F2C7DCB2700F3D0B9 /* AnnouncementDetailViewModel.swift */; };
+		AF9C40932C7DCB2700F3D0B9 /* AnnouncementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40302C7DCB2700F3D0B9 /* AnnouncementView.swift */; };
+		AF9C40942C7DCB2700F3D0B9 /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40312C7DCB2700F3D0B9 /* AnnouncementViewModel.swift */; };
+		AF9C40952C7DCB2700F3D0B9 /* EvaluationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40332C7DCB2700F3D0B9 /* EvaluationCell.swift */; };
+		AF9C40962C7DCB2700F3D0B9 /* ExamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40342C7DCB2700F3D0B9 /* ExamCell.swift */; };
+		AF9C40972C7DCB2700F3D0B9 /* IsPostEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40352C7DCB2700F3D0B9 /* IsPostEmptyView.swift */; };
+		AF9C40982C7DCB2700F3D0B9 /* LectureEvaluationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40362C7DCB2700F3D0B9 /* LectureEvaluationDetailView.swift */; };
+		AF9C40992C7DCB2700F3D0B9 /* LectureEvaluationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40372C7DCB2700F3D0B9 /* LectureEvaluationDetailViewModel.swift */; };
+		AF9C409A2C7DCB2700F3D0B9 /* LectureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40392C7DCB2700F3D0B9 /* LectureCell.swift */; };
+		AF9C409B2C7DCB2700F3D0B9 /* LectureEvaluationHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C403A2C7DCB2700F3D0B9 /* LectureEvaluationHomeView.swift */; };
+		AF9C409C2C7DCB2700F3D0B9 /* LectureEvaluationHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C403B2C7DCB2700F3D0B9 /* LectureEvaluationHomeViewModel.swift */; };
+		AF9C409D2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C403C2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectView.swift */; };
+		AF9C409E2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C403D2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectViewModel.swift */; };
+		AF9C409F2C7DCB2700F3D0B9 /* EvaluationPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C403F2C7DCB2700F3D0B9 /* EvaluationPostView.swift */; };
+		AF9C40A02C7DCB2700F3D0B9 /* EvaluationPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40402C7DCB2700F3D0B9 /* EvaluationPostViewModel.swift */; };
+		AF9C40A12C7DCB2700F3D0B9 /* PostEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40412C7DCB2700F3D0B9 /* PostEnum.swift */; };
+		AF9C40A22C7DCB2700F3D0B9 /* ExamPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40432C7DCB2700F3D0B9 /* ExamPostView.swift */; };
+		AF9C40A32C7DCB2700F3D0B9 /* ExamPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40442C7DCB2700F3D0B9 /* ExamPostViewModel.swift */; };
+		AF9C40A42C7DCB2700F3D0B9 /* AddCourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40482C7DCB2700F3D0B9 /* AddCourseView.swift */; };
+		AF9C40A52C7DCB2700F3D0B9 /* AddCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40492C7DCB2700F3D0B9 /* AddCourseViewController.swift */; };
+		AF9C40A62C7DCB2700F3D0B9 /* AddCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C404A2C7DCB2700F3D0B9 /* AddCourseViewModel.swift */; };
+		AF9C40A72C7DCB2700F3D0B9 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C404C2C7DCB2700F3D0B9 /* CourseCell.swift */; };
+		AF9C40A82C7DCB2700F3D0B9 /* MajorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C404D2C7DCB2700F3D0B9 /* MajorCell.swift */; };
+		AF9C40A92C7DCB2700F3D0B9 /* SearchCourseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C404F2C7DCB2700F3D0B9 /* SearchCourseEmptyView.swift */; };
+		AF9C40AA2C7DCB2700F3D0B9 /* SelectCourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40502C7DCB2700F3D0B9 /* SelectCourseListViewModel.swift */; };
+		AF9C40AB2C7DCB2700F3D0B9 /* SelectCourseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40512C7DCB2700F3D0B9 /* SelectCourseViewController.swift */; };
+		AF9C40AC2C7DCB2700F3D0B9 /* SelectCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40522C7DCB2700F3D0B9 /* SelectCourseViewModel.swift */; };
+		AF9C40AD2C7DCB2700F3D0B9 /* SelectMajorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40542C7DCB2700F3D0B9 /* SelectMajorViewController.swift */; };
+		AF9C40AE2C7DCB2700F3D0B9 /* SelectMajorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40552C7DCB2700F3D0B9 /* SelectMajorViewModel.swift */; };
+		AF9C40AF2C7DCB2700F3D0B9 /* AddCourseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40582C7DCB2700F3D0B9 /* AddCourseManager.swift */; };
+		AF9C40B02C7DCB2700F3D0B9 /* AddTimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40592C7DCB2700F3D0B9 /* AddTimetableViewController.swift */; };
+		AF9C40B12C7DCB2700F3D0B9 /* AddTimetableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C405A2C7DCB2700F3D0B9 /* AddTimetableViewModel.swift */; };
+		AF9C40B22C7DCB2700F3D0B9 /* TimetableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C405B2C7DCB2700F3D0B9 /* TimetableListViewController.swift */; };
+		AF9C40B32C7DCB2700F3D0B9 /* TimetableListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C405C2C7DCB2700F3D0B9 /* TimetableListViewModel.swift */; };
+		AF9C40B42C7DCB2700F3D0B9 /* TimetableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C405E2C7DCB2700F3D0B9 /* TimetableListCell.swift */; };
+		AF9C40B52C7DCB2700F3D0B9 /* InitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40602C7DCB2700F3D0B9 /* InitView.swift */; };
+		AF9C40B62C7DCB2700F3D0B9 /* TimetableEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40612C7DCB2700F3D0B9 /* TimetableEmptyView.swift */; };
+		AF9C40B72C7DCB2700F3D0B9 /* TimetableView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF9C40622C7DCB2700F3D0B9 /* TimetableView.storyboard */; };
+		AF9C40B82C7DCB2700F3D0B9 /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40632C7DCB2700F3D0B9 /* TimetableViewController.swift */; };
+		AF9C40B92C7DCB2700F3D0B9 /* TimetableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40642C7DCB2700F3D0B9 /* TimetableViewModel.swift */; };
+		AF9C40BA2C7DCB2700F3D0B9 /* TimetableWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40652C7DCB2700F3D0B9 /* TimetableWrapperView.swift */; };
+		AF9C40BB2C7DCB2700F3D0B9 /* ManageButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40682C7DCB2700F3D0B9 /* ManageButtonType.swift */; };
+		AF9C40BC2C7DCB2700F3D0B9 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40692C7DCB2700F3D0B9 /* ServiceType.swift */; };
+		AF9C40BD2C7DCB2700F3D0B9 /* UserInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C406A2C7DCB2700F3D0B9 /* UserInfoType.swift */; };
+		AF9C40BE2C7DCB2700F3D0B9 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C406B2C7DCB2700F3D0B9 /* UserInfoView.swift */; };
+		AF9C40BF2C7DCB2700F3D0B9 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C406C2C7DCB2700F3D0B9 /* UserInfoViewModel.swift */; };
+		AF9C40C02C7DCB2700F3D0B9 /* ManageAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C406E2C7DCB2700F3D0B9 /* ManageAccountView.swift */; };
+		AF9C40C12C7DCB2700F3D0B9 /* ManageAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C406F2C7DCB2700F3D0B9 /* ManageAccountViewModel.swift */; };
+		AF9C40C22C7DCB2700F3D0B9 /* UserPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40712C7DCB2700F3D0B9 /* UserPointView.swift */; };
+		AF9C40C32C7DCB2700F3D0B9 /* UserPointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40722C7DCB2700F3D0B9 /* UserPointViewModel.swift */; };
+		AF9C40C42C7DCB2700F3D0B9 /* UserPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40742C7DCB2700F3D0B9 /* UserPostView.swift */; };
+		AF9C40C52C7DCB2700F3D0B9 /* UserPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40752C7DCB2700F3D0B9 /* UserPostViewModel.swift */; };
+		AF9C40C62C7DCB2700F3D0B9 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40782C7DCB2700F3D0B9 /* ChangePasswordView.swift */; };
+		AF9C40C72C7DCB2700F3D0B9 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40792C7DCB2700F3D0B9 /* ChangePasswordViewModel.swift */; };
+		AF9C40C82C7DCB2700F3D0B9 /* FindIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C407B2C7DCB2700F3D0B9 /* FindIdView.swift */; };
+		AF9C40C92C7DCB2700F3D0B9 /* FindIdViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C407C2C7DCB2700F3D0B9 /* FindIdViewModel.swift */; };
+		AF9C40CA2C7DCB2700F3D0B9 /* FindPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C407D2C7DCB2700F3D0B9 /* FindPasswordView.swift */; };
+		AF9C40CB2C7DCB2700F3D0B9 /* FindPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C407E2C7DCB2700F3D0B9 /* FindPasswordViewModel.swift */; };
+		AF9C40CC2C7DCB2700F3D0B9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40802C7DCB2700F3D0B9 /* LoginView.swift */; };
+		AF9C40CD2C7DCB2700F3D0B9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40812C7DCB2700F3D0B9 /* LoginViewModel.swift */; };
+		AF9C40CE2C7DCB2700F3D0B9 /* EmailInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40832C7DCB2700F3D0B9 /* EmailInputView.swift */; };
+		AF9C40CF2C7DCB2700F3D0B9 /* IdInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40842C7DCB2700F3D0B9 /* IdInputView.swift */; };
+		AF9C40D02C7DCB2700F3D0B9 /* PasswordInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40852C7DCB2700F3D0B9 /* PasswordInputView.swift */; };
+		AF9C40D12C7DCB2700F3D0B9 /* SignUpInputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40862C7DCB2700F3D0B9 /* SignUpInputType.swift */; };
+		AF9C40D22C7DCB2700F3D0B9 /* SignUpState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40872C7DCB2700F3D0B9 /* SignUpState.swift */; };
+		AF9C40D32C7DCB2700F3D0B9 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40882C7DCB2700F3D0B9 /* SignUpView.swift */; };
+		AF9C40D42C7DCB2700F3D0B9 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40892C7DCB2700F3D0B9 /* SignUpViewModel.swift */; };
+		AF9C40D52C7DCB2700F3D0B9 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C408A2C7DCB2700F3D0B9 /* SuccessView.swift */; };
+		AF9C40D62C7DCB2700F3D0B9 /* WithDrawAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C408C2C7DCB2700F3D0B9 /* WithDrawAccountView.swift */; };
+		AF9C40D72C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C408D2C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +101,78 @@
 		AF9C3FF82C78B66A00F3D0B9 /* PresentationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresentationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9C3FFD2C78B66A00F3D0B9 /* PresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationTests.swift; sourceTree = "<group>"; };
 		AF9C40092C78B67500F3D0B9 /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
+		AF9C402C2C7DCB2700F3D0B9 /* TabBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		AF9C402E2C7DCB2700F3D0B9 /* AnnouncementDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailView.swift; sourceTree = "<group>"; };
+		AF9C402F2C7DCB2700F3D0B9 /* AnnouncementDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailViewModel.swift; sourceTree = "<group>"; };
+		AF9C40302C7DCB2700F3D0B9 /* AnnouncementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementView.swift; sourceTree = "<group>"; };
+		AF9C40312C7DCB2700F3D0B9 /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
+		AF9C40332C7DCB2700F3D0B9 /* EvaluationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluationCell.swift; sourceTree = "<group>"; };
+		AF9C40342C7DCB2700F3D0B9 /* ExamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamCell.swift; sourceTree = "<group>"; };
+		AF9C40352C7DCB2700F3D0B9 /* IsPostEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsPostEmptyView.swift; sourceTree = "<group>"; };
+		AF9C40362C7DCB2700F3D0B9 /* LectureEvaluationDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureEvaluationDetailView.swift; sourceTree = "<group>"; };
+		AF9C40372C7DCB2700F3D0B9 /* LectureEvaluationDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureEvaluationDetailViewModel.swift; sourceTree = "<group>"; };
+		AF9C40392C7DCB2700F3D0B9 /* LectureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureCell.swift; sourceTree = "<group>"; };
+		AF9C403A2C7DCB2700F3D0B9 /* LectureEvaluationHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureEvaluationHomeView.swift; sourceTree = "<group>"; };
+		AF9C403B2C7DCB2700F3D0B9 /* LectureEvaluationHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureEvaluationHomeViewModel.swift; sourceTree = "<group>"; };
+		AF9C403C2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureEvaluationMajorSelectView.swift; sourceTree = "<group>"; };
+		AF9C403D2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureEvaluationMajorSelectViewModel.swift; sourceTree = "<group>"; };
+		AF9C403F2C7DCB2700F3D0B9 /* EvaluationPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluationPostView.swift; sourceTree = "<group>"; };
+		AF9C40402C7DCB2700F3D0B9 /* EvaluationPostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluationPostViewModel.swift; sourceTree = "<group>"; };
+		AF9C40412C7DCB2700F3D0B9 /* PostEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEnum.swift; sourceTree = "<group>"; };
+		AF9C40432C7DCB2700F3D0B9 /* ExamPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamPostView.swift; sourceTree = "<group>"; };
+		AF9C40442C7DCB2700F3D0B9 /* ExamPostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExamPostViewModel.swift; sourceTree = "<group>"; };
+		AF9C40482C7DCB2700F3D0B9 /* AddCourseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseView.swift; sourceTree = "<group>"; };
+		AF9C40492C7DCB2700F3D0B9 /* AddCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewController.swift; sourceTree = "<group>"; };
+		AF9C404A2C7DCB2700F3D0B9 /* AddCourseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewModel.swift; sourceTree = "<group>"; };
+		AF9C404C2C7DCB2700F3D0B9 /* CourseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCell.swift; sourceTree = "<group>"; };
+		AF9C404D2C7DCB2700F3D0B9 /* MajorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MajorCell.swift; sourceTree = "<group>"; };
+		AF9C404F2C7DCB2700F3D0B9 /* SearchCourseEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCourseEmptyView.swift; sourceTree = "<group>"; };
+		AF9C40502C7DCB2700F3D0B9 /* SelectCourseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCourseListViewModel.swift; sourceTree = "<group>"; };
+		AF9C40512C7DCB2700F3D0B9 /* SelectCourseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCourseViewController.swift; sourceTree = "<group>"; };
+		AF9C40522C7DCB2700F3D0B9 /* SelectCourseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCourseViewModel.swift; sourceTree = "<group>"; };
+		AF9C40542C7DCB2700F3D0B9 /* SelectMajorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMajorViewController.swift; sourceTree = "<group>"; };
+		AF9C40552C7DCB2700F3D0B9 /* SelectMajorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMajorViewModel.swift; sourceTree = "<group>"; };
+		AF9C40582C7DCB2700F3D0B9 /* AddCourseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseManager.swift; sourceTree = "<group>"; };
+		AF9C40592C7DCB2700F3D0B9 /* AddTimetableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimetableViewController.swift; sourceTree = "<group>"; };
+		AF9C405A2C7DCB2700F3D0B9 /* AddTimetableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTimetableViewModel.swift; sourceTree = "<group>"; };
+		AF9C405B2C7DCB2700F3D0B9 /* TimetableListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableListViewController.swift; sourceTree = "<group>"; };
+		AF9C405C2C7DCB2700F3D0B9 /* TimetableListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableListViewModel.swift; sourceTree = "<group>"; };
+		AF9C405E2C7DCB2700F3D0B9 /* TimetableListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableListCell.swift; sourceTree = "<group>"; };
+		AF9C40602C7DCB2700F3D0B9 /* InitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitView.swift; sourceTree = "<group>"; };
+		AF9C40612C7DCB2700F3D0B9 /* TimetableEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableEmptyView.swift; sourceTree = "<group>"; };
+		AF9C40622C7DCB2700F3D0B9 /* TimetableView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimetableView.storyboard; sourceTree = "<group>"; };
+		AF9C40632C7DCB2700F3D0B9 /* TimetableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
+		AF9C40642C7DCB2700F3D0B9 /* TimetableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableViewModel.swift; sourceTree = "<group>"; };
+		AF9C40652C7DCB2700F3D0B9 /* TimetableWrapperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableWrapperView.swift; sourceTree = "<group>"; };
+		AF9C40682C7DCB2700F3D0B9 /* ManageButtonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageButtonType.swift; sourceTree = "<group>"; };
+		AF9C40692C7DCB2700F3D0B9 /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
+		AF9C406A2C7DCB2700F3D0B9 /* UserInfoType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoType.swift; sourceTree = "<group>"; };
+		AF9C406B2C7DCB2700F3D0B9 /* UserInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		AF9C406C2C7DCB2700F3D0B9 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
+		AF9C406E2C7DCB2700F3D0B9 /* ManageAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageAccountView.swift; sourceTree = "<group>"; };
+		AF9C406F2C7DCB2700F3D0B9 /* ManageAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageAccountViewModel.swift; sourceTree = "<group>"; };
+		AF9C40712C7DCB2700F3D0B9 /* UserPointView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPointView.swift; sourceTree = "<group>"; };
+		AF9C40722C7DCB2700F3D0B9 /* UserPointViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPointViewModel.swift; sourceTree = "<group>"; };
+		AF9C40742C7DCB2700F3D0B9 /* UserPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostView.swift; sourceTree = "<group>"; };
+		AF9C40752C7DCB2700F3D0B9 /* UserPostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostViewModel.swift; sourceTree = "<group>"; };
+		AF9C40782C7DCB2700F3D0B9 /* ChangePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		AF9C40792C7DCB2700F3D0B9 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		AF9C407B2C7DCB2700F3D0B9 /* FindIdView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdView.swift; sourceTree = "<group>"; };
+		AF9C407C2C7DCB2700F3D0B9 /* FindIdViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindIdViewModel.swift; sourceTree = "<group>"; };
+		AF9C407D2C7DCB2700F3D0B9 /* FindPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordView.swift; sourceTree = "<group>"; };
+		AF9C407E2C7DCB2700F3D0B9 /* FindPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindPasswordViewModel.swift; sourceTree = "<group>"; };
+		AF9C40802C7DCB2700F3D0B9 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AF9C40812C7DCB2700F3D0B9 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		AF9C40832C7DCB2700F3D0B9 /* EmailInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailInputView.swift; sourceTree = "<group>"; };
+		AF9C40842C7DCB2700F3D0B9 /* IdInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdInputView.swift; sourceTree = "<group>"; };
+		AF9C40852C7DCB2700F3D0B9 /* PasswordInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordInputView.swift; sourceTree = "<group>"; };
+		AF9C40862C7DCB2700F3D0B9 /* SignUpInputType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpInputType.swift; sourceTree = "<group>"; };
+		AF9C40872C7DCB2700F3D0B9 /* SignUpState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpState.swift; sourceTree = "<group>"; };
+		AF9C40882C7DCB2700F3D0B9 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		AF9C40892C7DCB2700F3D0B9 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		AF9C408A2C7DCB2700F3D0B9 /* SuccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
+		AF9C408C2C7DCB2700F3D0B9 /* WithDrawAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawAccountView.swift; sourceTree = "<group>"; };
+		AF9C408D2C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawAccountViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +232,401 @@
 		AF9C40082C78B66E00F3D0B9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AF9C408F2C7DCB2700F3D0B9 /* Auth */,
+				AF9C40472C7DCB2700F3D0B9 /* LectureEvaluation */,
+				AF9C402D2C7DCB2700F3D0B9 /* TabBar */,
+				AF9C40672C7DCB2700F3D0B9 /* Timetable */,
+				AF9C40772C7DCB2700F3D0B9 /* UserInformation */,
 				AF9C40092C78B67500F3D0B9 /* Presentation.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		AF9C402D2C7DCB2700F3D0B9 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C402C2C7DCB2700F3D0B9 /* TabBarView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		AF9C40322C7DCB2700F3D0B9 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40DE2C7DCB7300F3D0B9 /* ViewModel */,
+				AF9C40DD2C7DCB6F00F3D0B9 /* View */,
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		AF9C40382C7DCB2700F3D0B9 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40E12C7DCBBA00F3D0B9 /* ViewModel */,
+				AF9C40E02C7DCBB500F3D0B9 /* View */,
+				AF9C40DF2C7DCBB100F3D0B9 /* Cell */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		AF9C403E2C7DCB2700F3D0B9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40E42C7DCBD300F3D0B9 /* ViewModel */,
+				AF9C40E32C7DCBCF00F3D0B9 /* View */,
+				AF9C40E22C7DCBCB00F3D0B9 /* Cell */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AF9C40422C7DCB2700F3D0B9 /* LectureEvaluation */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C403F2C7DCB2700F3D0B9 /* EvaluationPostView.swift */,
+				AF9C40402C7DCB2700F3D0B9 /* EvaluationPostViewModel.swift */,
+				AF9C40412C7DCB2700F3D0B9 /* PostEnum.swift */,
+			);
+			path = LectureEvaluation;
+			sourceTree = "<group>";
+		};
+		AF9C40452C7DCB2700F3D0B9 /* LectureExamInfo */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40432C7DCB2700F3D0B9 /* ExamPostView.swift */,
+				AF9C40442C7DCB2700F3D0B9 /* ExamPostViewModel.swift */,
+			);
+			path = LectureExamInfo;
+			sourceTree = "<group>";
+		};
+		AF9C40462C7DCB2700F3D0B9 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40422C7DCB2700F3D0B9 /* LectureEvaluation */,
+				AF9C40452C7DCB2700F3D0B9 /* LectureExamInfo */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		AF9C40472C7DCB2700F3D0B9 /* LectureEvaluation */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40322C7DCB2700F3D0B9 /* Announcement */,
+				AF9C40382C7DCB2700F3D0B9 /* Detail */,
+				AF9C403E2C7DCB2700F3D0B9 /* Home */,
+				AF9C40462C7DCB2700F3D0B9 /* Post */,
+			);
+			path = LectureEvaluation;
+			sourceTree = "<group>";
+		};
+		AF9C404B2C7DCB2700F3D0B9 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40482C7DCB2700F3D0B9 /* AddCourseView.swift */,
+				AF9C40492C7DCB2700F3D0B9 /* AddCourseViewController.swift */,
+				AF9C404A2C7DCB2700F3D0B9 /* AddCourseViewModel.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		AF9C404E2C7DCB2700F3D0B9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C404C2C7DCB2700F3D0B9 /* CourseCell.swift */,
+				AF9C404D2C7DCB2700F3D0B9 /* MajorCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AF9C40532C7DCB2700F3D0B9 /* SelectLecture */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C404F2C7DCB2700F3D0B9 /* SearchCourseEmptyView.swift */,
+				AF9C40502C7DCB2700F3D0B9 /* SelectCourseListViewModel.swift */,
+				AF9C40512C7DCB2700F3D0B9 /* SelectCourseViewController.swift */,
+				AF9C40522C7DCB2700F3D0B9 /* SelectCourseViewModel.swift */,
+			);
+			path = SelectLecture;
+			sourceTree = "<group>";
+		};
+		AF9C40562C7DCB2700F3D0B9 /* SelectMajor */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40542C7DCB2700F3D0B9 /* SelectMajorViewController.swift */,
+				AF9C40552C7DCB2700F3D0B9 /* SelectMajorViewModel.swift */,
+			);
+			path = SelectMajor;
+			sourceTree = "<group>";
+		};
+		AF9C40572C7DCB2700F3D0B9 /* AddLecture */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C404B2C7DCB2700F3D0B9 /* Add */,
+				AF9C404E2C7DCB2700F3D0B9 /* Cell */,
+				AF9C40532C7DCB2700F3D0B9 /* SelectLecture */,
+				AF9C40562C7DCB2700F3D0B9 /* SelectMajor */,
+			);
+			path = AddLecture;
+			sourceTree = "<group>";
+		};
+		AF9C405D2C7DCB2700F3D0B9 /* AddTimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40582C7DCB2700F3D0B9 /* AddCourseManager.swift */,
+				AF9C40592C7DCB2700F3D0B9 /* AddTimetableViewController.swift */,
+				AF9C405A2C7DCB2700F3D0B9 /* AddTimetableViewModel.swift */,
+				AF9C405B2C7DCB2700F3D0B9 /* TimetableListViewController.swift */,
+				AF9C405C2C7DCB2700F3D0B9 /* TimetableListViewModel.swift */,
+			);
+			path = AddTimeTable;
+			sourceTree = "<group>";
+		};
+		AF9C405F2C7DCB2700F3D0B9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C405E2C7DCB2700F3D0B9 /* TimetableListCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AF9C40662C7DCB2700F3D0B9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C405F2C7DCB2700F3D0B9 /* Cell */,
+				AF9C40602C7DCB2700F3D0B9 /* InitView.swift */,
+				AF9C40612C7DCB2700F3D0B9 /* TimetableEmptyView.swift */,
+				AF9C40622C7DCB2700F3D0B9 /* TimetableView.storyboard */,
+				AF9C40632C7DCB2700F3D0B9 /* TimetableViewController.swift */,
+				AF9C40642C7DCB2700F3D0B9 /* TimetableViewModel.swift */,
+				AF9C40652C7DCB2700F3D0B9 /* TimetableWrapperView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AF9C40672C7DCB2700F3D0B9 /* Timetable */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40572C7DCB2700F3D0B9 /* AddLecture */,
+				AF9C405D2C7DCB2700F3D0B9 /* AddTimeTable */,
+				AF9C40662C7DCB2700F3D0B9 /* Home */,
+			);
+			path = Timetable;
+			sourceTree = "<group>";
+		};
+		AF9C406D2C7DCB2700F3D0B9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40682C7DCB2700F3D0B9 /* ManageButtonType.swift */,
+				AF9C40692C7DCB2700F3D0B9 /* ServiceType.swift */,
+				AF9C406A2C7DCB2700F3D0B9 /* UserInfoType.swift */,
+				AF9C406B2C7DCB2700F3D0B9 /* UserInfoView.swift */,
+				AF9C406C2C7DCB2700F3D0B9 /* UserInfoViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AF9C40702C7DCB2700F3D0B9 /* ManageUserAccount */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C406E2C7DCB2700F3D0B9 /* ManageAccountView.swift */,
+				AF9C406F2C7DCB2700F3D0B9 /* ManageAccountViewModel.swift */,
+			);
+			path = ManageUserAccount;
+			sourceTree = "<group>";
+		};
+		AF9C40732C7DCB2700F3D0B9 /* UserPoint */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40712C7DCB2700F3D0B9 /* UserPointView.swift */,
+				AF9C40722C7DCB2700F3D0B9 /* UserPointViewModel.swift */,
+			);
+			path = UserPoint;
+			sourceTree = "<group>";
+		};
+		AF9C40762C7DCB2700F3D0B9 /* UserPost */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40742C7DCB2700F3D0B9 /* UserPostView.swift */,
+				AF9C40752C7DCB2700F3D0B9 /* UserPostViewModel.swift */,
+			);
+			path = UserPost;
+			sourceTree = "<group>";
+		};
+		AF9C40772C7DCB2700F3D0B9 /* UserInformation */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C406D2C7DCB2700F3D0B9 /* Home */,
+				AF9C40702C7DCB2700F3D0B9 /* ManageUserAccount */,
+				AF9C40732C7DCB2700F3D0B9 /* UserPoint */,
+				AF9C40762C7DCB2700F3D0B9 /* UserPost */,
+			);
+			path = UserInformation;
+			sourceTree = "<group>";
+		};
+		AF9C407A2C7DCB2700F3D0B9 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40782C7DCB2700F3D0B9 /* ChangePasswordView.swift */,
+				AF9C40792C7DCB2700F3D0B9 /* ChangePasswordViewModel.swift */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		AF9C407F2C7DCB2700F3D0B9 /* FindAccount */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40DA2C7DCB4A00F3D0B9 /* ViewModel */,
+				AF9C40D92C7DCB4600F3D0B9 /* View */,
+			);
+			path = FindAccount;
+			sourceTree = "<group>";
+		};
+		AF9C40822C7DCB2700F3D0B9 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40802C7DCB2700F3D0B9 /* LoginView.swift */,
+				AF9C40812C7DCB2700F3D0B9 /* LoginViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		AF9C408B2C7DCB2700F3D0B9 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40DC2C7DCB6900F3D0B9 /* ViewModel */,
+				AF9C40DB2C7DCB5E00F3D0B9 /* View */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		AF9C408E2C7DCB2700F3D0B9 /* WithDraw */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C408C2C7DCB2700F3D0B9 /* WithDrawAccountView.swift */,
+				AF9C408D2C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift */,
+			);
+			path = WithDraw;
+			sourceTree = "<group>";
+		};
+		AF9C408F2C7DCB2700F3D0B9 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C407A2C7DCB2700F3D0B9 /* ChangePassword */,
+				AF9C407F2C7DCB2700F3D0B9 /* FindAccount */,
+				AF9C40822C7DCB2700F3D0B9 /* SignIn */,
+				AF9C408B2C7DCB2700F3D0B9 /* SignUp */,
+				AF9C408E2C7DCB2700F3D0B9 /* WithDraw */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		AF9C40D92C7DCB4600F3D0B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C407B2C7DCB2700F3D0B9 /* FindIdView.swift */,
+				AF9C407D2C7DCB2700F3D0B9 /* FindPasswordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF9C40DA2C7DCB4A00F3D0B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C407C2C7DCB2700F3D0B9 /* FindIdViewModel.swift */,
+				AF9C407E2C7DCB2700F3D0B9 /* FindPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF9C40DB2C7DCB5E00F3D0B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40832C7DCB2700F3D0B9 /* EmailInputView.swift */,
+				AF9C40842C7DCB2700F3D0B9 /* IdInputView.swift */,
+				AF9C40852C7DCB2700F3D0B9 /* PasswordInputView.swift */,
+				AF9C40862C7DCB2700F3D0B9 /* SignUpInputType.swift */,
+				AF9C40872C7DCB2700F3D0B9 /* SignUpState.swift */,
+				AF9C40882C7DCB2700F3D0B9 /* SignUpView.swift */,
+				AF9C408A2C7DCB2700F3D0B9 /* SuccessView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF9C40DC2C7DCB6900F3D0B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40892C7DCB2700F3D0B9 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF9C40DD2C7DCB6F00F3D0B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C402E2C7DCB2700F3D0B9 /* AnnouncementDetailView.swift */,
+				AF9C40302C7DCB2700F3D0B9 /* AnnouncementView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF9C40DE2C7DCB7300F3D0B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C402F2C7DCB2700F3D0B9 /* AnnouncementDetailViewModel.swift */,
+				AF9C40312C7DCB2700F3D0B9 /* AnnouncementViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF9C40DF2C7DCBB100F3D0B9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40332C7DCB2700F3D0B9 /* EvaluationCell.swift */,
+				AF9C40342C7DCB2700F3D0B9 /* ExamCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AF9C40E02C7DCBB500F3D0B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40352C7DCB2700F3D0B9 /* IsPostEmptyView.swift */,
+				AF9C40362C7DCB2700F3D0B9 /* LectureEvaluationDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF9C40E12C7DCBBA00F3D0B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40372C7DCB2700F3D0B9 /* LectureEvaluationDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AF9C40E22C7DCBCB00F3D0B9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C40392C7DCB2700F3D0B9 /* LectureCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		AF9C40E32C7DCBCF00F3D0B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C403A2C7DCB2700F3D0B9 /* LectureEvaluationHomeView.swift */,
+				AF9C403C2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AF9C40E42C7DCBD300F3D0B9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF9C403B2C7DCB2700F3D0B9 /* LectureEvaluationHomeViewModel.swift */,
+				AF9C403D2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +722,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9C40B72C7DCB2700F3D0B9 /* TimetableView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +740,78 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9C409A2C7DCB2700F3D0B9 /* LectureCell.swift in Sources */,
+				AF9C40A52C7DCB2700F3D0B9 /* AddCourseViewController.swift in Sources */,
+				AF9C40AF2C7DCB2700F3D0B9 /* AddCourseManager.swift in Sources */,
+				AF9C40C52C7DCB2700F3D0B9 /* UserPostViewModel.swift in Sources */,
+				AF9C40CF2C7DCB2700F3D0B9 /* IdInputView.swift in Sources */,
+				AF9C40BA2C7DCB2700F3D0B9 /* TimetableWrapperView.swift in Sources */,
+				AF9C40C32C7DCB2700F3D0B9 /* UserPointViewModel.swift in Sources */,
+				AF9C40A42C7DCB2700F3D0B9 /* AddCourseView.swift in Sources */,
+				AF9C40B92C7DCB2700F3D0B9 /* TimetableViewModel.swift in Sources */,
+				AF9C40B02C7DCB2700F3D0B9 /* AddTimetableViewController.swift in Sources */,
+				AF9C40932C7DCB2700F3D0B9 /* AnnouncementView.swift in Sources */,
+				AF9C40D22C7DCB2700F3D0B9 /* SignUpState.swift in Sources */,
+				AF9C40D32C7DCB2700F3D0B9 /* SignUpView.swift in Sources */,
+				AF9C40D42C7DCB2700F3D0B9 /* SignUpViewModel.swift in Sources */,
+				AF9C40B22C7DCB2700F3D0B9 /* TimetableListViewController.swift in Sources */,
+				AF9C40A32C7DCB2700F3D0B9 /* ExamPostViewModel.swift in Sources */,
+				AF9C40C62C7DCB2700F3D0B9 /* ChangePasswordView.swift in Sources */,
+				AF9C40C02C7DCB2700F3D0B9 /* ManageAccountView.swift in Sources */,
+				AF9C40C12C7DCB2700F3D0B9 /* ManageAccountViewModel.swift in Sources */,
+				AF9C40AC2C7DCB2700F3D0B9 /* SelectCourseViewModel.swift in Sources */,
+				AF9C40952C7DCB2700F3D0B9 /* EvaluationCell.swift in Sources */,
+				AF9C40912C7DCB2700F3D0B9 /* AnnouncementDetailView.swift in Sources */,
+				AF9C40B32C7DCB2700F3D0B9 /* TimetableListViewModel.swift in Sources */,
+				AF9C40A02C7DCB2700F3D0B9 /* EvaluationPostViewModel.swift in Sources */,
+				AF9C40A22C7DCB2700F3D0B9 /* ExamPostView.swift in Sources */,
+				AF9C40A72C7DCB2700F3D0B9 /* CourseCell.swift in Sources */,
+				AF9C40CE2C7DCB2700F3D0B9 /* EmailInputView.swift in Sources */,
+				AF9C40B42C7DCB2700F3D0B9 /* TimetableListCell.swift in Sources */,
+				AF9C409F2C7DCB2700F3D0B9 /* EvaluationPostView.swift in Sources */,
+				AF9C40C82C7DCB2700F3D0B9 /* FindIdView.swift in Sources */,
+				AF9C40AD2C7DCB2700F3D0B9 /* SelectMajorViewController.swift in Sources */,
+				AF9C40CB2C7DCB2700F3D0B9 /* FindPasswordViewModel.swift in Sources */,
+				AF9C40972C7DCB2700F3D0B9 /* IsPostEmptyView.swift in Sources */,
+				AF9C40982C7DCB2700F3D0B9 /* LectureEvaluationDetailView.swift in Sources */,
+				AF9C40C92C7DCB2700F3D0B9 /* FindIdViewModel.swift in Sources */,
+				AF9C40B62C7DCB2700F3D0B9 /* TimetableEmptyView.swift in Sources */,
+				AF9C40992C7DCB2700F3D0B9 /* LectureEvaluationDetailViewModel.swift in Sources */,
+				AF9C40BB2C7DCB2700F3D0B9 /* ManageButtonType.swift in Sources */,
+				AF9C40A12C7DCB2700F3D0B9 /* PostEnum.swift in Sources */,
+				AF9C409E2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectViewModel.swift in Sources */,
+				AF9C40902C7DCB2700F3D0B9 /* TabBarView.swift in Sources */,
+				AF9C40A92C7DCB2700F3D0B9 /* SearchCourseEmptyView.swift in Sources */,
+				AF9C40B52C7DCB2700F3D0B9 /* InitView.swift in Sources */,
+				AF9C40BD2C7DCB2700F3D0B9 /* UserInfoType.swift in Sources */,
+				AF9C40B12C7DCB2700F3D0B9 /* AddTimetableViewModel.swift in Sources */,
+				AF9C40A82C7DCB2700F3D0B9 /* MajorCell.swift in Sources */,
+				AF9C40962C7DCB2700F3D0B9 /* ExamCell.swift in Sources */,
+				AF9C40CC2C7DCB2700F3D0B9 /* LoginView.swift in Sources */,
+				AF9C40AB2C7DCB2700F3D0B9 /* SelectCourseViewController.swift in Sources */,
+				AF9C40D02C7DCB2700F3D0B9 /* PasswordInputView.swift in Sources */,
+				AF9C40A62C7DCB2700F3D0B9 /* AddCourseViewModel.swift in Sources */,
+				AF9C40BC2C7DCB2700F3D0B9 /* ServiceType.swift in Sources */,
+				AF9C40D72C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift in Sources */,
+				AF9C40BE2C7DCB2700F3D0B9 /* UserInfoView.swift in Sources */,
+				AF9C40942C7DCB2700F3D0B9 /* AnnouncementViewModel.swift in Sources */,
+				AF9C40D62C7DCB2700F3D0B9 /* WithDrawAccountView.swift in Sources */,
+				AF9C40CD2C7DCB2700F3D0B9 /* LoginViewModel.swift in Sources */,
+				AF9C409C2C7DCB2700F3D0B9 /* LectureEvaluationHomeViewModel.swift in Sources */,
+				AF9C40B82C7DCB2700F3D0B9 /* TimetableViewController.swift in Sources */,
+				AF9C40C22C7DCB2700F3D0B9 /* UserPointView.swift in Sources */,
+				AF9C40BF2C7DCB2700F3D0B9 /* UserInfoViewModel.swift in Sources */,
+				AF9C40D12C7DCB2700F3D0B9 /* SignUpInputType.swift in Sources */,
+				AF9C40AE2C7DCB2700F3D0B9 /* SelectMajorViewModel.swift in Sources */,
+				AF9C40CA2C7DCB2700F3D0B9 /* FindPasswordView.swift in Sources */,
+				AF9C40D52C7DCB2700F3D0B9 /* SuccessView.swift in Sources */,
+				AF9C409B2C7DCB2700F3D0B9 /* LectureEvaluationHomeView.swift in Sources */,
+				AF9C40922C7DCB2700F3D0B9 /* AnnouncementDetailViewModel.swift in Sources */,
 				AF9C400A2C78B67500F3D0B9 /* Presentation.swift in Sources */,
+				AF9C409D2C7DCB2700F3D0B9 /* LectureEvaluationMajorSelectView.swift in Sources */,
+				AF9C40C72C7DCB2700F3D0B9 /* ChangePasswordViewModel.swift in Sources */,
+				AF9C40AA2C7DCB2700F3D0B9 /* SelectCourseListViewModel.swift in Sources */,
+				AF9C40C42C7DCB2700F3D0B9 /* UserPostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
