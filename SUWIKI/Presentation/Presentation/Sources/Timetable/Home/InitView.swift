@@ -7,10 +7,12 @@
 
 import UIKit
 
+import Common
+
 class InitView: UIView {
 
   let logoImage = UIImageView().then {
-    $0.image = UIImage(resource: .logo)
+    $0.image = UIImage(systemName: "person")
   }
 
   let activityIndicator = UIActivityIndicatorView().then {

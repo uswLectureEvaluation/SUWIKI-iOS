@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct WithDrawAccountView: View {
   
   @Environment(\.dismiss) var dismiss

@@ -83,6 +83,19 @@
 		AF9C40D52C7DCB2700F3D0B9 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C408A2C7DCB2700F3D0B9 /* SuccessView.swift */; };
 		AF9C40D62C7DCB2700F3D0B9 /* WithDrawAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C408C2C7DCB2700F3D0B9 /* WithDrawAccountView.swift */; };
 		AF9C40D72C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C408D2C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift */; };
+		AFE42CE02C807EBE0087D551 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE42CD62C807E480087D551 /* Domain.framework */; };
+		AFE42CE12C807EBE0087D551 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFE42CD62C807E480087D551 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AFE97C822C80819800EC9A73 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AFE97C812C80819800EC9A73 /* Then */; };
+		AFE97C852C8081FE00EC9A73 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AFE97C842C8081FE00EC9A73 /* SnapKit */; };
+		AFE97C9B2C8087F800EC9A73 /* Elliotable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97C942C8087F800EC9A73 /* Elliotable.swift */; };
+		AFE97C9C2C8087F800EC9A73 /* ElliotableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97C952C8087F800EC9A73 /* ElliotableCell.swift */; };
+		AFE97C9D2C8087F800EC9A73 /* ElliotableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97C962C8087F800EC9A73 /* ElliotableController.swift */; };
+		AFE97C9E2C8087F800EC9A73 /* ElliotableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97C972C8087F800EC9A73 /* ElliotableError.swift */; };
+		AFE97C9F2C8087F800EC9A73 /* ElliotDayOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97C982C8087F800EC9A73 /* ElliotDayOption.swift */; };
+		AFE97CA02C8087F800EC9A73 /* ElliottEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97C992C8087F800EC9A73 /* ElliottEvent.swift */; };
+		AFE97CA22C808B0000EC9A73 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE97CA12C808B0000EC9A73 /* Common.framework */; };
+		AFE97CA32C808B0000EC9A73 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AFE97CA12C808B0000EC9A73 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AFE97CA62C808E0C00EC9A73 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = AFE97CA52C808E0C00EC9A73 /* Reusable */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +108,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AFE42CDB2C807EB80087D551 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AFE42CE12C807EBE0087D551 /* Domain.framework in Embed Frameworks */,
+				AFE97CA32C808B0000EC9A73 /* Common.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		AF5CBD032C7F7BB2007FFC92 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9C3FF02C78B66A00F3D0B9 /* Presentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9C3FF32C78B66A00F3D0B9 /* Presentation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Presentation.h; sourceTree = "<group>"; };
 		AF9C3FF82C78B66A00F3D0B9 /* PresentationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresentationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +202,18 @@
 		AF9C408A2C7DCB2700F3D0B9 /* SuccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		AF9C408C2C7DCB2700F3D0B9 /* WithDrawAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawAccountView.swift; sourceTree = "<group>"; };
 		AF9C408D2C7DCB2700F3D0B9 /* WithDrawAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawAccountViewModel.swift; sourceTree = "<group>"; };
+		AF9C40F52C7F1E9800F3D0B9 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF9C40F92C7F1EA400F3D0B9 /* Elliotable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Elliotable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF9C40FC2C7F1EAA00F3D0B9 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE42CD62C807E480087D551 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE42CD82C807EB70087D551 /* Then.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Then.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFE97C942C8087F800EC9A73 /* Elliotable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elliotable.swift; sourceTree = "<group>"; };
+		AFE97C952C8087F800EC9A73 /* ElliotableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotableCell.swift; sourceTree = "<group>"; };
+		AFE97C962C8087F800EC9A73 /* ElliotableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotableController.swift; sourceTree = "<group>"; };
+		AFE97C972C8087F800EC9A73 /* ElliotableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotableError.swift; sourceTree = "<group>"; };
+		AFE97C982C8087F800EC9A73 /* ElliotDayOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotDayOption.swift; sourceTree = "<group>"; };
+		AFE97C992C8087F800EC9A73 /* ElliottEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliottEvent.swift; sourceTree = "<group>"; };
+		AFE97CA12C808B0000EC9A73 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +221,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE42CE02C807EBE0087D551 /* Domain.framework in Frameworks */,
+				AFE97C822C80819800EC9A73 /* Then in Frameworks */,
+				AFE97C852C8081FE00EC9A73 /* SnapKit in Frameworks */,
+				AFE97CA62C808E0C00EC9A73 /* Reusable in Frameworks */,
+				AFE97CA22C808B0000EC9A73 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +246,7 @@
 				AF9C3FF22C78B66A00F3D0B9 /* Presentation */,
 				AF9C3FFC2C78B66A00F3D0B9 /* PresentationTests */,
 				AF9C3FF12C78B66A00F3D0B9 /* Products */,
+				AF9C40F42C7F1E9800F3D0B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -405,6 +452,7 @@
 		AF9C40672C7DCB2700F3D0B9 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				AFE97C9A2C8087F800EC9A73 /* Elliotable */,
 				AF9C40572C7DCB2700F3D0B9 /* AddLecture */,
 				AF9C405D2C7DCB2700F3D0B9 /* AddTimeTable */,
 				AF9C40662C7DCB2700F3D0B9 /* Home */,
@@ -629,6 +677,34 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		AF9C40F42C7F1E9800F3D0B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFE97CA12C808B0000EC9A73 /* Common.framework */,
+				AFE42CD82C807EB70087D551 /* Then.framework */,
+				AFE42CD62C807E480087D551 /* Domain.framework */,
+				AF5CBD032C7F7BB2007FFC92 /* SnapKit.framework */,
+				AF9C40FC2C7F1EAA00F3D0B9 /* Then.framework */,
+				AF9C40F92C7F1EA400F3D0B9 /* Elliotable.framework */,
+				AF9C40F52C7F1E9800F3D0B9 /* SnapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFE97C9A2C8087F800EC9A73 /* Elliotable */ = {
+			isa = PBXGroup;
+			children = (
+				AFE97C942C8087F800EC9A73 /* Elliotable.swift */,
+				AFE97C952C8087F800EC9A73 /* ElliotableCell.swift */,
+				AFE97C962C8087F800EC9A73 /* ElliotableController.swift */,
+				AFE97C972C8087F800EC9A73 /* ElliotableError.swift */,
+				AFE97C982C8087F800EC9A73 /* ElliotDayOption.swift */,
+				AFE97C992C8087F800EC9A73 /* ElliottEvent.swift */,
+			);
+			name = Elliotable;
+			path = Presentation/Sources/Elliotable;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -651,12 +727,18 @@
 				AF9C3FEC2C78B66A00F3D0B9 /* Sources */,
 				AF9C3FED2C78B66A00F3D0B9 /* Frameworks */,
 				AF9C3FEE2C78B66A00F3D0B9 /* Resources */,
+				AFE42CDB2C807EB80087D551 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Presentation;
+			packageProductDependencies = (
+				AFE97C812C80819800EC9A73 /* Then */,
+				AFE97C842C8081FE00EC9A73 /* SnapKit */,
+				AFE97CA52C808E0C00EC9A73 /* Reusable */,
+			);
 			productName = Presentation;
 			productReference = AF9C3FF02C78B66A00F3D0B9 /* Presentation.framework */;
 			productType = "com.apple.product-type.framework";
@@ -707,6 +789,11 @@
 				Base,
 			);
 			mainGroup = AF9C3FE62C78B66A00F3D0B9;
+			packageReferences = (
+				AF9C40F12C7F1E5400F3D0B9 /* XCRemoteSwiftPackageReference "Then" */,
+				AFE97C832C8081FE00EC9A73 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AFE97CA42C808E0C00EC9A73 /* XCRemoteSwiftPackageReference "Reusable" */,
+			);
 			productRefGroup = AF9C3FF12C78B66A00F3D0B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -748,6 +835,7 @@
 				AF9C40BA2C7DCB2700F3D0B9 /* TimetableWrapperView.swift in Sources */,
 				AF9C40C32C7DCB2700F3D0B9 /* UserPointViewModel.swift in Sources */,
 				AF9C40A42C7DCB2700F3D0B9 /* AddCourseView.swift in Sources */,
+				AFE97CA02C8087F800EC9A73 /* ElliottEvent.swift in Sources */,
 				AF9C40B92C7DCB2700F3D0B9 /* TimetableViewModel.swift in Sources */,
 				AF9C40B02C7DCB2700F3D0B9 /* AddTimetableViewController.swift in Sources */,
 				AF9C40932C7DCB2700F3D0B9 /* AnnouncementView.swift in Sources */,
@@ -764,6 +852,7 @@
 				AF9C40912C7DCB2700F3D0B9 /* AnnouncementDetailView.swift in Sources */,
 				AF9C40B32C7DCB2700F3D0B9 /* TimetableListViewModel.swift in Sources */,
 				AF9C40A02C7DCB2700F3D0B9 /* EvaluationPostViewModel.swift in Sources */,
+				AFE97C9C2C8087F800EC9A73 /* ElliotableCell.swift in Sources */,
 				AF9C40A22C7DCB2700F3D0B9 /* ExamPostView.swift in Sources */,
 				AF9C40A72C7DCB2700F3D0B9 /* CourseCell.swift in Sources */,
 				AF9C40CE2C7DCB2700F3D0B9 /* EmailInputView.swift in Sources */,
@@ -775,6 +864,7 @@
 				AF9C40972C7DCB2700F3D0B9 /* IsPostEmptyView.swift in Sources */,
 				AF9C40982C7DCB2700F3D0B9 /* LectureEvaluationDetailView.swift in Sources */,
 				AF9C40C92C7DCB2700F3D0B9 /* FindIdViewModel.swift in Sources */,
+				AFE97C9D2C8087F800EC9A73 /* ElliotableController.swift in Sources */,
 				AF9C40B62C7DCB2700F3D0B9 /* TimetableEmptyView.swift in Sources */,
 				AF9C40992C7DCB2700F3D0B9 /* LectureEvaluationDetailViewModel.swift in Sources */,
 				AF9C40BB2C7DCB2700F3D0B9 /* ManageButtonType.swift in Sources */,
@@ -785,6 +875,7 @@
 				AF9C40B52C7DCB2700F3D0B9 /* InitView.swift in Sources */,
 				AF9C40BD2C7DCB2700F3D0B9 /* UserInfoType.swift in Sources */,
 				AF9C40B12C7DCB2700F3D0B9 /* AddTimetableViewModel.swift in Sources */,
+				AFE97C9F2C8087F800EC9A73 /* ElliotDayOption.swift in Sources */,
 				AF9C40A82C7DCB2700F3D0B9 /* MajorCell.swift in Sources */,
 				AF9C40962C7DCB2700F3D0B9 /* ExamCell.swift in Sources */,
 				AF9C40CC2C7DCB2700F3D0B9 /* LoginView.swift in Sources */,
@@ -801,8 +892,10 @@
 				AF9C40B82C7DCB2700F3D0B9 /* TimetableViewController.swift in Sources */,
 				AF9C40C22C7DCB2700F3D0B9 /* UserPointView.swift in Sources */,
 				AF9C40BF2C7DCB2700F3D0B9 /* UserInfoViewModel.swift in Sources */,
+				AFE97C9E2C8087F800EC9A73 /* ElliotableError.swift in Sources */,
 				AF9C40D12C7DCB2700F3D0B9 /* SignUpInputType.swift in Sources */,
 				AF9C40AE2C7DCB2700F3D0B9 /* SelectMajorViewModel.swift in Sources */,
+				AFE97C9B2C8087F800EC9A73 /* Elliotable.swift in Sources */,
 				AF9C40CA2C7DCB2700F3D0B9 /* FindPasswordView.swift in Sources */,
 				AF9C40D52C7DCB2700F3D0B9 /* SuccessView.swift in Sources */,
 				AF9C409B2C7DCB2700F3D0B9 /* LectureEvaluationHomeView.swift in Sources */,
@@ -962,7 +1055,7 @@
 		AF9C40032C78B66A00F3D0B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -975,6 +1068,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -997,7 +1091,7 @@
 		AF9C40042C78B66A00F3D0B9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1010,6 +1104,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1093,6 +1188,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF9C40F12C7F1E5400F3D0B9 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		AFE97C832C8081FE00EC9A73 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		AFE97CA42C808E0C00EC9A73 /* XCRemoteSwiftPackageReference "Reusable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/Reusable.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AFE97C812C80819800EC9A73 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF9C40F12C7F1E5400F3D0B9 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		AFE97C842C8081FE00EC9A73 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFE97C832C8081FE00EC9A73 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		AFE97CA52C808E0C00EC9A73 /* Reusable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFE97CA42C808E0C00EC9A73 /* XCRemoteSwiftPackageReference "Reusable" */;
+			productName = Reusable;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AF9C3FE72C78B66A00F3D0B9 /* Project object */;
 }

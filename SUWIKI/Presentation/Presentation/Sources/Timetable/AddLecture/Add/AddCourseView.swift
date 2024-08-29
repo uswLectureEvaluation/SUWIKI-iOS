@@ -198,12 +198,17 @@ class AddCourseView: UIView {
   ) {
     classficationLabel.text = course.classification
     courseNameLabel.text = course.courseName
-    addCourseView.gradeLabel.text = "\(course.num)학년"
-    addCourseView.creditLabel.text = "\(course.credit)학점"
-    addCourseView.majorLabel.text = course.major
-    addCourseView.professorLabel.text = course.professor
-    addCourseView.roomNameLabel.text = course.roomName
-    addCourseView.bottomBackground.backgroundColor = .timetableColors[colorNumber]
-    addCourseView.classficationLabel.backgroundColor = .timetableColors[colorNumber]
+    gradeLabel.text = "\(course.num)학년"
+    creditLabel.text = "\(course.credit)학점"
+    majorLabel.text = course.major
+    professorLabel.text = course.professor
+    roomNameLabel.text = course.roomName
+    bottomBackground.backgroundColor = .timetableColors[colorNumber]
+    classficationLabel.backgroundColor = .timetableColors[colorNumber]
+  }
+
+  func changeColor(_ color: UIColor) {
+    bottomBackground.backgroundColor = color
+    classficationLabel.backgroundColor = color
   }
 }

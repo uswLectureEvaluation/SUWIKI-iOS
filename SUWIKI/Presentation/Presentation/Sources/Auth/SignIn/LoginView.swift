@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct LoginView: View {
   
   @FocusState private var focusField: LoginViewInputType?

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+import Common
 import Domain
 import DIContainer
 
@@ -23,18 +24,18 @@ final class LectureEvaluationMajorSelectViewModel: ObservableObject {
   
   @MainActor
   init() {
-    Task {
-      let count = CoreDataManager.shared.fetchCourseCount(major: "전체")
-      let allMajor = Major(name: "전체", courseCount: count)
-      major = [allMajor]
-      let majors = useCase.execute()
-      for i in 0..<majors.count {
-        let majorCount = CoreDataManager.shared.fetchCourseCount(major: majors[i])
-        let currentMajor = Major(name: majors[i], courseCount: majorCount)
-        major.append(currentMajor)
-      }
-      fetchBookmark()
-    }
+//    Task {
+//      let count = CoreDataManager.shared.fetchCourseCount(major: "전체")
+//      let allMajor = Major(name: "전체", courseCount: count)
+//      major = [allMajor]
+//      let majors = self.useCase.execute()
+//      for i in 0..<majors.count {
+//        let majorCount = CoreDataManager.shared.fetchCourseCount(major: majors[i])
+//        let currentMajor = Major(name: majors[i], courseCount: majorCount)
+//        major.append(currentMajor)
+//      }
+//      fetchBookmark()
+//    }
     
     $searchText
       .debounce(for: 0.2, scheduler: DispatchQueue.main)

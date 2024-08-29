@@ -7,19 +7,21 @@
 
 import SwiftUI
 
+import Common
+import Domain
 import DIContainer
 
-struct TabBarView: View {
-  
+public struct TabBarView: View {
+
   let lectureEvaluationHomeView = DIContainer.shared.resolve(type: LectureEvaluationHomeView.self)
   let appState: AppState
   
-  init(appState: AppState) {
+  public init(appState: AppState) {
     self.appState = appState
     UITabBar.appearance().standardAppearance.backgroundColor = .white
   }
   
-  var body: some View {
+  public var body: some View {
     TabView {
       TimetableWrapperView()
         .ignoresSafeArea()

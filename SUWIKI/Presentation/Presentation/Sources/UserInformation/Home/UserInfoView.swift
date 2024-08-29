@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Domain
+
 struct UserInfoView: View {
   
   @EnvironmentObject var appState: AppState

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+import Common
 import Domain
 
 struct LectureEvaluationHomeView: View {
