@@ -19,6 +19,10 @@
 		AF1F64D52BE8CC41004DE418 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1F64CB2BE8CC41004DE418 /* UIColor+.swift */; };
 		AF60AA832BE504EC00454E7C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA7A2BE504EB00454E7C /* Common.framework */; };
 		AF60AA882BE504EC00454E7C /* CommonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF60AA872BE504EC00454E7C /* CommonTests.swift */; };
+		AF9C41002C7F23B200F3D0B9 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9C40FF2C7F23B200F3D0B9 /* UIView+.swift */; };
+		AFE97CB12C808EEE00EC9A73 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97CB02C808EEE00EC9A73 /* RequestState.swift */; };
+		AFE97CB32C808EFE00EC9A73 /* CustomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97CB22C808EFE00EC9A73 /* CustomState.swift */; };
+		AFE97CB62C808F3800EC9A73 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFE97CB52C808F3800EC9A73 /* Asset.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		AF60AA7A2BE504EB00454E7C /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF60AA822BE504EC00454E7C /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF60AA872BE504EC00454E7C /* CommonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTests.swift; sourceTree = "<group>"; };
+		AF9C40FF2C7F23B200F3D0B9 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		AFE97CB02C808EEE00EC9A73 /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestState.swift; path = Sources/Extension/RequestState.swift; sourceTree = SOURCE_ROOT; };
+		AFE97CB22C808EFE00EC9A73 /* CustomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomState.swift; path = Sources/Extension/CustomState.swift; sourceTree = SOURCE_ROOT; };
+		AFE97CB52C808F3800EC9A73 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,7 @@
 				AF1F64C92BE8CC41004DE418 /* UIImage+.swift */,
 				AF1F64CA2BE8CC41004DE418 /* Font+.swift */,
 				AF1F64CB2BE8CC41004DE418 /* UIColor+.swift */,
+				AF9C40FF2C7F23B200F3D0B9 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -93,6 +102,7 @@
 		AF60AA702BE504EB00454E7C = {
 			isa = PBXGroup;
 			children = (
+				AFE97CB42C808F2D00EC9A73 /* Resources */,
 				AF60AA7C2BE504EB00454E7C /* Sources */,
 				AF60AA862BE504EC00454E7C /* Tests */,
 				AF60AA7B2BE504EB00454E7C /* Products */,
@@ -111,6 +121,7 @@
 		AF60AA7C2BE504EB00454E7C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AFE97CA92C808EB300EC9A73 /* State */,
 				AF1F64C02BE8CC41004DE418 /* Component */,
 				AF1F64C42BE8CC41004DE418 /* Extension */,
 			);
@@ -123,6 +134,24 @@
 				AF60AA872BE504EC00454E7C /* CommonTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		AFE97CA92C808EB300EC9A73 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				AFE97CB02C808EEE00EC9A73 /* RequestState.swift */,
+				AFE97CB22C808EFE00EC9A73 /* CustomState.swift */,
+			);
+			name = State;
+			path = ../../App/State;
+			sourceTree = "<group>";
+		};
+		AFE97CB42C808F2D00EC9A73 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AFE97CB52C808F3800EC9A73 /* Asset.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE97CB62C808F3800EC9A73 /* Asset.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,12 +266,15 @@
 				AF1F64D02BE8CC41004DE418 /* UISearchBar+.swift in Sources */,
 				AF1F64CF2BE8CC41004DE418 /* UserDefaults+.swift in Sources */,
 				AF1F64D22BE8CC41004DE418 /* UITextField+.swift in Sources */,
+				AFE97CB12C808EEE00EC9A73 /* RequestState.swift in Sources */,
 				AF1F64D52BE8CC41004DE418 /* UIColor+.swift in Sources */,
 				AF1F64CD2BE8CC41004DE418 /* Stars.swift in Sources */,
 				AF1F64D12BE8CC41004DE418 /* String+.swift in Sources */,
 				AF1F64D42BE8CC41004DE418 /* Font+.swift in Sources */,
 				AF1F64CC2BE8CC41004DE418 /* UnFilledStar.swift in Sources */,
+				AF9C41002C7F23B200F3D0B9 /* UIView+.swift in Sources */,
 				AF1F64D32BE8CC41004DE418 /* UIImage+.swift in Sources */,
+				AFE97CB32C808EFE00EC9A73 /* CustomState.swift in Sources */,
 				AF1F64CE2BE8CC41004DE418 /* FilledStar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

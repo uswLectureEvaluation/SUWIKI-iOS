@@ -1,8 +1,10 @@
 //
 //  CustomState.swift
-//  Common
+//  SUWIKI
 //
-//  Created by 한지석 on 8/29/24.
+//  Created by 한지석 on 3/3/24.
 //
 
 import Foundation
+
+protocol CustomState: Equatable { }
