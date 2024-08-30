@@ -17,34 +17,32 @@ final class SelectCourseViewModel {
     self.course = course
   }
   
-  //MARK: Output
-  
   var classification: String {
-    course.classification ?? ""
+    course.classification
   }
   
   var courseDay: String {
-    course.courseDay ?? ""
+    course.courseDay
   }
   
   var courseName: String {
-    course.courseName ?? ""
+    course.courseName
   }
   
   var startTime: String {
-    course.startTime ?? ""
+    course.startTime
   }
   
   var endTime: String {
-    course.endTime ?? ""
+    course.endTime
   }
   
   var major: String {
-    "\(String(describing: course.major ?? ""))⎪"
+    "\(String(describing: course.major))⎪"
   }
   
   var professor: String {
-    "\(String(describing: course.professor ?? ""))⎪"
+    "\(String(describing: course.professor))⎪"
   }
   
   var credit: String {
@@ -52,7 +50,7 @@ final class SelectCourseViewModel {
   }
   
   var roomName: String {
-    course.roomName ?? ""
+    course.roomName
   } 
   
   var grade: String {

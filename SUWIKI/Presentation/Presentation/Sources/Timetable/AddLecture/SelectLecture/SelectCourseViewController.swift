@@ -15,10 +15,16 @@ import Then
 
 class SelectCourseViewController: UIViewController {
 
-  var cancellable = Set<AnyCancellable>()
-  var viewModel: SelectCourseListViewModel
-  var isFinished = PassthroughSubject<Void, Never>()
-  let searchEmptyView = SearchCourseEmptyView()
+  private let searchEmptyView = SearchCourseEmptyView()
+  private let searchController = UISearchController()
+  private let searchBar = UISearchBar()
+  private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
+    $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
+    $0.register(cellType: CourseCell.self)
+  }
+
+  private var viewModel: SelectCourseListViewModel
+  private var cancellable = Set<AnyCancellable>()
 
   init(viewModel: SelectCourseListViewModel) {
     self.viewModel = viewModel
@@ -29,44 +35,51 @@ class SelectCourseViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
 
-  private let searchController = UISearchController()
-
-  private let courseTableView = UITableView(frame: .zero, style: .insetGrouped).then {
-    $0.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 10.0, width: 0.0, height: CGFloat.leastNonzeroMagnitude))
-    $0.register(cellType: CourseCell.self)
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .systemGray6
-    binding()
-    setupUI()
-    setupTableView()
+    setUI()
+    setLayout()
+    setDelegate()
+    bind()
   }
 
   override func viewWillAppear(_ animated: Bool) {
-    setupNavigationBar()
+    setStyle()
   }
 
-  private func binding() {
-    viewModel.$courseList
+  private func bind() {
+    viewModel.$searchedCourseList
+      .combineLatest(viewModel.$searchText)
       .receive(on: RunLoop.main)
-      .sink { _ in
-        self.courseTableView.reloadData()
+      .sink { [weak self] searchedCourseList, searchText in
+        guard let self else { return }
+        if searchText.isEmpty {
+          courseTableView.backgroundView?.isHidden = false
+        } else {
+          if searchedCourseList.isEmpty {
+            searchEmptyView.updateUI(searchText: "'\(searchText)'")
+            courseTableView.backgroundView?.isHidden = false
+          } else {
+            courseTableView.backgroundView?.isHidden = true
+          }
+        }
+        courseTableView.reloadData()
       }
       .store(in: &cancellable)
   }
 
-  private func setupNavigationBar() {
-    self.navigationItem.title = viewModel.major
+  private func setStyle() {
+    view.backgroundColor = .systemGray6
 
     searchController.searchBar.placeholder = "강의를 검색하세요!"
-    searchController.searchBar.delegate = self
-    self.navigationItem.searchController = searchController
+    navigationItem.searchController = searchController
     searchController.searchResultsUpdater = self
 
-    self.navigationController?.navigationBar.prefersLargeTitles = true
-    self.navigationController?.navigationBar.backgroundColor = .systemGray6
+    courseTableView.backgroundView = searchEmptyView
+
+    navigationItem.title = viewModel.major
+    navigationController?.navigationBar.prefersLargeTitles = true
+    navigationController?.navigationBar.backgroundColor = .systemGray6
 
     let button = UIButton(type: .system)
     button.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
@@ -78,69 +91,56 @@ class SelectCourseViewController: UIViewController {
     rightButton.customView?.heightAnchor.constraint(equalToConstant: 24).isActive = true
     rightButton.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
 
-    self.navigationItem.rightBarButtonItem = rightButton
+    navigationItem.rightBarButtonItem = rightButton
   }
 
-  @objc func closeButtonTapped() {
-    dismiss(animated: true)
+  private func setUI() {
+    [
+      searchBar,
+      courseTableView
+    ].forEach { view.addSubview($0) }
   }
 
-}
-
-//MARK: SearchController
-extension SelectCourseViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-  }
-}
-
-//MARK: SearchBar
-extension SelectCourseViewController: UISearchBarDelegate {
-
-  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    viewModel.searchText = ""
-    courseTableView.reloadData()
-  }
-
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    print("Button")
-    guard let searchText = searchBar.text else { return }
-    viewModel.searchText = searchText
-    viewModel.removeSpacingFromSearchText()
-    viewModel.searchedCourseList = viewModel.courseList.filter {
-      $0.courseName.lowercased().contains(viewModel.searchText.lowercased())
-    }
-    if viewModel.searchedCourseList.isEmpty {
-      searchEmptyView.updateUI(searchText: "'\(searchText)'")
-      courseTableView.backgroundView?.isHidden = false
-    } else {
-      courseTableView.backgroundView?.isHidden = true
-    }
-    courseTableView.reloadData()
-    searchBar.searchTextField.resignFirstResponder()
-  }
-
-}
-
-extension SelectCourseViewController: UITableViewDelegate, UITableViewDataSource {
-
-  //MARK: searchBar를 addSubview하지 않으면 searchController가 출력되지 않는 버그 존재
-  func setupUI() {
-    let searchBar = UISearchBar()
-    self.view.addSubview(searchBar)
-    self.view.addSubview(self.courseTableView)
-  }
-
-  func setupTableView() {
-    self.courseTableView.snp.makeConstraints {
+  private func setLayout() {
+    courseTableView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
       $0.bottom.equalToSuperview()
       $0.leading.equalToSuperview()
       $0.trailing.equalToSuperview()
     }
+  }
+
+  private func setDelegate() {
+    searchController.searchBar.delegate = self
     courseTableView.delegate = self
     courseTableView.dataSource = self
     courseTableView.reloadData()
   }
+
+  @objc func closeButtonTapped() {
+    dismiss(animated: true)
+  }
+}
+
+extension SelectCourseViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    guard let searchText = searchController.searchBar.text else { return }
+    viewModel.searchText = searchText
+  }
+}
+
+extension SelectCourseViewController: UISearchBarDelegate {
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    viewModel.searchText = ""
+  }
+
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchText = searchBar.text else { return }
+    searchBar.searchTextField.resignFirstResponder()
+  }
+}
+
+extension SelectCourseViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(
     _ tableView: UITableView,

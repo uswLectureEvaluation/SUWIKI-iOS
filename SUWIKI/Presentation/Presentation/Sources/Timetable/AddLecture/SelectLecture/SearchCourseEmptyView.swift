@@ -8,9 +8,7 @@
 import UIKit
 
 class SearchCourseEmptyView: UIView {
-  
-  //MARK: UI
-  
+
   let searchTextLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .center
@@ -28,21 +26,25 @@ class SearchCourseEmptyView: UIView {
     return label
   }()
   
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setupUI()
+    setUI()
+    setLayout()
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  private func setupUI() {
+
+  private func setUI() {
     addSubview(searchTextLabel)
+    addSubview(resultLabel)
+  }
+
+  private func setLayout() {
     searchTextLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     searchTextLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-    
+
     if let glassImage = UIImage(named: "glass") {
       let glassImageView = UIImageView(image: glassImage)
       glassImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,8 +54,7 @@ class SearchCourseEmptyView: UIView {
       glassImageView.widthAnchor.constraint(equalToConstant: 125).isActive = true
       glassImageView.heightAnchor.constraint(equalToConstant: 125).isActive = true
     }
-    
-    addSubview(resultLabel)
+
     resultLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     resultLabel.topAnchor.constraint(equalTo: searchTextLabel.bottomAnchor, constant: 8).isActive = true
   }
@@ -61,5 +62,4 @@ class SearchCourseEmptyView: UIView {
   func updateUI(searchText: String) {
     self.searchTextLabel.text = searchText
   }
-  
 }

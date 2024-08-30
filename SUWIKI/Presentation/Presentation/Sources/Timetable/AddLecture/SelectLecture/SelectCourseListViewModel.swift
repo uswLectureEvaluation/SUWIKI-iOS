@@ -14,22 +14,12 @@ import Domain
 final class SelectCourseListViewModel {
 
   @Inject var useCase: FetchFirebaseCourseUseCase
+  var courseList: [FetchCourse] = []
+  @Published var searchedCourseList: [FetchCourse] = []
+  @Published var searchText = ""
 
-  private let addCourseManager = AddCourseManager()
   var major: String
-  var searchText: String
-  var searchedCourseList: [FetchCourse] = []
-  @Published var courseList: [FetchCourse]
-
-  init(major: String) {
-    self.major = major
-    self.searchText = ""
-    self.courseList = []
-    Task {
-      print("@INIT")
-      self.courseList = useCase.execute(major: major)
-    }
-  }
+  private var cancellables = Set<AnyCancellable>()
 
   var courseNumbersOfRowsInSection: Int {
     return self.courseList.count
@@ -39,11 +29,33 @@ final class SelectCourseListViewModel {
     return self.searchedCourseList.count
   }
 
-  func courseViewModelAtIndex(_ index: Int) -> SelectCourseViewModel {
-    var course = self.courseList[index]
-    if !searchText.isEmpty {
-      course = self.searchedCourseList[index]
+  init(major: String) {
+    self.major = major
+    Task {
+      self.courseList = useCase.execute(major: major)
+      bind()
     }
+  }
+
+  private func bind() {
+    $searchText
+      .map { $0.replacingOccurrences(of: " ", with: "") }
+      .removeDuplicates()
+      .sink { [weak self] text in
+        guard let self else { return }
+        if text.isEmpty {
+          self.searchedCourseList = []
+        } else {
+          self.searchedCourseList = self.courseList.filter {
+            $0.courseName.lowercased().contains(text.lowercased())
+          }
+        }
+      }
+      .store(in: &cancellables)
+  }
+
+  func courseViewModelAtIndex(_ index: Int) -> SelectCourseViewModel {
+    let course = searchText.isEmpty ? courseList[index] : searchedCourseList[index]
     return SelectCourseViewModel(course: course)
   }
 
@@ -68,5 +80,4 @@ final class SelectCourseListViewModel {
       animated: animated
     )
   }
-
 }

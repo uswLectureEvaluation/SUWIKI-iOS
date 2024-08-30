@@ -15,12 +15,10 @@ class CourseCell: UITableViewCell, Reusable {
   
   var viewModel: SelectCourseViewModel! {
     didSet {
-      configureUI()
+      updateUI()
     }
   }
-  
-  //MARK: UI
-  
+
   let courseName = UILabel().then {
     $0.textColor = .black
     $0.font = UIFont.systemFont(ofSize: 16)
@@ -65,24 +63,41 @@ class CourseCell: UITableViewCell, Reusable {
     // Initialization code
   }
   
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+  override init(
+    style: UITableViewCell.CellStyle,
+    reuseIdentifier: String?
+  ) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    setupLabels()
+    setUI()
+    setLayout()
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
+  override func setSelected(
+    _ selected: Bool,
+    animated: Bool
+  ) {
     super.setSelected(selected, animated: animated)
   }
   
-  func setupLabels() {
-    [courseName, classification, grade, major, professor, roomName, credit].forEach {
+  func setUI() {
+    [
+      courseName,
+      classification,
+      grade,
+      major,
+      professor,
+      roomName,
+      credit
+    ].forEach {
       contentView.addSubview($0)
     }
-    
+  }
+
+  private func setLayout() {
     classification.snp.makeConstraints {
       $0.trailing.equalTo(contentView.snp.trailing).offset(-10)
       $0.top.equalToSuperview().offset(15)
@@ -114,8 +129,8 @@ class CourseCell: UITableViewCell, Reusable {
       $0.top.equalTo(major.snp.bottom).offset(5)
     }
   }
-  
-  func configureUI() {
+
+  func updateUI() {
     self.classification.text = viewModel.classification
     self.courseName.text = viewModel.courseName
     self.grade.text = viewModel.grade
@@ -124,5 +139,4 @@ class CourseCell: UITableViewCell, Reusable {
     self.professor.text = viewModel.professor
     self.roomName.text = viewModel.roomName
   }
-  
 }
