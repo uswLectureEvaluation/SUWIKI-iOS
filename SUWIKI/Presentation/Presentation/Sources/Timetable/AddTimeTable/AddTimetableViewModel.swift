@@ -17,7 +17,6 @@ final class AddTimetableViewModel {
   var semester: [String] = []
   var selectedSemester = ""
   @Published var name = ""
-
   private(set) lazy var addTimetableIsVaild = $name.map { $0.count > 0 }.eraseToAnyPublisher()
 
   init() {
@@ -42,6 +41,9 @@ final class AddTimetableViewModel {
   }
 
   func addTimetable() {
-    useCase.execute(name: name, semester: selectedSemester)
+    useCase.execute(
+      name: name,
+      semester: selectedSemester
+    )
   }
 }
