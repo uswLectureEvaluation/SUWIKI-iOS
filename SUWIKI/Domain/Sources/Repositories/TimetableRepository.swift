@@ -17,6 +17,7 @@ public protocol TimetableRepository {
   func fetchFirebaseCourse(major: String) -> Result<[FetchCourse], CoreDataError>
   func fetchMajors() -> Result<[String], CoreDataError>
   func fetchTimetableList() -> Result<[UserTimetable], CoreDataError>
+  func fetchCourseCount(major: String) -> Result<Int, CoreDataError>
   func deleteCourse(id: String, courseId: String) -> Result<(), CoreDataError>
   func deleteTimetable(id: String) -> Result<(), CoreDataError>
   func checkCourseVersion() async throws -> Result<(), CoreDataError>

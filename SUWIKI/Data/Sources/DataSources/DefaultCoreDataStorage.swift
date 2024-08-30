@@ -268,7 +268,21 @@ public final class DefaultCoreDataStorage: CoreDataStorage {
     }
     return timetable.reversed()
   }
-  
+
+  public func fetchCourseCount(major: String) throws -> Int {
+    var count = 0
+    do {
+      let fetchRequest = FirebaseCourse.fetchRequest()
+      if major != "전체" {
+        fetchRequest.predicate = NSPredicate(format: "major == %@", major)
+      }
+      count = try coreDataManager.context.count(for: fetchRequest)
+    } catch {
+      throw CoreDataError.fetchError
+    }
+    return count
+  }
+
   public func deleteCourse(
     id: String,
     courseId: String

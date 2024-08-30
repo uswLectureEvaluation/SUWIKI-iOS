@@ -20,6 +20,7 @@ public protocol CoreDataStorage {
   func fetchFirebaseCourse(major: String) throws -> [FetchCourse]
   func fetchMajors() throws -> [String]
   func fetchTimetableList() throws -> [Domain.UserTimetable]
+  func fetchCourseCount(major: String) throws -> Int
   func deleteCourse(id: String, courseId: String) throws
   func deleteTimetable(id: String) throws
   func deleteFirebaseCourse() throws

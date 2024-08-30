@@ -25,7 +25,6 @@ public final class DefaultTimetableRepository: TimetableRepository {
       try coreDataStorage.saveTimetable(name: name, semester: semester)
       return .success(())
     } catch {
-      print("@Log - \(error.localizedDescription)")
       return .failure(.saveError)
     }
   }
@@ -38,7 +37,6 @@ public final class DefaultTimetableRepository: TimetableRepository {
       try coreDataStorage.saveCourse(id: id, course: course)
       return .success(())
     } catch {
-      print("@Log - \(error.localizedDescription)")
       return .failure(.saveError)
     }
   }
@@ -51,7 +49,6 @@ public final class DefaultTimetableRepository: TimetableRepository {
       try coreDataStorage.updateTimetableTitle(id: id, title: title)
       return .success(())
     } catch {
-      print("@Log - \(error.localizedDescription)")
       return .failure(.saveError)
     }
   }
@@ -109,7 +106,16 @@ public final class DefaultTimetableRepository: TimetableRepository {
       return .failure(.fetchError)
     }
   }
-  
+
+  public func fetchCourseCount(major: String) -> Result<Int, CoreDataError> {
+    do {
+      let count = try coreDataStorage.fetchCourseCount(major: major)
+      return .success(count)
+    } catch {
+      return .failure(.fetchError)
+    }
+  }
+
   public func deleteCourse(
     id: String,
     courseId: String
