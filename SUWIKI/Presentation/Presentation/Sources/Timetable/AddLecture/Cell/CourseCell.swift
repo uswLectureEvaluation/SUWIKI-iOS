@@ -107,6 +107,7 @@ class CourseCell: UITableViewCell, Reusable {
     courseName.snp.makeConstraints {
       $0.leading.equalToSuperview().offset(15)
       $0.top.equalToSuperview().offset(15)
+      $0.trailing.equalTo(classification.snp.leading).offset(-5)
     }
     major.snp.makeConstraints {
       $0.leading.equalToSuperview().offset(15)
