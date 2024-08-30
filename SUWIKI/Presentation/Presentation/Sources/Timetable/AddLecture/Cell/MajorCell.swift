@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Domain
+
 import SnapKit
 import Reusable
 import Then
@@ -18,16 +20,16 @@ class MajorCell: UITableViewCell, Reusable {
     $0.tintColor = .primaryColor
   }
   
-  let majorLabel = UILabel().then {
+  private let majorLabel = UILabel().then {
     $0.font = UIFont.systemFont(ofSize: 17, weight: .regular)
     $0.textColor = .black
   }
   
-  let countLabel = UILabel().then {
+  private let countLabel = UILabel().then {
     $0.font = UIFont.systemFont(ofSize: 12, weight: .regular)
   }
   
-  let chevronRight = UIImageView().then {
+  private let chevronRight = UIImageView().then {
     $0.tintColor = .lightGray
     $0.image = UIImage(systemName: "chevron.right")
   }
@@ -78,6 +80,16 @@ class MajorCell: UITableViewCell, Reusable {
     chevronRight.snp.makeConstraints {
       $0.trailing.equalToSuperview().offset(-12)
       $0.centerY.equalTo(contentView.snp.centerY)
+    }
+  }
+
+  func updateUI(_ major: Major) {
+    majorLabel.text = major.name
+    countLabel.text = "/ \(major.courseCount)"
+    if major.bookmark {
+      bookmarkButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+    } else {
+      bookmarkButton.setImage(UIImage(systemName: "star"), for: .normal)
     }
   }
 }

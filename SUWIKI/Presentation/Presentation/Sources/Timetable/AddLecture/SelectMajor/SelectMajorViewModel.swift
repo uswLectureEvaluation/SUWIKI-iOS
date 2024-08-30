@@ -13,25 +13,29 @@ import Domain
 
 final class SelectMajorViewModel {
 
-  @Inject var useCase: FetchMajorsUseCase
-  var major: [Major] = []
+  @Inject var fetchMajorsUseCase: FetchMajorsUseCase
+  @Inject var fetchCourseCountUseCase: FetchCourseCountUseCase
+
+  @Published var major: [Major] = []
   var bookmark: [String] = []
   var majorNumberOfRowsInSection: Int {
     return self.major.count
   }
-  @Published var isMajorsFetched = false
 
   init() {
-    let count = CoreDataManager.shared.fetchCourseCount(major: "전체")
+    fetchMajors()
+  }
+
+  private func fetchMajors() {
+    let count = fetchCourseCountUseCase.execute(major: "전체")
     let allMajor = Major(name: "전체", courseCount: count)
     major = [allMajor]
-    let majors = useCase.execute()
+    let majors = fetchMajorsUseCase.execute()
     for i in 0..<majors.count {
-      let majorCount = CoreDataManager.shared.fetchCourseCount(major: majors[i])
+      let majorCount = fetchCourseCountUseCase.execute(major: majors[i])
       let currentMajor = Major(name: majors[i], courseCount: majorCount)
       major.append(currentMajor)
     }
-    self.isMajorsFetched = true
     fetchBookmark()
   }
 
@@ -71,7 +75,11 @@ final class SelectMajorViewModel {
     }
   }
 
-  func pushVC(major: String, currentVC: UIViewController, animated: Bool) {
+  func pushVC(
+    major: String,
+    currentVC: UIViewController,
+    animated: Bool
+  ) {
     let navigationVC = currentVC.navigationController
     let selectCourseVC = SelectCourseViewController(viewModel: SelectCourseListViewModel(major: major))
     navigationVC?.pushViewController(selectCourseVC, animated: animated)
