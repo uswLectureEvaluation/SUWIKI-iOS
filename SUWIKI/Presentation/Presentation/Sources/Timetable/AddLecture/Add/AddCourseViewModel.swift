@@ -10,10 +10,10 @@ import Foundation
 import Domain
 
 final class AddCourseViewModel {
-  
-  let addCourseManager = AddCourseManager()
-  var timetableColorNumber = Int.random(in: 0...20)
-  var fetchCourse: FetchCourse
+
+  private let addCourseManager = AddCourseManager()
+  @Published var timetableColorNumber = Int.random(in: 0...20)
+  @Published var fetchCourse: FetchCourse
   
   init(fetchCourse: FetchCourse) {
     self.fetchCourse = fetchCourse
@@ -29,26 +29,39 @@ final class AddCourseViewModel {
   
   func saveCourse() async throws -> Bool {
     var isDuplicated = false
-    let course = TimetableCourse(courseId: UUID().uuidString,
-                                 courseName: fetchCourse.courseName,
-                                 roomName: fetchCourse.roomName,
-                                 professor: fetchCourse.professor,
-                                 courseDay: dayToInt(courseDay: fetchCourse.courseDay),
-                                 startTime: fetchCourse.startTime,
-                                 endTime: fetchCourse.endTime,
-                                 timetableColor: timetableColorNumber)
+    let course = TimetableCourse(
+      courseId: UUID().uuidString,
+      courseName: fetchCourse.courseName,
+      roomName: fetchCourse.roomName,
+      professor: fetchCourse.professor,
+      courseDay: dayToInt(courseDay: fetchCourse.courseDay),
+      startTime: fetchCourse.startTime,
+      endTime: fetchCourse.endTime,
+      timetableColor: timetableColorNumber
+    )
     if fetchCourse.courseName.contains("이러닝") || fetchCourse.courseName.contains("온라인") {
-      isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .eLearning)
-      // 1. 음악109(화1,2 수3,4)
+      isDuplicated = try await addCourseManager.saveCourse(
+        newCourse: course,
+        duplicateCase: .eLearning
+      )
     } else if fetchCourse.roomName.split(separator: " ").count > 1 {
-      isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentTime)
-      // 2. 음악109(화1,2),음악110(수1,2)
+      // 1. 음악109(화1,2 수3,4)
+      isDuplicated = try await addCourseManager.saveCourse(
+        newCourse: course,
+        duplicateCase: .differentTime
+      )
     } else if fetchCourse.roomName.split(separator: "),").count > 1 {
-      isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .differentPlace)
+      // 2. 음악109(화1,2),음악110(수1,2)
+      isDuplicated = try await addCourseManager.saveCourse(
+        newCourse: course,
+        duplicateCase: .differentPlace
+      )
     } else {
-      isDuplicated = try await addCourseManager.saveCourse(newCourse: course, duplicateCase: .normal)
+      isDuplicated = try await addCourseManager.saveCourse(
+        newCourse: course,
+        duplicateCase: .normal
+      )
     }
-    
     return isDuplicated
   }
   
