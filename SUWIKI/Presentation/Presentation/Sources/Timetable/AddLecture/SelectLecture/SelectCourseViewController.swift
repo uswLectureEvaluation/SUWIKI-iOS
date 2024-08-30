@@ -66,6 +66,16 @@ class SelectCourseViewController: UIViewController {
         courseTableView.reloadData()
       }
       .store(in: &cancellable)
+
+    NotificationCenter.default.publisher(
+      for: UISearchTextField.textDidChangeNotification,
+      object: searchController.searchBar.searchTextField
+    )
+    .compactMap { $0.object as? UISearchTextField }
+    .map { $0.text ?? "" }
+    .removeDuplicates()
+    .assign(to: \.searchText, on: viewModel)
+    .store(in: &cancellable)
   }
 
   private func setStyle() {
@@ -123,10 +133,7 @@ class SelectCourseViewController: UIViewController {
 }
 
 extension SelectCourseViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    guard let searchText = searchController.searchBar.text else { return }
-    viewModel.searchText = searchText
-  }
+  func updateSearchResults(for searchController: UISearchController) { }
 }
 
 extension SelectCourseViewController: UISearchBarDelegate {
