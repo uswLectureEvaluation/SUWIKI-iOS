@@ -9,10 +9,13 @@ import UIKit
 
 import Common
 
+import SnapKit
+import Then
+
 class InitView: UIView {
 
   let logoImage = UIImageView().then {
-    $0.image = UIImage(systemName: "person")
+    $0.image = UIImage(systemName: "gear")
   }
 
   let activityIndicator = UIActivityIndicatorView().then {
@@ -29,18 +32,21 @@ class InitView: UIView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setupUI()
-    self.backgroundColor = .white
+    setStyle()
+    setUI()
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  private func setupUI() {
+  private func setStyle() {
+    self.backgroundColor = .white
+  }
+
+  private func setUI() {
     addSubview(logoImage)
     addSubview(activityIndicator)
     addSubview(statusDescriptionLabel)
   }
-
 }

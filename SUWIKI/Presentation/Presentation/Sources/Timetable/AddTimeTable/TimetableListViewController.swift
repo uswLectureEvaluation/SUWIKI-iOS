@@ -114,6 +114,7 @@ class TimetableListViewController: UIViewController, UINavigationControllerDeleg
   private func customAlert(index: Int) {
     suwikiAlert(
       title: "시간표를 삭제하시겠어요?",
+      style: .alert,
       UIAlertAction(
         title: "삭제",
         style: .destructive,

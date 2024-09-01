@@ -9,8 +9,6 @@ import UIKit
 
 class TimetableEmptyView: UIView {
 
-  //MARK: UI
-
   let topLabel: UILabel = {
     let label = UILabel()
     label.text = "아직 시간표가 없어요."
@@ -44,20 +42,27 @@ class TimetableEmptyView: UIView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    self.backgroundColor = .white
-    self.layer.cornerRadius = 12
-    setupUI()
+    setStyle()
+    setUI()
+    setLayout()
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  private func setupUI() {
+  private func setStyle() {
+    backgroundColor = .white
+    layer.cornerRadius = 12
+  }
+
+  private func setUI() {
     addSubview(topLabel)
     addSubview(middleLabel)
     addSubview(addButton)
+  }
 
+  private func setLayout() {
     addButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     addButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     addButton.widthAnchor.constraint(equalToConstant: 172).isActive = true

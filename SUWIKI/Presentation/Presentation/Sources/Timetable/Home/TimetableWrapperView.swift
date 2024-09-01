@@ -10,8 +10,7 @@ import SwiftUI
 
 struct TimetableWrapperView: UIViewControllerRepresentable {
   func makeUIViewController(context: Context) -> some UIViewController {
-    let timetableStoryboard = UIStoryboard(name: "TimetableView", bundle: .main)
-    let timetableController = timetableStoryboard.instantiateViewController(withIdentifier: "timetableVC") as! TimetableViewController
+    let timetableController = TimetableViewController()
     let navigationController = UINavigationController(rootViewController: timetableController)
     return navigationController
   }
