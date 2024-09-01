@@ -23,6 +23,7 @@
 		AFE97CB12C808EEE00EC9A73 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97CB02C808EEE00EC9A73 /* RequestState.swift */; };
 		AFE97CB32C808EFE00EC9A73 /* CustomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97CB22C808EFE00EC9A73 /* CustomState.swift */; };
 		AFE97CB62C808F3800EC9A73 /* Asset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFE97CB52C808F3800EC9A73 /* Asset.xcassets */; };
+		AFE97CE12C81CD6500EC9A73 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE97CE02C81CD6500EC9A73 /* UIViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		AFE97CB02C808EEE00EC9A73 /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestState.swift; path = Sources/Extension/RequestState.swift; sourceTree = SOURCE_ROOT; };
 		AFE97CB22C808EFE00EC9A73 /* CustomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomState.swift; path = Sources/Extension/CustomState.swift; sourceTree = SOURCE_ROOT; };
 		AFE97CB52C808F3800EC9A73 /* Asset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Asset.xcassets; sourceTree = "<group>"; };
+		AFE97CE02C81CD6500EC9A73 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				AF1F64CA2BE8CC41004DE418 /* Font+.swift */,
 				AF1F64CB2BE8CC41004DE418 /* UIColor+.swift */,
 				AF9C40FF2C7F23B200F3D0B9 /* UIView+.swift */,
+				AFE97CE02C81CD6500EC9A73 /* UIViewController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE97CE12C81CD6500EC9A73 /* UIViewController+.swift in Sources */,
 				AF1F64D02BE8CC41004DE418 /* UISearchBar+.swift in Sources */,
 				AF1F64CF2BE8CC41004DE418 /* UserDefaults+.swift in Sources */,
 				AF1F64D22BE8CC41004DE418 /* UITextField+.swift in Sources */,
