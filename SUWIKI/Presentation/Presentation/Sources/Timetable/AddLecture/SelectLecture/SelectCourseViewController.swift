@@ -126,10 +126,6 @@ class SelectCourseViewController: UIViewController {
     courseTableView.dataSource = self
     courseTableView.reloadData()
   }
-
-  @objc func closeButtonTapped() {
-    dismiss(animated: true)
-  }
 }
 
 extension SelectCourseViewController: UISearchResultsUpdating {
