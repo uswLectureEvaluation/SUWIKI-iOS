@@ -10,80 +10,86 @@ import SwiftUI
 import Common
 import Domain
 
-struct LectureEvaluationHomeView: View {
+import ComposableArchitecture
+
+public struct LectureEvaluationHomeView: View {
 
   @EnvironmentObject var appState: AppState
-  @StateObject var viewModel = LectureEvaluationHomeViewModel()
   @State var path = NavigationPath()
 
-  var body: some View {
-    NavigationStack(path: $path) {
-      ZStack {
-        Color(uiColor: .systemGray6)
-          .ignoresSafeArea()
-        lectureList
-      }
-      .navigationTitle(viewModel.major)
-      .navigationBarTitleDisplayMode(.large)
-      .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
-      .refreshable {
-        Task {
-          viewModel.fetchPage = 1
-          viewModel.searchPage = 1
-          try await viewModel.fetch()
+  @Perception.Bindable var store: StoreOf<LectureEvaluationHomeFeature>
+
+  public init() {
+    self.store = Store(initialState: LectureEvaluationHomeFeature.State()) {
+      LectureEvaluationHomeFeature()
+    }
+  }
+
+  public var body: some View {
+    WithPerceptionTracking {
+      NavigationStack(path: $path) {
+        ZStack {
+          Color(uiColor: .systemGray6)
+            .ignoresSafeArea()
+          lectureList
         }
-      }
-      .onSubmit(of: .search) {
-        Task {
-          try await viewModel.search()
+        .navigationTitle(store.major)
+        .navigationBarTitleDisplayMode(.large)
+        .searchable(
+          text: $store.searchText.sending(\.searchTextChanged),
+          placement: .navigationBarDrawer(displayMode: .always)
+        )
+        .refreshable {
+          store.send(.refresh)
         }
-      }
-      .toolbar {
-        Menu {
-          optionMenu
-          selectedMajor
-        } label: {
-          Image(systemName: "ellipsis.circle")
-            .tint(Color(uiColor: .primaryColor))
+        .onSubmit(of: .search) {
+          store.send(.searchButtonTapped)
         }
-      }
-      .navigationDestination(for: Lecture.self) { lecture in
-        LectureEvaluationDetailView(id: lecture.id)
-          .navigationBarTitleDisplayMode(.inline)
-      }
-      .onAppear {
-        print("@Login - \(appState.isLoggedIn)")
-      }
-      .sheet(isPresented: $viewModel.isMajorSelectSheetPresented) {
-        LectureEvaluationMajorSelectView(selectedMajor: $viewModel.major)
-      }
-      .sheet(isPresented: $viewModel.isLoginViewPresented) {
-        LoginView()
+        .toolbar {
+          Menu {
+            optionMenu
+            selectedMajor
+          } label: {
+            Image(systemName: "ellipsis.circle")
+              .tint(Color(uiColor: .primaryColor))
+          }
+        }
+        .navigationDestination(for: Lecture.self) { lecture in
+          LectureEvaluationDetailView(id: lecture.id)
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .onAppear {
+          store.send(._initialize)
+        }
+        .sheet(isPresented: $store.isMajorViewPresented.sending(\._majorViewDismiss)) {
+          LectureEvaluationMajorSelectView(selectedMajor: $store.major.sending(\._setMajor))
+        }
       }
     }
   }
 
-  var lectureList: some View {
+  private var lectureList: some View {
     VStack {
       List {
         header
           .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
           .listRowSeparator(.hidden)
-        ForEach(viewModel.lecture, id: \.id) { lecture in
+        ForEach(
+          store.lectures,
+          id: \.id
+        ) { lecture in
           LectureCell(lecture: lecture)
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .onAppear {
-              if viewModel.lecture.last == lecture {
-                Task {
-                  try await viewModel.update()
-                }
+              if store.lectures.last == lecture {
+                store.send(._updateLectures)
               }
             }
             .onTapGesture {
               if appState.isLoggedIn {
                 path.append(lecture)
               } else {
-                viewModel.isLoginViewPresented.toggle()
+//                viewModel.isLoginViewPresented.toggle()
               }
             }
         }
@@ -100,9 +106,9 @@ struct LectureEvaluationHomeView: View {
     }
   }
 
-  var header: some View {
+  private var header: some View {
     HStack {
-      Text(viewModel.option.description)
+      Text(store.option.description)
         .font(.h5)
         .foregroundStyle(Color(uiColor: .gray6A))
       Spacer()
@@ -110,11 +116,11 @@ struct LectureEvaluationHomeView: View {
     .background(Color(uiColor: .systemGray6))
   }
 
-  var optionMenu: some View {
-    Picker(selection: $viewModel.option) {
+  private var optionMenu: some View {
+    Picker(selection: $store.option.sending(\.optionChanged)) {
       ForEach(LectureOption.allCases, id: \.self) { option in
         Button {
-          viewModel.option = option
+          store.send(.optionChanged(option))
         } label: {
           Text("\(option.description)")
         }
@@ -123,21 +129,19 @@ struct LectureEvaluationHomeView: View {
 
     } label: {
       Text("다음으로 정렬")
-      Text("\(viewModel.option.description)")
+      Text("\(store.option.description)")
     }
     .pickerStyle(.menu)
   }
 
-  var selectedMajor: some View {
+  private var selectedMajor: some View {
     Button {
-      viewModel.isMajorSelectSheetPresented.toggle()
+      store.send(.majorButtonTapped)
     } label: {
       Text("학과 선택하기")
-      Text(viewModel.major)
+      Text(store.major)
     }
   }
-
-  //TODO: EmptyView - 검색 데이터 없을 경우
 }
 
 #Preview {
