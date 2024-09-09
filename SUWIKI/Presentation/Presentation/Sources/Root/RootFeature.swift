@@ -20,16 +20,22 @@ struct RootFeature {
   @ObservableState
   struct State: Equatable {
     var isLoggedIn: Bool = false
+    var lectureEvaluation: LectureEvaluationHomeFeature.State = .init()
   }
 
   enum Action {
+    case lectureEvaluation(LectureEvaluationHomeFeature.Action)
     case _initialize
     case _userInfoResponse(Result<UserInfo, Error>)
     case _setLoginStatus(Bool)
   }
 
   var body: some ReducerOf<Self> {
+    Scope(state: \.lectureEvaluation, action: \.lectureEvaluation) {
+      LectureEvaluationHomeFeature()
+    }
     Reduce { state, action in
+      state.lectureEvaluation.isLoggedIn = state.isLoggedIn
       switch action {
       case ._initialize:
         guard
@@ -57,6 +63,8 @@ struct RootFeature {
       case let ._setLoginStatus(status):
         state.isLoggedIn = status
         return .none
+        
+      case .lectureEvaluation: return .none
       }
     }
   }
