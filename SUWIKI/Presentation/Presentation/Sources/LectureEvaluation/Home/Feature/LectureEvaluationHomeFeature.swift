@@ -26,6 +26,7 @@ struct LectureEvaluationHomeFeature {
     var searchText: String
     var isMajorViewPresented: Bool
     var isLoginViewPresented: Bool
+    var isLoggedIn: Bool
 
     init() {
       self.lectures = []
@@ -37,6 +38,7 @@ struct LectureEvaluationHomeFeature {
       self.searchText = ""
       self.isMajorViewPresented = false
       self.isLoginViewPresented = false
+      self.isLoggedIn = false
     }
   }
   
@@ -47,6 +49,7 @@ struct LectureEvaluationHomeFeature {
     case listScroll
     case searchTextChanged(String)
     case optionChanged(LectureOption)
+    case showLoginView
     case refresh
 
     case _initialize
@@ -89,6 +92,10 @@ struct LectureEvaluationHomeFeature {
         state.fetchPage = 1
         state.searchPage = 1
         return .send(._fetchLectures)
+
+      case .showLoginView:
+        state.isLoginViewPresented = true
+        return .none
 
       case .refresh:
         state.fetchPage = 1
@@ -144,8 +151,8 @@ struct LectureEvaluationHomeFeature {
         state.isMajorViewPresented = isPresented
         return .none
 
-      case ._loginViewDismiss:
-        state.isLoginViewPresented = false
+      case let ._loginViewDismiss(isPresented):
+        state.isLoginViewPresented = isPresented
         return .none
       }
     }
