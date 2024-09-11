@@ -60,6 +60,7 @@ struct LoginFeature {
       case .passwordClearButtonTapped:
         state.password = ""
         state.isInvalid = true
+        return .none
 
       case .togglePasswordVisibility:
         state.isPasswordVisible.toggle()
