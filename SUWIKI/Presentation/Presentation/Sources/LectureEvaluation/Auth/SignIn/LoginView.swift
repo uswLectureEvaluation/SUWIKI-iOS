@@ -9,20 +9,23 @@ import SwiftUI
 
 import Domain
 
+import ComposableArchitecture
+
 struct LoginView: View {
-  
+
   @FocusState private var focusField: LoginViewInputType?
-  @StateObject var viewModel = LoginViewModel()
-  @EnvironmentObject var appState: AppState
-  @Environment(\.dismiss) var dismiss
-  
+  @Perception.Bindable var store: StoreOf<LoginFeature>
+
   var body: some View {
     NavigationView {
       ZStack {
         Color(uiColor: .systemGray6)
           .ignoresSafeArea()
         VStack {
-          ForEach(LoginViewInputType.allCases, id: \.self) { input in
+          ForEach(
+            LoginViewInputType.allCases,
+            id: \.self
+          ) { input in
             inputViews(input)
           }
           Spacer()
@@ -33,7 +36,7 @@ struct LoginView: View {
       .navigationTitle("SUWIKI")
     }
   }
-  
+
   private func inputViews(
     _ type: LoginViewInputType
   ) -> some View {
@@ -41,17 +44,22 @@ struct LoginView: View {
       HStack {
         Text(type == .id ? "아이디" : "비밀번호")
           .font(.c2)
-          .foregroundStyle(focusField == type ?
-                           Color(uiColor: .primaryColor) : Color(uiColor: .gray95))
+          .foregroundStyle(
+            focusField == type ?
+            Color(uiColor: .primaryColor) : Color(uiColor: .gray95)
+          )
         Spacer()
       }
       if type == .id {
         HStack {
-          TextField("아이디를 입력하세요.", text: $viewModel.id)
-            .focused($focusField, equals: .id)
+          TextField(
+            "아이디를 입력하세요.",
+            text: $store.id.sending(\.idChanged)
+          )
+          .focused($focusField, equals: .id)
           if focusField == type {
             Button {
-              viewModel.id = ""
+              store.send(.idClearButtonTapped)
             } label: {
               Image(systemName: "x.circle.fill")
                 .foregroundStyle(Color(uiColor: .gray95))
@@ -61,25 +69,37 @@ struct LoginView: View {
         }
       } else {
         HStack {
-          if viewModel.isPasswordVisible {
-            TextField("비밀번호를 입력하세요.", text: $viewModel.password)
-              .focused($focusField, equals: .password)
+          if store.isPasswordVisible {
+            TextField(
+              "비밀번호를 입력하세요.",
+              text: $store.password.sending(\.passwordChanged)
+            )
+            .focused(
+              $focusField,
+              equals: .password
+            )
           } else {
-            SecureField("비밀번호를 입력하세요",text: $viewModel.password)
-              .focused($focusField, equals: .password)
+            SecureField(
+              "비밀번호를 입력하세요",
+              text: $store.password.sending(\.passwordChanged)
+            )
+            .focused(
+              $focusField,
+              equals: .password
+            )
           }
           if focusField == type {
             Button {
-              viewModel.isPasswordVisible.toggle()
+              store.send(.togglePasswordVisibility)
             } label: {
-              Image(systemName: viewModel.isPasswordVisible ? "lock" : "lock.slash")
+              Image(systemName: store.isPasswordVisible ? "lock" : "lock.slash")
                 .foregroundStyle(Color(uiColor: .gray95))
                 .frame(width: 18, height: 18)
             }
           }
           if focusField == type {
             Button {
-              viewModel.password = ""
+              store.send(.passwordClearButtonTapped)
             } label: {
               Image(systemName: "x.circle.fill")
                 .foregroundStyle(Color(uiColor: .gray95))
@@ -90,14 +110,16 @@ struct LoginView: View {
       }
       Rectangle()
         .frame(height: 1)
-        .foregroundStyle(focusField == type ?
-                         Color(uiColor: .primaryColor) : Color(uiColor: .gray95))
+        .foregroundStyle(
+          focusField == type ?
+          Color(uiColor: .primaryColor) : Color(uiColor: .gray95)
+        )
         .padding(.top, 4)
     }
     .padding(.top, type == .id ? 26 : 20)
     .padding(.horizontal, 24)
   }
-  
+
   private var buttonViews: some View {
     HStack {
       ForEach(LoginViewButtonType.allCases, id: \.self) { type in
@@ -105,7 +127,7 @@ struct LoginView: View {
       }
     }
   }
-  
+
   private func buttons(
     _ type: LoginViewButtonType
   ) -> some View {
@@ -131,14 +153,11 @@ struct LoginView: View {
       }
     }
   }
-  
+
   private var loginButton: some View {
     Button {
       Task {
-        if try await viewModel.signIn() {
-          appState.isLoggedIn = true
-          dismiss()
-        }
+        store.send(.loginButtonTapped)
       }
     } label: {
       RoundedRectangle(cornerRadius: 15.0)
@@ -149,12 +168,12 @@ struct LoginView: View {
             .foregroundStyle(Color(uiColor: .white))
         }
     }
-    .disabled(viewModel.isButtonDisabled)
+    .disabled(store.isButtonDisabled)
     .padding(.horizontal, 24)
     .padding(.top, 16)
     .padding(.bottom, 40)
   }
-  
+
 }
 
 enum LoginViewInputType: CaseIterable {
@@ -166,7 +185,7 @@ enum LoginViewButtonType: CaseIterable {
   case findId
   case findPassword
   case signUp
-  
+
   var title: String {
     switch self {
     case .findId:
