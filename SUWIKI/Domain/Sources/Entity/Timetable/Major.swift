@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Major: Identifiable { //: Equatable, Hashable, Decodable
+public struct Major: Identifiable, Equatable {
   public let id = UUID()
   public var name: String
   public var bookmark: Bool = false

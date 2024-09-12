@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum LectureOption: String, Encodable, CaseIterable {
+public enum LectureOption: String, Encodable, CaseIterable, Equatable {
   case modifiedDate = "modifiedDate"
   case lectureHoneyAvg = "lectureHoneyAvg"
   case lectureSatisfactionAvg = "lectureSatisfactionAvg"
