@@ -9,50 +9,55 @@ import SwiftUI
 
 import Domain
 
+import ComposableArchitecture
+
 struct LectureEvaluationMajorSelectView: View {
 
-  @Binding var selectedMajor: String
-  @StateObject var viewModel = LectureEvaluationMajorSelectViewModel()
-  @Environment(\.dismiss) var dismiss
+  @Perception.Bindable var store: StoreOf<LectureEvaluationMajorSelectFeature>
+
+  init(store: StoreOf<LectureEvaluationMajorSelectFeature>) {
+    self.store = store
+  }
 
   var body: some View {
-    NavigationView {
-      ZStack {
-        Color(uiColor: .systemGray6)
-          .ignoresSafeArea()
-        VStack {
-          if viewModel.fetchState == .success {
-            if viewModel.searchText.isEmpty {
-              majorList(major: viewModel.major)
+    WithPerceptionTracking {
+      NavigationView {
+        ZStack {
+          Color(uiColor: .systemGray6)
+            .ignoresSafeArea()
+          VStack {
+            if store.fetchState == .success {
+              if store.searchText.isEmpty {
+                majorList(major: store.majors)
+              } else {
+                majorList(major: store.searchMajors)
+              }
             } else {
-              majorList(major: viewModel.searchMajor)
+              ProgressView()
             }
-          } else {
-            ProgressView()
           }
         }
+        .searchable(text: $store.searchText.sending(\.searchTextChanged))
+        .navigationTitle("학과 선택")
+        .navigationBarTitleDisplayMode(.large)
       }
-      .searchable(text: $viewModel.searchText)
-      .navigationTitle("학과 선택")
-      .navigationBarTitleDisplayMode(.large)
     }
   }
 
-  func majorList(major: [Major]) -> some View {
+  func majorList(major: IdentifiedArrayOf<Major>) -> some View {
     List {
       ForEach(major) { major in
         HStack {
           Text("")
           Button {
-            viewModel.toggleBookmark(name: major.name)
+            store.send(.bookmarkButtonTapped(major))
           } label: {
             Image(systemName: major.bookmark ? "star.fill" : "star")
               .foregroundStyle(Color(uiColor: .primaryColor))
           }
           .buttonStyle(.plain)
           Button {
-            selectedMajor = major.name
-            dismiss()
+            store.send(.majorSelected(major.name))
           } label: {
             Rectangle()
               .foregroundStyle(Color.white)

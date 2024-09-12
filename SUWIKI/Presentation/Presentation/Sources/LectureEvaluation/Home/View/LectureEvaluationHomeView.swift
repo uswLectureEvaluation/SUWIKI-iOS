@@ -12,20 +12,18 @@ import Domain
 
 import ComposableArchitecture
 
-public struct LectureEvaluationHomeView: View {
+struct LectureEvaluationHomeView: View {
 
   @EnvironmentObject var appState: AppState
   @State var path = NavigationPath()
 
   @Perception.Bindable var store: StoreOf<LectureEvaluationHomeFeature>
 
-  public init() {
-    self.store = Store(initialState: LectureEvaluationHomeFeature.State()) {
-      LectureEvaluationHomeFeature()
-    }
+  init(store: StoreOf<LectureEvaluationHomeFeature>) {
+    self.store = store
   }
 
-  public var body: some View {
+  var body: some View {
     WithPerceptionTracking {
       NavigationStack(path: $path) {
         ZStack {
@@ -61,9 +59,22 @@ public struct LectureEvaluationHomeView: View {
         .onAppear {
           store.send(._initialize)
         }
-        .sheet(isPresented: $store.isMajorViewPresented.sending(\._majorViewDismiss)) {
-          LectureEvaluationMajorSelectView(selectedMajor: $store.major.sending(\._setMajor))
-        }
+//        .sheet(
+//          item: $store.scope(
+//            state: \.destination?.selectMajor,
+//            action: \.destination.selectMajor
+//          )
+//        ) { store in
+//          LectureEvaluationMajorSelectView(store: store)
+//        }
+//        .sheet(
+//          item: $store.scope(
+//            state: \.destination?.login,
+//            action: \.destination.login
+//          )
+//        ) { store in
+//          LoginView(store: store)
+//        }
       }
     }
   }
@@ -86,10 +97,10 @@ public struct LectureEvaluationHomeView: View {
               }
             }
             .onTapGesture {
-              if appState.isLoggedIn {
+              if store.isLoggedIn {
                 path.append(lecture)
               } else {
-//                viewModel.isLoginViewPresented.toggle()
+                store.send(.showLoginView)
               }
             }
         }
@@ -142,8 +153,4 @@ public struct LectureEvaluationHomeView: View {
       Text(store.major)
     }
   }
-}
-
-#Preview {
-  LectureEvaluationHomeView()
 }

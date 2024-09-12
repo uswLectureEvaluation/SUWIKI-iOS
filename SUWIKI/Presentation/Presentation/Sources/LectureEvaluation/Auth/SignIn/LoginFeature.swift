@@ -27,7 +27,9 @@ struct LoginFeature {
     }
   }
 
-  enum Action {
+  enum Action: BindableAction {
+    case binding(BindingAction<State>)
+
     case idChanged(String)
     case idClearButtonTapped
     case passwordChanged(String)
@@ -40,8 +42,11 @@ struct LoginFeature {
   }
 
   var body: some ReducerOf<Self> {
+    BindingReducer()
     Reduce { state, action in
       switch action {
+      case .binding:
+        return .none
       case let .idChanged(id):
         state.id = id
         state.isInvalid = false

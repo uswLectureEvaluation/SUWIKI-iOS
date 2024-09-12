@@ -14,29 +14,29 @@ import DIContainer
 import ComposableArchitecture
 
 public struct RootView: View {
-  
+
   let store: StoreOf<RootFeature>
-  
+
   public init() {
     self.store = Store(initialState: RootFeature.State()) {
       RootFeature()
     }
   }
-  
+
   public var body: some View {
     TabBarView(store: store)
   }
 }
 
 struct TabBarView: View {
-  
+
   let store: StoreOf<RootFeature>
-  
+
   init(store: StoreOf<RootFeature>) {
     self.store = store
     UITabBar.appearance().standardAppearance.backgroundColor = .white
   }
-  
+
   public var body: some View {
     TabView {
       TimetableWrapperView()

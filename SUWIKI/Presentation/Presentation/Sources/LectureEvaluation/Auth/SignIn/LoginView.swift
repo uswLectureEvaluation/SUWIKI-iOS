@@ -16,24 +16,30 @@ struct LoginView: View {
   @FocusState private var focusField: LoginViewInputType?
   @Perception.Bindable var store: StoreOf<LoginFeature>
 
+  init(store: StoreOf<LoginFeature>) {
+    self.store = store
+  }
+
   var body: some View {
-    NavigationView {
-      ZStack {
-        Color(uiColor: .systemGray6)
-          .ignoresSafeArea()
-        VStack {
-          ForEach(
-            LoginViewInputType.allCases,
-            id: \.self
-          ) { input in
-            inputViews(input)
+    WithPerceptionTracking {
+      NavigationView {
+        ZStack {
+          Color(uiColor: .systemGray6)
+            .ignoresSafeArea()
+          VStack {
+            ForEach(
+              LoginViewInputType.allCases,
+              id: \.self
+            ) { input in
+              inputViews(input)
+            }
+            Spacer()
+            buttonViews
+            loginButton
           }
-          Spacer()
-          buttonViews
-          loginButton
         }
+        .navigationTitle("SUWIKI")
       }
-      .navigationTitle("SUWIKI")
     }
   }
 

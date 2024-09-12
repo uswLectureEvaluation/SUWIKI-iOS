@@ -14,7 +14,7 @@ import ComposableArchitecture
 struct LectureEvaluationHomeFeature {
   @Inject var fetchUseCase: FetchLectureUseCase
   @Inject var searchUseCase: SearchLectureUseCase
-  
+
   @ObservableState
   struct State: Equatable {
     var lectures: [Lecture]
@@ -24,8 +24,6 @@ struct LectureEvaluationHomeFeature {
     var searchPage: Int
     var major: String
     var searchText: String
-    var isMajorViewPresented: Bool
-    var isLoginViewPresented: Bool
     var isLoggedIn: Bool
 
     init() {
@@ -36,19 +34,20 @@ struct LectureEvaluationHomeFeature {
       self.searchPage = 1
       self.major = "전체"
       self.searchText = ""
-      self.isMajorViewPresented = false
-      self.isLoginViewPresented = false
       self.isLoggedIn = false
     }
   }
-  
-  enum Action {
+
+  enum Action: BindableAction {
+    case binding(BindingAction<State>)
+
     case searchButtonTapped
     case majorButtonTapped
     case lectureTapped
     case listScroll
     case searchTextChanged(String)
     case optionChanged(LectureOption)
+    case majorSelected(String)
     case showLoginView
     case refresh
 
@@ -56,20 +55,22 @@ struct LectureEvaluationHomeFeature {
     case _fetchLectures
     case _fetchSearchLectures
     case _updateLectures
-    
+
     case _setLectures([Lecture])
     case _appendLectures([Lecture])
     case _setMajor(String)
-    case _majorViewDismiss(Bool)
-    case _loginViewDismiss(Bool)
   }
-  
+
   var body: some ReducerOf<Self> {
+    BindingReducer()
     Reduce { state, action in
       switch action {
+      case .binding:
+        return .none
+
       case .searchButtonTapped:
-        state.searchPage = 1
-        return .send(._fetchSearchLectures)
+        state.searchText = ""
+        return .none
 
       case .listScroll: return .none
 
@@ -81,7 +82,7 @@ struct LectureEvaluationHomeFeature {
         return .none
 
       case .majorButtonTapped:
-        state.isMajorViewPresented = true
+//        state.destination = .selectMajor(LectureEvaluationMajorSelectFeature.State())
         return .none
 
       case .lectureTapped:
@@ -93,8 +94,13 @@ struct LectureEvaluationHomeFeature {
         state.searchPage = 1
         return .send(._fetchLectures)
 
+      case let .majorSelected(major):
+        state.major = major
+//        state.destination = nil
+        return .send(._fetchLectures)
+
       case .showLoginView:
-        state.isLoginViewPresented = true
+//        state.destination = .login(LoginFeature.State())
         return .none
 
       case .refresh:
@@ -145,15 +151,8 @@ struct LectureEvaluationHomeFeature {
         state.major = major
         state.fetchPage = 1
         state.searchPage = 1
+//        state.destination = nil
         return .send(._fetchLectures)
-
-      case let ._majorViewDismiss(isPresented):
-        state.isMajorViewPresented = isPresented
-        return .none
-
-      case let ._loginViewDismiss(isPresented):
-        state.isLoginViewPresented = isPresented
-        return .none
       }
     }
   }
@@ -163,7 +162,7 @@ extension LectureEvaluationHomeFeature {
   func update(_ state: Self.State) -> Effect<Self.Action> {
     return fetch(state)
   }
-  
+
   func fetch(_ state: Self.State) -> Effect<Self.Action> {
     return .run { send in
       let lectures = try await fetchUseCase.excute(
@@ -174,7 +173,7 @@ extension LectureEvaluationHomeFeature {
       await send(state.fetchPage == 1 ? ._setLectures(lectures) : ._appendLectures(lectures))
     }
   }
-  
+
   func search(_ state: Self.State) -> Effect<Self.Action> {
     return .run { send in
       let lectures = try await searchUseCase.excute(
@@ -187,3 +186,34 @@ extension LectureEvaluationHomeFeature {
     }
   }
 }
+
+extension LectureEvaluationHomeFeature {
+  @Reducer(state: .equatable)
+  enum Destination {
+    case login(LoginFeature)
+    case selectMajor(LectureEvaluationMajorSelectFeature)
+  }
+}
+
+//      case let ._majorViewDismiss(isPresented):
+//        return .none
+//
+//      case let ._loginViewDismiss(isPresented):
+//        return .none
+
+//      case let .destination(.presented(.login(._loginResponse(.success(isLoggedIn))))):
+//        state.isLoggedIn = isLoggedIn
+//        if isLoggedIn {
+//          state.destination = nil
+//        }
+//        return .none
+//
+//      case let .destination(.presented(.selectMajor(.majorSelected(major)))):
+//        return .send(._setMajor(major))
+//
+//      case let .destination(.dismiss):
+//        state.destination = nil
+//        return .none
+//
+//      case .destination:
+//        return .none
