@@ -15,6 +15,8 @@ struct LoginFeature {
 
   @Inject var useCase: SignInUseCase
 
+  init() { }
+
   @ObservableState
   struct State: Equatable {
     var id: String
@@ -24,6 +26,14 @@ struct LoginFeature {
     var isInvalid: Bool
     var isButtonDisabled: Bool {
       id.count < 6 || id.count > 20 || password.count < 8 || password.count > 20
+    }
+
+    init() {
+      self.id = ""
+      self.password = ""
+      self.isPasswordVisible = false
+      self.isLoginInProgress = false
+      self.isInvalid = true
     }
   }
 
