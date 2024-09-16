@@ -5,6 +5,8 @@
 //  Created by 한지석 on 9/4/24.
 //
 
+import Foundation
+
 import Domain
 import DIContainer
 
@@ -14,6 +16,12 @@ import ComposableArchitecture
 struct LectureEvaluationHomeFeature {
   @Inject var fetchUseCase: FetchLectureUseCase
   @Inject var searchUseCase: SearchLectureUseCase
+
+  @Reducer(state: .equatable)
+  enum Destination {
+    case login(LoginFeature)
+    case selectMajor(LectureEvaluationMajorSelectFeature)
+  }
 
   @ObservableState
   struct State: Equatable {
@@ -25,6 +33,7 @@ struct LectureEvaluationHomeFeature {
     var major: String
     var searchText: String
     var isLoggedIn: Bool
+    @Presents var destination: Destination.State?
 
     init() {
       self.lectures = []
@@ -35,30 +44,38 @@ struct LectureEvaluationHomeFeature {
       self.major = "전체"
       self.searchText = ""
       self.isLoggedIn = false
+      self.destination = nil
     }
   }
 
   enum Action: BindableAction {
     case binding(BindingAction<State>)
+    case destination(PresentationAction<Destination.Action>)
 
-    case searchButtonTapped
-    case majorButtonTapped
-    case lectureTapped
-    case listScroll
-    case searchTextChanged(String)
-    case optionChanged(LectureOption)
-    case majorSelected(String)
-    case showLoginView
-    case refresh
+    case viewAction(ViewAction)
+    case internalAction(InternalAction)
 
-    case _initialize
-    case _fetchLectures
-    case _fetchSearchLectures
-    case _updateLectures
+    enum ViewAction {
+      case searchButtonTapped
+      case lectureTapped
+      case listScroll
+      case searchTextChanged(String)
+      case optionChanged(LectureOption)
+      case majorSelected(String)
+      case refresh
+      case loginViewPresented
+      case majorViewPresented
+    }
 
-    case _setLectures([Lecture])
-    case _appendLectures([Lecture])
-    case _setMajor(String)
+    enum InternalAction {
+      case initialize
+      case fetchLectures
+      case fetchSearchLectures
+      case updateLectures
+      case setLectures([Lecture])
+      case appendLectures([Lecture])
+      case setMajor(String)
+    }
   }
 
   var body: some ReducerOf<Self> {
@@ -68,93 +85,115 @@ struct LectureEvaluationHomeFeature {
       case .binding:
         return .none
 
-      case .searchButtonTapped:
-        state.searchText = ""
-        return .none
+      case let .viewAction(viewAction):
+        switch viewAction {
+        case .searchButtonTapped:
+          return .none
 
-      case .listScroll: return .none
+        case .lectureTapped:
+          return .none
 
-      case let .searchTextChanged(searchText):
-        state.searchText = searchText
-        if searchText.isEmpty {
-          state.lectures = state.fetchLectures
+        case .listScroll:
+          return .none
+
+        case let .searchTextChanged(searchText):
+          state.searchText = searchText
+          if searchText.isEmpty {
+            state.lectures = state.fetchLectures
+          }
+          return .none
+
+        case let .optionChanged(option):
+          state.option = option
+          state.fetchPage = 1
+          state.searchPage = 1
+          return .none
+
+        case let .majorSelected(major):
+          state.major = major
+          state.destination = nil
+          return .send(.internalAction(.fetchLectures))
+
+        case .refresh:
+          return .none
+
+        case .loginViewPresented:
+          state.destination = .login(LoginFeature.State())
+          return .none
+
+        case .majorViewPresented:
+          state.destination = .selectMajor(LectureEvaluationMajorSelectFeature.State())
+          return .none
         }
-        return .none
 
-      case .majorButtonTapped:
-//        state.destination = .selectMajor(LectureEvaluationMajorSelectFeature.State())
-        return .none
+      case let .internalAction(internalAction):
+        switch internalAction {
+        case .initialize:
+          state.lectures = []
+          state.option = .modifiedDate
+          state.fetchLectures = []
+          state.fetchPage = 1
+          state.searchPage = 1
+          state.major = "전체"
+          state.searchText = ""
+          return .send(.internalAction(.fetchLectures))
 
-      case .lectureTapped:
-        return .none
-
-      case let .optionChanged(option):
-        state.option = option
-        state.fetchPage = 1
-        state.searchPage = 1
-        return .send(._fetchLectures)
-
-      case let .majorSelected(major):
-        state.major = major
-//        state.destination = nil
-        return .send(._fetchLectures)
-
-      case .showLoginView:
-//        state.destination = .login(LoginFeature.State())
-        return .none
-
-      case .refresh:
-        state.fetchPage = 1
-        state.searchPage = 1
-        return .send(._fetchLectures)
-
-      case ._initialize:
-        state.lectures = []
-        state.option = .modifiedDate
-        state.fetchLectures = []
-        state.fetchPage = 1
-        state.searchPage = 1
-        state.major = "전체"
-        state.searchText = ""
-        return .send(._fetchLectures)
-
-      case ._fetchLectures:
-        return fetch(state)
-
-      case ._fetchSearchLectures:
-        return search(state)
-
-      case ._updateLectures:
-        if state.searchText.isEmpty {
-          state.fetchPage += 1
+        case .fetchLectures:
           return fetch(state)
-        } else {
-          state.searchPage += 1
+
+        case .fetchSearchLectures:
           return search(state)
+
+        case .updateLectures:
+          if state.searchText.isEmpty {
+            state.fetchPage += 1
+            return fetch(state)
+          } else {
+            state.searchPage += 1
+            return search(state)
+          }
+
+        case let .setLectures(lectures):
+          if state.searchText.isEmpty {
+            state.fetchLectures = lectures
+          }
+          state.lectures = state.searchText.isEmpty ? state.fetchLectures : lectures
+          return .none
+
+        case let .appendLectures(lectures):
+          if state.searchText.isEmpty {
+            state.fetchLectures.append(contentsOf: lectures)
+          }
+          state.lectures.append(contentsOf: lectures)
+          return .none
+
+        case let .setMajor(major):
+          state.major = major
+          state.fetchPage = 1
+          state.searchPage = 1
+          state.destination = nil
+          return .send(.internalAction(.fetchLectures))
         }
 
-      case let ._setLectures(lectures):
-        if state.searchText.isEmpty {
-          state.fetchLectures = lectures
+      case let .destination(.presented(.login(._loginResponse(.success(isLoggedIn))))):
+        state.isLoggedIn = isLoggedIn
+        if isLoggedIn {
+          state.destination = nil
         }
-        state.lectures = state.searchText.isEmpty ? state.fetchLectures : lectures
         return .none
 
-      case let ._appendLectures(lectures):
-        if state.searchText.isEmpty {
-          state.fetchLectures.append(contentsOf: lectures)
-        }
-        state.lectures.append(contentsOf: lectures)
+      case let .destination(.presented(.selectMajor(.majorSelected(major)))):
+        return .send(.internalAction(.setMajor(major)))
+
+      case .destination(.dismiss):
+        state.destination = nil
         return .none
 
-      case let ._setMajor(major):
-        state.major = major
-        state.fetchPage = 1
-        state.searchPage = 1
-//        state.destination = nil
-        return .send(._fetchLectures)
+      case .destination:
+        return .none
       }
     }
+    .ifLet(\.$destination, action: \.destination)
   }
 }
 
@@ -170,7 +209,7 @@ extension LectureEvaluationHomeFeature {
         page: state.fetchPage,
         major: state.major
       )
-      await send(state.fetchPage == 1 ? ._setLectures(lectures) : ._appendLectures(lectures))
+      await send(state.fetchPage == 1 ? .internalAction(.setLectures(lectures)) : .internalAction(.appendLectures(lectures)))
     }
   }
 
@@ -182,38 +221,7 @@ extension LectureEvaluationHomeFeature {
         page: state.searchPage,
         major: state.major
       )
-      await send(state.searchPage == 1 ? ._setLectures(lectures) : ._appendLectures(lectures))
+      await send(state.searchPage == 1 ? .internalAction(.setLectures(lectures)) : .internalAction(.appendLectures(lectures)))
     }
   }
 }
-
-extension LectureEvaluationHomeFeature {
-  @Reducer(state: .equatable)
-  enum Destination {
-    case login(LoginFeature)
-    case selectMajor(LectureEvaluationMajorSelectFeature)
-  }
-}
-
-//      case let ._majorViewDismiss(isPresented):
-//        return .none
-//
-//      case let ._loginViewDismiss(isPresented):
-//        return .none
-
-//      case let .destination(.presented(.login(._loginResponse(.success(isLoggedIn))))):
-//        state.isLoggedIn = isLoggedIn
-//        if isLoggedIn {
-//          state.destination = nil
-//        }
-//        return .none
-//
-//      case let .destination(.presented(.selectMajor(.majorSelected(major)))):
-//        return .send(._setMajor(major))
-//
-//      case let .destination(.dismiss):
-//        state.destination = nil
-//        return .none
-//
-//      case .destination:
-//        return .none
