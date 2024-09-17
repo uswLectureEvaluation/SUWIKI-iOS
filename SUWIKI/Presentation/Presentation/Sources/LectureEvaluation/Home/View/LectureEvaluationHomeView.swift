@@ -34,14 +34,16 @@ struct LectureEvaluationHomeView: View {
         .navigationTitle(store.major)
         .navigationBarTitleDisplayMode(.large)
         .searchable(
-          text: $store.searchText.sending(\.searchTextChanged),
+          text: $store.searchText.sending(\.viewAction(.searchTextChanged)),
           placement: .navigationBarDrawer(displayMode: .always)
         )
         .refreshable {
-          store.send(.refresh)
+          store.send(.viewAction(.refresh))
+//          store.send(.refresh)
         }
         .onSubmit(of: .search) {
-          store.send(.searchButtonTapped)
+          store.send(.viewAction(.searchButtonTapped))
+//          store.send(.searchButtonTapped)
         }
         .toolbar {
           Menu {
@@ -57,7 +59,8 @@ struct LectureEvaluationHomeView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
-          store.send(._initialize)
+          store.send(.internalAction(.initialize))
+//          store.send(._initialize)
         }
 //        .sheet(
 //          item: $store.scope(
@@ -93,14 +96,15 @@ struct LectureEvaluationHomeView: View {
             .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
             .onAppear {
               if store.lectures.last == lecture {
-                store.send(._updateLectures)
+                store.send(.internalAction(.updateLectures))
+//                store.send(._updateLectures)
               }
             }
             .onTapGesture {
               if store.isLoggedIn {
                 path.append(lecture)
               } else {
-                store.send(.showLoginView)
+//                store.send(.showLoginView)
               }
             }
         }
@@ -128,10 +132,10 @@ struct LectureEvaluationHomeView: View {
   }
 
   private var optionMenu: some View {
-    Picker(selection: $store.option.sending(\.optionChanged)) {
+    Picker(selection: $store.option.sending(\.viewAction(.optionChanged))) {
       ForEach(LectureOption.allCases, id: \.self) { option in
         Button {
-          store.send(.optionChanged(option))
+          store.send(.viewAction(.optionChanged(option)))
         } label: {
           Text("\(option.description)")
         }
@@ -147,7 +151,7 @@ struct LectureEvaluationHomeView: View {
 
   private var selectedMajor: some View {
     Button {
-      store.send(.majorButtonTapped)
+//      store.send(.viewAction(.))
     } label: {
       Text("학과 선택하기")
       Text(store.major)
