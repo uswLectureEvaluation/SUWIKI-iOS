@@ -57,14 +57,10 @@ struct LectureEvaluationHomeFeature {
 
     enum ViewAction {
       case searchButtonTapped
+      case majorButtonTapped
       case lectureTapped
       case listScroll
-      case searchTextChanged(String)
-      case optionChanged(LectureOption)
-      case majorSelected(String)
       case refresh
-      case loginViewPresented
-      case majorViewPresented
     }
 
     enum InternalAction {
@@ -75,7 +71,14 @@ struct LectureEvaluationHomeFeature {
       case setLectures([Lecture])
       case appendLectures([Lecture])
       case setMajor(String)
+      case majorSelected(String)
+      case loginViewPresented
+      case majorViewPresented
     }
+
+    // Binding Action
+    case searchTextChanged(String)
+    case optionChanged(LectureOption)
   }
 
   var body: some ReducerOf<Self> {
@@ -88,41 +91,19 @@ struct LectureEvaluationHomeFeature {
       case let .viewAction(viewAction):
         switch viewAction {
         case .searchButtonTapped:
-          return .none
+          state.searchPage = 1
+          return .send(.internalAction(.fetchSearchLectures))
+
+        case .majorButtonTapped:
+          return .send(.internalAction(.majorViewPresented))
 
         case .lectureTapped:
-          return .none
+          return .send(.internalAction(.loginViewPresented))
 
         case .listScroll:
           return .none
 
-        case let .searchTextChanged(searchText):
-          state.searchText = searchText
-          if searchText.isEmpty {
-            state.lectures = state.fetchLectures
-          }
-          return .none
-
-        case let .optionChanged(option):
-          state.option = option
-          state.fetchPage = 1
-          state.searchPage = 1
-          return .none
-
-        case let .majorSelected(major):
-          state.major = major
-          state.destination = nil
-          return .send(.internalAction(.fetchLectures))
-
         case .refresh:
-          return .none
-
-        case .loginViewPresented:
-          state.destination = .login(LoginFeature.State())
-          return .none
-
-        case .majorViewPresented:
-          state.destination = .selectMajor(LectureEvaluationMajorSelectFeature.State())
           return .none
         }
 
@@ -173,7 +154,33 @@ struct LectureEvaluationHomeFeature {
           state.searchPage = 1
           state.destination = nil
           return .send(.internalAction(.fetchLectures))
+
+        case let .majorSelected(major):
+          state.major = major
+          state.destination = nil
+          return .send(.internalAction(.fetchLectures))
+
+        case .loginViewPresented:
+          state.destination = .login(LoginFeature.State())
+          return .none
+
+        case .majorViewPresented:
+          state.destination = .selectMajor(LectureEvaluationMajorSelectFeature.State())
+          return .none
         }
+
+      case let .searchTextChanged(searchText):
+        state.searchText = searchText
+        if searchText.isEmpty {
+          state.lectures = state.fetchLectures
+        }
+        return .none
+
+      case let .optionChanged(option):
+        state.option = option
+        state.fetchPage = 1
+        state.searchPage = 1
+        return .none
 
       case let .destination(.presented(.login(._loginResponse(.success(isLoggedIn))))):
         state.isLoggedIn = isLoggedIn
