@@ -34,16 +34,14 @@ struct LectureEvaluationHomeView: View {
         .navigationTitle(store.major)
         .navigationBarTitleDisplayMode(.large)
         .searchable(
-          text: $store.searchText.sending(\.viewAction(.searchTextChanged)),
+          text: $store.searchText.sending(\.searchTextChanged),
           placement: .navigationBarDrawer(displayMode: .always)
         )
         .refreshable {
           store.send(.viewAction(.refresh))
-//          store.send(.refresh)
         }
         .onSubmit(of: .search) {
           store.send(.viewAction(.searchButtonTapped))
-//          store.send(.searchButtonTapped)
         }
         .toolbar {
           Menu {
@@ -60,24 +58,23 @@ struct LectureEvaluationHomeView: View {
         }
         .onAppear {
           store.send(.internalAction(.initialize))
-//          store.send(._initialize)
         }
-//        .sheet(
-//          item: $store.scope(
-//            state: \.destination?.selectMajor,
-//            action: \.destination.selectMajor
-//          )
-//        ) { store in
-//          LectureEvaluationMajorSelectView(store: store)
-//        }
-//        .sheet(
-//          item: $store.scope(
-//            state: \.destination?.login,
-//            action: \.destination.login
-//          )
-//        ) { store in
-//          LoginView(store: store)
-//        }
+        .sheet(
+          item: $store.scope(
+            state: \.destination?.selectMajor,
+            action: \.destination.selectMajor
+          )
+        ) { store in
+          LectureEvaluationMajorSelectView(store: store)
+        }
+        .sheet(
+          item: $store.scope(
+            state: \.destination?.login,
+            action: \.destination.login
+          )
+        ) { store in
+          LoginView(store: store)
+        }
       }
     }
   }
@@ -97,14 +94,13 @@ struct LectureEvaluationHomeView: View {
             .onAppear {
               if store.lectures.last == lecture {
                 store.send(.internalAction(.updateLectures))
-//                store.send(._updateLectures)
               }
             }
             .onTapGesture {
               if store.isLoggedIn {
                 path.append(lecture)
               } else {
-//                store.send(.showLoginView)
+                store.send(.viewAction(.lectureTapped))
               }
             }
         }
@@ -132,10 +128,10 @@ struct LectureEvaluationHomeView: View {
   }
 
   private var optionMenu: some View {
-    Picker(selection: $store.option.sending(\.viewAction(.optionChanged))) {
+    Picker(selection: $store.option.sending(\.optionChanged)) {
       ForEach(LectureOption.allCases, id: \.self) { option in
         Button {
-          store.send(.viewAction(.optionChanged(option)))
+          store.send(.optionChanged(option))
         } label: {
           Text("\(option.description)")
         }
@@ -151,7 +147,7 @@ struct LectureEvaluationHomeView: View {
 
   private var selectedMajor: some View {
     Button {
-//      store.send(.viewAction(.))
+      store.send(.viewAction(.majorButtonTapped))
     } label: {
       Text("학과 선택하기")
       Text(store.major)
