@@ -25,6 +25,9 @@ public struct RootView: View {
 
   public var body: some View {
     TabBarView(store: store)
+      .onAppear {
+        store.send(._initialize)
+      }
   }
 }
 
