@@ -30,6 +30,14 @@ struct LectureEvaluationMajorSelectFeature {
       }.sorted { $0.bookmark && $1.bookmark }
       return IdentifiedArray(uniqueElements: filteredMajors)
     }
+
+    init() {
+      self.majors = []
+      self.searchText = ""
+      self.selectedMajor = ""
+      self.fetchState = .notRequest
+      self.bookmarks = []
+    }
   }
 
   enum Action: BindableAction {
