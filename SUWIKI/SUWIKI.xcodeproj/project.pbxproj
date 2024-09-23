@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		259B0EB768ACF67A430A68D3 /* Pods_TimetableWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94443CAA7C2D508243BBBDFF /* Pods_TimetableWidgetExtension.framework */; };
-		5253CFA8B67D660477447967 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0AF376E95CB92096353DB6 /* Pods_App.framework */; };
+		5243E4613CE5241D051238F9 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8F7E19023D252409287EA1C /* Pods_App.framework */; };
+		97645CCDAA4889D0ED20218C /* Pods_TimetableWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7643F12247A4141B77EFB6 /* Pods_TimetableWidgetExtension.framework */; };
 		AF01FBED2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF01FBEB2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld */; };
 		AF01FBEE2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AF01FBEB2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodeld */; };
 		AF065E1A2B70C24C00676752 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF065E192B70C24C00676752 /* AppState.swift */; };
@@ -42,8 +42,6 @@
 		AF7A0BE62BE7B89800A9885C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA982BE504FE00454E7C /* Common.framework */; };
 		AF7A0BE72BE7B89900A9885C /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF60AA982BE504FE00454E7C /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AF7DF1EC2B64EFB100C2CF4E /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7DF1EB2B64EFB100C2CF4E /* AppEnvironment.swift */; };
-		AF83C06C2B9474C3006AE961 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C06B2B9474C3006AE961 /* RequestState.swift */; };
-		AF83C06E2B9474DF006AE961 /* CustomState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF83C06D2B9474DF006AE961 /* CustomState.swift */; };
 		AF9907BE2B554FCF00EF0D91 /* CoreDataManager+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF057A132A77F35C004577E7 /* CoreDataManager+Create.swift */; };
 		AF9907C32B564AFD00EF0D91 /* TimetableWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9907C22B564AFD00EF0D91 /* TimetableWidgetViewModel.swift */; };
 		AF9907C42B564EA600EF0D91 /* TimetableWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9907C22B564AFD00EF0D91 /* TimetableWidgetViewModel.swift */; };
@@ -64,6 +62,8 @@
 		AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE18EF62A1C8ABF009D4D58 /* SceneDelegate.swift */; };
 		AFE18F012A1C8AC1009D4D58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F002A1C8AC1009D4D58 /* Assets.xcassets */; };
 		AFE18F042A1C8AC1009D4D58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE18F022A1C8AC1009D4D58 /* LaunchScreen.storyboard */; };
+		AFE42CEE2C8081310087D551 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9C40112C78B68D00F3D0B9 /* Presentation.framework */; };
+		AFE42CEF2C8081310087D551 /* Presentation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF9C40112C78B68D00F3D0B9 /* Presentation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEC86982A3771C6008C5781 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +142,7 @@
 			files = (
 				AF5A4D602BE8F1440015D214 /* Domain.framework in Embed Frameworks */,
 				AF5A4D5E2BE8F1430015D214 /* Data.framework in Embed Frameworks */,
+				AFE42CEF2C8081310087D551 /* Presentation.framework in Embed Frameworks */,
 				AF5A4D5B2BE8F1420015D214 /* Common.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -175,11 +176,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09BCCAB8EE2B336E786FCB62 /* Pods-TimetableWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-TimetableWidgetExtension/Pods-TimetableWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
-		21CE84D74177AEF67C81982F /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
-		94443CAA7C2D508243BBBDFF /* Pods_TimetableWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimetableWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AD47C2CD3B28F7D483270F46 /* Pods-TimetableWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-TimetableWidgetExtension/Pods-TimetableWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		AE0AF376E95CB92096353DB6 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D7643F12247A4141B77EFB6 /* Pods_TimetableWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TimetableWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D897B4F4A44DD499C8D7977 /* Pods-TimetableWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-TimetableWidgetExtension/Pods-TimetableWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		40B84C32B9945460CE3AE18A /* Pods-TimetableWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TimetableWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-TimetableWidgetExtension/Pods-TimetableWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		57459FACBD5F39C1F89F6786 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		AF01FBEC2BE39E6000F0EAD0 /* SuwikiTimetable.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SuwikiTimetable.xcdatamodel; sourceTree = "<group>"; };
 		AF01FC482BE3A67800F0EAD0 /* Domain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Domain.xcodeproj; path = Domain/Domain.xcodeproj; sourceTree = "<group>"; };
 		AF01FCF02BE4EB1800F0EAD0 /* Data.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Data.xcodeproj; path = Data/Data.xcodeproj; sourceTree = "<group>"; };
@@ -191,8 +191,6 @@
 		AF3C07472A349A3A00806AEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AF60AA922BE504FE00454E7C /* Common.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Common.xcodeproj; path = Common/Common.xcodeproj; sourceTree = "<group>"; };
 		AF7DF1EB2B64EFB100C2CF4E /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
-		AF83C06B2B9474C3006AE961 /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestState.swift; sourceTree = "<group>"; };
-		AF83C06D2B9474DF006AE961 /* CustomState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomState.swift; sourceTree = "<group>"; };
 		AF86F18A2B4AEAB20001904A /* SUWIKI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SUWIKI.entitlements; sourceTree = "<group>"; };
 		AF86F18B2B4AEAFD0001904A /* TimetableWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimetableWidgetExtension.entitlements; sourceTree = "<group>"; };
 		AF9907C22B564AFD00EF0D91 /* TimetableWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableWidgetViewModel.swift; sourceTree = "<group>"; };
@@ -215,7 +213,8 @@
 		AFE18F032A1C8AC1009D4D58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFE18F052A1C8AC1009D4D58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFEC86982A3771C6008C5781 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		D5F29E80ABB14A1F1054E265 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
+		F6784C9B8B788827497F16F3 /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
+		F8F7E19023D252409287EA1C /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,7 +232,7 @@
 				AF7A0BE62BE7B89800A9885C /* Common.framework in Frameworks */,
 				AFBEF3452B4417A50047DDC3 /* WidgetKit.framework in Frameworks */,
 				AF5C84DA2BCF50B8007D5409 /* FirebaseRemoteConfig in Frameworks */,
-				259B0EB768ACF67A430A68D3 /* Pods_TimetableWidgetExtension.framework in Frameworks */,
+				97645CCDAA4889D0ED20218C /* Pods_TimetableWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +252,8 @@
 				AF3617CF2BCE62F70019185A /* DIContainer in Frameworks */,
 				AF5C84D02BCF509D007D5409 /* FirebaseDatabase in Frameworks */,
 				AF5C84CC2BCF509D007D5409 /* FirebaseAnalytics in Frameworks */,
-				5253CFA8B67D660477447967 /* Pods_App.framework in Frameworks */,
+				AFE42CEE2C8081310087D551 /* Presentation.framework in Frameworks */,
+				5243E4613CE5241D051238F9 /* Pods_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +267,8 @@
 				AF3617ED2BCE69AF0019185A /* FirebaseCore.framework */,
 				AFBEF3292B44115C0047DDC3 /* WidgetKit.framework */,
 				AFBEF32B2B44115C0047DDC3 /* SwiftUI.framework */,
-				AE0AF376E95CB92096353DB6 /* Pods_App.framework */,
-				94443CAA7C2D508243BBBDFF /* Pods_TimetableWidgetExtension.framework */,
+				F8F7E19023D252409287EA1C /* Pods_App.framework */,
+				0D7643F12247A4141B77EFB6 /* Pods_TimetableWidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,10 +276,10 @@
 		63B3105FE151B90524E772B5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				21CE84D74177AEF67C81982F /* Pods-App.debug.xcconfig */,
-				D5F29E80ABB14A1F1054E265 /* Pods-App.release.xcconfig */,
-				AD47C2CD3B28F7D483270F46 /* Pods-TimetableWidgetExtension.debug.xcconfig */,
-				09BCCAB8EE2B336E786FCB62 /* Pods-TimetableWidgetExtension.release.xcconfig */,
+				F6784C9B8B788827497F16F3 /* Pods-App.debug.xcconfig */,
+				57459FACBD5F39C1F89F6786 /* Pods-App.release.xcconfig */,
+				40B84C32B9945460CE3AE18A /* Pods-TimetableWidgetExtension.debug.xcconfig */,
+				0D897B4F4A44DD499C8D7977 /* Pods-TimetableWidgetExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -320,15 +320,6 @@
 				AF60AA9A2BE504FE00454E7C /* CommonTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		AF83C06A2B9474BB006AE961 /* State */ = {
-			isa = PBXGroup;
-			children = (
-				AF83C06B2B9474C3006AE961 /* RequestState.swift */,
-				AF83C06D2B9474DF006AE961 /* CustomState.swift */,
-			);
-			path = State;
 			sourceTree = "<group>";
 		};
 		AF9907C92B566F4900EF0D91 /* View */ = {
@@ -430,7 +421,6 @@
 				AFBA84C32BEA28D50070E34C /* CoreData */,
 				AF86F18A2B4AEAB20001904A /* SUWIKI.entitlements */,
 				AF0ECA112B5E9B920012CC44 /* Application */,
-				AF83C06A2B9474BB006AE961 /* State */,
 				AFEC86942A377067008C5781 /* Resources */,
 			);
 			path = App;
@@ -454,7 +444,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFBEF3522B4417A70047DDC3 /* Build configuration list for PBXNativeTarget "TimetableWidgetExtension" */;
 			buildPhases = (
-				8438A8030E1EE5FACE03C528 /* [CP] Check Pods Manifest.lock */,
+				5B2E9A8927DA974C7F3B8F60 /* [CP] Check Pods Manifest.lock */,
 				AFBEF3402B4417A50047DDC3 /* Sources */,
 				AFBEF3412B4417A50047DDC3 /* Frameworks */,
 				AFBEF3422B4417A50047DDC3 /* Resources */,
@@ -480,13 +470,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFE18F082A1C8AC1009D4D58 /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
-				C2108BEC3F3521AFEFCFE852 /* [CP] Check Pods Manifest.lock */,
+				10701672BB18DEEEAE1038CE /* [CP] Check Pods Manifest.lock */,
 				AFE18EED2A1C8ABF009D4D58 /* Sources */,
 				AFE18EEE2A1C8ABF009D4D58 /* Frameworks */,
 				AFE18EEF2A1C8ABF009D4D58 /* Resources */,
 				AFBEF3552B4417A70047DDC3 /* Embed Foundation Extensions */,
 				AF5A4D5C2BE8F1420015D214 /* Embed Frameworks */,
-				8D7F6FAE7E226B68630FFEFA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -648,46 +637,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8438A8030E1EE5FACE03C528 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TimetableWidgetExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D7F6FAE7E226B68630FFEFA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-App/Pods-App-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C2108BEC3F3521AFEFCFE852 /* [CP] Check Pods Manifest.lock */ = {
+		10701672BB18DEEEAE1038CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -703,6 +653,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B2E9A8927DA974C7F3B8F60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TimetableWidgetExtension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -733,14 +705,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF9907D42B5670F100EF0D91 /* TimetableWidgetCell.swift in Sources */,
-				AF83C06C2B9474C3006AE961 /* RequestState.swift in Sources */,
 				AFE18EF52A1C8ABF009D4D58 /* AppDelegate.swift in Sources */,
 				AFEC86992A3771C6008C5781 /* CoreDataManager.swift in Sources */,
 				AF9907C72B56542400EF0D91 /* CourseForWidget.swift in Sources */,
 				AF065E1A2B70C24C00676752 /* AppState.swift in Sources */,
 				AF9907CE2B566F8700EF0D91 /* TimetableWidgetMedium.swift in Sources */,
 				AF9907C32B564AFD00EF0D91 /* TimetableWidgetViewModel.swift in Sources */,
-				AF83C06E2B9474DF006AE961 /* CustomState.swift in Sources */,
 				AF7DF1EC2B64EFB100C2CF4E /* AppEnvironment.swift in Sources */,
 				AFE18EF72A1C8ABF009D4D58 /* SceneDelegate.swift in Sources */,
 				AF9907BE2B554FCF00EF0D91 /* CoreDataManager+Create.swift in Sources */,
@@ -772,7 +742,7 @@
 /* Begin XCBuildConfiguration section */
 		AFBEF3532B4417A70047DDC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD47C2CD3B28F7D483270F46 /* Pods-TimetableWidgetExtension.debug.xcconfig */;
+			baseConfigurationReference = 40B84C32B9945460CE3AE18A /* Pods-TimetableWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -807,7 +777,7 @@
 		};
 		AFBEF3542B4417A70047DDC3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09BCCAB8EE2B336E786FCB62 /* Pods-TimetableWidgetExtension.release.xcconfig */;
+			baseConfigurationReference = 0D897B4F4A44DD499C8D7977 /* Pods-TimetableWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -955,7 +925,7 @@
 		};
 		AFE18F092A1C8AC1009D4D58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21CE84D74177AEF67C81982F /* Pods-App.debug.xcconfig */;
+			baseConfigurationReference = F6784C9B8B788827497F16F3 /* Pods-App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -974,6 +944,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -993,7 +964,7 @@
 		};
 		AFE18F0A2A1C8AC1009D4D58 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D5F29E80ABB14A1F1054E265 /* Pods-App.release.xcconfig */;
+			baseConfigurationReference = 57459FACBD5F39C1F89F6786 /* Pods-App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1012,6 +983,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
