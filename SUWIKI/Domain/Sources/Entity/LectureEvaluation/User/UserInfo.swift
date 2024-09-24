@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct UserInfo {
+public struct UserInfo: Identifiable, Equatable {
   public let id: String
   public let email: String
   public let point: Int
