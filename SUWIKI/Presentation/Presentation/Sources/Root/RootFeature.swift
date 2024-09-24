@@ -21,10 +21,12 @@ struct RootFeature {
   struct State: Equatable {
     var isLoggedIn: Bool = false
     var lectureEvaluation: LectureEvaluationHomeFeature.State = .init()
+    var userInfo: UserInfoFeature.State = .init()
   }
 
   enum Action {
     case lectureEvaluation(LectureEvaluationHomeFeature.Action)
+    case userInfo(UserInfoFeature.Action)
     case _initialize
     case _userInfoResponse(Result<UserInfo, Error>)
     case _setLoginStatus(Bool)
@@ -34,17 +36,20 @@ struct RootFeature {
     Scope(state: \.lectureEvaluation, action: \.lectureEvaluation) {
       LectureEvaluationHomeFeature()
     }
+    Scope(state: \.userInfo, action: \.userInfo) {
+      UserInfoFeature()
+    }
     Reduce { state, action in
       state.lectureEvaluation.isLoggedIn = state.isLoggedIn
+      state.userInfo.isLoggedIn = state.isLoggedIn
       switch action {
       case ._initialize:
         guard
-          let accessToken = KeychainManager.shared.read(token: .AccessToken),
-          let refreshToken = KeychainManager.shared.read(token: .RefreshToken)
+          let _ = KeychainManager.shared.read(token: .AccessToken),
+          let _ = KeychainManager.shared.read(token: .RefreshToken)
         else {
           return .send(._setLoginStatus(false))
         }
-
         return .run { send in
           do {
             let userInfo = try await userRepository.userInfo()
@@ -65,6 +70,7 @@ struct RootFeature {
         return .none
         
       case .lectureEvaluation: return .none
+      case .userInfo: return .none
       }
     }
   }
