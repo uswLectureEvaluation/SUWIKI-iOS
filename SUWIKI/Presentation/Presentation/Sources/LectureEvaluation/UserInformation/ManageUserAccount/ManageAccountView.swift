@@ -9,41 +9,33 @@ import SwiftUI
 
 import Domain
 
+import ComposableArchitecture
+
 struct ManageAccountView: View {
-  
-  @StateObject var viewModel: ManageAccountViewModel
-  @Environment(\.dismiss) var dismiss
-  @EnvironmentObject var appState: AppState
-  
-  init(userInfo: UserInfo) {
-    self._viewModel = StateObject(wrappedValue: ManageAccountViewModel(userInfo: userInfo))
+
+  @Perception.Bindable var store: StoreOf<ManageAccountFeature>
+
+  init(store: StoreOf<ManageAccountFeature>) {
+    self.store = store
   }
   
   var body: some View {
-    ZStack {
-      Color(uiColor: .systemGray6)
-        .ignoresSafeArea()
-      VStack {
-        loginIdView
-          .padding(.top, 20)
-        emailView
-        changePasswordButton
-          .padding(.top, 8)
-        logoutButton
-        withdrawAccountButton
-        Spacer()
-      }
-      .navigationTitle("내 계정")
-      .alert("로그아웃 하시겠어요?", isPresented: $viewModel.isLogoutButtonTapped) {
-        Button("확인") { 
-          viewModel.logout()
-          appState.isLoggedIn = false
-          dismiss()
+    WithPerceptionTracking {
+      ZStack {
+        Color(uiColor: .systemGray6)
+          .ignoresSafeArea()
+        VStack {
+          loginIdView
+            .padding(.top, 20)
+          emailView
+          changePasswordButton
+            .padding(.top, 8)
+          logoutButton
+          withdrawAccountButton
+          Spacer()
         }
-        Button(role: .cancel) {
-        } label: {
-          Text("취소")
-        }
+        .navigationTitle("내 계정")
+        .alert(store: self.store.scope(state: \.$alert, action: \.alert))
       }
     }
   }
@@ -60,7 +52,7 @@ struct ManageAccountView: View {
           .font(.c1)
           .foregroundStyle(Color(uiColor: .gray95))
         Spacer()
-        Text(viewModel.userInfo.id)
+        Text(store.userInfo.id)
           .font(.b5)
       }
       .padding(.horizontal, 24)
@@ -77,7 +69,7 @@ struct ManageAccountView: View {
           .font(.c1)
           .foregroundStyle(Color(uiColor: .gray95))
         Spacer()
-        Text(viewModel.userInfo.email)
+        Text(store.userInfo.email)
           .font(.b5)
           .tint(.black)
       }
@@ -111,7 +103,7 @@ struct ManageAccountView: View {
   
   var logoutButton: some View {
     Button {
-      viewModel.isLogoutButtonTapped.toggle()
+      store.send(.logoutButtonTapped)
     } label: {
       RoundedRectangle(cornerRadius: 10)
         .foregroundStyle(.white)
