@@ -58,7 +58,12 @@ struct TabBarView: View {
         Image(systemName: "books.vertical")
         Text("강의평가")
       }
-      UserInfoView()
+      UserInfoView(
+        store: store.scope(
+          state: \.userInfo,
+          action: \.userInfo
+        )
+      )
         .tabItem {
           Image(systemName: "person")
           Text("내 정보")
