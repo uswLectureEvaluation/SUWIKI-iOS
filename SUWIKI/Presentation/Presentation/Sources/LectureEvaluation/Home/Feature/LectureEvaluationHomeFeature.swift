@@ -174,13 +174,13 @@ struct LectureEvaluationHomeFeature {
         if searchText.isEmpty {
           state.lectures = state.fetchLectures
         }
-        return .none
+        return .send(.internalAction(.fetchSearchLectures))
 
       case let .optionChanged(option):
         state.option = option
         state.fetchPage = 1
         state.searchPage = 1
-        return .none
+        return .send(.internalAction(.fetchLectures))
 
       case let .destination(.presented(.login(._loginResponse(.success(isLoggedIn))))):
         state.isLoggedIn = isLoggedIn
