@@ -65,7 +65,9 @@ struct LectureEvaluationHomeView: View {
             action: \.destination.selectMajor
           )
         ) { store in
-          LectureEvaluationMajorSelectView(store: store)
+          WithPerceptionTracking {
+            LectureEvaluationMajorSelectView(store: store)
+          }
         }
         .sheet(
           item: $store.scope(
@@ -73,7 +75,9 @@ struct LectureEvaluationHomeView: View {
             action: \.destination.login
           )
         ) { store in
-          LoginView(store: store)
+          WithPerceptionTracking {
+            LoginView(store: store)
+          }
         }
       }
     }
