@@ -13,7 +13,7 @@ import ComposableArchitecture
 
 struct LectureEvaluationMajorSelectView: View {
 
-  @Perception.Bindable var store: StoreOf<LectureEvaluationMajorSelectFeature>
+  @Bindable var store: StoreOf<LectureEvaluationMajorSelectFeature>
 
   init(store: StoreOf<LectureEvaluationMajorSelectFeature>) {
     self.store = store

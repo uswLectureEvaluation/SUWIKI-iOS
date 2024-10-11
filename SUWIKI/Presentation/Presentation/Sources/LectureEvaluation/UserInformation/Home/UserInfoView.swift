@@ -9,64 +9,90 @@ import SwiftUI
 
 import Domain
 
+import ComposableArchitecture
+
 struct UserInfoView: View {
-  
+
   @EnvironmentObject var appState: AppState
   @State var path = NavigationPath()
   @StateObject var viewModel = UserInfoViewModel()
-  
+
+  @Bindable var store: StoreOf<UserInfoFeature>
+
+  init(store: StoreOf<UserInfoFeature>) {
+    self.store = store
+  }
+
   var body: some View {
-    NavigationStack(path: $path) {
-      ZStack {
-        Color(uiColor: .systemGray6)
-          .ignoresSafeArea()
-        VStack {
-          if viewModel.requestState == .success {
-            if appState.isLoggedIn {
-              loginStateButton
-                .padding(.top, 20)
-                .padding(.bottom, 12)
+    WithPerceptionTracking {
+      NavigationStackStore(store.scope(state: \.path, action: \.path)) {
+        ZStack {
+          Color(uiColor: .systemGray6)
+            .ignoresSafeArea()
+          VStack {
+            if store.requestState == .success {
+              if store.isLoggedIn {
+                loginStateButton
+                  .padding(.top, 20)
+                  .padding(.bottom, 12)
+              } else {
+                logoutStateButton
+                  .padding(.top, 20)
+                  .padding(.bottom, 12)
+              }
+              HStack {
+                navigationLinkButtons(type: .announcement)
+                linkButton(type: .inquire)
+                navigationLinkButtons(type: .manageAccount)
+              }
+              .padding(.bottom, 12)
+              if store.isLoggedIn {
+                loginServices
+              }
+              services
+              Spacer()
             } else {
-              logoutStateButton
-                .padding(.top, 20)
-                .padding(.bottom, 12)
+              ProgressView()
             }
-            HStack {
-              navigationLinkButtons(type: .announcement)
-              linkButton(type: .inquire)
-              navigationLinkButtons(type: .manageAccount)
-            }
-            .padding(.bottom, 12)
-            if appState.isLoggedIn {
-              loginServices
-            }
-            services
-            Spacer()
-          } else {
-            ProgressView()
+          }
+        }
+        .onAppear {
+          store.send(.internalAction(.initialize))
+        }
+      }
+      destination: { state in
+        switch state {
+        case .manageAccount:
+          CaseLet(/UserInfoFeature.Path.State.manageAccount, action: UserInfoFeature.Path.Action.manageAccount) { store in
+            ManageAccountView(store: store)
           }
         }
       }
-      .onAppear {
-        Task {
-          try await viewModel.getUserInfo()
-        }
-      }
-      .sheet(isPresented: $viewModel.isLoginViewPresented, onDismiss: {
-        if appState.isLoggedIn {
-          Task {
-            try await viewModel.getUserInfo()
-          }
-        }
-      }) {
-        LoginView()
+      .sheet(
+        item: $store.scope(
+          state: \.destination?.login,
+          action: \.destination.login
+        )
+      ) { store in
+        LoginView(store: store)
       }
     }
   }
-  
+
+  //      .navigationdestination
+  //      .sheet(isPresented: $viewModel.isLoginViewPresented, onDismiss: {
+  //        if appState.isLoggedIn {
+  //          Task {
+  //            try await viewModel.getUserInfo()
+  //          }
+  //        }
+  //      }) {
+  //        LoginView()
+  //      }
+
   var loginStateButton: some View {
-    NavigationLink {
-      UserPostView()
+    Button {
+      print("UserPostView")
     } label: {
       RoundedRectangle(cornerRadius: 10)
         .foregroundStyle(Color(uiColor: .white))
@@ -74,7 +100,7 @@ struct UserInfoView: View {
           HStack {
             VStack(alignment: .leading,
                    spacing: 4) {
-              if let userInfo = viewModel.userInfo {
+              if let userInfo = store.userInfo {
                 Text(userInfo.id)
                   .font(.h3)
                   .tint(Color(uiColor: .black))
@@ -102,10 +128,10 @@ struct UserInfoView: View {
     .frame(height: 86)
     .padding(.horizontal, 24)
   }
-  
+
   var logoutStateButton: some View {
     Button {
-      viewModel.isLoginViewPresented.toggle()
+      store.send(.viewAction(.loginButtonTapped))
     } label: {
       RoundedRectangle(cornerRadius: 10)
         .foregroundStyle(Color(uiColor: .white))
@@ -129,7 +155,7 @@ struct UserInfoView: View {
     .frame(height: 86)
     .padding(.horizontal, 24)
   }
-  
+
   func linkButton(type: ManageButtonType) -> some View {
     HStack {
       Link(destination: URL(string: "https://alike-pump-ae3.notion.site/SUWIKI-2cd58468e90b404fbd3e30b8b2c0b699")!) {
@@ -150,17 +176,18 @@ struct UserInfoView: View {
         .foregroundStyle(Color(uiColor: .grayCB))
     }
   }
-  
+
   func navigationLinkButtons(type: ManageButtonType) -> some View {
     HStack {
-      NavigationLink {
+      Button {
         if type == .announcement {
-          AnnouncementView()
+          print("announcement")
         } else {
-          if let userInfo = viewModel.userInfo {
-            ManageAccountView(userInfo: userInfo)
-          } else {
-            LoginView()
+          if store.userInfo != nil {
+            store.send(.viewAction(.manageButtonTapped))
+          }
+          else {
+            print("Login")
           }
         }
       } label: {
@@ -183,11 +210,11 @@ struct UserInfoView: View {
       }
     }
   }
-  
+
   var logoutServices: some View {
     Text("Logout")
   }
-  
+
   var services: some View {
     Section {
       ForEach(ServiceType.allCases, id: \.self) { type in
@@ -216,15 +243,16 @@ struct UserInfoView: View {
       .padding(.top, 12)
     }
   }
-  
+
   var loginServices: some View {
     Section {
-      NavigationLink {
-        if let userInfo = viewModel.userInfo {
-          UserPointView(userInfo: userInfo)
-        } else {
-          Text("다시 로그인하세요")
-        }
+      Button {
+//        if let userInfo = viewModel.userInfo {
+//          UserPointView(userInfo: userInfo)
+//        } else {
+//          Text("다시 로그인하세요")
+//        }
+        print("Hi")
       } label: {
         HStack {
           Text("내 포인트")

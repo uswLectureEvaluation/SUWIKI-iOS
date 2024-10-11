@@ -13,7 +13,7 @@ import ComposableArchitecture
 
 struct ManageAccountView: View {
 
-  @Perception.Bindable var store: StoreOf<ManageAccountFeature>
+  @Bindable var store: StoreOf<ManageAccountFeature>
 
   init(store: StoreOf<ManageAccountFeature>) {
     self.store = store

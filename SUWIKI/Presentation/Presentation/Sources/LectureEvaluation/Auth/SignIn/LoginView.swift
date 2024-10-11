@@ -14,7 +14,7 @@ import ComposableArchitecture
 struct LoginView: View {
 
   @FocusState private var focusField: LoginViewInputType?
-  @Perception.Bindable var store: StoreOf<LoginFeature>
+  @Bindable var store: StoreOf<LoginFeature>
 
   init(store: StoreOf<LoginFeature>) {
     self.store = store
