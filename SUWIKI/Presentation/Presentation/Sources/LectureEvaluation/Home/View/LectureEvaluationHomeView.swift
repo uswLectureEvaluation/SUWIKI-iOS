@@ -15,70 +15,58 @@ import ComposableArchitecture
 struct LectureEvaluationHomeView: View {
 
   @EnvironmentObject var appState: AppState
-  @State var path = NavigationPath()
-
-  @Perception.Bindable var store: StoreOf<LectureEvaluationHomeFeature>
+  @Bindable var store: StoreOf<LectureEvaluationHomeFeature>
 
   init(store: StoreOf<LectureEvaluationHomeFeature>) {
     self.store = store
   }
 
   var body: some View {
-    WithPerceptionTracking {
-      NavigationStack(path: $path) {
-        ZStack {
-          Color(uiColor: .systemGray6)
-            .ignoresSafeArea()
-          lectureList
+    NavigationStack {
+      ZStack {
+        Color(uiColor: .systemGray6)
+          .ignoresSafeArea()
+        lectureList
+      }
+      .navigationTitle(store.major)
+      .navigationBarTitleDisplayMode(.large)
+      .searchable(
+        text: $store.searchText.sending(\.searchTextChanged),
+        placement: .navigationBarDrawer(displayMode: .always)
+      )
+      .refreshable {
+        store.send(.viewAction(.refresh))
+      }
+      .onSubmit(of: .search) {
+        store.send(.viewAction(.searchButtonTapped))
+      }
+      .toolbar {
+        Menu {
+          optionMenu
+          selectedMajor
+        } label: {
+          Image(systemName: "ellipsis.circle")
+            .tint(Color(uiColor: .primaryColor))
         }
-        .navigationTitle(store.major)
-        .navigationBarTitleDisplayMode(.large)
-        .searchable(
-          text: $store.searchText.sending(\.searchTextChanged),
-          placement: .navigationBarDrawer(displayMode: .always)
+      }
+      .onAppear {
+        store.send(.internalAction(.initialize))
+      }
+      .sheet(
+        item: $store.scope(
+          state: \.destination?.selectMajor,
+          action: \.destination.selectMajor
         )
-        .refreshable {
-          store.send(.viewAction(.refresh))
-        }
-        .onSubmit(of: .search) {
-          store.send(.viewAction(.searchButtonTapped))
-        }
-        .toolbar {
-          Menu {
-            optionMenu
-            selectedMajor
-          } label: {
-            Image(systemName: "ellipsis.circle")
-              .tint(Color(uiColor: .primaryColor))
-          }
-        }
-        .navigationDestination(for: Lecture.self) { lecture in
-          LectureEvaluationDetailView(id: lecture.id)
-            .navigationBarTitleDisplayMode(.inline)
-        }
-        .onAppear {
-          store.send(.internalAction(.initialize))
-        }
-        .sheet(
-          item: $store.scope(
-            state: \.destination?.selectMajor,
-            action: \.destination.selectMajor
-          )
-        ) { store in
-          WithPerceptionTracking {
-            LectureEvaluationMajorSelectView(store: store)
-          }
-        }
-        .sheet(
-          item: $store.scope(
-            state: \.destination?.login,
-            action: \.destination.login
-          )
-        ) { store in
-          WithPerceptionTracking {
-            LoginView(store: store)
-          }
-        }
+      ) { store in
+        LectureEvaluationMajorSelectView(store: store)
+      }
+      .sheet(
+        item: $store.scope(
+          state: \.destination?.login,
+          action: \.destination.login
+        )
+      ) { store in
+        LoginView(store: store)
       }
     }
   }
@@ -101,11 +89,7 @@ struct LectureEvaluationHomeView: View {
               }
             }
             .onTapGesture {
-              if store.isLoggedIn {
-                path.append(lecture)
-              } else {
-                store.send(.viewAction(.lectureTapped))
-              }
+              store.send(.viewAction(.lectureTapped(lecture)))
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 12))
